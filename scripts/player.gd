@@ -1,5 +1,5 @@
 
-extends "res://Entity.gd"
+extends "res://scripts/Entity.gd"
 
 ####
 export var max_HP = 10

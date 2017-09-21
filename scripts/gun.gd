@@ -11,7 +11,7 @@ func _ready():
 	pass
 
 func press_trigger():
-	var bullet = preload("res://bullet.tscn")
+	var bullet = preload("res://nodes/bullet.tscn")
 	var instanced_bullet = bullet.instance()
 		
 	get_tree().get_root().add_child(instanced_bullet)

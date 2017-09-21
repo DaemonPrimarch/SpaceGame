@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=1]
 
-[ext_resource path="res://bullet.gd" type="Script" id=1]
-[ext_resource path="res://whitelightpng-262-kb-255-downloads-white-light-lamp-l-7fe7dacf39a5414f.png" type="Texture" id=2]
+[ext_resource path="res://scripts/bullet.gd" type="Script" id=1]
+[ext_resource path="res://sprites/white_light.png" type="Texture" id=2]
 
 [sub_resource type="CircleShape2D" id=1]
 

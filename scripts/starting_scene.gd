@@ -9,6 +9,7 @@ func on_enter(body):
 	if(body.is_in_group("warpable") and not loaded):
 		loaded = true
 		body.set_is_warping(true)
+		print(destination_scene_path)
 		var loaded_scene = load(destination_scene_path).instance()
 		var original_scene = self
 		get_tree().get_root().add_child(loaded_scene)
