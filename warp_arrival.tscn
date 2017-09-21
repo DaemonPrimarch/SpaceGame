@@ -1,0 +1,7 @@
+[gd_scene format=1]
+
+[node name="warp_arrival" type="Position2D" groups=[
+"warp_arrival",
+]]
+
+

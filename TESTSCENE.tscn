@@ -1,0 +1,23 @@
+[gd_scene load_steps=2 format=1]
+
+[ext_resource path="res://TestTiles.tres" type="TileSet" id=1]
+
+[node name="TileMap" type="TileMap"]
+
+mode = 0
+tile_set = ExtResource( 1 )
+cell/size = Vector2( 50, 50 )
+cell/quadrant_size = 16
+cell/custom_transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+cell/half_offset = 2
+cell/tile_origin = 0
+cell/y_sort = false
+collision/use_kinematic = false
+collision/friction = 1.0
+collision/bounce = 0.0
+collision/layers = 1
+collision/mask = 1
+occluder/light_mask = 1
+tile_data = IntArray( 0, 0, 1, 0, 2, 0, 3, 0, 4, 0, 5, 0, 6, 0, 7, 0, 8, 0, 9, 0, 10, 0, 11, 0, 12, 0, 13, 0, 14, 0, 15, 0, 16, 0, 17, 0, 18, 0, 19, 0, 20, 0, 65536, 0, 65555, 0, 65556, 0, 131072, 0, 131091, 0, 131092, 0, 196608, 0, 196627, 0, 196628, 0, 262144, 0, 262163, 0, 262164, 0, 327680, 0, 327699, 0, 327700, 0, 393216, 0, 393235, 0, 393236, 0, 458752, 0, 458771, 0, 458772, 0, 524288, 0, 524307, 0, 524308, 0, 589824, 0, 589843, 0, 589844, 0, 655360, 0, 655379, 0, 655380, 0, 720896, 0, 720897, 2, 720898, 2, 720899, 2, 720900, 2, 720901, 2, 720902, 2, 720903, 2, 720904, 2, 720905, 2, 720906, 2, 720907, 2, 720908, 2, 720909, 2, 720910, 2, 720911, 2, 720912, 2, 720913, 2, 720914, 2, 720915, 0, 720916, 0 )
+
+

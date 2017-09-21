@@ -1,0 +1,46 @@
+[gd_scene load_steps=2 format=1]
+
+[sub_resource type="GDScript" id=1]
+
+script/source = "extends Node2D
+
+var cooling_down = false
+export var has_cooldown = true
+export(float, 0.1, 10, 0.05) var cooldown_time = 0.1
+
+func is_cooling_down():
+	return cooling_down
+
+func has_cooldown_timer():
+	return has_cooldown
+
+func _ready():
+	if(has_cooldown_timer()):
+		var timer = Timer.instance(\"countdown_timer\")
+		
+		timer.set_wait_time(0.1)
+		timer.connect(\"timeout\", self, \"_on_cooldown_timer_timeout\")
+		add_child(timer)
+
+func trigger():
+	if(has_cooldown_timer()):
+		if(not is_cooling_down()):
+			fire()
+			get_node(\"cooldown_timer\").start()
+	else:
+		fire()
+		
+func fire():
+	pass
+
+func _on_cooldown_timer_timeout():
+	cooling_down = false
+"
+
+[node name="weapon" type="Node2D"]
+
+script/script = SubResource( 1 )
+has_cooldown = true
+cooldown_time = 0.1
+
+
