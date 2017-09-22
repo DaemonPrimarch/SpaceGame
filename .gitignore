@@ -1,3 +1,4 @@
 *.exe
 *.png
 *.PNG
+**/.DS_Store

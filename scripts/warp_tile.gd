@@ -17,7 +17,6 @@ func on_enter(body):
 		get_tree().get_root().add_child(loaded_scene)
 		original_scene.remove_child(body)
 		loaded_scene.add_child(body)
-		original_scene.set_pos(Vector2(100000000,100000000))
 		original_scene.queue_free()
 		for node in loaded_scene.get_tree().get_nodes_in_group("warp_arrival"):
 			if(node.get_name() == arrival_node_ID):
