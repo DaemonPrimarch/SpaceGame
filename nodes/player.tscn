@@ -6,7 +6,7 @@
 [ext_resource path="res://nodes/flashlight.tscn" type="PackedScene" id=4]
 [ext_resource path="res://nodes/camera.tscn" type="PackedScene" id=5]
 
-[sub_resource type="ConvexPolygonShape2D" id=1]
+[sub_resource type="ConvexPolygonShape2D" id=12]
 
 custom_solver_bias = 0.0
 points = Vector2Array( 25, 25, -25, 25, -25, -75, 25, -75 )
@@ -177,7 +177,7 @@ tracks/0/keys = {
 
 transform/scale = Vector2( 0.99, 0.99 )
 input/pickable = false
-shapes/0/shape = SubResource( 1 )
+shapes/0/shape = SubResource( 12 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
 shapes/0/trigger = false
 collision/layers = 1
@@ -231,11 +231,11 @@ transform/pos = Vector2( 3.78606, -14.7468 )
 
 [node name="gun" parent="." instance=ExtResource( 3 )]
 
-transform/pos = Vector2( 75, 0 )
+transform/pos = Vector2( 85.073, -77.2265 )
 
 [node name="flashlight" parent="." instance=ExtResource( 4 )]
 
-transform/pos = Vector2( 50.505, -25.2525 )
+transform/pos = Vector2( 64.6465, -64.6465 )
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 

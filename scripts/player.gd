@@ -56,7 +56,6 @@ func stop_jump():
 
 func _fixed_process(delta):	
 	var new_animation = "idle"
-	
 	if(Input.is_action_pressed("jump")):
 		if(not is_jumping() and is_on_ground()):
 			start_jump()
