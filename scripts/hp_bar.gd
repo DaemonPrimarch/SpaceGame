@@ -1,14 +1,27 @@
 extends ProgressBar
 
-# class member variables go here, for example:
-# var a = 2
-# var b = "textvar"
+var player
 
 func _ready():
-	# Called every time the node is added to the scene.
-	# Initialization here
+	set_min(0);
 	set_process(true)
 
 func _process(delta):
-	set_value(get_parent().get_HP())
-	
+	player.hp -= 0.1
+	print(player.hp)
+
+func set_player(p):
+	if(p != null):
+		unset_player()
+	player = p
+	# connect listeners on player
+	set_max(p.max_HP)
+	set_value(p.get_HP())
+
+func unset_player():
+	# disconnect listeners on player
+	player = null
+
+func destroy():
+	unset_player()
+	queue_free()

@@ -1,0 +1,25 @@
+[gd_scene load_steps=2 format=1]
+
+[ext_resource path="res://scripts/hp_bar.gd" type="Script" id=1]
+
+[node name="HealthBar" type="ProgressBar"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 344.0
+margin/bottom = 99.0
+range/min = 0.0
+range/max = 100.0
+range/step = 1.0
+range/page = 0.0
+range/value = 1.0
+range/exp_edit = false
+range/rounded = false
+percent/visible = false
+script/script = ExtResource( 1 )
+
+
