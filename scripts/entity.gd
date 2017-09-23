@@ -1,4 +1,4 @@
-extends KinematicBody2D
+extends "res://scripts/better_KinematicBody2D.gd"
 
 var warping = false
 
@@ -35,17 +35,13 @@ func set_flippedH(new):
 				N.set_scale(N.get_scale() * Vector2(-1, 1))
 				N.set_pos(N.get_pos() * Vector2(-1, 1))
 
-func check_if_on_ground():
-	if(test_move(Vector2(0,1))):
-		on_ground = true
-	else:
-		on_ground = false
-
 func apply_gravity(delta):
-	move(gravity_vector * delta)
+	if(move(gravity_vector * delta)):
+		on_ground = true
 	
 func _fixed_process(delta):
-	check_if_on_ground()
-	
+	if(is_on_ground()):
+		if(not test_move(gravity_vector.normalized())):
+			on_ground = false
 	if(is_gravity_enabled() and not is_on_ground()):
 		apply_gravity(delta)

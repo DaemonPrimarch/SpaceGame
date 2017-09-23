@@ -1,5 +1,5 @@
 
-extends "res://scripts/Entity.gd"
+extends "res://scripts/entity.gd"
 
 signal hp_changed
 
@@ -47,6 +47,7 @@ func is_jumping():
 	return jumping
 	
 func start_jump():
+	original_gravity_enabled = gravity_enabled
 	set_gravity_enabled(false)
 	jumping = true
 	time_jumping = 0
