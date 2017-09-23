@@ -1,9 +1,11 @@
 
 extends "res://scripts/Entity.gd"
 
+signal hp_changed
+
 ####
 export var max_HP = 10
-export var hp = 10
+export var hp = 10 setget set_HP, get_HP
 
 export var walk_speed = 300
 
@@ -12,11 +14,12 @@ export var max_jump_time = 2
 
 var original_gravity_enabled = gravity_enabled
 
-func set_HP(hp):
-	self.hp = hp
+func set_HP(val):
+	hp = val
+	emit_signal("hp_changed")
 	
 func get_HP():
-	return self.hp
+	return hp
 
 func damage(amount):
 	var new_HP = get_HP() - amount
