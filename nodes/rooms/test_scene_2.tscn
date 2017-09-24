@@ -42,15 +42,19 @@ __meta__ = {
 
 [node name="moving_platform" parent="." instance=ExtResource( 4 )]
 
-transform/pos = Vector2( 446.055, 366.2 )
+transform/pos = Vector2( 1690, 760 )
 
 [node name="first_point" parent="moving_platform"]
 
-transform/pos = Vector2( -200, -192 )
+transform/pos = Vector2( 0, -160 )
 
 [node name="second_point" parent="moving_platform"]
 
-transform/pos = Vector2( -200, 0 )
+transform/pos = Vector2( -270, -30 )
+
+[node name="platform" parent="moving_platform"]
+
+transform/pos = Vector2( 0, -90 )
 
 
 [editable path="moving_platform"]

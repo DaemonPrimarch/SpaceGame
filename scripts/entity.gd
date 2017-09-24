@@ -37,11 +37,14 @@ func set_flippedH(new):
 
 func apply_gravity(delta):
 	if(move(gravity_vector * delta)):
+		print("Now on ground")
 		on_ground = true
 	
 func _fixed_process(delta):
 	if(is_on_ground()):
-		if(not test_move(gravity_vector.normalized())):
+		if(not test_move(gravity_vector.normalized() * 0.08)):
 			on_ground = false
+			print("Now off ground")
 	if(is_gravity_enabled() and not is_on_ground()):
 		apply_gravity(delta)
+		print("Applying")
