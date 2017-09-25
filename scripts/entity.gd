@@ -20,6 +20,9 @@ export var uses_invulnerability_timer = true
 var invulnerability_timer
 var invulnerability_timer_running = false
 
+var gravity_timer = 0
+var gravity_timer_started = false
+
 func get_invulnerability_time():
 	return invulnerability_time
 
@@ -98,8 +101,9 @@ func set_flippedH(new):
 				N.set_pos(N.get_pos() * Vector2(-1, 1))
 
 func apply_gravity(delta):
-
-	if(move(get_gravity_vector() * delta)):
+	#Normally this should be /2 not /20 for some reason the godot gravity vector is 98, not 9.8
+	
+	if(move(get_gravity_vector() * get_gravity_vector() * delta * gravity_timer / 20)):
 		on_ground = true
 	
 func _fixed_process(delta):
@@ -107,7 +111,14 @@ func _fixed_process(delta):
 		if(not test_move(get_gravity_vector().normalized() * 0.08)):
 			on_ground = false
 	if(is_gravity_enabled() and not is_on_ground()):
+		if(not gravity_timer_started):
+			gravity_timer_started = true
+		gravity_timer += delta
+				
 		apply_gravity(delta)
+	elif(gravity_timer_started):
+		gravity_timer_started = false
+		gravity_timer = 0
 
 func is_destroyed():
 	return destroyed
