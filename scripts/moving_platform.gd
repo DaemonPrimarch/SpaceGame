@@ -41,9 +41,7 @@ func _fixed_process(delta):
 	
 	
 	var dir = 1
-	if(is_going_to_first()):
-		dir = 1
-	else:
+	if(not is_going_to_first()):
 		dir = -1
 	
 	for obj in objects_on_platform:

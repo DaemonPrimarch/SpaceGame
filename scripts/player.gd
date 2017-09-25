@@ -17,8 +17,18 @@ var animation = "idle"
 var shooting = false
 var walking = false
 
+var moving = false
+var moving_up = false
+
 var time_jumping = 0
 var jumping = false
+
+enum MOVEMENTTYPE{
+  REGULAR,
+  DIRECT
+}
+
+var movement_type = MOVEMENTTYPE.REGULAR
 
 func _ready():
 	set_fixed_process(true)
