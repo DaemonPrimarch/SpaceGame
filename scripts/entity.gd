@@ -7,7 +7,6 @@ var warping = false
 
 export var flippedH = false
 export var gravity_enabled = true
-export var gravity_vector = Vector2(0, 98 * 2)
 
 export var max_HP = 10
 export var hp = 10 setget set_HP, get_HP
@@ -79,6 +78,9 @@ func set_gravity_enabled(value):
 func is_gravity_enabled():
 	return gravity_enabled
 
+func get_gravity_vector():
+	return Physics2DServer.area_get_param(get_world_2d().get_space(),Physics2DServer.AREA_PARAM_GRAVITY_VECTOR) * Physics2DServer.area_get_param(get_world_2d().get_space(),Physics2DServer.AREA_PARAM_GRAVITY)
+
 func is_on_ground():
 	return on_ground
 
@@ -96,12 +98,13 @@ func set_flippedH(new):
 				N.set_pos(N.get_pos() * Vector2(-1, 1))
 
 func apply_gravity(delta):
-	if(move(gravity_vector * delta)):
+	print(get_gravity_vector())
+	if(move(get_gravity_vector() * delta)):
 		on_ground = true
 	
 func _fixed_process(delta):
 	if(is_on_ground()):
-		if(not test_move(gravity_vector.normalized() * 0.08)):
+		if(not test_move(get_gravity_vector().normalized() * 0.08)):
 			on_ground = false
 	if(is_gravity_enabled() and not is_on_ground()):
 		apply_gravity(delta)

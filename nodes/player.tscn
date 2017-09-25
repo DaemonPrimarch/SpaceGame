@@ -189,7 +189,6 @@ __meta__ = {
 }
 flippedH = false
 gravity_enabled = true
-gravity_vector = Vector2( 0, 196 )
 max_HP = 1000
 hp = 1000
 invulnerability_time = 5
