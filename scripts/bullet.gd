@@ -4,8 +4,6 @@ signal hit_by_bullet
 const entity_class = preload("res://scripts/entity.gd")
 
 func _ready():
-	# Called every time the node is added to the scene.
-	# Initialization here
 	pass
 
 func _on_Timer_timeout():

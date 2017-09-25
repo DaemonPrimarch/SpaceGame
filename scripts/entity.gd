@@ -98,7 +98,7 @@ func set_flippedH(new):
 				N.set_pos(N.get_pos() * Vector2(-1, 1))
 
 func apply_gravity(delta):
-	print(get_gravity_vector())
+
 	if(move(get_gravity_vector() * delta)):
 		on_ground = true
 	

@@ -1,10 +1,6 @@
 
 extends "res://scripts/entity.gd"
 
-
-
-####
-
 export var walk_speed = 300
 
 export var jump_speed = 98 *2
@@ -24,6 +20,9 @@ var walking = false
 var time_jumping = 0
 var jumping = false
 
+func _ready():
+	set_fixed_process(true)
+
 func is_jumping():
 	return jumping
 	
@@ -36,8 +35,6 @@ func start_jump():
 func stop_jump():
 	set_gravity_enabled(original_gravity_enabled)
 	jumping = false
-
-
 
 func _fixed_process(delta):	
 	var new_animation = "idle"
@@ -83,21 +80,6 @@ func _fixed_process(delta):
 	if(new_animation != animation):
 		animation_player.play(new_animation)
 		animation = new_animation
-
-	
-	#increment counters
-	
-	
-	
-	
-	
-func _ready():
-	set_fixed_process(true)
-	connect("collision",self,"on_collision")
-
-func on_collision(body):
-	pass
-
 
 func _on_shoot_countdown_timeout():
 	shooting = false

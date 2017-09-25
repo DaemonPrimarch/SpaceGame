@@ -1,6 +1,5 @@
 extends Node2D
 
-# class member variables go here, for example:
 export var speed = 60
 export var moving_to_first = true setget set_going_to_first, is_going_to_first
 
@@ -36,7 +35,6 @@ func get_speed():
 	return speed
 
 func _fixed_process(delta):
-	
 	var projected_position_first = direction.dot(first_point.get_pos())
 	var projected_position_second = direction.dot(second_point.get_pos())
 	var projected_position_platform = direction.dot(platform.get_pos())
@@ -48,21 +46,11 @@ func _fixed_process(delta):
 	else:
 		dir = -1
 	
-	var first
-	var second = Vector2()
-	var finalA
-	
 	for obj in objects_on_platform:
-		#obj.set_gravity_enabled(false)
-		first = obj.get_pos()
-		if(obj.move_no_collision(direction*get_speed()*dir*delta)):
-			print("COLLISION!")
-		second = obj.get_pos()
-		
+		obj.move_no_collision(direction*get_speed()*dir*delta)
 	
 	platform.move_no_collision(direction*get_speed()*dir*delta)
-	
-	print(second - platform.get_pos())
+
 	if(is_going_to_first() and projected_position_platform >= projected_position_first):
 		set_going_to_first(false)
 	elif(projected_position_platform <= projected_position_second):
@@ -70,12 +58,8 @@ func _fixed_process(delta):
 		
 func _on_Area2D_body_enter( body ):
 	if(body.is_in_group("player")):
-		print("added")
-		#platform.add_collision_exception_with(body)
 		set_object_on_platform(body, true)
 		
 func _on_Area2D_body_exit( body ):
 	if(body.is_in_group("player")):
-		print("released")
 		set_object_on_platform(body, false)
-		#platform.remove_collision_exception_with(body)

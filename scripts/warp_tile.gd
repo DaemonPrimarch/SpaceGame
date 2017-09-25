@@ -1,9 +1,5 @@
 extends Node2D
 
-# class member variables go here, for example:
-# var a = 2
-# var b = "textvar"
-
 var loaded = false
 export var destination_scene_path = "path"
 export var arrival_node_ID = "arrival_name"
@@ -24,6 +20,4 @@ func on_enter(body):
 				body.set_is_warping(false)
 
 func _ready():
-	# Called every time the node is added to the scene.
-	# Initialization here
 	pass
