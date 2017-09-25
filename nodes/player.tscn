@@ -1,10 +1,9 @@
-[gd_scene load_steps=17 format=1]
+[gd_scene load_steps=16 format=1]
 
 [ext_resource path="res://scripts/player.gd" type="Script" id=1]
 [ext_resource path="res://sprites/robot_demo.png" type="Texture" id=2]
 [ext_resource path="res://nodes/gun.tscn" type="PackedScene" id=3]
-[ext_resource path="res://nodes/flashlight.tscn" type="PackedScene" id=4]
-[ext_resource path="res://nodes/camera.tscn" type="PackedScene" id=5]
+[ext_resource path="res://nodes/camera.tscn" type="PackedScene" id=4]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 
@@ -172,8 +171,8 @@ tracks/0/keys = {
 }
 
 [node name="player" type="KinematicBody2D" groups=[
-"player",
 "warpable",
+"player",
 ]]
 
 transform/scale = Vector2( 0.99, 0.99 )
@@ -181,8 +180,8 @@ input/pickable = false
 shapes/0/shape = SubResource( 1 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
 shapes/0/trigger = false
-collision/layers = 1
-collision/mask = 1
+collision/layers = 3
+collision/mask = 2
 collision/margin = 0.08
 script/script = ExtResource( 1 )
 __meta__ = {
@@ -191,8 +190,10 @@ __meta__ = {
 flippedH = false
 gravity_enabled = true
 gravity_vector = Vector2( 0, 196 )
-max_HP = 10
-hp = 10
+max_HP = 1000
+hp = 1000
+invulnerability_time = 5
+uses_invulnerability_timer = true
 walk_speed = 300
 jump_speed = 196
 max_jump_time = 2
@@ -226,17 +227,9 @@ playback/speed = 2.0
 blend_times = [  ]
 autoplay = ""
 
-[node name="shoot_position" type="Position2D" parent="."]
-
-transform/pos = Vector2( 3.78606, -14.7468 )
-
 [node name="gun" parent="." instance=ExtResource( 3 )]
 
-transform/pos = Vector2( 85.073, -77.2265 )
-
-[node name="flashlight" parent="." instance=ExtResource( 4 )]
-
-transform/pos = Vector2( 64.6465, -64.6465 )
+transform/pos = Vector2( 32.3232, -32.3232 )
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 
@@ -245,6 +238,6 @@ polygon = Vector2Array( 25, -75, -25, -75, -25, 25, 25, 25 )
 shape_range = Vector2( 0, 0 )
 trigger = false
 
-[node name="Camera2D" parent="." instance=ExtResource( 5 )]
+[node name="Camera2D" parent="." instance=ExtResource( 4 )]
 
 

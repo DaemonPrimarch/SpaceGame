@@ -22,4 +22,5 @@ func move_no_collision(direction):
 	set_pos(get_pos() + direction)
 
 func on_collision(body):
-	print("Collsion with: ", body)
+	pass
+	#print("Collsion with: ", body)

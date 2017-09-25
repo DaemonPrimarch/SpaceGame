@@ -1,11 +1,9 @@
 
 extends "res://scripts/entity.gd"
 
-signal hp_changed
+
 
 ####
-export var max_HP = 10
-export var hp = 10 setget set_HP, get_HP
 
 export var walk_speed = 300
 
@@ -13,23 +11,6 @@ export var jump_speed = 98 *2
 export var max_jump_time = 2
 
 var original_gravity_enabled = gravity_enabled
-
-func set_HP(val):
-	hp = val
-	emit_signal("hp_changed")
-	
-func get_HP():
-	return hp
-
-func damage(amount):
-	var new_HP = get_HP() - amount
-	
-	if(new_HP <= 0):
-		self.destroy()
-	else:
-		set_HP(new_HP)
-
-
 
 #cache the sprite here for fast access (we will set scale to flip it often)
 onready var sprite = get_node("sprite")
@@ -112,6 +93,10 @@ func _fixed_process(delta):
 	
 func _ready():
 	set_fixed_process(true)
+	connect("collision",self,"on_collision")
+
+func on_collision(body):
+	pass
 
 
 func _on_shoot_countdown_timeout():

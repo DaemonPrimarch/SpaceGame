@@ -1,8 +1,7 @@
 extends RigidBody2D
 
-# class member variables go here, for example:
-# var a = 2
-# var b = "textvar"
+signal hit_by_bullet
+const entity_class = preload("res://scripts/entity.gd")
 
 func _ready():
 	# Called every time the node is added to the scene.
@@ -10,10 +9,13 @@ func _ready():
 	pass
 
 func _on_Timer_timeout():
-	self.queue_free()
+	destroy()
 
 
 func _on_bullet_body_enter( body ):
-	if(body.is_in_group("destructable_by_bullet")):
-		body.destroy()
+	if(body extends entity_class):
+		body.emit_signal("hit_by_bullet",self)
+	destroy()
+
+func destroy():
 	self.queue_free()

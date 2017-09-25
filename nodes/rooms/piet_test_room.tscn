@@ -1,13 +1,14 @@
-[gd_scene load_steps=3 format=1]
+[gd_scene load_steps=4 format=1]
 
 [ext_resource path="res://nodes/player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://sprites/spritesheets/metroid_tiles.tres" type="TileSet" id=2]
+[ext_resource path="res://nodes/enemy.tscn" type="PackedScene" id=3]
 
 [node name="Node2D" type="Node2D"]
 
 [node name="player" parent="." instance=ExtResource( 1 )]
 
-transform/pos = Vector2( 457.102, 342.364 )
+transform/pos = Vector2( 112.887, 538.529 )
 
 [node name="TileMap" type="TileMap" parent="." groups=[
 "terrain",
@@ -27,9 +28,16 @@ collision/bounce = 0.0
 collision/layers = 1
 collision/mask = 1
 occluder/light_mask = 1
-tile_data = IntArray( 0, 1, 1, 2, 2, 2, 3, 2, 4, 2, 5, 2, 6, 2, 7, 2, 8, 2, 9, 2, 10, 2, 11, 2, 12, 2, 13, 2, 14, 2, 15, 3, 65536, 7, 65551, 7, 131072, 7, 131087, 7, 196608, 7, 196623, 7, 262144, 7, 262154, 2, 262159, 7, 327680, 7, 327695, 7, 393216, 7, 393226, 7, 393231, 7, 458752, 7, 458767, 7, 524288, 7, 524303, 7, 589824, 1, 589825, 2, 589826, 2, 589827, 2, 589828, 2, 589829, 1, 589830, 2, 589831, 3, 589832, 2, 589833, 2, 589834, 2, 589835, 2, 589836, 2, 589837, 2, 589838, 2, 589839, 3 )
+tile_data = IntArray( 0, 1, 1, 2, 2, 2, 3, 2, 4, 2, 5, 2, 6, 2, 7, 2, 8, 2, 9, 2, 10, 2, 11, 2, 12, 2, 13, 2, 14, 2, 15, 3, 65536, 7, 65551, 7, 131072, 7, 131087, 7, 196608, 7, 196623, 7, 262144, 7, 262159, 7, 327680, 7, 327695, 7, 393216, 7, 393224, 0, 393225, 0, 393226, 0, 393227, 0, 393231, 7, 458752, 7, 458767, 7, 524288, 7, 524303, 7, 589824, 1, 589825, 2, 589826, 2, 589827, 2, 589828, 2, 589829, 1, 589830, 2, 589831, 3, 589832, 2, 589833, 2, 589834, 2, 589835, 2, 589836, 2, 589837, 2, 589838, 2, 589839, 3 )
 __meta__ = {
 "_edit_lock_": true
 }
+
+[node name="enemy" parent="." instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 653.057, 322.705 )
+transform/scale = Vector2( 2.59584, 2.23573 )
+max_HP = 100
+hp = 100
 
 
