@@ -1,4 +1,4 @@
-extends "res://scripts/entity.gd"
+extends "res://scripts/enemies/enemy.gd"
 
 export var speed = 64
 

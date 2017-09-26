@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=1]
 
-[ext_resource path="res://scripts/enemy.gd" type="Script" id=1]
+[ext_resource path="res://scripts/enemies/enemy_scrub.gd" type="Script" id=1]
 [ext_resource path="res://sprites/enemy.png" type="Texture" id=2]
 
 [sub_resource type="CapsuleShape2D" id=1]
@@ -54,8 +54,8 @@ custom_solver_bias = 0.0
 extents = Vector2( 10, 10 )
 
 [node name="enemy" type="KinematicBody2D" groups=[
-"enemy",
 "destructable_by_bullet",
+"enemy",
 ]]
 
 transform/pos = Vector2( 50, 50 )
@@ -68,13 +68,6 @@ collision/layers = 3
 collision/mask = 0
 collision/margin = 0.08
 script/script = ExtResource( 1 )
-flippedH = false
-gravity_enabled = true
-gravity_vector = Vector2( 0, 196 )
-max_HP = 10
-hp = 10
-invulnerability_time = 5
-uses_invulnerability_timer = true
 speed = 64
 
 [node name="Sprite" type="Sprite" parent="."]
