@@ -66,7 +66,8 @@ class KinematicCollision2D:
 		return travel
 
 func _ready():
-	connect("collision", self, "on_collision")
+	pass
+	
 
 #Moves the object by an amount, returns wether it collided
 func move(direction):
@@ -85,7 +86,4 @@ func move(direction):
 		
 func move_no_collision(direction):
 	set_pos(get_pos() + direction)
-
-func on_collision(body):
-	pass
 
