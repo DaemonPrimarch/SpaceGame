@@ -68,7 +68,13 @@ collision/layers = 3
 collision/mask = 0
 collision/margin = 0.08
 script/script = ExtResource( 1 )
-speed = 64
+flippedH = false
+gravity_enabled = true
+max_HP = 10
+hp = 10
+invulnerability_time = 5
+uses_invulnerability_timer = true
+movement_speed = 64
 
 [node name="Sprite" type="Sprite" parent="."]
 

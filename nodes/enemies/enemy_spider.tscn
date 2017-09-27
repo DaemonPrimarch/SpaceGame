@@ -1,0 +1,57 @@
+[gd_scene load_steps=4 format=1]
+
+[ext_resource path="res://scripts/enemies/enemy_spider.gd" type="Script" id=1]
+[ext_resource path="res://icon.png" type="Texture" id=2]
+
+[sub_resource type="RectangleShape2D" id=1]
+
+custom_solver_bias = 0.0
+extents = Vector2( 13, 13 )
+
+[node name="KinematicBody2D" type="KinematicBody2D"]
+
+input/pickable = false
+shapes/0/shape = SubResource( 1 )
+shapes/0/transform = Matrix32( 2.46154, 0, 0, 2.46154, -4.40157e-07, -4.40157e-07 )
+shapes/0/trigger = false
+collision/layers = 1
+collision/mask = 1
+collision/margin = 0.08
+script/script = ExtResource( 1 )
+flippedH = false
+gravity_enabled = false
+max_HP = 10
+hp = 10
+invulnerability_time = 5
+uses_invulnerability_timer = true
+movement_speed = 64
+
+[node name="Sprite" type="Sprite" parent="."]
+
+texture = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+
+transform/pos = Vector2( -4.40157e-07, -4.40157e-07 )
+transform/scale = Vector2( 2.46154, 2.46154 )
+shape = SubResource( 1 )
+trigger = false
+_update_shape_index = 0
+
+[node name="front_ground_detector" type="RayCast2D" parent="."]
+
+transform/pos = Vector2( 32, 0 )
+enabled = true
+cast_to = Vector2( 0, 50 )
+layer_mask = 1
+type_mask = 5
+
+[node name="back_ground_detector" type="RayCast2D" parent="."]
+
+transform/pos = Vector2( -32, 0 )
+enabled = true
+cast_to = Vector2( 0, 50 )
+layer_mask = 1
+type_mask = 5
+
+

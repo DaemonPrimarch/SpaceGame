@@ -37,7 +37,11 @@ __meta__ = {
 
 transform/pos = Vector2( 653.057, 322.705 )
 transform/scale = Vector2( 2.59584, 2.23573 )
-max_HP = 100
-hp = 100
+flippedH = false
+gravity_enabled = true
+max_HP = 10
+hp = 10
+invulnerability_time = 5
+uses_invulnerability_timer = true
 
 
