@@ -7,21 +7,25 @@ func update_limit():
 	#This is_inside_tree might be a hack, get_tree returns null when self is not in tree
 	if(is_inside_tree()):
 		var terrains = get_tree().get_nodes_in_group("terrain")
+			
 		if(terrains.size() >= 1):
 			var posX = []
 			var posY = []
-		
+			var terrain_found = false
 			var total_size = Vector2()
 			
 			for terrain in terrains:
-				posX.append(terrain.get_used_rect().pos.x)
-				posY.append(terrain.get_used_rect().pos.y)
-				total_size += (terrain.get_used_rect().size * terrain.get_cell_size())
+				if(terrain extends TileMap):
+					terrain_found = true
+					posX.append(terrain.get_used_rect().pos.x)
+					posY.append(terrain.get_used_rect().pos.y)
+					total_size += (terrain.get_used_rect().size * terrain.get_cell_size())
 				
-			set_limit(0, min_arr(posX))
-			set_limit(1, min_arr(posY))
-			set_limit(2, total_size.x)
-			set_limit(3, total_size.y)
+			if(terrain_found):
+				set_limit(0, min_arr(posX))
+				set_limit(1, min_arr(posY))
+				set_limit(2, total_size.x)
+				set_limit(3, total_size.y)
 
 func min_arr(arr):
     var min_val = arr[0]
