@@ -13,7 +13,7 @@ func _fixed_process(delta):
 	var movement_direction = 1
 	if(is_flippedH()):
 		movement_direction = -1
-	if(move(Vector2(movement_direction*get_movement_speed*delta,0))):
+	if(move(Vector2(movement_direction*get_movement_speed*delta,0)).has_collision()):
 		set_flippedH(!is_flippedH())
 	if(!front_detector.is_colliding()):
 		set_flippedH(!is_flippedH())

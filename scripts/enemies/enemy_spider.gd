@@ -36,5 +36,5 @@ func _fixed_process(delta):
 	elif(!front_ground_detector.is_colliding() and !back_ground_detector.is_colliding() and front_sighted == true):
 		flip_down()
 		front_sighted = false
-	if(move(Vector2(cos(get_rot()),-sin(get_rot()))*get_movement_speed()*delta)):
+	if(move(Vector2(cos(get_rot()),-sin(get_rot()))*get_movement_speed()*delta).has_collision()):
 		flip_up()

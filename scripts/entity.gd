@@ -103,7 +103,7 @@ func set_flippedH(new):
 func apply_gravity(delta):
 	#Normally this should be /2 not /20 for some reason the godot gravity vector is 98, not 9.8
 	
-	if(move(get_gravity_vector() * get_gravity_vector() * delta * gravity_timer / 20)):
+	if(move(get_gravity_vector() * get_gravity_vector() * delta * gravity_timer / 20).has_collision()):
 		on_ground = true
 	
 func _fixed_process(delta):

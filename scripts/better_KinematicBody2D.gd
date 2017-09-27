@@ -2,26 +2,6 @@ extends KinematicBody2D
 
 signal collision
 
-func _ready():
-	connect("collision", self, "on_collision")
-
-#Moves the object by an amount, returns wether it collided
-func move(direction):
-	.move(direction)
-
-	if(is_colliding()):
-		emit_signal("collision", get_collider())
-		get_collider().emit_signal("collision", get_collider())
-		return true
-	else:
-		return false
-		
-func move_no_collision(direction):
-	set_pos(get_pos() + direction)
-
-func on_collision(body):
-	pass
-
 class KinematicCollision2D:
 	#Collision data for KinematicBody2D collisions.
 	#Copied from future godot version: http://docs.godotengine.org/en/latest/classes/class_kinematiccollision2d.html#class-kinematiccollision2d
@@ -39,7 +19,7 @@ class KinematicCollision2D:
 	var remainder
 	var travel
 	
-	func _init(collider, collider_id, collider_metadata, collider_shape, collider_shape_index, collider_velocity, local_shape, normal, position, remainder, travel):
+	func _init(collider = null, collider_id = null, collider_metadata = null, collider_shape = null, collider_shape_index = null, collider_velocity = null, local_shape = null, normal = null, position = null, remainder = null, travel= null):
 		self.collider = collider
 		self.collider_id = collider_id
 		self.collider_metadata = collider_metadata
@@ -51,6 +31,9 @@ class KinematicCollision2D:
 		self.position = position
 		self.remainder = remainder
 		self.travel = travel
+	
+	func has_collision():
+		return get_collider() != null
 	
 	func get_collider():
 		return collider
@@ -81,3 +64,28 @@ class KinematicCollision2D:
 		
 	func get_travel():
 		return travel
+
+func _ready():
+	connect("collision", self, "on_collision")
+
+#Moves the object by an amount, returns wether it collided
+func move(direction):
+	.move(direction)
+
+	var collision_info
+
+	if(is_colliding()):
+		collision_info = KinematicCollision2D.new(get_collider(), null, get_collider_metadata(), get_collider_shape(), null, get_collider_velocity(), null, get_collision_normal(), get_collision_pos(), null, get_travel())
+		emit_signal("collision", collision_info)
+		get_collider().emit_signal("collision", collision_info)
+		
+		return collision_info
+	else:
+		return KinematicCollision2D.new()
+		
+func move_no_collision(direction):
+	set_pos(get_pos() + direction)
+
+func on_collision(body):
+	pass
+
