@@ -13,6 +13,7 @@ func set_player(p):
 	set_max(p.max_HP)
 	set_value(p.hp)
 	set_step(1)
+	get_node("object_nametag").set_text(p.get_name())
 
 func unset_player():
 	player.disconnect("hp_changed", self, "hp_changed")

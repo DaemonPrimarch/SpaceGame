@@ -6,7 +6,9 @@
 
 [node name="Node2D" type="Node2D"]
 
-[node name="player" parent="." instance=ExtResource( 1 )]
+[node name="player" parent="." groups=[
+"has_hp_bar",
+] instance=ExtResource( 1 )]
 
 transform/pos = Vector2( 112.887, 538.529 )
 
@@ -33,15 +35,11 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="enemy" parent="." instance=ExtResource( 3 )]
+[node name="enemy" parent="." groups=[
+"has_hp_bar",
+] instance=ExtResource( 3 )]
 
 transform/pos = Vector2( 653.057, 322.705 )
 transform/scale = Vector2( 2.59584, 2.23573 )
-flippedH = false
-gravity_enabled = true
-max_HP = 10
-hp = 10
-invulnerability_time = 5
-uses_invulnerability_timer = true
 
 
