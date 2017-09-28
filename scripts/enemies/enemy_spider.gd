@@ -30,11 +30,33 @@ func get_distance_to_nearest_player():
 func x_distance(body1, body2):
 	return abs(body1.get_pos()[0] - body2.get_pos()[0])
 
+func fall_down():
+	set_gravity_enabled(true)
+	rotate(PI)
+
 func _fixed_process(delta):
-	if(front_ground_detector.is_colliding()):
-		front_sighted = true
-	elif(!front_ground_detector.is_colliding() and !back_ground_detector.is_colliding() and front_sighted == true):
-		flip_down()
-		front_sighted = false
-	if(move(Vector2(cos(get_rot()),-sin(get_rot()))*get_movement_speed()*delta).has_collision()):
-		flip_up()
+	
+	if(gravity_enabled and is_colliding()):
+		if(get_collider().is_in_group("terrain")):
+			set_gravity_enabled(false)
+		elif(get_collider().is_in_group("player")):
+			get_collider().damage(8)
+			get_collider().set_invulnerable(true)
+	
+	if(!gravity_enabled):
+		if(get_distance_to_nearest_player() < 64 and abs(get_rot() + PI)<0.1):
+			fall_down()
+		
+		if(front_ground_detector.is_colliding()):
+			front_sighted = true
+		elif(!front_ground_detector.is_colliding() and !back_ground_detector.is_colliding() and front_sighted == true):
+			flip_down()
+			front_sighted = false
+		
+		var collision = move(Vector2(cos(get_rot()),-sin(get_rot()))*get_movement_speed()*delta)
+		if(collision.has_collision()):
+			if(!collision.get_collider().is_in_group("player")):
+				flip_up()
+			else:
+				collision.get_collider().damage(5)
+				collision.get_collider().set_invulnerable(true)

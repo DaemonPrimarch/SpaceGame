@@ -3,8 +3,16 @@ extends RigidBody2D
 signal hit_by_bullet
 const entity_class = preload("res://scripts/entity.gd")
 
+var damage = 5 setget set_damage,get_damage
+
 func _ready():
 	pass
+
+func get_damage():
+	return damage
+
+func set_damage(value):
+	damage = value
 
 func _on_Timer_timeout():
 	destroy()

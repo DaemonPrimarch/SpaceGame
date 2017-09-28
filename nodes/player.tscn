@@ -203,6 +203,7 @@ transform/scale = Vector2( 1.20867, 1.94142 )
 texture = ExtResource( 2 )
 vframes = 2
 hframes = 16
+frame = 22
 region_rect = Rect2( 0, 64, 64, 64 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

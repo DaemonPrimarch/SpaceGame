@@ -14,8 +14,8 @@ input/pickable = false
 shapes/0/shape = SubResource( 1 )
 shapes/0/transform = Matrix32( 2.46154, 0, 0, 2.46154, -4.40157e-07, -4.40157e-07 )
 shapes/0/trigger = false
-collision/layers = 1
-collision/mask = 1
+collision/layers = 3
+collision/mask = 0
 collision/margin = 0.08
 script/script = ExtResource( 1 )
 flippedH = false
@@ -25,6 +25,7 @@ hp = 10
 invulnerability_time = 5
 uses_invulnerability_timer = true
 movement_speed = 64
+damage = 5
 
 [node name="Sprite" type="Sprite" parent="."]
 

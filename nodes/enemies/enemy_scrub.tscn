@@ -75,6 +75,7 @@ hp = 10
 invulnerability_time = 5
 uses_invulnerability_timer = true
 movement_speed = 64
+damage = 5
 
 [node name="Sprite" type="Sprite" parent="."]
 
