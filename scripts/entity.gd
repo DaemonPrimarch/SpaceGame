@@ -26,6 +26,9 @@ var invulnerability_timer_running = false
 var gravity_timer = 0
 var gravity_timer_started = false
 
+func _ready():
+	add_to_group("has_hp_bar")
+
 func get_invulnerability_time():
 	return invulnerability_time
 

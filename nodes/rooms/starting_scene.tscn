@@ -11,8 +11,6 @@ arrival_node_ID = "player_spawn"
 
 [node name="player" parent="." instance=ExtResource( 2 )]
 
-has_invulnarable_animation = true
-
 
 [editable path="player"]
 [editable path="player/Camera2D"]
