@@ -41,5 +41,7 @@ __meta__ = {
 
 transform/pos = Vector2( 653.057, 322.705 )
 transform/scale = Vector2( 2.59584, 2.23573 )
+has_invulnarable_animation = false
+invulnerable_animation_player = "SecondAnimationPlayer"
 
 

@@ -48,6 +48,8 @@ func fall_down():
 func _fixed_process(delta):
 	
 	if(gravity_enabled and is_colliding()):
+		#Deze code werkt nie btw 
+		#Zo hoort ge da nie te gebruiken
 		if(get_collider().is_in_group("terrain")):
 			set_gravity_enabled(false)
 		elif(get_collider().is_in_group("player")):

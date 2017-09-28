@@ -17,6 +17,9 @@ var on_ground = false
 var invulnerable = false
 export var invulnerability_time = 5
 export var uses_invulnerability_timer = true
+export var has_invulnarable_animation = false
+export var invulnerable_animation_player = "SecondAnimationPlayer"
+
 var invulnerability_timer
 var invulnerability_timer_running = false
 
@@ -43,12 +46,16 @@ func set_invulnerable(value):
 		invulnerability_timer.connect("timeout", self, "on_invulnerability_timer_timeout")
 		invulnerability_timer_running = true
 		invulnerability_timer.start()
+		if(has_invulnarable_animation):
+			print("Playing")
+			get_node(invulnerable_animation_player).play("invulnerable")
 	else:
 		if(invulnerability_timer_running):
 			invulnerability_timer.stop()
 			invulnerability_timer.free()
 			invulnerability_timer_running = false
-
+		if(has_invulnarable_animation):
+			get_node(invulnerable_animation_player).stop()
 func on_invulnerability_timer_timeout():
 	print("timeout")
 	invulnerability_timer_running = false
