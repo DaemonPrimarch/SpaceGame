@@ -33,6 +33,10 @@ tile_data = IntArray( 0, 0, 1, 0, 2, 0, 3, 0, 4, 0, 5, 0, 6, 0, 7, 0, 8, 0, 9, 0
 transform/pos = Vector2( 128, 608 )
 movement_speed = 320
 
+[node name="player_detector" parent="KinematicBody2D"]
+
+cast_to = Vector2( 0, -536 )
+
 [node name="player" parent="." groups=[
 "has_hp_bar",
 ] instance=ExtResource( 3 )]
@@ -46,4 +50,5 @@ hp = 20
 current = false
 
 
+[editable path="KinematicBody2D"]
 [editable path="player"]

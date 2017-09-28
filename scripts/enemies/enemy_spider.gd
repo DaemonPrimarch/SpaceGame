@@ -3,6 +3,7 @@ extends "res://scripts/enemies/enemy.gd"
 # class member variables go here, for example:
 onready var back_ground_detector = get_node("back_ground_detector")
 onready var front_ground_detector = get_node("front_ground_detector")
+onready var player_detector = get_node("player_detector")
 var front_sighted = true
 
 
@@ -17,6 +18,8 @@ func flip_up():
 func flip_down():
 	rotate(-PI/2)
 
+
+
 func get_distance_to_nearest_player():
 	var players = get_tree().get_nodes_in_group("player")
 	var closest_distance = x_distance(self,players[0])
@@ -29,6 +32,14 @@ func get_distance_to_nearest_player():
 #Returns the difference in x-coördinates between two objects.
 func x_distance(body1, body2):
 	return abs(body1.get_pos()[0] - body2.get_pos()[0])
+
+func check_for_player():
+	if(player_detector.is_colliding()):
+		print(player_detector.get_collider())
+		if(player_detector.get_collider().is_in_group("player")):
+			print("play")
+			return true
+	return false
 
 func fall_down():
 	set_gravity_enabled(true)
@@ -44,7 +55,7 @@ func _fixed_process(delta):
 			get_collider().set_invulnerable(true)
 	
 	if(!gravity_enabled):
-		if(get_distance_to_nearest_player() < 64 and abs(get_rot() + PI)<0.1):
+		if(check_for_player() and abs(get_rot() + PI)<0.1):
 			fall_down()
 		
 		if(front_ground_detector.is_colliding()):
