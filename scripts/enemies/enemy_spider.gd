@@ -10,6 +10,7 @@ var front_sighted = true
 func _ready():
 	# Called every time the node is added to the scene.
 	# Initialization here
+	connect("collision",self,"on_collision")
 	set_fixed_process(true)
 
 func flip_up():
@@ -35,9 +36,7 @@ func x_distance(body1, body2):
 
 func check_for_player():
 	if(player_detector.is_colliding()):
-		print(player_detector.get_collider())
 		if(player_detector.get_collider().is_in_group("player")):
-			print("play")
 			return true
 	return false
 
@@ -45,16 +44,23 @@ func fall_down():
 	set_gravity_enabled(true)
 	rotate(PI)
 
-func _fixed_process(delta):
-	
-	if(gravity_enabled and is_colliding()):
-		#Deze code werkt nie btw 
-		#Zo hoort ge da nie te gebruiken
-		if(get_collider().is_in_group("terrain")):
+func on_collision(info):
+	var collider = info.get_collider()
+	if(gravity_enabled):
+		if(collider.is_in_group("terrain")):
 			set_gravity_enabled(false)
-		elif(get_collider().is_in_group("player")):
-			get_collider().damage(8)
-			get_collider().set_invulnerable(true)
+		elif(collider.is_in_group("player")):
+			collider.damage(8)
+			collider.set_invulnerable(true)
+	else:
+		if(collider.is_in_group("terrain")):
+			flip_up()
+		elif(collider.is_in_group("player")):
+			collider.damage(5)
+			print("flop")
+			collider.set_invulnerable(true)
+
+func _fixed_process(delta):
 	
 	if(!gravity_enabled):
 		if(check_for_player() and abs(get_rot() + PI)<0.1):
@@ -66,10 +72,5 @@ func _fixed_process(delta):
 			flip_down()
 			front_sighted = false
 		
-		var collision = move(Vector2(cos(get_rot()),-sin(get_rot()))*get_movement_speed()*delta)
-		if(collision.has_collision()):
-			if(!collision.get_collider().is_in_group("player")):
-				flip_up()
-			else:
-				collision.get_collider().damage(5)
-				collision.get_collider().set_invulnerable(true)
+		move(Vector2(cos(get_rot()),-sin(get_rot()))*get_movement_speed()*delta)
+
