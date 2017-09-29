@@ -78,7 +78,8 @@ func move(direction):
 	if(is_colliding()):
 		collision_info = KinematicCollision2D.new(get_collider(), null, get_collider_metadata(), get_collider_shape(), null, get_collider_velocity(), null, get_collision_normal(), get_collision_pos(), null, get_travel())
 		emit_signal("collision", collision_info)
-		get_collider().emit_signal("collision", collision_info)
+		get_collider().emit_signal("collision", KinematicCollision2D.new(self, null, get_collider_metadata(), get_collider_shape(), null, get_collider_velocity(), null, get_collision_normal(), get_collision_pos(), null, get_travel())
+)
 		
 		return collision_info
 	else:
