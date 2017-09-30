@@ -31,7 +31,7 @@ var movement_type = MOVEMENTTYPE.REGULAR
 func set_jump_speed(value):
 	jump_speed = value
 
-func get_jump_value():
+func get_jump_speed():
 	return jump_speed
 
 func _ready():
