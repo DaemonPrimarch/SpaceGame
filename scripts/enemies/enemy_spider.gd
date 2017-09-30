@@ -4,6 +4,7 @@ extends "res://scripts/enemies/enemy.gd"
 onready var back_ground_detector = get_node("back_ground_detector")
 onready var front_ground_detector = get_node("front_ground_detector")
 onready var player_detector = get_node("player_detector")
+onready var cobweb_timer = get_node("cobweb_timer")
 var front_sighted = true
 
 
@@ -12,6 +13,7 @@ func _ready():
 	# Initialization here
 	connect("collision",self,"on_collision")
 	set_fixed_process(true)
+	cobweb_timer.start()
 
 func flip_up():
 	rotate(PI/2)
@@ -57,7 +59,6 @@ func on_collision(info):
 			flip_up()
 		elif(collider.is_in_group("player")):
 			collider.damage(5)
-			print("flop")
 			collider.set_invulnerable(true)
 
 func _fixed_process(delta):
@@ -74,3 +75,10 @@ func _fixed_process(delta):
 		
 		move(Vector2(cos(get_rot()),-sin(get_rot()))*get_movement_speed()*delta)
 
+
+
+func _on_cobweb_timer_timeout():
+	var cobweb = load("res://nodes/cobweb.tscn").instance()
+	get_parent().add_child(cobweb)
+	cobweb.set_pos(get_pos())
+	cobweb_timer.start()

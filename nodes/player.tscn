@@ -204,6 +204,7 @@ script/script = ExtResource( 1 )
 __meta__ = {
 "_edit_lock_": true
 }
+movement_speed = 300
 flippedH = false
 gravity_enabled = true
 max_HP = 1000
@@ -212,7 +213,6 @@ invulnerability_time = 5
 uses_invulnerability_timer = true
 has_invulnarable_animation = true
 invulnerable_animation_player = "SecondAnimationPlayer"
-walk_speed = 300
 jump_speed = 196
 max_jump_time = 2
 

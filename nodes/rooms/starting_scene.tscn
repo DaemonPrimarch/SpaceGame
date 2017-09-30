@@ -11,6 +11,8 @@ arrival_node_ID = "player_spawn"
 
 [node name="player" parent="." instance=ExtResource( 2 )]
 
+movement_speed = 300
+
 
 [editable path="player"]
 [editable path="player/Camera2D"]

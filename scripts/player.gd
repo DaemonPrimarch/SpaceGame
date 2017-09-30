@@ -1,9 +1,7 @@
 
 extends "res://scripts/entity.gd"
 
-export var walk_speed = 300
-
-export var jump_speed = 98 *2
+export var jump_speed = 98 *2 setget set_jump_speed,get_jump_speed
 export var max_jump_time = 2
 
 var original_gravity_enabled = gravity_enabled
@@ -30,6 +28,12 @@ enum MOVEMENTTYPE{
 
 var movement_type = MOVEMENTTYPE.REGULAR
 
+func set_jump_speed(value):
+	jump_speed = value
+
+func get_jump_value():
+	return jump_speed
+
 func _ready():
 	set_fixed_process(true)
 
@@ -54,7 +58,7 @@ func _fixed_process(delta):
 		
 		if(is_jumping()):
 			new_animation = "jumping"
-			move(Vector2(0, -jump_speed * delta))
+			move(Vector2(0, -get_jump_speed() * delta))
 			time_jumping += delta
 			
 			if(time_jumping >= max_jump_time):
@@ -67,13 +71,13 @@ func _fixed_process(delta):
 	
 	if(Input.is_action_pressed("play_left") and not is_warping()):
 		set_flippedH(true)
-		move(Vector2(- walk_speed * delta, 0))
+		move(Vector2(- get_movement_speed() * delta, 0))
 		
 		if(is_on_ground()):
 			new_animation = "run"
 	elif(Input.is_action_pressed("play_right") and not is_warping()):
 		set_flippedH(false)
-		move(Vector2(walk_speed * delta, 0))
+		move(Vector2(get_movement_speed() * delta, 0))
 		if(is_on_ground()):
 			new_animation = "run"
 

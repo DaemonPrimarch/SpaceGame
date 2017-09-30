@@ -3,7 +3,10 @@ extends "res://scripts/better_KinematicBody2D.gd"
 signal hp_changed
 signal hit_by_bullet
 
+export var movement_speed = 300 setget set_movement_speed,get_movement_speed
+
 var warping = false
+var gravity_damp = 1 setget set_gravity_damp, get_gravity_damp
 
 export var flippedH = false
 export var gravity_enabled = true
@@ -29,8 +32,20 @@ var gravity_timer_started = false
 func _ready():
 	add_to_group("has_hp_bar")
 
+func set_gravity_damp(value):
+	gravity_damp = value
+
+func get_gravity_damp():
+	return gravity_damp
+
 func get_invulnerability_time():
 	return invulnerability_time
+
+func set_movement_speed(value):
+	movement_speed = value
+
+func get_movement_speed():
+	return movement_speed
 
 func is_invulnerable():
 	return invulnerable
@@ -113,7 +128,7 @@ func set_flippedH(new):
 func apply_gravity(delta):
 	#Normally this should be /2 not /20 for some reason the godot gravity vector is 98, not 9.8
 	
-	if(move(get_gravity_vector() * get_gravity_vector() * delta * gravity_timer / 20).has_collision()):
+	if(move(get_gravity_vector() * get_gravity_vector() * delta * gravity_timer / (20 * get_gravity_damp() * get_gravity_damp())).has_collision()):
 		on_ground = true
 	
 func _fixed_process(delta):
