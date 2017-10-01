@@ -1,8 +1,8 @@
 [gd_scene load_steps=4 format=1]
 
 [ext_resource path="res://sprites/spritesheets/metroid_tiles.tres" type="TileSet" id=1]
-[ext_resource path="res://nodes/enemies/enemy_spider.tscn" type="PackedScene" id=2]
-[ext_resource path="res://nodes/player.tscn" type="PackedScene" id=3]
+[ext_resource path="res://nodes/player.tscn" type="PackedScene" id=2]
+[ext_resource path="res://nodes/enemies/enemy_beetle.tscn" type="PackedScene" id=3]
 
 [node name="Node2D" type="Node2D"]
 
@@ -24,37 +24,32 @@ collision/bounce = 0.0
 collision/layers = 1
 collision/mask = 1
 occluder/light_mask = 1
-tile_data = IntArray( 0, 0, 1, 0, 2, 0, 3, 0, 4, 0, 5, 0, 6, 0, 7, 0, 8, 0, 9, 0, 10, 0, 11, 0, 12, 0, 13, 0, 14, 0, 15, 0, 16, 0, 17, 0, 18, 0, 19, 0, 20, 0, 21, 0, 22, 0, 23, 0, 24, 0, 25, 0, 65536, 0, 65561, 0, 131072, 0, 131097, 0, 196608, 0, 196633, 0, 262144, 0, 262169, 0, 327680, 0, 327705, 0, 393216, 0, 393229, 0, 393230, 0, 393231, 0, 393232, 0, 393233, 0, 393241, 0, 458752, 0, 458777, 0, 524288, 0, 524294, 0, 524295, 0, 524296, 0, 524313, 0, 589824, 0, 589829, 0, 589830, 0, 589831, 0, 589832, 0, 589833, 0, 589849, 0, 655360, 0, 655361, 0, 655362, 0, 655363, 0, 655364, 0, 655365, 0, 655366, 0, 655367, 0, 655368, 0, 655369, 0, 655370, 0, 655371, 0, 655372, 0, 655373, 0, 655374, 0, 655375, 0, 655376, 0, 655377, 0, 655378, 0, 655379, 0, 655380, 0, 655381, 0, 655382, 0, 655383, 0, 655384, 0, 655385, 0 )
+tile_data = IntArray( 0, 0, 1, 0, 2, 0, 3, 0, 4, 0, 5, 0, 6, 0, 7, 0, 8, 0, 9, 0, 10, 0, 11, 0, 12, 0, 13, 0, 14, 0, 15, 0, 65536, 0, 65551, 0, 131072, 0, 131087, 0, 196608, 0, 196623, 0, 262144, 0, 262159, 0, 327680, 0, 327695, 0, 393216, 0, 393217, 0, 393218, 0, 393219, 0, 393220, 0, 393221, 0, 393222, 0, 393223, 0, 393224, 0, 393225, 0, 393226, 0, 393229, 0, 393230, 0, 393231, 0, 458752, 0, 458767, 0, 524288, 0, 524294, 0, 524295, 0, 524296, 0, 524303, 0, 589824, 0, 589829, 0, 589830, 0, 589831, 0, 589832, 0, 589833, 0, 589839, 0, 655360, 0, 655361, 0, 655362, 0, 655363, 0, 655364, 0, 655365, 0, 655366, 0, 655367, 0, 655368, 0, 655369, 0, 655370, 0, 655371, 0, 655372, 0, 655373, 0, 655374, 0, 655375, 0 )
 __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="KinematicBody2D" parent="." groups=[
-"has_hp_bar",
-] instance=ExtResource( 2 )]
-
-transform/pos = Vector2( 128, 608 )
-movement_speed = 320
-
-[node name="player_detector" parent="KinematicBody2D"]
-
-cast_to = Vector2( 0, -536 )
-
-[node name="KinematicBody2D1" parent="." groups=[
-"has_hp_bar",
-] instance=ExtResource( 2 )]
-
-transform/pos = Vector2( 1504, 608 )
-movement_speed = 320
-
 [node name="player" parent="." groups=[
 "has_hp_bar",
-] instance=ExtResource( 3 )]
+] instance=ExtResource( 2 )]
 
 transform/pos = Vector2( 729.93, 578.721 )
 max_HP = 20
 hp = 20
 
+[node name="Camera2D" parent="player"]
 
-[editable path="KinematicBody2D"]
+current = false
+
+[node name="KinematicBody2D 2" parent="." instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 192, 192 )
+
+[node name="player_detector" parent="KinematicBody2D 2"]
+
+enabled = true
+cast_to = Vector2( 150, 150 )
+
+
 [editable path="player"]
+[editable path="KinematicBody2D 2"]
