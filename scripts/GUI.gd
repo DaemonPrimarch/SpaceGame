@@ -14,12 +14,11 @@ func _ready():
 	layer.set_name("Layer")
 	get_tree().get_root().call_deferred("add_child",layer)
 
+
 func get_layer():
 	return layer
 
-func get_number_of_HP_bars():
-	return hp_bar_count
-		
+#HP Bars:
 func add_HP_bar(tracked_object):
 	var new_bar = preload("res://nodes/hp_bar.tscn").instance();
 	new_bar.set_tracked_object(tracked_object)
@@ -35,9 +34,6 @@ func remove_HP_bar(tracked_object):
 	
 func reflow_HP_bars():
 	var i = 0
-	print("starting reflow")
 	for bar in hp_bars:
-		print(hp_bars[bar].get_name())
-		print(hp_bars[bar].get_size())
 		hp_bars[bar].set_pos(Vector2(hp_bars[bar].get_pos().x, hp_bars[bar].get_size().y * i))
 		i += 1
