@@ -50,6 +50,10 @@ transform/pos = Vector2( 192, 192 )
 enabled = true
 cast_to = Vector2( 150, 150 )
 
+[node name="right_turn" parent="KinematicBody2D 2"]
+
+transform/pos = Vector2( 640, 0 )
+
 
 [editable path="player"]
 [editable path="KinematicBody2D 2"]
