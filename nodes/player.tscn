@@ -5,7 +5,7 @@
 [ext_resource path="res://nodes/gun.tscn" type="PackedScene" id=3]
 [ext_resource path="res://nodes/camera.tscn" type="PackedScene" id=4]
 
-[sub_resource type="ConvexPolygonShape2D" id=1]
+[sub_resource type="ConvexPolygonShape2D" id=13]
 
 custom_solver_bias = 0.0
 points = Vector2Array( 25, 25, -25, 25, -25, -75, 25, -75 )
@@ -194,8 +194,8 @@ tracks/0/keys = {
 
 transform/scale = Vector2( 0.99, 0.99 )
 input/pickable = false
-shapes/0/shape = SubResource( 1 )
-shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 28.0949 )
+shapes/0/shape = SubResource( 13 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, -6.06061, 0 )
 shapes/0/trigger = false
 collision/layers = 4
 collision/mask = 3
@@ -218,6 +218,7 @@ max_jump_time = 2
 
 [node name="sprite" type="Sprite" parent="."]
 
+transform/pos = Vector2( 0, -32.3232 )
 transform/scale = Vector2( 1.20867, 1.94142 )
 texture = ExtResource( 2 )
 vframes = 2
@@ -247,19 +248,17 @@ autoplay = ""
 
 [node name="gun" parent="." instance=ExtResource( 3 )]
 
-transform/pos = Vector2( 0, 28.0949 )
+transform/pos = Vector2( 32.3232, -32.3232 )
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 
-transform/pos = Vector2( 0, 28.0949 )
+transform/pos = Vector2( -6.06061, 0 )
 build_mode = 0
 polygon = Vector2Array( 25, -75, -25, -75, -25, 25, 25, 25 )
 shape_range = Vector2( 0, 0 )
 trigger = false
 
 [node name="Camera2D" parent="." instance=ExtResource( 4 )]
-
-transform/pos = Vector2( 0, 28.0949 )
 
 [node name="SecondAnimationPlayer" type="AnimationPlayer" parent="."]
 
