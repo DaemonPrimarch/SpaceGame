@@ -1,28 +1,29 @@
 extends ProgressBar
 
-var player
+var tracked_object = null
 
 func _ready():
 	set_min(0);
 
-func set_player(p):
-	if(player != null):
-		unset_player()
-	player = p
-	p.connect("hp_changed", self, "hp_changed")
-	set_max(p.max_HP)
-	set_value(p.hp)
-	set_step(1)
-	get_node("object_nametag").set_text(p.get_name())
+func get_tracked_object():
+	return tracked_object
 
-func unset_player():
-	player.disconnect("hp_changed", self, "hp_changed")
-	player = null
+func set_tracked_object(object):
+	set_name(object.get_name() + "_HP_bar")
+	get_node("object_nametag").set_text(object.get_name())
+	object.connect("hp_changed", self, "hp_changed")
+	object.connect("exit_tree", self, "remove_tracked_object")
+	tracked_object = object
+	set_max(object.get_max_HP())
+	set_value(object.get_HP())
+	set_step(1)
+
+func remove_tracked_object():
+	GUI.remove_HP_bar(get_tracked_object())
 
 func hp_changed():
-	set_value(player.hp)
+	set_value(get_tracked_object().get_HP())
 	update()
 
 func destroy():
-	unset_player()
 	queue_free()

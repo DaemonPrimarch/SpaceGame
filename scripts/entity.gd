@@ -31,6 +31,7 @@ var gravity_timer_started = false
 
 func _ready():
 	add_to_group("has_hp_bar")
+	GUI.add_HP_bar(self)
 
 func set_gravity_damp(value):
 	gravity_damp = value
@@ -85,6 +86,9 @@ func set_HP(val):
 	
 func get_HP():
 	return hp
+
+func get_max_HP():
+	return max_HP
 
 func damage(amount):
 	var new_HP = get_HP() - amount
