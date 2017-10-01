@@ -7,7 +7,7 @@ var damage = 5 setget set_damage,get_damage
 
 func _ready():
 	pass
-
+	
 func get_damage():
 	return damage
 
@@ -16,7 +16,6 @@ func set_damage(value):
 
 func _on_Timer_timeout():
 	destroy()
-
 
 func _on_bullet_body_enter( body ):
 	if(body extends entity_class):

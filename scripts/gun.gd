@@ -11,5 +11,5 @@ func press_trigger():
 		
 	instanced_bullet.set_pos(get_global_pos())
 	
-	instanced_bullet.set_linear_velocity(Vector2(400, 0) * get_scale())
+	instanced_bullet.set_linear_velocity(Vector2(400, 0) * get_scale().normalized())
 	instanced_bullet.add_collision_exception_with(get_parent()) 
