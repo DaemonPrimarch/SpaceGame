@@ -32,7 +32,6 @@ func _on_AnimationPlayer_finished():
 func on_collision(collision_info):
 	if(collision_info.get_collider().is_in_group("player")):
 		if(get_node("head_area").overlaps_body(collision_info.get_collider())):
-			print("DESTROYEEE")
 			destroy()
 		else:
 			collision_info.get_collider().damage(5)

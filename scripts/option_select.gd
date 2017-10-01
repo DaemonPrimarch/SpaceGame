@@ -56,7 +56,6 @@ func _input( ev ):
 	if(is_displaying()):
 		if(ev.is_action_pressed("ui_up")):
 			move_cursor_to(highlighted_item_index - 1)
-			print("moved up")
 		if(ev.is_action_pressed("ui_down")):
 			move_cursor_to(highlighted_item_index + 1)
 		if(ev.is_action_pressed("ui_accept")):
