@@ -1,9 +1,5 @@
 extends Node
 
-# class member variables go here, for example:
-# var a = 2
-# var b = "textvar"
-
 var layer
 var hp_bar_count = 0
 
@@ -13,7 +9,15 @@ func _ready():
 	layer = CanvasLayer.new()
 	layer.set_name("Layer")
 	get_tree().get_root().call_deferred("add_child",layer)
+	call_deferred("do_stuff")
 
+
+func do_stuff():
+	var box = preload("res://nodes/option_select_box.tscn").instance()
+	box.set_pos(Vector2(100, 100))
+	box.set_options(["OPTION A", "OPTION B", "OPTION C", "OPTION D"])
+	get_layer().add_child(box)
+	box.display()
 
 func get_layer():
 	return layer

@@ -1,7 +1,8 @@
 extends Camera2D
 
 func _ready():
-	get_tree().connect("tree_changed", self, "update_limit")
+	if(not get_tree().is_connected("tree_changed", self, "update_limit")):
+		get_tree().connect("tree_changed", self, "update_limit")
 
 func update_limit():
 	#This is_inside_tree might be a hack, get_tree returns null when self is not in tree
