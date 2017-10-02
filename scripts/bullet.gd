@@ -19,7 +19,7 @@ func _on_Timer_timeout():
 
 
 func _on_bullet_body_enter( body ):
-	if(body extends entity_class):
+	if(body extends entity_class or body.is_in_group("shootable")):
 		body.emit_signal("hit_by_bullet",self)
 	destroy()
 
