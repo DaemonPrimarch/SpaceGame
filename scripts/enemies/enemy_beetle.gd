@@ -2,8 +2,8 @@ extends "res://scripts/enemies/enemy.gd"
 
 # class member variables go here, for example:
 onready var player_detector = get_node("player_detector")
-onready var left_point = get_node("left_turn")
-onready var right_point = get_node("right_turn")
+onready var left_point = get_parent().get_node("left_turn")
+onready var right_point = get_parent().get_node("right_turn")
 var player_detected = false
 export var going_right = true
 var move_up = false
@@ -20,7 +20,6 @@ func _ready():
 	connect("collision",self,"on_collision")
 	set_fixed_process(true)
 	starting_height = get_pos()[1]
-	print(starting_height)
 
 func on_collision(info):
 	if(info.get_collider().is_in_group("terrain")):
@@ -39,7 +38,6 @@ func on_collision(info):
 
 func _fixed_process(delta):
 	if(move_up):
-		#print("move_up")
 		move(Vector2(0,-1)*get_movement_speed()*delta)
 		if(get_pos()[1] < starting_height):
 			print(get_pos()[1])
@@ -48,10 +46,8 @@ func _fixed_process(delta):
 	else:
 		if(player_detector.is_colliding()):
 			if(player_detector.get_collider().is_in_group("player")):
-				#print("gotcha!")
 				player_detected = true
 		if(player_detected):
-			#print("attack")
 			move(Vector2(1*dir,1)*get_movement_speed()*delta)
 		else:
 			rot += PI/20
@@ -68,3 +64,7 @@ func turn():
 		set_flippedH(false)
 	else:
 		set_flippedH(true)
+
+func destroy():
+	get_parent().queue_free()
+	.destroy()

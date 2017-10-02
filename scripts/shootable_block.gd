@@ -11,4 +11,4 @@ func _ready():
 	connect("hit_by_bullet", self, "on_bullet_hit")
 
 func on_bullet_hit(bullet):
-	destroy()
+	queue_free()

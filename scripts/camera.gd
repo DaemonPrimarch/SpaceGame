@@ -18,8 +18,8 @@ func update_limit():
 			for terrain in terrains:
 				if(terrain extends TileMap):
 					terrain_found = true
-					posX.append(terrain.get_used_rect().pos.x)
-					posY.append(terrain.get_used_rect().pos.y)
+					posX.append(terrain.get_used_rect().pos.x*terrain.get_cell_size().x)
+					posY.append(terrain.get_used_rect().pos.y*terrain.get_cell_size().y)
 					total_size += (terrain.get_used_rect().size * terrain.get_cell_size())
 				
 			if(terrain_found):
