@@ -3,7 +3,7 @@
 [ext_resource path="res://sprites/spritesheets/metroid_tiles.tres" type="TileSet" id=1]
 [ext_resource path="res://nodes/player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://nodes/enemies/enemy_beetle.tscn" type="PackedScene" id=3]
-[ext_resource path="res://nodes/rooms/shootable_block.tscn" type="PackedScene" id=4]
+[ext_resource path="res://nodes/shootable_block.tscn" type="PackedScene" id=4]
 
 [node name="Node2D" type="Node2D"]
 
