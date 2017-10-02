@@ -9,7 +9,7 @@ func _ready():
 	layer = CanvasLayer.new()
 	layer.set_name("Layer")
 	get_tree().get_root().call_deferred("add_child",layer)
-	call_deferred("do_stuff")
+	#call_deferred("do_stuff")
 
 
 func do_stuff():
@@ -18,6 +18,13 @@ func do_stuff():
 	box.set_options(["OPTION A", "OPTION B", "OPTION C", "OPTION D"])
 	get_layer().add_child(box)
 	box.display()
+	
+	var dialog_box = preload("res://nodes/dialog_box.tscn").instance()
+	dialog_box.set_pos(Vector2(0, 400))
+	dialog_box.set_total_text("Hello world, stan suckt balls!")
+	get_layer().add_child(dialog_box)
+	dialog_box.scrolling = true
+	dialog_box.display()
 
 func get_layer():
 	return layer
