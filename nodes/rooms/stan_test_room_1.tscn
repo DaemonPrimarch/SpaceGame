@@ -42,6 +42,11 @@ transform/pos = Vector2( 1216, 576 )
 max_HP = 20
 hp = 20
 
+[node name="gun" parent="player"]
+
+cooldown_time = 1.0
+start_on_press = true
+
 [node name="KinematicBody2D 2" parent="." instance=ExtResource( 3 )]
 
 transform/pos = Vector2( 192, 192 )

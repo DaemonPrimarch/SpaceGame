@@ -3,11 +3,13 @@ extends Node2D
 var cooling_down = false
 export var has_cooldown = true
 export(float, 0, 10, 0.1) var cooldown_time = 1.0
+onready var timer
+export var start_on_press = true
 
 var holding = false
 
 func is_holding_trigger():
-	return holding
+	pass
 
 func is_cooling_down():
 	return cooling_down
@@ -17,7 +19,7 @@ func has_cooldown_timer():
 
 func _ready():
 	if(has_cooldown_timer()):
-		var timer = Timer.new()
+		timer = Timer.new()
 		timer.set_name("cooldown_timer")
 		timer.set_wait_time(cooldown_time)
 		
@@ -25,31 +27,38 @@ func _ready():
 		
 		add_child(timer)
 	set_process(true)
-	
+
 func _process(delta):
 	if(Input.is_action_pressed("shoot")):
 		if(not is_holding_trigger()):
 			holding = true
-			press_trigger()
+			if(start_on_press):
+				if(cooldown_timer_running()):
+					press_trigger()
+			else:
+				press_trigger()
 		is_holding_trigger()
 	elif(is_holding_trigger()):
 		holding = false
-		loose_trigger()
+		if(!start_on_press):
+			if(cooldown_timer_running()):
+				release_trigger()
+		else:
+			release_trigger()
 
 func press_trigger():
 	pass
-func hold_trigger():
-	if(has_cooldown_timer()):
-		if(not is_cooling_down()):
-			fire()
-			get_node("cooldown_timer").start()
-			cooling_down = true
-			
-	else:
-		fire()
-		
-func loose_trigger():
+
+func release_trigger():
 	pass
 
 func _on_cooldown_timer_timeout():
 	cooling_down = false
+
+func cooldown_timer_running():
+	if(!cooling_down):
+		if(has_cooldown_timer()):
+			timer.start()
+			cooling_down = true
+		return true
+	return false
