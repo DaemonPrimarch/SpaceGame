@@ -36,6 +36,6 @@ texture = ExtResource( 2 )
 
 [connection signal="body_enter" from="." to="." method="_on_ladder_body_enter"]
 
-[connection signal="body_enter_shape" from="." to="." method="_on_ladder_body_enter_shape"]
+[connection signal="body_exit" from="." to="." method="_on_ladder_body_exit"]
 
 
