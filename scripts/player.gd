@@ -64,7 +64,6 @@ func _fixed_process(delta):
 	if(Input.is_action_pressed("set_climb_on")):
 		set_climbing(true)
 	elif(Input.is_action_pressed("set_climb_off")):
-		print("HELLO?")
 		set_climbing(false)
 	
 	if(is_climbing()):
