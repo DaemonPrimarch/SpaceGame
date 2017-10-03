@@ -3,6 +3,7 @@ extends "res://scripts/entity.gd"
 
 export var jump_speed = 98 *2 setget set_jump_speed,get_jump_speed
 export var max_jump_time = 2
+export var climbing_speed = 64 * 3
 
 var original_gravity_enabled = gravity_enabled
 
@@ -21,12 +22,19 @@ var moving_up = false
 var time_jumping = 0
 var jumping = false
 
-enum MOVEMENTTYPE{
-  REGULAR,
-  DIRECT
-}
+var climbing = false
 
-var movement_type = MOVEMENTTYPE.REGULAR
+func is_climbing():
+	return climbing
+
+func set_climbing(val):
+	#if(val != is_climbing()):
+	
+	climbing = val
+	set_gravity_enabled(!val)
+
+func get_climbing_speed():
+	return climbing_speed
 
 func set_jump_speed(value):
 	jump_speed = value
@@ -52,48 +60,66 @@ func stop_jump():
 
 func _fixed_process(delta):	
 	var new_animation = "idle"
-	if(Input.is_action_pressed("jump")):
-		if(not is_jumping() and is_on_ground()):
-			start_jump()
-		
-		if(is_jumping()):
-			new_animation = "jumping"
-			move(Vector2(0, -get_jump_speed() * delta))
-			time_jumping += delta
+	
+	if(Input.is_action_pressed("set_climb_on")):
+		set_climbing(true)
+	elif(Input.is_action_pressed("set_climb_off")):
+		print("HELLO?")
+		set_climbing(false)
+	
+	if(is_climbing()):
+		if(Input.is_action_pressed("up")):
+			move(Vector2(0, -get_climbing_speed() * delta))
+		elif(Input.is_action_pressed("down")):
+			move(Vector2(0, get_climbing_speed() * delta))
+		if(Input.is_action_pressed("play_left")):
+			move(Vector2(-get_climbing_speed() * delta, 0))
+		elif(Input.is_action_pressed("play_right")):
+			move(Vector2(get_climbing_speed() * delta, 0))
+	else:
+		if(Input.is_action_pressed("jump")):
+			if(not is_jumping() and is_on_ground()):
+				start_jump()
 			
-			if(time_jumping >= max_jump_time):
-				stop_jump()
-	elif(is_jumping()):
-		stop_jump()
+			if(is_jumping()):
+				new_animation = "jumping"
+				move(Vector2(0, -get_jump_speed() * delta))
+				time_jumping += delta
+				
+				if(time_jumping >= max_jump_time):
+					stop_jump()
+		elif(is_jumping()):
+			stop_jump()
+			
+		if((not is_on_ground())and (not is_jumping())):
+			new_animation = "falling"
 		
-	if((not is_on_ground())and (not is_jumping())):
-		new_animation = "falling"
+		if(Input.is_action_pressed("play_left") and not is_warping()):
+			set_flippedH(true)
+			move(Vector2(- get_movement_speed() * delta, 0))
+			
+			if(is_on_ground()):
+				new_animation = "run"
+		elif(Input.is_action_pressed("play_right") and not is_warping()):
+			set_flippedH(false)
+			move(Vector2(get_movement_speed() * delta, 0))
+			if(is_on_ground()):
+				new_animation = "run"
 	
-	if(Input.is_action_pressed("play_left") and not is_warping()):
-		set_flippedH(true)
-		move(Vector2(- get_movement_speed() * delta, 0))
+		if(Input.is_action_pressed("shoot")):
+			if(new_animation == "falling"):
+				new_animation = "falling_weapon"
+			elif(new_animation == "jumping"):
+				new_animation = "jumping_weapon"
+			elif(new_animation == "run"):
+				new_animation = "run_weapon"
+			elif(new_animation == "idle"):
+				new_animation = "standing_weapon_ready"
 		
-		if(is_on_ground()):
-			new_animation = "run"
-	elif(Input.is_action_pressed("play_right") and not is_warping()):
-		set_flippedH(false)
-		move(Vector2(get_movement_speed() * delta, 0))
-		if(is_on_ground()):
-			new_animation = "run"
-
-	if(Input.is_action_pressed("shoot")):
-		if(new_animation == "falling"):
-			new_animation = "falling_weapon"
-		elif(new_animation == "jumping"):
-			new_animation = "jumping_weapon"
-		elif(new_animation == "run"):
-			new_animation = "run_weapon"
-		elif(new_animation == "idle"):
-			new_animation = "standing_weapon_ready"
+		if(new_animation != animation):
+			animation_player.play(new_animation)
+			animation = new_animation
 	
-	if(new_animation != animation):
-		animation_player.play(new_animation)
-		animation = new_animation
 
 func _on_shoot_countdown_timeout():
 	shooting = false

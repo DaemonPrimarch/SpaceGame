@@ -1,4 +1,4 @@
-extends "res://scripts/better_KinematicBody2D.gd"
+ extends "res://scripts/better_KinematicBody2D.gd"
 
 signal hp_changed
 signal hit_by_bullet

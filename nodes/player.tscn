@@ -215,6 +215,7 @@ has_invulnarable_animation = true
 invulnerable_animation_player = "SecondAnimationPlayer"
 jump_speed = 196
 max_jump_time = 2
+climbing_speed = 192
 
 [node name="sprite" type="Sprite" parent="."]
 

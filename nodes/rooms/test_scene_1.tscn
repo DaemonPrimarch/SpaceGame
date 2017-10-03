@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=1]
+[gd_scene load_steps=6 format=1]
 
 [ext_resource path="res://nodes/warp_tile.tscn" type="PackedScene" id=1]
 [ext_resource path="res://nodes/warp_arrival.tscn" type="PackedScene" id=2]
 [ext_resource path="res://sprites/spritesheets/metroid_tiles.tres" type="TileSet" id=3]
 [ext_resource path="res://nodes/enemies/enemy_scrub.tscn" type="PackedScene" id=4]
+[ext_resource path="res://nodes/Ladder.tscn" type="PackedScene" id=5]
 
 [node name="test_scene_1" type="Node2D"]
 
@@ -48,7 +49,10 @@ __meta__ = {
 [node name="enemy" parent="." instance=ExtResource( 4 )]
 
 transform/pos = Vector2( 468.061, 452.157 )
-has_invulnarable_animation = false
-invulnerable_animation_player = "SecondAnimationPlayer"
+
+[node name="Ladder" parent="." instance=ExtResource( 5 )]
+
+transform/pos = Vector2( 928, 256 )
+transform/scale = Vector2( 1, 6 )
 
 
