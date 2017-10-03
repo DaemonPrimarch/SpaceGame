@@ -11,11 +11,13 @@ func _ready():
 
 
 
-func _on_Ladder_body_enter( body ):
+func _on_ladder_body_enter( body ):
 	if(body.is_in_group("player")):
 		body.set_climbing(true)
 
 
-func _on_Ladder_body_exit( body ):
+func _on_ladder_body_exit( body ):
 	if(body.is_in_group("player")):
 		body.set_climbing(false)
+
+
