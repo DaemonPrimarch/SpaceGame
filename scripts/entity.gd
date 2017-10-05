@@ -66,7 +66,6 @@ func set_invulnerable(value):
 		invulnerability_timer_running = true
 		invulnerability_timer.start()
 		if(has_invulnarable_animation):
-			print("Playing")
 			get_node(invulnerable_animation_player).play("invulnerable")
 	else:
 		if(invulnerability_timer_running):
