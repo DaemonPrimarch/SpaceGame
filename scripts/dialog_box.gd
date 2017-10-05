@@ -29,7 +29,7 @@ func _ready():
 
 func _on_text_scroll_timer_timeout():
 	text_position += 1
-	if(text_position == get_total_text().length()):
+	if(text_position == get_total_text().length() + 1):
 		text_position = 0
 		scroll_timer.stop()
 		emit_signal("finished_displaying")

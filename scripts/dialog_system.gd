@@ -15,6 +15,23 @@ func _ready():
 	regular_box.hide()
 	call_deferred("setup")
 
+func create_linear_tree(array):
+	var previous
+	
+	for i in range(array.size() - 1, -1, -1):
+		var new
+		if(typeof(array[i]) == TYPE_STRING):
+			new = LinearTextElement.new(array[i])
+		else:
+			new = array[i]
+		
+		if(i != array.size() - 1):
+			new.set_next(previous)
+			
+		previous = new
+	
+	return previous
+
 func on_option_selected(option):
 	get_current_element().set_selected_option(option)
 	
@@ -36,14 +53,15 @@ func setup():
 	GUI.get_layer().add_child(regular_box)
 	regular_box.set_pos(Vector2(0,600))
 	GUI.get_layer().add_child(selection_box)
-	selection_box.set_pos(Vector2(400,600))
-	var C = ChoiceElement.new("Question?:", ["A", "B", "C", "D", "E", "F", "G"])
-	var D = ExtraRegularTextElement.new(C)
-	C.set_next(D)
-	var B = RegularTextElement.new("Hello world!!!!!!!", C)
-	var A = RegularTextElement.new("Hello world???????", B) 
+	selection_box.set_pos(Vector2(600,600))
 	
-	set_current_element(A)
+	var first_of_first = create_linear_tree(["Everything dies,"])
+	var right = create_linear_tree(["That is correct!"])
+	var wrong = create_linear_tree(["That is incorrect!", "Choose again!", first_of_first])
+	var choice = ChoiceElement.new("Do you accept it?", ["Yes", "No"])
+	var branch = BranchElement.new(choice, "Yes", right, wrong)
+	var first = create_linear_tree([first_of_first, "It is inevitable,", choice, branch])
+	set_current_element(first)
 	
 	display_current_element()
 
@@ -84,6 +102,7 @@ func clear(empt = null):
 
 class DialogElement:
 	var option
+	var next
 	
 	func is_choice_element():
 		return false
@@ -108,9 +127,8 @@ class DialogElement:
 	func is_last():
 		return false
 
-class RegularTextElement extends DialogElement:
+class LinearTextElement extends DialogElement:
 	var text
-	var next
 	
 	func _init(text, next = null):
 		self.text = text
@@ -121,22 +139,30 @@ class RegularTextElement extends DialogElement:
 		return self.next
 	func is_last():
 		return self.next == null
-	
-class ExtraRegularTextElement extends DialogElement:
-	var next
+		
+class BranchElement extends DialogElement:
 	var linked_obj
-	func _init(linked_obj, next = null):
+	var right_choice
+	var right_branch
+	var wrong_branch
+	func _init(linked_obj, right_choice, right_branch, wrong_branch):
 		self.linked_obj = linked_obj
-		self.next = next
+		self.right_choice = right_choice
+		self.right_branch = right_branch
+		self.wrong_branch = wrong_branch
+	
 	func get_text():
-		return "Option chosen: " + linked_obj.get_selected_option() + " yeah that is correct!"
-	func get_next():
-		return self.next
+		return ""
 	func is_last():
-		return self.next == null
+		return false
+	func get_next():
+		if(linked_obj.get_selected_option() == right_choice):
+			return right_branch
+		else:
+			return wrong_branch
+
 class ChoiceElement extends DialogElement:
 	var text
-	var next
 	var options
 	
 	func _init(text, options, next = null):
