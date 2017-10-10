@@ -6,6 +6,7 @@ signal hit_by_bullet
 export var movement_speed = 300 setget set_movement_speed,get_movement_speed
 
 var warping = false
+var gravity_vector
 var gravity_damp = 1 setget set_gravity_damp, get_gravity_damp
 
 export var flippedH = false
@@ -110,7 +111,7 @@ func is_gravity_enabled():
 	return gravity_enabled
 
 func get_gravity_vector():
-	return Physics2DServer.area_get_param(get_world_2d().get_space(),Physics2DServer.AREA_PARAM_GRAVITY_VECTOR) * Physics2DServer.area_get_param(get_world_2d().get_space(),Physics2DServer.AREA_PARAM_GRAVITY)
+	return Physics2DServer.area_get_param(get_world_2d().get_space(),Physics2DServer.AREA_PARAM_GRAVITY_VECTOR) * Physics2DServer.area_get_param(get_world_2d().get_space(),Physics2DServer.AREA_PARAM_GRAVITY)*7
 
 func is_on_ground():
 	return on_ground
@@ -130,8 +131,8 @@ func set_flippedH(new):
 
 func apply_gravity(delta):
 	#Normally this should be /2 not /20 for some reason the godot gravity vector is 98, not 9.8
-	
-	if(move(get_gravity_vector() * get_gravity_vector() * delta * gravity_timer / (20 * get_gravity_damp() * get_gravity_damp())).has_collision()):
+	#print(get_gravity_vector() * gravity_timer)
+	if(move(get_gravity_vector() * delta * gravity_timer).has_collision()):
 		on_ground = true
 	
 func _fixed_process(delta):
