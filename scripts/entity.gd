@@ -6,7 +6,7 @@ signal hit_by_bullet
 export var movement_speed = 300 setget set_movement_speed,get_movement_speed
 
 var warping = false
-var gravity_vector
+
 var gravity_damp = 1 setget set_gravity_damp, get_gravity_damp
 
 export var flippedH = false
@@ -29,6 +29,8 @@ var invulnerability_timer_running = false
 
 var gravity_timer = 0
 var gravity_timer_started = false
+
+onready var gravity_vector = Physics2DServer.area_get_param(get_world_2d().get_space(),Physics2DServer.AREA_PARAM_GRAVITY_VECTOR) * Physics2DServer.area_get_param(get_world_2d().get_space(),Physics2DServer.AREA_PARAM_GRAVITY)*7
 
 func _ready():
 	add_to_group("has_hp_bar")
@@ -110,8 +112,11 @@ func set_gravity_enabled(value):
 func is_gravity_enabled():
 	return gravity_enabled
 
+func set_gravity_vector(vector):
+	gravity_vector = vector
+
 func get_gravity_vector():
-	return Physics2DServer.area_get_param(get_world_2d().get_space(),Physics2DServer.AREA_PARAM_GRAVITY_VECTOR) * Physics2DServer.area_get_param(get_world_2d().get_space(),Physics2DServer.AREA_PARAM_GRAVITY)*7
+	return gravity_vector
 
 func is_on_ground():
 	return on_ground

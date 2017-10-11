@@ -39,8 +39,8 @@ func on_collision(info):
 func _fixed_process(delta):
 	if(move_up):
 		move(Vector2(0,-1)*get_movement_speed()*delta)
-		if(get_pos()[1] < starting_height):
-			print(get_pos()[1])
+		if(get_pos().y < starting_height):
+			print(get_pos().y)
 			move_up = false
 			player_detected = false
 	else:
@@ -54,7 +54,7 @@ func _fixed_process(delta):
 			if(rot>=2*PI):
 				rot = 0
 			move(Vector2(1*dir,sin(rot))*get_movement_speed()*delta)
-			if((get_pos()[0] >= right_point.get_pos()[0] and going_right) or (get_pos()[0] <= left_point.get_pos()[0] and !going_right)):
+			if((get_pos().x >= right_point.get_pos().x and going_right) or (get_pos().x <= left_point.get_pos().x and not going_right)):
 				turn()
 
 func turn():

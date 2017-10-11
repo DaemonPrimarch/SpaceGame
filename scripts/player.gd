@@ -1,134 +1,213 @@
 
 extends "res://scripts/entity.gd"
 
-export var jump_speed = 98 *2 setget set_jump_speed,get_jump_speed
-export var climbing_speed = 64 * 3
-export var jumping_height = 4 * 64
-export var wall_jump_speed = 4*64
-
-var original_gravity_enabled = gravity_enabled
-
 #cache the sprite here for fast access (we will set scale to flip it often)
 onready var sprite = get_node("sprite")
 
 onready var animation_player = get_node("AnimationPlayer")
 
-var animation = "idle"
-var shooting = false
-var walking = false
-var has_jumped = false
-var has_double_jumped =false
-var is_wall_sliding = false
-var is_wall_jumping = false
-var wall_left
+onready var debug_state_label = get_node("DebugStateLabel")
 
-var moving = false
-var moving_up = false
+enum STATE {REGULAR_JUMPING, DOUBLE_JUMPING, WALL_SLIDING, GROUNDED, FALLING, CLIMBING}
+
+var current_state = STATE.GROUNDED
+
+#MY STUFF
+
+var current_animation = "idle"
+
+var original_gravity_enabled = false
 
 var time_jumping = 0
-var jumping = false
-var double_jumping = false
+var jumped = false
 
-var climbing = false
+var time_double_jumping = 0
+var double_jumped = false
 
-func has_jumped():
-	return has_jumped
+export var jump_height = 64 * 4
+export var double_jump_height = 64 * 2
+export var climbing_speed = 64 * 4
 
-func has_double_jumped():
-	return has_double_jumped
+func get_current_animation():
+	return current_animation
 
-func get_jumping_height():
-	return jumping_height
-
-func is_climbing():
-	return climbing
-
-func get_starting_jump_velocity():
-	return get_gravity_vector()*get_max_jump_time()*-1
-
-func get_wall_jump_velocity():
-	if(is_wall_jumping):
-		if(wall_left):
-			return Vector2(wall_jump_speed,0)
-		else:
-			return Vector2(-wall_jump_speed,0)
-	else:
-		return Vector2(0,0)
-
-func get_max_jump_time():
-
-	return sqrt(get_jumping_height()/(get_gravity_vector().y/2))
-
-func set_climbing(val):
-	#if(val != is_climbing()):
-	
-	climbing = val
-	set_gravity_enabled(!val)
+func play_or_continue_animation(animation):
+	if(get_current_animation() != animation):
+		animation_player.play(animation)
+		current_animation = animation
 
 func get_climbing_speed():
 	return climbing_speed
 
-func set_jump_speed(value):
-	jump_speed = value
+func has_jumped():
+	return jumped
 
-func get_jump_speed():
-	return jump_speed
+func has_double_jumped():
+	return double_jumped
 
-func _ready():
-	set_fixed_process(true)
+func get_jump_height():
+	return jump_height
 
-func is_jumping():
-	return jumping
+func get_jump_decelleration():
+	return get_gravity_vector()
 
-func is_double_jumping():
-	return double_jumping
-
-func start_jump():
-	has_jumped = true
-	original_gravity_enabled = gravity_enabled
-	set_gravity_enabled(false)
-	jumping = true
-	time_jumping = 0
-
-func start_double_jump():
-	has_double_jumped = true
-	original_gravity_enabled = gravity_enabled
-	set_gravity_enabled(false)
-	double_jumping = true
-	time_jumping = 0
-
-func start_wall_jump():
-	has_jumped = true
-	original_gravity_enabled = gravity_enabled
-	set_gravity_enabled(false)
-	jumping = true
-	is_wall_jumping = true
-	time_jumping = 0
-
-func stop_jump():
-	set_gravity_enabled(original_gravity_enabled)
-	jumping = false
-	is_wall_jumping =false
-
-func stop_double_jump():
-	set_gravity_enabled(original_gravity_enabled)
-	double_jumping = false
-
-func _fixed_process(delta):	
-	if(is_on_ground()):
-		if (has_jumped()):
-			has_jumped = false
-			has_double_jumped = false
-		elif(is_wall_sliding):
-			is_wall_sliding = false
-	var new_animation = "idle"
+#Not entirely sure about the implementation, the .y disturbs me.
+func get_max_jump_time():
+	return sqrt(get_jump_height()/(get_jump_decelleration().y/2))
 	
-	if(Input.is_action_pressed("set_climb_on")):
-		set_climbing(true)
-	elif(Input.is_action_pressed("set_climb_off")):
-		set_climbing(false)
+func get_starting_jump_velocity():
+	return get_jump_decelleration()*get_max_jump_time()*-1
+
+func get_current_jump_velocity():
+	return get_starting_jump_velocity()+get_jump_decelleration()*time_jumping
+
+func get_double_jump_height():
+	return double_jump_height
+
+func get_double_jump_decelleration():
+	return get_gravity_vector()
 	
-	if(is_climbing()):
+func get_max_double_jump_time():
+	return sqrt(get_double_jump_height()/(get_double_jump_decelleration().y/2))
+
+func get_starting_double_jump_velocity():
+	return get_double_jump_decelleration()*get_max_double_jump_time()*-1
+
+func get_current_double_jump_velocity():
+	return get_starting_double_jump_velocity()+get_double_jump_decelleration()*time_double_jumping
+
+func get_current_state():
+	return current_state
+
+func set_current_state(state):
+	if(state != get_current_state()):
+		leave_state(get_current_state())
+		enter_state(state)
+		current_state = state
+		
+func enter_state(state):
+	if(state == STATE.REGULAR_JUMPING):
+		jumped = true
+		original_gravity_enabled = gravity_enabled
+		set_gravity_enabled(false)
+		time_jumping = 0
+		debug_state_label.set_text("REGULAR_JUMPING")
+	elif(state == STATE.GROUNDED):
+		jumped = false
+		double_jumped = false
+		debug_state_label.set_text("GROUNDED")
+	elif(state == STATE.FALLING):
+		debug_state_label.set_text("FALLING")
+	elif(state == STATE.WALL_SLIDING):
+		debug_state_label.set_text("WALL_SLIDING")
+	elif(state == STATE.DOUBLE_JUMPING):
+		double_jumped = true
+		original_gravity_enabled = gravity_enabled
+		set_gravity_enabled(false)
+		time_double_jumping = 0
+		debug_state_label.set_text("DOUBLE_JUMPING")
+	elif(state == STATE.CLIMBING):
+		original_gravity_enabled = gravity_enabled
+		set_gravity_enabled(false)
+		debug_state_label.set_text("CLIMBING")
+
+func leave_state(state):
+	if(state == STATE.REGULAR_JUMPING):
+		set_gravity_enabled(original_gravity_enabled)
+	elif(state == STATE.DOUBLE_JUMPING):
+		set_gravity_enabled(original_gravity_enabled)
+	elif(state == STATE.CLIMBING):
+		set_gravity_enabled(original_gravity_enabled)
+		
+func process_state(state, delta):
+	if(state == STATE.GROUNDED):
+		if(Input.is_action_pressed("jump")):
+			set_current_state(STATE.REGULAR_JUMPING)
+		else:
+			var dir = 0
+			if(Input.is_action_pressed("play_left")):
+				set_flippedH(true)
+				dir = -1
+				play_or_continue_animation("run")
+			elif(Input.is_action_pressed("play_right")):
+				set_flippedH(false)
+				dir = 1
+				play_or_continue_animation("run")
+			else:
+				play_or_continue_animation("idle")
+			
+			move(Vector2(dir * get_movement_speed() * delta, 0))
+	elif(state == STATE.REGULAR_JUMPING):
+		play_or_continue_animation("jumping")
+		if(Input.is_action_pressed("jump")):
+			move(get_current_jump_velocity()*delta)
+			time_jumping += delta
+			
+			var dir = 0
+			if(Input.is_action_pressed("play_left")):
+				set_flippedH(true)
+				dir = -1
+			elif(Input.is_action_pressed("play_right")):
+				set_flippedH(false)
+				dir = 1
+			
+			var collision_info = move(Vector2(dir * get_movement_speed() * delta, 0))
+			
+			if(collision_info.has_collision() and collision_info.get_collider().is_in_group("terrain")):
+				set_current_state(STATE.WALL_SLIDING)
+			
+			if(time_jumping >= get_max_jump_time()):
+				set_current_state(STATE.FALLING)
+		else:
+			set_current_state(STATE.FALLING)
+	elif(state == STATE.DOUBLE_JUMPING):
+		play_or_continue_animation("jumping")
+		
+		if(Input.is_action_pressed("jump")):
+			move(get_current_double_jump_velocity()*delta)
+			time_double_jumping += delta
+			
+			var dir = 0
+			if(Input.is_action_pressed("play_left")):
+				set_flippedH(true)
+				dir = -1
+			elif(Input.is_action_pressed("play_right")):
+				set_flippedH(false)
+				dir = 1
+			
+			var collision_info = move(Vector2(dir * get_movement_speed() * delta, 0))
+			
+			if(collision_info.has_collision() and collision_info.get_collider().is_in_group("terrain")):
+				set_current_state(STATE.WALL_SLIDING)
+			
+			if(time_double_jumping >= get_max_double_jump_time()):
+				set_current_state(STATE.FALLING)
+		else:
+			set_current_state(STATE.FALLING)
+	elif(state == STATE.FALLING):
+		play_or_continue_animation("falling")
+		
+		if(Input.is_action_pressed("jump") and not has_double_jumped()):
+			set_current_state(STATE.DOUBLE_JUMPING)
+		else:
+			if(is_on_ground()):
+				set_current_state(STATE.GROUNDED)
+			else:
+				var dir = 0
+				if(Input.is_action_pressed("play_left")):
+					set_flippedH(true)
+					dir = -1
+				elif(Input.is_action_pressed("play_right")):
+					set_flippedH(false)
+					dir = 1
+					
+				var collision_info = move(Vector2(dir * get_movement_speed() * delta, 0))
+					
+				if(collision_info.has_collision() and collision_info.get_collider().is_in_group("terrain")):
+					set_current_state(STATE.WALL_SLIDING)
+					
+	elif(state == STATE.CLIMBING):
+		play_or_continue_animation("idle")
 		if(Input.is_action_pressed("up")):
 			move(Vector2(0, -get_climbing_speed() * delta))
 		elif(Input.is_action_pressed("down")):
@@ -137,81 +216,43 @@ func _fixed_process(delta):
 			move(Vector2(-get_climbing_speed() * delta, 0))
 		elif(Input.is_action_pressed("play_right")):
 			move(Vector2(get_climbing_speed() * delta, 0))
-	else:
-		if(Input.is_action_pressed("jump")):
-			if(not is_jumping() and not is_double_jumping()):
+	elif(state == STATE.WALL_SLIDING):
+		play_or_continue_animation("idle")
+		if(is_flippedH()):
+			if(not test_move(Vector2(-1, 0))):
+				set_current_state(STATE.FALLING)
+			else:
 				if(is_on_ground()):
-					start_jump()
-				elif(is_wall_sliding):
-					start_wall_jump()
-				elif(has_jumped and not has_double_jumped):
-					start_double_jump()
-			
-			if(is_jumping()):
-				new_animation = "jumping"
-				move((get_wall_jump_velocity()+get_starting_jump_velocity()+get_gravity_vector()*time_jumping)*delta)
-				time_jumping += delta
-				
-				if(time_jumping >= get_max_jump_time()):
-					stop_jump()
-			elif(is_double_jumping()):
-				new_animation = "jumping"
-				move((get_starting_jump_velocity()+get_gravity_vector()*time_jumping)*delta)
-				time_jumping += delta
-				
-				if(time_jumping >= get_max_jump_time()):
-					stop_double_jump()
-			elif(is_wall_jumping):
-				new_animation = "jumping"
-				move((get_starting_wall_jump_velocity()+get_gravity_vector()*time_jumping)*delta)
-				time_jumping += delta
-				
-				if(time_jumping >= get_max_jump_time()):
-					stop_double_jump()
-		elif(is_jumping()):
-			stop_jump()
-		elif(is_double_jumping()):
-			stop_double_jump()
-			
-		if((not is_on_ground())and (not is_jumping())):
-			new_animation = "falling"
-		
-		if(Input.is_action_pressed("play_left") and not is_warping()):
-			set_flippedH(true)
-			var collision_info = move(Vector2(- get_movement_speed() * delta, 0))
-			if(collision_info.has_collision() and collision_info.get_collider().is_in_group("terrain") and not is_on_ground()):
-				is_wall_sliding = true
-				wall_left = true
+					set_current_state(STATE.GROUNDED)
+		else:
+			if(not test_move(Vector2(1, 0))):
+				set_current_state(STATE.FALLING)
 			else:
-				is_wall_sliding = false
-			if(is_on_ground()):
-				new_animation = "run"
-		elif(Input.is_action_pressed("play_right") and not is_warping()):
-			set_flippedH(false)
-			var collision_info = move(Vector2(get_movement_speed() * delta, 0))
-			if(collision_info.has_collision() and collision_info.get_collider().is_in_group("terrain") and not is_on_ground()):
-				is_wall_sliding = true
-				wall_left = false
-			else:
-				is_wall_sliding = false
-			if(is_on_ground()):
-				new_animation = "run"
-		if(Input.is_action_pressed("shoot")):
-			if(new_animation == "falling"):
-				new_animation = "falling_weapon"
-			elif(new_animation == "jumping"):
-				new_animation = "jumping_weapon"
-			elif(new_animation == "run"):
-				new_animation = "run_weapon"
-			elif(new_animation == "idle"):
-				new_animation = "standing_weapon_ready"
-		if(is_wall_sliding):
-			new_animation = "run"
-		if(new_animation != animation):
-			animation_player.play(new_animation)
-			animation = new_animation
-	print(is_jumping())
-	
+				if(is_on_ground()):
+					set_current_state(STATE.GROUNDED)
 
+func _ready():
+	set_fixed_process(true)
+	debug_state_label.set_text("GROUNDED")
+
+func _fixed_process(delta):
+	process_state(get_current_state(), delta)
+	
+	if(Input.is_action_pressed("set_climb_on")):
+		set_current_state(STATE.CLIMBING)
+	elif(Input.is_action_pressed("set_climb_off")):
+		pass
+		
+	#if(Input.is_action_pressed("shoot")):
+		#if(new_animation == "falling"):
+		#	new_animation = "falling_weapon"
+		#elif(new_animation == "jumping"):
+		#	new_animation = "jumping_weapon"
+		#elif(new_animation == "run"):
+		#	new_animation = "run_weapon"
+		#elif(new_animation == "idle"):
+		#	new_animation = "standing_weapon_ready"
+			
 func _on_shoot_countdown_timeout():
-	shooting = false
+	pass
+	#shooting = false
