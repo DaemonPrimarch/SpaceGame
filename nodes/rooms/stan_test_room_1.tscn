@@ -1,8 +1,7 @@
-[gd_scene load_steps=4 format=1]
+[gd_scene load_steps=3 format=1]
 
 [ext_resource path="res://sprites/spritesheets/metroid_tiles.tres" type="TileSet" id=1]
 [ext_resource path="res://nodes/player.tscn" type="PackedScene" id=2]
-[ext_resource path="res://nodes/enemies/enemy_beetle.tscn" type="PackedScene" id=3]
 
 [node name="Node2D" type="Node2D"]
 
@@ -28,7 +27,7 @@ collision/bounce = 0.0
 collision/layers = 1
 collision/mask = 1
 occluder/light_mask = 1
-tile_data = IntArray( 0, 0, 1, 0, 2, 0, 3, 0, 4, 0, 5, 0, 6, 0, 7, 0, 8, 0, 9, 0, 10, 0, 11, 0, 12, 0, 13, 0, 14, 0, 15, 0, 65536, 0, 65551, 0, 131072, 0, 131087, 0, 196608, 0, 196623, 0, 262144, 0, 262159, 0, 327680, 0, 327695, 0, 393216, 0, 393231, 0, 458752, 0, 458767, 0, 524288, 0, 524303, 0, 589824, 0, 589839, 0, 655360, 0, 655361, 0, 655362, 0, 655363, 0, 655364, 0, 655365, 0, 655366, 0, 655367, 0, 655368, 0, 655369, 0, 655370, 0, 655371, 0, 655372, 0, 655373, 0, 655374, 0, 655375, 0 )
+tile_data = IntArray( -458750, 0, -458749, 0, -458748, 0, -458747, 0, -393216, 0, -393215, 0, -393214, 0, -393210, 0, -393209, 0, -327680, 0, -327673, 0, -262144, 0, -262137, 0, -196608, 0, -196601, 0, -131072, 0, -131065, 0, -65536, 0, -65529, 0, 0, 0, 7, 0, 65536, 0, 65543, 0, 131072, 0, 131079, 0, 196608, 0, 196615, 0, 262144, 0, 262151, 0, 327680, 0, 327687, 0, 393216, 0, 393223, 0, 458752, 0, 458759, 0, 524288, 0, 524295, 0, 589824, 0, 589831, 0, 655360, 0, 655361, 0, 655362, 0, 655363, 0, 655364, 0, 655365, 0, 655366, 0, 655367, 0 )
 __meta__ = {
 "_edit_lock_": true
 }
@@ -40,15 +39,8 @@ __meta__ = {
 transform/pos = Vector2( 160, 576 )
 max_HP = 20
 hp = 20
-
-[node name="KinematicBody2D 2" parent="." instance=ExtResource( 3 )]
-
-transform/pos = Vector2( 192, 192 )
-
-[node name="right_turn" parent="KinematicBody2D 2"]
-
-transform/pos = Vector2( 640, 0 )
+jumping_height = 256
+wall_jump_speed = 256
 
 
 [editable path="player"]
-[editable path="KinematicBody2D 2"]

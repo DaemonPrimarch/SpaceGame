@@ -98,11 +98,13 @@ func start_double_jump():
 	time_jumping = 0
 
 func start_wall_jump():
+	set_flippedH(!is_flippedH())
 	has_jumped = true
 	original_gravity_enabled = gravity_enabled
 	set_gravity_enabled(false)
 	jumping = true
 	is_wall_jumping = true
+	is_wall_sliding = false
 	time_jumping = 0
 
 func stop_jump():
@@ -161,13 +163,6 @@ func _fixed_process(delta):
 				
 				if(time_jumping >= get_max_jump_time()):
 					stop_double_jump()
-			elif(is_wall_jumping):
-				new_animation = "jumping"
-				move((get_starting_wall_jump_velocity()+get_gravity_vector()*time_jumping)*delta)
-				time_jumping += delta
-				
-				if(time_jumping >= get_max_jump_time()):
-					stop_double_jump()
 		elif(is_jumping()):
 			stop_jump()
 		elif(is_double_jumping()):
@@ -176,7 +171,7 @@ func _fixed_process(delta):
 		if((not is_on_ground())and (not is_jumping())):
 			new_animation = "falling"
 		
-		if(Input.is_action_pressed("play_left") and not is_warping()):
+		if(Input.is_action_pressed("play_left") and not is_warping() and not is_wall_jumping):
 			set_flippedH(true)
 			var collision_info = move(Vector2(- get_movement_speed() * delta, 0))
 			if(collision_info.has_collision() and collision_info.get_collider().is_in_group("terrain") and not is_on_ground()):
@@ -186,7 +181,7 @@ func _fixed_process(delta):
 				is_wall_sliding = false
 			if(is_on_ground()):
 				new_animation = "run"
-		elif(Input.is_action_pressed("play_right") and not is_warping()):
+		elif(Input.is_action_pressed("play_right") and not is_warping() and not is_wall_jumping):
 			set_flippedH(false)
 			var collision_info = move(Vector2(get_movement_speed() * delta, 0))
 			if(collision_info.has_collision() and collision_info.get_collider().is_in_group("terrain") and not is_on_ground()):
