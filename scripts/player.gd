@@ -151,7 +151,8 @@ func _fixed_process(delta):
 			
 			if(is_jumping()):
 				new_animation = "jumping"
-				var collision_info = move((get_wall_jump_velocity()+get_starting_jump_velocity()+get_gravity_vector()*time_jumping)*delta)
+				move((get_starting_jump_velocity()+get_gravity_vector()*time_jumping)*delta)
+				var collision_info = move(get_wall_jump_velocity()*delta)
 				time_jumping += delta
 				
 				if(is_wall_jumping and collision_info.has_collision() and collision_info.get_collider().is_in_group("terrain") and not is_on_ground()):
