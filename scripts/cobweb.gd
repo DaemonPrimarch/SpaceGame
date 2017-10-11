@@ -13,7 +13,7 @@ func _ready():
 func _on_Area2D_body_enter( body ):
 	if(body.is_in_group("bullet")):
 		destroy()
-	elif(!body.is_in_group("spider")):
+	elif(!body.is_in_group("spider") and body.is_in_group("entity")):
 		if(body.is_in_group("player")):
 			pass
 			#body.jump_speed = body.jump_speed /2
@@ -23,7 +23,7 @@ func _on_Area2D_body_enter( body ):
 
 
 func _on_Area2D_body_exit( body ):
-	if(!body.is_in_group("spider") and !body.is_in_group("bullet")):
+	if(!body.is_in_group("spider") and !body.is_in_group("bullet") and body.is_in_group("entity")):
 		if(body.is_in_group("player")):
 			#body.jump_speed = body.jump_speed *2
 			pass

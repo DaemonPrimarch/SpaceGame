@@ -208,6 +208,7 @@ func process_state(state, delta):
 					
 	elif(state == STATE.CLIMBING):
 		play_or_continue_animation("idle")
+
 		if(Input.is_action_pressed("up")):
 			move(Vector2(0, -get_climbing_speed() * delta))
 		elif(Input.is_action_pressed("down")):

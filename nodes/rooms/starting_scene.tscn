@@ -11,6 +11,9 @@ arrival_node_ID = "player_spawn"
 
 [node name="player" parent="." instance=ExtResource( 2 )]
 
+jumping_height = 256
+wall_jump_speed = 256
+
 
 [editable path="player"]
 [editable path="player/Camera2D"]
