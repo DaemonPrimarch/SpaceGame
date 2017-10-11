@@ -21,7 +21,7 @@ var has_double_jumped =false
 var is_wall_sliding = false
 var is_wall_jumping = false
 var wall_left
-
+var jump_pressed = false
 var moving = false
 var moving_up = false
 
@@ -84,6 +84,7 @@ func is_double_jumping():
 	return double_jumping
 
 func start_jump():
+	jump_pressed = true
 	has_jumped = true
 	original_gravity_enabled = gravity_enabled
 	set_gravity_enabled(false)
@@ -146,7 +147,7 @@ func _fixed_process(delta):
 					start_jump()
 				elif(is_wall_sliding):
 					start_wall_jump()
-				elif(has_jumped and not has_double_jumped):
+				elif(has_jumped and not has_double_jumped and not jump_pressed):
 					start_double_jump()
 			
 			if(is_jumping()):
@@ -170,6 +171,7 @@ func _fixed_process(delta):
 					stop_double_jump()
 		elif(is_jumping()):
 			stop_jump()
+			jump_pressed = false
 		elif(is_double_jumping()):
 			stop_double_jump()
 			
