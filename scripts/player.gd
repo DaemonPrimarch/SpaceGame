@@ -151,8 +151,12 @@ func _fixed_process(delta):
 			
 			if(is_jumping()):
 				new_animation = "jumping"
-				move((get_wall_jump_velocity()+get_starting_jump_velocity()+get_gravity_vector()*time_jumping)*delta)
+				var collision_info = move((get_wall_jump_velocity()+get_starting_jump_velocity()+get_gravity_vector()*time_jumping)*delta)
 				time_jumping += delta
+				
+				if(is_wall_jumping and collision_info.has_collision() and collision_info.get_collider().is_in_group("terrain") and not is_on_ground()):
+					is_wall_sliding = true
+					wall_left = !wall_left
 				
 				if(time_jumping >= get_max_jump_time()):
 					stop_jump()
@@ -205,7 +209,6 @@ func _fixed_process(delta):
 		if(new_animation != animation):
 			animation_player.play(new_animation)
 			animation = new_animation
-	print(is_jumping())
 	
 
 func _on_shoot_countdown_timeout():
