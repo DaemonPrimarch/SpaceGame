@@ -2,14 +2,14 @@ extends Node2D
 
 var cooling_down = false
 export var has_cooldown = true
-export(float, 0, 10, 0.1) var cooldown_time = 1.0
+export(float, 0, 10, 0.1) var cooldown_time = 0.25
 onready var timer
 export var start_on_press = true
 
 var holding = false
 
 func is_holding_trigger():
-	pass
+	return holding
 
 func is_cooling_down():
 	return cooling_down
@@ -37,7 +37,7 @@ func _process(delta):
 					press_trigger()
 			else:
 				press_trigger()
-		is_holding_trigger()
+		holding = true
 	elif(is_holding_trigger()):
 		holding = false
 		if(!start_on_press):
