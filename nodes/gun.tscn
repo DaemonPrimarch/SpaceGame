@@ -12,9 +12,12 @@ script/script = ExtResource( 1 )
 has_cooldown = true
 cooldown_time = 0.25
 start_on_press = true
-radius = 32
 
-[node name="Panel" type="Panel" parent="."]
+[node name="barrel" type="Node2D" parent="."]
+
+transform/pos = Vector2( 40, 0 )
+
+[node name="Panel" type="Panel" parent="barrel"]
 
 material/material = SubResource( 1 )
 focus/ignore_mouse = false
@@ -25,5 +28,29 @@ margin/left = 0.0
 margin/top = 0.0
 margin/right = 24.0
 margin/bottom = 8.0
+
+[node name="front" type="Position2D" parent="."]
+
+transform/pos = Vector2( 50, 0 )
+
+[node name="full_up" type="Position2D" parent="."]
+
+transform/pos = Vector2( 0, -50 )
+transform/rot = 90.0
+
+[node name="up" type="Position2D" parent="."]
+
+transform/pos = Vector2( 30, -30 )
+transform/rot = 45.0
+
+[node name="down" type="Position2D" parent="."]
+
+transform/pos = Vector2( 30, 30 )
+transform/rot = -45.0
+
+[node name="full_down" type="Position2D" parent="."]
+
+transform/pos = Vector2( 0, 50 )
+transform/rot = -90.0
 
 
