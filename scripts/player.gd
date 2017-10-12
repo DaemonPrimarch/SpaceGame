@@ -20,6 +20,7 @@ var original_gravity_enabled = false
 
 var time_jumping = 0
 var jumped = false
+var jumping_released = false
 
 var time_double_jumping = 0
 var double_jumped = false
@@ -27,6 +28,11 @@ var double_jumped = false
 export var jump_height = 64 * 4
 export var double_jump_height = 64 * 2
 export var climbing_speed = 64 * 4
+
+func _ready():
+	set_fixed_process(true)
+	set_process_input(true)
+	debug_state_label.set_text("GROUNDED")
 
 func get_current_animation():
 	return current_animation
@@ -118,7 +124,7 @@ func leave_state(state):
 		set_gravity_enabled(original_gravity_enabled)
 	elif(state == STATE.CLIMBING):
 		set_gravity_enabled(original_gravity_enabled)
-		
+
 func process_state(state, delta):
 	if(state == STATE.GROUNDED):
 		if(Input.is_action_pressed("jump")):
@@ -187,7 +193,7 @@ func process_state(state, delta):
 	elif(state == STATE.FALLING):
 		play_or_continue_animation("falling")
 		
-		if(Input.is_action_pressed("jump") and not has_double_jumped()):
+		if(Input.is_action_pressed("jump") and not has_double_jumped() and jumping_released):
 			set_current_state(STATE.DOUBLE_JUMPING)
 		else:
 			if(is_on_ground()):
@@ -232,10 +238,6 @@ func process_state(state, delta):
 				if(is_on_ground()):
 					set_current_state(STATE.GROUNDED)
 
-func _ready():
-	set_fixed_process(true)
-	debug_state_label.set_text("GROUNDED")
-
 func _fixed_process(delta):
 	process_state(get_current_state(), delta)
 	
@@ -257,3 +259,11 @@ func _fixed_process(delta):
 func _on_shoot_countdown_timeout():
 	pass
 	#shooting = false
+
+func _input(ev):
+	if(ev.is_action_pressed("jump")):
+		if(!has_jumped()):
+			jumping_released = false
+
+	elif(ev.is_action_released("jump")):
+		jumping_released = true
