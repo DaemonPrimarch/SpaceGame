@@ -197,9 +197,11 @@ func process_state(state, delta):
 			else:
 				play_or_continue_animation("idle")
 			
-			if(move(Vector2(dir * get_movement_speed() * delta, 0)).has_collision()):
+			var collision_info = move(Vector2(dir * get_movement_speed() * delta, 0))
+			if(collision_info.has_collision() and collision_info.get_collider().is_in_group("terrain")):
 				if(not get_node("crawl_space_detector_up").is_colliding() and not get_node("crawl_space_detector_down").is_colliding()):
 					set_current_state(STATE.CRAWLING)
+			print(get_node("crawl_space_detector_up").is_colliding())
 	elif(state == STATE.REGULAR_JUMPING):
 		play_or_continue_animation("jumping")
 		if(Input.is_action_pressed("jump")):
@@ -334,7 +336,7 @@ func _fixed_process(delta):
 	if(Input.is_action_pressed("set_climb_on")):
 		set_current_state(STATE.CLIMBING)
 	elif(Input.is_action_pressed("set_climb_off")):
-		pass
+		set_current_state(STATE.FALLING)
 	#if(Input.is_action_pressed("shoot")):
 		#if(new_animation == "falling"):
 		#	new_animation = "falling_weapon"
