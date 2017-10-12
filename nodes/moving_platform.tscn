@@ -32,6 +32,7 @@ transform/pos = Vector2( 224, -96 )
 
 [node name="platform" type="KinematicBody2D" parent="." groups=[
 "terrain",
+"no_crawl",
 ]]
 
 transform/pos = Vector2( 0, -96 )
@@ -40,7 +41,7 @@ shapes/0/shape = SubResource( 1 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
 shapes/0/trigger = false
 collision/layers = 1
-collision/mask = 1
+collision/mask = 0
 collision/margin = 0.08
 script/script = ExtResource( 2 )
 

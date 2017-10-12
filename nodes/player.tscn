@@ -250,10 +250,7 @@ autoplay = ""
 
 [node name="gun" parent="." instance=ExtResource( 3 )]
 
-
-radius = 32
 transform/pos = Vector2( 20.6079, -4.69084 )
-cooldown_time = 0.25
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 
