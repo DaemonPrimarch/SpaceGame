@@ -65,6 +65,11 @@ func get_jump_decelleration():
 func get_max_jump_time():
 	return sqrt(get_jump_height()/(get_jump_decelleration().y/2))
 	
+func get_max_wall_jump_time():
+	return get_max_jump_time()
+func get_starting_wall_jump_velocity():
+	return get_jump_decelleration()*get_max_wall_jump_time()*-1
+	
 func get_starting_jump_velocity():
 	return get_jump_decelleration()*get_max_jump_time()*-1
 
@@ -72,7 +77,7 @@ func get_current_jump_velocity():
 	return get_starting_jump_velocity()+get_jump_decelleration()*time_jumping
 
 func get_current_wall_jump_velocity():
-	return get_starting_jump_velocity()+get_jump_decelleration()*time_wall_jumping
+	return get_starting_wall_jump_velocity()+get_jump_decelleration()*time_wall_jumping
 
 func get_double_jump_height():
 	return double_jump_height
@@ -105,8 +110,10 @@ func enter_state(state):
 		set_gravity_enabled(false)
 		time_jumping = 0
 		debug_state_label.set_text("REGULAR_JUMPING")
+		reset_gravity_timer()
 	elif(state == STATE.WALL_JUMPING):
 		jumped = true
+		reset_gravity_timer()
 		original_gravity_enabled = gravity_enabled
 		
 		if(is_flippedH()):
@@ -131,6 +138,7 @@ func enter_state(state):
 		double_jumped = true
 		original_gravity_enabled = gravity_enabled
 		set_gravity_enabled(false)
+		reset_gravity_timer()
 		time_double_jumping = 0
 		debug_state_label.set_text("DOUBLE_JUMPING")
 	elif(state == STATE.CLIMBING):
@@ -141,12 +149,16 @@ func enter_state(state):
 func leave_state(state):
 	if(state == STATE.REGULAR_JUMPING):
 		set_gravity_enabled(original_gravity_enabled)
+		reset_gravity_timer()
 	elif(state == STATE.WALL_JUMPING):
 		set_gravity_enabled(original_gravity_enabled)
+		reset_gravity_timer()
 	elif(state == STATE.DOUBLE_JUMPING):
 		set_gravity_enabled(original_gravity_enabled)
+		reset_gravity_timer()
 	elif(state == STATE.CLIMBING):
 		set_gravity_enabled(original_gravity_enabled)
+		reset_gravity_timer()
 
 func process_state(state, delta):
 	if(state == STATE.GROUNDED):
@@ -192,16 +204,16 @@ func process_state(state, delta):
 	elif(state == STATE.WALL_JUMPING):
 		play_or_continue_animation("jumping")
 		if(Input.is_action_pressed("jump")):
-			
-			move(Vector2(0,  get_current_wall_jump_velocity().y * delta) / 2)
-			var collision_info = move(Vector2(get_movement_speed(), 0) * wall_jump_direction * delta / 2)
-			time_wall_jumping += delta
-			
-			if(collision_info.has_collision() and collision_info.get_collider().is_in_group("terrain")):
-				set_current_state(STATE.WALL_SLIDING)
-			
-			if(time_wall_jumping >= get_max_jump_time()):
+			if(time_wall_jumping >= get_max_wall_jump_time()):
 				set_current_state(STATE.FALLING)
+			else:
+				move(get_current_wall_jump_velocity() * delta + Vector2(0,-1))
+				var collision_info = move(Vector2(get_movement_speed(), 0) * wall_jump_direction * delta)
+	
+				if(collision_info.has_collision() and collision_info.get_collider().is_in_group("terrain")):
+					set_current_state(STATE.WALL_SLIDING)
+				time_wall_jumping += delta
+			
 		else:
 			set_current_state(STATE.FALLING)
 	elif(state == STATE.DOUBLE_JUMPING):
@@ -231,6 +243,7 @@ func process_state(state, delta):
 	elif(state == STATE.FALLING):
 		play_or_continue_animation("falling")
 		
+	
 		if(Input.is_action_pressed("jump") and not has_double_jumped() and jumping_released):
 			set_current_state(STATE.DOUBLE_JUMPING)
 			jumping_released = false
@@ -247,10 +260,8 @@ func process_state(state, delta):
 					dir = 1
 					
 				var collision_info = move(Vector2(dir * get_movement_speed() * delta, 0))
-					
 				if(collision_info.has_collision() and collision_info.get_collider().is_in_group("terrain")):
 					set_current_state(STATE.WALL_SLIDING)
-					
 	elif(state == STATE.CLIMBING):
 		play_or_continue_animation("idle")
 
