@@ -233,6 +233,7 @@ func process_state(state, delta):
 		
 		if(Input.is_action_pressed("jump") and not has_double_jumped() and jumping_released):
 			set_current_state(STATE.DOUBLE_JUMPING)
+			jumping_released = false
 		else:
 			if(is_on_ground()):
 				set_current_state(STATE.GROUNDED)
@@ -286,7 +287,6 @@ func _fixed_process(delta):
 		set_current_state(STATE.CLIMBING)
 	elif(Input.is_action_pressed("set_climb_off")):
 		pass
-		
 	#if(Input.is_action_pressed("shoot")):
 		#if(new_animation == "falling"):
 		#	new_animation = "falling_weapon"
@@ -303,7 +303,7 @@ func _on_shoot_countdown_timeout():
 
 func _input(ev):
 	if(ev.is_action_pressed("jump")):
-		if(!has_jumped()):
+		if(not has_jumped()):
 			jumping_released = false
 
 	elif(ev.is_action_released("jump")):
