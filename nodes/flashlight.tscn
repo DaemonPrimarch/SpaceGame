@@ -8,6 +8,7 @@
 script/script = ExtResource( 1 )
 has_cooldown = true
 cooldown_time = 1.0
+start_on_press = true
 
 [node name="light" type="Light2D" parent="."]
 
@@ -16,7 +17,7 @@ editor_only = false
 texture = ExtResource( 2 )
 offset = Vector2( 0, 0 )
 scale = 1.0
-color = Color( 1, 1, 1, 1 )
+color = Color( 0.980469, 0.863655, 0.513214, 1 )
 energy = 1.0
 mode = 0
 range/height = 0.0

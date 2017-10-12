@@ -11,6 +11,8 @@ arrival_node_ID = "player_spawn"
 
 [node name="player" parent="." instance=ExtResource( 2 )]
 
+crawl_speed = 128
+
 [node name="gun" parent="player"]
 
 cooldown_time = 0.25

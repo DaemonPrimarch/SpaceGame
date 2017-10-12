@@ -1,7 +1,10 @@
 [gd_scene load_steps=3 format=1]
 
 [ext_resource path="res://scripts/gun.gd" type="Script" id=1]
-[ext_resource path="res://sprites/guun.png" type="Texture" id=2]
+
+[sub_resource type="CanvasItemMaterial" id=1]
+
+shader/shading_mode = 0
 
 [node name="gun" type="Node2D"]
 
@@ -11,13 +14,16 @@ cooldown_time = 0.25
 start_on_press = true
 radius = 32
 
-[node name="Sprite" type="Sprite" parent="."]
+[node name="Panel" type="Panel" parent="."]
 
-texture = ExtResource( 2 )
-vframes = 50
-hframes = 50
-modulate = Color( 0.984375, 0.984375, 0.984375, 1 )
-region = true
-region_rect = Rect2( 0, 0, 32, 8 )
+material/material = SubResource( 1 )
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 24.0
+margin/bottom = 8.0
 
 
