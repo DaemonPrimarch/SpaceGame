@@ -188,8 +188,8 @@ tracks/0/keys = {
 }
 
 [node name="player" type="KinematicBody2D" groups=[
-"warpable",
 "player",
+"warpable",
 ]]
 
 transform/pos = Vector2( 5.30737, 16.0779 )
@@ -214,6 +214,7 @@ invulnerable_animation_player = "SecondAnimationPlayer"
 jump_height = 256
 double_jump_height = 128
 climbing_speed = 256
+crawl_speed = 128
 
 [node name="sprite" type="Sprite" parent="."]
 
@@ -284,5 +285,37 @@ margin/bottom = -51.0
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
+
+[node name="standing_space_detector_right" type="RayCast2D" parent="."]
+
+transform/pos = Vector2( 20.202, -75.7576 )
+enabled = false
+cast_to = Vector2( 0, -64 )
+layer_mask = 1
+type_mask = 15
+
+[node name="crawl_space_detector_down" type="RayCast2D" parent="."]
+
+transform/pos = Vector2( 19.1919, 24.2424 )
+enabled = true
+cast_to = Vector2( 128, 0 )
+layer_mask = 1
+type_mask = 15
+
+[node name="crawl_space_detector_up" type="RayCast2D" parent="."]
+
+transform/pos = Vector2( 19.1919, -37.7576 )
+enabled = true
+cast_to = Vector2( 128, 0 )
+layer_mask = 1
+type_mask = 15
+
+[node name="standing_space_detector_left" type="RayCast2D" parent="."]
+
+transform/pos = Vector2( -32.3232, -75.7576 )
+enabled = false
+cast_to = Vector2( 0, -64 )
+layer_mask = 1
+type_mask = 15
 
 
