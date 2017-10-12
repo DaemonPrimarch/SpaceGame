@@ -67,6 +67,7 @@ func get_max_jump_time():
 	
 func get_max_wall_jump_time():
 	return get_max_jump_time()
+
 func get_starting_wall_jump_velocity():
 	return get_jump_decelleration()*get_max_wall_jump_time()*-1
 	

@@ -125,6 +125,7 @@ func set_flippedH(new):
 			if(N extends Node2D and !N.is_in_group("ignores_flip")):
 				N.set_scale(N.get_scale() * Vector2(-1, 1))
 				N.set_pos(N.get_pos() * Vector2(-1, 1))
+				N.set_rot(- N.get_rot())
 
 func apply_gravity(delta):
 	if(move(get_gravity_vector() * delta * gravity_timer).has_collision()):

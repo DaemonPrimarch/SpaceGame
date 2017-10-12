@@ -192,6 +192,7 @@ tracks/0/keys = {
 "player",
 ]]
 
+transform/pos = Vector2( 5.30737, 16.0779 )
 transform/scale = Vector2( 0.99, 0.99 )
 input/pickable = false
 shapes/0/shape = SubResource( 1 )
@@ -201,9 +202,6 @@ collision/layers = 4
 collision/mask = 3
 collision/margin = 0.08
 script/script = ExtResource( 1 )
-__meta__ = {
-"_edit_lock_": true
-}
 movement_speed = 300
 flippedH = false
 gravity_enabled = true
@@ -249,7 +247,8 @@ autoplay = ""
 
 [node name="gun" parent="." instance=ExtResource( 3 )]
 
-transform/pos = Vector2( 32.3232, -32.3232 )
+transform/pos = Vector2( 20.6079, -4.69084 )
+cooldown_time = 0.25
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 

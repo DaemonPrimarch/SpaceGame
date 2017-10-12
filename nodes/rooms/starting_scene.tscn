@@ -11,6 +11,10 @@ arrival_node_ID = "player_spawn"
 
 [node name="player" parent="." instance=ExtResource( 2 )]
 
+[node name="gun" parent="player"]
+
+cooldown_time = 0.25
+
 
 [editable path="player"]
 [editable path="player/Camera2D"]
