@@ -8,6 +8,10 @@ onready var animation_player = get_node("AnimationPlayer")
 
 onready var debug_state_label = get_node("DebugStateLabel")
 
+onready var wall_jump_timer
+
+var wall_jump_timer_running = false
+
 enum STATE {REGULAR_JUMPING, DOUBLE_JUMPING, WALL_JUMPING, WALL_SLIDING, GROUNDED, FALLING, CLIMBING, CRAWLING}
 
 var current_state = STATE.GROUNDED
@@ -37,6 +41,14 @@ export var climbing_speed = 64 * 4
 export var crawl_speed = 64 * 2
 
 func _ready():
+	wall_jump_timer = Timer.new()
+	wall_jump_timer.set_name("wall_jump_timer")
+	wall_jump_timer.set_wait_time(get_min_wall_jump_time())
+	
+	wall_jump_timer.connect("timeout", self, "_on_wall_jump_timer_timeout")
+	
+	add_child(wall_jump_timer)
+	
 	set_fixed_process(true)
 	set_process_input(true)
 	debug_state_label.set_text("GROUNDED")
@@ -74,8 +86,15 @@ func get_max_jump_time():
 func get_max_wall_jump_time():
 	return get_max_jump_time()
 
+func get_min_wall_jump_time():
+	return (get_starting_wall_jump_velocity().x/get_movement_speed() - 2*get_starting_wall_jump_velocity().y/get_gravity_vector().y)
+
+func start_wall_jump_timer():
+	wall_jump_timer.start()
+	wall_jump_timer_running = true
+
 func get_starting_wall_jump_velocity():
-	return get_jump_decelleration()*get_max_wall_jump_time()*-1
+	return Vector2(get_movement_speed() * 1.2, get_starting_jump_velocity().y / 1.5) - Vector2(0,1)
 	
 func get_starting_jump_velocity():
 	return get_jump_decelleration()*get_max_jump_time()*-1
@@ -141,6 +160,7 @@ func enter_state(state):
 		set_gravity_enabled(false)
 		time_wall_jumping = 0
 		debug_state_label.set_text("WALL_JUMPING")
+		start_wall_jump_timer()
 	elif(state == STATE.GROUNDED):
 		jumped = false
 		double_jumped = false
@@ -226,20 +246,28 @@ func process_state(state, delta):
 		else:
 			set_current_state(STATE.FALLING)
 	elif(state == STATE.WALL_JUMPING):
+		if(not wall_jump_timer_running):
+			if(Input.is_action_pressed("play_left")):
+				set_flippedH(true)
+				wall_jump_direction = -1
+			elif(Input.is_action_pressed("play_right")):
+				set_flippedH(false)
+				wall_jump_direction = 1
 		play_or_continue_animation("jumping")
 		if(Input.is_action_pressed("jump")):
 			if(time_wall_jumping >= get_max_wall_jump_time()):
 				set_current_state(STATE.FALLING)
 			else:
-				move(get_current_wall_jump_velocity() * delta + Vector2(0,-1))
-				var collision_info = move(Vector2(get_movement_speed(), 0) * wall_jump_direction * delta)
+				move(Vector2(0,get_current_wall_jump_velocity().y * delta ))
+				var collision_info = move(Vector2(get_current_wall_jump_velocity().x, 0) * wall_jump_direction * delta)
 	
 				if(collision_info.has_collision() and collision_info.get_collider().is_in_group("terrain")):
 					set_current_state(STATE.WALL_SLIDING)
 				time_wall_jumping += delta
-			
+		
 		else:
 			set_current_state(STATE.FALLING)
+
 	elif(state == STATE.DOUBLE_JUMPING):
 		play_or_continue_animation("jumping")
 		
@@ -350,6 +378,9 @@ func _fixed_process(delta):
 func _on_shoot_countdown_timeout():
 	pass
 	#shooting = false
+
+func on_wall_jump_timer_timeout():
+	wall_jump_timer_running = false
 
 func _input(ev):
 	if(ev.is_action_pressed("jump")):

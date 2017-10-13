@@ -188,8 +188,8 @@ tracks/0/keys = {
 }
 
 [node name="player" type="KinematicBody2D" groups=[
-"player",
 "warpable",
+"player",
 ]]
 
 transform/scale = Vector2( 0.99, 0.99 )
