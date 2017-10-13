@@ -31,7 +31,7 @@ margin/bottom = 8.0
 
 [node name="front" type="Position2D" parent="."]
 
-transform/pos = Vector2( 50, 0 )
+transform/pos = Vector2( 30, 0 )
 
 [node name="full_up" type="Position2D" parent="."]
 
