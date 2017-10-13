@@ -19,14 +19,13 @@ points = Vector2Array( -128, -32, -128, -33, 128, -33, 128, -32 )
 transform/pos = Vector2( 512, 320 )
 script/script = ExtResource( 1 )
 speed = 60
-moving_to_first = true
 
-[node name="first_point" type="Position2D" parent="."]
+[node name="point_1" type="Position2D" parent="."]
 
 transform/pos = Vector2( -224, -96 )
 transform/scale = Vector2( -1.1, 1 )
 
-[node name="second_point" type="Position2D" parent="."]
+[node name="point_2" type="Position2D" parent="."]
 
 transform/pos = Vector2( 224, -96 )
 
