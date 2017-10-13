@@ -47,7 +47,7 @@ func press_trigger():
 	var bullet = preload("res://nodes/bullet.tscn")
 	var instanced_bullet = bullet.instance()
 		
-	get_tree().get_root().add_child(instanced_bullet)
+	get_parent().get_parent().add_child(instanced_bullet)
 		
 	instanced_bullet.set_pos(get_current_pos().get_global_pos())
 	

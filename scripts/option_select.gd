@@ -6,12 +6,12 @@ var options = {}
 var ordered_options = []
 var displaying = false
 var highlighted_item_index = 0
+
 onready var cursor = get_node("cursor")
 
 func _ready():
 	# Called every time the node is added to the scene.
 	# Initialization here
-	set_process_input(true)
 	connect("option_selected",self, "printO")
 	
 func printO(opt):
@@ -26,12 +26,16 @@ func set_options(options):
 func get_options():
 	return options
 	
-func is_displaying():
-	return displaying
+func hide():
+	.hide()
+	set_process_input(false)
+	
+func show():
+	.show()
+	set_process_input(true)
 
 func display():
 	var i = 0
-	displaying = true
 	for option in ordered_options:
 		var selectable = Label.new()
 		
@@ -42,9 +46,7 @@ func display():
 		options[option] = selectable
 		
 		i+= 1
-func stop_displaying():
-	pass
-
+		
 func move_cursor_to(index):
 	index %= options.size()
 	
@@ -53,13 +55,12 @@ func move_cursor_to(index):
 	highlighted_item_index = index
 
 func _input( ev ):
-	if(is_displaying()):
-		if(ev.is_action_pressed("ui_up")):
-			move_cursor_to(highlighted_item_index - 1)
-		if(ev.is_action_pressed("ui_down")):
-			move_cursor_to(highlighted_item_index + 1)
-		if(ev.is_action_pressed("ui_accept")):
-			emit_signal("option_selected", ordered_options[highlighted_item_index])
+	if(ev.is_action_pressed("ui_up")):
+		move_cursor_to(highlighted_item_index - 1)
+	if(ev.is_action_pressed("ui_down")):
+		move_cursor_to(highlighted_item_index + 1)
+	if(ev.is_action_pressed("ui_accept")):
+		emit_signal("option_selected", ordered_options[highlighted_item_index])
 		
 
 	
