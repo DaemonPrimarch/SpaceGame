@@ -97,6 +97,7 @@ func get_min_wall_jump_time():
 	var tmin = -get_starting_wall_jump_velocity().y/((get_gravity_vector().y/2)*(1+(get_starting_wall_jump_velocity().x/get_movement_speed())*(get_starting_wall_jump_velocity().x/get_movement_speed())))
 	if(tmin > get_max_wall_jump_time()):
 		#rounding error fixer
+		print("fall_wall")
 		return 0.25 + sqrt(-get_starting_wall_jump_velocity().y*get_max_wall_jump_time()/((get_gravity_vector().y/2)*(1+(get_starting_wall_jump_velocity().x/get_movement_speed())*(get_starting_wall_jump_velocity().x/get_movement_speed()))))
 	else:
 		return tmin
@@ -161,7 +162,6 @@ func enter_state(state):
 		jumped = true
 		reset_gravity_timer()
 		original_gravity_enabled = gravity_enabled
-		print(get_min_wall_jump_time())
 		
 		if(is_flippedH()):
 			wall_jump_direction = 1
@@ -259,13 +259,6 @@ func process_state(state, delta):
 		else:
 			set_current_state(STATE.FALLING)
 	elif(state == STATE.WALL_JUMPING):
-		if(not wall_jump_timer_running):
-			if(Input.is_action_pressed("play_left")):
-				set_flippedH(true)
-				wall_jump_direction = -1
-			elif(Input.is_action_pressed("play_right")):
-				set_flippedH(false)
-				wall_jump_direction = 1
 		play_or_continue_animation("jumping")
 		if(Input.is_action_pressed("jump") or wall_jump_timer_running):
 			if(time_wall_jumping >= get_max_wall_jump_time()):
@@ -383,7 +376,6 @@ func _fixed_process(delta):
 		set_current_state(STATE.FALLING)
 
 func _on_wall_jump_timer_timeout():
-	print("stop")
 	wall_jump_timer_running = false
 	wall_jump_timer.stop()
 
