@@ -44,17 +44,4 @@ __meta__ = {
 
 transform/pos = Vector2( 1690, 760 )
 
-[node name="first_point" parent="moving_platform"]
 
-transform/pos = Vector2( 0, -160 )
-
-[node name="second_point" parent="moving_platform"]
-
-transform/pos = Vector2( -270, -30 )
-
-[node name="platform" parent="moving_platform"]
-
-transform/pos = Vector2( 0, -90 )
-
-
-[editable path="moving_platform"]

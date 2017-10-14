@@ -35,6 +35,8 @@ var first_frame_crawling = false
 
 var wall_jump_direction = 0
 
+var jump_just_pressed = false
+
 export var jump_height = 64 * 4
 export var double_jump_height = 64 * 2
 export var climbing_speed = 64 * 4
@@ -135,6 +137,9 @@ func get_current_double_jump_velocity():
 
 func get_current_state():
 	return current_state
+
+func is_jump_just_pressed():
+	return jump_just_pressed
 
 func set_current_state(state):
 	if(state != get_current_state()):
@@ -310,9 +315,8 @@ func process_state(state, delta):
 			if(collision_info.has_collision() and collision_info.get_collider().is_in_group("terrain")):
 				set_current_state(STATE.WALL_SLIDING)
 		else:
-			if(Input.is_action_pressed("jump") and not has_double_jumped() and jumping_released):
+			if(not has_double_jumped() and is_jump_just_pressed()):
 				set_current_state(STATE.DOUBLE_JUMPING)
-				jumping_released = false
 			else:
 				if(is_on_ground()):
 					set_current_state(STATE.GROUNDED)
@@ -341,7 +345,7 @@ func process_state(state, delta):
 			move(Vector2(get_climbing_speed() * delta, 0))
 	elif(state == STATE.WALL_SLIDING):
 		play_or_continue_animation("idle")
-		if(Input.is_action_pressed("jump")):
+		if(is_jump_just_pressed()):
 			set_current_state(STATE.WALL_JUMPING)
 		else:
 			if(is_flippedH()):
@@ -372,6 +376,8 @@ func process_state(state, delta):
 		
 		first_frame_crawling = false
 		
+	jump_just_pressed = false
+		
 func _fixed_process(delta):
 	process_state(get_current_state(), delta)
 	
@@ -386,8 +392,4 @@ func _on_wall_jump_timer_timeout():
 
 func _input(ev):
 	if(ev.is_action_pressed("jump")):
-		if(not has_jumped()):
-			jumping_released = false
-
-	elif(ev.is_action_released("jump")):
-		jumping_released = true
+		jump_just_pressed = true
