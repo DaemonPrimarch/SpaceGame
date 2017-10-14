@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=1]
+[gd_scene load_steps=5 format=1]
 
 [ext_resource path="res://nodes/player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://sprites/spritesheets/metroid_tiles.tres" type="TileSet" id=2]
+[ext_resource path="res://nodes/shootable_block.tscn" type="PackedScene" id=3]
+[ext_resource path="res://nodes/moving_platform.tscn" type="PackedScene" id=4]
 
 [node name="Node2D" type="Node2D"]
 
@@ -34,4 +36,21 @@ __meta__ = {
 "_edit_lock_": true
 }
 
+[node name="shootable_block" parent="." instance=ExtResource( 3 )]
 
+transform/pos = Vector2( 672, 544 )
+
+[node name="moving_platform" parent="." instance=ExtResource( 4 )]
+
+transform/pos = Vector2( 352, 352 )
+
+[node name="point_1" parent="moving_platform"]
+
+transform/pos = Vector2( 0, 128 )
+
+[node name="point_2" parent="moving_platform"]
+
+transform/pos = Vector2( 0, -64 )
+
+
+[editable path="moving_platform"]

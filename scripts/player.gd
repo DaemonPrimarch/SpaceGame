@@ -258,7 +258,7 @@ func process_state(state, delta):
 			
 			if(vertical_collision_info.has_collision()):
 				set_current_state(STATE.FALLING)
-			if(horizontal_collision_info.has_collision() and horizontal_collision_info.get_collider().is_in_group("terrain")):
+			elif(horizontal_collision_info.has_collision() and horizontal_collision_info.get_collider().is_in_group("terrain")):
 				set_current_state(STATE.WALL_SLIDING)
 			
 			if(time_jumping >= get_max_jump_time()):
@@ -275,7 +275,7 @@ func process_state(state, delta):
 				var horizontal_collision_info = move(Vector2(get_current_wall_jump_velocity().x, 0) * wall_jump_direction * delta)
 				if(vertical_collision_info.has_collision()):
 					set_current_state(STATE.FALLING)
-				if(horizontal_collision_info.has_collision() and horizontal_collision_info.get_collider().is_in_group("terrain")):
+				elif(horizontal_collision_info.has_collision() and horizontal_collision_info.get_collider().is_in_group("terrain")):
 					set_current_state(STATE.WALL_SLIDING)
 				time_wall_jumping += delta
 		

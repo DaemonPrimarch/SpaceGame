@@ -16,7 +16,7 @@ func on_enter(body):
 		original_scene.queue_free()
 		for node in loaded_scene.get_tree().get_nodes_in_group("warp_arrival"):
 			if(node.get_name() == arrival_node_ID):
-				body.set_global_pos(node.get_global_pos())
+				body.set_pos(node.get_pos())
 				body.set_is_warping(false)
 
 func _ready():

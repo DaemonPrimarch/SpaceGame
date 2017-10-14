@@ -16,25 +16,23 @@ points = Vector2Array( -128, -32, -128, -33, 128, -33, 128, -32 )
 
 [node name="moving_platform" type="Node2D"]
 
-transform/pos = Vector2( 512, 320 )
 script/script = ExtResource( 1 )
 speed = 60
 
 [node name="point_1" type="Position2D" parent="."]
 
-transform/pos = Vector2( -224, -96 )
+transform/pos = Vector2( -250, 0 )
 transform/scale = Vector2( -1.1, 1 )
 
 [node name="point_2" type="Position2D" parent="."]
 
-transform/pos = Vector2( 224, -96 )
+transform/pos = Vector2( 250, 0 )
 
 [node name="platform" type="KinematicBody2D" parent="." groups=[
 "terrain",
 "no_crawl",
 ]]
 
-transform/pos = Vector2( 0, -96 )
 input/pickable = false
 shapes/0/shape = SubResource( 1 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )

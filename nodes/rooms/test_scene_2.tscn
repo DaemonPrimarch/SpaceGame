@@ -9,7 +9,7 @@
 
 [node name="left_door" parent="." instance=ExtResource( 1 )]
 
-transform/pos = Vector2( 96, 544 )
+transform/pos = Vector2( 96, 576 )
 
 [node name="WarpTile" parent="." instance=ExtResource( 2 )]
 
@@ -42,6 +42,6 @@ __meta__ = {
 
 [node name="moving_platform" parent="." instance=ExtResource( 4 )]
 
-transform/pos = Vector2( 1690, 760 )
+transform/pos = Vector2( 1705.07, 660.516 )
 
 
