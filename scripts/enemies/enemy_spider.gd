@@ -7,7 +7,6 @@ onready var player_detector = get_node("player_detector")
 onready var cobweb_timer = get_node("cobweb_timer")
 var front_sighted = true
 
-
 func _ready():
 	# Called every time the node is added to the scene.
 	# Initialization here

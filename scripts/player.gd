@@ -381,19 +381,6 @@ func _fixed_process(delta):
 		set_current_state(STATE.CLIMBING)
 	elif(Input.is_action_pressed("set_climb_off")):
 		set_current_state(STATE.FALLING)
-	#if(Input.is_action_pressed("shoot")):
-		#if(new_animation == "falling"):
-		#	new_animation = "falling_weapon"
-		#elif(new_animation == "jumping"):
-		#	new_animation = "jumping_weapon"
-		#elif(new_animation == "run"):
-		#	new_animation = "run_weapon"
-		#elif(new_animation == "idle"):
-		#	new_animation = "standing_weapon_ready"
-			
-func _on_shoot_countdown_timeout():
-	pass
-	#shooting = false
 
 func _on_wall_jump_timer_timeout():
 	print("stop")

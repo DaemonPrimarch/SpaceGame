@@ -1,25 +1,46 @@
 extends Node2D
 
 export var speed = 60
-export var moving_to_first = true setget set_going_to_first, is_going_to_first
 
 onready var platform = get_node("platform")
-onready var first_point = get_node("first_point")
-onready var second_point = get_node("second_point")
 
+var next_point_number = 2
+var current_point
+var next_point
 var direction
+var reversing = 1
+
 var objects_on_platform = {}
 
 func _ready():
 	# Called every time the node is added to the scene.
-	direction = (first_point.get_pos() - second_point.get_pos()).normalized()
+	
+	set_current_point(get_node(get_point_name(1)))
+	set_next_point(get_node(get_point_name(2)))
+
 	set_fixed_process(true)
 
-func set_going_to_first(val):
-	moving_to_first = val
+func set_current_point(point):
+	current_point = point
 
-func is_going_to_first():
-	return moving_to_first
+func set_next_point(point):
+	set_direction((point.get_pos() - get_current_point().get_pos()).normalized())
+	next_point = point
+
+func get_direction():
+	return direction
+	
+func set_direction(new):
+	direction = new
+	
+func get_current_point():
+	return current_point
+
+func get_next_point():
+	return next_point
+
+func get_point_name(number):
+	return "point_" + str(number)
 
 func set_object_on_platform(obj, val):
 	if(val):
@@ -34,25 +55,25 @@ func is_on_platform(obj):
 func get_speed():
 	return speed
 
-func _fixed_process(delta):
-	var projected_position_first = direction.dot(first_point.get_pos())
-	var projected_position_second = direction.dot(second_point.get_pos())
-	var projected_position_platform = direction.dot(platform.get_pos())
-	
-	
-	var dir = 1
-	if(not is_going_to_first()):
-		dir = -1
-	
+func _fixed_process(delta):	
 	for obj in objects_on_platform:
-		obj.move_no_collision(direction*get_speed()*dir*delta)
+		obj.move_no_collision(get_direction()*get_speed()*delta)
 	
-	platform.move_no_collision(direction*get_speed()*dir*delta)
+	platform.move_no_collision(get_direction()*get_speed()*delta)
+	
+	var projected_position_next = get_direction().dot(get_next_point().get_pos())
+	var projected_position_platform = get_direction().dot(platform.get_pos())
+	
 
-	if(is_going_to_first() and projected_position_platform >= projected_position_first):
-		set_going_to_first(false)
-	elif(projected_position_platform <= projected_position_second):
-		set_going_to_first(true)
+	if(projected_position_platform >= projected_position_next):
+		set_current_point(get_next_point())
+		
+		if(!has_node(get_point_name(next_point_number + reversing))):
+			reversing = -reversing
+		next_point_number += reversing
+		
+		set_next_point(get_node(get_point_name(next_point_number)))
+		
 		
 func _on_Area2D_body_enter( body ):
 	if(body.is_in_group("player")):
