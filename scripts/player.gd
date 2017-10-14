@@ -238,7 +238,7 @@ func process_state(state, delta):
 	elif(state == STATE.REGULAR_JUMPING):
 		play_or_continue_animation("jumping")
 		if(Input.is_action_pressed("jump")):
-			move(get_current_jump_velocity()*delta)
+			var vertical_collision_info = move(get_current_jump_velocity()*delta)
 			time_jumping += delta
 			
 			var dir = 0
@@ -249,9 +249,11 @@ func process_state(state, delta):
 				set_flippedH(false)
 				dir = 1
 			
-			var collision_info = move(Vector2(dir * get_movement_speed() * delta, 0))
+			var horizontal_collision_info = move(Vector2(dir * get_movement_speed() * delta, 0))
 			
-			if(collision_info.has_collision() and collision_info.get_collider().is_in_group("terrain")):
+			if(vertical_collision_info.has_collision()):
+				set_current_state(STATE.FALLING)
+			if(horizontal_collision_info.has_collision() and horizontal_collision_info.get_collider().is_in_group("terrain")):
 				set_current_state(STATE.WALL_SLIDING)
 			
 			if(time_jumping >= get_max_jump_time()):
@@ -264,10 +266,11 @@ func process_state(state, delta):
 			if(time_wall_jumping >= get_max_wall_jump_time()):
 				set_current_state(STATE.FALLING)
 			else:
-				move(Vector2(0,get_current_wall_jump_velocity().y * delta ))
-				var collision_info = move(Vector2(get_current_wall_jump_velocity().x, 0) * wall_jump_direction * delta)
-	
-				if(collision_info.has_collision() and collision_info.get_collider().is_in_group("terrain")):
+				var vertical_collision_info = move(Vector2(0,get_current_wall_jump_velocity().y * delta ))
+				var horizontal_collision_info = move(Vector2(get_current_wall_jump_velocity().x, 0) * wall_jump_direction * delta)
+				if(vertical_collision_info.has_collision()):
+					set_current_state(STATE.FALLING)
+				if(horizontal_collision_info.has_collision() and horizontal_collision_info.get_collider().is_in_group("terrain")):
 					set_current_state(STATE.WALL_SLIDING)
 				time_wall_jumping += delta
 		
@@ -278,7 +281,7 @@ func process_state(state, delta):
 		play_or_continue_animation("jumping")
 		
 		if(Input.is_action_pressed("jump")):
-			move(get_current_double_jump_velocity()*delta)
+			var vertical_collision_info = move(get_current_double_jump_velocity()*delta)
 			time_double_jumping += delta
 			
 			var dir = 0
@@ -289,9 +292,11 @@ func process_state(state, delta):
 				set_flippedH(false)
 				dir = 1
 			
-			var collision_info = move(Vector2(dir * get_movement_speed() * delta, 0))
+			var horizontal_collision_info = move(Vector2(dir * get_movement_speed() * delta, 0))
 			
-			if(collision_info.has_collision() and collision_info.get_collider().is_in_group("terrain")):
+			if(vertical_collision_info.has_collision()):
+				set_current_state(STATE.FALLING)
+			if(horizontal_collision_info.has_collision() and horizontal_collision_info.get_collider().is_in_group("terrain")):
 				set_current_state(STATE.WALL_SLIDING)
 			
 			if(time_double_jumping >= get_max_double_jump_time()):
