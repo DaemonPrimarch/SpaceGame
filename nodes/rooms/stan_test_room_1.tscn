@@ -41,6 +41,8 @@ __meta__ = {
 transform/pos = Vector2( 64, 608 )
 max_HP = 20
 hp = 20
+wall_jump_height = 384
+wall_jump_length = 128
 
 [node name="moving_platform" parent="." instance=ExtResource( 3 )]
 

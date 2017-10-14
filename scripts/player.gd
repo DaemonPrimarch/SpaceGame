@@ -39,7 +39,8 @@ export var jump_height = 64 * 4
 export var double_jump_height = 64 * 2
 export var climbing_speed = 64 * 4
 export var crawl_speed = 64 * 2
-
+export var wall_jump_height = 64 * 2
+export var wall_jump_length = 64 * 4
 func _ready():
 	wall_jump_timer = Timer.new()
 	wall_jump_timer.set_name("wall_jump_timer")
@@ -67,6 +68,12 @@ func play_or_continue_animation(animation):
 func get_climbing_speed():
 	return climbing_speed
 
+func get_wall_jump_length():
+	return wall_jump_length
+
+func get_wall_jump_height():
+	return wall_jump_height
+
 func has_jumped():
 	return jumped
 
@@ -84,17 +91,22 @@ func get_max_jump_time():
 	return sqrt(get_jump_height()/(get_jump_decelleration().y/2))
 	
 func get_max_wall_jump_time():
-	return get_max_jump_time()
+	return sqrt(get_wall_jump_height()/(get_jump_decelleration().y/2))
 
 func get_min_wall_jump_time():
-	return (get_starting_wall_jump_velocity().x/get_movement_speed() - 2*get_starting_wall_jump_velocity().y/get_gravity_vector().y)
+	var tmin = -get_starting_wall_jump_velocity().y/((get_gravity_vector().y/2)*(1+(get_starting_wall_jump_velocity().x/get_movement_speed())*(get_starting_wall_jump_velocity().x/get_movement_speed())))
+	if(tmin > get_max_wall_jump_time()):
+		#rounding error fixer
+		return 0.25 + sqrt(-get_starting_wall_jump_velocity().y*get_max_wall_jump_time()/((get_gravity_vector().y/2)*(1+(get_starting_wall_jump_velocity().x/get_movement_speed())*(get_starting_wall_jump_velocity().x/get_movement_speed()))))
+	else:
+		return tmin
 
 func start_wall_jump_timer():
 	wall_jump_timer.start()
 	wall_jump_timer_running = true
 
 func get_starting_wall_jump_velocity():
-	return Vector2(get_movement_speed() * 1.2, get_starting_jump_velocity().y / 1.5) - Vector2(0,1)
+	return Vector2(get_wall_jump_length()/get_max_wall_jump_time(), -get_wall_jump_height()/get_max_wall_jump_time() - get_max_wall_jump_time()*get_gravity_vector().y/2)
 	
 func get_starting_jump_velocity():
 	return get_jump_decelleration()*get_max_jump_time()*-1
@@ -149,6 +161,7 @@ func enter_state(state):
 		jumped = true
 		reset_gravity_timer()
 		original_gravity_enabled = gravity_enabled
+		print(get_min_wall_jump_time())
 		
 		if(is_flippedH()):
 			wall_jump_direction = 1
@@ -254,7 +267,7 @@ func process_state(state, delta):
 				set_flippedH(false)
 				wall_jump_direction = 1
 		play_or_continue_animation("jumping")
-		if(Input.is_action_pressed("jump")):
+		if(Input.is_action_pressed("jump") or wall_jump_timer_running):
 			if(time_wall_jumping >= get_max_wall_jump_time()):
 				set_current_state(STATE.FALLING)
 			else:
@@ -294,26 +307,29 @@ func process_state(state, delta):
 			set_current_state(STATE.FALLING)
 	elif(state == STATE.FALLING):
 		play_or_continue_animation("falling")
-		
-	
-		if(Input.is_action_pressed("jump") and not has_double_jumped() and jumping_released):
-			set_current_state(STATE.DOUBLE_JUMPING)
-			jumping_released = false
+		if(wall_jump_timer_running):
+			var collision_info = move(Vector2(wall_jump_direction * get_starting_wall_jump_velocity().x * delta, 0))
+			if(collision_info.has_collision() and collision_info.get_collider().is_in_group("terrain")):
+				set_current_state(STATE.WALL_SLIDING)
 		else:
-			if(is_on_ground()):
-				set_current_state(STATE.GROUNDED)
+			if(Input.is_action_pressed("jump") and not has_double_jumped() and jumping_released):
+				set_current_state(STATE.DOUBLE_JUMPING)
+				jumping_released = false
 			else:
-				var dir = 0
-				if(Input.is_action_pressed("play_left")):
-					set_flippedH(true)
-					dir = -1
-				elif(Input.is_action_pressed("play_right")):
-					set_flippedH(false)
-					dir = 1
-					
-				var collision_info = move(Vector2(dir * get_movement_speed() * delta, 0))
-				if(collision_info.has_collision() and collision_info.get_collider().is_in_group("terrain")):
-					set_current_state(STATE.WALL_SLIDING)
+				if(is_on_ground()):
+					set_current_state(STATE.GROUNDED)
+				else:
+					var dir = 0
+					if(Input.is_action_pressed("play_left")):
+						set_flippedH(true)
+						dir = -1
+					elif(Input.is_action_pressed("play_right")):
+						set_flippedH(false)
+						dir = 1
+						
+					var collision_info = move(Vector2(dir * get_movement_speed() * delta, 0))
+					if(collision_info.has_collision() and collision_info.get_collider().is_in_group("terrain")):
+						set_current_state(STATE.WALL_SLIDING)
 	elif(state == STATE.CLIMBING):
 		play_or_continue_animation("idle")
 
@@ -379,8 +395,10 @@ func _on_shoot_countdown_timeout():
 	pass
 	#shooting = false
 
-func on_wall_jump_timer_timeout():
+func _on_wall_jump_timer_timeout():
+	print("stop")
 	wall_jump_timer_running = false
+	wall_jump_timer.stop()
 
 func _input(ev):
 	if(ev.is_action_pressed("jump")):

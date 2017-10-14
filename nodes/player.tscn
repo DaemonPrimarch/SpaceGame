@@ -217,6 +217,8 @@ jump_height = 256
 double_jump_height = 128
 climbing_speed = 256
 crawl_speed = 128
+wall_jump_height = 128
+wall_jump_length = 256
 
 [node name="sprite" type="Sprite" parent="."]
 
