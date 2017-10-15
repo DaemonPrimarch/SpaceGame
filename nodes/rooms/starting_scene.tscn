@@ -13,4 +13,3 @@ arrival_node_ID = "player_spawn"
 
 
 [editable path="player"]
-[editable path="player/Camera2D"]
