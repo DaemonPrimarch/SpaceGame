@@ -186,10 +186,7 @@ tracks/0/keys = {
 "values": [ true, false, true ]
 }
 
-[node name="playable_character" type="KinematicBody2D" groups=[
-"player",
-"warpable",
-]]
+[node name="playable_character" type="KinematicBody2D"]
 
 transform/scale = Vector2( 0.99, 0.99 )
 input/pickable = false
