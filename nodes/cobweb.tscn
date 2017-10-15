@@ -8,7 +8,7 @@
 custom_solver_bias = 0.0
 extents = Vector2( 32, 32 )
 
-[node name="Area2D" type="Area2D"]
+[node name="cobweb" type="Area2D"]
 
 input/pickable = true
 shapes/0/shape = SubResource( 1 )
@@ -40,8 +40,17 @@ __meta__ = {
 "_edit_lock_": true
 }
 
+[node name="cobweb_timer" type="Timer" parent="."]
+
+process_mode = 1
+wait_time = 25.0
+one_shot = false
+autostart = true
+
 [connection signal="body_enter" from="." to="." method="_on_Area2D_body_enter"]
 
 [connection signal="body_exit" from="." to="." method="_on_Area2D_body_exit"]
+
+[connection signal="timeout" from="cobweb_timer" to="." method="_on_cobweb_timer_timeout"]
 
 

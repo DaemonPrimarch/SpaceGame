@@ -1,17 +1,26 @@
 extends "res://scripts/enemies/enemy.gd"
 
+signal on_cobweb_enter
+signal on_cobweb_leave
+
 # class member variables go here, for example:
 onready var back_ground_detector = get_node("back_ground_detector")
 onready var front_ground_detector = get_node("front_ground_detector")
 onready var player_detector = get_node("player_detector")
 onready var cobweb_timer = get_node("cobweb_timer")
 var front_sighted = true
+var nb_of_cobweb = 0
+
+export var does_fall = true
 
 func _ready():
 	# Called every time the node is added to the scene.
 	# Initialization here
 	connect("collision",self,"on_collision")
+	connect("on_cobweb_enter",self,"on_cobweb_enter")
+	connect("on_cobweb_leave",self,"on_cobweb_leave")
 	set_fixed_process(true)
+	cobweb_timer.set_wait_time(rand_range(1,11))
 	cobweb_timer.start()
 
 func flip_up():
@@ -20,7 +29,11 @@ func flip_up():
 func flip_down():
 	rotate(-PI/2)
 
+func get_nb_of_cobwebs():
+	return nb_of_cobweb
 
+func set_nb_of_cobwebs(value):
+	nb_of_cobweb = value
 
 func get_distance_to_nearest_player():
 	var players = get_tree().get_nodes_in_group("player")
@@ -74,10 +87,16 @@ func _fixed_process(delta):
 		
 		move(Vector2(cos(get_rot()),-sin(get_rot()))*get_movement_speed()*delta)
 
+func on_cobweb_enter(web):
+	set_nb_of_cobwebs(get_nb_of_cobwebs()+1)
 
+func on_cobweb_leave(web):
+	set_nb_of_cobwebs(get_nb_of_cobwebs()-1)
 
 func _on_cobweb_timer_timeout():
-	var cobweb = load("res://nodes/cobweb.tscn").instance()
-	get_parent().add_child(cobweb)
-	cobweb.set_pos(get_pos())
-	cobweb_timer.start()
+	if(get_nb_of_cobwebs() <= 0):
+		var cobweb = load("res://nodes/cobweb.tscn").instance()
+		get_parent().add_child(cobweb)
+		cobweb.set_pos(get_pos())
+		cobweb_timer.set_wait_time(rand_range(1,10))
+		cobweb_timer.start()
