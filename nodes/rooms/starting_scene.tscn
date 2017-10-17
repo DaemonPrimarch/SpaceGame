@@ -11,17 +11,9 @@ arrival_node_ID = "player_spawn"
 
 [node name="player" parent="." instance=ExtResource( 2 )]
 
-[node name="gun" parent="player"]
-
-transform/pos = Vector2( -3.0303, -27.2727 )
-
-[node name="countdown_timer" type="Timer" parent="player/gun"]
-
-process_mode = 1
-wait_time = 1.0
-one_shot = false
-autostart = false
+cn_jump = true
+cn_double_jump = false
+cn_wall_jump = true
 
 
 [editable path="player"]
-[editable path="player/gun"]

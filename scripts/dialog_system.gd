@@ -6,6 +6,9 @@ var selection_box
 var current_element
 
 var finished = false
+var playing = false
+
+var dialog_queue = []
 
 func _ready():
 	regular_box = preload("res://nodes/dialog_box.tscn").instance()
@@ -49,6 +52,9 @@ func on_finished_displaying():
 	
 	advance_tree()
 
+func is_playing():
+	return playing
+
 func setup():
 	GUI.get_layer().add_child(regular_box)
 	regular_box.set_pos(Vector2(0,600))
@@ -61,12 +67,15 @@ func setup():
 	var choice = ChoiceElement.new("Do you accept it?", ["Yes", "No"])
 	var branch = BranchElement.new(choice, "Yes", right, wrong)
 	var first = create_linear_tree([first_of_first, "It is inevitable,", choice, branch])
-	set_current_element(first)
-	
-	display_current_element()
+	play_dialog(first)
 
-func start_tree(tree):
-	set_current_element(tree)
+func play_dialog(dialog):
+	if(is_playing()):
+		dialog_queue.push_back(dialog)
+	else:
+		set_current_element(dialog)
+		playing = true
+		display_current_element()
 
 func get_current_element():
 	return current_element
@@ -75,12 +84,17 @@ func set_current_element(element):
 	current_element = element
 
 func advance_tree():
-	if(not get_current_element().is_last()):	
+	if(not get_current_element().is_last()):
 		set_current_element(get_current_element().get_next())
 		
 		display_current_element()
-		
-
+	else:
+		if(dialog_queue.size() > 0):
+			set_current_element(dialog_queue[0])
+			dialog_queue.pop_front()
+			display_current_element()
+		else:
+			playing = false
 func display_current_element():
 	regular_box.show()
 	regular_box.set_total_text(get_current_element().get_text())
@@ -95,10 +109,6 @@ func display_current_element():
 		regular_box.connect("finished_displaying", self, "on_finished_displaying")
 		
 	regular_box.display()
-	
-func clear(empt = null):
-	selection_box.hide()
-	regular_box.hide()
 
 class DialogElement:
 	var option

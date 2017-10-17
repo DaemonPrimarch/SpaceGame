@@ -181,7 +181,7 @@ func process_state(state, delta):
 	elif(state == STATE.FALLING):
 		play_or_continue_animation("falling")
 
-		if(not has_double_jumped() and is_jump_just_pressed()):
+		if(not has_double_jumped() and is_jump_just_pressed() and can_double_jump()):
 			set_current_state(STATE.DOUBLE_JUMPING)
 		else:
 			if(is_on_ground()):

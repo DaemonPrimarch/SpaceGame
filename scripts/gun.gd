@@ -1,6 +1,6 @@
 extends "weapon.gd"
 
-var bullet_speed = 1500 setget set_bullet_speed,get_bullet_speed
+export var bullet_speed = 1500 setget set_bullet_speed,get_bullet_speed
 var bullet_count = 0
 
 func get_bullet_speed():

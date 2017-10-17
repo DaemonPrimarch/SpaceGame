@@ -10,6 +10,11 @@ shader/shading_mode = 0
 [node name="gun" instance=ExtResource( 1 )]
 
 script/script = ExtResource( 2 )
+bullet_speed = 1500
+
+[node name="cooldown_timer" parent="."]
+
+wait_time = 0.1
 
 [node name="barrel" type="Node2D" parent="."]
 

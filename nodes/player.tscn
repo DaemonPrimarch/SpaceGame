@@ -5,8 +5,8 @@
 [ext_resource path="res://nodes/camera.tscn" type="PackedScene" id=3]
 
 [node name="player" groups=[
-"warpable",
 "player",
+"warpable",
 "tracked",
 ] instance=ExtResource( 1 )]
 
@@ -14,6 +14,9 @@ script/script = ExtResource( 2 )
 max_HP = 10
 hp = 10
 has_invulnarable_animation = false
+cn_jump = true
+cn_double_jump = true
+cn_wall_jump = true
 
 [node name="Camera2D" parent="." instance=ExtResource( 3 )]
 

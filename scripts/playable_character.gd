@@ -16,6 +16,11 @@ var jumped = false
 var double_jumped = false
 var wall_jumped = false
 
+#cn = can
+export var cn_jump = true
+export var cn_double_jump = true
+export var cn_wall_jump = true
+
 var time_jumping = 0
 var time_double_jumping = 0
 var time_wall_jumping = 0
@@ -48,6 +53,12 @@ func get_climbing_speed():
 
 #REGULAR JUMP HELPER FUNCTIONS:
 
+func set_can_jump(value):
+	cn_jump = value
+
+func can_jump():
+	return cn_jump
+
 func set_jumped(value):
 	jumped = value
 
@@ -78,6 +89,12 @@ func get_time_jumping():
 
 #DOUBLE JUMP HELPER FUNCTIONS:
 
+func set_can_double_jump(value):
+	cn_double_jump = value
+
+func can_double_jump():
+	return cn_double_jump
+
 func set_double_jumped(value):
 	double_jumped = value
 
@@ -103,6 +120,12 @@ func get_time_double_jumping():
 	return time_double_jumping
 
 #WALL JUMPING HELPER FUNCTIONS:
+	
+func set_can_wall_jump(value):
+	cn_wall_jump = value
+	
+func can_wall_jump():
+	return cn_wall_jump	
 	
 func set_wall_jumped(value):
 	wall_jumped = value
