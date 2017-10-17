@@ -79,7 +79,7 @@ func process_state(state, delta):
 				set_flippedH(false)
 				
 		var vertical_collision_info = move(get_current_jump_velocity(get_time_jumping())*delta)
-		time_jumping += delta
+		set_time_jumping(get_time_jumping() + delta)
 			
 		var horizontal_collision_info = move(Vector2(dir * get_movement_speed() * delta, 0))
 			
@@ -89,7 +89,7 @@ func process_state(state, delta):
 			#set_current_state(STATE.WALL_SLIDING)
 			pass
 			
-		if(time_jumping >= get_max_jump_time()):
+		if(get_time_jumping() >= get_max_jump_time()):
 			set_current_state(STATE.FALLING)
 	elif(state == STATE.FALLING):
 		label.set_text("FALLING")
@@ -111,7 +111,7 @@ func process_state(state, delta):
 		play_or_continue_animation("jumping")
 		
 		var vertical_collision_info = move(get_current_double_jump_velocity(get_time_double_jumping())*delta)
-		time_double_jumping += delta
+		set_time_double_jumping(get_time_double_jumping() + delta)
 			
 		var dir = 0
 		if(is_tracking_player()):
@@ -130,7 +130,7 @@ func process_state(state, delta):
 			#set_current_state(STATE.WALL_SLIDING)
 			pass
 			
-		if(time_double_jumping >= get_max_double_jump_time()):
+		if(get_time_double_jumping() >= get_max_double_jump_time()):
 			set_current_state(STATE.FALLING)
 			
 			

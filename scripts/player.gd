@@ -16,10 +16,10 @@ func is_jump_just_pressed():
 
 func enter_state(state):
 	if(state == STATE.REGULAR_JUMPING):
-		jumped = true
 		original_gravity_enabled = gravity_enabled
+		set_jumped(true)
 		set_gravity_enabled(false)
-		time_jumping = 0
+		set_time_jumping(0)
 		debug_state_label.set_text("REGULAR_JUMPING")
 		reset_gravity_timer()
 	elif(state == STATE.CRAWLING):
@@ -33,30 +33,29 @@ func enter_state(state):
 	elif(state == STATE.CROUCHING):
 		pass
 	elif(state == STATE.WALL_JUMPING):
-		jumped = true
+		set_jumped(true)
 		reset_gravity_timer()
 		original_gravity_enabled = gravity_enabled
-			
 		set_flippedH(not is_flippedH())
-			
 		set_gravity_enabled(false)
-		time_wall_jumping = 0
+		set_time_wall_jumping(0)
 		debug_state_label.set_text("WALL_JUMPING")
 		wall_jump_timer.start()
 	elif(state == STATE.GROUNDED):
-		jumped = false
-		double_jumped = false
+		set_jumped(false)
+		set_double_jumped(false)
+		set_wall_jumped(false)
 		debug_state_label.set_text("GROUNDED")
 	elif(state == STATE.FALLING):
 		debug_state_label.set_text("FALLING")
 	elif(state == STATE.WALL_SLIDING):
 		debug_state_label.set_text("WALL_SLIDING")
 	elif(state == STATE.DOUBLE_JUMPING):
-		double_jumped = true
+		set_double_jumped(true)
 		original_gravity_enabled = gravity_enabled
 		set_gravity_enabled(false)
 		reset_gravity_timer()
-		time_double_jumping = 0
+		set_time_double_jumping(0)
 		debug_state_label.set_text("DOUBLE_JUMPING")
 	elif(state == STATE.CLIMBING):
 		original_gravity_enabled = gravity_enabled
@@ -108,7 +107,7 @@ func process_state(state, delta):
 		play_or_continue_animation("jumping")
 		if(Input.is_action_pressed("jump")):
 			var vertical_collision_info = move(get_current_jump_velocity(get_time_jumping())*delta)
-			time_jumping += delta
+			set_time_jumping(get_time_jumping() + delta)
 			
 			var dir = 0
 			if(Input.is_action_pressed("play_left")):
@@ -132,7 +131,7 @@ func process_state(state, delta):
 	elif(state == STATE.WALL_JUMPING):
 		play_or_continue_animation("jumping")
 		if(Input.is_action_pressed("jump") or wall_jump_timer.get_time_left() > 0):
-			if(time_wall_jumping >= get_max_wall_jump_time()):
+			if(get_time_wall_jumping() >= get_max_wall_jump_time()):
 				set_current_state(STATE.FALLING)
 			else:
 				var vertical_collision_info = move(Vector2(0,get_current_wall_jump_velocity(get_time_wall_jumping()).y * delta ))
@@ -146,7 +145,7 @@ func process_state(state, delta):
 					set_current_state(STATE.FALLING)
 				elif(horizontal_collision_info.has_collision() and horizontal_collision_info.get_collider().is_in_group("terrain")):
 					set_current_state(STATE.WALL_SLIDING)
-				time_wall_jumping += delta
+				set_time_wall_jumping(get_time_wall_jumping() + delta)
 		
 		else:
 			set_current_state(STATE.FALLING)
@@ -156,7 +155,7 @@ func process_state(state, delta):
 		
 		if(Input.is_action_pressed("jump")):
 			var vertical_collision_info = move(get_current_double_jump_velocity(get_time_double_jumping())*delta)
-			time_double_jumping += delta
+			set_time_double_jumping(get_time_double_jumping() + delta)
 			
 			var dir = 0
 			if(Input.is_action_pressed("play_left")):
@@ -173,18 +172,13 @@ func process_state(state, delta):
 			if(horizontal_collision_info.has_collision() and horizontal_collision_info.get_collider().is_in_group("terrain")):
 				set_current_state(STATE.WALL_SLIDING)
 			
-			if(time_double_jumping >= get_max_double_jump_time()):
+			if(get_time_double_jumping() >= get_max_double_jump_time()):
 				set_current_state(STATE.FALLING)
 		else:
 			set_current_state(STATE.FALLING)
 	elif(state == STATE.FALLING):
 		play_or_continue_animation("falling")
-		# FUCK DEZE CODE
-		#if(wall_jump_timer.get_time_left() > 0):
-		#	print("BLA?")
-		#	var collision_info = move(Vector2(wall_jump_direction * get_starting_wall_jump_velocity().x * delta, 0))
-		#	if(collision_info.has_collision() and collision_info.get_collider().is_in_group("terrain")):
-		#		set_current_state(STATE.WALL_SLIDING)
+		
 		if(not has_double_jumped() and is_jump_just_pressed()):
 			set_current_state(STATE.DOUBLE_JUMPING)
 		else:
@@ -218,18 +212,15 @@ func process_state(state, delta):
 		if(is_jump_just_pressed()):
 			set_current_state(STATE.WALL_JUMPING)
 		else:
+			var dir = 1
 			if(is_flippedH()):
-				if(not test_move(Vector2(-1, 0))):
-					set_current_state(STATE.FALLING)
-				else:
-					if(is_on_ground()):
-						set_current_state(STATE.GROUNDED)
+				dir = -1
+			
+			if(not test_move(Vector2(1, 0) * dir)):
+				set_current_state(STATE.FALLING)
 			else:
-				if(not test_move(Vector2(1, 0))):
-					set_current_state(STATE.FALLING)
-				else:
-					if(is_on_ground()):
-						set_current_state(STATE.GROUNDED)
+				if(is_on_ground()):
+					set_current_state(STATE.GROUNDED)
 	elif(state == STATE.CRAWLING):
 		var dir = 0
 		if(Input.is_action_pressed("play_left")):
