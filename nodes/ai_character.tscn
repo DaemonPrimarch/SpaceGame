@@ -10,6 +10,10 @@ max_HP = 10
 hp = 10
 has_invulnarable_animation = false
 
+[node name="sprite" parent="."]
+
+modulate = Color( 1, 0, 0, 1 )
+
 [node name="Label" type="Label" parent="."]
 
 focus/ignore_mouse = true

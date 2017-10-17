@@ -3,6 +3,8 @@ extends "res://scripts/playable_character.gd"
 var tracking_player
 var tracked_player
 
+var original_gravity_enabled
+
 onready var label = get_node("Label")
 
 func is_tracking_player():
@@ -23,16 +25,20 @@ func _fixed_process(delta):
 
 func enter_state(state):
 	if(state == STATE.GROUNDED):
-		double_jumped = false
+		set_double_jumped(false)
 	elif(state == STATE.REGULAR_JUMPING):
-		set_gravity_enabled(false)
-		time_jumping = 0
-	elif(state == STATE.DOUBLE_JUMPING):
-		double_jumped = true
 		original_gravity_enabled = gravity_enabled
+		set_jumped(true)
 		set_gravity_enabled(false)
+		set_time_jumping(0)
 		reset_gravity_timer()
-		time_double_jumping = 0
+		label.set_text("REGULAR_JUMPING")
+	elif(state == STATE.DOUBLE_JUMPING):
+		original_gravity_enabled = gravity_enabled
+		set_double_jumped(true)
+		set_gravity_enabled(false)
+		set_time_double_jumping(0)
+		reset_gravity_timer()
 		label.set_text("DOUBLE_JUMPING")
 
 func leave_state(state):
@@ -72,7 +78,7 @@ func process_state(state, delta):
 				dir = 1
 				set_flippedH(false)
 				
-		var vertical_collision_info = move(get_current_jump_velocity()*delta)
+		var vertical_collision_info = move(get_current_jump_velocity(get_time_jumping())*delta)
 		time_jumping += delta
 			
 		var horizontal_collision_info = move(Vector2(dir * get_movement_speed() * delta, 0))
@@ -104,7 +110,7 @@ func process_state(state, delta):
 		label.set_text("DOUBLE_JUMPING")
 		play_or_continue_animation("jumping")
 		
-		var vertical_collision_info = move(get_current_double_jump_velocity()*delta)
+		var vertical_collision_info = move(get_current_double_jump_velocity(get_time_double_jumping())*delta)
 		time_double_jumping += delta
 			
 		var dir = 0

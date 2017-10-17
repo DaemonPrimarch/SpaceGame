@@ -4,6 +4,8 @@ onready var debug_state_label = get_node("DebugStateLabel")
 onready var wall_jump_timer = get_node("wall_jump_timer")
 
 var jump_just_pressed = false
+var original_gravity_enabled = false
+var first_frame_crawling = false
 
 func _ready():
 	set_process_input(true)
@@ -28,15 +30,12 @@ func enter_state(state):
 		set_scale(get_scale() / Vector2(0.5, 2))
 		move(Vector2(10, 0))
 		first_frame_crawling = true
+	elif(state == STATE.CROUCHING):
+		pass
 	elif(state == STATE.WALL_JUMPING):
 		jumped = true
 		reset_gravity_timer()
 		original_gravity_enabled = gravity_enabled
-		
-		if(is_flippedH()):
-			wall_jump_direction = 1
-		else:
-			wall_jump_direction = -1
 			
 		set_flippedH(not is_flippedH())
 			
@@ -108,7 +107,7 @@ func process_state(state, delta):
 	elif(state == STATE.REGULAR_JUMPING):
 		play_or_continue_animation("jumping")
 		if(Input.is_action_pressed("jump")):
-			var vertical_collision_info = move(get_current_jump_velocity()*delta)
+			var vertical_collision_info = move(get_current_jump_velocity(get_time_jumping())*delta)
 			time_jumping += delta
 			
 			var dir = 0
@@ -136,8 +135,13 @@ func process_state(state, delta):
 			if(time_wall_jumping >= get_max_wall_jump_time()):
 				set_current_state(STATE.FALLING)
 			else:
-				var vertical_collision_info = move(Vector2(0,get_current_wall_jump_velocity().y * delta ))
-				var horizontal_collision_info = move(Vector2(get_current_wall_jump_velocity().x, 0) * wall_jump_direction * delta)
+				var vertical_collision_info = move(Vector2(0,get_current_wall_jump_velocity(get_time_wall_jumping()).y * delta ))
+				
+				var wall_jump_direction = 1
+				if(is_flippedH()):
+					wall_jump_direction = -1
+				
+				var horizontal_collision_info = move(Vector2(get_current_wall_jump_velocity(get_time_wall_jumping()).x, 0) * wall_jump_direction * delta)
 				if(vertical_collision_info.has_collision()):
 					set_current_state(STATE.FALLING)
 				elif(horizontal_collision_info.has_collision() and horizontal_collision_info.get_collider().is_in_group("terrain")):
@@ -151,7 +155,7 @@ func process_state(state, delta):
 		play_or_continue_animation("jumping")
 		
 		if(Input.is_action_pressed("jump")):
-			var vertical_collision_info = move(get_current_double_jump_velocity()*delta)
+			var vertical_collision_info = move(get_current_double_jump_velocity(get_time_double_jumping())*delta)
 			time_double_jumping += delta
 			
 			var dir = 0
