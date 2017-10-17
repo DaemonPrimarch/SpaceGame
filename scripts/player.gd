@@ -257,4 +257,17 @@ func _input(ev):
 		set_current_state(STATE.FALLING)
 
 func _fixed_process(delta):
-	pass
+	if(Input.is_action_pressed("aim_full_up")):
+		if(gun.get_orientation() != gun.ORIENTATION.FULL_UP):
+			gun.set_aim_orientation(gun.ORIENTATION.FULL_UP)
+	elif(Input.is_action_pressed("aim_up")):
+		if(gun.get_orientation() != gun.ORIENTATION.UP):
+			gun.set_aim_orientation(gun.ORIENTATION.UP)
+	elif(Input.is_action_pressed("aim_full_down")):
+		if(gun.get_orientation() != gun.ORIENTATION.FULL_DOWN):
+			gun.set_aim_orientation(gun.ORIENTATION.FULL_DOWN)
+	elif(Input.is_action_pressed("aim_down")):
+		if(gun.get_orientation() != gun.ORIENTATION.DOWN):
+			gun.set_aim_orientation(gun.ORIENTATION.DOWN)
+	elif(gun.get_orientation() != gun.ORIENTATION.FRONT):
+		gun.set_aim_orientation(gun.ORIENTATION.FRONT)

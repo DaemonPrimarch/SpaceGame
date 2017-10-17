@@ -40,13 +40,11 @@ transform/rot = 90.0
 
 transform/pos = Vector2( 30, -30 )
 transform/rot = 45.0
-transform/scale = Vector2( 1, 1 )
 
 [node name="down" type="Position2D" parent="."]
 
 transform/pos = Vector2( 30, 30 )
 transform/rot = -45.0
-transform/scale = Vector2( 1, 1 )
 
 [node name="full_down" type="Position2D" parent="."]
 

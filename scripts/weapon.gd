@@ -9,27 +9,35 @@ onready var up = get_node("up")
 onready var full_down = get_node("full_down")
 onready var full_up = get_node("full_up")
 onready var barrel = get_node("barrel")
+onready var current_point = front
 
 enum ORIENTATION {FULL_UP, UP, FRONT, DOWN, FULL_DOWN}
 
 var holding = false
 var current_orientation = ORIENTATION.FRONT
-var current_point = front
 
 func get_orientation():
 	return current_orientation
 
-func set_orientation(orientation):
+func set_orientation(value):
+	current_orientation = value
+
+func set_aim_orientation(orientation):
 	if(orientation == ORIENTATION.FULL_UP):
 		set_orientation_position(full_up)
+		current_orientation = ORIENTATION.FULL_UP
 	elif(orientation == ORIENTATION.UP):
 		set_orientation_position(up)
+		current_orientation = ORIENTATION.UP
 	elif(orientation == ORIENTATION.FRONT):
 		set_orientation_position(front)
+		current_orientation = ORIENTATION.FRONT
 	elif(orientation == ORIENTATION.DOWN):
 		set_orientation_position(down)
+		current_orientation = ORIENTATION.DOWN
 	elif(orientation == ORIENTATION.FULL_DOWN):
 		set_orientation_position(full_down)
+		current_orientation = ORIENTATION.FULL_DOWN
 
 func get_current_point():
 	return current_point
@@ -52,6 +60,7 @@ func has_cooldown_timer():
 	return has_cooldown
 
 func _ready():
+	set_current_point(front)
 	set_process(true)
 
 func _process(delta):
@@ -84,3 +93,7 @@ func on_trigger_release():
 
 func on_hold_trigger():
 	pass
+
+#Otherwise timer will restart automatically.
+func _on_cooldown_timer_timeout():
+	cooldown_timer.stop()
