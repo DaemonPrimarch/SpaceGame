@@ -1,17 +1,15 @@
-[gd_scene load_steps=3 format=1]
+[gd_scene load_steps=4 format=1]
 
-[ext_resource path="res://scripts/gun.gd" type="Script" id=1]
+[ext_resource path="res://nodes/weapon.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scripts/gun.gd" type="Script" id=2]
 
 [sub_resource type="CanvasItemMaterial" id=1]
 
 shader/shading_mode = 0
 
-[node name="gun" type="Node2D"]
+[node name="gun" instance=ExtResource( 1 )]
 
-script/script = ExtResource( 1 )
-has_cooldown = true
-cooldown_time = 0.25
-start_on_press = true
+script/script = ExtResource( 2 )
 
 [node name="barrel" type="Node2D" parent="."]
 
@@ -42,11 +40,13 @@ transform/rot = 90.0
 
 transform/pos = Vector2( 30, -30 )
 transform/rot = 45.0
+transform/scale = Vector2( 1, 1 )
 
 [node name="down" type="Position2D" parent="."]
 
 transform/pos = Vector2( 30, 30 )
 transform/rot = -45.0
+transform/scale = Vector2( 1, 1 )
 
 [node name="full_down" type="Position2D" parent="."]
 

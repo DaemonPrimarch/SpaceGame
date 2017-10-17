@@ -1,10 +1,10 @@
 [gd_scene load_steps=6 format=1]
 
 [ext_resource path="res://sprites/spritesheets/metroid_tiles.tres" type="TileSet" id=1]
-[ext_resource path="res://nodes/playable_charater.tscn" type="PackedScene" id=2]
-[ext_resource path="res://nodes/moving_platform.tscn" type="PackedScene" id=3]
-[ext_resource path="res://nodes/spike.tscn" type="PackedScene" id=4]
-[ext_resource path="res://nodes/enemies/enemy_spider.tscn" type="PackedScene" id=5]
+[ext_resource path="res://nodes/moving_platform.tscn" type="PackedScene" id=2]
+[ext_resource path="res://nodes/spike.tscn" type="PackedScene" id=3]
+[ext_resource path="res://nodes/enemies/enemy_spider.tscn" type="PackedScene" id=4]
+[ext_resource path="res://nodes/player.tscn" type="PackedScene" id=5]
 
 [node name="Node2D" type="Node2D"]
 
@@ -35,239 +35,237 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="player" parent="." groups=[
-"has_hp_bar",
-] instance=ExtResource( 2 )]
-
-transform/pos = Vector2( -704, 608 )
-max_HP = 20
-hp = 20
-wall_jump_height = 192
-wall_jump_length = 320
-
-[node name="moving_platform" parent="." instance=ExtResource( 3 )]
+[node name="moving_platform" parent="." instance=ExtResource( 2 )]
 
 transform/pos = Vector2( 1088, 480 )
 speed = 256
 
-[node name="moving_platform1" parent="." instance=ExtResource( 3 )]
+[node name="moving_platform1" parent="." instance=ExtResource( 2 )]
 
 transform/pos = Vector2( 1760, 288 )
 speed = 256
 
-[node name="moving_platform2" parent="." instance=ExtResource( 3 )]
+[node name="moving_platform2" parent="." instance=ExtResource( 2 )]
 
 transform/pos = Vector2( 2432, 0 )
 speed = 384
 
-[node name="moving_platform3" parent="." instance=ExtResource( 3 )]
+[node name="moving_platform3" parent="." instance=ExtResource( 2 )]
 
 transform/pos = Vector2( 2432, -416 )
 speed = 320
 
-[node name="spike" parent="." instance=ExtResource( 4 )]
+[node name="spike" parent="." instance=ExtResource( 3 )]
 
 transform/pos = Vector2( 992, 608 )
 
-[node name="spike30" parent="." instance=ExtResource( 4 )]
+[node name="spike30" parent="." instance=ExtResource( 3 )]
 
 transform/pos = Vector2( 512, -608 )
 
-[node name="spike31" parent="." instance=ExtResource( 4 )]
+[node name="spike31" parent="." instance=ExtResource( 3 )]
 
 transform/pos = Vector2( 672, -288 )
 
-[node name="spike32" parent="." instance=ExtResource( 4 )]
+[node name="spike32" parent="." instance=ExtResource( 3 )]
 
 transform/pos = Vector2( 736, -288 )
 
-[node name="spike33" parent="." instance=ExtResource( 4 )]
+[node name="spike33" parent="." instance=ExtResource( 3 )]
 
 transform/pos = Vector2( 416, 32 )
 
-[node name="spike34" parent="." instance=ExtResource( 4 )]
+[node name="spike34" parent="." instance=ExtResource( 3 )]
 
 transform/pos = Vector2( 480, 32 )
 
-[node name="spike35" parent="." instance=ExtResource( 4 )]
+[node name="spike35" parent="." instance=ExtResource( 3 )]
 
 transform/pos = Vector2( 672, -608 )
 
-[node name="spike36" parent="." instance=ExtResource( 4 )]
+[node name="spike36" parent="." instance=ExtResource( 3 )]
 
 transform/pos = Vector2( 928, 32 )
 
-[node name="spike37" parent="." instance=ExtResource( 4 )]
+[node name="spike37" parent="." instance=ExtResource( 3 )]
 
 transform/pos = Vector2( 416, 608 )
 
-[node name="spike38" parent="." instance=ExtResource( 4 )]
+[node name="spike38" parent="." instance=ExtResource( 3 )]
 
 transform/pos = Vector2( 480, 608 )
 
-[node name="spike39" parent="." instance=ExtResource( 4 )]
+[node name="spike39" parent="." instance=ExtResource( 3 )]
 
 transform/pos = Vector2( 544, 608 )
 
-[node name="spike40" parent="." instance=ExtResource( 4 )]
+[node name="spike40" parent="." instance=ExtResource( 3 )]
 
 transform/pos = Vector2( 608, 608 )
 
-[node name="spike29" parent="." instance=ExtResource( 4 )]
+[node name="spike29" parent="." instance=ExtResource( 3 )]
 
 transform/pos = Vector2( 992, 608 )
 
-[node name="spike1" parent="." instance=ExtResource( 4 )]
+[node name="spike1" parent="." instance=ExtResource( 3 )]
 
 transform/pos = Vector2( 1056, 608 )
 
-[node name="spike2" parent="." instance=ExtResource( 4 )]
+[node name="spike2" parent="." instance=ExtResource( 3 )]
 
 transform/pos = Vector2( 1120, 608 )
 
-[node name="spike3" parent="." instance=ExtResource( 4 )]
+[node name="spike3" parent="." instance=ExtResource( 3 )]
 
 transform/pos = Vector2( 1184, 608 )
 
-[node name="spike4" parent="." instance=ExtResource( 4 )]
+[node name="spike4" parent="." instance=ExtResource( 3 )]
 
 transform/pos = Vector2( 1248, 608 )
 
-[node name="spike5" parent="." instance=ExtResource( 4 )]
+[node name="spike5" parent="." instance=ExtResource( 3 )]
 
 transform/pos = Vector2( 1312, 608 )
 
-[node name="spike6" parent="." instance=ExtResource( 4 )]
+[node name="spike6" parent="." instance=ExtResource( 3 )]
 
 transform/pos = Vector2( 1376, 608 )
 
-[node name="spike7" parent="." instance=ExtResource( 4 )]
+[node name="spike7" parent="." instance=ExtResource( 3 )]
 
 transform/pos = Vector2( 1440, 608 )
 
-[node name="spike8" parent="." instance=ExtResource( 4 )]
+[node name="spike8" parent="." instance=ExtResource( 3 )]
 
 transform/pos = Vector2( 1504, 608 )
 
-[node name="spike9" parent="." instance=ExtResource( 4 )]
+[node name="spike9" parent="." instance=ExtResource( 3 )]
 
 transform/pos = Vector2( 1568, 608 )
 
-[node name="spike10" parent="." instance=ExtResource( 4 )]
+[node name="spike10" parent="." instance=ExtResource( 3 )]
 
 transform/pos = Vector2( 1632, 608 )
 
-[node name="spike11" parent="." instance=ExtResource( 4 )]
+[node name="spike11" parent="." instance=ExtResource( 3 )]
 
 transform/pos = Vector2( 1696, 608 )
 
-[node name="spike12" parent="." instance=ExtResource( 4 )]
+[node name="spike12" parent="." instance=ExtResource( 3 )]
 
 transform/pos = Vector2( 1760, 608 )
 
-[node name="spike13" parent="." instance=ExtResource( 4 )]
+[node name="spike13" parent="." instance=ExtResource( 3 )]
 
 transform/pos = Vector2( 1824, 608 )
 
-[node name="spike14" parent="." instance=ExtResource( 4 )]
+[node name="spike14" parent="." instance=ExtResource( 3 )]
 
 transform/pos = Vector2( 1888, 608 )
 
-[node name="spike15" parent="." instance=ExtResource( 4 )]
+[node name="spike15" parent="." instance=ExtResource( 3 )]
 
 transform/pos = Vector2( 1952, 608 )
 
-[node name="spike16" parent="." instance=ExtResource( 4 )]
+[node name="spike16" parent="." instance=ExtResource( 3 )]
 
 transform/pos = Vector2( 2016, 608 )
 
-[node name="spike17" parent="." instance=ExtResource( 4 )]
+[node name="spike17" parent="." instance=ExtResource( 3 )]
 
 transform/pos = Vector2( 2080, 608 )
 
-[node name="spike18" parent="." instance=ExtResource( 4 )]
+[node name="spike18" parent="." instance=ExtResource( 3 )]
 
 transform/pos = Vector2( 2144, 608 )
 
-[node name="spike19" parent="." instance=ExtResource( 4 )]
+[node name="spike19" parent="." instance=ExtResource( 3 )]
 
 transform/pos = Vector2( 2208, 608 )
 
-[node name="spike20" parent="." instance=ExtResource( 4 )]
+[node name="spike20" parent="." instance=ExtResource( 3 )]
 
 transform/pos = Vector2( 2272, 608 )
 
-[node name="spike21" parent="." instance=ExtResource( 4 )]
+[node name="spike21" parent="." instance=ExtResource( 3 )]
 
 transform/pos = Vector2( 2336, 608 )
 
-[node name="spike22" parent="." instance=ExtResource( 4 )]
+[node name="spike22" parent="." instance=ExtResource( 3 )]
 
 transform/pos = Vector2( 2400, 608 )
 
-[node name="spike23" parent="." instance=ExtResource( 4 )]
+[node name="spike23" parent="." instance=ExtResource( 3 )]
 
 transform/pos = Vector2( 2464, 608 )
 
-[node name="spike24" parent="." instance=ExtResource( 4 )]
+[node name="spike24" parent="." instance=ExtResource( 3 )]
 
 transform/pos = Vector2( 2528, 608 )
 
-[node name="spike25" parent="." instance=ExtResource( 4 )]
+[node name="spike25" parent="." instance=ExtResource( 3 )]
 
 transform/pos = Vector2( 2592, 608 )
 
-[node name="spike26" parent="." instance=ExtResource( 4 )]
+[node name="spike26" parent="." instance=ExtResource( 3 )]
 
 transform/pos = Vector2( 2656, 608 )
 
-[node name="spike27" parent="." instance=ExtResource( 4 )]
+[node name="spike27" parent="." instance=ExtResource( 3 )]
 
 transform/pos = Vector2( 2720, 608 )
 
-[node name="spike28" parent="." instance=ExtResource( 4 )]
+[node name="spike28" parent="." instance=ExtResource( 3 )]
 
 transform/pos = Vector2( 2784, 608 )
 
-[node name="spider" parent="." instance=ExtResource( 5 )]
+[node name="spider" parent="." instance=ExtResource( 4 )]
 
 transform/pos = Vector2( -992, 32 )
 
-[node name="spider1" parent="." instance=ExtResource( 5 )]
+[node name="spider1" parent="." instance=ExtResource( 4 )]
 
 transform/pos = Vector2( -1056, 608 )
 
-[node name="spider2" parent="." instance=ExtResource( 5 )]
+[node name="spider2" parent="." instance=ExtResource( 4 )]
 
 transform/pos = Vector2( -480, -288 )
 
-[node name="spider3" parent="." instance=ExtResource( 5 )]
+[node name="spider3" parent="." instance=ExtResource( 4 )]
 
 transform/pos = Vector2( -864, -544 )
 
-[node name="spider4" parent="." instance=ExtResource( 5 )]
+[node name="spider4" parent="." instance=ExtResource( 4 )]
 
 transform/pos = Vector2( -864, -1504 )
 
-[node name="spider5" parent="." instance=ExtResource( 5 )]
+[node name="spider5" parent="." instance=ExtResource( 4 )]
 
 transform/pos = Vector2( -96, -1472 )
 transform/rot = 90.0
 
-[node name="spider6" parent="." instance=ExtResource( 5 )]
+[node name="spider6" parent="." instance=ExtResource( 4 )]
 
 transform/pos = Vector2( -96, -896 )
 transform/rot = 90.0
 
-[node name="spider7" parent="." instance=ExtResource( 5 )]
+[node name="spider7" parent="." instance=ExtResource( 4 )]
 
 transform/pos = Vector2( -96, -1248 )
 transform/rot = 90.0
 
-[node name="spider8" parent="." instance=ExtResource( 5 )]
+[node name="spider8" parent="." instance=ExtResource( 4 )]
 
 transform/pos = Vector2( -96, -1824 )
 transform/rot = 90.0
+
+[node name="player" parent="." instance=ExtResource( 5 )]
+
+transform/pos = Vector2( 96, 608 )
+
+[node name="gun" parent="player"]
+
+transform/pos = Vector2( -3.0303, -27.2727 )
 
 
 [editable path="player"]

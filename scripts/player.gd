@@ -9,6 +9,7 @@ var first_frame_crawling = false
 
 func _ready():
 	set_process_input(true)
+	set_fixed_process(true)
 	debug_state_label.set_text("GROUNDED")
 	
 func is_jump_just_pressed():
@@ -42,6 +43,7 @@ func enter_state(state):
 		set_gravity_enabled(false)
 		time_wall_jumping = 0
 		debug_state_label.set_text("WALL_JUMPING")
+		wall_jump_timer.set_wait_time(get_min_wall_jump_time())
 		wall_jump_timer.start()
 	elif(state == STATE.GROUNDED):
 		jumped = false
@@ -179,12 +181,6 @@ func process_state(state, delta):
 			set_current_state(STATE.FALLING)
 	elif(state == STATE.FALLING):
 		play_or_continue_animation("falling")
-		# FUCK DEZE CODE
-		#if(wall_jump_timer.get_time_left() > 0):
-		#	print("BLA?")
-		#	var collision_info = move(Vector2(wall_jump_direction * get_starting_wall_jump_velocity().x * delta, 0))
-		#	if(collision_info.has_collision() and collision_info.get_collider().is_in_group("terrain")):
-		#		set_current_state(STATE.WALL_SLIDING)
 		if(not has_double_jumped() and is_jump_just_pressed()):
 			set_current_state(STATE.DOUBLE_JUMPING)
 		else:
@@ -252,9 +248,16 @@ func _on_wall_jump_timer_timeout():
 	wall_jump_timer.stop()
 
 func _input(ev):
-	if(ev.is_action_pressed("jump")):
+	if(ev.is_action_pressed("shoot")):
+		gun.press_trigger()
+	elif(ev.is_action_released("shoot")):
+		gun.release_trigger()
+	elif(ev.is_action_pressed("jump")):
 		jump_just_pressed = true
 	elif(ev.is_action_pressed("set_climb_on")):
 		set_current_state(STATE.CLIMBING)
 	elif(ev.is_action_pressed("set_climb_off")):
 		set_current_state(STATE.FALLING)
+
+func _fixed_process(delta):
+	pass

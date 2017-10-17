@@ -246,10 +246,6 @@ playback/speed = 2.0
 blend_times = [  ]
 autoplay = ""
 
-[node name="gun" parent="." instance=ExtResource( 3 )]
-
-transform/pos = Vector2( -3.0303, -27.2727 )
-
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 
 transform/pos = Vector2( -6.06061, 0 )
@@ -304,4 +300,9 @@ cast_to = Vector2( 0, -64 )
 layer_mask = 1
 type_mask = 15
 
+[node name="gun" parent="." instance=ExtResource( 3 )]
 
+transform/pos = Vector2( 0, -32 )
+
+
+[editable path="gun"]

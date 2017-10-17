@@ -11,5 +11,9 @@ arrival_node_ID = "player_spawn"
 
 [node name="player" parent="." instance=ExtResource( 2 )]
 
+[node name="gun" parent="player"]
+
+transform/pos = Vector2( -3.0303, -27.2727 )
+
 
 [editable path="player"]
