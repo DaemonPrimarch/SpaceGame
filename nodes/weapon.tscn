@@ -43,4 +43,13 @@ script/script = SubResource( 1 )
 has_cooldown = true
 cooldown_time = 0.1
 
+[node name="cooldown_timer" type="Timer" parent="."]
+
+process_mode = 1
+wait_time = 1.0
+one_shot = false
+autostart = false
+
+[connection signal="timeout" from="cooldown_timer" to="." method="_on_cooldown_timer_timeout"]
+
 

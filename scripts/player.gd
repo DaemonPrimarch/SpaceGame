@@ -9,6 +9,7 @@ var first_frame_crawling = false
 
 func _ready():
 	set_process_input(true)
+	set_fixed_process(true)
 	debug_state_label.set_text("GROUNDED")
 	
 func is_jump_just_pressed():
@@ -40,6 +41,7 @@ func enter_state(state):
 		set_gravity_enabled(false)
 		set_time_wall_jumping(0)
 		debug_state_label.set_text("WALL_JUMPING")
+		wall_jump_timer.set_wait_time(get_min_wall_jump_time())
 		wall_jump_timer.start()
 	elif(state == STATE.GROUNDED):
 		set_jumped(false)
@@ -178,7 +180,7 @@ func process_state(state, delta):
 			set_current_state(STATE.FALLING)
 	elif(state == STATE.FALLING):
 		play_or_continue_animation("falling")
-		
+
 		if(not has_double_jumped() and is_jump_just_pressed()):
 			set_current_state(STATE.DOUBLE_JUMPING)
 		else:
@@ -243,9 +245,29 @@ func _on_wall_jump_timer_timeout():
 	wall_jump_timer.stop()
 
 func _input(ev):
-	if(ev.is_action_pressed("jump")):
+	if(ev.is_action_pressed("shoot")):
+		gun.press_trigger()
+	elif(ev.is_action_released("shoot")):
+		gun.release_trigger()
+	elif(ev.is_action_pressed("jump")):
 		jump_just_pressed = true
 	elif(ev.is_action_pressed("set_climb_on")):
 		set_current_state(STATE.CLIMBING)
 	elif(ev.is_action_pressed("set_climb_off")):
 		set_current_state(STATE.FALLING)
+
+func _fixed_process(delta):
+	if(Input.is_action_pressed("aim_full_up")):
+		if(gun.get_orientation() != gun.ORIENTATION.FULL_UP):
+			gun.set_aim_orientation(gun.ORIENTATION.FULL_UP)
+	elif(Input.is_action_pressed("aim_up")):
+		if(gun.get_orientation() != gun.ORIENTATION.UP):
+			gun.set_aim_orientation(gun.ORIENTATION.UP)
+	elif(Input.is_action_pressed("aim_full_down")):
+		if(gun.get_orientation() != gun.ORIENTATION.FULL_DOWN):
+			gun.set_aim_orientation(gun.ORIENTATION.FULL_DOWN)
+	elif(Input.is_action_pressed("aim_down")):
+		if(gun.get_orientation() != gun.ORIENTATION.DOWN):
+			gun.set_aim_orientation(gun.ORIENTATION.DOWN)
+	elif(gun.get_orientation() != gun.ORIENTATION.FRONT):
+		gun.set_aim_orientation(gun.ORIENTATION.FRONT)

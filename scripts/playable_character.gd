@@ -4,6 +4,7 @@ extends "res://scripts/entity.gd"
 #cache the sprite here for fast access (we will set scale to flip it often)
 onready var sprite = get_node("sprite")
 onready var animation_player = get_node("AnimationPlayer")
+onready var gun = get_node("gun")
 
 enum STATE {REGULAR_JUMPING, DOUBLE_JUMPING, WALL_JUMPING, WALL_SLIDING, GROUNDED, FALLING, CLIMBING, CRAWLING, CROUCHING}
 
@@ -118,8 +119,7 @@ func get_max_wall_jump_time():
 func get_min_wall_jump_time():
 	var tmin = -get_starting_wall_jump_velocity().y/((get_gravity_vector().y/2)*(1+(get_starting_wall_jump_velocity().x/get_movement_speed())*(get_starting_wall_jump_velocity().x/get_movement_speed())))
 	if(tmin > get_max_wall_jump_time()):
-		#rounding error fixer
-		return 0.25 + sqrt(-get_starting_wall_jump_velocity().y*get_max_wall_jump_time()/((get_gravity_vector().y/2)*(1+(get_starting_wall_jump_velocity().x/get_movement_speed())*(get_starting_wall_jump_velocity().x/get_movement_speed()))))
+		print("ERROR: jumping height too damn high!")
 	else:
 		return tmin
 
