@@ -59,7 +59,8 @@ transform/pos = Vector2( 96, 544 )
 
 [node name="spider" parent="." instance=ExtResource( 5 )]
 
-transform/pos = Vector2( 413.949, 540.708 )
+transform/pos = Vector2( 352, 96 )
+transform/rot = 180.0
 
 
 [editable path="moving_platform"]
