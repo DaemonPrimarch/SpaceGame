@@ -76,7 +76,10 @@ func on_collision(info):
 func _fixed_process(delta):
 	
 	if(!gravity_enabled):
-		if(check_for_player() and abs(get_rot() + PI)<0.1):
+		var rot = abs(get_rot() - PI)
+		if(rot >= 2*PI - 0.000001):
+			rot = 0
+		if(check_for_player() and rot<0.1):
 			fall_down()
 		
 		if(front_ground_detector.is_colliding()):
