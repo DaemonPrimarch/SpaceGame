@@ -50,12 +50,10 @@ transform/pos = Vector2( 1705.07, 660.516 )
 
 [node name="test_node" type="Node2D" parent="."]
 
-transform/pos = Vector2( 736, 352 )
+transform/pos = Vector2( 1056, 544 )
 script/script = ExtResource( 5 )
 
 [node name="area_prompt_trigger1" parent="test_node" instance=ExtResource( 6 )]
-
-transform/pos = Vector2( 320, 192 )
 
 [node name="double_jump_donor" type="Node2D" parent="."]
 
@@ -73,6 +71,8 @@ text_to_display = "PRESS ENTER TO UNLOCK DOUBLE JUMP"
 transform/pos = Vector2( 16, -16 )
 transform/scale = Vector2( 0.25, 0.25 )
 texture = ExtResource( 8 )
+
+[connection signal="triggered" from="test_node/area_prompt_trigger1" to="test_node" method="_on_triggered"]
 
 [connection signal="triggered" from="double_jump_donor/area_prompt_trigger" to="double_jump_donor" method="_on_area_prompt_trigger_triggered"]
 
