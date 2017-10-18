@@ -6,12 +6,10 @@
 [node name="Node2D" type="Node2D"]
 
 script/script = ExtResource( 1 )
-destination_scene_path = "res://nodes/rooms/test_scene_1.tscn"
-arrival_node_ID = "player_spawn"
+destination_scene_path = "res://nodes/rooms/central_hub_room.tscn"
+arrival_node_ID = "central_hub_arrival"
 
 [node name="player" parent="." instance=ExtResource( 2 )]
-
-cn_double_jump = false
 
 
 [editable path="player"]
