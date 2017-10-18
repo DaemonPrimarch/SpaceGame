@@ -11,9 +11,7 @@ arrival_node_ID = "player_spawn"
 
 [node name="player" parent="." instance=ExtResource( 2 )]
 
-cn_jump = true
 cn_double_jump = false
-cn_wall_jump = true
 
 
 [editable path="player"]

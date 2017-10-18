@@ -1,7 +1,6 @@
  extends "res://scripts/better_KinematicBody2D.gd"
 
 signal hp_changed
-signal hit_by_bullet
 
 export var movement_speed = 300 setget set_movement_speed,get_movement_speed
 
@@ -69,8 +68,8 @@ func set_invulnerable(value):
 			invulnerability_timer_running = false
 		if(has_invulnarable_animation):
 			get_node(invulnerable_animation_player).stop()
+
 func on_invulnerability_timer_timeout():
-	print("timeout")
 	invulnerability_timer_running = false
 	set_invulnerable(false)
 
@@ -83,6 +82,10 @@ func get_HP():
 
 func get_max_HP():
 	return max_HP
+
+func on_bullet_hit(bullet):
+	print("?")
+	damage(bullet.get_damage())
 
 func damage(amount):
 	var new_HP = get_HP() - amount

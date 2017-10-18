@@ -4,35 +4,24 @@ extends Area2D
 # var a = 2
 # var b = "textvar"
 onready var cobweb_timer = get_node("cobweb_timer")
-signal on_cobweb_enter
-signal on_cobweb_leave
 
-func _ready():
-	# Called every time the node is added to the scene.
-	# Initialization here
-	pass
 
 func _on_Area2D_body_enter( body ):
-	if(body.is_in_group("spider")):
-		body.emit_signal("on_cobweb_enter",self)
-	elif(body.is_in_group("bullet")):
+	if(body.has_method("on_cobweb_enter")):
+		body.on_cobweb_enter(self)
+	
+	if(body.is_in_group("bullet")):
 		destroy()
-	elif(!body.is_in_group("spider") and body.is_in_group("entity")):
-		if(body.is_in_group("player")):
-			pass
-			#body.jump_speed = body.jump_speed /2
+	
+	if(body.is_in_group("player")):
 		body.set_gravity_vector(body.get_gravity_vector()/2)
 		body.set_movement_speed(body.get_movement_speed()/2)
 
-
-
 func _on_Area2D_body_exit( body ):
-	if(body.is_in_group("spider")):
-		body.emit_signal("on_cobweb_leave",self)
-	elif(!body.is_in_group("spider") and !body.is_in_group("bullet") and body.is_in_group("entity")):
-		if(body.is_in_group("player")):
-			#body.jump_speed = body.jump_speed *2
-			pass
+	if(body.has_method("on_cobweb_leave")):
+		body.on_cobweb_leave(self)
+		
+	if(body.is_in_group("player")):
 		body.set_gravity_vector(body.get_gravity_vector()*2)
 		body.set_movement_speed(body.get_movement_speed()*2)
 
