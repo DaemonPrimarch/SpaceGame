@@ -23,5 +23,8 @@ collision/layers = 1
 collision/mask = 1
 occluder/light_mask = 1
 tile_data = IntArray(  )
+__meta__ = {
+"_edit_lock_": true
+}
 
 

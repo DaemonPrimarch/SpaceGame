@@ -88,6 +88,8 @@ func process_state(state, delta):
 	if(state == STATE.GROUNDED):
 		if(Input.is_action_pressed("jump")):
 			set_current_state(STATE.REGULAR_JUMPING)
+		elif(not is_on_ground()):
+			set_current_state(STATE.FALLING)
 		else:
 			var dir = 0
 			if(Input.is_action_pressed("play_left")):
