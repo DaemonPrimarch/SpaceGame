@@ -17,7 +17,9 @@ func _on_Timer_timeout():
 func _on_bullet_body_enter( body ):
 	if(body.has_method("on_bullet_hit")):
 		body.on_bullet_hit(self)
-	destroy()
+	
+	set_hidden(true)
+	#destroy()
 
 func destroy():
 	self.queue_free()

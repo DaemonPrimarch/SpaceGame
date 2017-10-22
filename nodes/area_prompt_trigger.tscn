@@ -7,18 +7,8 @@
 custom_solver_bias = 0.0
 extents = Vector2( 11.5556, 11.7183 )
 
-[node name="area_prompt_trigger" type="Area2D"]
+[node name="area_prompt_trigger" type="Node2D"]
 
-input/pickable = true
-shapes/0/shape = SubResource( 1 )
-shapes/0/transform = Matrix32( 2.76923, 0, 0, 2.73077, 0, 0 )
-shapes/0/trigger = false
-gravity_vec = Vector2( 0, 1 )
-gravity = 98.0
-linear_damp = 0.1
-angular_damp = 1.0
-collision/layers = 1023
-collision/mask = 1023
 script/script = ExtResource( 1 )
 text_to_display = "PRESS BUTTON!"
 
@@ -36,15 +26,24 @@ percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="Area2D" type="Area2D" parent="."]
+
+input/pickable = true
+shapes/0/shape = SubResource( 1 )
+shapes/0/transform = Matrix32( 2.76923, 0, 0, 2.73077, 0, 0 )
+shapes/0/trigger = false
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 
 transform/scale = Vector2( 2.76923, 2.73077 )
 shape = SubResource( 1 )
 trigger = false
 _update_shape_index = 0
 
-[connection signal="body_enter" from="." to="." method="_on_body_enter"]
-
-[connection signal="body_exit" from="." to="." method="_on_body_exit"]
+[connection signal="body_enter" from="Area2D" to="." method="_on_body_enter"]
 
 
