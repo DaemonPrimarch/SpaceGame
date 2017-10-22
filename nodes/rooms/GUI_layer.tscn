@@ -1,0 +1,27 @@
+[gd_scene load_steps=3 format=1]
+
+[ext_resource path="res://nodes/dialog_box.tscn" type="PackedScene" id=1]
+[ext_resource path="res://nodes/option_select_box.tscn" type="PackedScene" id=2]
+
+[node name="GUI_layer" type="CanvasLayer"]
+
+layer = 1
+offset = Vector2( 0, 0 )
+rotation = 0.0
+scale = Vector2( 1, 1 )
+
+[node name="dialog_box" parent="." instance=ExtResource( 1 )]
+
+margin/left = 0.0
+margin/top = 448.0
+margin/right = 204.0
+margin/bottom = 500.0
+
+[node name="option_select_box" parent="." instance=ExtResource( 2 )]
+
+margin/left = 1024.0
+margin/top = 448.0
+margin/right = 1280.0
+margin/bottom = 712.0
+
+

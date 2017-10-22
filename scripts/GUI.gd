@@ -6,8 +6,7 @@ var hp_bar_count = 0
 var hp_bars = {}
 
 func _ready():
-	layer = CanvasLayer.new()
-	layer.set_name("Layer")
+	layer = preload("res://nodes/GUI_layer.tscn").instance()
 	get_tree().get_root().call_deferred("add_child",layer)
 
 func get_layer():

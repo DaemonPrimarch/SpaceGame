@@ -2,7 +2,7 @@
 
 [ext_resource path="res://scripts/option_select.gd" type="Script" id=1]
 
-[node name="Control" type="Control"]
+[node name="option_select_box" type="Control"]
 
 process/pause_mode = 2
 focus/ignore_mouse = false

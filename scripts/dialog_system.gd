@@ -11,11 +11,6 @@ var playing = false
 var dialog_queue = []
 
 func _ready():
-	regular_box = preload("res://nodes/dialog_box.tscn").instance()
-
-	selection_box = preload("res://nodes/option_select_box.tscn").instance()
-	selection_box.hide()
-	regular_box.hide()
 	call_deferred("setup")
 
 func create_linear_tree(array):
@@ -56,11 +51,10 @@ func is_playing():
 	return playing
 
 func setup():
-	GUI.get_layer().add_child(regular_box)
-	regular_box.set_pos(Vector2(0,600))
-	GUI.get_layer().add_child(selection_box)
-	selection_box.set_pos(Vector2(600,600))
-	
+	regular_box = get_node("/root/GUI_layer/dialog_box")
+	selection_box = get_node("/root/GUI_layer/option_select_box")
+	selection_box.hide()
+	regular_box.hide()
 	var first_of_first = create_linear_tree(["Everything dies,"])
 	var right = create_linear_tree(["That is correct!"])
 	var wrong = create_linear_tree(["That is incorrect!", "Choose again!", first_of_first])
