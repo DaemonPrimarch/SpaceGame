@@ -9,8 +9,4 @@ func on_enter(body):
 		if(destination_scene_path == "path"):
 			print("door not loaded")
 		else:
-			scene_loader.call_deferred("warp_player_to_new_scene", body, destination_scene_path, arrival_node_ID)
-
-
-func _ready():
-	pass
+			room_loader.call_deferred("warp_player_to_new_room", body, destination_scene_path, arrival_node_ID)

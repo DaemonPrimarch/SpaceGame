@@ -19,6 +19,7 @@ var wall_jumped = false
 #cn = can
 export var cn_jump = true
 export var cn_double_jump = true
+export var cn_wall_slide = true
 export var cn_wall_jump = true
 
 var time_jumping = 0
@@ -120,6 +121,12 @@ func get_time_double_jumping():
 	return time_double_jumping
 
 #WALL JUMPING HELPER FUNCTIONS:
+	
+func set_can_wall_slide(value):
+	cn_wall_slide = value
+
+func can_wall_slide():
+	return cn_wall_slide
 	
 func set_can_wall_jump(value):
 	cn_wall_jump = value

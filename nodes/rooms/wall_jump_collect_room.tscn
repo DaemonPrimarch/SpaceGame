@@ -2,7 +2,7 @@
 
 [ext_resource path="res://nodes/rooms/room.tscn" type="PackedScene" id=1]
 [ext_resource path="res://nodes/player.tscn" type="PackedScene" id=2]
-[ext_resource path="res://scripts/double_jump_unlocker.gd" type="Script" id=3]
+[ext_resource path="res://scripts/wall_jump_unlocker.gd" type="Script" id=3]
 [ext_resource path="res://nodes/area_prompt_trigger.tscn" type="PackedScene" id=4]
 
 [node name="wall_jump_collect_room" instance=ExtResource( 1 )]
@@ -13,7 +13,8 @@ tile_data = IntArray( 0, 11, 1, 11, 2, 11, 3, 11, 4, 11, 5, 11, 6, 11, 7, 11, 8,
 
 [node name="player" parent="." instance=ExtResource( 2 )]
 
-transform/pos = Vector2( 416, 416 )
+transform/pos = Vector2( 224, 512 )
+cn_wall_jump = false
 
 [node name="wall_jump_donor" type="Node2D" parent="."]
 
@@ -27,6 +28,10 @@ transform/pos = Vector2( 640, 3264 )
 
 transform/pos = Vector2( 7.62939e-06, 6.10352e-05 )
 transform/scale = Vector2( 4, 2 )
+
+[connection signal="triggered" from="wall_jump_donor/area_prompt_trigger" to="wall_jump_donor" method="_on_area_prompt_trigger_triggered"]
+
+[connection signal="body_exit" from="wall_jump_donor/area_prompt_trigger/Area2D" to="wall_jump_donor/area_prompt_trigger" method="_on_body_exit"]
 
 
 [editable path="wall_jump_donor/area_prompt_trigger"]

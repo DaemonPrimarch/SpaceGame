@@ -19,7 +19,7 @@ func _on_bullet_body_enter( body ):
 		body.on_bullet_hit(self)
 	
 	set_hidden(true)
-	#destroy()
+	destroy()
 
 func destroy():
 	self.queue_free()

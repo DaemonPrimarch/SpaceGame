@@ -51,8 +51,8 @@ func is_playing():
 	return playing
 
 func setup():
-	regular_box = get_node("/root/GUI_layer/dialog_box")
-	selection_box = get_node("/root/GUI_layer/option_select_box")
+	regular_box = GUI.get_layer().get_node("dialog_box")
+	selection_box = GUI.get_layer().get_node("option_select_box")
 	selection_box.hide()
 	regular_box.hide()
 	var first_of_first = create_linear_tree(["Everything dies,"])

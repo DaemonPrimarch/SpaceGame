@@ -11,4 +11,6 @@ func _ready():
 
 
 func _on_area_prompt_trigger_triggered():
-	get_tree().get_nodes_in_group("player")[0].set_can_double_jump(true)
+	get_tree().get_nodes_in_group("player")[0].set_can_wall_jump(true)
+	
+	dialog_system.play_dialog(dialog_system.create_linear_tree(["Wall Jumping unlocked!!!"]))

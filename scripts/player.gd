@@ -125,7 +125,7 @@ func process_state(state, delta):
 			
 			if(vertical_collision_info.has_collision()):
 				set_current_state(STATE.FALLING)
-			elif(horizontal_collision_info.has_collision() and horizontal_collision_info.get_collider().is_in_group("terrain")):
+			elif(can_wall_slide() and horizontal_collision_info.has_collision() and horizontal_collision_info.get_collider().is_in_group("terrain")):
 				set_current_state(STATE.WALL_SLIDING)
 			
 			if(time_jumping >= get_max_jump_time()):
@@ -147,7 +147,7 @@ func process_state(state, delta):
 				var horizontal_collision_info = move(Vector2(get_current_wall_jump_velocity(get_time_wall_jumping()).x, 0) * wall_jump_direction * delta)
 				if(vertical_collision_info.has_collision()):
 					set_current_state(STATE.FALLING)
-				elif(horizontal_collision_info.has_collision() and horizontal_collision_info.get_collider().is_in_group("terrain")):
+				elif(can_wall_slide() and horizontal_collision_info.has_collision() and horizontal_collision_info.get_collider().is_in_group("terrain")):
 					set_current_state(STATE.WALL_SLIDING)
 				set_time_wall_jumping(get_time_wall_jumping() + delta)
 		
@@ -173,7 +173,7 @@ func process_state(state, delta):
 			
 			if(vertical_collision_info.has_collision()):
 				set_current_state(STATE.FALLING)
-			if(horizontal_collision_info.has_collision() and horizontal_collision_info.get_collider().is_in_group("terrain")):
+			if(can_wall_slide() and horizontal_collision_info.has_collision() and horizontal_collision_info.get_collider().is_in_group("terrain")):
 				set_current_state(STATE.WALL_SLIDING)
 			
 			if(get_time_double_jumping() >= get_max_double_jump_time()):
@@ -198,7 +198,7 @@ func process_state(state, delta):
 					dir = 1
 					
 				var collision_info = move(Vector2(dir * get_movement_speed() * delta, 0))
-				if(collision_info.has_collision() and collision_info.get_collider().is_in_group("terrain")):
+				if(can_wall_slide() and collision_info.has_collision() and collision_info.get_collider().is_in_group("terrain")):
 					set_current_state(STATE.WALL_SLIDING)
 	elif(state == STATE.CLIMBING):
 		play_or_continue_animation("idle")
@@ -213,7 +213,7 @@ func process_state(state, delta):
 			move(Vector2(get_climbing_speed() * delta, 0))
 	elif(state == STATE.WALL_SLIDING):
 		play_or_continue_animation("idle")
-		if(is_jump_just_pressed()):
+		if(can_wall_jump() and is_jump_just_pressed()):
 			set_current_state(STATE.WALL_JUMPING)
 		else:
 			var dir = 1

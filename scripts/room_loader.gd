@@ -1,12 +1,13 @@
 extends Node
 
-func warp_player_to_new_scene(player, path, position_id):
+func warp_player_to_new_room(player, path, position_id):
 	var old_scene = player.get_parent()
 	
 	old_scene.remove_child(player)
 	
 	get_tree().get_root().remove_child(old_scene)
-	old_scene.queue_free()
+	
+	#old_scene.queue_free()
 
 	var new_scene = load(path).instance()
 	
@@ -29,3 +30,5 @@ func warp_player_to_new_scene(player, path, position_id):
 	
 	#Ugly hack
 	new_scene.set_pos(Vector2(0,0))
+	
+	new_scene.emit_signal("player_enter", player)
