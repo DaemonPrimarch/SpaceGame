@@ -6,14 +6,13 @@
 
 [node name="player" groups=[
 "player",
-"tracked",
 "warpable",
+"tracked",
 ] instance=ExtResource( 1 )]
 
 script/script = ExtResource( 2 )
 max_HP = 10
 hp = 10
-has_invulnarable_animation = false
 
 [node name="camera" parent="." instance=ExtResource( 3 )]
 

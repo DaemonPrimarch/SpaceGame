@@ -195,6 +195,6 @@ func leave_state(state):
 	pass
 func process_state(state, delta):
 	pass
-		
+	
 func _fixed_process(delta):
 	process_state(get_current_state(), delta)
