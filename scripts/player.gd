@@ -37,7 +37,6 @@ func enter_state(state):
 		set_jumped(true)
 		reset_gravity_timer()
 		original_gravity_enabled = gravity_enabled
-		set_flippedH(not is_flippedH())
 		set_gravity_enabled(false)
 		set_time_wall_jumping(0)
 		debug_state_label.set_text("WALL_JUMPING")
@@ -51,6 +50,7 @@ func enter_state(state):
 	elif(state == STATE.FALLING):
 		debug_state_label.set_text("FALLING")
 	elif(state == STATE.WALL_SLIDING):
+		set_flippedH(not is_flippedH())
 		debug_state_label.set_text("WALL_SLIDING")
 	elif(state == STATE.DOUBLE_JUMPING):
 		set_double_jumped(true)
@@ -220,7 +220,7 @@ func process_state(state, delta):
 			if(is_flippedH()):
 				dir = -1
 			
-			if(not test_move(Vector2(1, 0) * dir)):
+			if(not test_move(Vector2(10, 0) * dir * -1)):
 				set_current_state(STATE.FALLING)
 			else:
 				if(is_on_ground()):
