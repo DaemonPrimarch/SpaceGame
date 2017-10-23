@@ -17,7 +17,7 @@ points = Vector2Array( -128, -32, -128, -33, 128, -33, 128, -32 )
 [node name="moving_platform" type="Node2D"]
 
 script/script = ExtResource( 1 )
-speed = 60
+speed = 256
 
 [node name="point_1" type="Position2D" parent="."]
 

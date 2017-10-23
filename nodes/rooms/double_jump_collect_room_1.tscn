@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=1]
+[gd_scene load_steps=9 format=1]
 
 [ext_resource path="res://nodes/rooms/room.tscn" type="PackedScene" id=1]
 [ext_resource path="res://nodes/warp_arrival.tscn" type="PackedScene" id=2]
@@ -6,6 +6,8 @@
 [ext_resource path="res://nodes/spike.tscn" type="PackedScene" id=4]
 [ext_resource path="res://nodes/shootable_block.tscn" type="PackedScene" id=5]
 [ext_resource path="res://nodes/moving_platform.tscn" type="PackedScene" id=6]
+[ext_resource path="res://nodes/moving_platform_small.tscn" type="PackedScene" id=7]
+[ext_resource path="res://nodes/player.tscn" type="PackedScene" id=8]
 
 [node name="room" instance=ExtResource( 1 )]
 
@@ -17,16 +19,16 @@ tile_data = IntArray( -720896, 7, -720895, 7, -720894, 7, -720893, 7, -720892, 7
 
 transform/pos = Vector2( 128, 608 )
 
-[node name="WarpTile" parent="." instance=ExtResource( 3 )]
+[node name="central_hub_door" parent="." instance=ExtResource( 3 )]
 
 editor/display_folded = true
 transform/pos = Vector2( 32, 576 )
 destination_scene_path = "res://nodes/rooms/central_hub_room.tscn"
-arrival_node_ID = "room_1_arrival"
+arrival_node_ID = "double_jump_collect_room_1_arrival"
 
-[node name="Sprite" parent="WarpTile"]
+[node name="Sprite" parent="central_hub_door"]
 
-modulate = Color( 0.0343966, 0.984375, 0.0269165, 1 )
+modulate = Color( 0.0568371, 0.984375, 0.0269165, 1 )
 
 [node name="spike_map" type="Node2D" parent="."]
 
@@ -86,9 +88,16 @@ transform/pos = Vector2( 1184, 608 )
 
 [node name="Node2D" type="Node2D" parent="."]
 
-[node name="WarpTile 2" parent="." instance=ExtResource( 3 )]
+[node name="double_jump_2_door" parent="." instance=ExtResource( 3 )]
 
+editor/display_folded = true
 transform/pos = Vector2( 2464, -576 )
+destination_scene_path = "res://nodes/rooms/double_jump_collect_room_2.tscn"
+arrival_node_ID = "double_jump_collect_room_1_arrival"
+
+[node name="Sprite" parent="double_jump_2_door"]
+
+modulate = Color( 0.0568371, 0.984375, 0.0269165, 1 )
 
 [node name="shootable_blockmap" type="Node2D" parent="."]
 
@@ -145,8 +154,7 @@ transform/scale = Vector2( 0.5, 0.5 )
 [node name="moving_platform2" parent="." instance=ExtResource( 6 )]
 
 editor/display_folded = true
-transform/pos = Vector2( 1568, -96 )
-speed = 256
+transform/pos = Vector2( 1824, -160 )
 
 [node name="point_1" parent="moving_platform2"]
 
@@ -163,8 +171,7 @@ transform/scale = Vector2( 0.5, 0.5 )
 [node name="moving_platform3" parent="." instance=ExtResource( 6 )]
 
 editor/display_folded = true
-transform/pos = Vector2( 1920, -128 )
-speed = 256
+transform/pos = Vector2( 2016, -192 )
 
 [node name="point_1" parent="moving_platform3"]
 
@@ -179,9 +186,31 @@ transform/pos = Vector2( 256, -64 )
 transform/pos = Vector2( 0, -64 )
 transform/scale = Vector2( 0.5, 0.5 )
 
+[node name="double_jump_collect_room_2_arrival" parent="." instance=ExtResource( 2 )]
 
-[editable path="WarpTile"]
+transform/pos = Vector2( 2368, -544 )
+
+[node name="moving_platform 2" parent="." instance=ExtResource( 7 )]
+
+transform/pos = Vector2( 1664, -96 )
+
+[node name="point_1" parent="moving_platform 2"]
+
+transform/pos = Vector2( 384, 0 )
+
+[node name="point_2" parent="moving_platform 2"]
+
+transform/pos = Vector2( -256, 0 )
+
+[node name="player" parent="." instance=ExtResource( 8 )]
+
+transform/pos = Vector2( 2336, -544 )
+
+
+[editable path="central_hub_door"]
+[editable path="double_jump_2_door"]
 [editable path="moving_platform"]
 [editable path="moving_platform1"]
 [editable path="moving_platform2"]
 [editable path="moving_platform3"]
+[editable path="moving_platform 2"]
