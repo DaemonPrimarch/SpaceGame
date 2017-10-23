@@ -192,6 +192,7 @@ transform/pos = Vector2( 2368, -544 )
 
 [node name="moving_platform 2" parent="." instance=ExtResource( 7 )]
 
+editor/display_folded = true
 transform/pos = Vector2( 1664, -96 )
 
 [node name="point_1" parent="moving_platform 2"]

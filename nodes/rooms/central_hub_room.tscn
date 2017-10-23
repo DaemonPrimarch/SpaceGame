@@ -16,10 +16,13 @@ transform/pos = Vector2( 32, 512 )
 
 [node name="double_jump_room_1_door" parent="." instance=ExtResource( 2 )]
 
-editor/display_folded = true
 transform/pos = Vector2( 1248, 512 )
 destination_scene_path = "res://nodes/rooms/double_jump_collect_room_1.tscn"
 arrival_node_ID = "central_hub_arrival"
+
+[node name="Sprite" parent="double_jump_room_1_door"]
+
+modulate = Color( 0.124158, 0.984375, 0.0269165, 1 )
 
 [node name="WarpTile2" parent="." instance=ExtResource( 2 )]
 
@@ -57,4 +60,5 @@ transform/pos = Vector2( 128, 1920 )
 transform/pos = Vector2( 1152, 544 )
 
 
+[editable path="double_jump_room_1_door"]
 [editable path="WarpTile4"]
