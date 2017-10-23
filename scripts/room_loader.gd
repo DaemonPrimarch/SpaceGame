@@ -8,6 +8,8 @@ func warp_player_to_new_room(player, path, position_id):
 	get_tree().get_root().remove_child(old_scene)
 	
 	#old_scene.queue_free()
+	
+	print("Attempting to load: ", path)
 
 	var new_scene = load(path).instance()
 	
@@ -25,6 +27,9 @@ func warp_player_to_new_room(player, path, position_id):
 			#		
 			if(nb_of_found_nodes >= 2):
 				raise("error")
+			
+	if(nb_of_found_nodes <= 0):
+		print("WARP DESTINATION NOT FOUND!")
 				
 	new_scene.add_child(player)
 	

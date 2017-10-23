@@ -58,8 +58,5 @@ transform/scale = Vector2( 1, 6 )
 [node name="ai_character" parent="." instance=ExtResource( 5 )]
 
 transform/pos = Vector2( 480, 544 )
-cn_jump = true
-cn_double_jump = true
-cn_wall_jump = true
 
 

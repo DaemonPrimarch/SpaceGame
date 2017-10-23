@@ -33,10 +33,21 @@ export var crawl_speed = 64 * 2
 export var wall_jump_height = 64 * 2
 export var wall_jump_length = 64 * 4
 
+var ladder = null
+
 func _ready():
 	set_current_state(STATE.GROUNDED)
 	
 	set_fixed_process(true)
+	
+func get_ladder_inside():
+	return ladder
+	
+func is_inside_ladder():
+	return ladder != null
+
+func set_inside_ladder(ladder):
+	self.ladder = ladder
 
 func get_crawl_speed():
 	return crawl_speed
@@ -150,6 +161,7 @@ func get_min_wall_jump_time():
 	var tmin = -get_starting_wall_jump_velocity().y/((get_gravity_vector().y/2)*(1+(get_starting_wall_jump_velocity().x/get_movement_speed())*(get_starting_wall_jump_velocity().x/get_movement_speed())))
 	if(tmin > get_max_wall_jump_time()):
 		print("ERROR: jumping height too damn high!")
+		return tmin
 	else:
 		return tmin
 

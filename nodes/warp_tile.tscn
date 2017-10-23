@@ -11,7 +11,7 @@ extents = Vector2( 16.64, 33.2799 )
 [node name="WarpTile" type="Node2D"]
 
 script/script = ExtResource( 1 )
-destination_scene_path = "path"
+destination_scene_path = "res://nodes/rooms/"
 arrival_node_ID = "arrival_name"
 
 [node name="LeaveSideArea2D" type="Area2D" parent="."]

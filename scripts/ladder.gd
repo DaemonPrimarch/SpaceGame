@@ -10,8 +10,10 @@ func _ready():
 	# Called every time the node is added to the scene.
 	# Initialization here
 	pass
-
-
+	
+	
+func character_enter_ladder(character):
+	
 
 func _on_ladder_body_enter( body ):
 	if(body.is_in_group("player")):
