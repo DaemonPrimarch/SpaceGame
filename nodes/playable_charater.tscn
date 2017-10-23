@@ -306,6 +306,7 @@ type_mask = 15
 
 [node name="gun" parent="." instance=ExtResource( 3 )]
 
+editor/display_folded = true
 transform/pos = Vector2( 0, -32 )
 
 

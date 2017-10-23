@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=1]
+[gd_scene load_steps=7 format=1]
 
 [ext_resource path="res://sprites/spritesheets/metroid_tiles.tres" type="TileSet" id=1]
 [ext_resource path="res://nodes/shootable_block.tscn" type="PackedScene" id=2]
 [ext_resource path="res://nodes/moving_platform.tscn" type="PackedScene" id=3]
 [ext_resource path="res://nodes/player.tscn" type="PackedScene" id=4]
 [ext_resource path="res://nodes/enemies/enemy_spider.tscn" type="PackedScene" id=5]
+[ext_resource path="res://nodes/ladder.tscn" type="PackedScene" id=6]
 
 [node name="Node2D" type="Node2D"]
 
@@ -55,12 +56,18 @@ transform/pos = Vector2( 0, -64 )
 
 [node name="player" parent="." instance=ExtResource( 4 )]
 
-transform/pos = Vector2( 96, 544 )
+transform/pos = Vector2( 256, 512 )
 
 [node name="spider" parent="." instance=ExtResource( 5 )]
 
-transform/pos = Vector2( 352, 96 )
+transform/pos = Vector2( 928, -32 )
 transform/rot = 180.0
+hp = 9
+
+[node name="ladder" parent="." instance=ExtResource( 6 )]
+
+transform/pos = Vector2( 96, 320 )
+transform/scale = Vector2( 1, 8 )
 
 
 [editable path="moving_platform"]
