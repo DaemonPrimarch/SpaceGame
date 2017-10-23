@@ -12,7 +12,7 @@ func _ready():
 func _fixed_process(delta):
 	for object in get_overlapping_bodies():
 		if(object.is_in_group("player")):
-			object.damage(5)
+			object.damage(1)
 			object.set_invulnerable(true)
 
 func _on_spike_body_enter( body ):
