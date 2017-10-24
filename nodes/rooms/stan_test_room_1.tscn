@@ -38,12 +38,10 @@ __meta__ = {
 [node name="moving_platform" parent="." instance=ExtResource( 2 )]
 
 transform/pos = Vector2( 1088, 480 )
-speed = 256
 
 [node name="moving_platform1" parent="." instance=ExtResource( 2 )]
 
 transform/pos = Vector2( 1760, 288 )
-speed = 256
 
 [node name="moving_platform2" parent="." instance=ExtResource( 2 )]
 

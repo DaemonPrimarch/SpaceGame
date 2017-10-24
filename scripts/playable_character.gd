@@ -40,14 +40,17 @@ func _ready():
 	
 	set_fixed_process(true)
 	
-func get_ladder_inside():
+func get_ladder():
 	return ladder
 	
 func is_inside_ladder():
-	return ladder != null
+	return (ladder != null)
 
-func set_inside_ladder(ladder):
-	self.ladder = ladder
+func is_in_ladder():
+	return is_inside_ladder()
+
+func set_ladder(lad):
+	ladder = lad
 
 func get_crawl_speed():
 	return crawl_speed
