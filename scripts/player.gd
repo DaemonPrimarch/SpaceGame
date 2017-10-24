@@ -7,6 +7,8 @@ var jump_just_pressed = false
 var original_gravity_enabled = false
 var first_frame_crawling = false
 
+var continuing_previous_movement = true
+
 func _ready():
 	set_process_input(true)
 	set_fixed_process(true)
@@ -15,7 +17,7 @@ func _ready():
 func is_jump_just_pressed():
 	return jump_just_pressed
 
-func enter_state(state):
+func enter_state(state, old_state):
 	if(state == STATE.REGULAR_JUMPING):
 		original_gravity_enabled = gravity_enabled
 		set_jumped(true)
@@ -64,7 +66,7 @@ func enter_state(state):
 		set_gravity_enabled(false)
 		debug_state_label.set_text("CLIMBING")
 
-func leave_state(state):
+func leave_state(state, new_state):
 	if(state == STATE.REGULAR_JUMPING):
 		set_gravity_enabled(original_gravity_enabled)
 		reset_gravity_timer()
@@ -142,6 +144,7 @@ func process_state(state, delta):
 		play_or_continue_animation("jumping")
 		if(Input.is_action_pressed("jump") or wall_jump_timer.get_time_left() > 0):
 			if(get_time_wall_jumping() >= get_max_wall_jump_time()):
+				continuing_previous_movement = true
 				set_current_state(STATE.FALLING)
 			else:
 				if(is_inside_ladder()):
@@ -196,21 +199,33 @@ func process_state(state, delta):
 		if(is_inside_ladder() and is_jump_just_pressed()):
 			set_current_state(STATE.CLIMBING)
 		elif(not has_double_jumped() and is_jump_just_pressed() and can_double_jump()):
+			continuing_previous_movement = false
 			set_current_state(STATE.DOUBLE_JUMPING)
 		else:
 			if(is_on_ground()):
+				continuing_previous_movement = false
 				set_current_state(STATE.GROUNDED)
 			else:
 				var dir = 0
 				if(Input.is_action_pressed("play_left")):
 					set_flippedH(true)
+					continuing_previous_movement = false
 					dir = -1
 				elif(Input.is_action_pressed("play_right")):
 					set_flippedH(false)
 					dir = 1
+					continuing_previous_movement = false
+			
+				if(continuing_previous_movement):
+					dir = 1
+					
+					if(is_flippedH()):
+						dir = -1
+					
 					
 				var collision_info = move(Vector2(dir * get_movement_speed() * delta, 0))
 				if(not is_in_ladder() and can_wall_slide() and collision_info.has_collision() and collision_info.get_collider().is_in_group("terrain")):
+					continuing_previous_movement = false
 					set_current_state(STATE.WALL_SLIDING)
 	elif(state == STATE.CLIMBING):
 		play_or_continue_animation("idle")

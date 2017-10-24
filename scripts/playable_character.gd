@@ -185,16 +185,18 @@ func get_time_wall_jumping():
 
 func set_current_state(state):
 	if(state != get_current_state()):
-		leave_state(get_current_state())
-		enter_state(state)
+		var old_state = get_current_state()
+		
+		leave_state(get_current_state(), state)
+		enter_state(state, old_state)
 		current_state = state
 
 func get_current_state():
 	return current_state
 
-func enter_state(state):
+func enter_state(state, old_state):
 	pass
-func leave_state(state):
+func leave_state(state, new_state):
 	pass
 func process_state(state, delta):
 	pass
