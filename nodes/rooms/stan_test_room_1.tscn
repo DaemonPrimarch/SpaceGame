@@ -2,10 +2,9 @@
 
 [ext_resource path="res://sprites/spritesheets/metroid_tiles.tres" type="TileSet" id=1]
 [ext_resource path="res://nodes/moving_platform.tscn" type="PackedScene" id=2]
-[ext_resource path="res://nodes/hazard_area.tscn" type="PackedScene" id=3]
+[ext_resource path="res://nodes/spike.tscn" type="PackedScene" id=3]
 [ext_resource path="res://nodes/enemies/enemy_spider.tscn" type="PackedScene" id=4]
 [ext_resource path="res://nodes/player.tscn" type="PackedScene" id=5]
-
 
 [node name="Node2D" type="Node2D"]
 

@@ -63,7 +63,7 @@ transform/pos = Vector2( 736, 608 )
 transform/pos = Vector2( 32, 512 )
 active = true
 arrival_node_ID = "wall_jump_collect_room_arrival"
-destination_scene = null
+destination_scene_path = ""
 
 [node name="Sprite" parent="WarpTile"]
 
@@ -82,7 +82,7 @@ transform/pos = Vector2( 1184, 544 )
 transform/pos = Vector2( 1248, 512 )
 active = true
 arrival_node_ID = "wall_jump_collect_room_arrival"
-destination_scene = null
+destination_scene_path = ""
 
 [node name="Sprite" parent="WarpTile 2"]
 
@@ -94,7 +94,7 @@ transform/pos = Vector2( 640, 32 )
 transform/rot = 90.0
 active = true
 arrival_node_ID = "wall_jump_collect_room_arrival"
-destination_scene = null
+destination_scene_path = ""
 
 [connection signal="triggered" from="wall_jump_donor/area_prompt_trigger" to="wall_jump_donor" method="_on_area_prompt_trigger_triggered"]
 

@@ -18,14 +18,14 @@ transform/pos = Vector2( 96, 544 )
 
 transform/pos = Vector2( 32, 512 )
 arrival_node_ID = "wall_jump_reward_room_2_arrival"
-destination_scene = null
+destination_scene_path = ""
 
 [node name="WarpTile1" parent="." instance=ExtResource( 3 )]
 
 transform/pos = Vector2( 640, 672 )
 transform/rot = 90.0
 arrival_node_ID = "wall_jump_reward_room_2_arrival"
-destination_scene = null
+destination_scene_path = ""
 
 
 [editable path="WarpTile"]

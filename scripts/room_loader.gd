@@ -40,7 +40,7 @@ func warp_player_to_new_room_packed(player, room, position_id):
 	else:
 		print("Failed to load!")
 
-func warp_player_to_new_room(player, path, position_id):
+func warp_player_to_new_room_path(player, path, position_id):
 	print("Attempting to load: ", path)
 
 	var loaded_path = load(path)

@@ -13,7 +13,7 @@ extents = Vector2( 16.64, 33.2799 )
 script/script = ExtResource( 1 )
 active = true
 arrival_node_ID = "arrival_name"
-destination_scene = null
+destination_scene_path = ""
 
 [node name="area" type="Area2D" parent="."]
 

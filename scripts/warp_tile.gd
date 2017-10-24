@@ -3,14 +3,14 @@ extends Node2D
 var loaded = false
 export var active = true setget set_active, is_active
 export var arrival_node_ID = "arrival_name"
-export(PackedScene) var destination_scene
+export(String, FILE, "*.tscn") var destination_scene_path = ""
 
 func on_enter(body):
 	if(body.is_in_group("warpable") and not loaded):
-		if(destination_scene == null):
+		if(destination_scene_path == ""):
 			print("door not loaded")
 		else:
-			room_loader.call_deferred("warp_player_to_new_room_packed", body, destination_scene, arrival_node_ID)
+			room_loader.call_deferred("warp_player_to_new_room_path", body, destination_scene_path, arrival_node_ID)
 			
 func is_active():
 	return active
