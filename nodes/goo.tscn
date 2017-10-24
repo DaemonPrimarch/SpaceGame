@@ -1,0 +1,40 @@
+[gd_scene load_steps=4 format=1]
+
+[ext_resource path="res://nodes/hazard_area.tscn" type="PackedScene" id=1]
+[ext_resource path="res://sprites/white_light.png" type="Texture" id=2]
+
+[sub_resource type="RectangleShape2D" id=1]
+
+custom_solver_bias = 0.0
+extents = Vector2( 13, 13 )
+
+[node name="goo" instance=ExtResource( 1 )]
+
+damage = 1
+has_timer = false
+
+[node name="Sprite" type="Sprite" parent="."]
+
+transform/pos = Vector2( 3.33786e-06, 3.33786e-06 )
+transform/scale = Vector2( 0.16, 0.16 )
+texture = ExtResource( 2 )
+modulate = Color( 0.033783, 0.960938, 0.0482697, 1 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+
+transform/pos = Vector2( 1.90735e-06, 1.90735e-06 )
+transform/scale = Vector2( 2.46154, 2.46154 )
+shape = SubResource( 1 )
+trigger = false
+_update_shape_index = 0
+
+[node name="Timer" type="Timer" parent="."]
+
+process_mode = 1
+wait_time = 3.0
+one_shot = false
+autostart = false
+
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
+
+
