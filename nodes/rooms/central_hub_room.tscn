@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=1]
+[gd_scene load_steps=5 format=1]
 
 [ext_resource path="res://nodes/rooms/room.tscn" type="PackedScene" id=1]
 [ext_resource path="res://nodes/warp_tile.tscn" type="PackedScene" id=2]
-[ext_resource path="res://nodes/warp_arrival.tscn" type="PackedScene" id=3]
+[ext_resource path="res://nodes/rooms/piet_room_1.tscn" type="PackedScene" id=3]
+[ext_resource path="res://nodes/warp_arrival.tscn" type="PackedScene" id=4]
 
 [node name="scene" instance=ExtResource( 1 )]
 
@@ -13,29 +14,25 @@ tile_data = IntArray( 0, 7, 1, 7, 2, 7, 3, 7, 4, 7, 5, 7, 6, 7, 7, 7, 8, 7, 9, 7
 [node name="WarpTile" parent="." instance=ExtResource( 2 )]
 
 transform/pos = Vector2( 32, 512 )
-destination_scene_path = "res://rooms/"
 
 [node name="double_jump_room_1_door" parent="." instance=ExtResource( 2 )]
 
 transform/pos = Vector2( 1248, 512 )
-destination_scene_path = "res://nodes/rooms/double_jump_collect_room_1.tscn"
 arrival_node_ID = "central_hub_arrival"
 
 [node name="WarpTile2" parent="." instance=ExtResource( 2 )]
 
 transform/pos = Vector2( 32, 1216 )
-destination_scene_path = "res://rooms/"
 
 [node name="WarpTile3" parent="." instance=ExtResource( 2 )]
 
 transform/pos = Vector2( 1248, 1216 )
-destination_scene_path = "res://rooms/"
 
 [node name="WarpTile4" parent="." instance=ExtResource( 2 )]
 
 transform/pos = Vector2( 32, 1920 )
-destination_scene_path = "res://nodes/rooms/piet_room_1.tscn"
 arrival_node_ID = "piet_room_1_arrival_2"
+destination_scene = ExtResource( 3 )
 
 [node name="sprite" parent="WarpTile4"]
 
@@ -44,17 +41,16 @@ modulate = Color( 0.0792775, 0.984375, 0.0269165, 1 )
 [node name="WarpTile5" parent="." instance=ExtResource( 2 )]
 
 transform/pos = Vector2( 1248, 1920 )
-destination_scene_path = "res://rooms/"
 
-[node name="central_hub_arrival" parent="." instance=ExtResource( 3 )]
+[node name="central_hub_arrival" parent="." instance=ExtResource( 4 )]
 
 transform/pos = Vector2( 640, 1696 )
 
-[node name="piet_room_1_arrival" parent="." instance=ExtResource( 3 )]
+[node name="piet_room_1_arrival" parent="." instance=ExtResource( 4 )]
 
 transform/pos = Vector2( 128, 1920 )
 
-[node name="double_jump_collect_room_1_arrival_arrival" parent="." instance=ExtResource( 3 )]
+[node name="double_jump_collect_room_1_arrival_arrival" parent="." instance=ExtResource( 4 )]
 
 transform/pos = Vector2( 1152, 544 )
 
