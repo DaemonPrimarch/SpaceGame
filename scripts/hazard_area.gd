@@ -6,6 +6,8 @@ extends Area2D
 export var damage = 1 setget set_damage,get_damage
 export var has_timer = false
 
+onready var timer = get_node("Timer")
+
 func set_damage(value):
 	damage = value
 
@@ -14,6 +16,9 @@ func get_damage():
 
 func has_timer():
 	return has_timer
+
+func start_timer():
+	timer.start()
 
 func _ready():
 	# Called every time the node is added to the scene.
