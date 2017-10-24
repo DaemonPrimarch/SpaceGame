@@ -19,8 +19,8 @@ transform/pos = Vector2( 96, 544 )
 
 transform/pos = Vector2( 32, 512 )
 active = true
-destination_scene_path = "res://nodes/rooms/test_scene_1.tscn"
 arrival_node_ID = "right_door"
+destination_scene = null
 
 [node name="TileMap" type="TileMap" parent="." groups=[
 "terrain",

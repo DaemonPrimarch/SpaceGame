@@ -15,12 +15,13 @@ tile_data = IntArray( -720896, 7, -720895, 7, -720894, 7, -720893, 7, -720892, 7
 
 editor/display_folded = true
 transform/pos = Vector2( 32, 128 )
-destination_scene_path = "res://nodes/rooms/double_jump_collect_room_1.tscn"
 arrival_node_ID = "double_jump_collect_room_2_arrival"
+destination_scene = null
 
 [node name="double_jump_collect_room_3_door" parent="." instance=ExtResource( 2 )]
 
 transform/pos = Vector2( 2464, -448 )
+destination_scene = null
 
 [node name="double_jump_collect_room_1_arrival" parent="." instance=ExtResource( 3 )]
 
