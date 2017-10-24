@@ -61,6 +61,7 @@ transform/pos = Vector2( 736, 608 )
 [node name="WarpTile" parent="." instance=ExtResource( 5 )]
 
 transform/pos = Vector2( 32, 512 )
+active = true
 destination_scene_path = "res://nodes/rooms/wall_jump_reward_room_1.tscn"
 arrival_node_ID = "wall_jump_collect_room_arrival"
 
@@ -79,6 +80,7 @@ transform/pos = Vector2( 1184, 544 )
 [node name="WarpTile 2" parent="." instance=ExtResource( 5 )]
 
 transform/pos = Vector2( 1248, 512 )
+active = true
 destination_scene_path = "res://nodes/rooms/piet_room_1.tscn"
 arrival_node_ID = "wall_jump_collect_room_arrival"
 
@@ -90,6 +92,7 @@ modulate = Color( 0.0269165, 0.984375, 0.176519, 1 )
 
 transform/pos = Vector2( 640, 32 )
 transform/rot = 90.0
+active = true
 destination_scene_path = "res://nodes/rooms/piet_room_1.tscn"
 arrival_node_ID = "wall_jump_collect_room_arrival"
 

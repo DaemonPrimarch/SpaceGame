@@ -23,6 +23,7 @@ transform/pos = Vector2( 128, 608 )
 
 editor/display_folded = true
 transform/pos = Vector2( 32, 576 )
+active = true
 destination_scene_path = "res://nodes/rooms/central_hub_room.tscn"
 arrival_node_ID = "double_jump_collect_room_1_arrival"
 
@@ -92,6 +93,7 @@ transform/pos = Vector2( 1184, 608 )
 
 editor/display_folded = true
 transform/pos = Vector2( 2464, -576 )
+active = true
 destination_scene_path = "res://nodes/rooms/double_jump_collect_room_2.tscn"
 arrival_node_ID = "double_jump_collect_room_1_arrival"
 

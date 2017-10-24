@@ -18,10 +18,6 @@ transform/pos = Vector2( 32, 128 )
 destination_scene_path = "res://nodes/rooms/double_jump_collect_room_1.tscn"
 arrival_node_ID = "double_jump_collect_room_2_arrival"
 
-[node name="Sprite" parent="double_jump_collect_room_1_door"]
-
-modulate = Color( 0.146599, 0.984375, 0.0269165, 1 )
-
 [node name="double_jump_collect_room_3_door" parent="." instance=ExtResource( 2 )]
 
 transform/pos = Vector2( 2464, -448 )

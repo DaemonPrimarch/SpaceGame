@@ -8,13 +8,14 @@
 custom_solver_bias = 0.0
 extents = Vector2( 16.64, 33.2799 )
 
-[node name="WarpTile" type="Node2D"]
+[node name="warp_tile" type="Node2D"]
 
 script/script = ExtResource( 1 )
+active = true
 destination_scene_path = "res://nodes/rooms/"
 arrival_node_ID = "arrival_name"
 
-[node name="LeaveSideArea2D" type="Area2D" parent="."]
+[node name="area" type="Area2D" parent="."]
 
 input/pickable = false
 shapes/0/shape = SubResource( 1 )
@@ -26,19 +27,19 @@ gravity = 98.0
 linear_damp = 0.1
 angular_damp = 1.0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="LeaveSideArea2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="area"]
 
 transform/scale = Vector2( 1.92308, 1.92308 )
 shape = SubResource( 1 )
 trigger = false
 _update_shape_index = 0
 
-[node name="Sprite" type="Sprite" parent="."]
+[node name="sprite" type="Sprite" parent="."]
 
 transform/scale = Vector2( 1, 2 )
 texture = ExtResource( 2 )
 modulate = Color( 0.984375, 0.0269165, 0.0607096, 1 )
 
-[connection signal="body_enter" from="LeaveSideArea2D" to="." method="on_enter"]
+[connection signal="body_enter" from="area" to="." method="on_enter"]
 
 

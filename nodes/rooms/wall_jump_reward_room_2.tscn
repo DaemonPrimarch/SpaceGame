@@ -20,20 +20,12 @@ transform/pos = Vector2( 32, 512 )
 destination_scene_path = "res://nodes/rooms/wall_jump_reward_room_1.tscn"
 arrival_node_ID = "wall_jump_reward_room_2_arrival"
 
-[node name="Sprite" parent="WarpTile"]
-
-modulate = Color( 0.0343966, 0.984375, 0.0269165, 1 )
-
 [node name="WarpTile1" parent="." instance=ExtResource( 3 )]
 
 transform/pos = Vector2( 640, 672 )
 transform/rot = 90.0
 destination_scene_path = "res://nodes/rooms/wall_jump_reward_room_1.tscn"
 arrival_node_ID = "wall_jump_reward_room_2_arrival"
-
-[node name="Sprite" parent="WarpTile1"]
-
-modulate = Color( 0.0269165, 0.984375, 0.0418768, 1 )
 
 
 [editable path="WarpTile"]
