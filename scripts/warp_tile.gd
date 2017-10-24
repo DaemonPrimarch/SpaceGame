@@ -10,7 +10,7 @@ func on_enter(body):
 		if(destination_scene == null):
 			print("door not loaded")
 		else:
-			room_loader.call_deferred("warp_player_to_new_room", body, destination_scene.get_path(), arrival_node_ID)
+			room_loader.call_deferred("warp_player_to_new_room_packed", body, destination_scene, arrival_node_ID)
 			
 func is_active():
 	return active

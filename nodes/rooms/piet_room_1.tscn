@@ -15,7 +15,6 @@ tile_data = IntArray( 0, 11, 1, 11, 2, 11, 3, 11, 4, 11, 5, 11, 6, 11, 7, 11, 8,
 
 transform/pos = Vector2( 1248, 512 )
 arrival_node_ID = "piet_room_1_arrival"
-destination_scene = null
 
 [node name="piet_room_1_arrival_2" parent="." instance=ExtResource( 3 )]
 
@@ -26,7 +25,6 @@ transform/pos = Vector2( 1152, 544 )
 editor/display_folded = true
 transform/pos = Vector2( 32, 512 )
 arrival_node_ID = "piet_room_1_arrival"
-destination_scene = null
 
 [node name="wall_jump_collect_room_arrival" parent="." instance=ExtResource( 3 )]
 
@@ -46,7 +44,6 @@ autostart = true
 [node name="warp_tile" parent="door" instance=ExtResource( 2 )]
 
 active = false
-destination_scene = null
 
 [connection signal="close" from="door" to="door/warp_tile" method="set_active" binds= [ false ]]
 

@@ -1,0 +1,26 @@
+[gd_scene load_steps=3 format=1]
+
+[ext_resource path="res://scripts/bullet_switch.gd" type="Script" id=1]
+[ext_resource path="res://sprites/metroid_tilesheet.png" type="Texture" id=2]
+
+[node name="bullet_switch" type="StaticBody2D"]
+
+input/pickable = false
+collision/layers = 1
+collision/mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+script/script = ExtResource( 1 )
+on = false
+togglable = false
+
+[node name="sprite" type="Sprite" parent="."]
+
+texture = ExtResource( 2 )
+centered = false
+region = true
+region_rect = Rect2( 320, 320, 64, 64 )
+
+
