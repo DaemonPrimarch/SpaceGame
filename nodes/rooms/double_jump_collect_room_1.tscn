@@ -1,14 +1,5 @@
 [gd_scene load_steps=9 format=1]
 
-[ext_resource path="res://nodes/rooms/room.tscn" type="PackedScene" id=1]
-[ext_resource path="res://nodes/warp_arrival.tscn" type="PackedScene" id=2]
-[ext_resource path="res://nodes/warp_tile.tscn" type="PackedScene" id=3]
-[ext_resource path="res://nodes/spike.tscn" type="PackedScene" id=4]
-[ext_resource path="res://nodes/shootable_block.tscn" type="PackedScene" id=5]
-[ext_resource path="res://nodes/moving_platform.tscn" type="PackedScene" id=6]
-[ext_resource path="res://nodes/moving_platform_small.tscn" type="PackedScene" id=7]
-[ext_resource path="res://nodes/player.tscn" type="PackedScene" id=8]
-
 [node name="room" instance=ExtResource( 1 )]
 
 [node name="terrain" parent="."]
@@ -26,7 +17,6 @@ transform/pos = Vector2( 32, 576 )
 active = true
 arrival_node_ID = "double_jump_collect_room_1_arrival"
 destination_scene_path = ""
-
 [node name="Sprite" parent="central_hub_door"]
 
 modulate = Color( 0.0568371, 0.984375, 0.0269165, 1 )
