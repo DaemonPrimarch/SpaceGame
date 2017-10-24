@@ -1,11 +1,9 @@
 extends Node
 
-func warp_player_to_new_room(player, path, position_id):
-	print("Attempting to load: ", path)
-
-	var loaded_path = load(path)
+func warp_player_to_new_room_packed(player, room, position_id):
+	print("Attempting to load: ", room.get_path())
 	
-	if(loaded_path != null):
+	if(room != null):
 		var old_scene = player.get_parent()
 	
 		old_scene.remove_child(player)
@@ -14,7 +12,7 @@ func warp_player_to_new_room(player, path, position_id):
 	
 		#old_scene.queue_free()
 		
-		var new_scene = loaded_path.instance()
+		var new_scene = room.instance()
 		#Ugly hack
 		new_scene.set_pos(Vector2(10000, 10000))
 		get_tree().get_root().add_child(new_scene)
@@ -41,3 +39,11 @@ func warp_player_to_new_room(player, path, position_id):
 		new_scene.emit_signal("player_enter", player)
 	else:
 		print("Failed to load!")
+
+func warp_player_to_new_room(player, path, position_id):
+	print("Attempting to load: ", path)
+
+	var loaded_path = load(path)
+	
+	if(loaded_path != null):
+		warp_player_to_new_room_packed(player, loaded_path, position_id)
