@@ -16,9 +16,7 @@ __meta__ = {
 
 transform/pos = Vector2( 992, 514.518 )
 transform/scale = Vector2( 0.99, 0.99 )
-active = true
 arrival_node_ID = "left_door"
-destination_scene_path = ""
 
 [node name="right_door" parent="." instance=ExtResource( 2 )]
 

@@ -13,29 +13,25 @@ tile_data = IntArray( 0, 7, 1, 7, 2, 7, 3, 7, 4, 7, 5, 7, 6, 7, 7, 7, 8, 7, 9, 7
 [node name="WarpTile" parent="." instance=ExtResource( 2 )]
 
 transform/pos = Vector2( 32, 512 )
-destination_scene_path = ""
 
 [node name="double_jump_room_1_door" parent="." instance=ExtResource( 2 )]
 
 transform/pos = Vector2( 1248, 512 )
 arrival_node_ID = "central_hub_arrival"
-destination_scene_path = ""
 
 [node name="WarpTile2" parent="." instance=ExtResource( 2 )]
 
 transform/pos = Vector2( 32, 1216 )
-destination_scene_path = ""
 
 [node name="WarpTile3" parent="." instance=ExtResource( 2 )]
 
 transform/pos = Vector2( 1248, 1216 )
-destination_scene_path = ""
 
 [node name="WarpTile4" parent="." instance=ExtResource( 2 )]
 
 transform/pos = Vector2( 32, 1920 )
 arrival_node_ID = "piet_room_1_arrival_2"
-destination_scene_path = ""
+destination_scene_path = "res://nodes/rooms/piet_room_1.tscn"
 
 [node name="sprite" parent="WarpTile4"]
 
@@ -44,7 +40,6 @@ modulate = Color( 0.0792775, 0.984375, 0.0269165, 1 )
 [node name="WarpTile5" parent="." instance=ExtResource( 2 )]
 
 transform/pos = Vector2( 1248, 1920 )
-destination_scene_path = ""
 
 [node name="central_hub_arrival" parent="." instance=ExtResource( 3 )]
 

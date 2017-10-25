@@ -5,16 +5,22 @@
 [ext_resource path="res://nodes/camera.tscn" type="PackedScene" id=3]
 
 [node name="player" groups=[
-"player",
-"warpable",
 "tracked",
+"warpable",
+"player",
 ] instance=ExtResource( 1 )]
 
 script/script = ExtResource( 2 )
 max_HP = 10
 hp = 10
 
+[node name="CollisionPolygon2D" parent="."]
+
+transform/pos = Vector2( -4.0404, 0 )
+
 [node name="camera" parent="." instance=ExtResource( 3 )]
+
+transform/pos = Vector2( -3.0303, 0 )
 
 [node name="DebugStateLabel" type="Label" parent="."]
 

@@ -25,7 +25,6 @@ zoom = Vector2( 2, 2 )
 [node name="warp_tile" parent="." instance=ExtResource( 3 )]
 
 transform/pos = Vector2( 2048, 1536 )
-destination_scene_path = ""
 
 
 [editable path="player"]

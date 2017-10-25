@@ -18,9 +18,7 @@ transform/pos = Vector2( 96, 544 )
 [node name="WarpTile" parent="." instance=ExtResource( 2 )]
 
 transform/pos = Vector2( 32, 512 )
-active = true
 arrival_node_ID = "right_door"
-destination_scene_path = ""
 
 [node name="TileMap" type="TileMap" parent="." groups=[
 "terrain",
