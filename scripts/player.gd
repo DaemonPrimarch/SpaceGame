@@ -324,6 +324,8 @@ func _input(ev):
 
 func _fixed_process(delta):
 	
+	get_node("OLABEL").set_text(str(is_inside_ladder()))
+	
 	if(Input.is_action_pressed("aim_full_up")):
 		if(gun.get_orientation() != gun.ORIENTATION.FULL_UP):
 			gun.set_aim_orientation(gun.ORIENTATION.FULL_UP)
