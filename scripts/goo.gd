@@ -6,8 +6,7 @@ export var turn_off = false
 func _ready():
 	# Called every time the node is added to the scene.
 	# Initialization here
-	if(turn_off):
-		pass
+	pass
 
 
 func _fixed_process(delta):
@@ -31,3 +30,9 @@ func _on_goo_body_enter( body ):
 func _on_goo_body_exit( body ):
 	if(body.is_in_group("player")):
 		set_fixed_process(false)
+
+
+func _on_room_player_enter():
+	if(turn_off):
+		if(get_parent().get_node("player").get_save_data().has("goo_key") and get_parent().get_node("player").get_save_data()["goo_key"]):
+			set_hidden(true)
