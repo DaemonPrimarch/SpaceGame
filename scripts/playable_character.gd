@@ -6,7 +6,7 @@ onready var sprite = get_node("sprite")
 onready var animation_player = get_node("AnimationPlayer")
 onready var gun = get_node("gun")
 
-enum STATE {REGULAR_JUMPING, DOUBLE_JUMPING, WALL_JUMPING, WALL_SLIDING, GROUNDED, FALLING, CLIMBING, CRAWLING, CROUCHING}
+enum STATE {REGULAR_JUMPING, DOUBLE_JUMPING, WALL_JUMPING, WALL_SLIDING, GROUNDED, FALLING, CLIMBING, CRAWLING, CROUCHING, PUSHED}
 
 var current_state = STATE.GROUNDED
 
@@ -25,6 +25,7 @@ export var cn_wall_jump = true
 var time_jumping = 0
 var time_double_jumping = 0
 var time_wall_jumping = 0
+var time_pushed = 0
 
 export var jump_height = 64 * 4
 export var double_jump_height = 64 * 2
@@ -33,6 +34,9 @@ export var crawl_speed = 64 * 2
 export var wall_jump_height = 64 * 2
 export var wall_jump_length = 64 * 4
 
+var push_speed
+var push_time
+var push_time_extended
 var ladder = null
 
 func _ready():
@@ -183,6 +187,34 @@ func set_time_wall_jumping(new_time):
 func get_time_wall_jumping():
 	return time_wall_jumping
 
+#PUSHED HELPER FUNCTIONS:
+
+func get_time_pushed():
+	return time_pushed
+
+func set_time_pushed(value):
+	time_pushed = value
+
+func get_push_speed():
+	return push_speed
+
+func set_push_speed(value):
+	push_speed = value
+
+func get_push_time():
+	return push_time
+
+func set_push_time(value):
+	push_time = value
+
+func get_push_time_extended():
+	return push_time_extended
+
+func set_push_time_extended(value):
+	push_time_extended = value
+
+################################################
+
 func set_current_state(state):
 	if(state != get_current_state()):
 		var old_state = get_current_state()
@@ -203,3 +235,6 @@ func process_state(state, delta):
 	
 func _fixed_process(delta):
 	process_state(get_current_state(), delta)
+
+func push():
+	pass

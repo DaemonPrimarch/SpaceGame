@@ -5,14 +5,19 @@
 [ext_resource path="res://nodes/camera.tscn" type="PackedScene" id=3]
 
 [node name="player" groups=[
+"player",
 "tracked",
 "warpable",
-"player",
 ] instance=ExtResource( 1 )]
 
+collision/mask = 19
 script/script = ExtResource( 2 )
-max_HP = 10
-hp = 10
+max_HP = 200
+hp = 200
+invulnerability_time = 2
+cn_double_jump = false
+cn_wall_slide = false
+cn_wall_jump = false
 
 [node name="CollisionPolygon2D" parent="."]
 
@@ -42,6 +47,15 @@ process_mode = 1
 wait_time = 1.0
 one_shot = false
 autostart = false
+
+[node name="push_timer" type="Timer" parent="."]
+
+process_mode = 1
+wait_time = 1.0
+one_shot = false
+autostart = false
+
+[connection signal="timeout" from="push_timer" to="." method="_on_push_timer_timeout"]
 
 
 [editable path="gun"]

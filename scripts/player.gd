@@ -2,6 +2,7 @@ extends "res://scripts/playable_character.gd"
 
 onready var debug_state_label = get_node("DebugStateLabel")
 onready var wall_jump_timer = get_node("wall_jump_timer")
+onready var push_timer = get_node("push_timer")
 
 var jump_just_pressed = false
 var original_gravity_enabled = false
@@ -75,6 +76,14 @@ func enter_state(state, old_state):
 		get_ladder().snap_to_ladder(self)
 		print(get_global_pos())
 		debug_state_label.set_text("CLIMBING")
+	elif(state == STATE.PUSHED):
+		original_gravity_enabled = gravity_enabled
+		set_gravity_enabled(false)
+		set_time_pushed(0)
+		debug_state_label.set_text("PUSHED")
+
+		push_timer.set_wait_time(get_push_time_extended())
+		push_timer.start()
 
 func leave_state(state, new_state):
 	if(state == STATE.REGULAR_JUMPING):
@@ -95,6 +104,11 @@ func leave_state(state, new_state):
 		get_node("standing_space_detector_right").set_enabled(false)
 		get_node("standing_space_detector_left").set_enabled(false)
 		set_scale(get_scale() * Vector2(0.5, 2))
+	elif(state == STATE.PUSHED):
+		set_gravity_enabled(original_gravity_enabled)
+		reset_gravity_timer()
+	elif(state == STATE.FALLING):
+		push_timer.stop()
 
 func process_state(state, delta):
 	if(state == STATE.GROUNDED):
@@ -222,14 +236,16 @@ func process_state(state, delta):
 				set_current_state(STATE.GROUNDED)
 			else:
 				var dir = 0
-				if(Input.is_action_pressed("play_left")):
-					set_flippedH(true)
-					continuing_previous_movement = false
-					dir = -1
-				elif(Input.is_action_pressed("play_right")):
-					set_flippedH(false)
-					dir = 1
-					continuing_previous_movement = false
+				print(push_timer.get_time_left())
+				if(push_timer.get_time_left() <= 0):
+					if(Input.is_action_pressed("play_left")):
+						set_flippedH(true)
+						continuing_previous_movement = false
+						dir = -1
+					elif(Input.is_action_pressed("play_right")):
+						set_flippedH(false)
+						dir = 1
+						continuing_previous_movement = false
 			
 				if(continuing_previous_movement):
 					dir = 1
@@ -291,10 +307,28 @@ func process_state(state, delta):
 		
 		first_frame_crawling = false
 		
+	elif(state == STATE.PUSHED):
+		var collision_info_vertical
+		var collision_info_horizontal
+		if(is_flippedH()):
+			collision_info_vertical = move(Vector2(0,get_push_speed().y + get_jump_decelleration().y*get_time_pushed())*delta)
+			collision_info_horizontal = move(Vector2(get_push_speed().x*delta,0))
+		else:
+			collision_info_vertical = move(Vector2(0,get_push_speed().y + get_jump_decelleration().y*get_time_pushed())*delta)
+			collision_info_horizontal = move(Vector2(-1*get_push_speed().x*delta,0))
+		set_time_pushed(get_time_pushed() + delta)
+		
+		if(collision_info_horizontal.has_collision() and collision_info_horizontal.get_collider().is_in_group("terrain")):
+			set_current_state(STATE.WALL_SLIDING)
+		elif((collision_info_vertical.has_collision() and collision_info_vertical.get_collider().is_in_group("terrain")) or get_time_pushed() >= get_push_time()):
+			set_current_state(STATE.FALLING)
 	jump_just_pressed = false
 
 func _on_wall_jump_timer_timeout():
 	wall_jump_timer.stop()
+
+func _on_push_timer_timeout():
+	push_timer.stop()
 
 func _input(ev):
 	if(ev.is_action_pressed("shoot")):
@@ -324,3 +358,9 @@ func _fixed_process(delta):
 			gun.set_aim_orientation(gun.ORIENTATION.DOWN)
 	elif(gun.get_orientation() != gun.ORIENTATION.FRONT):
 		gun.set_aim_orientation(gun.ORIENTATION.FRONT)
+
+func push(time, time_extended, speed):
+	set_push_speed(speed)
+	set_push_time(time)
+	set_push_time_extended(time_extended)
+	set_current_state(STATE.PUSHED)

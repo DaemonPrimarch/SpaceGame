@@ -14,8 +14,9 @@ tile_data = IntArray( 0, 7, 1, 7, 2, 7, 3, 7, 4, 7, 5, 7, 6, 7, 7, 7, 8, 7, 9, 7
 
 transform/pos = Vector2( 32, 512 )
 
-[node name="double_jump_room_1_door" parent="." instance=ExtResource( 2 )]
+[node name="warptile_1" parent="." instance=ExtResource( 2 )]
 
+editor/display_folded = true
 transform/pos = Vector2( 1248, 512 )
 arrival_node_ID = "central_hub_arrival"
 
@@ -29,6 +30,7 @@ transform/pos = Vector2( 1248, 1216 )
 
 [node name="WarpTile4" parent="." instance=ExtResource( 2 )]
 
+editor/display_folded = true
 transform/pos = Vector2( 32, 1920 )
 arrival_node_ID = "piet_room_1_arrival_2"
 destination_scene_path = "res://nodes/rooms/piet_room_1.tscn"
@@ -37,9 +39,15 @@ destination_scene_path = "res://nodes/rooms/piet_room_1.tscn"
 
 modulate = Color( 0.0792775, 0.984375, 0.0269165, 1 )
 
-[node name="WarpTile5" parent="." instance=ExtResource( 2 )]
+[node name="double_jump_collect_room_1_door" parent="." instance=ExtResource( 2 )]
 
 transform/pos = Vector2( 1248, 1920 )
+arrival_node_ID = "central_hub_arrival"
+destination_scene_path = "res://nodes/rooms/double_jump_collect_room_1.tscn"
+
+[node name="sprite" parent="double_jump_collect_room_1_door"]
+
+modulate = Color( 0.281241, 0.984375, 0.0269165, 1 )
 
 [node name="central_hub_arrival" parent="." instance=ExtResource( 3 )]
 
@@ -51,8 +59,8 @@ transform/pos = Vector2( 128, 1920 )
 
 [node name="double_jump_collect_room_1_arrival_arrival" parent="." instance=ExtResource( 3 )]
 
-transform/pos = Vector2( 1152, 544 )
+transform/pos = Vector2( 1152, 1952 )
 
 
-[editable path="double_jump_room_1_door"]
 [editable path="WarpTile4"]
+[editable path="double_jump_collect_room_1_door"]
