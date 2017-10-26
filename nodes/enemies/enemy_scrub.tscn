@@ -51,11 +51,11 @@ tracks/0/keys = {
 [sub_resource type="RectangleShape2D" id=5]
 
 custom_solver_bias = 0.0
-extents = Vector2( 10, 10 )
+extents = Vector2( 10, 5.12465 )
 
 [node name="enemy" type="KinematicBody2D" groups=[
-"enemy",
 "destructable_by_bullet",
+"enemy",
 ]]
 
 transform/pos = Vector2( 50, 50 )
@@ -121,11 +121,9 @@ __meta__ = {
 
 [node name="head_area" type="Area2D" parent="."]
 
-transform/pos = Vector2( 0, -7.97645 )
-transform/scale = Vector2( 1, 0.52035 )
 input/pickable = false
 shapes/0/shape = SubResource( 5 )
-shapes/0/transform = Matrix32( 1.83998, 0, 0, 1, -0.780631, -14.9867 )
+shapes/0/transform = Matrix32( 1.83998, 0, 0, 1, -0.780628, -18.7138 )
 shapes/0/trigger = true
 gravity_vec = Vector2( 0, 1 )
 gravity = 98.0
@@ -136,7 +134,7 @@ collision/mask = 4
 
 [node name="head_shape" type="CollisionShape2D" parent="head_area"]
 
-transform/pos = Vector2( -0.780631, -14.9867 )
+transform/pos = Vector2( -0.780628, -18.7138 )
 transform/scale = Vector2( 1.83998, 1 )
 shape = SubResource( 5 )
 trigger = true

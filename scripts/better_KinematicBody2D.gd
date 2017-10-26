@@ -1,7 +1,6 @@
 extends KinematicBody2D
 
 signal collision
-
 class KinematicCollision2D:
 	#Collision data for KinematicBody2D collisions.
 	#Copied from future godot version: http://docs.godotengine.org/en/latest/classes/class_kinematiccollision2d.html#class-kinematiccollision2d
@@ -78,9 +77,7 @@ func move(direction):
 	if(is_colliding()):
 		collision_info = KinematicCollision2D.new(get_collider(), null, get_collider_metadata(), get_collider_shape(), null, get_collider_velocity(), null, get_collision_normal(), get_collision_pos(), null, get_travel())
 		emit_signal("collision", collision_info)
-		print(get_collider().get_name())
-		if(get_collider() extends get_script()):
-			print("HAPPENED")
+		if(get_collider().has_method("is_betterKinematicBody2D")):
 			get_collider().emit_signal("collision", KinematicCollision2D.new(self, null, get_collider_metadata(), get_collider_shape(), null, get_collider_velocity(), null, get_collision_normal(), get_collision_pos(), null, get_travel()))
 		
 		return collision_info
@@ -90,3 +87,5 @@ func move(direction):
 func move_no_collision(direction):
 	set_pos(get_pos() + direction)
 
+func is_betterKinematicBody2D():
+	return true

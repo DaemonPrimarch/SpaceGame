@@ -23,7 +23,9 @@ func destroy():
 		print("Destroyed")
 		destroyed = true
 		get_node("AnimationPlayer").play("Death")
-	#
+		set_layer_mask(0)
+		
+
 
 func _on_AnimationPlayer_finished():
 	if(is_destroyed()):
@@ -31,10 +33,14 @@ func _on_AnimationPlayer_finished():
 
 func on_collision(collision_info):
 	if(collision_info.get_collider().is_in_group("player")):
+		print("Checking body: ")
+		print(collision_info.get_collider().get_name())
+		
 		if(get_node("head_area").overlaps_body(collision_info.get_collider())):
 			destroy()
 		else:
 			collision_info.get_collider().damage(5)
 			collision_info.get_collider().set_invulnerable(true)
 	else:
-		print("WOTNOW?")
+		print("WOT:")
+		print(collision_info.get_collider().get_name())

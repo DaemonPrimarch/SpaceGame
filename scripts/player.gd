@@ -32,7 +32,8 @@ func set_ladder(val):
 	.set_ladder(val)
 
 func on_collision(object):
-	print("COLLISION")
+	pass
+	#print("COLLISION")
 
 func is_jump_just_pressed():
 	return jump_just_pressed
