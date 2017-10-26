@@ -14,16 +14,16 @@ scale = Vector2( 1, 1 )
 
 anchor/right = 1
 anchor/bottom = 1
-margin/left = 0.0
-margin/top = 572.0
-margin/right = 1076.0
-margin/bottom = 119.0
+margin/left = -4.0
+margin/top = 552.0
+margin/right = 1080.0
+margin/bottom = 139.0
 
 [node name="option_select_box" parent="." instance=ExtResource( 2 )]
 
-margin/left = 1022.0
-margin/top = 573.0
-margin/right = 1278.0
-margin/bottom = 718.0
+margin/left = 1018.0
+margin/top = 553.0
+margin/right = 1274.0
+margin/bottom = 698.0
 
 

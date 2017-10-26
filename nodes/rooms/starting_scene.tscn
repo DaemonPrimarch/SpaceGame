@@ -20,3 +20,4 @@ editor/display_folded = false
 
 
 [editable path="player"]
+[editable path="player/gun"]

@@ -29,8 +29,8 @@ transform/scale = Vector2( -1.1, 1 )
 transform/pos = Vector2( 250, 0 )
 
 [node name="platform" type="KinematicBody2D" parent="." groups=[
-"terrain",
 "no_crawl",
+"terrain",
 ]]
 
 input/pickable = false

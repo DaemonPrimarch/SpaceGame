@@ -7,6 +7,8 @@ var jump_just_pressed = false
 var original_gravity_enabled = false
 var first_frame_crawling = false
 
+var escaping_ladder = false
+
 var continuing_previous_movement = true
 
 func _ready():
@@ -14,6 +16,12 @@ func _ready():
 	set_fixed_process(true)
 	debug_state_label.set_text("GROUNDED")
 	
+func set_ladder(val):
+	if(val == null):
+		escaping_ladder = false
+	.set_ladder(val)
+	
+
 func is_jump_just_pressed():
 	return jump_just_pressed
 
@@ -64,6 +72,8 @@ func enter_state(state, old_state):
 	elif(state == STATE.CLIMBING):
 		original_gravity_enabled = gravity_enabled
 		set_gravity_enabled(false)
+		get_ladder().snap_to_ladder(self)
+		print(get_global_pos())
 		debug_state_label.set_text("CLIMBING")
 
 func leave_state(state, new_state):
@@ -115,7 +125,7 @@ func process_state(state, delta):
 	elif(state == STATE.REGULAR_JUMPING):
 		play_or_continue_animation("jumping")
 		if(Input.is_action_pressed("jump")):
-			if(is_inside_ladder()):
+			if(is_inside_ladder() and not escaping_ladder):
 				set_current_state(STATE.CLIMBING)
 			else:
 				var vertical_collision_info = move(get_current_jump_velocity(get_time_jumping())*delta)
@@ -131,10 +141,15 @@ func process_state(state, delta):
 				
 				var horizontal_collision_info = move(Vector2(dir * get_movement_speed() * delta, 0))
 				
-				if(vertical_collision_info.has_collision()):
+				if(horizontal_collision_info.has_collision()):
+					if(is_in_ladder()):
+						set_current_state(STATE.CLIMBING)
+					elif(can_wall_slide() and horizontal_collision_info.get_collider().is_in_group("terrain")):
+						set_current_state(STATE.WALL_SLIDING)
+					else:
+						set_current_state(STATE.FALLING)
+				elif(vertical_collision_info.has_collision()):
 					set_current_state(STATE.FALLING)
-				elif(not is_in_ladder() and can_wall_slide() and horizontal_collision_info.has_collision() and horizontal_collision_info.get_collider().is_in_group("terrain")):
-					set_current_state(STATE.WALL_SLIDING)
 				
 				if(time_jumping >= get_max_jump_time()):
 					set_current_state(STATE.FALLING)
@@ -240,6 +255,7 @@ func process_state(state, delta):
 		#	move(Vector2(get_climbing_speed() * delta, 0))
 		if(not is_inside_ladder() or is_jump_just_pressed()):
 			if(Input.is_action_pressed("play_right") or Input.is_action_pressed("play_left")):
+				escaping_ladder = true
 				set_current_state(STATE.REGULAR_JUMPING) 
 			else:
 				set_current_state(STATE.FALLING)
@@ -293,6 +309,7 @@ func _input(ev):
 		set_current_state(STATE.FALLING)
 
 func _fixed_process(delta):
+	
 	if(Input.is_action_pressed("aim_full_up")):
 		if(gun.get_orientation() != gun.ORIENTATION.FULL_UP):
 			gun.set_aim_orientation(gun.ORIENTATION.FULL_UP)
