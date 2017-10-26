@@ -14,8 +14,6 @@ func is_open():
 	return opened
 	
 func set_open(value):
-	print(value)
-	
 	if(value):
 		emit_signal("open")
 	else:

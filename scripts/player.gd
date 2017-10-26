@@ -43,7 +43,7 @@ func enter_state(state, old_state):
 		move(Vector2(10, 0))
 		first_frame_crawling = true
 	elif(state == STATE.CROUCHING):
-		pass
+		set_scale(get_scale() / Vector2(0.5, 2))
 	elif(state == STATE.WALL_JUMPING):
 		set_jumped(true)
 		set_flippedH(not is_flippedH())
@@ -62,6 +62,9 @@ func enter_state(state, old_state):
 	elif(state == STATE.FALLING):
 		debug_state_label.set_text("FALLING")
 	elif(state == STATE.WALL_SLIDING):
+		var gun  = get_node("gun")
+		gun.set_pos(gun.get_pos() * Vector2(-1,1))
+		gun.set_scale(gun.get_scale() * Vector2(-1,1))
 		debug_state_label.set_text("WALL_SLIDING")
 	elif(state == STATE.DOUBLE_JUMPING):
 		set_double_jumped(true)
@@ -74,7 +77,9 @@ func enter_state(state, old_state):
 		original_gravity_enabled = gravity_enabled
 		set_gravity_enabled(false)
 		get_ladder().snap_to_ladder(self)
-		print(get_global_pos())
+		var gun  = get_node("gun")
+		gun.set_pos(gun.get_pos() * Vector2(-1,1))
+		gun.set_scale(gun.get_scale() * Vector2(-1,1))
 		debug_state_label.set_text("CLIMBING")
 	elif(state == STATE.PUSHED):
 		original_gravity_enabled = gravity_enabled
@@ -95,8 +100,15 @@ func leave_state(state, new_state):
 	elif(state == STATE.DOUBLE_JUMPING):
 		set_gravity_enabled(original_gravity_enabled)
 		reset_gravity_timer()
+	elif(state == STATE.WALL_SLIDING):
+		var gun  = get_node("gun")
+		gun.set_pos(gun.get_pos() * Vector2(-1,1))
+		gun.set_scale(gun.get_scale() * Vector2(-1,1))
 	elif(state == STATE.CLIMBING):
 		set_gravity_enabled(original_gravity_enabled)
+		var gun  = get_node("gun")
+		gun.set_pos(gun.get_pos() * Vector2(-1,1))
+		gun.set_scale(gun.get_scale() * Vector2(-1,1))
 		reset_gravity_timer()
 	elif(state == STATE.CRAWLING):
 		get_node("crawl_space_detector_up").set_enabled(true)
@@ -104,11 +116,14 @@ func leave_state(state, new_state):
 		get_node("standing_space_detector_right").set_enabled(false)
 		get_node("standing_space_detector_left").set_enabled(false)
 		set_scale(get_scale() * Vector2(0.5, 2))
+
 	elif(state == STATE.PUSHED):
 		set_gravity_enabled(original_gravity_enabled)
 		reset_gravity_timer()
 	elif(state == STATE.FALLING):
 		push_timer.stop()
+	elif(state == STATE.CROUCHING):
+		set_scale(get_scale() / Vector2(2, 0.5))
 
 func process_state(state, delta):
 	if(state == STATE.GROUNDED):
@@ -265,10 +280,6 @@ func process_state(state, delta):
 			move(Vector2(0, -get_climbing_speed() * delta))
 		elif(Input.is_action_pressed("down")):
 			move(Vector2(0, get_climbing_speed() * delta))
-		#if(Input.is_action_pressed("play_left")):
-		#	move(Vector2(-get_climbing_speed() * delta, 0))
-		#elif(Input.is_action_pressed("play_right")):
-		#	move(Vector2(get_climbing_speed() * delta, 0))
 		if(not is_inside_ladder() or is_jump_just_pressed()):
 			if(Input.is_action_pressed("play_right") or Input.is_action_pressed("play_left")):
 				escaping_ladder = true
@@ -306,6 +317,17 @@ func process_state(state, delta):
 			set_current_state(STATE.GROUNDED)
 		
 		first_frame_crawling = false
+	elif(state == STATE.CROUCHING):
+		if(not Input.is_action_pressed("play_down")):
+			set_current_state(STATE.GROUNDED)
+		else:
+			var dir = 0
+			if(Input.is_action_pressed("play_left")):
+				set_flippedH(true)
+				dir = -1
+			elif(Input.is_action_pressed("play_right")):
+				set_flippedH(false)
+				dir = 1
 		
 	elif(state == STATE.PUSHED):
 		var collision_info_vertical
@@ -331,6 +353,11 @@ func _on_push_timer_timeout():
 	push_timer.stop()
 
 func _input(ev):
+	if(get_current_state() == STATE.CLIMBING):
+		pass
+	elif(get_current_state() == STATE.GROUNDED):
+		if(ev.is_action_pressed("play_down")):
+			set_current_state(STATE.CROUCHING)
 	if(ev.is_action_pressed("shoot")):
 		gun.press_trigger()
 	elif(ev.is_action_released("shoot")):
@@ -350,7 +377,7 @@ func _fixed_process(delta):
 	elif(Input.is_action_pressed("aim_up")):
 		if(gun.get_orientation() != gun.ORIENTATION.UP):
 			gun.set_aim_orientation(gun.ORIENTATION.UP)
-	elif(Input.is_action_pressed("aim_full_down")):
+	elif(Input.is_action_pressed("aim_full_down") and get_current_state() != STATE.CROUCHING):
 		if(gun.get_orientation() != gun.ORIENTATION.FULL_DOWN):
 			gun.set_aim_orientation(gun.ORIENTATION.FULL_DOWN)
 	elif(Input.is_action_pressed("aim_down")):
