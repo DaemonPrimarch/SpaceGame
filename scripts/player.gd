@@ -61,6 +61,9 @@ func enter_state(state, old_state):
 	elif(state == STATE.FALLING):
 		debug_state_label.set_text("FALLING")
 	elif(state == STATE.WALL_SLIDING):
+		var gun  = get_node("gun")
+		gun.set_pos(gun.get_pos() * Vector2(-1,1))
+		gun.set_scale(gun.get_scale() * Vector2(-1,1))
 		debug_state_label.set_text("WALL_SLIDING")
 	elif(state == STATE.DOUBLE_JUMPING):
 		set_double_jumped(true)
@@ -73,7 +76,9 @@ func enter_state(state, old_state):
 		original_gravity_enabled = gravity_enabled
 		set_gravity_enabled(false)
 		get_ladder().snap_to_ladder(self)
-		print(get_global_pos())
+		var gun  = get_node("gun")
+		gun.set_pos(gun.get_pos() * Vector2(-1,1))
+		gun.set_scale(gun.get_scale() * Vector2(-1,1))
 		debug_state_label.set_text("CLIMBING")
 
 func leave_state(state, new_state):
@@ -86,8 +91,15 @@ func leave_state(state, new_state):
 	elif(state == STATE.DOUBLE_JUMPING):
 		set_gravity_enabled(original_gravity_enabled)
 		reset_gravity_timer()
+	elif(state == STATE.WALL_SLIDING):
+		var gun  = get_node("gun")
+		gun.set_pos(gun.get_pos() * Vector2(-1,1))
+		gun.set_scale(gun.get_scale() * Vector2(-1,1))
 	elif(state == STATE.CLIMBING):
 		set_gravity_enabled(original_gravity_enabled)
+		var gun  = get_node("gun")
+		gun.set_pos(gun.get_pos() * Vector2(-1,1))
+		gun.set_scale(gun.get_scale() * Vector2(-1,1))
 		reset_gravity_timer()
 	elif(state == STATE.CRAWLING):
 		get_node("crawl_space_detector_up").set_enabled(true)
@@ -297,6 +309,8 @@ func _on_wall_jump_timer_timeout():
 	wall_jump_timer.stop()
 
 func _input(ev):
+	if(get_current_state() == STATE.CLIMBING):
+		pass
 	if(ev.is_action_pressed("shoot")):
 		gun.press_trigger()
 	elif(ev.is_action_released("shoot")):
