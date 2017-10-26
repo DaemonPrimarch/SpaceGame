@@ -26,6 +26,12 @@ modulate = Color( 0.0269165, 0.984375, 0.109198, 1 )
 [node name="double_jump_collect_room_5_door" parent="." instance=ExtResource( 2 )]
 
 transform/pos = Vector2( 1248, 256 )
+arrival_node_ID = "double_jump_collect_room_4_arrival"
+destination_scene_path = "res://nodes/rooms/double_jump_collect_room_5.tscn"
+
+[node name="sprite" parent="double_jump_collect_room_5_door"]
+
+modulate = Color( 0.19148, 0.984375, 0.0269165, 1 )
 
 [node name="double_jump_collect_room_3_arrival" parent="." instance=ExtResource( 3 )]
 
@@ -77,5 +83,6 @@ transform/pos = Vector2( -128, 0 )
 
 
 [editable path="double_jump_collect_room_3_door"]
+[editable path="double_jump_collect_room_5_door"]
 [editable path="moving_platform"]
 [editable path="moving_platform3"]
