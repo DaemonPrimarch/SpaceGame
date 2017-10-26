@@ -42,7 +42,7 @@ func enter_state(state, old_state):
 		move(Vector2(10, 0))
 		first_frame_crawling = true
 	elif(state == STATE.CROUCHING):
-		pass
+		set_scale(get_scale() / Vector2(0.5, 2))
 	elif(state == STATE.WALL_JUMPING):
 		set_jumped(true)
 		set_flippedH(not is_flippedH())
@@ -107,6 +107,8 @@ func leave_state(state, new_state):
 		get_node("standing_space_detector_right").set_enabled(false)
 		get_node("standing_space_detector_left").set_enabled(false)
 		set_scale(get_scale() * Vector2(0.5, 2))
+	elif(state == STATE.CROUCHING):
+		set_scale(get_scale() / Vector2(2, 0.5))
 
 func process_state(state, delta):
 	if(state == STATE.GROUNDED):
@@ -261,10 +263,6 @@ func process_state(state, delta):
 			move(Vector2(0, -get_climbing_speed() * delta))
 		elif(Input.is_action_pressed("down")):
 			move(Vector2(0, get_climbing_speed() * delta))
-		#if(Input.is_action_pressed("play_left")):
-		#	move(Vector2(-get_climbing_speed() * delta, 0))
-		#elif(Input.is_action_pressed("play_right")):
-		#	move(Vector2(get_climbing_speed() * delta, 0))
 		if(not is_inside_ladder() or is_jump_just_pressed()):
 			if(Input.is_action_pressed("play_right") or Input.is_action_pressed("play_left")):
 				escaping_ladder = true
@@ -302,6 +300,17 @@ func process_state(state, delta):
 			set_current_state(STATE.GROUNDED)
 		
 		first_frame_crawling = false
+	elif(state == STATE.CROUCHING):
+		if(not Input.is_action_pressed("play_down")):
+			set_current_state(STATE.GROUNDED)
+		else:
+			var dir = 0
+			if(Input.is_action_pressed("play_left")):
+				set_flippedH(true)
+				dir = -1
+			elif(Input.is_action_pressed("play_right")):
+				set_flippedH(false)
+				dir = 1
 		
 	jump_just_pressed = false
 
@@ -311,6 +320,9 @@ func _on_wall_jump_timer_timeout():
 func _input(ev):
 	if(get_current_state() == STATE.CLIMBING):
 		pass
+	elif(get_current_state() == STATE.GROUNDED):
+		if(ev.is_action_pressed("play_down")):
+			set_current_state(STATE.CROUCHING)
 	if(ev.is_action_pressed("shoot")):
 		gun.press_trigger()
 	elif(ev.is_action_released("shoot")):
@@ -324,15 +336,13 @@ func _input(ev):
 
 func _fixed_process(delta):
 	
-	get_node("OLABEL").set_text(str(is_inside_ladder()))
-	
 	if(Input.is_action_pressed("aim_full_up")):
 		if(gun.get_orientation() != gun.ORIENTATION.FULL_UP):
 			gun.set_aim_orientation(gun.ORIENTATION.FULL_UP)
 	elif(Input.is_action_pressed("aim_up")):
 		if(gun.get_orientation() != gun.ORIENTATION.UP):
 			gun.set_aim_orientation(gun.ORIENTATION.UP)
-	elif(Input.is_action_pressed("aim_full_down")):
+	elif(Input.is_action_pressed("aim_full_down") and get_current_state() != STATE.CROUCHING):
 		if(gun.get_orientation() != gun.ORIENTATION.FULL_DOWN):
 			gun.set_aim_orientation(gun.ORIENTATION.FULL_DOWN)
 	elif(Input.is_action_pressed("aim_down")):
