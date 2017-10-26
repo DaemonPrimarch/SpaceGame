@@ -6,10 +6,8 @@
 
 [node name="player" groups=[
 "player",
-
 "warpable",
 "tracked",
-
 ] instance=ExtResource( 1 )]
 
 collision/mask = 19
@@ -49,7 +47,6 @@ process_mode = 1
 wait_time = 1.0
 one_shot = false
 autostart = false
-
 
 [node name="push_timer" type="Timer" parent="."]
 
