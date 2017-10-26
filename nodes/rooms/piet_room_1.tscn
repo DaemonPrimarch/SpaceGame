@@ -70,8 +70,8 @@ transform/scale = Vector2( 1, 6 )
 
 [node name="enemy" parent="." instance=ExtResource( 8 )]
 
-transform/pos = Vector2( 247, 521 )
-transform/scale = Vector2( 2.28125, 2.28125 )
+transform/pos = Vector2( 215, 553 )
+transform/scale = Vector2( 1.28125, 1.28125 )
 
 [connection signal="close" from="Node2D/door" to="Node2D/door/warp_tile" method="set_active" binds= [ false ]]
 
