@@ -12,10 +12,14 @@ var escaping_ladder = false
 
 var continuing_previous_movement = true
 
+var already_loaded_2 = false
+
 func _ready():
-	set_process_input(true)
-	set_fixed_process(true)
-	debug_state_label.set_text("GROUNDED")
+	if(not already_loaded_2):
+		set_process_input(true)
+		set_fixed_process(true)
+		debug_state_label.set_text("GROUNDED")
+		already_loaded_2 = true
 	
 func set_ladder(val):
 	if(val == null):
@@ -372,22 +376,19 @@ func _input(ev):
 func _fixed_process(delta):
 	
 	if(Input.is_action_pressed("aim_full_up")):
-		if(gun.get_orientation() != gun.ORIENTATION.FULL_UP):
-			gun.set_aim_orientation(gun.ORIENTATION.FULL_UP)
+		gun.set_current_point(gun.FULL_UP)
 	elif(Input.is_action_pressed("aim_up")):
-		if(gun.get_orientation() != gun.ORIENTATION.UP):
-			gun.set_aim_orientation(gun.ORIENTATION.UP)
+		gun.set_current_point(gun.UP)
 	elif(Input.is_action_pressed("aim_full_down") and get_current_state() != STATE.CROUCHING):
-		if(gun.get_orientation() != gun.ORIENTATION.FULL_DOWN):
-			gun.set_aim_orientation(gun.ORIENTATION.FULL_DOWN)
+		gun.set_current_point(gun.FULL_DOWN)
 	elif(Input.is_action_pressed("aim_down")):
-		if(gun.get_orientation() != gun.ORIENTATION.DOWN):
-			gun.set_aim_orientation(gun.ORIENTATION.DOWN)
-	elif(gun.get_orientation() != gun.ORIENTATION.FRONT):
-		gun.set_aim_orientation(gun.ORIENTATION.FRONT)
+		gun.set_current_point(gun.DOWN)
+	else:
+		gun.set_current_point(gun.FRONT)
 
 func push(time, time_extended, speed):
 	set_push_speed(speed)
 	set_push_time(time)
 	set_push_time_extended(time_extended)
 	set_current_state(STATE.PUSHED)
+

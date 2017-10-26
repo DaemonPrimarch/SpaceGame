@@ -54,6 +54,12 @@ transform/scale = Vector2( 3, 2 )
 [node name="timed_goo" parent="." instance=ExtResource( 4 )]
 
 editor/display_folded = true
+transform/pos = Vector2( 32, 384 )
+arrival_node_ID = "double_jump_collect_room_2_arrival"
+destination_scene_path = "res://nodes/rooms/double_jump_collect_room_1.tscn"
+
+[node name="warp_tile1" parent="." instance=ExtResource( 4 )]
+
 transform/pos = Vector2( 928, 416 )
 transform/scale = Vector2( 1, 7 )
 has_timer = true

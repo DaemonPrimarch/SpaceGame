@@ -34,15 +34,21 @@ export var crawl_speed = 64 * 2
 export var wall_jump_height = 64 * 2
 export var wall_jump_length = 64 * 4
 
+var already_loaded = false
+
 var push_speed
 var push_time
 var push_time_extended
+
 var ladder = null
 
 func _ready():
-	set_current_state(STATE.GROUNDED)
-	
-	set_fixed_process(true)
+	if(not already_loaded):
+		set_current_state(STATE.GROUNDED)
+		
+		set_fixed_process(true)
+		
+		already_loaded = true
 	
 func get_ladder():
 	return ladder

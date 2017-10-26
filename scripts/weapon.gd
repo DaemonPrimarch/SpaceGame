@@ -3,52 +3,33 @@ extends Node2D
 export var has_cooldown = true 
 
 onready var cooldown_timer = get_node("cooldown_timer")
-onready var front = get_node("front")
-onready var down = get_node("down")
-onready var up = get_node("up")
-onready var full_down = get_node("full_down")
-onready var full_up = get_node("full_up")
-onready var barrel = get_node("barrel")
-onready var current_point = front
 
-enum ORIENTATION {FULL_UP, UP, FRONT, DOWN, FULL_DOWN}
+const FRONT = "front"
+const DOWN  = "down"
+const UP = "up"
+const FULL_DOWN = "full_down"
+const FULL_UP = "full_up"
+onready var barrel = get_node("barrel")
+
+
+
+var current_point_name = FRONT
 
 var holding = false
-var current_orientation = ORIENTATION.FRONT
 
-func get_orientation():
-	return current_orientation
-
-func set_orientation(value):
-	current_orientation = value
-
-func set_aim_orientation(orientation):
-	if(orientation == ORIENTATION.FULL_UP):
-		set_orientation_position(full_up)
-		current_orientation = ORIENTATION.FULL_UP
-	elif(orientation == ORIENTATION.UP):
-		set_orientation_position(up)
-		current_orientation = ORIENTATION.UP
-	elif(orientation == ORIENTATION.FRONT):
-		set_orientation_position(front)
-		current_orientation = ORIENTATION.FRONT
-	elif(orientation == ORIENTATION.DOWN):
-		set_orientation_position(down)
-		current_orientation = ORIENTATION.DOWN
-	elif(orientation == ORIENTATION.FULL_DOWN):
-		set_orientation_position(full_down)
-		current_orientation = ORIENTATION.FULL_DOWN
+func get_current_name():
+	return current_point_name
 
 func get_current_point():
-	return current_point
+	return get_node(get_current_name())
 
-func set_current_point(point):
-	current_point = point
-
-func set_orientation_position(point):
-	set_current_point(point)
-	barrel.set_global_pos(point.get_global_pos())
-	barrel.set_rot(point.get_rot())
+func set_current_point(name):
+	if(has_node(name)):
+		current_point_name = name
+		barrel.set_global_pos(get_current_point().get_global_pos())
+		barrel.set_rot(get_current_point().get_rot())
+	else:
+		print("ERRORS POINT NOT FOUND")
 
 func is_holding():
 	return holding
@@ -60,7 +41,7 @@ func has_cooldown_timer():
 	return has_cooldown
 
 func _ready():
-	set_current_point(front)
+	set_current_point(current_point_name)
 	set_process(true)
 
 func _process(delta):
