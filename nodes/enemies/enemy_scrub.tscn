@@ -123,7 +123,7 @@ __meta__ = {
 
 transform/pos = Vector2( 0, -7.97645 )
 transform/scale = Vector2( 1, 0.52035 )
-input/pickable = true
+input/pickable = false
 shapes/0/shape = SubResource( 5 )
 shapes/0/transform = Matrix32( 1.83998, 0, 0, 1, -0.780631, -14.9867 )
 shapes/0/trigger = true

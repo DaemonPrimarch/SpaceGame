@@ -14,12 +14,17 @@ var continuing_previous_movement = true
 
 var already_loaded_2 = false
 
+var save_data = {}
+
 func _ready():
 	if(not already_loaded_2):
 		set_process_input(true)
 		set_fixed_process(true)
 		debug_state_label.set_text("GROUNDED")
 		already_loaded_2 = true
+	
+func get_save_data():
+	return save_data
 	
 func set_ladder(val):
 	if(val == null):
