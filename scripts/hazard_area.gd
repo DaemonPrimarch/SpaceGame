@@ -1,12 +1,37 @@
 extends Area2D
 
-# class member variables go here, for example:
-# var a = 2
-# var b = "textvar"
 export var damage = 1 setget set_damage,get_damage
 export var has_timer = false
+export var push_time = 5 setget set_push_time, get_push_time
+export var push_time_extended = 5 setget set_push_time_extended, get_push_time_extended
+export var push_speed_x = 4*64 setget set_push_speed_x, get_push_speed_x
+export var push_speed_y = 2*64 setget set_push_speed_y, get_push_speed_y
 
-onready var timer = get_node("Timer")
+var timer
+
+func set_push_speed_x(value):
+	push_speed_x = value
+
+func get_push_speed_x():
+	return push_speed_x
+
+func set_push_speed_y(value):
+	push_speed_y = -value
+
+func get_push_speed_y():
+	return push_speed_y
+
+func set_push_time(value):
+	push_time = value
+
+func get_push_time():
+	return push_time
+
+func set_push_time_extended(value):
+	push_time_extended = value
+
+func get_push_time_extended():
+	return push_time_extended
 
 func set_damage(value):
 	damage = value
@@ -21,25 +46,9 @@ func start_timer():
 	timer.start()
 
 func _ready():
-	# Called every time the node is added to the scene.
-	# Initialization here
 	if(has_timer()):
+		timer = get_node("Timer")
 		start_timer()
-
-func _fixed_process(delta):
-	for object in get_overlapping_bodies():
-		if(object.is_in_group("player")):
-			object.damage(get_damage())
-			object.set_invulnerable(true)
-
-func _on_area_body_enter( body ):
-	if(body.is_in_group("player")):
-		set_fixed_process(true)
-
-func _on_area_body_exit( body ):
-	if(body.is_in_group("player")):
-		set_fixed_process(false)
-
 
 func _on_Timer_timeout():
 	set_hidden(not is_hidden())

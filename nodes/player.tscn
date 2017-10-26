@@ -6,13 +6,20 @@
 
 [node name="player" groups=[
 "player",
+
 "warpable",
 "tracked",
+
 ] instance=ExtResource( 1 )]
 
+collision/mask = 19
 script/script = ExtResource( 2 )
-max_HP = 10
-hp = 10
+max_HP = 200
+hp = 200
+invulnerability_time = 2
+cn_double_jump = false
+cn_wall_slide = false
+cn_wall_jump = false
 
 [node name="CollisionPolygon2D" parent="."]
 
@@ -43,19 +50,15 @@ wait_time = 1.0
 one_shot = false
 autostart = false
 
-[node name="OLABEL" type="Label" parent="."]
 
-focus/ignore_mouse = true
-focus/stop_mouse = true
-size_flags/horizontal = 2
-size_flags/vertical = 0
-margin/left = 0.0
-margin/top = 0.0
-margin/right = 40.0
-margin/bottom = 14.0
-percent_visible = 1.0
-lines_skipped = 0
-max_lines_visible = -1
+[node name="push_timer" type="Timer" parent="."]
+
+process_mode = 1
+wait_time = 1.0
+one_shot = false
+autostart = false
+
+[connection signal="timeout" from="push_timer" to="." method="_on_push_timer_timeout"]
 
 
 [editable path="gun"]
