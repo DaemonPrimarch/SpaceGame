@@ -6,8 +6,12 @@ export var push_time = 5 setget set_push_time, get_push_time
 export var push_time_extended = 5 setget set_push_time_extended, get_push_time_extended
 export var push_speed_x = 4*64 setget set_push_speed_x, get_push_speed_x
 export var push_speed_y = 2*64 setget set_push_speed_y, get_push_speed_y
+export var pushes = false
 
 var timer
+
+func pushes():
+	return pushes
 
 func set_push_speed_x(value):
 	push_speed_x = value

@@ -1,11 +1,10 @@
-[gd_scene load_steps=7 format=1]
+[gd_scene load_steps=6 format=1]
 
 [ext_resource path="res://nodes/rooms/room.tscn" type="PackedScene" id=1]
 [ext_resource path="res://nodes/shootable_block.tscn" type="PackedScene" id=2]
 [ext_resource path="res://nodes/enemies/enemy_scrub.tscn" type="PackedScene" id=3]
 [ext_resource path="res://nodes/warp_arrival.tscn" type="PackedScene" id=4]
 [ext_resource path="res://nodes/warp_tile.tscn" type="PackedScene" id=5]
-[ext_resource path="res://nodes/player.tscn" type="PackedScene" id=6]
 
 [node name="room" instance=ExtResource( 1 )]
 
@@ -54,10 +53,6 @@ destination_scene_path = "res://nodes/rooms/double_jump_collect_room_6.tscn"
 [node name="sprite" parent="double_jump_collect_room_6_door"]
 
 modulate = Color( 0.146599, 0.984375, 0.0269165, 1 )
-
-[node name="player" parent="." instance=ExtResource( 6 )]
-
-transform/pos = Vector2( 1120, 288 )
 
 
 [editable path="double_jump_collect_room_4_door"]
