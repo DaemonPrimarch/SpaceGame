@@ -30,7 +30,9 @@ func set_ladder(val):
 	if(val == null):
 		escaping_ladder = false
 	.set_ladder(val)
-	
+
+func on_collision(object):
+	print("COLLISION")
 
 func is_jump_just_pressed():
 	return jump_just_pressed
@@ -396,4 +398,3 @@ func push(time, time_extended, speed):
 	set_push_time(time)
 	set_push_time_extended(time_extended)
 	set_current_state(STATE.PUSHED)
-

@@ -36,3 +36,5 @@ func on_collision(collision_info):
 		else:
 			collision_info.get_collider().damage(5)
 			collision_info.get_collider().set_invulnerable(true)
+	else:
+		print("WOTNOW?")
