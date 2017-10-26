@@ -30,7 +30,6 @@ editor/display_folded = true
 transform/pos = Vector2( 1248, 576 )
 active = false
 arrival_node_ID = "double_jump_collect_room_1_arrival"
-destination_scene_path = ""
 
 [node name="double_jump_collect_room_x_arrival" parent="." instance=ExtResource( 2 )]
 
@@ -41,7 +40,6 @@ transform/pos = Vector2( 1152, 608 )
 editor/display_folded = true
 transform/pos = Vector2( 1248, 1792 )
 arrival_node_ID = "double_jump_collect_room_1_arrival"
-destination_scene_path = ""
 
 [node name="sprite" parent="double_jump_2_door"]
 

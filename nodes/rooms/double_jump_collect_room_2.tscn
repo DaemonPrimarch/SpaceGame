@@ -45,7 +45,6 @@ destination_scene_path = "res://nodes/rooms/double_jump_collect_room_1.tscn"
 [node name="warp_tile1" parent="." instance=ExtResource( 4 )]
 
 transform/pos = Vector2( 1248, 384 )
-destination_scene_path = ""
 
 
 [editable path="warp_tile"]
