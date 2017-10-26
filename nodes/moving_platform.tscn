@@ -22,7 +22,6 @@ speed = 256
 [node name="point_1" type="Position2D" parent="."]
 
 transform/pos = Vector2( -250, 0 )
-transform/scale = Vector2( -1.1, 1 )
 
 [node name="point_2" type="Position2D" parent="."]
 

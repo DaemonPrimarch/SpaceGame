@@ -48,7 +48,6 @@ transform/scale = Vector2( 13, 4 )
 
 [node name="moving_platform" parent="." instance=ExtResource( 5 )]
 
-editor/display_folded = true
 transform/pos = Vector2( 576, 352 )
 speed = 192
 
@@ -62,28 +61,28 @@ transform/pos = Vector2( -256, 0 )
 
 [node name="platform" parent="moving_platform"]
 
-transform/pos = Vector2( -64, 0 )
-
-[node name="moving_platform 2" parent="." instance=ExtResource( 5 )]
-
 editor/display_folded = true
-transform/pos = Vector2( 896, 352 )
+transform/pos = Vector2( -96, 0 )
+
+[node name="moving_platform3" parent="." instance=ExtResource( 5 )]
+
+transform/pos = Vector2( 992, 352 )
 speed = 192
 
-[node name="point_1" parent="moving_platform 2"]
+[node name="point_1" parent="moving_platform3"]
 
-transform/pos = Vector2( -160, 0 )
+transform/pos = Vector2( -256, 0 )
 
-[node name="point_2" parent="moving_platform 2"]
+[node name="point_2" parent="moving_platform3"]
 
-transform/pos = Vector2( 128, 0 )
+transform/pos = Vector2( 32, 0 )
 
-[node name="platform" parent="moving_platform 2"]
+[node name="platform" parent="moving_platform3"]
 
-transform/pos = Vector2( -64, 0 )
+transform/pos = Vector2( -128, 0 )
 
 
 [editable path="double_jump_collect_room_3_door"]
 [editable path="double_jump_collect_room_5_door"]
 [editable path="moving_platform"]
-[editable path="moving_platform 2"]
+[editable path="moving_platform3"]
