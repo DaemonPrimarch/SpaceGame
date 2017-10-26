@@ -10,9 +10,6 @@ extents = Vector2( 13, 13 )
 
 [node name="goo" instance=ExtResource( 1 )]
 
-damage = 1
-has_timer = false
-
 [node name="Sprite" type="Sprite" parent="."]
 
 transform/pos = Vector2( 3.33786e-06, 3.33786e-06 )
