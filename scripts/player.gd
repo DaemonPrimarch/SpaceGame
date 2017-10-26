@@ -188,7 +188,8 @@ func process_state(state, delta):
 					elif(can_wall_slide() and horizontal_collision_info.get_collider().is_in_group("terrain")):
 						set_current_state(STATE.WALL_SLIDING)
 					else:
-						set_current_state(STATE.FALLING)
+						#set_current_state(STATE.FALLING)
+						pass
 				elif(vertical_collision_info.has_collision()):
 					set_current_state(STATE.FALLING)
 				
