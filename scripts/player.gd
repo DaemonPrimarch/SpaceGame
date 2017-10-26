@@ -262,7 +262,6 @@ func process_state(state, delta):
 				set_current_state(STATE.GROUNDED)
 			else:
 				var dir = 0
-				print(push_timer.get_time_left())
 				if(push_timer.get_time_left() <= 0):
 					if(Input.is_action_pressed("play_left")):
 						set_flippedH(true)

@@ -61,5 +61,7 @@ transform/pos = Vector2( 1184, 224 )
 
 transform/pos = Vector2( 480, 352 )
 
+[connection signal="player_enter" from="." to="falling_goo" method="_on_room_player_enter"]
+
 
 [editable path="double_jump_collect_room_5_door"]
