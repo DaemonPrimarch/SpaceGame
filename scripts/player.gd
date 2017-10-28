@@ -378,9 +378,11 @@ func _input(ev):
 	elif(ev.is_action_pressed("jump")):
 		jump_just_pressed = true
 	elif(ev.is_action_pressed("set_climb_on")):
-		set_current_state(STATE.CLIMBING)
+		#set_current_state(STATE.CLIMBING)
+		pass
 	elif(ev.is_action_pressed("set_climb_off")):
-		set_current_state(STATE.FALLING)
+		#set_current_state(STATE.FALLING)
+		pass
 
 func _fixed_process(delta):
 	
