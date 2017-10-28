@@ -15,6 +15,7 @@ var continuing_previous_movement = true
 var already_loaded_2 = false
 
 var save_data = {}
+var ex
 
 func _ready():
 	if(not already_loaded_2):
