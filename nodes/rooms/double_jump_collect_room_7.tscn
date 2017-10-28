@@ -1,10 +1,9 @@
-[gd_scene load_steps=6 format=1]
+[gd_scene load_steps=5 format=1]
 
 [ext_resource path="res://nodes/rooms/room.tscn" type="PackedScene" id=1]
 [ext_resource path="res://nodes/warp_tile.tscn" type="PackedScene" id=2]
 [ext_resource path="res://nodes/warp_arrival.tscn" type="PackedScene" id=3]
 [ext_resource path="res://nodes/moving_platform_small.tscn" type="PackedScene" id=4]
-[ext_resource path="res://nodes/player.tscn" type="PackedScene" id=5]
 
 [node name="room" instance=ExtResource( 1 )]
 
@@ -182,10 +181,6 @@ transform/pos = Vector2( -256, 0 )
 [node name="platform" parent="platform_map/moving_platform11"]
 
 transform/pos = Vector2( 448, 0 )
-
-[node name="player" parent="." instance=ExtResource( 5 )]
-
-transform/pos = Vector2( 160, -480 )
 
 
 [editable path="double_jump_collect_room_8_door"]
