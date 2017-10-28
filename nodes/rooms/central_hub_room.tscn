@@ -23,6 +23,12 @@ arrival_node_ID = "central_hub_arrival"
 [node name="WarpTile2" parent="." instance=ExtResource( 2 )]
 
 transform/pos = Vector2( 32, 1216 )
+arrival_node_ID = "central_hub_arrival"
+destination_scene_path = "res://nodes/rooms/TESTING_ROOM.tscn"
+
+[node name="sprite" parent="WarpTile2"]
+
+modulate = Color( 0.0269165, 0.984375, 0.0418768, 1 )
 
 [node name="WarpTile3" parent="." instance=ExtResource( 2 )]
 
@@ -57,10 +63,15 @@ transform/pos = Vector2( 640, 1696 )
 
 transform/pos = Vector2( 128, 1920 )
 
+[node name="TESTING_ROOM_arrival" parent="." instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 128, 1216 )
+
 [node name="double_jump_collect_room_1_arrival_arrival" parent="." instance=ExtResource( 3 )]
 
 transform/pos = Vector2( 1152, 1952 )
 
 
+[editable path="WarpTile2"]
 [editable path="WarpTile4"]
 [editable path="double_jump_collect_room_1_door"]
