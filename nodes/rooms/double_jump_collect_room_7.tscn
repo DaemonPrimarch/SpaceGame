@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=1]
+[gd_scene load_steps=6 format=1]
 
 [ext_resource path="res://nodes/rooms/room.tscn" type="PackedScene" id=1]
 [ext_resource path="res://nodes/warp_tile.tscn" type="PackedScene" id=2]
 [ext_resource path="res://nodes/warp_arrival.tscn" type="PackedScene" id=3]
 [ext_resource path="res://nodes/moving_platform_small.tscn" type="PackedScene" id=4]
+[ext_resource path="res://nodes/player.tscn" type="PackedScene" id=5]
 
 [node name="room" instance=ExtResource( 1 )]
 
@@ -13,10 +14,18 @@ tile_data = IntArray( -720896, 7, -720895, 7, -720894, 7, -720893, 7, -720892, 7
 
 [node name="double_jump_collect_room_8_door" parent="." instance=ExtResource( 2 )]
 
+editor/display_folded = true
 transform/pos = Vector2( 32, -576 )
+arrival_node_ID = "double_jump_collect_room_7_arrival"
+destination_scene_path = "res://nodes/rooms/double_jump_collect_room_8.tscn"
+
+[node name="sprite" parent="double_jump_collect_room_8_door"]
+
+modulate = Color( 0.0568371, 0.984375, 0.0269165, 1 )
 
 [node name="double_jump_collect_room_6_door" parent="." instance=ExtResource( 2 )]
 
+editor/display_folded = true
 transform/pos = Vector2( 1248, 128 )
 arrival_node_ID = "double_jump_collect_room_7_arrival"
 destination_scene_path = "res://nodes/rooms/double_jump_collect_room_6.tscn"
@@ -56,7 +65,6 @@ transform/pos = Vector2( -192, 0 )
 
 [node name="moving_platform1" parent="platform_map" instance=ExtResource( 4 )]
 
-editor/display_folded = true
 transform/pos = Vector2( 384, -320 )
 
 [node name="point_1" parent="platform_map/moving_platform1"]
@@ -69,7 +77,8 @@ transform/pos = Vector2( 768, 0 )
 
 [node name="platform" parent="platform_map/moving_platform1"]
 
-transform/pos = Vector2( -64, 0 )
+editor/display_folded = true
+transform/pos = Vector2( 32, 0 )
 
 [node name="moving_platform2" parent="platform_map" instance=ExtResource( 4 )]
 
@@ -86,7 +95,7 @@ transform/pos = Vector2( 768, 0 )
 
 [node name="platform" parent="platform_map/moving_platform2"]
 
-transform/pos = Vector2( 64, 0 )
+transform/pos = Vector2( 544, 0 )
 
 [node name="moving_platform3" parent="platform_map" instance=ExtResource( 4 )]
 
@@ -137,7 +146,7 @@ transform/pos = Vector2( -256, 0 )
 
 [node name="platform" parent="platform_map/moving_platform9"]
 
-transform/pos = Vector2( 576, 0 )
+transform/pos = Vector2( -160, 0 )
 
 [node name="moving_platform10" parent="platform_map" instance=ExtResource( 4 )]
 
@@ -154,7 +163,8 @@ transform/pos = Vector2( -256, 0 )
 
 [node name="platform" parent="platform_map/moving_platform10"]
 
-transform/pos = Vector2( 448, 0 )
+editor/display_folded = true
+transform/pos = Vector2( 96, 0 )
 
 [node name="moving_platform11" parent="platform_map" instance=ExtResource( 4 )]
 
@@ -171,9 +181,14 @@ transform/pos = Vector2( -256, 0 )
 
 [node name="platform" parent="platform_map/moving_platform11"]
 
-transform/pos = Vector2( 320, 0 )
+transform/pos = Vector2( 448, 0 )
+
+[node name="player" parent="." instance=ExtResource( 5 )]
+
+transform/pos = Vector2( 160, -480 )
 
 
+[editable path="double_jump_collect_room_8_door"]
 [editable path="double_jump_collect_room_6_door"]
 [editable path="platform_map/moving_platform"]
 [editable path="platform_map/moving_platform1"]

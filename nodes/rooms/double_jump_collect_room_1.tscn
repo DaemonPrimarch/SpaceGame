@@ -16,6 +16,7 @@ transform/pos = Vector2( 128, 608 )
 
 [node name="central_hub_door" parent="." instance=ExtResource( 3 )]
 
+editor/display_folded = true
 transform/pos = Vector2( 32, 576 )
 arrival_node_ID = "double_jump_collect_room_1_arrival"
 destination_scene_path = "res://nodes/rooms/central_hub_room.tscn"
