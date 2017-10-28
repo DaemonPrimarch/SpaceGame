@@ -25,7 +25,7 @@ destination_scene_path = "res://nodes/rooms/central_hub_room.tscn"
 
 transform/pos = Vector2( 1152, 544 )
 
-[node name="wall_jump_collect_room_arrival" parent="." instance=ExtResource( 3 )]
+[node name="wall_jump_collect_room_3_arrival" parent="." instance=ExtResource( 3 )]
 
 transform/pos = Vector2( 96, 544 )
 
@@ -41,7 +41,7 @@ open = false
 [node name="warp_tile" parent="Node2D/door" instance=ExtResource( 2 )]
 
 arrival_node_ID = "piet_room_1_arrival"
-destination_scene_path = "res://nodes/rooms/wall_jump_collect_room.tscn"
+destination_scene_path = "res://nodes/rooms/wall_jump_rooms/wall_jump_collect_room_3.tscn"
 
 [node name="bullet_switch" parent="Node2D" instance=ExtResource( 5 )]
 

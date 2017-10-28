@@ -62,7 +62,7 @@ transform/pos = Vector2( 736, 608 )
 
 transform/pos = Vector2( 32, 512 )
 arrival_node_ID = "wall_jump_collect_room_arrival"
-destination_scene_path = "res://nodes/rooms/wall_jump_reward_room_1.tscn"
+destination_scene_path = "res://nodes/rooms/wall_jump_rooms/wall_jump_reward_room_1.tscn"
 
 [node name="wall_jump_reward_room_1_arrival" parent="." instance=ExtResource( 6 )]
 
@@ -72,7 +72,7 @@ transform/pos = Vector2( 96, 544 )
 
 transform/pos = Vector2( 640, 192 )
 
-[node name="piet_room_1_arrival" parent="." instance=ExtResource( 6 )]
+[node name="wall_jump_collect_room_1_arrival" parent="." instance=ExtResource( 6 )]
 
 transform/pos = Vector2( 1184, 544 )
 
@@ -80,14 +80,14 @@ transform/pos = Vector2( 1184, 544 )
 
 transform/pos = Vector2( 1248, 512 )
 arrival_node_ID = "wall_jump_collect_room_arrival"
-destination_scene_path = "res://nodes/rooms/piet_room_1.tscn"
+destination_scene_path = "res://nodes/rooms/wall_jump_rooms/wall_jump_collect_room_1.tscn"
 
 [node name="WarpTile3" parent="." instance=ExtResource( 5 )]
 
 transform/pos = Vector2( 640, 32 )
 transform/rot = 90.0
 arrival_node_ID = "wall_jump_collect_room_arrival"
-destination_scene_path = "res://nodes/rooms/wall_jump_reward_room_2.tscn"
+destination_scene_path = "res://nodes/rooms/wall_jump_rooms/wall_jump_reward_room_2.tscn"
 
 [connection signal="triggered" from="wall_jump_donor/area_prompt_trigger" to="wall_jump_donor" method="_on_area_prompt_trigger_triggered"]
 

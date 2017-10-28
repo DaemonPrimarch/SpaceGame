@@ -14,19 +14,21 @@ tile_data = IntArray( 0, 7, 1, 7, 2, 7, 3, 7, 4, 7, 5, 7, 6, 7, 7, 7, 8, 7, 9, 7
 
 transform/pos = Vector2( 96, 544 )
 
+[node name="wall_jump_collect_room_arrival" parent="." instance=ExtResource( 2 )]
+
+transform/pos = Vector2( 640, 384 )
+
 [node name="WarpTile" parent="." instance=ExtResource( 3 )]
 
 transform/pos = Vector2( 32, 512 )
 arrival_node_ID = "wall_jump_reward_room_2_arrival"
-destination_scene_path = "res://nodes/rooms/wall_jump_reward_room_1.tscn"
+destination_scene_path = "res://nodes/rooms/wall_jump_rooms/wall_jump_reward_room_1.tscn"
 
-[node name="WarpTile1" parent="." instance=ExtResource( 3 )]
+[node name="warp_tile" parent="." instance=ExtResource( 3 )]
 
 transform/pos = Vector2( 640, 672 )
-transform/rot = 90.0
+transform/scale = Vector2( 2, 0.5 )
 arrival_node_ID = "wall_jump_reward_room_2_arrival"
-destination_scene_path = "res://nodes/rooms/wall_jump_collect_room.tscn"
+destination_scene_path = "res://nodes/rooms/wall_jump_rooms/wall_jump_collect_room.tscn"
 
 
-[editable path="WarpTile"]
-[editable path="WarpTile1"]
