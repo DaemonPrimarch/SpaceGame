@@ -18,6 +18,7 @@ transform/scale = Vector2( 3, 1 )
 
 [node name="double_jump_collect_room_9_door" parent="." instance=ExtResource( 3 )]
 
+editor/display_folded = true
 transform/pos = Vector2( 32, 512 )
 arrival_node_ID = "double_jump_collect_room_10_arrival"
 destination_scene_path = "res://nodes/rooms/double_jump_collect_room_9.tscn"
@@ -26,13 +27,27 @@ destination_scene_path = "res://nodes/rooms/double_jump_collect_room_9.tscn"
 
 modulate = Color( 0.146599, 0.984375, 0.0269165, 1 )
 
-[node name="warp_tile1" parent="." instance=ExtResource( 3 )]
+[node name="double_jump_collect_room_11_door_1" parent="." instance=ExtResource( 3 )]
 
+editor/display_folded = true
 transform/pos = Vector2( 1248, 512 )
+arrival_node_ID = "double_jump_collect_room_10_arrival_1"
+destination_scene_path = "res://nodes/rooms/double_jump_collect_room_11.tscn"
 
-[node name="warp_tile2" parent="." instance=ExtResource( 3 )]
+[node name="sprite" parent="double_jump_collect_room_11_door_1"]
 
+modulate = Color( 0.0792775, 0.984375, 0.0269165, 1 )
+
+[node name="double_jump_collect_room_11_door_2" parent="." instance=ExtResource( 3 )]
+
+editor/display_folded = true
 transform/pos = Vector2( 1248, -448 )
+arrival_node_ID = "double_jump_collect_room_10_arrival_2"
+destination_scene_path = "res://nodes/rooms/double_jump_collect_room_11.tscn"
+
+[node name="sprite" parent="double_jump_collect_room_11_door_2"]
+
+modulate = Color( 0.146599, 0.984375, 0.0269165, 1 )
 
 [node name="warp_tile3" parent="." instance=ExtResource( 3 )]
 
@@ -42,11 +57,11 @@ transform/pos = Vector2( 32, -448 )
 
 transform/pos = Vector2( 96, 544 )
 
-[node name="warp_arrival1" parent="." instance=ExtResource( 4 )]
+[node name="double_jump_collect_room_11_arrival_1" parent="." instance=ExtResource( 4 )]
 
 transform/pos = Vector2( 1184, 544 )
 
-[node name="warp_arrival2" parent="." instance=ExtResource( 4 )]
+[node name="double_jump_collect_room_11_arrival_2" parent="." instance=ExtResource( 4 )]
 
 transform/pos = Vector2( 1184, -416 )
 
@@ -56,3 +71,5 @@ transform/pos = Vector2( 96, -416 )
 
 
 [editable path="double_jump_collect_room_9_door"]
+[editable path="double_jump_collect_room_11_door_1"]
+[editable path="double_jump_collect_room_11_door_2"]

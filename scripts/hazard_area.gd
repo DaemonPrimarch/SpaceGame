@@ -8,7 +8,8 @@ export var push_speed_x = 4*64 setget set_push_speed_x, get_push_speed_x
 export var push_speed_y = 2*64 setget set_push_speed_y, get_push_speed_y
 export var pushes = false
 
-var timer
+var timer_on
+var timer_off
 
 func pushes():
 	return pushes
@@ -46,13 +47,24 @@ func get_damage():
 func has_timer():
 	return has_timer
 
-func start_timer():
-	timer.start()
+func start_timer_on():
+	timer_off.stop()
+	timer_on.start()
+
+func start_timer_off():
+	timer_on.stop()
+	timer_off.start()
 
 func _ready():
 	if(has_timer()):
-		timer = get_node("Timer")
-		start_timer()
+		timer_on = get_node("Timer_on")
+		timer_off = get_node("Timer_off")
+		start_timer_on()
 
-func _on_Timer_timeout():
+func _on_Timer_on_timeout():
 	set_hidden(not is_hidden())
+	start_timer_off()
+
+func _on_Timer_off_timeout():
+	set_hidden(not is_hidden())
+	start_timer_on()

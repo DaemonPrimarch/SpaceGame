@@ -27,6 +27,8 @@ push_time = 5
 push_time_extended = 5
 push_speed_x = 256
 push_speed_y = 128
+pushes = false
+turn_off = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 
@@ -43,7 +45,14 @@ transform/scale = Vector2( 0.16, 0.16 )
 texture = ExtResource( 2 )
 modulate = Color( 0.00473022, 0.605469, 0.394272, 1 )
 
-[node name="Timer" type="Timer" parent="."]
+[node name="Timer_on" type="Timer" parent="."]
+
+process_mode = 1
+wait_time = 3.0
+one_shot = false
+autostart = false
+
+[node name="Timer_off" type="Timer" parent="."]
 
 process_mode = 1
 wait_time = 3.0
@@ -54,6 +63,8 @@ autostart = false
 
 [connection signal="body_exit" from="." to="." method="_on_goo_body_exit"]
 
-[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
+[connection signal="timeout" from="Timer_on" to="." method="_on_Timer_on_timeout"]
+
+[connection signal="timeout" from="Timer_off" to="." method="_on_Timer_off_timeout"]
 
 
