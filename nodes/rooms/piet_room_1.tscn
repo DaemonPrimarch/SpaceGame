@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=1]
+[gd_scene load_steps=9 format=1]
 
 [ext_resource path="res://nodes/rooms/room.tscn" type="PackedScene" id=1]
 [ext_resource path="res://nodes/warp_tile.tscn" type="PackedScene" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://nodes/bullet_switch.tscn" type="PackedScene" id=5]
 [ext_resource path="res://nodes/sideways_ladder.tscn" type="PackedScene" id=6]
 [ext_resource path="res://nodes/frontal_ladder.tscn" type="PackedScene" id=7]
+[ext_resource path="res://nodes/enemies/enemy_scrub.tscn" type="PackedScene" id=8]
 
 [node name="scene" instance=ExtResource( 1 )]
 
@@ -52,15 +53,25 @@ togglable = true
 transform/pos = Vector2( 544, 384 )
 transform/scale = Vector2( -1, 4 )
 
+[node name="sideways_ladder1" parent="." instance=ExtResource( 6 )]
+
+transform/pos = Vector2( 1056, 384 )
+transform/scale = Vector2( 1, 4 )
+
 [node name="ladder" parent="." instance=ExtResource( 7 )]
 
-transform/pos = Vector2( 288, 416 )
+transform/pos = Vector2( -224, -64 )
 transform/scale = Vector2( 1, 5 )
 
 [node name="sideways_ladder 2" parent="." instance=ExtResource( 6 )]
 
 transform/pos = Vector2( 96, 256 )
 transform/scale = Vector2( 1, 6 )
+
+[node name="enemy" parent="." instance=ExtResource( 8 )]
+
+transform/pos = Vector2( 215, 553 )
+transform/scale = Vector2( 1.28125, 1.28125 )
 
 [connection signal="close" from="Node2D/door" to="Node2D/door/warp_tile" method="set_active" binds= [ false ]]
 

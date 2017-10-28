@@ -20,10 +20,9 @@ func _fixed_process(delta):
 
 func destroy():
 	if(not is_destroyed()):
-		print("Destroyed")
 		destroyed = true
 		get_node("AnimationPlayer").play("Death")
-	#
+		set_layer_mask(0)
 
 func _on_AnimationPlayer_finished():
 	if(is_destroyed()):

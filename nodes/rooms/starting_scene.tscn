@@ -18,6 +18,8 @@ wall_jump_length = 192
 
 editor/display_folded = false
 
+[connection signal="collision" from="player" to="player" method="on_collision"]
+
 
 [editable path="player"]
 [editable path="player/gun"]

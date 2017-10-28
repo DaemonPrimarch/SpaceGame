@@ -6,8 +6,8 @@
 
 [node name="player" groups=[
 "player",
-"warpable",
 "tracked",
+"warpable",
 ] instance=ExtResource( 1 )]
 
 collision/mask = 19

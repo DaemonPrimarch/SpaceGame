@@ -30,7 +30,10 @@ func set_ladder(val):
 	if(val == null):
 		escaping_ladder = false
 	.set_ladder(val)
-	
+
+func on_collision(object):
+	pass
+	#print("COLLISION")
 
 func is_jump_just_pressed():
 	return jump_just_pressed
@@ -185,7 +188,8 @@ func process_state(state, delta):
 					elif(can_wall_slide() and horizontal_collision_info.get_collider().is_in_group("terrain")):
 						set_current_state(STATE.WALL_SLIDING)
 					else:
-						set_current_state(STATE.FALLING)
+						#set_current_state(STATE.FALLING)
+						pass
 				elif(vertical_collision_info.has_collision()):
 					set_current_state(STATE.FALLING)
 				
@@ -395,4 +399,3 @@ func push(time, time_extended, speed):
 	set_push_time(time)
 	set_push_time_extended(time_extended)
 	set_current_state(STATE.PUSHED)
-
