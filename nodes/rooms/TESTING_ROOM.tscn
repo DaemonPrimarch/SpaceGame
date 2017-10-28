@@ -2,7 +2,7 @@
 
 [ext_resource path="res://nodes/rooms/room.tscn" type="PackedScene" id=1]
 [ext_resource path="res://nodes/warp_arrival.tscn" type="PackedScene" id=2]
-[ext_resource path="res://nodes/TESTSCRIPT.gd" type="Script" id=3]
+[ext_resource path="res://scripts/TESTSCRIPT.gd" type="Script" id=3]
 [ext_resource path="res://nodes/warp_tile.tscn" type="PackedScene" id=4]
 
 [node name="TESTING_ROOM" instance=ExtResource( 1 )]
