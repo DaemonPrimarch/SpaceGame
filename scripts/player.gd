@@ -56,7 +56,7 @@ func enter_state(state, old_state):
 		move(Vector2(10, 0))
 		first_frame_crawling = true
 	elif(state == STATE.CROUCHING):
-		set_scale(get_scale() / Vector2(0.5, 2))
+		set_scale(get_scale() / Vector2(1, 2))
 	elif(state == STATE.WALL_JUMPING):
 		set_jumped(true)
 		set_flippedH(not is_flippedH())
@@ -136,7 +136,7 @@ func leave_state(state, new_state):
 	elif(state == STATE.FALLING):
 		push_timer.stop()
 	elif(state == STATE.CROUCHING):
-		set_scale(get_scale() / Vector2(2, 0.5))
+		set_scale(get_scale() / Vector2(1, 0.5))
 
 func process_state(state, delta):
 	if(state == STATE.GROUNDED):
@@ -378,9 +378,11 @@ func _input(ev):
 	elif(ev.is_action_pressed("jump")):
 		jump_just_pressed = true
 	elif(ev.is_action_pressed("set_climb_on")):
-		set_current_state(STATE.CLIMBING)
+		#set_current_state(STATE.CLIMBING)
+		pass
 	elif(ev.is_action_pressed("set_climb_off")):
-		set_current_state(STATE.FALLING)
+		#set_current_state(STATE.FALLING)
+		pass
 
 func _fixed_process(delta):
 	

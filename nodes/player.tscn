@@ -5,9 +5,11 @@
 [ext_resource path="res://nodes/camera.tscn" type="PackedScene" id=3]
 
 [node name="player" groups=[
+
 "tracked",
 "warpable",
 "player",
+
 ] instance=ExtResource( 1 )]
 
 collision/mask = 19
