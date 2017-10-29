@@ -53,6 +53,7 @@ transform/scale = Vector2( 3, 2 )
 
 [node name="timed_goo" parent="." instance=ExtResource( 4 )]
 
+editor/display_folded = true
 transform/pos = Vector2( 928, 416 )
 transform/scale = Vector2( 1, 7 )
 has_timer = true

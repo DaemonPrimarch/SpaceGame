@@ -1,0 +1,57 @@
+[gd_scene load_steps=5 format=1]
+
+[ext_resource path="res://nodes/rooms/room.tscn" type="PackedScene" id=1]
+[ext_resource path="res://nodes/warp_tile.tscn" type="PackedScene" id=2]
+[ext_resource path="res://nodes/warp_arrival.tscn" type="PackedScene" id=3]
+[ext_resource path="res://nodes/goo.tscn" type="PackedScene" id=4]
+
+[node name="room" instance=ExtResource( 1 )]
+
+camera_zoom = Vector2( 2, 2 )
+
+[node name="terrain" parent="."]
+
+tile_data = IntArray( 0, 7, 1, 7, 2, 7, 3, 7, 4, 7, 5, 7, 6, 7, 7, 7, 8, 7, 9, 7, 10, 7, 11, 7, 12, 7, 13, 7, 14, 7, 15, 7, 16, 7, 17, 7, 18, 7, 19, 7, 20, 7, 21, 7, 22, 7, 23, 7, 24, 7, 25, 7, 26, 7, 27, 7, 28, 7, 29, 7, 30, 7, 31, 7, 32, 7, 33, 7, 34, 7, 35, 7, 36, 7, 37, 7, 38, 7, 39, 7, 65536, 7, 65575, 7, 131072, 7, 131111, 7, 196608, 3, 196647, 7, 262144, 3, 393253, 7, 393254, 7, 393255, 7, 458752, 2, 458753, 2, 458754, 3, 458765, 7, 458766, 7, 458767, 7, 458768, 7, 458769, 7, 458789, 7, 458790, 7, 458791, 7, 524288, 2, 524289, 2, 524290, 3, 524305, 7, 524319, 7, 524320, 7, 524321, 7, 524322, 7, 524327, 7, 589824, 7, 589841, 7, 589858, 7, 589863, 7, 655360, 7, 655377, 7, 655394, 7, 655399, 7, 720896, 7, 720920, 7, 720921, 7, 720922, 7, 720930, 7, 720931, 7, 720935, 7, 786432, 7, 786458, 7, 786459, 7, 786471, 7, 851968, 7, 852007, 7, 917504, 7, 917543, 7, 983040, 7, 983055, 7, 983056, 7, 983057, 7, 983072, 7, 983073, 7, 983074, 7, 983079, 7, 1048576, 7, 1048615, 7, 1114112, 7, 1114151, 7, 1179648, 7, 1179652, 6, 1179653, 6, 1179654, 6, 1179655, 6, 1179656, 6, 1179657, 6, 1179658, 6, 1179659, 6, 1179660, 6, 1179672, 7, 1179673, 7, 1179674, 7, 1179687, 7, 1245184, 7, 1245223, 7, 1310720, 7, 1310759, 7, 1376256, 7, 1376257, 7, 1376258, 7, 1376259, 7, 1376260, 7, 1376261, 7, 1376262, 7, 1376263, 7, 1376264, 7, 1376265, 7, 1376266, 7, 1376267, 7, 1376268, 7, 1376269, 7, 1376270, 7, 1376271, 7, 1376272, 7, 1376273, 7, 1376274, 7, 1376275, 7, 1376276, 7, 1376277, 7, 1376278, 7, 1376279, 7, 1376280, 7, 1376281, 7, 1376282, 7, 1376283, 7, 1376284, 7, 1376285, 7, 1376286, 7, 1376287, 7, 1376288, 7, 1376289, 7, 1376290, 7, 1376291, 7, 1376292, 7, 1376293, 7, 1376294, 7, 1376295, 7 )
+
+[node name="double_jump_collect_room_12_door" parent="." instance=ExtResource( 2 )]
+
+editor/display_folded = true
+transform/pos = Vector2( 32, 384 )
+arrival_node_ID = "double_jump_collect_room_13_arrival"
+destination_scene_path = "res://nodes/rooms/double_jump_collect_room_12.tscn"
+
+[node name="area" parent="double_jump_collect_room_12_door"]
+
+editor/display_folded = true
+
+[node name="sprite" parent="double_jump_collect_room_12_door"]
+
+modulate = Color( 0.0269165, 0.0867577, 0.984375, 1 )
+
+[node name="double_jump_collect_room_14_door" parent="." instance=ExtResource( 2 )]
+
+editor/display_folded = true
+transform/pos = Vector2( 2528, 320 )
+arrival_node_ID = "double_jump_collect_room_13_arrival"
+destination_scene_path = "res://nodes/rooms/double_jump_collect_room_14.tscn"
+
+[node name="sprite" parent="double_jump_collect_room_14_door"]
+
+modulate = Color( 0.0269165, 0.0867577, 0.984375, 1 )
+
+[node name="double_jump_collect_room_12_arrival" parent="." instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 96, 416 )
+
+[node name="double_jump_collect_room_14_arrival" parent="." instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 2464, 352 )
+
+[node name="goo" parent="." instance=ExtResource( 4 )]
+
+transform/pos = Vector2( 1280, 1264 )
+transform/scale = Vector2( 38, 2.5 )
+
+
+[editable path="double_jump_collect_room_12_door"]
+[editable path="double_jump_collect_room_14_door"]
