@@ -1,8 +1,11 @@
-[gd_scene load_steps=4 format=1]
+[gd_scene load_steps=7 format=1]
 
 [ext_resource path="res://nodes/rooms/room.tscn" type="PackedScene" id=1]
 [ext_resource path="res://nodes/warp_arrival.tscn" type="PackedScene" id=2]
 [ext_resource path="res://nodes/warp_tile.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scripts/goo_container.gd" type="Script" id=4]
+[ext_resource path="res://nodes/goo.tscn" type="PackedScene" id=5]
+[ext_resource path="res://sprites/spritesheets/metroid_tiles.tres" type="TileSet" id=6]
 
 [node name="room" instance=ExtResource( 1 )]
 
@@ -54,6 +57,35 @@ modulate = Color( 0.169039, 0.984375, 0.0269165, 1 )
 [node name="double_jump_collect_room_2_arrival" parent="." instance=ExtResource( 2 )]
 
 transform/pos = Vector2( 1184, 1824 )
+
+[node name="goo_container" type="Node2D" parent="."]
+
+script/script = ExtResource( 4 )
+
+[node name="goo" parent="goo_container" instance=ExtResource( 5 )]
+
+transform/pos = Vector2( 608, 1360 )
+transform/scale = Vector2( 9, 21.5 )
+
+[node name="TileMap" type="TileMap" parent="goo_container" groups=[
+"terrain",
+]]
+
+mode = 0
+tile_set = ExtResource( 6 )
+cell/size = Vector2( 64, 64 )
+cell/quadrant_size = 16
+cell/custom_transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+cell/half_offset = 2
+cell/tile_origin = 0
+cell/y_sort = false
+collision/use_kinematic = false
+collision/friction = 1.0
+collision/bounce = 0.0
+collision/layers = 1
+collision/mask = 1
+occluder/light_mask = 1
+tile_data = IntArray( 983045, 0, 983046, 0, 983047, 0, 983048, 0, 983049, 0, 983050, 0, 983051, 0, 983052, 0, 983053, 0 )
 
 
 [editable path="central_hub_door"]
