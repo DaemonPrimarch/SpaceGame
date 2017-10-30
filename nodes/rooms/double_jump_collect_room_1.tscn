@@ -25,14 +25,18 @@ destination_scene_path = "res://nodes/rooms/central_hub_room.tscn"
 
 modulate = Color( 0.0269165, 0.984375, 0.131639, 1 )
 
-[node name="double_jump_x_door" parent="." instance=ExtResource( 3 )]
+[node name="double_jump_collect_room_17_door" parent="." instance=ExtResource( 3 )]
 
-editor/display_folded = true
 transform/pos = Vector2( 1248, 576 )
 active = false
 arrival_node_ID = "double_jump_collect_room_1_arrival"
+destination_scene_path = "res://nodes/rooms/double_jump_collect_room_17.tscn"
 
-[node name="double_jump_collect_room_x_arrival" parent="." instance=ExtResource( 2 )]
+[node name="sprite" parent="double_jump_collect_room_17_door"]
+
+modulate = Color( 0.146599, 0.984375, 0.0269165, 1 )
+
+[node name="double_jump_collect_room_17_arrival" parent="." instance=ExtResource( 2 )]
 
 transform/pos = Vector2( 1152, 608 )
 
@@ -53,4 +57,5 @@ transform/pos = Vector2( 1184, 1824 )
 
 
 [editable path="central_hub_door"]
+[editable path="double_jump_collect_room_17_door"]
 [editable path="double_jump_2_door"]

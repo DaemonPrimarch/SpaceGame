@@ -97,7 +97,16 @@ transform/pos = Vector2( 928, 416 )
 transform/scale = Vector2( 1, 7 )
 pushes = true
 
+[node name="stop_timer" parent="timed_goo 2"]
+
+wait_time = 3.0
+
+[node name="start_timer" parent="timed_goo 2"]
+
+wait_time = 2.0
+
 
 [editable path="double_jump_collect_room_1_door"]
 [editable path="double_jump_collect_room_3_door"]
 [editable path="left_goo"]
+[editable path="timed_goo 2"]
