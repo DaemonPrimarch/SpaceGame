@@ -6,8 +6,8 @@
 
 [node name="player" groups=[
 "player",
-"warpable",
 "tracked",
+"warpable",
 ] instance=ExtResource( 1 )]
 
 collision/mask = 19
@@ -18,6 +18,8 @@ invulnerability_time = 2
 cn_double_jump = false
 cn_wall_slide = false
 cn_wall_jump = false
+wall_jump_height = 192
+wall_jump_length = 192
 
 [node name="CollisionPolygon2D" parent="."]
 
