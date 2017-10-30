@@ -61,7 +61,7 @@ func setup():
 	var choice = ChoiceElement.new("Do you accept it?", ["Yes", "No"])
 	var branch = BranchElement.new(choice, "Yes", right, wrong)
 	var first = create_linear_tree([first_of_first, "It is inevitable,", choice, branch])
-	play_dialog(first)
+	#play_dialog(first)
 
 func play_dialog(dialog):
 	if(is_playing()):

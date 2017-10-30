@@ -44,28 +44,24 @@ transform/scale = Vector2( 24, 2.5 )
 
 transform/pos = Vector2( 608, 1184 )
 transform/scale = Vector2( 0.999999, 7 )
-has_timer = true
 pushes = true
 
 [node name="falling_goo_2" parent="." instance=ExtResource( 4 )]
 
 transform/pos = Vector2( 928, 1184 )
 transform/scale = Vector2( 0.999999, 7 )
-has_timer = true
 pushes = true
 
 [node name="falling_goo_3" parent="." instance=ExtResource( 4 )]
 
 transform/pos = Vector2( 1664, 1184 )
 transform/scale = Vector2( 0.999999, 7 )
-has_timer = true
 pushes = true
 
 [node name="falling_goo_4" parent="." instance=ExtResource( 4 )]
 
 transform/pos = Vector2( 1952, 1184 )
 transform/scale = Vector2( 0.999999, 7 )
-has_timer = true
 pushes = true
 
 [node name="enemy" parent="." instance=ExtResource( 5 )]
