@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=1]
+[gd_scene load_steps=7 format=1]
 
 [ext_resource path="res://nodes/rooms/room.tscn" type="PackedScene" id=1]
 [ext_resource path="res://nodes/warp_tile.tscn" type="PackedScene" id=2]
 [ext_resource path="res://nodes/warp_arrival.tscn" type="PackedScene" id=3]
 [ext_resource path="res://nodes/goo.tscn" type="PackedScene" id=4]
 [ext_resource path="res://nodes/enemies/enemy_scrub_armored.tscn" type="PackedScene" id=5]
+[ext_resource path="res://nodes/timed_goo.tscn" type="PackedScene" id=6]
 
 [node name="room" instance=ExtResource( 1 )]
 
@@ -42,37 +43,69 @@ transform/pos = Vector2( 2464, 992 )
 transform/pos = Vector2( 1280, 1328 )
 transform/scale = Vector2( 24, 2.5 )
 
-[node name="falling_goo_1" parent="." instance=ExtResource( 4 )]
-
-transform/pos = Vector2( 608, 1184 )
-transform/scale = Vector2( 0.999999, 7 )
-has_timer = true
-pushes = true
-
-[node name="falling_goo_2" parent="." instance=ExtResource( 4 )]
-
-transform/pos = Vector2( 928, 1184 )
-transform/scale = Vector2( 0.999999, 7 )
-has_timer = true
-pushes = true
-
-[node name="falling_goo_3" parent="." instance=ExtResource( 4 )]
-
-transform/pos = Vector2( 1632, 1184 )
-transform/scale = Vector2( 0.999999, 7 )
-has_timer = true
-pushes = true
-
-[node name="falling_goo_4" parent="." instance=ExtResource( 4 )]
-
-transform/pos = Vector2( 1952, 1184 )
-transform/scale = Vector2( 0.999999, 7 )
-has_timer = true
-pushes = true
-
 [node name="enemy" parent="." instance=ExtResource( 5 )]
 
 transform/pos = Vector2( 1120, 1152 )
 
+[node name="timed_goo" parent="." instance=ExtResource( 6 )]
+
+transform/pos = Vector2( 608, 1152 )
+transform/scale = Vector2( 1, 8 )
+pushes = true
+
+[node name="stop_timer" parent="timed_goo"]
+
+wait_time = 3.0
+
+[node name="start_timer" parent="timed_goo"]
+
+wait_time = 2.0
+
+[node name="timed_goo1" parent="." instance=ExtResource( 6 )]
+
+transform/pos = Vector2( 928, 1152 )
+transform/scale = Vector2( 1, 8 )
+pushes = true
+
+[node name="stop_timer" parent="timed_goo1"]
+
+wait_time = 3.0
+
+[node name="start_timer" parent="timed_goo1"]
+
+wait_time = 2.0
+
+[node name="timed_goo2" parent="." instance=ExtResource( 6 )]
+
+transform/pos = Vector2( 1632, 1152 )
+transform/scale = Vector2( 1, 8 )
+pushes = true
+
+[node name="stop_timer" parent="timed_goo2"]
+
+wait_time = 3.0
+
+[node name="start_timer" parent="timed_goo2"]
+
+wait_time = 2.0
+
+[node name="timed_goo3" parent="." instance=ExtResource( 6 )]
+
+transform/pos = Vector2( 1952, 1152 )
+transform/scale = Vector2( 1, 8 )
+pushes = true
+
+[node name="stop_timer" parent="timed_goo3"]
+
+wait_time = 3.0
+
+[node name="start_timer" parent="timed_goo3"]
+
+wait_time = 2.0
+
 
 [editable path="double_jump_collect_room_15_door"]
+[editable path="timed_goo"]
+[editable path="timed_goo1"]
+[editable path="timed_goo2"]
+[editable path="timed_goo3"]

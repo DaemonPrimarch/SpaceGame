@@ -45,8 +45,6 @@ transform/pos = Vector2( 1184, 288 )
 
 transform/pos = Vector2( 672, 512 )
 transform/scale = Vector2( 13, 4 )
-active = true
-push_velocity = Vector2( 256, 128 )
 
 [node name="moving_platform" parent="." instance=ExtResource( 5 )]
 
