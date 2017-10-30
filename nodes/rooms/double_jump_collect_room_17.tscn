@@ -1,33 +1,120 @@
-[gd_scene load_steps=4 format=1]
+[gd_scene load_steps=9 format=1]
 
 [ext_resource path="res://nodes/rooms/room.tscn" type="PackedScene" id=1]
 [ext_resource path="res://nodes/warp_tile.tscn" type="PackedScene" id=2]
 [ext_resource path="res://nodes/warp_arrival.tscn" type="PackedScene" id=3]
+[ext_resource path="res://nodes/shootable_block.tscn" type="PackedScene" id=4]
+[ext_resource path="res://nodes/movable_goo.tscn" type="PackedScene" id=5]
+[ext_resource path="res://nodes/goo.tscn" type="PackedScene" id=6]
+[ext_resource path="res://nodes/enemies/enemy_scrub_armored.tscn" type="PackedScene" id=7]
+
+[sub_resource type="RectangleShape2D" id=1]
+
+custom_solver_bias = 0.0
+extents = Vector2( 32, 32 )
 
 [node name="room" instance=ExtResource( 1 )]
 
 [node name="terrain" parent="."]
 
-tile_data = IntArray( 0, 7, 1, 7, 2, 7, 3, 7, 4, 7, 5, 7, 6, 7, 7, 7, 8, 7, 9, 7, 10, 7, 11, 7, 12, 7, 13, 7, 14, 7, 15, 7, 16, 7, 17, 7, 18, 7, 19, 7, 20, 7, 21, 7, 22, 7, 23, 7, 24, 7, 25, 7, 26, 7, 27, 7, 28, 7, 29, 7, 30, 7, 31, 7, 32, 7, 33, 7, 34, 7, 35, 7, 36, 7, 37, 7, 38, 7, 39, 7, 40, 7, 41, 7, 42, 7, 43, 7, 44, 7, 45, 7, 46, 7, 47, 7, 48, 7, 49, 7, 50, 7, 51, 7, 52, 7, 53, 7, 54, 7, 55, 7, 56, 7, 57, 7, 58, 7, 59, 7, 65536, 7, 65595, 7, 131072, 7, 131131, 7, 196608, 7, 196667, 7, 393216, 7, 393217, 7, 393218, 7, 393273, 7, 393274, 7, 393275, 7, 458752, 7, 458753, 7, 458754, 7, 458809, 7, 458810, 7, 458811, 7, 524288, 7, 524347, 7, 589824, 7, 589883, 7, 655360, 7, 655361, 7, 655362, 7, 655363, 7, 655364, 7, 655365, 7, 655366, 7, 655367, 7, 655368, 7, 655369, 7, 655370, 7, 655371, 7, 655372, 7, 655373, 7, 655374, 7, 655375, 7, 655376, 7, 655377, 7, 655378, 7, 655379, 7, 655380, 7, 655381, 7, 655382, 7, 655383, 7, 655384, 7, 655385, 7, 655386, 7, 655387, 7, 655388, 7, 655389, 7, 655390, 7, 655391, 7, 655392, 7, 655393, 7, 655394, 7, 655395, 7, 655396, 7, 655397, 7, 655398, 7, 655399, 7, 655400, 7, 655401, 7, 655402, 7, 655403, 7, 655404, 7, 655405, 7, 655406, 7, 655407, 7, 655408, 7, 655409, 7, 655410, 7, 655411, 7, 655412, 7, 655413, 7, 655414, 7, 655415, 7, 655416, 7, 655417, 7, 655418, 7, 655419, 7 )
+tile_data = IntArray( -393216, 7, -393215, 7, -393214, 7, -393213, 7, -393212, 7, -393211, 7, -393210, 7, -393209, 7, -393208, 7, -393207, 7, -393206, 7, -393205, 7, -393204, 7, -393203, 7, -393202, 7, -393201, 7, -393200, 7, -393199, 7, -393198, 7, -393197, 7, -393196, 7, -393195, 7, -393194, 7, -327680, 7, -327658, 7, -262122, 7, -196586, 7, -131072, 7, -131071, 7, -131070, 7, -131069, 7, -131068, 7, -131067, 7, -131050, 7, -65536, 7, -65514, 7, 0, 7, 14, 7, 15, 7, 16, 7, 17, 7, 22, 7, 49, 7, 50, 7, 51, 7, 52, 7, 53, 7, 54, 7, 55, 7, 56, 7, 57, 7, 58, 7, 59, 7, 65536, 7, 65558, 7, 65585, 7, 65595, 7, 131072, 7, 131094, 7, 131095, 7, 131096, 7, 131097, 7, 131098, 7, 131099, 7, 131100, 7, 131101, 7, 131102, 7, 131103, 7, 131104, 7, 131105, 7, 131106, 7, 131107, 7, 131108, 7, 131109, 7, 131121, 7, 131131, 7, 196608, 7, 196645, 7, 196657, 7, 196667, 7, 262144, 7, 262181, 7, 262193, 7, 327680, 7, 327717, 7, 327718, 7, 327719, 7, 327720, 7, 327721, 7, 327722, 7, 327723, 7, 327724, 7, 327725, 7, 327726, 7, 327727, 7, 327728, 7, 327729, 7, 393216, 7, 393225, 7, 393226, 7, 393227, 7, 393265, 7, 393266, 7, 393267, 7, 393268, 7, 393269, 7, 393271, 7, 393272, 7, 393273, 7, 393274, 7, 393275, 7, 458752, 7, 458801, 7, 458802, 7, 458803, 7, 458804, 7, 458805, 7, 458811, 7, 524288, 7, 524337, 7, 524338, 7, 524339, 7, 524340, 7, 524341, 7, 524342, 7, 524343, 7, 524344, 7, 524345, 7, 524347, 7, 589824, 7, 589883, 7, 655360, 7, 655378, 7, 655379, 7, 655380, 7, 655419, 7, 720896, 7, 720925, 7, 720926, 7, 720927, 7, 720955, 7, 786432, 7, 786491, 7, 851968, 7, 852027, 7, 917504, 7, 917563, 7, 983040, 7, 983076, 7, 983077, 7, 983078, 7, 983079, 7, 983080, 7, 983081, 7, 983082, 7, 983083, 7, 983084, 7, 983099, 7, 1048576, 7, 1048635, 7, 1114112, 7, 1114160, 7, 1114161, 7, 1114162, 7, 1114163, 7, 1114164, 7, 1114171, 7, 1179648, 7, 1179704, 7, 1179705, 7, 1179706, 7, 1179707, 7, 1245184, 7, 1245243, 7, 1310720, 7, 1310721, 7, 1310722, 7, 1310723, 7, 1310724, 7, 1310725, 7, 1310726, 7, 1310727, 7, 1310728, 7, 1310729, 7, 1310730, 7, 1310731, 7, 1310732, 7, 1310733, 7, 1310734, 7, 1310735, 7, 1310736, 7, 1310737, 7, 1310738, 7, 1310739, 7, 1310740, 7, 1310741, 7, 1310742, 7, 1310743, 7, 1310744, 7, 1310745, 7, 1310746, 7, 1310747, 7, 1310748, 7, 1310749, 7, 1310750, 7, 1310751, 7, 1310752, 7, 1310753, 7, 1310754, 7, 1310755, 7, 1310756, 7, 1310757, 7, 1310758, 7, 1310759, 7, 1310760, 7, 1310761, 7, 1310762, 7, 1310763, 7, 1310764, 7, 1310765, 7, 1310766, 7, 1310767, 7, 1310768, 7, 1310769, 7, 1310770, 7, 1310771, 7, 1310772, 7, 1310773, 7, 1310774, 7, 1310775, 7, 1310776, 7, 1310777, 7, 1310778, 7, 1310779, 7 )
 
 [node name="double_jump_collect_room_1_door" parent="." instance=ExtResource( 2 )]
 
-transform/pos = Vector2( 32, 320 )
+transform/pos = Vector2( 32, -192 )
 arrival_node_ID = "double_jump_collect_room_17_arrival"
 destination_scene_path = "res://nodes/rooms/double_jump_collect_room_1.tscn"
 
+[node name="sprite" parent="double_jump_collect_room_1_door"]
+
+modulate = Color( 0.0568371, 0.984375, 0.0269165, 1 )
+
 [node name="double_jump_collect_room_16_door" parent="." instance=ExtResource( 2 )]
 
+editor/display_folded = true
 transform/pos = Vector2( 3808, 320 )
 arrival_node_ID = "double_jump_collect_room_17_arrival"
 destination_scene_path = "res://nodes/rooms/double_jump_collect_room_16.tscn"
 
+[node name="sprite" parent="double_jump_collect_room_16_door"]
+
+modulate = Color( 0.0568371, 0.984375, 0.0269165, 1 )
+
 [node name="double_jump_collect_room_1_arrival" parent="." instance=ExtResource( 3 )]
 
-transform/pos = Vector2( 96, 352 )
+transform/pos = Vector2( 96, -160 )
 
 [node name="double_jump_collect_room_16_arrival" parent="." instance=ExtResource( 3 )]
 
 transform/pos = Vector2( 3744, 352 )
 
+[node name="shootable_block" parent="." instance=ExtResource( 4 )]
 
+transform/pos = Vector2( 3488, 416 )
+
+[node name="Area2D" parent="." instance=ExtResource( 5 )]
+
+transform/pos = Vector2( 1920, 1920 )
+transform/scale = Vector2( 58, 21.5 )
+height = 20
+speed = 16
+
+[node name="Area2D 2" type="Area2D" parent="."]
+
+editor/display_folded = true
+transform/pos = Vector2( 3424, 1104 )
+transform/scale = Vector2( 11, 4.5 )
+input/pickable = true
+shapes/0/shape = SubResource( 1 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/0/trigger = false
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D 2"]
+
+shape = SubResource( 1 )
+trigger = false
+_update_shape_index = 0
+
+[node name="goo" parent="." instance=ExtResource( 6 )]
+
+transform/pos = Vector2( 3488, 1088 )
+transform/scale = Vector2( 1, 6 )
+
+[node name="goo1" parent="." instance=ExtResource( 6 )]
+
+transform/pos = Vector2( 2976, 1024 )
+transform/scale = Vector2( 1, 7 )
+
+[node name="goo2" parent="." instance=ExtResource( 6 )]
+
+transform/pos = Vector2( 1952, 1024 )
+transform/scale = Vector2( 1, 8 )
+
+[node name="goo3" parent="." instance=ExtResource( 6 )]
+
+transform/pos = Vector2( 2208, 1024 )
+transform/scale = Vector2( 1, 8 )
+
+[node name="goo4" parent="." instance=ExtResource( 6 )]
+
+transform/pos = Vector2( 1248, 992 )
+transform/scale = Vector2( 1, 9 )
+
+[node name="goo5" parent="." instance=ExtResource( 6 )]
+
+transform/pos = Vector2( 672, 864 )
+transform/scale = Vector2( 1, 13 )
+
+[node name="enemy" parent="." instance=ExtResource( 7 )]
+
+transform/pos = Vector2( 2560, 896 )
+
+[connection signal="body_enter" from="Area2D 2" to="Area2D" method="start"]
+
+
+[editable path="double_jump_collect_room_1_door"]
+[editable path="double_jump_collect_room_16_door"]

@@ -18,6 +18,12 @@ tile_data = IntArray( 0, 7, 1, 7, 2, 7, 3, 7, 4, 7, 5, 7, 6, 7, 7, 7, 8, 7, 9, 7
 [node name="double_jump_collect_room_17_door" parent="." instance=ExtResource( 2 )]
 
 transform/pos = Vector2( 32, 960 )
+arrival_node_ID = "double_jump_collect_room_16_arrival"
+destination_scene_path = "res://nodes/rooms/double_jump_collect_room_17.tscn"
+
+[node name="sprite" parent="double_jump_collect_room_17_door"]
+
+modulate = Color( 0.21392, 0.984375, 0.0269165, 1 )
 
 [node name="double_jump_collect_room_15_door" parent="." instance=ExtResource( 2 )]
 
@@ -104,6 +110,7 @@ wait_time = 3.0
 wait_time = 2.0
 
 
+[editable path="double_jump_collect_room_17_door"]
 [editable path="double_jump_collect_room_15_door"]
 [editable path="timed_goo"]
 [editable path="timed_goo1"]
