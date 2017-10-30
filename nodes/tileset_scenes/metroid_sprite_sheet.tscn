@@ -12,7 +12,7 @@ points = Vector2Array( -32, 32, -32, -32, 32, -32, 32, 32, -32, 32 )
 custom_solver_bias = 0.0
 points = Vector2Array( -32, 32, -32, -32, 32, -32, 32, 32, -32, 32 )
 
-[sub_resource type="ConvexPolygonShape2D" id=14]
+[sub_resource type="ConvexPolygonShape2D" id=3]
 
 custom_solver_bias = 0.0
 points = Vector2Array( -32, 32, -32, -32, 32, -32, 32, 32, -32, 32 )
@@ -142,7 +142,7 @@ region_rect = Rect2( 64, 64, 64, 64 )
 [node name="StaticBody2D" type="StaticBody2D" parent="top_tube_middle_rigged"]
 
 input/pickable = false
-shapes/0/shape = SubResource( 14 )
+shapes/0/shape = SubResource( 3 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
 shapes/0/trigger = false
 collision/layers = 1
