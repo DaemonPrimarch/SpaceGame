@@ -1,11 +1,10 @@
-[gd_scene load_steps=7 format=1]
+[gd_scene load_steps=6 format=1]
 
 [ext_resource path="res://nodes/rooms/room.tscn" type="PackedScene" id=1]
 [ext_resource path="res://nodes/warp_tile.tscn" type="PackedScene" id=2]
 [ext_resource path="res://nodes/warp_arrival.tscn" type="PackedScene" id=3]
-[ext_resource path="res://nodes/enemies/enemy_scrub.tscn" type="PackedScene" id=4]
-[ext_resource path="res://nodes/bullet_switch.tscn" type="PackedScene" id=5]
-[ext_resource path="res://scripts/switch_controller_double_jump_collect_room_8.gd" type="Script" id=6]
+[ext_resource path="res://nodes/bullet_switch.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scripts/switch_controller_double_jump_collect_room_8.gd" type="Script" id=5]
 
 [node name="room" instance=ExtResource( 1 )]
 
@@ -13,12 +12,12 @@ camera_zoom = Vector2( 0.5, 0.5 )
 
 [node name="terrain" parent="."]
 
-tile_data = IntArray( 10, 6, 11, 6, 12, 6, 13, 6, 14, 6, 15, 6, 16, 6, 17, 6, 18, 6, 19, 6, 65546, 6, 65555, 6, 196618, 6, 262154, 6, 262155, 6, 262156, 6, 262157, 6, 262158, 6, 262159, 6, 262160, 6, 262161, 6, 262162, 6, 262163, 6, 327690, 6, 327691, 6, 327692, 6, 327693, 6, 327694, 6, 327695, 6, 327696, 6, 327697, 6, 327698, 6, 327699, 6 )
+tile_data = IntArray( 10, 6, 11, 6, 12, 6, 13, 6, 14, 6, 15, 6, 16, 6, 17, 6, 18, 6, 19, 6, 65546, 6, 65555, 6, 196627, 6, 262154, 6, 262155, 6, 262156, 6, 262157, 6, 262158, 6, 262159, 6, 262160, 6, 262161, 6, 262162, 6, 262163, 6, 327690, 6, 327691, 6, 327692, 6, 327693, 6, 327694, 6, 327695, 6, 327696, 6, 327697, 6, 327698, 6, 327699, 6 )
 
 [node name="double_jump_collect_room_7_door" parent="." instance=ExtResource( 2 )]
 
 editor/display_folded = true
-transform/pos = Vector2( 1248, 192 )
+transform/pos = Vector2( 672, 192 )
 arrival_node_ID = "double_jump_collect_room_8_arrival"
 destination_scene_path = "res://nodes/rooms/double_jump_collect_room_7.tscn"
 
@@ -28,20 +27,16 @@ modulate = Color( 0.146599, 0.984375, 0.0269165, 1 )
 
 [node name="double_jump_collect_room_7_arrival" parent="." instance=ExtResource( 3 )]
 
-transform/pos = Vector2( 1184, 224 )
+transform/pos = Vector2( 736, 224 )
 
-[node name="enemy" parent="." instance=ExtResource( 4 )]
+[node name="bullet_switch" parent="." instance=ExtResource( 4 )]
 
-transform/pos = Vector2( 768, 224 )
-
-[node name="bullet_switch" parent="." instance=ExtResource( 5 )]
-
-transform/pos = Vector2( 672, 160 )
+transform/pos = Vector2( 1248, 160 )
 transform/rot = 180.0
 
 [node name="switch_controller" type="Node2D" parent="."]
 
-script/script = ExtResource( 6 )
+script/script = ExtResource( 5 )
 
 [connection signal="player_enter" from="." to="switch_controller" method="_on_room_player_enter"]
 
