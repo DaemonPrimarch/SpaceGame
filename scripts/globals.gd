@@ -1,3 +1,0 @@
-extends Node
-
-enum LAYERS {TERRAIN, PLAYER, ENEMIES}
