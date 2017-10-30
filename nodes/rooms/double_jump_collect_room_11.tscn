@@ -67,18 +67,9 @@ transform/scale = Vector2( 11, 1.5 )
 editor/display_folded = true
 transform/pos = Vector2( 256, -32 )
 transform/scale = Vector2( 1, 19 )
-has_timer = true
+pushes = true
 push_time = 1
 push_time_extended = 2
-pushes = true
-
-[node name="Timer_on" parent="falling_goo"]
-
-wait_time = 2.0
-
-[node name="Timer_off" parent="falling_goo"]
-
-wait_time = 4.0
 
 [node name="StaticBody2D" parent="." instance=ExtResource( 5 )]
 

@@ -16,13 +16,16 @@ tile_data = IntArray( -720896, 7, -720895, 7, -720894, 7, -720893, 7, -720892, 7
 
 transform/pos = Vector2( 640, 528 )
 transform/scale = Vector2( 18, 3.5 )
+active = true
+push_velocity = Vector2( 256, 128 )
 
 [node name="falling_goo" parent="." instance=ExtResource( 2 )]
 
 transform/pos = Vector2( 992, 32 )
 transform/scale = Vector2( 1, 19 )
+active = true
 pushes = true
-turn_off = true
+push_velocity = Vector2( 256, 128 )
 
 [node name="double_jump_collect_room_5_door" parent="." instance=ExtResource( 3 )]
 
