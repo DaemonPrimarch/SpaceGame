@@ -52,7 +52,7 @@ func enter_state(state, old_state):
 		get_node("crawl_space_detector_down").set_enabled(false)
 		get_node("standing_space_detector_right").set_enabled(true)
 		get_node("standing_space_detector_left").set_enabled(true)
-		set_scale(get_scale() / Vector2(0.5, 2))
+		set_scale(get_scale() / Vector2(1, 2))
 		move(Vector2(10, 0))
 		first_frame_crawling = true
 	elif(state == STATE.CROUCHING):
@@ -128,7 +128,7 @@ func leave_state(state, new_state):
 		get_node("crawl_space_detector_down").set_enabled(true)
 		get_node("standing_space_detector_right").set_enabled(false)
 		get_node("standing_space_detector_left").set_enabled(false)
-		set_scale(get_scale() * Vector2(0.5, 2))
+		set_scale(get_scale() * Vector2(1, 2))
 
 	elif(state == STATE.PUSHED):
 		set_gravity_enabled(original_gravity_enabled)
