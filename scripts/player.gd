@@ -53,7 +53,10 @@ func enter_state(state, old_state):
 		get_node("standing_space_detector_right").set_enabled(true)
 		get_node("standing_space_detector_left").set_enabled(true)
 		set_scale(get_scale() / Vector2(1, 2))
-		move(Vector2(10, 0))
+		if(is_flippedH()):
+			move(Vector2(-10, 0))
+		else:
+			move(Vector2(10, 0))
 		first_frame_crawling = true
 	elif(state == STATE.CROUCHING):
 		set_scale(get_scale() / Vector2(1, 2))
