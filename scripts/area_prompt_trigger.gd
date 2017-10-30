@@ -1,6 +1,4 @@
-extends Node2D
-
-signal triggered
+extends "res://scripts/trigger.gd"
 
 onready var label = get_node("label")
 
