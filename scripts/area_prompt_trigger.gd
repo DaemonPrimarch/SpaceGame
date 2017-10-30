@@ -1,4 +1,4 @@
-extends "res://scripts/trigger.gd"
+signal triggered
 
 onready var label = get_node("label")
 

@@ -37,6 +37,9 @@ __meta__ = {
 
 [node name="test_player" parent="." instance=ExtResource( 3 )]
 
+wall_jump_height = 192
+wall_jump_length = 192
+
 [node name="test_player_existance_timer" type="Timer" parent="."]
 
 process_mode = 1
