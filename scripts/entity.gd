@@ -4,8 +4,6 @@ signal hp_changed
 
 export var movement_speed = 300 setget set_movement_speed,get_movement_speed
 
-var warping = false
-
 export var flippedH = false
 export var gravity_enabled = true
 
@@ -22,7 +20,6 @@ export var has_invulnarable_animation = false
 export var invulnerable_animation_player = "SecondAnimationPlayer"
 
 var invulnerability_timer
-var invulnerability_timer_running = false
 
 var gravity_timer = 0
 var gravity_timer_started = false
@@ -32,6 +29,16 @@ onready var gravity_vector = Physics2DServer.area_get_param(get_world_2d().get_s
 func _ready():
 	add_to_group("has_hp_bar")
 	GUI.add_HP_bar(self)
+	
+	if(has_invulnerability_timer()):
+		var timer = Timer.new()
+		timer.set_wait_time(get_invulnerability_time())
+		timer.set_name("invulnerability_timer")
+		timer.set_one_shot(true)
+		timer.connect("timeout", self, "on_invulnerability_timer_timeout")
+		add_child(timer)
+		invulnerability_timer = timer
+		
 
 func get_invulnerability_time():
 	return invulnerability_time
@@ -50,27 +57,21 @@ func has_invulnerability_timer():
 
 func set_invulnerable(value):
 	invulnerable = value
-	set_collision_mask_bit(1, !value)
+	set_collision_mask_bit(global_constants.LAYERS.ENEMY, not value)
 	if(value):
-		invulnerability_timer = Timer.new()
-		invulnerability_timer.set_one_shot(true)
-		invulnerability_timer.set_wait_time(get_invulnerability_time())
-		self.add_child(invulnerability_timer)
-		invulnerability_timer.connect("timeout", self, "on_invulnerability_timer_timeout")
-		invulnerability_timer_running = true
 		invulnerability_timer.start()
 		if(has_invulnarable_animation):
 			get_node(invulnerable_animation_player).play("invulnerable")
 	else:
-		if(invulnerability_timer_running):
+		if(invulnerability_timer.get_time_left() > 0):
 			invulnerability_timer.stop()
-			invulnerability_timer.free()
-			invulnerability_timer_running = false
 		if(has_invulnarable_animation):
 			get_node(invulnerable_animation_player).stop()
 
+func finland_suckt():
+	print("Finlad suckts")
+	set_invulnerable(false)
 func on_invulnerability_timer_timeout():
-	invulnerability_timer_running = false
 	set_invulnerable(false)
 
 func set_HP(val):
@@ -94,12 +95,6 @@ func damage(amount):
 		self.destroy()
 	else:
 		set_HP(new_HP)
-
-func is_warping():
-	return warping
-	
-func set_is_warping(val):
-	warping = val
 
 func set_gravity_enabled(value):
 	gravity_enabled = value
