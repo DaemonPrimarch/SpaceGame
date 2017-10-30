@@ -93,9 +93,11 @@ func enter_state(state, old_state):
 		original_gravity_enabled = gravity_enabled
 		set_gravity_enabled(false)
 		get_ladder().snap_to_ladder(self)
-		var gun  = get_node("gun")
-		gun.set_pos(gun.get_pos() * Vector2(-1,1))
-		gun.set_scale(gun.get_scale() * Vector2(-1,1))
+		if(get_ladder().get_type() != get_ladder().TYPES.FRONTAL):
+			var gun  = get_node("gun")
+			gun.set_pos(gun.get_pos() * Vector2(-1,1))
+			gun.set_scale(gun.get_scale() * Vector2(-1,1))
+		
 		debug_state_label.set_text("CLIMBING")
 	elif(state == STATE.PUSHED):
 		original_gravity_enabled = gravity_enabled
@@ -123,8 +125,12 @@ func leave_state(state, new_state):
 	elif(state == STATE.CLIMBING):
 		set_gravity_enabled(original_gravity_enabled)
 		var gun  = get_node("gun")
-		gun.set_pos(gun.get_pos() * Vector2(-1,1))
-		gun.set_scale(gun.get_scale() * Vector2(-1,1))
+		if(is_flippedH()):
+			gun.set_pos(Vector2(-abs(gun.get_pos().x), gun.get_pos().y))
+			gun.set_scale(Vector2(-abs(gun.get_scale().x), gun.get_scale().y))
+		else:
+			gun.set_pos(Vector2(abs(gun.get_pos().x), gun.get_pos().y))
+			gun.set_scale(Vector2(abs(gun.get_scale().x), gun.get_scale().y))
 		reset_gravity_timer()
 	elif(state == STATE.CRAWLING):
 		get_node("crawl_space_detector_up").set_enabled(true)
@@ -257,7 +263,7 @@ func process_state(state, delta):
 			set_current_state(STATE.FALLING)
 	elif(state == STATE.FALLING):
 		play_or_continue_animation("falling")
-		if(is_inside_ladder() and is_jump_just_pressed()):
+		if(is_inside_ladder() and Input.is_action_pressed("up")):
 			set_current_state(STATE.CLIMBING)
 		elif(not has_double_jumped() and is_jump_just_pressed() and can_double_jump()):
 			continuing_previous_movement = false
@@ -296,12 +302,18 @@ func process_state(state, delta):
 			move(Vector2(0, -get_climbing_speed() * delta))
 		elif(Input.is_action_pressed("down")):
 			move(Vector2(0, get_climbing_speed() * delta))
+		
 		if(not is_inside_ladder() or is_jump_just_pressed()):
 			if(Input.is_action_pressed("play_right") or Input.is_action_pressed("play_left")):
 				escaping_ladder = true
 				set_current_state(STATE.REGULAR_JUMPING) 
 			else:
 				set_current_state(STATE.FALLING)
+		elif(get_ladder().get_type() == get_ladder().TYPES.FRONTAL):
+			if(Input.is_action_pressed("play_left")):
+				set_flippedH(true)
+			elif(Input.is_action_pressed("play_right")):
+				set_flippedH(false)
 	elif(state == STATE.WALL_SLIDING):
 		play_or_continue_animation("idle")
 		if(can_wall_jump() and is_jump_just_pressed()):

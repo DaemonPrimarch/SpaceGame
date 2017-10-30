@@ -2,11 +2,14 @@ extends Area2D
 
 signal snapped_to_ladder
 
+enum TYPES {FRONTAL, LEFT, RIGHT}
+
+func get_type():
+	return TYPES.FRONTAL
+
 func _on_ladder_body_enter( body ):
-	print("ENTERED")
 	if(body.is_in_group("player")):
 		body.set_ladder(self)
-
 
 func _on_ladder_body_exit( body ):
 	if(body.is_in_group("player")):
