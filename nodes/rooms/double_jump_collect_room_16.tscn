@@ -52,6 +52,7 @@ transform/scale = Vector2( 24, 2.5 )
 [node name="enemy" parent="." instance=ExtResource( 5 )]
 
 transform/pos = Vector2( 1120, 1152 )
+movement_speed = 128
 
 [node name="timed_goo" parent="." instance=ExtResource( 6 )]
 
