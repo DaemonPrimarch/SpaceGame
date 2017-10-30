@@ -30,8 +30,8 @@ modulate = Color( 0.0269165, 0.984375, 0.131639, 1 )
 
 [node name="double_jump_collect_room_17_door" parent="." instance=ExtResource( 3 )]
 
+editor/display_folded = true
 transform/pos = Vector2( 1248, 576 )
-active = false
 arrival_node_ID = "double_jump_collect_room_1_arrival"
 destination_scene_path = "res://nodes/rooms/double_jump_collect_room_17.tscn"
 
@@ -67,9 +67,7 @@ script/script = ExtResource( 4 )
 transform/pos = Vector2( 608, 1360 )
 transform/scale = Vector2( 9, 21.5 )
 
-[node name="TileMap" type="TileMap" parent="goo_container" groups=[
-"terrain",
-]]
+[node name="TileMap" type="TileMap" parent="goo_container"]
 
 mode = 0
 tile_set = ExtResource( 6 )
@@ -86,6 +84,8 @@ collision/layers = 1
 collision/mask = 1
 occluder/light_mask = 1
 tile_data = IntArray( 983045, 0, 983046, 0, 983047, 0, 983048, 0, 983049, 0, 983050, 0, 983051, 0, 983052, 0, 983053, 0 )
+
+[connection signal="player_enter" from="." to="goo_container" method="_on_room_player_enter"]
 
 
 [editable path="central_hub_door"]
