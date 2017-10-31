@@ -169,7 +169,9 @@ func process_state(state, delta):
 			else:
 				play_or_continue_animation("idle")
 			
-			var collision_info = move(Vector2(dir * get_movement_speed() * delta, 0))
+			print(64 * abs(dir))
+			
+			var collision_info = move_and_slide(Vector2(dir * get_movement_speed(), 64 * 2 * abs(dir)))
 			if(collision_info.has_collision() and collision_info.get_collider().is_in_group("terrain") and not collision_info.get_collider().is_in_group("no_crawl") ):
 				if(not get_node("crawl_space_detector_up").is_colliding() and not get_node("crawl_space_detector_down").is_colliding()):
 					set_current_state(STATE.CRAWLING)

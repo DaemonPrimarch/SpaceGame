@@ -84,6 +84,17 @@ func move(direction):
 	else:
 		return KinematicCollision2D.new()
 		
+func move_and_slide(direction):
+	.move_and_slide(direction)
+	
+	var collision_info
+
+	if(is_colliding()):
+		collision_info = KinematicCollision2D.new(get_collider(), null, get_collider_metadata(), get_collider_shape(), null, get_collider_velocity(), null, get_collision_normal(), get_collision_pos(), null, get_travel())
+		return collision_info
+	else:
+		return KinematicCollision2D.new()
+		
 func move_no_collision(direction):
 	set_pos(get_pos() + direction)
 
