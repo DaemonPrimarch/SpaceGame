@@ -1,0 +1,55 @@
+[gd_scene load_steps=4 format=1]
+
+[ext_resource path="res://scripts/enemies/drop_down_spider.gd" type="Script" id=1]
+[ext_resource path="res://icon.png" type="Texture" id=2]
+
+[sub_resource type="ConvexPolygonShape2D" id=1]
+
+custom_solver_bias = 0.0
+points = Vector2Array( 32, -32, 32, 32, -32, 32, -32, -32 )
+
+[node name="drop_down_spider_system" type="Node2D"]
+
+[node name="drop_down_spider" type="KinematicBody2D" parent="."]
+
+input/pickable = false
+shapes/0/shape = SubResource( 1 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/0/trigger = false
+collision/layers = 1
+collision/mask = 1
+collision/margin = 0.08
+script/script = ExtResource( 1 )
+movement_speed = 300
+flippedH = false
+gravity_enabled = false
+max_HP = 10
+hp = 10
+invulnerability_time = 5
+uses_invulnerability_timer = true
+has_invulnarable_animation = false
+invulnerable_animation_player = "SecondAnimationPlayer"
+damage = 5
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="drop_down_spider"]
+
+build_mode = 0
+polygon = Vector2Array( -32, -32, -32, 32, 32, 32, 32, -32 )
+shape_range = Vector2( 0, 0 )
+trigger = false
+
+[node name="sprite" type="Sprite" parent="drop_down_spider"]
+
+texture = ExtResource( 2 )
+
+[node name="player_finder" type="RayCast2D" parent="drop_down_spider"]
+
+transform/pos = Vector2( 0, 32 )
+enabled = true
+cast_to = Vector2( 0, 384 )
+layer_mask = 1048575
+type_mask = 15
+
+[connection signal="collision" from="drop_down_spider" to="drop_down_spider" method="_on_drop_down_spider_collision"]
+
+

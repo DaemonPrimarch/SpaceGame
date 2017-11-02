@@ -1,6 +1,7 @@
 extends "res://scripts/enemies/enemy.gd"
 
 onready var front_detector = get_node("FrontGroundDetector")
+export var stompable = true
 
 func _ready():
 	set_process(true)
@@ -28,10 +29,11 @@ func _on_AnimationPlayer_finished():
 	if(is_destroyed()):
 		self.queue_free()
 
-func on_collision(collision_info):
-	if(collision_info.get_collider().is_in_group("player")):
-		if(get_node("head_area").overlaps_body(collision_info.get_collider())):
-			destroy()
-		else:
-			collision_info.get_collider().damage(5)
-			collision_info.get_collider().set_invulnerable(true)
+func is_stompable():
+	return stompable
+
+func on_collision_with_player(info):
+	if(is_stompable() and get_node("head_area").overlaps_body(info.get_collider())):
+		destroy()
+	else:
+		.on_collision_with_player(info)

@@ -31,8 +31,6 @@ func on_collision(info):
 		else:
 			turn()
 	elif(info.get_collider().is_in_group("player")):
-		info.get_collider().damage(5)
-		info.get_collider().set_invulnerable(true)
 		if(player_detected):
 			move_up = true
 

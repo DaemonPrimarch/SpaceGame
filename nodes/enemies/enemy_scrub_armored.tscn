@@ -8,6 +8,7 @@
 transform/pos = Vector2( 49, 50 )
 transform/scale = Vector2( 3.125, 3.125 )
 script/script = ExtResource( 2 )
+stompable = false
 push_time = 5
 push_time_extended = 5
 push_speed_x = 256

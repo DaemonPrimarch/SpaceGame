@@ -40,6 +40,4 @@ func on_bullet_hit(bullet):
 
 func on_collision(collision_info):
 	if(collision_info.get_collider().is_in_group("player")):
-			collision_info.get_collider().damage(5)
-			collision_info.get_collider().set_invulnerable(true)
-			collision_info.get_collider().push(get_push_time(), get_push_time_extended(),Vector2(get_push_speed_x(),get_push_speed_y()))
+		collision_info.get_collider().push(get_push_time(), get_push_time_extended(),Vector2(get_push_speed_x(),get_push_speed_y()))
