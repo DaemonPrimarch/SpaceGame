@@ -5,9 +5,9 @@
 [ext_resource path="res://nodes/camera.tscn" type="PackedScene" id=3]
 
 [node name="player" groups=[
+"player",
 "tracked",
 "warpable",
-"player",
 ] instance=ExtResource( 1 )]
 
 collision/mask = 19
@@ -15,8 +15,6 @@ script/script = ExtResource( 2 )
 max_HP = 2000
 hp = 2000
 invulnerability_time = 2
-cn_wall_slide = false
-cn_wall_jump = false
 wall_jump_height = 192
 wall_jump_length = 192
 

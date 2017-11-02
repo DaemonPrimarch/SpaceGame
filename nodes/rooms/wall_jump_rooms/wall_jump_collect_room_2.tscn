@@ -42,7 +42,7 @@ transform/pos = Vector2( 1152, 160 )
 
 [node name="timed_goo" parent="." instance=ExtResource( 5 )]
 
-transform/pos = Vector2( 2784, 896 )
+transform/pos = Vector2( 2464, 1408 )
 transform/scale = Vector2( 18, 1 )
 pushes = true
 
@@ -50,13 +50,13 @@ pushes = true
 
 [node name="goo" parent="Switchable_goo" instance=ExtResource( 6 )]
 
-transform/pos = Vector2( 640, 1632 )
+transform/pos = Vector2( 640, 1376 )
 transform/scale = Vector2( 18, 1 )
 pushes = true
 
 [node name="bullet_switch" parent="Switchable_goo" instance=ExtResource( 7 )]
 
-transform/pos = Vector2( 1184, 1760 )
+transform/pos = Vector2( 96, 1504 )
 on = true
 togglable = true
 
@@ -66,13 +66,13 @@ transform/pos = Vector2( 0, -288 )
 
 [node name="goo" parent="Switchable_goo1" instance=ExtResource( 6 )]
 
-transform/pos = Vector2( 640, 1632 )
+transform/pos = Vector2( 640, 1344 )
 transform/scale = Vector2( 18, 1 )
 pushes = true
 
 [node name="bullet_switch" parent="Switchable_goo1" instance=ExtResource( 7 )]
 
-transform/pos = Vector2( 1184, 1760 )
+transform/pos = Vector2( 96, 1472 )
 on = true
 togglable = true
 
@@ -82,13 +82,13 @@ transform/pos = Vector2( 0, -608 )
 
 [node name="goo" parent="Switchable_goo2" instance=ExtResource( 6 )]
 
-transform/pos = Vector2( 640, 1632 )
+transform/pos = Vector2( 640, 1344 )
 transform/scale = Vector2( 18, 1 )
 pushes = true
 
 [node name="bullet_switch" parent="Switchable_goo2" instance=ExtResource( 7 )]
 
-transform/pos = Vector2( 1184, 1760 )
+transform/pos = Vector2( 96, 1472 )
 on = true
 togglable = true
 
@@ -98,13 +98,13 @@ transform/pos = Vector2( 0, -992 )
 
 [node name="goo" parent="Switchable_goo3" instance=ExtResource( 6 )]
 
-transform/pos = Vector2( 640, 1632 )
+transform/pos = Vector2( 640, 1408 )
 transform/scale = Vector2( 18, 1 )
 pushes = true
 
 [node name="bullet_switch" parent="Switchable_goo3" instance=ExtResource( 7 )]
 
-transform/pos = Vector2( 1184, 1760 )
+transform/pos = Vector2( 1184, 1536 )
 on = true
 togglable = true
 
