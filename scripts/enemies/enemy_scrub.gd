@@ -6,9 +6,6 @@ export var stompable = true
 func _ready():
 	set_process(true)
 	set_fixed_process(true)
-
-	connect("collision",self,"on_collision")
-	
 	
 func _fixed_process(delta):
 	var movement_direction = 1

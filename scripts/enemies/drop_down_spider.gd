@@ -21,7 +21,6 @@ func _fixed_process(delta):
 		if(player_finder.is_colliding()):
 			print(player_finder.get_collider().get_name())
 			if(player_finder.get_collider().is_in_group("player")):
-				print("colliding")
 				set_state(STATE.MOVING_DOWN)
 				set_gravity_enabled(true)
 	elif(get_state() == STATE.MOVING_UP):
@@ -38,3 +37,6 @@ func _on_drop_down_spider_collision(info):
 	elif(get_state() == STATE.MOVING_UP):
 		if(info.get_collider().is_in_group("terrain")):
 			set_state(STATE.WAITING)
+	
+	if(info.get_collider().is_in_group("player")):
+		info.get_collider().push(get_push_time(), get_push_time_extended(),Vector2(get_push_speed_x(),get_push_speed_y()))

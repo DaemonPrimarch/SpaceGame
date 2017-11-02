@@ -1,6 +1,8 @@
 extends Node2D
 
 export var speed = 60
+export var active = true
+export var looping = true
 
 onready var platform = get_node("platform")
 
@@ -19,6 +21,15 @@ func _ready():
 	set_next_point(get_node(get_point_name(2)))
 
 	set_fixed_process(true)
+
+func is_looping():
+	return looping
+
+func set_active(value):
+	active = value
+	
+func is_active():
+	return active
 
 func set_current_point(point):
 	current_point = point
@@ -56,23 +67,27 @@ func get_speed():
 	return speed
 
 func _fixed_process(delta):	
-	for obj in objects_on_platform:
-		obj.move_no_collision(get_direction()*get_speed()*delta)
-	
-	platform.move_no_collision(get_direction()*get_speed()*delta)
-	
-	var projected_position_next = get_direction().dot(get_next_point().get_pos())
-	var projected_position_platform = get_direction().dot(platform.get_pos())
-	
-
-	if(projected_position_platform >= projected_position_next):
-		set_current_point(get_next_point())
+	if(is_active()):
+		for obj in objects_on_platform:
+			obj.move_no_collision(get_direction()*get_speed()*delta)
 		
-		if(!has_node(get_point_name(next_point_number + reversing))):
-			reversing = -reversing
-		next_point_number += reversing
+		platform.move_no_collision(get_direction()*get_speed()*delta)
 		
-		set_next_point(get_node(get_point_name(next_point_number)))
+		var projected_position_next = get_direction().dot(get_next_point().get_pos())
+		var projected_position_platform = get_direction().dot(platform.get_pos())
+		
+	
+		if(projected_position_platform >= projected_position_next):
+			set_current_point(get_next_point())
+			
+			if(!has_node(get_point_name(next_point_number + reversing))):
+				if(is_looping()):
+					reversing = -reversing
+				else:
+					reversing = 0
+			next_point_number += reversing
+			
+			set_next_point(get_node(get_point_name(next_point_number)))
 		
 		
 func _on_Area2D_body_enter( body ):
