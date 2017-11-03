@@ -1,4 +1,4 @@
-extends StaticBody2D
+extends Area2D
 
 signal collision
 
@@ -9,11 +9,7 @@ signal collision
 func _ready():
 	# Called every time the node is added to the scene.
 	# Initialization here
-	connect("collision",self,"on_collision")
-
-func on_collision(collision_info):
-	if(collision_info.get_collider().is_in_group("player")):
-		destroy()
+	pass
 
 func destroy():
 	self.queue_free()
@@ -21,3 +17,8 @@ func destroy():
 #Change to collides with betterKinematicBody2D later. (also in the originating script!)
 func is_betterKinematicBody2D():
 	return true
+
+
+func _on_StaticBody2D_body_enter( body ):
+	if(body.is_in_group("player")):
+		destroy()

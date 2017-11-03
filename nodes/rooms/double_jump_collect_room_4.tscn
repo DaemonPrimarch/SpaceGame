@@ -51,6 +51,8 @@ transform/scale = Vector2( 13, 4 )
 editor/display_folded = true
 transform/pos = Vector2( 576, 352 )
 speed = 192
+active = true
+looping = true
 
 [node name="point_1" parent="moving_platform"]
 
@@ -69,6 +71,8 @@ transform/pos = Vector2( -64, 0 )
 editor/display_folded = true
 transform/pos = Vector2( 896, 352 )
 speed = 192
+active = true
+looping = true
 
 [node name="point_1" parent="moving_platform 2"]
 
