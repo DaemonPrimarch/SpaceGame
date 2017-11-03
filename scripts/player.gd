@@ -10,7 +10,7 @@ var first_frame_crawling = false
 
 var escaping_ladder = false
 
-var continuing_previous_movement = true
+var continuing_previous_movement = false
 
 var already_loaded_2 = false
 
