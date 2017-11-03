@@ -30,6 +30,10 @@ uses_invulnerability_timer = true
 has_invulnarable_animation = false
 invulnerable_animation_player = "SecondAnimationPlayer"
 damage = 5
+push_time = 5
+push_time_extended = 5
+push_speed_x = 256
+push_speed_y = 128
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="drop_down_spider"]
 
