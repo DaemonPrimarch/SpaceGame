@@ -6,6 +6,35 @@ enum STATE {MOVING_UP, MOVING_DOWN, WAITING}
 
 var state = STATE.WAITING
 
+export var push_time = 5 setget set_push_time, get_push_time
+export var push_time_extended = 5 setget set_push_time_extended, get_push_time_extended
+export var push_speed_x = 4*64 setget set_push_speed_x, get_push_speed_x
+export var push_speed_y = 2*64 setget set_push_speed_y, get_push_speed_y
+
+func set_push_speed_x(value):
+	push_speed_x = value
+
+func get_push_speed_x():
+	return push_speed_x
+
+func set_push_speed_y(value):
+	push_speed_y = -value
+
+func get_push_speed_y():
+	return push_speed_y
+
+func set_push_time(value):
+	push_time = value
+
+func get_push_time():
+	return push_time
+
+func set_push_time_extended(value):
+	push_time_extended = value
+
+func get_push_time_extended():
+	return push_time_extended
+
 func _ready():
 	player_finder.add_exception(self)
 	set_fixed_process(true)

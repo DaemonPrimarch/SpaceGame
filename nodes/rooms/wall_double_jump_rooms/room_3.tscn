@@ -26,7 +26,8 @@ transform/scale = Vector2( 1, 4.98437 )
 transform/pos = Vector2( 1216, 352 )
 speed = 128
 active = false
-looping = true
+stop_after_arrival = false
+looping = false
 
 [node name="point_1" parent="moving_platform"]
 

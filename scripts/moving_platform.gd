@@ -2,7 +2,8 @@ extends Node2D
 
 export var speed = 60
 export var active = true
-export var looping = true
+export var stop_after_arrival = false
+export var looping = false
 
 onready var platform = get_node("platform")
 
@@ -30,6 +31,9 @@ func set_active(value):
 	
 func is_active():
 	return active
+	
+func stops_after_arrival():
+	return stop_after_arrival
 
 func set_current_point(point):
 	current_point = point
@@ -81,8 +85,11 @@ func _fixed_process(delta):
 			set_current_point(get_next_point())
 			
 			if(!has_node(get_point_name(next_point_number + reversing))):
-				if(is_looping()):
-					reversing = -reversing
+				if(not stops_after_arrival()):
+					if(is_looping()):
+						next_point_number = 0
+					else:
+						reversing = -reversing
 				else:
 					reversing = 0
 			next_point_number += reversing
