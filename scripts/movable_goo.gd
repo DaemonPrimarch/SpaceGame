@@ -4,12 +4,18 @@ export var speed1 = 64*2
 export var height1 = 20
 export var speed2 = 64*2
 export var height2 = 20
+export var speed0 = 64*2
+export var height0 = 20
 
 var start = false
+var start_slow = false
 var current_y_pos
 
 func start():
 	start = true
+
+func start_slow():
+	start_slow = true
 	current_y_pos = get_pos().y
 	dialog_system.play_dialog(dialog_system.create_linear_tree(["Goo Alert!!!"]))
 
@@ -19,6 +25,8 @@ func stop():
 
 func _fixed_process(delta):
 	._fixed_process(delta)
+	if(start_slow and not start):
+		set_pos(get_pos() + Vector2(0,-1*speed0*delta))
 	if(start):
 		if(get_pos().y > current_y_pos - height1*64):
 			set_pos(get_pos() + Vector2(0,-1*speed1*delta))
