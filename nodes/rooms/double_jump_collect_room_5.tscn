@@ -19,10 +19,12 @@ transform/pos = Vector2( 992, 352 )
 [node name="enemy" parent="." instance=ExtResource( 3 )]
 
 transform/pos = Vector2( 416, 608 )
+stompable = true
 
 [node name="enemy1" parent="." instance=ExtResource( 3 )]
 
 transform/pos = Vector2( 704, 608 )
+stompable = true
 
 [node name="double_jump_collect_room_4_arrival" parent="." instance=ExtResource( 4 )]
 
