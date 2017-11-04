@@ -14,8 +14,8 @@ tile_data = IntArray( -196608, 7, -196607, 7, -196606, 7, -196605, 7, -196604, 7
 
 editor/display_folded = true
 transform/pos = Vector2( 32, 128 )
-arrival_node_ID = "double_jump_collect_room_12_arrival"
-destination_scene_path = "res://nodes/rooms/double_jump_collect_room_11.tscn"
+arrival_node_ID = "2"
+destination_scene_path = "res://nodes/rooms/double_jump_collect_room_13.tscn"
 
 [node name="sprite" parent="double_jump_collect_room_11_door"]
 
@@ -25,18 +25,18 @@ modulate = Color( 0.146599, 0.0269165, 0.984375, 1 )
 
 editor/display_folded = true
 transform/pos = Vector2( 1248, 128 )
-arrival_node_ID = "double_jump_collect_room_12_arrival"
-destination_scene_path = "res://nodes/rooms/double_jump_collect_room_13.tscn"
+arrival_node_ID = "1"
+destination_scene_path = "res://nodes/rooms/double_jump_collect_room_14.tscn"
 
 [node name="sprite" parent="double_jump_collect_room_13_door"]
 
 modulate = Color( 0.0568371, 0.0269165, 0.984375, 1 )
 
-[node name="double_jump_collect_room_11_arrival" parent="." instance=ExtResource( 3 )]
+[node name="1" parent="." instance=ExtResource( 3 )]
 
 transform/pos = Vector2( 96, 160 )
 
-[node name="double_jump_collect_room_13_arrival" parent="." instance=ExtResource( 3 )]
+[node name="2" parent="." instance=ExtResource( 3 )]
 
 transform/pos = Vector2( 1184, 160 )
 
