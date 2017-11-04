@@ -46,6 +46,7 @@ transform/pos = Vector2( 1184, 160 )
 [node name="enemy" parent="." instance=ExtResource( 4 )]
 
 transform/pos = Vector2( 480, 416 )
+stompable = true
 
 [node name="left_goo" parent="." instance=ExtResource( 5 )]
 

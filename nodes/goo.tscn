@@ -1,18 +1,19 @@
 [gd_scene load_steps=4 format=1]
 
 [ext_resource path="res://scripts/goo.gd" type="Script" id=1]
-[ext_resource path="res://sprites/white_light.png" type="Texture" id=2]
+[ext_resource path="res://sprites/metroid_tilesheet.png" type="Texture" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
 
 custom_solver_bias = 0.0
-extents = Vector2( 38, 35 )
+extents = Vector2( 89.1451, 52.6108 )
 
 [node name="goo" type="Area2D"]
 
+visibility/behind_parent = true
 input/pickable = true
 shapes/0/shape = SubResource( 1 )
-shapes/0/transform = Matrix32( 0.842105, 0, 0, 0.914286, -1.90735e-06, 0 )
+shapes/0/transform = Matrix32( 0.342105, 0, 0, 0.586758, 0, 0 )
 shapes/0/trigger = false
 gravity_vec = Vector2( 0, 1 )
 gravity = 98.0
@@ -30,17 +31,19 @@ push_velocity = Vector2( 256, 128 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 
-transform/pos = Vector2( -1.90735e-06, 0 )
-transform/scale = Vector2( 0.842105, 0.914286 )
+visibility/blend_mode = 4
+transform/scale = Vector2( 0.342105, 0.586758 )
 shape = SubResource( 1 )
 trigger = false
 _update_shape_index = 0
 
 [node name="Sprite" type="Sprite" parent="."]
 
-transform/pos = Vector2( 1.90735e-06, 1.90735e-06 )
-transform/scale = Vector2( 0.16, 0.16 )
+transform/pos = Vector2( 0, -16 )
+transform/scale = Vector2( 0.25, 0.5 )
 texture = ExtResource( 2 )
-modulate = Color( 0.00473022, 0.605469, 0.394272, 1 )
+modulate = Color( 0.0264893, 0.96875, 0.350391, 1 )
+region = true
+region_rect = Rect2( 0, 896, 256, 192 )
 
 
