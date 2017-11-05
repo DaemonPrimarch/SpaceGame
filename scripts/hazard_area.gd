@@ -1,3 +1,5 @@
+tool
+
 extends Area2D
 
 signal apply_continuous_effect
