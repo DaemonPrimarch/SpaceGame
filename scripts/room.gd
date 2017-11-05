@@ -1,6 +1,6 @@
 extends Node2D
 
-signal player_enter
+signal player_enter(player)
 
 var loaded
 
