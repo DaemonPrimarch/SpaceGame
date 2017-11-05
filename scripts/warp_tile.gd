@@ -26,7 +26,7 @@ func set_active(value):
 	active = value
 	
 	if(has_node("sprite")):
-		if(value):
+		if(value and destination_scene_path != ""):
 			get_node("sprite").set_modulate(Color(0, 1, 0, 1))
 		else:
 			get_node("sprite").set_modulate(Color(1, 0, 0, 1))
@@ -35,7 +35,7 @@ func set_active(value):
 
 func destination_path_changed(new_path):
 	if(has_node("sprite")):
-		if(new_path != ""):
+		if(new_path != "" and active):
 			get_node("sprite").set_modulate(Color(0, 1, 0, 1))
 		else:
 			get_node("sprite").set_modulate(Color(1, 0, 0, 1))
