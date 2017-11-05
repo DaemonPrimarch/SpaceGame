@@ -20,23 +20,23 @@ destination_scene_path = "res://nodes/rooms/double_jump_collect_room_6.tscn"
 
 [node name="sprite" parent="double_jump_collect_room_6_door"]
 
-modulate = Color( 0.21392, 0.984375, 0.0269165, 1 )
+modulate = Color( 0, 1, 0, 1 )
 
 [node name="double_jump_collect_room_10_door" parent="." instance=ExtResource( 2 )]
 
 transform/pos = Vector2( 1248, 192 )
-arrival_node_ID = "double_jump_collect_room_9_arrival"
-destination_scene_path = "res://nodes/rooms/double_jump_collect_room_10.tscn"
+arrival_node_ID = "3"
+destination_scene_path = "res://nodes/rooms/double_jump_collect_room_13.tscn"
 
 [node name="sprite" parent="double_jump_collect_room_10_door"]
 
-modulate = Color( 0.124158, 0.984375, 0.0269165, 1 )
+modulate = Color( 0, 1, 0, 1 )
 
 [node name="double_jump_collect_room_6_arrival" parent="." instance=ExtResource( 3 )]
 
 transform/pos = Vector2( 96, 224 )
 
-[node name="double_jump_collect_room_10_arrival" parent="." instance=ExtResource( 3 )]
+[node name="2" parent="." instance=ExtResource( 3 )]
 
 transform/pos = Vector2( 1184, 224 )
 
