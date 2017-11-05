@@ -1,6 +1,7 @@
 extends KinematicBody2D
 
-signal collision
+signal collision(collision_info)
+
 class KinematicCollision2D:
 	#Collision data for KinematicBody2D collisions.
 	#Copied from future godot version: http://docs.godotengine.org/en/latest/classes/class_kinematiccollision2d.html#class-kinematiccollision2d

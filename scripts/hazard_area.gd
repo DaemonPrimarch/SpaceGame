@@ -1,7 +1,9 @@
+tool
+
 extends Area2D
 
 signal apply_continuous_effect
-signal activated 
+signal activated
 signal deactivated
 
 export var active = true setget set_active, is_active

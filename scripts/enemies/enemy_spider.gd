@@ -1,7 +1,7 @@
 extends "res://scripts/enemies/enemy.gd"
 
-signal on_cobweb_enter
-signal on_cobweb_leave
+signal cobweb_enter
+signal cobweb_leave
 
 # class member variables go here, for example:
 onready var back_ground_detector = get_node("back_ground_detector")

@@ -1,3 +1,5 @@
+tool
+
 extends "res://scripts/switch.gd"
 
 export var togglable = false

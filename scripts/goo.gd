@@ -1,3 +1,5 @@
+tool
+
 extends "res://scripts/hazard_area.gd"
 
 func _on_room_player_enter(player):

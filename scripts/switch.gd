@@ -1,20 +1,23 @@
+tool
+
 extends Node2D
 
 signal switch_on
 signal switch_off
 
-export var on = false
+export(bool) var on setget set_on, is_on
 
 var enabled = false
 
 var first = true
 
 func _ready():
-	set_on(on)
-
+	if(is_on()):
+		emit_signal("switch_on")
+	else:
+		emit_signal("switch_off")
 func set_on(value):
-	if(value != enabled or first):
-		print("hit: ", value)
+	if(value != enabled and is_inside_tree()):
 		first = false
 		if(value):
 			emit_signal("switch_on")
