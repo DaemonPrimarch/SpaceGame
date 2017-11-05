@@ -1,10 +1,11 @@
- extends "res://scripts/better_KinematicBody2D.gd"
+tool
+extends "res://scripts/better_KinematicBody2D.gd"
 
 signal hp_changed
 
 export var movement_speed = 300 setget set_movement_speed,get_movement_speed
 
-export var flippedH = false
+export var flippedH = false setget set_flippedH, is_flippedH
 export var gravity_enabled = true
 
 export var max_HP = 10
@@ -24,20 +25,30 @@ var invulnerability_timer
 var gravity_timer = 0
 var gravity_timer_started = false
 
+var loaded = false
+
 onready var gravity_vector = Physics2DServer.area_get_param(get_world_2d().get_space(),Physics2DServer.AREA_PARAM_GRAVITY_VECTOR) * Physics2DServer.area_get_param(get_world_2d().get_space(),Physics2DServer.AREA_PARAM_GRAVITY)*7
 
+func children_loaded():
+	return loaded
+
 func _ready():
-	add_to_group("has_hp_bar")
-	GUI.add_HP_bar(self)
+	loaded = true
 	
-	if(has_invulnerability_timer()):
-		var timer = Timer.new()
-		timer.set_wait_time(get_invulnerability_time())
-		timer.set_name("invulnerability_timer")
-		timer.set_one_shot(true)
-		timer.connect("timeout", self, "on_invulnerability_timer_timeout")
-		add_child(timer)
-		invulnerability_timer = timer
+	#set_flippedH(is_flippedH())
+	
+	if(not get_tree().is_editor_hint()):
+		add_to_group("has_hp_bar")
+		get_node("/root/GUI").add_HP_bar(self)
+		
+		if(has_invulnerability_timer()):
+			var timer = Timer.new()
+			timer.set_wait_time(get_invulnerability_time())
+			timer.set_name("invulnerability_timer")
+			timer.set_one_shot(true)
+			timer.connect("timeout", self, "on_invulnerability_timer_timeout")
+			add_child(timer)
+			invulnerability_timer = timer
 		
 
 func get_invulnerability_time():
@@ -57,7 +68,7 @@ func has_invulnerability_timer():
 
 func set_invulnerable(value):
 	invulnerable = value
-	set_collision_mask_bit(global_constants.LAYERS.ENEMY, not value)
+	set_collision_mask_bit(1, not value)
 	if(value):
 		invulnerability_timer.start()
 		if(has_invulnarable_animation):
@@ -112,7 +123,10 @@ func is_on_ground():
 	return on_ground
 
 func is_flippedH():
-	return flippedH
+	if(children_loaded()):
+		return flippedH
+	else:
+		return flippedH
 
 #Flips all children horizontally, ignores all children in group ignores_flip.
 func set_flippedH(new):

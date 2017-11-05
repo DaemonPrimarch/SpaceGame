@@ -11,7 +11,7 @@ points = Vector2Array( -32, 64, -32, -64, 32, -64, 32, 64 )
 [node name="door" type="Node2D"]
 
 script/script = ExtResource( 1 )
-open = false
+open = null
 
 [node name="collider" type="StaticBody2D" parent="."]
 

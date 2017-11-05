@@ -1,3 +1,5 @@
+tool
+
 extends KinematicBody2D
 
 signal collision(collision_info)

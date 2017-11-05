@@ -1,3 +1,4 @@
+tool
 extends "res://scripts/playable_character.gd"
 
 onready var debug_state_label = get_node("DebugStateLabel")
@@ -19,8 +20,9 @@ var ex
 
 func _ready():
 	if(not already_loaded_2):
-		set_process_input(true)
-		set_fixed_process(true)
+		if(not get_tree().is_editor_hint()):
+			set_process_input(true)
+			set_fixed_process(true)
 		debug_state_label.set_text("GROUNDED")
 		already_loaded_2 = true
 	

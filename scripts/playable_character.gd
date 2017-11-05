@@ -1,4 +1,4 @@
-
+tool
 extends "res://scripts/entity.gd"
 
 #cache the sprite here for fast access (we will set scale to flip it often)
@@ -46,7 +46,8 @@ func _ready():
 	if(not already_loaded):
 		set_current_state(STATE.GROUNDED)
 		
-		set_fixed_process(true)
+		if(not get_tree().is_editor_hint()):
+			set_fixed_process(true)
 		
 		already_loaded = true
 	
