@@ -10,6 +10,7 @@ export(String, FILE, "*.tscn") var destination_scene_path = "" setget destinatio
 func _ready():
 	if(destination_scene_path != ""):
 		get_node("sprite").set_modulate(Color(0, 1, 0, 1))
+	set_active(is_active())
 
 func on_enter(body):
 	if(body.is_in_group("warpable") and not loaded):
@@ -22,10 +23,13 @@ func is_active():
 	return active
 
 func set_active(value):
-	active = true
+	active = value
 	
 	if(has_node("sprite")):
-		get_node("sprite").set_hidden(not value)
+		if(value):
+			get_node("sprite").set_modulate(Color(0, 1, 0, 1))
+		else:
+			get_node("sprite").set_modulate(Color(1, 0, 0, 1))
 	if(has_node("area")):
 		get_node("area").set_layer_mask_bit(0, value)
 
