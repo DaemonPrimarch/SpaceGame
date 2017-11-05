@@ -55,12 +55,12 @@ percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
 
-[connection signal="close" from="." to="sprite" method="set_hidden" binds= [ false ]]
-
 [connection signal="close" from="." to="collider" method="set_layer_mask_bit" binds= [ 0, 1 ]]
 
-[connection signal="open" from="." to="sprite" method="set_hidden" binds= [ true ]]
+[connection signal="close" from="." to="sprite" method="set_hidden" binds= [ false ]]
 
 [connection signal="open" from="." to="collider" method="set_layer_mask_bit" binds= [ 0, 0 ]]
+
+[connection signal="open" from="." to="sprite" method="set_hidden" binds= [ true ]]
 
 

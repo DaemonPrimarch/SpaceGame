@@ -5,6 +5,7 @@ signal player_enter(player)
 var loaded
 
 export var camera_zoom = Vector2(1,1)
+export(PackedScene) var test_player
 
 func _ready():
 	pass
@@ -17,7 +18,11 @@ func set_player_zoom(player):
 
 func _on_test_player_existance_timer_timeout():
 	if(not loaded):
-		var new_player = preload("res://nodes/player.tscn").instance()
+		var new_player
+		if(test_player == null):
+			new_player = preload("res://nodes/player.tscn").instance()
+		else:
+			new_player = test_player.instance()
 		new_player.set_pos(get_node("test_player_spawn_point").get_pos())
 		add_child(new_player)
 		new_player.set_name("test_player")
