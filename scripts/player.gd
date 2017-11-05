@@ -76,6 +76,7 @@ func enter_state(state, old_state):
 		set_wall_jumped(false)
 		debug_state_label.set_text("GROUNDED")
 	elif(state == STATE.FALLING):
+		set_gravity_enabled(true)
 		debug_state_label.set_text("FALLING")
 	elif(state == STATE.WALL_SLIDING):
 		var gun  = get_node("gun")
@@ -104,7 +105,6 @@ func enter_state(state, old_state):
 		set_gravity_enabled(false)
 		set_time_pushed(0)
 		debug_state_label.set_text("PUSHED")
-
 		push_timer.set_wait_time(get_push_time_extended())
 		push_timer.start()
 
