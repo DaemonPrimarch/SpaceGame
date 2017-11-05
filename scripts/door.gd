@@ -1,9 +1,10 @@
+tool
 extends Node2D
 
 signal open
 signal close
 
-export(bool) var open
+export(bool) var open setget set_open, is_open
 
 var opened = false
 
@@ -18,7 +19,7 @@ func set_open(value):
 		emit_signal("open")
 	else:
 		emit_signal("close")
-		
+			
 	opened = value
 
 func toggle_open():

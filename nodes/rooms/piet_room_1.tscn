@@ -34,21 +34,10 @@ transform/pos = Vector2( 32, 544 )
 
 editor/display_folded = true
 transform/pos = Vector2( 0, -32 )
-open = false
-
-[node name="warp_tile" parent="Node2D/door" instance=ExtResource( 2 )]
-
-arrival_node_ID = "piet_room_1_arrival"
-destination_scene_path = "res://nodes/rooms/wall_jump_rooms/wall_jump_collect_room_3.tscn"
 
 [node name="bullet_switch" parent="Node2D" instance=ExtResource( 5 )]
 
 transform/pos = Vector2( 0, -128 )
-togglable = true
-
-[connection signal="close" from="Node2D/door" to="Node2D/door/warp_tile" method="set_active" binds= [ false ]]
-
-[connection signal="open" from="Node2D/door" to="Node2D/door/warp_tile" method="set_active" binds= [ true ]]
 
 [connection signal="switch_off" from="Node2D/bullet_switch" to="Node2D/door" method="set_open" binds= [ false ]]
 
