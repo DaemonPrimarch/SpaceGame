@@ -27,10 +27,6 @@ transform/pos = Vector2( 32, 512 )
 arrival_node_ID = "central_hub_arrival"
 destination_scene_path = "res://nodes/rooms/wall_double_jump_rooms/room_1.tscn"
 
-[node name="sprite" parent="WarpTile"]
-
-modulate = Color( 0, 1, 0, 1 )
-
 [node name="warptile_1" parent="." instance=ExtResource( 4 )]
 
 editor/display_folded = true
@@ -44,10 +40,6 @@ transform/pos = Vector2( 32, 1216 )
 arrival_node_ID = "central_hub_arrival"
 destination_scene_path = "res://nodes/rooms/TESTING_ROOM.tscn"
 
-[node name="sprite" parent="WarpTile2"]
-
-modulate = Color( 0, 1, 0, 1 )
-
 [node name="WarpTile3" parent="." instance=ExtResource( 4 )]
 
 transform/pos = Vector2( 1248, 1216 )
@@ -59,20 +51,12 @@ transform/pos = Vector2( 32, 1920 )
 arrival_node_ID = "piet_room_1_arrival_2"
 destination_scene_path = "res://nodes/rooms/piet_room_1.tscn"
 
-[node name="sprite" parent="WarpTile4"]
-
-modulate = Color( 0, 1, 0, 1 )
-
 [node name="double_jump_collect_room_1_door" parent="." instance=ExtResource( 4 )]
 
 editor/display_folded = true
 transform/pos = Vector2( 1248, 1920 )
 arrival_node_ID = "central_hub_arrival"
 destination_scene_path = "res://nodes/rooms/double_jump_collect_room_1.tscn"
-
-[node name="sprite" parent="double_jump_collect_room_1_door"]
-
-modulate = Color( 0, 1, 0, 1 )
 
 [node name="central_hub_arrival" parent="." instance=ExtResource( 3 )]
 
@@ -91,7 +75,3 @@ transform/pos = Vector2( 128, 1216 )
 transform/pos = Vector2( 1152, 1952 )
 
 
-[editable path="WarpTile"]
-[editable path="WarpTile2"]
-[editable path="WarpTile4"]
-[editable path="double_jump_collect_room_1_door"]
