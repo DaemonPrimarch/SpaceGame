@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=1]
+
+[ext_resource path="res://nodes/player.tscn" type="PackedScene" id=1]
+
+[node name="double_jump_unlocked_player" instance=ExtResource( 1 )]
+
+cn_wall_slide = false
+cn_wall_jump = false
+
+
+[editable path="gun"]

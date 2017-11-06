@@ -23,7 +23,7 @@ func _ready():
 		if(not get_tree().is_editor_hint()):
 			set_process_input(true)
 			set_fixed_process(true)
-		debug_state_label.set_text("GROUNDED")
+			debug_state_label.set_text("GROUNDED")
 		already_loaded_2 = true
 	
 func get_save_data():
