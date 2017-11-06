@@ -84,6 +84,8 @@ destination_scene_path = "res://nodes/rooms/wall_double_jump_rooms/room_2.tscn"
 
 transform/pos = Vector2( 32, 256 )
 transform/scale = Vector2( 1, 1.0625 )
+arrival_node_ID = "room_3_arrival"
+destination_scene_path = "res://nodes/rooms/wall_double_jump_rooms/room_4.tscn"
 
 [node name="warp_arrival" parent="." instance=ExtResource( 7 )]
 
