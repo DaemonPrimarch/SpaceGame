@@ -5,9 +5,9 @@
 [ext_resource path="res://nodes/camera.tscn" type="PackedScene" id=3]
 
 [node name="player" groups=[
-"player",
 "warpable",
 "tracked",
+"player",
 ] instance=ExtResource( 1 )]
 
 collision/mask = 19
@@ -21,6 +21,10 @@ wall_jump_length = 192
 [node name="CollisionPolygon2D" parent="."]
 
 transform/pos = Vector2( -4.0404, 0 )
+
+[node name="standing_space_detector_left" parent="."]
+
+transform/pos = Vector2( -29.0789, -75.1677 )
 
 [node name="camera" parent="." instance=ExtResource( 3 )]
 

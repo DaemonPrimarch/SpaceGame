@@ -197,7 +197,7 @@ func process_state(state, delta):
 				if(horizontal_collision_info.has_collision()):
 					if(is_in_ladder()):
 						set_current_state(STATE.CLIMBING)
-					elif(can_wall_slide() and horizontal_collision_info.get_collider().is_in_group("terrain")):
+					elif(can_wall_slide() and horizontal_collision_info.get_collider().is_in_group("terrain") and get_node("top_wall_detector").is_colliding() and get_node("bottom_wall_detector").is_colliding()):
 						set_current_state(STATE.WALL_SLIDING)
 					else:
 						#set_current_state(STATE.FALLING)
@@ -228,7 +228,7 @@ func process_state(state, delta):
 					var horizontal_collision_info = move(Vector2(get_current_wall_jump_velocity(get_time_wall_jumping()).x, 0) * wall_jump_direction * delta)
 					if(vertical_collision_info.has_collision()):
 						set_current_state(STATE.FALLING)
-					elif(not is_in_ladder() and can_wall_slide() and horizontal_collision_info.has_collision() and horizontal_collision_info.get_collider().is_in_group("terrain")):
+					elif(not is_in_ladder() and can_wall_slide() and horizontal_collision_info.has_collision() and horizontal_collision_info.get_collider().is_in_group("terrain") and get_node("top_wall_detector").is_colliding() and get_node("bottom_wall_detector").is_colliding()):
 						set_current_state(STATE.WALL_SLIDING)
 					set_time_wall_jumping(get_time_wall_jumping() + delta)
 		else:
@@ -256,7 +256,7 @@ func process_state(state, delta):
 				
 				if(vertical_collision_info.has_collision()):
 					set_current_state(STATE.FALLING)
-				if(not is_in_ladder() and can_wall_slide() and horizontal_collision_info.has_collision() and horizontal_collision_info.get_collider().is_in_group("terrain")):
+				if(not is_in_ladder() and can_wall_slide() and horizontal_collision_info.has_collision() and horizontal_collision_info.get_collider().is_in_group("terrain") and get_node("top_wall_detector").is_colliding() and get_node("bottom_wall_detector").is_colliding()):
 					set_current_state(STATE.WALL_SLIDING)
 				
 				if(get_time_double_jumping() >= get_max_double_jump_time()):
@@ -294,7 +294,7 @@ func process_state(state, delta):
 					
 					
 				var collision_info = move(Vector2(dir * get_movement_speed() * delta, 0))
-				if(not is_in_ladder() and can_wall_slide() and collision_info.has_collision() and collision_info.get_collider().is_in_group("terrain")):
+				if(not is_in_ladder() and can_wall_slide() and collision_info.has_collision() and collision_info.get_collider().is_in_group("terrain") and get_node("top_wall_detector").is_colliding() and get_node("bottom_wall_detector").is_colliding()):
 					continuing_previous_movement = false
 					set_current_state(STATE.WALL_SLIDING)
 	elif(state == STATE.CLIMBING):
