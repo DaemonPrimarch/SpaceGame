@@ -35,20 +35,24 @@ func draw_map():
 	var current_pos = 1000
 	var scenes = []
 	var handled_scenes = {}
+	var current_room_pos
 	
 	var window = preload("res://addons/map_maker/map_window.tscn").instance()
 	add_child(window)
 	
+	current_pos = window.get_size() / 2 * 640 * 2
+	
+	print(window.get_size() / 2)
+	
 	window.popup()
 		
-	scenes.push_back({room = get_starting_scene(), pos = Vector2(1000, 1000), warp_pos = Vector2(), warp_id = ""})
+	scenes.push_back({room = get_starting_scene(), pos = window.get_size() * 20 / 2, warp_pos = Vector2(), warp_id = ""})
 	handled_scenes[get_starting_scene()] = true
 	
 	var max_depth = 40
 	var depth = 0
 	var current_scene_path
 	var current_room
-	var current_room_pos
 	
 	while(scenes.size() > 0):
 		var obj = scenes[scenes.size() - 1]
@@ -77,9 +81,9 @@ func draw_map():
 		
 		var new_tile = preload("res://addons/map_maker/tile.tscn").instance()
 		
-		new_tile.set_pos(current_room_pos/ 10)
+		new_tile.set_pos(current_room_pos/ 20)
 		
-		new_tile.set_scale(current_room.get_used_rect().size / Vector2(640 , 640))
+		new_tile.set_scale(current_room.get_used_rect().size / Vector2(640 * 2 , 640 * 2))
 		
 		if(current_scene_path == get_starting_scene()):
 			new_tile.set_modulate(Color(0,1,0))

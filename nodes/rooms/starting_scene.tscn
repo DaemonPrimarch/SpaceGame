@@ -11,31 +11,9 @@ arrival_node_ID = "central_hub_arrival"
 
 [node name="player" parent="." instance=ExtResource( 2 )]
 
-editor/display_folded = true
 cn_double_jump = false
 cn_wall_slide = false
 cn_wall_jump = false
-
-[node name="sprite" parent="player"]
-
-transform/pos = Vector2( 0, -41.4141 )
-frame = 21
-
-[node name="CollisionPolygon2D" parent="player"]
-
-transform/pos = Vector2( 4.0404, -9.09091 )
-
-[node name="standing_space_detector_right" parent="player"]
-
-transform/pos = Vector2( -20.202, -84.8485 )
-
-[node name="crawl_space_detector_down" parent="player"]
-
-transform/pos = Vector2( -19.1919, 15.1515 )
-
-[node name="standing_space_detector_left" parent="player"]
-
-transform/pos = Vector2( 32.3232, -84.8485 )
 
 [node name="gun" parent="player"]
 
