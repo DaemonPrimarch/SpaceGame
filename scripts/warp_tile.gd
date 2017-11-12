@@ -12,6 +12,9 @@ func _ready():
 		get_node("sprite").set_modulate(Color(0, 1, 0, 1))
 	set_active(is_active())
 
+func get_destination_path():
+	return destination_scene_path
+
 func on_enter(body):
 	if(body.is_in_group("warpable") and not loaded):
 		if(destination_scene_path == ""):

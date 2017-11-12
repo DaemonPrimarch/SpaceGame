@@ -6,7 +6,7 @@
 [ext_resource path="res://nodes/door.tscn" type="PackedScene" id=4]
 [ext_resource path="res://nodes/bullet_switch.tscn" type="PackedScene" id=5]
 
-[node name="scene" instance=ExtResource( 1 )]
+[node name="piet_room_1" instance=ExtResource( 1 )]
 
 test_player = null
 
@@ -35,6 +35,7 @@ transform/pos = Vector2( 32, 544 )
 [node name="door" parent="Node2D" instance=ExtResource( 4 )]
 
 transform/pos = Vector2( 0, -32 )
+open = false
 
 [node name="warp_tile" parent="Node2D/door" instance=ExtResource( 2 )]
 

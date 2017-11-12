@@ -8,7 +8,9 @@
 custom_solver_bias = 0.0
 extents = Vector2( 16.64, 33.2799 )
 
-[node name="warp_tile" type="Node2D"]
+[node name="warp_tile" type="Node2D" groups=[
+"warp_tile",
+]]
 
 script/script = ExtResource( 1 )
 active = true
