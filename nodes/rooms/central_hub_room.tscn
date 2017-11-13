@@ -25,7 +25,6 @@ transform/pos = Vector2( 128, 512 )
 
 transform/pos = Vector2( 32, 512 )
 arrival_node_ID = "central_hub_arrival"
-destination_scene_path = "res://nodes/rooms/wall_double_jump_rooms/room_1.tscn"
 
 [node name="warptile_1" parent="." instance=ExtResource( 4 )]
 

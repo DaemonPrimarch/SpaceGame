@@ -35,6 +35,7 @@ func draw_map():
 	var current_pos = 1000
 	var scenes = []
 	var handled_scenes = {}
+	var found_warp_tiles = []
 	var current_room_pos
 	
 	var window = preload("res://addons/map_maker/map_window.tscn").instance()
@@ -95,6 +96,9 @@ func draw_map():
 		print(current_room.get_name())
 		
 		for warptile in tiles:
+			if(not warptile.get_destination_path() == ""):
+				found_warp_tiles.push_back({pos = warptile.get_global_pos() + current_room_pos, rot = warptile.get_global_rot(), scale = warptile.get_global_scale()})
+			
 			if(not handled_scenes.has(warptile.get_destination_path()) and not warptile.get_destination_path() == "" and depth < max_depth):
 				print("Found: ",  warptile.get_destination_path())
 				print("Name: ", warptile.get_name())
@@ -102,3 +106,15 @@ func draw_map():
 				handled_scenes[warptile.get_destination_path()] = true
 		depth += 1
 		remove_child(current_room)
+	
+	for tile in found_warp_tiles:
+		var new_tile = preload("res://addons/map_maker/tile.tscn").instance()
+		new_tile.set_pos(tile.pos/ 20)
+		
+		new_tile.set_scale(tile.scale / 10)
+		new_tile.set_rot(tile.rot)
+		
+		new_tile.set_modulate(Color(0,0,1))
+		
+		window.add_child(new_tile)
+	
