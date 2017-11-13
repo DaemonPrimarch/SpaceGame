@@ -8,7 +8,9 @@
 custom_solver_bias = 0.0
 extents = Vector2( 16.64, 33.2799 )
 
-[node name="warp_tile" type="Node2D"]
+[node name="warp_tile" type="Node2D" groups=[
+"warp_tile",
+]]
 
 script/script = ExtResource( 1 )
 active = true
@@ -38,7 +40,7 @@ _update_shape_index = 0
 
 transform/scale = Vector2( 1, 2 )
 texture = ExtResource( 2 )
-modulate = Color( 0.984375, 0.0269165, 0.0607096, 1 )
+modulate = Color( 1, 0, 0, 1 )
 
 [connection signal="body_enter" from="area" to="." method="on_enter"]
 

@@ -1,0 +1,16 @@
+[gd_scene format=1]
+
+[node name="map_window" type="WindowDialog"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 41.0
+margin/top = 55.0
+margin/right = 1623.0
+margin/bottom = 698.0
+popup/exclusive = false
+window/title = "Map Maker"
+
+

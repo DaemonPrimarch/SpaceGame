@@ -25,6 +25,10 @@ wall_jump_length = 192
 
 transform/pos = Vector2( -4.0404, 0 )
 
+[node name="standing_space_detector_left" parent="."]
+
+transform/pos = Vector2( -29.0789, -75.1677 )
+
 [node name="camera" parent="." instance=ExtResource( 3 )]
 
 transform/pos = Vector2( -3.0303, 0 )

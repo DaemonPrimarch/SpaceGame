@@ -11,7 +11,6 @@ arrival_node_ID = "central_hub_arrival"
 
 [node name="player" parent="." instance=ExtResource( 2 )]
 
-editor/display_folded = true
 cn_double_jump = false
 cn_wall_slide = false
 cn_wall_jump = false
@@ -19,8 +18,18 @@ cn_wall_jump = false
 [node name="gun" parent="player"]
 
 editor/display_folded = false
+transform/pos = Vector2( 0, -41.0909 )
 
-[connection signal="collision" from="player" to="player" method="on_collision"]
+[node name="camera" parent="player"]
+
+transform/pos = Vector2( 3.0303, -9.09091 )
+
+[node name="DebugStateLabel" parent="player"]
+
+margin/top = -74.0
+margin/right = 87.0
+margin/bottom = -60.0
+text = "GROUNDED"
 
 
 [editable path="player"]

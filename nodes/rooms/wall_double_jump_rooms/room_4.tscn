@@ -1,20 +1,36 @@
-[gd_scene load_steps=3 format=1]
+[gd_scene load_steps=7 format=1]
 
 [ext_resource path="res://nodes/rooms/room.tscn" type="PackedScene" id=1]
-[ext_resource path="res://sprites/spritesheets/metroid_tiles.tres" type="TileSet" id=2]
+[ext_resource path="res://nodes/test_players/everything_unlocked_player.tscn" type="PackedScene" id=2]
+[ext_resource path="res://nodes/comfirmation_light.tscn" type="PackedScene" id=3]
+[ext_resource path="res://sprites/spritesheets/metroid_tiles.tres" type="TileSet" id=4]
+[ext_resource path="res://nodes/warp_arrival.tscn" type="PackedScene" id=5]
+[ext_resource path="res://nodes/warp_tile.tscn" type="PackedScene" id=6]
 
 [node name="room" instance=ExtResource( 1 )]
 
+test_player = ExtResource( 2 )
+
 [node name="terrain" parent="."]
 
-tile_data = IntArray( 0, 7, 1, 7, 2, 7, 3, 7, 4, 7, 5, 7, 6, 7, 7, 7, 8, 7, 9, 7, 10, 7, 11, 7, 12, 7, 13, 7, 14, 7, 15, 7, 16, 7, 17, 7, 18, 7, 19, 7, 65536, 7, 65555, 7, 131072, 7, 131091, 7, 196608, 7, 196627, 7, 262144, 7, 262163, 7, 327680, 7, 327699, 7, 393216, 7, 393235, 7, 458752, 7, 524288, 7, 589824, 7, 589825, 7, 589826, 7, 589827, 7, 589828, 7, 589829, 7, 589830, 7, 589831, 7, 589832, 7, 589833, 7, 589834, 7, 589835, 7, 589836, 7, 589837, 7, 589838, 7, 589839, 7, 589840, 7, 589841, 7, 589842, 7, 589843, 7, 655360, 7, 655361, 7, 655362, 7, 655363, 7, 655364, 7, 655365, 7, 655366, 7, 655367, 7, 655368, 7, 655369, 7, 655370, 7, 655371, 7, 655372, 7, 655373, 7, 655374, 7, 655375, 7, 655376, 7, 655377, 7, 655378, 7, 655379, 7 )
+tile_data = IntArray( 0, 7, 1, 7, 2, 7, 3, 7, 4, 7, 5, 7, 6, 7, 7, 7, 8, 7, 9, 7, 10, 7, 11, 7, 12, 7, 13, 7, 14, 7, 15, 7, 16, 7, 17, 7, 18, 7, 19, 7, 65536, 7, 65537, 7, 65538, 7, 65539, 7, 65540, 7, 65541, 7, 65542, 7, 65543, 7, 65544, 7, 65545, 7, 65546, 7, 65547, 7, 65548, 7, 65549, 7, 65550, 7, 65551, 7, 65552, 7, 65553, 7, 65554, 7, 65555, 7, 131072, 7, 131073, 7, 131074, 7, 131075, 7, 131076, 7, 131077, 7, 131078, 7, 131079, 7, 131080, 7, 131081, 7, 131082, 7, 131083, 7, 131084, 7, 131085, 7, 131086, 7, 131087, 7, 131088, 7, 131089, 7, 131090, 7, 131091, 7, 196608, 7, 196609, 7, 196610, 7, 196611, 7, 196612, 7, 196614, 7, 196616, 7, 196617, 7, 196618, 7, 196619, 7, 196620, 7, 196621, 7, 196622, 7, 196623, 7, 196624, 7, 196625, 7, 196626, 7, 196627, 7, 262144, 7, 262145, 7, 262146, 7, 262147, 7, 262148, 7, 262149, 7, 262150, 7, 262151, 7, 262152, 7, 262153, 7, 262154, 7, 262155, 7, 262156, 7, 262157, 7, 262158, 7, 262159, 7, 262160, 7, 262161, 7, 262162, 7, 262163, 7, 327680, 7, 327699, 7, 393216, 7, 393235, 7, 589824, 7, 589825, 7, 589826, 7, 589827, 7, 589828, 7, 589829, 7, 589830, 7, 589831, 7, 589832, 7, 589833, 7, 589834, 7, 589835, 7, 589836, 7, 589837, 7, 589838, 7, 589839, 7, 589840, 7, 589841, 7, 589842, 7, 589843, 7, 655360, 7, 655361, 7, 655362, 7, 655363, 7, 655364, 7, 655365, 7, 655366, 7, 655367, 7, 655368, 7, 655369, 7, 655370, 7, 655371, 7, 655372, 7, 655373, 7, 655374, 7, 655375, 7, 655376, 7, 655377, 7, 655378, 7, 655379, 7 )
 
-[node name="TileMap" type="TileMap" parent="." groups=[
+[node name="test_player_spawn_point" parent="."]
+
+transform/pos = Vector2( 704, 480 )
+
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="comfirmation_light" parent="Node2D" instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 352, 224 )
+
+[node name="TileMap" type="TileMap" parent="Node2D" groups=[
 "terrain",
 ]]
 
 mode = 0
-tile_set = ExtResource( 2 )
+tile_set = ExtResource( 4 )
 cell/size = Vector2( 64, 64 )
 cell/quadrant_size = 16
 cell/custom_transform = Matrix32( 1, 0, 0, 1, 0, 0 )
@@ -24,17 +40,26 @@ cell/y_sort = false
 collision/use_kinematic = false
 collision/friction = 1.0
 collision/bounce = 0.0
-collision/layers = 1
+collision/layers = 0
 collision/mask = 1
 occluder/light_mask = 1
-tile_data = IntArray( 65541, 0, 131077, 0, 196613, 0, 262149, 0, 327685, 0, 393221, 0, 458757, 0, 524293, 0 )
+tile_data = IntArray( 327685, 0, 393221, 0, 458757, 0, 524293, 0 )
+__meta__ = {
+"_edit_lock_": true
+}
 
-[node name="TileMap1" type="TileMap" parent="." groups=[
+[node name="Node2D 2" type="Node2D" parent="."]
+
+[node name="comfirmation_light1" parent="Node2D 2" instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 480, 224 )
+
+[node name="TileMap1" type="TileMap" parent="Node2D 2" groups=[
 "terrain",
 ]]
 
 mode = 0
-tile_set = ExtResource( 2 )
+tile_set = ExtResource( 4 )
 cell/size = Vector2( 64, 64 )
 cell/quadrant_size = 16
 cell/custom_transform = Matrix32( 1, 0, 0, 1, 0, 0 )
@@ -44,9 +69,32 @@ cell/y_sort = false
 collision/use_kinematic = false
 collision/friction = 1.0
 collision/bounce = 0.0
-collision/layers = 1
+collision/layers = 0
 collision/mask = 1
 occluder/light_mask = 1
-tile_data = IntArray( 65543, 0, 131077, 0, 131079, 0, 196615, 0, 262151, 0, 327687, 0, 393223, 0, 458759, 0, 524295, 0 )
+tile_data = IntArray( 327687, 0, 393223, 0, 458759, 0, 524295, 0 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="huge_room_arrival" parent="." instance=ExtResource( 5 )]
+
+transform/pos = Vector2( 128, 512 )
+
+[node name="room_3_arrival" parent="." instance=ExtResource( 5 )]
+
+transform/pos = Vector2( 1152, 512 )
+
+[node name="warp_tile" parent="." instance=ExtResource( 6 )]
+
+transform/pos = Vector2( 32, 512 )
+arrival_node_ID = "room_4_arrival"
+destination_scene_path = "res://nodes/rooms/wall_double_jump_rooms/huge_room.tscn"
+
+[node name="warp_tile1" parent="." instance=ExtResource( 6 )]
+
+transform/pos = Vector2( 1248, 512 )
+arrival_node_ID = "room_4_arrival"
+destination_scene_path = "res://nodes/rooms/wall_double_jump_rooms/room_3.tscn"
 
 
