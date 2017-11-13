@@ -19,7 +19,7 @@ func set_player_zoom(player):
 	player.get_node("camera").set_zoom(get_camera_zoom())
 
 func _on_test_player_existance_timer_timeout():
-	if(not loaded):
+	if(not loaded and not get_tree().is_editor_hint()):
 		var new_player
 		if(test_player == null):
 			new_player = preload("res://nodes/player.tscn").instance()

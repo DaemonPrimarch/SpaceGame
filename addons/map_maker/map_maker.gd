@@ -4,18 +4,23 @@ extends EditorPlugin
 
 var button
 
+var zoom = 10
+
 func _enter_tree():
 	button = preload("res://addons/map_maker/button.tscn").instance()
 	
 	button.connect("pressed", self, "draw_map")
 	
-	add_control_to_dock(DOCK_SLOT_LEFT_BL, button)
+	add_control_to_container(CONTAINER_TOOLBAR, button)
 
 func _exit_tree():
 	button.free()
 
+func get_zoom():
+	return zoom
+
 func get_starting_scene():
-	return "res://nodes/rooms/central_hub_room.tscn"
+	return "res://nodes/rooms/piet_room_1.tscn"
 
 func round_in_room(pos):
 	var r_pos = Vector2(pos.x, pos.y)
@@ -31,8 +36,6 @@ func _ready():
 	pass
 
 func draw_map():
-	print("STARTING")
-	var current_pos = 1000
 	var scenes = []
 	var handled_scenes = {}
 	var found_warp_tiles = []
@@ -41,16 +44,12 @@ func draw_map():
 	var window = preload("res://addons/map_maker/map_window.tscn").instance()
 	add_child(window)
 	
-	current_pos = window.get_size() / 2 * 640 * 2
-	
-	print(window.get_size() / 2)
-	
 	window.popup()
 		
-	scenes.push_back({room = get_starting_scene(), pos = window.get_size() * 20 / 2, warp_pos = Vector2(), warp_id = ""})
+	scenes.push_back({room = get_starting_scene(), pos = window.get_size() * get_zoom()/2, warp_pos = Vector2(), warp_id = ""})
 	handled_scenes[get_starting_scene()] = true
 	
-	var max_depth = 40
+	var max_depth = 4
 	var depth = 0
 	var current_scene_path
 	var current_room
@@ -82,14 +81,20 @@ func draw_map():
 		
 		var new_tile = preload("res://addons/map_maker/tile.tscn").instance()
 		
-		new_tile.set_pos(current_room_pos/ 20)
+		new_tile.set_pos(current_room_pos / get_zoom())
 		
-		new_tile.set_scale(current_room.get_used_rect().size / Vector2(640 * 2 , 640 * 2))
+		new_tile.set_scale(current_room.get_used_rect().size / Vector2(64 * get_zoom() , 64 * get_zoom()))
 		
 		if(current_scene_path == get_starting_scene()):
 			new_tile.set_modulate(Color(0,1,0))
 		
-		window.add_child(new_tile)
+		#window.add_child(new_tile)
+		
+		var new_room = load(current_scene_path).instance()
+		new_room.set_pos((current_room_pos - new_room.get_used_rect().pos) / get_zoom())
+		new_room.set_scale(new_room.get_scale() / get_zoom())
+		
+		window.add_child(new_room)
 		 
 		var tiles = current_room.get_tree().get_nodes_in_group("warp_tile")
 		
@@ -109,9 +114,9 @@ func draw_map():
 	
 	for tile in found_warp_tiles:
 		var new_tile = preload("res://addons/map_maker/tile.tscn").instance()
-		new_tile.set_pos(tile.pos/ 20)
+		new_tile.set_pos(tile.pos/ get_zoom())
 		
-		new_tile.set_scale(tile.scale / 10)
+		new_tile.set_scale(tile.scale / get_zoom() * 2)
 		new_tile.set_rot(tile.rot)
 		
 		new_tile.set_modulate(Color(0,0,1))
