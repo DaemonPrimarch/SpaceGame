@@ -30,7 +30,7 @@ pushes = true
 
 editor/display_folded = true
 transform/pos = Vector2( 32, 192 )
-arrival_node_ID = "double_jump_collect_room_6_arrival"
+arrival_node_ID = "2"
 destination_scene_path = "res://nodes/rooms/double_jump_collect_room_4.tscn"
 
 [node name="sprite" parent="double_jump_collect_room_5_door"]

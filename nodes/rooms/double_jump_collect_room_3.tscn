@@ -26,7 +26,7 @@ destination_scene_path = "res://nodes/rooms/double_jump_collect_room_2.tscn"
 
 [node name="sprite" parent="double_jump_collect_room_2_door"]
 
-modulate = Color( 0.303682, 0.984375, 0.0269165, 1 )
+modulate = Color( 0, 1, 0, 1 )
 
 [node name="double_jump_collect_room_4_door" parent="." instance=ExtResource( 2 )]
 
@@ -37,7 +37,7 @@ destination_scene_path = "res://nodes/rooms/double_jump_collect_room_4.tscn"
 
 [node name="sprite" parent="double_jump_collect_room_4_door"]
 
-modulate = Color( 0.21392, 0.984375, 0.0269165, 1 )
+modulate = Color( 0, 1, 0, 1 )
 
 [node name="double_jump_collect_room_2_arrival" parent="." instance=ExtResource( 3 )]
 
@@ -60,6 +60,7 @@ transform/scale = Vector2( 3, 2 )
 [node name="timed_goo" parent="." instance=ExtResource( 6 )]
 
 editor/display_folded = true
+visibility/visible = false
 transform/pos = Vector2( 288, 384 )
 transform/scale = Vector2( 1, 8 )
 active = false
