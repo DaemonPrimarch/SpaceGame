@@ -24,6 +24,7 @@ transform/pos = Vector2( 3744, 544 )
 [node name="rising_goo" parent="." instance=ExtResource( 2 )]
 
 editor/display_folded = true
+visibility/visible = false
 visibility/behind_parent = true
 transform/pos = Vector2( 1920, 2656 )
 transform/scale = Vector2( 58, 21.5 )

@@ -4,6 +4,9 @@ export var speed = 60
 export var active = true
 export var stop_after_arrival = false
 export var looping = false
+export var has_switch = false
+export var waits_for = false
+export var platform_name = "test"
 
 onready var platform = get_node("platform")
 onready var timer = get_node("wait_timer")
@@ -15,7 +18,11 @@ var direction
 var reversing = 1
 var waiting = false
 
+
 var objects_on_platform = {}
+
+func is_waiting():
+	return waiting
 
 func _ready():
 	# Called every time the node is added to the scene.
@@ -73,32 +80,34 @@ func get_speed():
 	return speed
 
 func _fixed_process(delta):	
-	if(not waiting):
-		if(is_active()):
-			for obj in objects_on_platform:
-				obj.move_no_collision(get_direction()*get_speed()*delta)
-			
-			platform.move_no_collision(get_direction()*get_speed()*delta)
-			
-			var projected_position_next = get_direction().dot(get_next_point().get_pos())
-			var projected_position_platform = get_direction().dot(platform.get_pos())
-			
-		
-			if(projected_position_platform >= projected_position_next):
-				set_current_point(get_next_point())
+	if(not waiting and not has_switch):
+		print(platform_name)
+		if((waits_for and get_parent().get_node(platform_name).is_waiting()) or not waits_for):
+			if(is_active()):
+				for obj in objects_on_platform:
+					obj.move_no_collision(get_direction()*get_speed()*delta)
 				
-				if(!has_node(get_point_name(next_point_number + reversing))):
-					if(not stops_after_arrival()):
-						if(is_looping()):
-							next_point_number = 0
+				platform.move_no_collision(get_direction()*get_speed()*delta)
+				
+				var projected_position_next = get_direction().dot(get_next_point().get_pos())
+				var projected_position_platform = get_direction().dot(platform.get_pos())
+				
+			
+				if(projected_position_platform >= projected_position_next):
+					set_current_point(get_next_point())
+					
+					if(!has_node(get_point_name(next_point_number + reversing))):
+						if(not stops_after_arrival()):
+							if(is_looping()):
+								next_point_number = 0
+							else:
+								reversing = -reversing
 						else:
-							reversing = -reversing
-					else:
-						reversing = 0
-				next_point_number += reversing
-				
-				set_next_point(get_node(get_point_name(next_point_number)))
-				wait()
+							reversing = 0
+					next_point_number += reversing
+					
+					set_next_point(get_node(get_point_name(next_point_number)))
+					wait()
 		
 		
 func _on_Area2D_body_enter( body ):
@@ -117,3 +126,13 @@ func wait():
 func _on_wait_timer_timeout():
 	timer.stop()
 	waiting = false
+	
+
+func switch_on():
+	print("my_man")
+	has_switch = false
+
+
+func _on_switch_switch_on():
+	print("my_man")
+	has_switch = false

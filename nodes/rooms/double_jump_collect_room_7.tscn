@@ -9,7 +9,7 @@
 
 [node name="terrain" parent="."]
 
-tile_data = IntArray( -720896, 7, -720895, 7, -720894, 7, -720893, 7, -720892, 7, -720891, 7, -720890, 7, -720889, 7, -720888, 7, -720887, 7, -720886, 7, -720885, 7, -720884, 7, -720883, 7, -720882, 7, -720881, 7, -720880, 7, -720879, 7, -720878, 7, -720877, 7, -655360, 7, -655341, 7, -589824, 7, -524288, 7, -458752, 7, -458751, 7, -458747, 7, -458746, 7, -458745, 7, -458744, 7, -458743, 7, -458742, 7, -458741, 7, -458740, 7, -458739, 7, -458738, 7, -458737, 7, -458736, 7, -458735, 7, -458734, 7, -458733, 7, -393216, 7, -393215, 7, -393197, 7, -327680, 7, -327679, 7, -327661, 7, -262144, 7, -262143, 7, -262125, 7, -196608, 7, -196589, 7, -131072, 7, -131053, 7, -65536, 7, -65517, 7, 0, 7, 19, 7, 65536, 7, 131072, 7, 196608, 7, 196609, 7, 196610, 7, 196611, 7, 196612, 7, 196613, 7, 196614, 7, 196615, 7, 196616, 7, 196617, 7, 196618, 7, 196619, 7, 196620, 7, 196621, 7, 196622, 7, 196623, 7, 196624, 7, 196625, 7, 196626, 7, 196627, 7, 262144, 7, 262145, 7, 262146, 7, 262147, 7, 262148, 7, 262149, 7, 262150, 7, 262151, 7, 262152, 7, 262153, 7, 262154, 7, 262155, 7, 262156, 7, 262157, 7, 262158, 7, 262159, 7, 262160, 7, 262161, 7, 262162, 7, 262163, 7 )
+tile_data = IntArray( -720896, 7, -720895, 7, -720894, 7, -720893, 7, -720892, 7, -720891, 7, -720890, 7, -720889, 7, -720888, 7, -720887, 7, -720886, 7, -720885, 7, -720884, 7, -720883, 7, -720882, 7, -720881, 7, -720880, 7, -720879, 7, -720878, 7, -720877, 7, -655360, 7, -655341, 7, -589824, 7, -524288, 7, -458752, 7, -458751, 7, -458747, 7, -458746, 7, -458745, 7, -458744, 7, -458743, 7, -458742, 7, -458741, 7, -458740, 7, -458739, 7, -458738, 7, -458737, 7, -458736, 7, -458735, 7, -458734, 7, -458733, 7, -393216, 7, -393215, 7, -393197, 7, -327680, 7, -327679, 7, -327661, 7, -262144, 7, -262143, 7, -262125, 7, -196608, 7, -196589, 7, -131072, 7, -131053, 7, -65536, 7, -65517, 7, 0, 7, 19, 7, 65536, 7, 131072, 7, 196608, 7, 196609, 7, 196610, 7, 196611, 7, 196612, 7, 196613, 7, 196614, 7, 196615, 7, 196616, 7, 196617, 7, 196618, 7, 196619, 7, 196620, 7, 196621, 7, 196622, 7, 196623, 7, 196624, 7, 196625, 7, 196626, 7, 196627, 7, 262144, 7, 262145, 7, 262146, 7, 262147, 7, 262148, 7, 262149, 7, 262150, 7, 262151, 7, 262152, 7, 262153, 7, 262154, 7, 262155, 7, 262156, 7, 262157, 7, 262158, 7, 262159, 7, 262160, 7, 262161, 7, 262162, 7, 262163, 7, 327680, 7, 327681, 7, 327682, 7, 327683, 7, 327684, 7, 327685, 7, 327686, 7, 327687, 7, 327688, 7, 327689, 7, 327690, 7, 327691, 7, 327692, 7, 327693, 7, 327694, 7, 327695, 7, 327696, 7, 327697, 7, 327698, 7, 327699, 7, 393216, 7, 393217, 7, 393218, 7, 393219, 7, 393220, 7, 393221, 7, 393222, 7, 393223, 7, 393224, 7, 393225, 7, 393226, 7, 393227, 7, 393228, 7, 393229, 7, 393230, 7, 393231, 7, 393232, 7, 393233, 7, 393234, 7, 393235, 7, 458752, 7, 458753, 7, 458754, 7, 458755, 7, 458756, 7, 458757, 7, 458758, 7, 458759, 7, 458760, 7, 458761, 7, 458762, 7, 458763, 7, 458764, 7, 458765, 7, 458766, 7, 458767, 7, 458768, 7, 458769, 7, 458770, 7, 458771, 7, 524288, 7, 524289, 7, 524290, 7, 524291, 7, 524292, 7, 524293, 7, 524294, 7, 524295, 7, 524296, 7, 524297, 7, 524298, 7, 524299, 7, 524300, 7, 524301, 7, 524302, 7, 524303, 7, 524304, 7, 524305, 7, 524306, 7, 524307, 7, 589824, 7, 589825, 7, 589826, 7, 589827, 7, 589828, 7, 589829, 7, 589830, 7, 589831, 7, 589832, 7, 589833, 7, 589834, 7, 589835, 7, 589836, 7, 589837, 7, 589838, 7, 589839, 7, 589840, 7, 589841, 7, 589842, 7, 589843, 7, 655360, 7, 655361, 7, 655362, 7, 655363, 7, 655364, 7, 655365, 7, 655366, 7, 655367, 7, 655368, 7, 655369, 7, 655370, 7, 655371, 7, 655372, 7, 655373, 7, 655374, 7, 655375, 7, 655376, 7, 655377, 7, 655378, 7, 655379, 7 )
 
 [node name="test_player_spawn_point" parent="."]
 
@@ -49,6 +49,9 @@ transform/pos = Vector2( 1184, 160 )
 
 editor/display_folded = true
 transform/pos = Vector2( 480, 96 )
+has_switch = false
+waits_for = false
+platform_name = "test"
 
 [node name="platform" parent="moving_platform"]
 
@@ -62,6 +65,9 @@ transform/pos = Vector2( -320, 0 )
 
 editor/display_folded = true
 transform/pos = Vector2( 736, 96 )
+has_switch = false
+waits_for = false
+platform_name = "test"
 
 [node name="point_1" parent="moving_platform3"]
 
@@ -70,6 +76,9 @@ transform/pos = Vector2( 288, 0 )
 [node name="moving_platform1" parent="." instance=ExtResource( 4 )]
 
 transform/pos = Vector2( 192, -96 )
+has_switch = false
+waits_for = false
+platform_name = "test"
 
 [node name="point_1" parent="moving_platform1"]
 
@@ -79,6 +88,9 @@ transform/pos = Vector2( 320, 0 )
 
 editor/display_folded = true
 transform/pos = Vector2( 1120, -96 )
+has_switch = false
+waits_for = false
+platform_name = "test"
 
 [node name="point_1" parent="moving_platform4"]
 
@@ -88,6 +100,9 @@ transform/pos = Vector2( -288, 0 )
 
 editor/display_folded = true
 transform/pos = Vector2( 832, -288 )
+has_switch = false
+waits_for = false
+platform_name = "test"
 
 [node name="point_1" parent="moving_platform2"]
 
@@ -97,6 +112,9 @@ transform/pos = Vector2( 288, 0 )
 
 editor/display_folded = true
 transform/pos = Vector2( 448, -288 )
+has_switch = false
+waits_for = false
+platform_name = "test"
 
 [node name="point_1" parent="moving_platform5"]
 
@@ -106,22 +124,25 @@ transform/pos = Vector2( -224, 0 )
 
 editor/display_folded = true
 transform/pos = Vector2( 640, -96 )
+has_switch = false
+waits_for = false
+platform_name = "test"
 
 [node name="point_1" parent="moving_platform6"]
 
 transform/pos = Vector2( 0, -192 )
 
-[connection signal="timeout" from="moving_platform1/wait_timer" to="moving_platform4" method="_on_wait_timer_timeout"]
-
-[connection signal="timeout" from="moving_platform1/wait_timer" to="moving_platform1" method="_on_wait_timer_timeout"]
-
-[connection signal="timeout" from="moving_platform1/wait_timer" to="moving_platform" method="_on_wait_timer_timeout"]
-
-[connection signal="timeout" from="moving_platform1/wait_timer" to="moving_platform3" method="_on_wait_timer_timeout"]
+[connection signal="timeout" from="moving_platform1/wait_timer" to="moving_platform5" method="_on_wait_timer_timeout"]
 
 [connection signal="timeout" from="moving_platform1/wait_timer" to="moving_platform6" method="_on_wait_timer_timeout"]
 
-[connection signal="timeout" from="moving_platform1/wait_timer" to="moving_platform5" method="_on_wait_timer_timeout"]
+[connection signal="timeout" from="moving_platform1/wait_timer" to="moving_platform4" method="_on_wait_timer_timeout"]
+
+[connection signal="timeout" from="moving_platform1/wait_timer" to="moving_platform" method="_on_wait_timer_timeout"]
+
+[connection signal="timeout" from="moving_platform1/wait_timer" to="moving_platform1" method="_on_wait_timer_timeout"]
+
+[connection signal="timeout" from="moving_platform1/wait_timer" to="moving_platform3" method="_on_wait_timer_timeout"]
 
 [connection signal="timeout" from="moving_platform1/wait_timer" to="moving_platform2" method="_on_wait_timer_timeout"]
 
