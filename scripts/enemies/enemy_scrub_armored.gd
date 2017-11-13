@@ -38,7 +38,7 @@ func _ready():
 func on_bullet_hit(bullet):
 	pass
 
-func on_collision(collision_info):
-	.on_collision(collision_info)
+func on_collision_with_player(collision_info):
+	.on_collision_with_player(collision_info)
 	if(collision_info.get_collider().is_in_group("player")):
 		collision_info.get_collider().push(get_push_time(), get_push_time_extended(),Vector2(get_push_speed_x(),get_push_speed_y()))
