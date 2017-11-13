@@ -24,6 +24,7 @@ modulate = Color( 0, 1, 0, 1 )
 
 [node name="double_jump_collect_room_10_door" parent="." instance=ExtResource( 2 )]
 
+editor/display_folded = true
 transform/pos = Vector2( 1248, 192 )
 arrival_node_ID = "3"
 destination_scene_path = "res://nodes/rooms/double_jump_collect_room_13.tscn"

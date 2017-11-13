@@ -6,12 +6,14 @@ export var stop_after_arrival = false
 export var looping = false
 
 onready var platform = get_node("platform")
+onready var timer = get_node("wait_timer")
 
 var next_point_number = 2
 var current_point
 var next_point
 var direction
 var reversing = 1
+var waiting = false
 
 var objects_on_platform = {}
 
@@ -71,30 +73,32 @@ func get_speed():
 	return speed
 
 func _fixed_process(delta):	
-	if(is_active()):
-		for obj in objects_on_platform:
-			obj.move_no_collision(get_direction()*get_speed()*delta)
-		
-		platform.move_no_collision(get_direction()*get_speed()*delta)
-		
-		var projected_position_next = get_direction().dot(get_next_point().get_pos())
-		var projected_position_platform = get_direction().dot(platform.get_pos())
-		
-	
-		if(projected_position_platform >= projected_position_next):
-			set_current_point(get_next_point())
+	if(not waiting):
+		if(is_active()):
+			for obj in objects_on_platform:
+				obj.move_no_collision(get_direction()*get_speed()*delta)
 			
-			if(!has_node(get_point_name(next_point_number + reversing))):
-				if(not stops_after_arrival()):
-					if(is_looping()):
-						next_point_number = 0
+			platform.move_no_collision(get_direction()*get_speed()*delta)
+			
+			var projected_position_next = get_direction().dot(get_next_point().get_pos())
+			var projected_position_platform = get_direction().dot(platform.get_pos())
+			
+		
+			if(projected_position_platform >= projected_position_next):
+				set_current_point(get_next_point())
+				
+				if(!has_node(get_point_name(next_point_number + reversing))):
+					if(not stops_after_arrival()):
+						if(is_looping()):
+							next_point_number = 0
+						else:
+							reversing = -reversing
 					else:
-						reversing = -reversing
-				else:
-					reversing = 0
-			next_point_number += reversing
-			
-			set_next_point(get_node(get_point_name(next_point_number)))
+						reversing = 0
+				next_point_number += reversing
+				
+				set_next_point(get_node(get_point_name(next_point_number)))
+				wait()
 		
 		
 func _on_Area2D_body_enter( body ):
@@ -104,3 +108,12 @@ func _on_Area2D_body_enter( body ):
 func _on_Area2D_body_exit( body ):
 	if(body.is_in_group("player")):
 		set_object_on_platform(body, false)
+
+func wait():
+	if(timer != null):
+		waiting = true
+		timer.start()
+
+func _on_wait_timer_timeout():
+	timer.stop()
+	waiting = false

@@ -15,6 +15,9 @@ script/script = ExtResource( 2 )
 max_HP = 2000
 hp = 2000
 invulnerability_time = 2
+cn_double_jump = false
+cn_wall_slide = false
+cn_wall_jump = false
 wall_jump_height = 192
 wall_jump_length = 192
 

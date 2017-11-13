@@ -20,6 +20,10 @@ transform/pos = Vector2( 1248, 512 )
 arrival_node_ID = "piet_room_1_arrival"
 destination_scene_path = "res://nodes/rooms/central_hub_room.tscn"
 
+[node name="sprite" parent="WarpTile"]
+
+modulate = Color( 0, 1, 0, 1 )
+
 [node name="piet_room_1_arrival_2" parent="." instance=ExtResource( 3 )]
 
 transform/pos = Vector2( 1152, 544 )

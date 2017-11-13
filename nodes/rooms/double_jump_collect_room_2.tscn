@@ -29,7 +29,7 @@ destination_scene_path = "res://nodes/rooms/double_jump_collect_room_1.tscn"
 
 [node name="sprite" parent="double_jump_collect_room_1_door"]
 
-modulate = Color( 0.326122, 0.984375, 0.0269165, 1 )
+modulate = Color( 0, 1, 0, 1 )
 
 [node name="double_jump_collect_room_3_door" parent="." instance=ExtResource( 3 )]
 
@@ -40,7 +40,7 @@ destination_scene_path = "res://nodes/rooms/double_jump_collect_room_3.tscn"
 
 [node name="sprite" parent="double_jump_collect_room_3_door"]
 
-modulate = Color( 0.0343966, 0.984375, 0.0269165, 1 )
+modulate = Color( 0, 1, 0, 1 )
 
 [node name="left_goo" parent="." instance=ExtResource( 4 )]
 
