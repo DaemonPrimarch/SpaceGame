@@ -23,7 +23,7 @@ destination_scene_path = "res://nodes/rooms/double_jump_collect_room_16.tscn"
 
 [node name="sprite" parent="double_jump_collect_room_16_door"]
 
-modulate = Color( 0.169039, 0.984375, 0.0269165, 1 )
+modulate = Color( 0, 1, 0, 1 )
 
 [node name="double_jump_collect_room_10_door" parent="." instance=ExtResource( 2 )]
 
@@ -38,13 +38,13 @@ editor/display_folded = true
 
 [node name="sprite" parent="double_jump_collect_room_10_door"]
 
-modulate = Color( 0.0568371, 0.984375, 0.0269165, 1 )
+modulate = Color( 0, 1, 0, 1 )
 
 [node name="double_jump_collect_room_16_arrival" parent="." instance=ExtResource( 3 )]
 
 transform/pos = Vector2( 96, -928 )
 
-[node name="double_jump_collect_room_10_arrival" parent="." instance=ExtResource( 3 )]
+[node name="1" parent="." instance=ExtResource( 3 )]
 
 transform/pos = Vector2( 1184, 544 )
 

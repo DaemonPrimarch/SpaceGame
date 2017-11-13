@@ -29,7 +29,7 @@ editor/display_folded = true
 
 [node name="sprite" parent="door"]
 
-modulate = Color( 0.101718, 0.984375, 0.0269165, 1 )
+modulate = Color( 0, 1, 0, 1 )
 
 [node name="1" parent="." instance=ExtResource( 3 )]
 
