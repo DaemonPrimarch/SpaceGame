@@ -50,8 +50,8 @@ func get_used_rect():
 				
 				posX.append((terrain.get_used_rect().pos.x*terrain.get_cell_size().x + terrain.get_global_pos().x))
 				posY.append((terrain.get_used_rect().pos.y*terrain.get_cell_size().y + terrain.get_global_pos().y))
-				m_posX.append((terrain.get_used_rect().pos.x*terrain.get_cell_size().x + terrain.get_global_pos().x + terrain.get_used_rect().size.x * terrain.get_cell_size().x))
-				m_posY.append((terrain.get_used_rect().pos.y*terrain.get_cell_size().y + terrain.get_global_pos().y + terrain.get_used_rect().size.y * terrain.get_cell_size().y))
+				m_posX.append((terrain.get_used_rect().size.x * terrain.get_cell_size().x))
+				m_posY.append((terrain.get_used_rect().size.y * terrain.get_cell_size().y))
 	if(terrain_found):
 		rect = Rect2(Vector2(min_arr(posX), min_arr(posY)), Vector2(max_arr(m_posX), max_arr(m_posY)))
 	else:

@@ -11,6 +11,8 @@ arrival_node_ID = "central_hub_arrival"
 
 [node name="player" parent="." instance=ExtResource( 2 )]
 
+editor/display_folded = true
+
 [node name="gun" parent="player"]
 
 editor/display_folded = false
