@@ -30,6 +30,9 @@ destination_scene_path = "res://nodes/rooms/central_hub_room.tscn"
 [node name="Node2D" parent="." instance=ExtResource( 5 )]
 
 transform/pos = Vector2( 650.025, 463.425 )
+has_switch = false
+waits_for = false
+platform_name = "test"
 
 [node name="point_1" parent="Node2D"]
 

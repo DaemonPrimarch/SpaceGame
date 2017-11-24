@@ -9,8 +9,6 @@ func warp_player_to_new_room_packed(player, room, position_id):
 		old_scene.remove_child(player)
 		
 		get_tree().get_root().remove_child(old_scene)
-	
-		#old_scene.queue_free()
 		
 		var new_scene = room.instance()
 		#Ugly hack

@@ -4,5 +4,9 @@
 
 [node name="everything_unlocked_player" instance=ExtResource( 1 )]
 
+cn_double_jump = true
+cn_wall_slide = true
+cn_wall_jump = true
+
 
 [editable path="gun"]

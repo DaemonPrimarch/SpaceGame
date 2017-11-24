@@ -21,6 +21,9 @@ speed = 60
 active = true
 stop_after_arrival = false
 looping = false
+has_switch = false
+waits_for = false
+platform_name = "test"
 
 [node name="platform" type="KinematicBody2D" parent="."]
 

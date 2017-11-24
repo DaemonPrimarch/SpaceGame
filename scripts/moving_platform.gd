@@ -81,7 +81,6 @@ func get_speed():
 
 func _fixed_process(delta):	
 	if(not waiting and not has_switch):
-		print(platform_name)
 		if((waits_for and get_parent().get_node(platform_name).is_waiting()) or not waits_for):
 			if(is_active()):
 				for obj in objects_on_platform:

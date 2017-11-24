@@ -28,6 +28,21 @@ func round_in_room(pos):
 	r_pos.y = int((r_pos.y + 64 * 5.5) / (64 * 11)) * 64 * 11
 	
 	return r_pos
+	
+func round_in_room_x(pos):
+	var r_pos = Vector2(pos.x, pos.y)
+	
+	r_pos.x = int((r_pos.x + 64 * 10)/ (64 * 20)) * 64 * 20
+	
+	return r_pos
+
+func round_in_room_y(pos):
+	var r_pos = Vector2(pos.x, pos.y)
+	
+	r_pos.y = int((r_pos.y + 64 * 5.5) / (64 * 11)) * 64 * 11
+	
+	return r_pos
+
 
 
 func load_map():
@@ -39,10 +54,10 @@ func load_map():
 	var handled_rooms = {}
 	var found_rooms = []
 
-	rooms_to_load.push_back({room = get_starting_scene(), pos = get_size() * get_zoom()/2 * Vector2(1, 0), warp_pos = Vector2(), warp_id = ""})
+	rooms_to_load.push_back({room = get_starting_scene(), pos = round_in_room(get_size() * get_zoom()/2 * Vector2(1, 0) + Vector2(3000, 3000)), warp_pos = Vector2(), warp_id = ""})
 	handled_rooms[get_starting_scene()] = true
 	min_x = (get_size() * get_zoom()/2 * Vector2(1, 0)).x
-	var max_depth = 100
+	var max_depth = 500
 	var depth = 0
 	
 	var current_room_path
@@ -67,9 +82,10 @@ func load_map():
 		if(info.warp_id != ""):
 			for node in warp_arrivals:
 				if(node.get_name() == info.warp_id):
+					print("Arrival position: ", node.get_pos())
 					arrival_pos = node.get_pos()
 		
-			current_room_pos = info.pos + round_in_room(info.warp_pos) - round_in_room(arrival_pos)
+			current_room_pos = round_in_room(info.pos + (info.warp_pos - arrival_pos))
 		else:
 			current_room_pos = info.pos
 		
@@ -77,20 +93,20 @@ func load_map():
 		
 		var new_tile = preload("res://addons/map_maker/tile.tscn").instance()
 		
-		new_tile.set_pos(current_room_pos / get_zoom())
-		
-		print("POS: ", current_room_pos / get_zoom())
+		new_tile.set_pos((current_room_pos + current_room.get_used_rect().pos)/ get_zoom())
 		
 		new_tile.set_scale(current_room.get_used_rect().size / Vector2(64 * get_zoom() , 64 * get_zoom()))
 		
 		if(current_room_path == get_starting_scene()):
 			new_tile.set_modulate(Color(0,1,0))
+		if(current_room.get_used_rect().pos.y != 0):
+			new_tile.set_modulate(Color(0,0,1))
 		
 		sprite_map.add_child(new_tile)
 		
 		"""Saving Maps"""
 		
-		found_rooms.push_back({pos = (current_room_pos) / get_zoom(), scale = Vector2(1.0, 1.0) / float(get_zoom()), room = current_room_path})
+		found_rooms.push_back({pos = (current_room_pos) / get_zoom(), scale = Vector2(1.0, 1.0) / float(get_zoom()), room = current_room_path, rect = current_room.get_used_rect()})
 		
 		if(((current_room_pos) / get_zoom()).x < min_x):
 			min_x = ((current_room_pos) / get_zoom()).x 
@@ -105,7 +121,7 @@ func load_map():
 			#	found_warp_tiles.push_back({pos = warptile.get_global_pos() + current_room_pos, rot = warptile.get_global_rot(), scale = warptile.get_global_scale()})
 			
 			if(not handled_rooms.has(warptile.get_destination_path()) and not warptile.get_destination_path() == "" and depth < max_depth):
-				rooms_to_load.push_back({room = warptile.get_destination_path(), pos = Vector2(current_room_pos), warp_pos = warptile.get_global_pos(), warp_id = warptile.arrival_node_ID})
+				rooms_to_load.push_back({room = warptile.get_destination_path(), pos = Vector2(current_room_pos), warp_pos = warptile.get_global_pos() - current_room.get_global_pos(), warp_rot = warptile.get_rot(), warp_id = warptile.arrival_node_ID, rect = current_room.get_used_rect()})
 				handled_rooms[warptile.get_destination_path()] = true
 				depth += 1
 
@@ -151,5 +167,4 @@ func _on_sprite_map_toggled( pressed ):
 
 
 func _on_scrollbar_value_changed( value ):
-	print(value)
 	get_node("map").set_pos(Vector2((max_x - min_x)/2 - value, get_node("map").get_pos().y))

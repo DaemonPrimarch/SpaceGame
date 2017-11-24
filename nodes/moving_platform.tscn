@@ -21,6 +21,9 @@ speed = 256
 active = true
 stop_after_arrival = false
 looping = false
+has_switch = false
+waits_for = false
+platform_name = "test"
 
 [node name="point_1" type="Position2D" parent="."]
 

@@ -33,7 +33,7 @@ func children_loaded():
 	return loaded
 
 func _ready():
-	loaded = true
+
 	
 	#set_flippedH(is_flippedH())
 	
@@ -41,7 +41,7 @@ func _ready():
 		add_to_group("has_hp_bar")
 		get_node("/root/GUI").add_HP_bar(self)
 		
-		if(has_invulnerability_timer()):
+		if(has_invulnerability_timer() and not loaded):
 			var timer = Timer.new()
 			timer.set_wait_time(get_invulnerability_time())
 			timer.set_name("invulnerability_timer")
@@ -49,7 +49,7 @@ func _ready():
 			timer.connect("timeout", self, "on_invulnerability_timer_timeout")
 			add_child(timer)
 			invulnerability_timer = timer
-		
+	loaded = true
 
 func get_invulnerability_time():
 	return invulnerability_time
