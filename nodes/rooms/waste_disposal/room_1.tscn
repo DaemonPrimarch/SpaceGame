@@ -19,7 +19,7 @@ tile_data = IntArray( 0, 7, 1, 7, 2, 7, 3, 7, 4, 7, 5, 7, 6, 7, 7, 7, 8, 7, 9, 7
 
 transform/pos = Vector2( 128, 608 )
 
-[node name="central_hub_arrival" parent="." instance=ExtResource( 2 )]
+[node name="1" parent="." instance=ExtResource( 2 )]
 
 transform/pos = Vector2( 128, 608 )
 
@@ -38,14 +38,14 @@ modulate = Color( 0, 1, 0, 1 )
 
 editor/display_folded = true
 transform/pos = Vector2( 1248, 192 )
-arrival_node_ID = "double_jump_collect_room_1_arrival"
-destination_scene_path = "res://nodes/rooms/double_jump_collect_room_17.tscn"
+arrival_node_ID = "2"
+destination_scene_path = "res://nodes/rooms/waste_disposal/room_15.tscn"
 
 [node name="sprite" parent="double_jump_collect_room_17_door"]
 
 modulate = Color( 0, 1, 0, 1 )
 
-[node name="double_jump_collect_room_17_arrival" parent="." instance=ExtResource( 2 )]
+[node name="2" parent="." instance=ExtResource( 2 )]
 
 transform/pos = Vector2( 1184, 224 )
 
@@ -53,23 +53,25 @@ transform/pos = Vector2( 1184, 224 )
 
 editor/display_folded = true
 transform/pos = Vector2( 1248, 1792 )
-arrival_node_ID = "double_jump_collect_room_1_arrival"
-destination_scene_path = "res://nodes/rooms/double_jump_collect_room_2.tscn"
+arrival_node_ID = "1"
+destination_scene_path = "res://nodes/rooms/waste_disposal/room_2.tscn"
 
 [node name="sprite" parent="double_jump_2_door"]
 
 modulate = Color( 0, 1, 0, 1 )
 
-[node name="double_jump_collect_room_2_arrival" parent="." instance=ExtResource( 2 )]
+[node name="3" parent="." instance=ExtResource( 2 )]
 
 transform/pos = Vector2( 1184, 1824 )
 
 [node name="goo_container" type="Node2D" parent="."]
 
+editor/display_folded = true
 script/script = ExtResource( 4 )
 
 [node name="goo" parent="goo_container" instance=ExtResource( 5 )]
 
+editor/display_folded = true
 transform/pos = Vector2( 608, 1360 )
 transform/scale = Vector2( 9, 21.5 )
 damage = 0

@@ -18,8 +18,8 @@ transform/pos = Vector2( 704, 512 )
 
 editor/display_folded = true
 transform/pos = Vector2( 32, -960 )
-arrival_node_ID = "double_jump_collect_room_15_arrival"
-destination_scene_path = "res://nodes/rooms/double_jump_collect_room_16.tscn"
+arrival_node_ID = "1"
+destination_scene_path = "res://nodes/rooms/waste_disposal/room_14.tscn"
 
 [node name="sprite" parent="double_jump_collect_room_16_door"]
 
@@ -29,8 +29,8 @@ modulate = Color( 0, 1, 0, 1 )
 
 editor/display_folded = true
 transform/pos = Vector2( 1248, 512 )
-arrival_node_ID = "double_jump_collect_room_15_arrival"
-destination_scene_path = "res://nodes/rooms/double_jump_collect_room_10.tscn"
+arrival_node_ID = "3"
+destination_scene_path = "res://nodes/rooms/waste_disposal/room_9.tscn"
 
 [node name="area" parent="double_jump_collect_room_10_door"]
 
@@ -40,7 +40,7 @@ editor/display_folded = true
 
 modulate = Color( 0, 1, 0, 1 )
 
-[node name="double_jump_collect_room_16_arrival" parent="." instance=ExtResource( 3 )]
+[node name="2" parent="." instance=ExtResource( 3 )]
 
 transform/pos = Vector2( 96, -928 )
 

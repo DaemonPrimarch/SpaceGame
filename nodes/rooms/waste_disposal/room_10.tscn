@@ -15,7 +15,7 @@ tile_data = IntArray( -262144, 7, -262143, 7, -262142, 7, -262141, 7, -262140, 7
 editor/display_folded = true
 transform/pos = Vector2( 32, 128 )
 arrival_node_ID = "2"
-destination_scene_path = "res://nodes/rooms/double_jump_collect_room_13.tscn"
+destination_scene_path = "res://nodes/rooms/waste_disposal/room_9.tscn"
 
 [node name="sprite" parent="double_jump_collect_room_11_door"]
 
@@ -26,7 +26,7 @@ modulate = Color( 0, 1, 0, 1 )
 editor/display_folded = true
 transform/pos = Vector2( 1248, 128 )
 arrival_node_ID = "1"
-destination_scene_path = "res://nodes/rooms/double_jump_collect_room_14.tscn"
+destination_scene_path = "res://nodes/rooms/waste_disposal/room_11.tscn"
 
 [node name="sprite" parent="double_jump_collect_room_13_door"]
 

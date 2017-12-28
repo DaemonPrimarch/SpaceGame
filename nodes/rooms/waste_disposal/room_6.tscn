@@ -19,8 +19,8 @@ transform/pos = Vector2( 1184, 160 )
 
 editor/display_folded = true
 transform/pos = Vector2( 1248, -512 )
-arrival_node_ID = "double_jump_collect_room_7_arrival"
-destination_scene_path = "res://nodes/rooms/double_jump_collect_room_8.tscn"
+arrival_node_ID = "1"
+destination_scene_path = "res://nodes/rooms/waste_disposal/room_7.tscn"
 
 [node name="sprite" parent="double_jump_collect_room_8_door"]
 
@@ -30,18 +30,18 @@ modulate = Color( 0, 1, 0, 1 )
 
 editor/display_folded = true
 transform/pos = Vector2( 1248, 128 )
-arrival_node_ID = "double_jump_collect_room_7_arrival"
-destination_scene_path = "res://nodes/rooms/double_jump_collect_room_6.tscn"
+arrival_node_ID = "2"
+destination_scene_path = "res://nodes/rooms/waste_disposal/room_6.tscn"
 
 [node name="sprite" parent="double_jump_collect_room_6_door"]
 
 modulate = Color( 0, 1, 0, 1 )
 
-[node name="double_jump_collect_room_8_arrival" parent="." instance=ExtResource( 3 )]
+[node name="2" parent="." instance=ExtResource( 3 )]
 
 transform/pos = Vector2( 1184, -480 )
 
-[node name="double_jump_collect_room_6_arrival" parent="." instance=ExtResource( 3 )]
+[node name="1" parent="." instance=ExtResource( 3 )]
 
 transform/pos = Vector2( 1184, 160 )
 
@@ -132,19 +132,19 @@ platform_name = "test"
 
 transform/pos = Vector2( 0, -192 )
 
+[connection signal="timeout" from="moving_platform1/wait_timer" to="moving_platform1" method="_on_wait_timer_timeout"]
+
+[connection signal="timeout" from="moving_platform1/wait_timer" to="moving_platform3" method="_on_wait_timer_timeout"]
+
+[connection signal="timeout" from="moving_platform1/wait_timer" to="moving_platform" method="_on_wait_timer_timeout"]
+
+[connection signal="timeout" from="moving_platform1/wait_timer" to="moving_platform2" method="_on_wait_timer_timeout"]
+
 [connection signal="timeout" from="moving_platform1/wait_timer" to="moving_platform5" method="_on_wait_timer_timeout"]
 
 [connection signal="timeout" from="moving_platform1/wait_timer" to="moving_platform6" method="_on_wait_timer_timeout"]
 
 [connection signal="timeout" from="moving_platform1/wait_timer" to="moving_platform4" method="_on_wait_timer_timeout"]
-
-[connection signal="timeout" from="moving_platform1/wait_timer" to="moving_platform" method="_on_wait_timer_timeout"]
-
-[connection signal="timeout" from="moving_platform1/wait_timer" to="moving_platform1" method="_on_wait_timer_timeout"]
-
-[connection signal="timeout" from="moving_platform1/wait_timer" to="moving_platform3" method="_on_wait_timer_timeout"]
-
-[connection signal="timeout" from="moving_platform1/wait_timer" to="moving_platform2" method="_on_wait_timer_timeout"]
 
 
 [editable path="double_jump_collect_room_8_door"]

@@ -21,7 +21,7 @@ transform/pos = Vector2( 1184, 544 )
 editor/display_folded = true
 transform/pos = Vector2( 1248, 512 )
 arrival_node_ID = "2"
-destination_scene_path = "res://nodes/rooms/double_jump_collect_room_14.tscn"
+destination_scene_path = "res://nodes/rooms/waste_disposal/room_11.tscn"
 
 [node name="area" parent="door"]
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=1]
+[gd_scene load_steps=7 format=1]
 
 [ext_resource path="res://nodes/rooms/room.tscn" type="PackedScene" id=1]
 [ext_resource path="res://nodes/warp_tile.tscn" type="PackedScene" id=2]
@@ -6,7 +6,6 @@
 [ext_resource path="res://nodes/goo.tscn" type="PackedScene" id=4]
 [ext_resource path="res://nodes/moving_platform_small.tscn" type="PackedScene" id=5]
 [ext_resource path="res://nodes/timed_goo.tscn" type="PackedScene" id=6]
-[ext_resource path="res://nodes/enemies/enemy_fish.tscn" type="PackedScene" id=7]
 
 [node name="room" instance=ExtResource( 1 )]
 
@@ -22,8 +21,8 @@ transform/pos = Vector2( 96, 160 )
 
 editor/display_folded = true
 transform/pos = Vector2( 32, 128 )
-arrival_node_ID = "double_jump_collect_room_4_arrival"
-destination_scene_path = "res://nodes/rooms/double_jump_collect_room_3.tscn"
+arrival_node_ID = "2"
+destination_scene_path = "res://nodes/rooms/waste_disposal/room_3.tscn"
 
 [node name="sprite" parent="door1"]
 
@@ -34,7 +33,7 @@ modulate = Color( 0, 1, 0, 1 )
 editor/display_folded = true
 transform/pos = Vector2( 2528, 128 )
 arrival_node_ID = "1"
-destination_scene_path = "res://nodes/rooms/double_jump_collect_room_6.tscn"
+destination_scene_path = "res://nodes/rooms/waste_disposal/room_5.tscn"
 
 [node name="sprite" parent="door2"]
 
@@ -138,24 +137,6 @@ wait_time = 3.0
 
 wait_time = 2.0
 
-[node name="Node2D1" parent="." instance=ExtResource( 7 )]
-
-editor/display_folded = true
-transform/pos = Vector2( 1792, 480 )
-
-[node name="KinematicBody2D" parent="Node2D1"]
-
-jump_height = 320
-
-[node name="Node2D2" parent="." instance=ExtResource( 7 )]
-
-editor/display_folded = true
-transform/pos = Vector2( 2240, 480 )
-
-[node name="KinematicBody2D" parent="Node2D2"]
-
-jump_height = 320
-
 
 [editable path="door1"]
 [editable path="door2"]
@@ -163,5 +144,3 @@ jump_height = 320
 [editable path="moving_platform 2"]
 [editable path="timed_goo"]
 [editable path="timed_goo1"]
-[editable path="Node2D1"]
-[editable path="Node2D2"]
