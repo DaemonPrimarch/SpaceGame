@@ -55,8 +55,8 @@ destination_scene_path = "res://nodes/rooms/piet_room_1.tscn"
 
 editor/display_folded = true
 transform/pos = Vector2( 1248, 1920 )
-arrival_node_ID = "central_hub_arrival"
-destination_scene_path = "res://nodes/rooms/double_jump_collect_room_1.tscn"
+arrival_node_ID = "1"
+destination_scene_path = "res://nodes/rooms/waste_disposal/room_1.tscn"
 
 [node name="central_hub_arrival" parent="." instance=ExtResource( 3 )]
 

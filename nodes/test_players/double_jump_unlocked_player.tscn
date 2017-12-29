@@ -4,8 +4,7 @@
 
 [node name="double_jump_unlocked_player" instance=ExtResource( 1 )]
 
-cn_wall_slide = false
-cn_wall_jump = false
+cn_double_jump = true
 
 
 [editable path="gun"]

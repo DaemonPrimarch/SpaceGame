@@ -1,25 +1,24 @@
-[gd_scene load_steps=6 format=1]
+[gd_scene load_steps=5 format=1]
 
 [ext_resource path="res://nodes/rooms/room.tscn" type="PackedScene" id=1]
 [ext_resource path="res://nodes/warp_tile.tscn" type="PackedScene" id=2]
 [ext_resource path="res://nodes/warp_arrival.tscn" type="PackedScene" id=3]
-[ext_resource path="res://nodes/goo.tscn" type="PackedScene" id=4]
-[ext_resource path="res://nodes/timed_goo.tscn" type="PackedScene" id=5]
+[ext_resource path="res://nodes/shootable_block.tscn" type="PackedScene" id=4]
 
 [node name="room" instance=ExtResource( 1 )]
 
 [node name="terrain" parent="."]
 
-tile_data = IntArray( 720896, 7, 720897, 7, 720898, 7, 720899, 7, 720900, 7, 720901, 7, 720902, 7, 720903, 7, 720904, 7, 720905, 7, 720906, 7, 720907, 7, 720908, 7, 720909, 7, 720910, 7, 720911, 7, 720912, 7, 720913, 7, 720914, 7, 720915, 7, 720916, 7, 720917, 7, 720918, 7, 720919, 7, 720920, 7, 720921, 7, 720922, 7, 720923, 7, 720924, 7, 720925, 7, 720926, 7, 720927, 7, 720928, 7, 720929, 7, 720930, 7, 720931, 7, 720932, 7, 720933, 7, 720934, 7, 720935, 7, 786432, 7, 786471, 7, 851968, 7, 852007, 7, 917543, 7, 983079, 7, 1048576, 7, 1048577, 7, 1048578, 7, 1048579, 7, 1048580, 7, 1048581, 7, 1048582, 7, 1048583, 7, 1048608, 7, 1048609, 7, 1048610, 7, 1048611, 7, 1048612, 7, 1048613, 7, 1048614, 7, 1048615, 7, 1114112, 7, 1114113, 7, 1114114, 7, 1114115, 7, 1114116, 7, 1114117, 7, 1114118, 7, 1114119, 7, 1114144, 7, 1114145, 7, 1114146, 7, 1114147, 7, 1114148, 7, 1114149, 7, 1114150, 7, 1179648, 7, 1179649, 7, 1179650, 7, 1179651, 7, 1179652, 7, 1179653, 7, 1179654, 7, 1179655, 7, 1179680, 7, 1179681, 7, 1179682, 7, 1179683, 7, 1179684, 7, 1179685, 7, 1179686, 7, 1245184, 7, 1245185, 7, 1245186, 7, 1245187, 7, 1245188, 7, 1245189, 7, 1245190, 7, 1245191, 7, 1245195, 7, 1245196, 7, 1245200, 7, 1245201, 7, 1245202, 7, 1245203, 7, 1245204, 7, 1245205, 7, 1245206, 7, 1245207, 7, 1245211, 7, 1245212, 7, 1245216, 7, 1245217, 7, 1245218, 7, 1245219, 7, 1245220, 7, 1245221, 7, 1245222, 7, 1245223, 7, 1310720, 7, 1310721, 7, 1310722, 7, 1310723, 7, 1310724, 7, 1310725, 7, 1310726, 7, 1310727, 7, 1310728, 7, 1310752, 7, 1310753, 7, 1310754, 7, 1310755, 7, 1310756, 7, 1310757, 7, 1310758, 7, 1310759, 7, 1376256, 7, 1376257, 7, 1376258, 7, 1376259, 7, 1376260, 7, 1376261, 7, 1376262, 7, 1376263, 7, 1376264, 7, 1376265, 7, 1376266, 7, 1376267, 7, 1376268, 7, 1376269, 7, 1376270, 7, 1376271, 7, 1376272, 7, 1376273, 7, 1376274, 7, 1376275, 7, 1376276, 7, 1376277, 7, 1376278, 7, 1376279, 7, 1376280, 7, 1376281, 7, 1376282, 7, 1376283, 7, 1376284, 7, 1376285, 7, 1376286, 7, 1376287, 7, 1376288, 7, 1376289, 7, 1376290, 7, 1376291, 7, 1376292, 7, 1376293, 7, 1376294, 7, 1376295, 7 )
+tile_data = IntArray( 720896, 7, 720897, 7, 720898, 7, 720899, 7, 720900, 7, 720901, 7, 720902, 7, 720903, 7, 720904, 7, 720905, 7, 720906, 7, 720907, 7, 720908, 7, 720909, 7, 720910, 7, 720911, 7, 720912, 7, 720913, 7, 720914, 7, 720915, 7, 720916, 7, 720917, 7, 720918, 7, 720919, 7, 720920, 7, 720921, 7, 720922, 7, 720923, 7, 720924, 7, 720925, 7, 720926, 7, 720927, 7, 720928, 7, 720929, 7, 720930, 7, 720931, 7, 720932, 7, 720933, 7, 720934, 7, 720935, 7, 786432, 7, 786433, 7, 786434, 7, 786435, 7, 786436, 7, 786438, 7, 786439, 7, 786440, 7, 786443, 7, 786445, 7, 786447, 7, 786452, 7, 786454, 7, 786461, 7, 786463, 7, 786468, 7, 786469, 7, 786470, 7, 786471, 7, 851968, 7, 851969, 7, 851976, 7, 851979, 7, 851983, 7, 851988, 7, 851990, 7, 851997, 7, 851999, 7, 852004, 7, 852005, 7, 852006, 7, 852007, 7, 917504, 7, 917505, 7, 917507, 7, 917508, 7, 917509, 7, 917510, 7, 917512, 7, 917515, 7, 917517, 7, 917518, 7, 917519, 7, 917524, 7, 917542, 7, 917543, 7, 983040, 7, 983041, 7, 983043, 7, 983051, 7, 983053, 7, 983060, 7, 983079, 7, 1048576, 7, 1048579, 7, 1048587, 7, 1048589, 7, 1048590, 7, 1048591, 7, 1048593, 7, 1048595, 7, 1048596, 7, 1048598, 7, 1048599, 7, 1048600, 7, 1048601, 7, 1114112, 7, 1114113, 7, 1114114, 7, 1114115, 7, 1114127, 7, 1114129, 7, 1114137, 7, 1114141, 7, 1114143, 7, 1179654, 7, 1179656, 7, 1179659, 7, 1179661, 7, 1179663, 7, 1179665, 7, 1179667, 7, 1179668, 7, 1179669, 7, 1179670, 7, 1179671, 7, 1179673, 7, 1179677, 7, 1179679, 7, 1179686, 7, 1179687, 7, 1245190, 7, 1245192, 7, 1245201, 7, 1245213, 7, 1245215, 7, 1245216, 7, 1245217, 7, 1245221, 7, 1245222, 7, 1245223, 7, 1310720, 7, 1310721, 7, 1310726, 7, 1310728, 7, 1310737, 7, 1310749, 7, 1310751, 7, 1310752, 7, 1310753, 7, 1310756, 7, 1310757, 7, 1310758, 7, 1310759, 7, 1376256, 7, 1376257, 7, 1376258, 7, 1376259, 7, 1376260, 7, 1376261, 7, 1376262, 7, 1376263, 7, 1376264, 7, 1376265, 7, 1376266, 7, 1376267, 7, 1376268, 7, 1376269, 7, 1376270, 7, 1376271, 7, 1376272, 7, 1376273, 7, 1376274, 7, 1376275, 7, 1376276, 7, 1376277, 7, 1376278, 7, 1376279, 7, 1376280, 7, 1376281, 7, 1376282, 7, 1376283, 7, 1376284, 7, 1376285, 7, 1376286, 7, 1376287, 7, 1376288, 7, 1376289, 7, 1376290, 7, 1376291, 7, 1376292, 7, 1376293, 7, 1376294, 7, 1376295, 7 )
 
 [node name="test_player_spawn_point" parent="."]
 
-transform/pos = Vector2( 2336, 960 )
+transform/pos = Vector2( 2464, 1120 )
 
 [node name="double_jump_collect_room_17_door" parent="." instance=ExtResource( 2 )]
 
 editor/display_folded = true
-transform/pos = Vector2( 32, 960 )
+transform/pos = Vector2( 32, 1216 )
 arrival_node_ID = "1"
 destination_scene_path = "res://nodes/rooms/waste_disposal/room_15.tscn"
 
@@ -30,7 +29,7 @@ modulate = Color( 0, 1, 0, 1 )
 [node name="double_jump_collect_room_15_door" parent="." instance=ExtResource( 2 )]
 
 editor/display_folded = true
-transform/pos = Vector2( 2528, 1152 )
+transform/pos = Vector2( 2528, 1088 )
 arrival_node_ID = "2"
 destination_scene_path = "res://nodes/rooms/waste_disposal/room_13.tscn"
 
@@ -40,81 +39,128 @@ modulate = Color( 0, 1, 0, 1 )
 
 [node name="2" parent="." instance=ExtResource( 3 )]
 
-transform/pos = Vector2( 96, 992 )
+transform/pos = Vector2( 96, 1248 )
 
 [node name="1" parent="." instance=ExtResource( 3 )]
 
-transform/pos = Vector2( 2464, 1184 )
+transform/pos = Vector2( 2464, 1120 )
 
-[node name="goo" parent="." instance=ExtResource( 4 )]
+[node name="shootable_block" parent="." instance=ExtResource( 4 )]
 
-transform/pos = Vector2( 1280, 1328 )
-transform/scale = Vector2( 24, 2.5 )
+transform/pos = Vector2( 416, 1120 )
 
-[node name="timed_goo" parent="." instance=ExtResource( 5 )]
+[node name="shootable_block1" parent="." instance=ExtResource( 4 )]
 
-editor/display_folded = true
-transform/pos = Vector2( 608, 1152 )
-transform/scale = Vector2( 1, 8 )
-pushes = true
+transform/pos = Vector2( 416, 1056 )
 
-[node name="stop_timer" parent="timed_goo"]
+[node name="shootable_block2" parent="." instance=ExtResource( 4 )]
 
-wait_time = 3.0
+transform/pos = Vector2( 416, 992 )
 
-[node name="start_timer" parent="timed_goo"]
+[node name="shootable_block3" parent="." instance=ExtResource( 4 )]
 
-wait_time = 2.0
+transform/pos = Vector2( 544, 992 )
 
-[node name="timed_goo1" parent="." instance=ExtResource( 5 )]
+[node name="shootable_block4" parent="." instance=ExtResource( 4 )]
 
-editor/display_folded = true
-transform/pos = Vector2( 928, 1152 )
-transform/scale = Vector2( 1, 8 )
-pushes = true
+transform/pos = Vector2( 544, 1056 )
 
-[node name="stop_timer" parent="timed_goo1"]
+[node name="shootable_block5" parent="." instance=ExtResource( 4 )]
 
-wait_time = 3.0
+transform/pos = Vector2( 608, 1056 )
 
-[node name="start_timer" parent="timed_goo1"]
+[node name="shootable_block6" parent="." instance=ExtResource( 4 )]
 
-wait_time = 2.0
+transform/pos = Vector2( 672, 1056 )
 
-[node name="timed_goo2" parent="." instance=ExtResource( 5 )]
+[node name="shootable_block7" parent="." instance=ExtResource( 4 )]
 
-editor/display_folded = true
-transform/pos = Vector2( 1632, 1152 )
-transform/scale = Vector2( 1, 8 )
-pushes = true
+transform/pos = Vector2( 608, 1184 )
 
-[node name="stop_timer" parent="timed_goo2"]
+[node name="shootable_block8" parent="." instance=ExtResource( 4 )]
 
-wait_time = 3.0
+transform/pos = Vector2( 672, 1184 )
 
-[node name="start_timer" parent="timed_goo2"]
+[node name="shootable_block9" parent="." instance=ExtResource( 4 )]
 
-wait_time = 2.0
+transform/pos = Vector2( 800, 1184 )
 
-[node name="timed_goo3" parent="." instance=ExtResource( 5 )]
+[node name="shootable_block10" parent="." instance=ExtResource( 4 )]
 
-editor/display_folded = true
-transform/pos = Vector2( 1952, 1152 )
-transform/scale = Vector2( 1, 8 )
-pushes = true
+transform/pos = Vector2( 864, 1248 )
 
-[node name="stop_timer" parent="timed_goo3"]
+[node name="shootable_block11" parent="." instance=ExtResource( 4 )]
 
-wait_time = 3.0
+transform/pos = Vector2( 864, 1312 )
 
-[node name="start_timer" parent="timed_goo3"]
+[node name="shootable_block12" parent="." instance=ExtResource( 4 )]
 
-wait_time = 2.0
+transform/pos = Vector2( 992, 1248 )
+
+[node name="shootable_block13" parent="." instance=ExtResource( 4 )]
+
+transform/pos = Vector2( 992, 1312 )
+
+[node name="shootable_block14" parent="." instance=ExtResource( 4 )]
+
+transform/pos = Vector2( 1184, 1056 )
+
+[node name="shootable_block15" parent="." instance=ExtResource( 4 )]
+
+transform/pos = Vector2( 1248, 1248 )
+
+[node name="shootable_block16" parent="." instance=ExtResource( 4 )]
+
+transform/pos = Vector2( 1248, 1312 )
+
+[node name="shootable_block17" parent="." instance=ExtResource( 4 )]
+
+transform/pos = Vector2( 1440, 928 )
+
+[node name="shootable_block18" parent="." instance=ExtResource( 4 )]
+
+transform/pos = Vector2( 1440, 992 )
+
+[node name="shootable_block19" parent="." instance=ExtResource( 4 )]
+
+transform/pos = Vector2( 1504, 1248 )
+
+[node name="shootable_block20" parent="." instance=ExtResource( 4 )]
+
+transform/pos = Vector2( 1504, 1312 )
+
+[node name="shootable_block21" parent="." instance=ExtResource( 4 )]
+
+transform/pos = Vector2( 1632, 1248 )
+
+[node name="shootable_block22" parent="." instance=ExtResource( 4 )]
+
+transform/pos = Vector2( 1632, 1312 )
+
+[node name="shootable_block23" parent="." instance=ExtResource( 4 )]
+
+transform/pos = Vector2( 1888, 928 )
+
+[node name="shootable_block24" parent="." instance=ExtResource( 4 )]
+
+transform/pos = Vector2( 1888, 992 )
+
+[node name="shootable_block25" parent="." instance=ExtResource( 4 )]
+
+transform/pos = Vector2( 1888, 1056 )
+
+[node name="shootable_block26" parent="." instance=ExtResource( 4 )]
+
+transform/pos = Vector2( 2016, 928 )
+
+[node name="shootable_block27" parent="." instance=ExtResource( 4 )]
+
+transform/pos = Vector2( 2016, 992 )
+
+[node name="shootable_block28" parent="." instance=ExtResource( 4 )]
+
+transform/pos = Vector2( 2016, 1056 )
 
 
 [editable path="double_jump_collect_room_17_door"]
 [editable path="double_jump_collect_room_15_door"]
-[editable path="timed_goo"]
-[editable path="timed_goo1"]
-[editable path="timed_goo2"]
-[editable path="timed_goo3"]
