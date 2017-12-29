@@ -11,6 +11,10 @@ arrival_node_ID = "central_hub_arrival"
 
 [node name="player" parent="." instance=ExtResource( 2 )]
 
+cn_double_jump = true
+cn_wall_slide = true
+cn_wall_jump = true
+
 [node name="gun" parent="player"]
 
 editor/display_folded = false
