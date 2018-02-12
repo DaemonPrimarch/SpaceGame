@@ -1,25 +1,13 @@
-extends "weapon.gd"
+extends "res://scripts/weapon.gd"
 
-export var bullet_speed = 1500 setget set_bullet_speed,get_bullet_speed
-var bullet_count = 0
 
-func get_bullet_speed():
-	return bullet_speed
-
-func set_bullet_speed(value):
-	bullet_speed = value
-
-func on_trigger_press():
-	var bullet = preload("res://nodes/bullet.tscn")
-	var instanced_bullet = bullet.instance()
+func press_trigger():
+	var bullet = preload("res://nodes/bullet.tscn").instance()
 	
-	get_parent().get_parent().add_child(instanced_bullet)
+	var room = ROOM_MANAGER.get_room_of_node(self)
 	
-	instanced_bullet.set_pos(get_current_point().get_global_pos())
+	bullet.set_position(room.to_local(to_global(Vector2(40, 0))))
+	bullet.set_velocity(get_scale()/get_scale().abs() * Vector2(64 * 4, 0))
+	bullet.set_rotation(get_rotation())
 	
-	var dir = 1
-	if(get_scale().x < 0):
-		dir = -1
-	
-	instanced_bullet.set_linear_velocity(Vector2(cos(get_current_point().get_global_rot()), -sin(get_current_point().get_global_rot())) * get_bullet_speed() * dir)
-	instanced_bullet.add_collision_exception_with(get_parent())
+	room.add_child(bullet)

@@ -7,8 +7,8 @@ var hp_bars = {}
 
 func _ready():
 	#Add CanvasLayer to root
-	
 	layer = preload("res://nodes/GUI_layer.tscn").instance()
+	
 	get_tree().get_root().call_deferred("add_child",layer)
 
 func get_layer():
@@ -31,5 +31,5 @@ func remove_HP_bar(tracked_object):
 func reflow_HP_bars():
 	var i = 0
 	for bar in hp_bars:
-		hp_bars[bar].set_pos(Vector2(hp_bars[bar].get_pos().x, hp_bars[bar].get_size().y * i))
+		hp_bars[bar].set_position(Vector2(hp_bars[bar].get_position().x, hp_bars[bar].get_size().y * i))
 		i += 1

@@ -1,0 +1,27 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://nodes/room.tscn" type="PackedScene" id=1]
+
+[node name="room" instance=ExtResource( 1 )]
+
+[node name="terrain" parent="." index="0"]
+
+tile_data = PoolIntArray( -65535, 27, 0, -65534, 27, 0, 0, 12, 0, 1, 13, 0, 2, 13, 0, 3, 27, 0, 4, 27, 0, 5, 13, 0, 6, 13, 0, 7, 13, 0, 8, 13, 0, 9, 13, 0, 10, 13, 0, 11, 13, 0, 12, 13, 0, 13, 13, 0, 14, 13, 0, 65536, 86, 0, 65537, 86, 0, 65538, 86, 0, 65541, 27, 0, 65542, 27, 0, 65543, 27, 0, 131075, 86, 0, 131080, 27, 0, 131081, 27, 0, 131084, 27, 0, 196611, 86, 0, 196618, 27, 0, 196619, 27, 0, 262154, 27, 0, 327689, 27, 0, 393224, 27, 0, 458759, 27, 0, 524294, 27, 0 )
+
+[node name="Polygon2D" type="Polygon2D" parent="." index="1"]
+
+position = Vector2( 266.267, 182.04 )
+polygon = PoolVector2Array( 729.422, -36.2784, 763.957, 665.225, -36.8358, 641.482, -252.007, -223.105, 371.985, -390.246 )
+uv = PoolVector2Array(  )
+color = Color( 1, 1, 1, 0 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 0, 0 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation_degrees = 0.0
+invert_enable = false
+invert_border = 100.0
+
+

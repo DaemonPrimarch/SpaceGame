@@ -1,32 +1,35 @@
 tool
 
-extends Node2D
+extends Node
 
-signal switch_on
-signal switch_off
+signal switched_on
+signal switched_off
 
-export(bool) var on setget set_on, is_on
+export var state = false setget set_state
 
-var enabled = false
-
-var first = true
-
-func _ready():
-	if(is_on()):
-		emit_signal("switch_on")
+func set_state(new_state):
+	if(new_state):
+		switch_on()
 	else:
-		emit_signal("switch_off")
-func set_on(value):
-	if(value != enabled and is_inside_tree()):
-		first = false
-		if(value):
-			emit_signal("switch_on")
-		else:
-			emit_signal("switch_off")
-	enabled = value
-	
+		switch_off()
+
+func switch_on():
+	if(not is_on()):
+		state = true
+		
+		emit_signal("switched_on")
+
+func switch_off():
+	if(is_on()):
+		state = false
+		
+		emit_signal("switched_off")
+
 func is_on():
-	return enabled
-	
+	return state
+
 func toggle():
-	set_on(not is_on())
+	if(is_on()):
+		switch_off()
+	else:
+		switch_on()

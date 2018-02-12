@@ -1,7 +1,12 @@
-[gd_scene format=1]
+[gd_scene load_steps=2 format=2]
 
-[node name="warp_arrival" type="Position2D" groups=[
+[ext_resource path="res://scripts/warp_arrival.gd" type="Script" id=1]
+
+[node name="warp_arrival" type="Position2D" index="0" groups=[
 "warp_arrival",
 ]]
+
+script = ExtResource( 1 )
+arrival_ID = ""
 
 

@@ -2,4 +2,5 @@
 *.png
 *.PNG
 **/.DS_Store
+.import/
 random/

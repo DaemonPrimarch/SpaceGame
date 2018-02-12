@@ -1,46 +1,47 @@
 tool
 
-extends Node2D
+extends Area2D
 
-var loaded = false
+signal activated
+signal deactivated
+
+signal destination_room_changed
+
 export var active = true setget set_active, is_active
-export var arrival_node_ID = "arrival_name"
-export(String, FILE, "*.tscn") var destination_scene_path = "" setget destination_path_changed
+export(String, FILE, "*.tscn")var destination_room setget set_destination_room, get_destination_room
+export var arrival_pos_id = "" setget set_arrival_pos_id, get_arrival_pos_id
 
 func _ready():
-	if(destination_scene_path != ""):
-		get_node("sprite").set_modulate(Color(0, 1, 0, 1))
-	set_active(is_active())
+	pass
 
-func get_destination_path():
-	return destination_scene_path
-
-func on_enter(body):
-	if(body.is_in_group("warpable") and not loaded):
-		if(destination_scene_path == ""):
-			print("door not loaded")
-		else:
-			get_node("/root/room_loader").call_deferred("warp_player_to_new_room_path", body, destination_scene_path, arrival_node_ID)
-			
 func is_active():
 	return active
-
-func set_active(value):
-	active = value
 	
-	if(has_node("sprite")):
-		if(value and destination_scene_path != ""):
-			get_node("sprite").set_modulate(Color(0, 1, 0, 1))
-		else:
-			get_node("sprite").set_modulate(Color(1, 0, 0, 1))
-	if(has_node("area")):
-		get_node("area").set_layer_mask_bit(0, value)
-
-func destination_path_changed(new_path):
-	if(has_node("sprite")):
-		if(new_path != "" and active):
-			get_node("sprite").set_modulate(Color(0, 1, 0, 1))
-		else:
-			get_node("sprite").set_modulate(Color(1, 0, 0, 1))
+func set_active(val):
+	active = val
 	
-	destination_scene_path = new_path
+	if(val):
+		emit_signal("activated")
+	else:
+		emit_signal("deactivated")
+
+func set_destination_room(room):
+	destination_room = room
+	
+	emit_signal("destination_room_changed")
+
+func has_destination_room():
+	return destination_room != null
+
+func get_destination_room():
+	return destination_room
+	
+func set_arrival_pos_id(id):
+	arrival_pos_id = id
+
+func get_arrival_pos_id():
+	return arrival_pos_id
+
+func on_body_enter( body ):
+	if(is_active() and body.is_in_group("warpable") and has_destination_room()):
+		get_node("/root/ROOM_MANAGER").call_deferred("warp_node_to_room",body, get_destination_room(), get_arrival_pos_id())

@@ -1,25 +1,35 @@
-extends RigidBody2D
+extends Area2D
 
-var damage = 5 setget set_damage,get_damage
+export var velocity = Vector2(64 * 4,0) setget set_velocity, get_velocity
 
+func set_velocity(v):
+	velocity = v
+
+func get_velocity():
+	return velocity
+	
 func _ready():
+	# Called every time the node is added to the scene.
+	# Initialization here
 	pass
-	
-func get_damage():
-	return damage
 
-func set_damage(value):
-	damage = value
-
-func _on_Timer_timeout():
-	destroy()
-
-func _on_bullet_body_enter( body ):
-	if(body.has_method("on_bullet_hit")):
-		body.on_bullet_hit(self)
-	
-	set_hidden(true)
-	destroy()
+func _process(delta):
+	set_position(get_position() + get_velocity().rotated(get_rotation()) * delta)
 
 func destroy():
-	self.queue_free()
+	queue_free()
+
+func decay_timer_timeout():
+	destroy()
+
+func on_body_entered( body ):
+	if(body.has_method("_on_bullet_hit")):
+		body._on_bullet_hit(self)
+	
+	destroy()
+	
+func on_area_entered( area ):
+	if(area.has_method("_on_bullet_hit")):
+		area._on_bullet_hit(self)
+	
+	destroy()

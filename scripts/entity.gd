@@ -1,168 +1,189 @@
 tool
-extends "res://scripts/better_KinematicBody2D.gd"
 
-signal hp_changed
+extends "res://scripts/extended_kinematic_body_2D.gd"
 
-export var movement_speed = 300 setget set_movement_speed,get_movement_speed
+signal HP_changed
+signal room_entered
+
+export var HP = 100 setget set_HP, get_HP
+export var max_HP = 100 setget set_max_HP, get_max_HP
+
+export var movement_speed = 64 * 4 setget set_movement_speed, get_movement_speed
+
+export(NodePath) var debug_state_label
+export(NodePath) var debug_grounded_label
+
+export var gravity_enabled = false setget set_gravity_enabled, is_gravity_enabled
+export var gravity_vector = Vector2(0, 64 * 6)
 
 export var flippedH = false setget set_flippedH, is_flippedH
-export var gravity_enabled = true
+export var flippedV = false setget set_flippedV, is_flippedV
 
-export var max_HP = 10
-export var hp = 10 setget set_HP, get_HP
+var grounded = false
 
-var destroyed = false
-var on_ground = false
-
-var invulnerable = false
-export var invulnerability_time = 5
-export var uses_invulnerability_timer = true
-export var has_invulnarable_animation = false
-export var invulnerable_animation_player = "SecondAnimationPlayer"
-
-var invulnerability_timer
-
+var gravity_velocity = Vector2()
 var gravity_timer = 0
-var gravity_timer_started = false
 
-var loaded = false
-
-onready var gravity_vector = Physics2DServer.area_get_param(get_world_2d().get_space(),Physics2DServer.AREA_PARAM_GRAVITY_VECTOR) * Physics2DServer.area_get_param(get_world_2d().get_space(),Physics2DServer.AREA_PARAM_GRAVITY)*7
-
-func children_loaded():
-	return loaded
+var STATES = {"UNDEFINED": "UNDEFINED"}
+var current_state = STATES.UNDEFINED
 
 func _ready():
-
-	
-	#set_flippedH(is_flippedH())
-	
-	if(not get_tree().is_editor_hint()):
-		add_to_group("has_hp_bar")
-		get_node("/root/GUI").add_HP_bar(self)
+	set_physics_process(not Engine.is_editor_hint())
 		
-		if(has_invulnerability_timer() and not loaded):
-			var timer = Timer.new()
-			timer.set_wait_time(get_invulnerability_time())
-			timer.set_name("invulnerability_timer")
-			timer.set_one_shot(true)
-			timer.connect("timeout", self, "on_invulnerability_timer_timeout")
-			add_child(timer)
-			invulnerability_timer = timer
-	loaded = true
+	if(not Engine.is_editor_hint()):
+		connect("room_entered", self, "_room_enter")
+		emit_signal("room_entered")
 
-func get_invulnerability_time():
-	return invulnerability_time
-
-func set_movement_speed(value):
-	movement_speed = value
+func _room_enter():
+	get_node("/root/GUI").add_HP_bar(self)
 
 func get_movement_speed():
 	return movement_speed
 
-func is_invulnerable():
-	return invulnerable
-
-func has_invulnerability_timer():
-	return uses_invulnerability_timer
-
-func set_invulnerable(value):
-	invulnerable = value
-	set_collision_mask_bit(1, not value)
-	if(value):
-		invulnerability_timer.start()
-		if(has_invulnarable_animation):
-			get_node(invulnerable_animation_player).play("invulnerable")
-	else:
-		if(invulnerability_timer.get_time_left() > 0):
-			invulnerability_timer.stop()
-		if(has_invulnarable_animation):
-			get_node(invulnerable_animation_player).stop()
-
-func finland_suckt():
-	print("Finlad suckts")
-	set_invulnerable(false)
-func on_invulnerability_timer_timeout():
-	set_invulnerable(false)
-
-func set_HP(val):
-	hp = val
-	emit_signal("hp_changed")
+func set_movement_speed(speed):
+	movement_speed = speed
+	
+func _physics_process(delta):
+	if(is_gravity_enabled()):
+		if(is_grounded()):
+			get_node("debuggyboy").set_cast_to(gravity_vector.normalized() * delta * (Vector2(get_movement_speed(), 0)).rotated(max_slope_angle) )
+			
+			if(test_move(get_global_transform(), gravity_vector.normalized() * 0.1)):
+				pass
+			elif(test_move(get_global_transform(), gravity_vector.normalized() * delta * (Vector2(get_movement_speed(), 0)).rotated(max_slope_angle))):
+				move_and_collide(gravity_vector.normalized() * delta * (Vector2(get_movement_speed(), 0)).rotated(max_slope_angle))
+			else:
+				set_grounded(false)
+		else:
+			apply_gravity(delta)
+	
+	process_state(get_state(), delta)
+	
+func push(vector):
+	move_and_collide(vector)
 	
 func get_HP():
-	return hp
+	return HP
 
+func set_HP(hp):
+	HP = hp
+	
+	emit_signal("HP_changed")
+	
+	if(hp <= 0):
+		destroy()
+	
 func get_max_HP():
 	return max_HP
 
-func on_bullet_hit(bullet):
-	print("?")
-	damage(bullet.get_damage())
-
-func damage(amount):
-	var new_HP = get_HP() - amount
-	
-	if(new_HP <= 0):
-		self.destroy()
-	else:
-		set_HP(new_HP)
-
-func set_gravity_enabled(value):
-	gravity_enabled = value
+func set_max_HP(max_hp):
+	max_HP = max_hp
 
 func is_gravity_enabled():
 	return gravity_enabled
 
-func set_gravity_vector(vector):
-	gravity_vector = vector
+func set_gravity_enabled(value):
+	gravity_enabled = value
+	
+	gravity_velocity = Vector2()
+	
 
 func get_gravity_vector():
 	return gravity_vector
 
-func is_on_ground():
-	return on_ground
+func apply_gravity(delta):
+	gravity_velocity += get_gravity_vector() * delta
+	
+	var collision_info = move_and_collide(gravity_velocity * delta)
+	
+	if(collision_info != null):
+		set_grounded(true)
+
+func has_debug_grounded_label():
+	return debug_grounded_label != null and debug_grounded_label != ""
+
+func get_debug_grounded_label():
+	return get_node(debug_grounded_label)
+
+func has_debug_state_label():
+	return debug_state_label != null and debug_state_label != ""
+
+func get_debug_state_label():
+	return debug_state_label
+
+func is_grounded():
+	return grounded
+	
+func set_grounded(val):
+	grounded = val
+	
+	gravity_velocity = Vector2()
+	
+	if(has_debug_grounded_label()):
+		if(val):
+			get_debug_grounded_label().set_text("G")
+		else:
+			get_debug_grounded_label().set_text("N")
+		
+
+func get_state():
+	return current_state
+	
+func set_state(state):
+	leave_state(current_state, state)
+	enter_state(state, current_state)
+	current_state = state
+	
+	if(has_debug_state_label()):
+		get_node(get_debug_state_label()).set_text(state)
+
+func add_state(state):
+	STATES[state] = state
+
+func process_state(state, delta):
+	pass
+	
+func enter_state(state, previous_state):
+	pass
+	
+func leave_state(state, previous_state):
+	pass
 
 func is_flippedH():
-	if(children_loaded()):
-		return flippedH
-	else:
-		return flippedH
+	return flippedH
 
-#Flips all children horizontally, ignores all children in group ignores_flip.
-func set_flippedH(new):
-	if(is_flippedH() != new):
-		flippedH = new
-		
-		for N in get_children():
-			if(N extends Node2D and !N.is_in_group("ignores_flip")):
-				N.set_scale(N.get_scale() * Vector2(-1, 1))
-				N.set_pos(N.get_pos() * Vector2(-1, 1))
-				N.set_rot(- N.get_rot())
-
-func apply_gravity(delta):
-	if(move(get_gravity_vector() * delta * gravity_timer).has_collision()):
-		on_ground = true
+func is_flippedV():
+	return flippedV
 	
-func reset_gravity_timer():
-	gravity_timer = 0
+func set_flippedH(val):
+	if(val != is_flippedH()):
+		for child in get_children():
+			if(child is Node2D):
+				child.set_scale(child.get_scale() * Vector2(-1,1))
+				child.set_position(child.get_position() * Vector2(-1,1))
+				child.set_rotation(-child.get_rotation())
+	
+	flippedH = val
 
-func _fixed_process(delta):
-	if(is_on_ground()):
-		if(not test_move(get_gravity_vector().normalized() * 1)):
-			on_ground = false
-	if(is_gravity_enabled() and not is_on_ground()):
-		if(not gravity_timer_started):
-			gravity_timer_started = true
-		gravity_timer += delta
-				
-		apply_gravity(delta)
-	elif(gravity_timer_started):
-		gravity_timer_started = false
-		gravity_timer = 0
+func set_flippedV(val):
+	if(val != is_flippedV()):
+		for child in get_children():
+			if(child is Node2D):
+				child.set_scale(child.get_scale() * Vector2(1,-1))
+				child.set_position(child.get_position() * Vector2(1,-1))
+	
+	flippedV = val
 
-func is_destroyed():
-	return destroyed
-
+func get_direction():
+	var dir = Vector2(1,1)
+	
+	if(is_flippedH()):
+		dir.x = -1
+	if(is_flippedV()):
+		dir.y = -1
+	
+	return dir
+	
 func destroy():
-	destroyed = true
-	queue_free()
+	pass
+	

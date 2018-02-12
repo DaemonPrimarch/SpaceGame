@@ -1,0 +1,63 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://scripts/moveable_platform.gd" type="Script" id=1]
+[ext_resource path="res://scripts/extended_kinematic_body_2D.gd" type="Script" id=2]
+[ext_resource path="res://sprites/metroid_tilesheet.png" type="Texture" id=3]
+
+[node name="moveable_platform" type="Node2D"]
+
+script = ExtResource( 1 )
+active = true
+looping = false
+one_way = false
+moving_speed = 256
+
+[node name="platform" type="KinematicBody2D" parent="." index="0"]
+
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+collision/safe_margin = 0.08
+script = ExtResource( 2 )
+_sections_unfolded = [ "Collision", "Pickable", "Transform", "Visibility", "collision" ]
+max_slope_angle = 1.5708
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="platform" index="0"]
+
+position = Vector2( -64, 0 )
+build_mode = 0
+polygon = PoolVector2Array( -32, 32, 160, 32, 160, -32, -32, -32 )
+
+[node name="Sprite" type="Sprite" parent="platform" index="1"]
+
+texture = ExtResource( 3 )
+region_enabled = true
+region_rect = Rect2( 0, 448, 192, 64 )
+_sections_unfolded = [ "Region" ]
+
+[node name="standing_area" type="Area2D" parent="platform" index="2"]
+
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="platform/standing_area" index="0"]
+
+build_mode = 0
+polygon = PoolVector2Array( -96, -32, -97, -40, 96, -40, 96, -32 )
+
+[node name="point_0" type="Position2D" parent="." index="1"]
+
+[node name="point_1" type="Position2D" parent="." index="2"]
+
+position = Vector2( 192, 0 )
+
+[connection signal="collided" from="platform" to="." method="_on_platform_collided"]
+
+[connection signal="body_exited" from="platform/standing_area" to="." method="_on_standing_area_body_exited"]
+
+
