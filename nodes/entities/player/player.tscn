@@ -1,28 +1,30 @@
 [gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://nodes/playable_character.tscn" type="PackedScene" id=1]
+[ext_resource path="res://nodes/entities/player/playable_character.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scripts/player.gd" type="Script" id=2]
 [ext_resource path="res://nodes/camera.tscn" type="PackedScene" id=3]
-[ext_resource path="res://nodes/gun.tscn" type="PackedScene" id=4]
+[ext_resource path="res://nodes/weapons/gun.tscn" type="PackedScene" id=4]
 
 [node name="player" index="0" instance=ExtResource( 1 )]
 
 script = ExtResource( 2 )
 _sections_unfolded = [ "Pause", "Transform" ]
-debug_state_label = NodePath("Label")
-debug_grounded_label = NodePath("Label2")
-gravity_enabled = true
+max_slope_angle = 1.5708
+HP = 100
+max_HP = 100
+movement_speed = 256
+debug_state_label = null
+debug_grounded_label = null
+gravity_enabled = false
+gravity_vector = Vector2( 0, 384 )
+flippedH = false
+flippedV = false
 weapon_path = NodePath("gun")
-jump_enabled = true
-double_jump_enabled = true
-wall_jump_enabled = true
-jump_height = 256
-double_jump_height = 128
 wall_jump_distance = Vector2( 0, 0 )
 
 [node name="Sprite" parent="." index="0"]
 
-frame = 19
+frame = 16
 _sections_unfolded = [ "Animation", "Offset", "Region" ]
 
 [node name="camera" parent="." index="3" instance=ExtResource( 3 )]

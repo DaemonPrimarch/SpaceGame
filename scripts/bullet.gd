@@ -7,11 +7,6 @@ func set_velocity(v):
 
 func get_velocity():
 	return velocity
-	
-func _ready():
-	# Called every time the node is added to the scene.
-	# Initialization here
-	pass
 
 func _process(delta):
 	set_position(get_position() + get_velocity().rotated(get_rotation()) * delta)

@@ -23,13 +23,14 @@ func load_packed_room(packed, pos):
 	
 	add_room_as_loaded(loaded_room)
 	
+	print("Loaded: ", packed.get_path())
+	
 	return loaded_room
 	
 func get_room_of_node(node):
 	var current_room = node
 	
 	while(not is_room_loaded(current_room)):
-		print(current_room.get_name())
 		current_room = current_room.get_parent()
 		
 	return current_room

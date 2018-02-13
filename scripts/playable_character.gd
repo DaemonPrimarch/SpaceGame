@@ -4,10 +4,6 @@ extends "res://scripts/entity.gd"
 
 export(NodePath) var weapon_path setget set_weapon_path
 
-export var max_jump_time = 0.666
-export var max_double_jump_time = 0.666
-export var max_wall_jump_time = 0.666
-
 export var jump_enabled = true
 export var double_jump_enabled = true
 export var wall_jump_enabled = true

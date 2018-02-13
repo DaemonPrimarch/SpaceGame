@@ -2,7 +2,7 @@ extends "res://scripts/weapon.gd"
 
 
 func press_trigger():
-	var bullet = preload("res://nodes/bullet.tscn").instance()
+	var bullet = preload("res://nodes/weapons/bullet.tscn").instance()
 	
 	var room = ROOM_MANAGER.get_room_of_node(self)
 	

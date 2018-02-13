@@ -129,7 +129,7 @@ func process_state(state, delta):
 					set_wall_slide_side(get_direction().x)
 				double_jumping_timer += delta
 		STATES.WALL_JUMPING:
-			if(not Input.is_action_pressed("jump") or wall_jumping_timer > max_wall_jump_time):
+			if(not Input.is_action_pressed("jump") or wall_jumping_timer > 4):
 				set_state(STATES.FALLING)
 			else:
 				move_and_collide(get_gravity_vector() * -1 * delta)

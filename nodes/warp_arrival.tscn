@@ -2,7 +2,7 @@
 
 [ext_resource path="res://scripts/warp_arrival.gd" type="Script" id=1]
 
-[node name="warp_arrival" type="Position2D" index="0" groups=[
+[node name="warp_arrival" type="Position2D" groups=[
 "warp_arrival",
 ]]
 
