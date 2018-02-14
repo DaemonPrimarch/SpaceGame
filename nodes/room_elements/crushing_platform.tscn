@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://scripts/crushing_platform.gd" type="Script" id=1]
+[ext_resource path="res://nodes/player_stick_platform.tscn" type="PackedScene" id=2]
+
+[node name="crushing_platform" type="Node2D" index="0"]
+
+script = ExtResource( 1 )
+forward_velocity = Vector2( 0, 0 )
+forward_acceleration = Vector2( 0, 0 )
+backward_velocity = Vector2( 0, 0 )
+backward_acceleration = Vector2( 0, 0 )
+
+[node name="platform" parent="." index="0" instance=ExtResource( 2 )]
+
+[node name="start" type="Position2D" parent="." index="1"]
+
+[node name="stop" type="Position2D" parent="." index="2"]
+
+position = Vector2( 384, 0 )
+
+

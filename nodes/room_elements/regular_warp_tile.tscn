@@ -8,6 +8,7 @@
 [node name="warp_tile" instance=ExtResource( 1 )]
 
 script = ExtResource( 2 )
+arrival_pos_id = "@@6327_arrival"
 
 [node name="CollisionPolygon2D" parent="." index="0"]
 

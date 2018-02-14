@@ -11,10 +11,7 @@ var previous_point = Vector2()
 var arrived = false
 var direction = 1
 
-var connected_nodes = []
-
 onready var platform = get_node("platform")
-onready var standing_area = get_node("platform/standing_area")
 
 func get_movement_speed():
 	return moving_speed
@@ -54,16 +51,7 @@ func _ready():
 func _physics_process(delta):
 	if(is_active() and not (is_one_way() and has_arrived_at_end())):
 		
-		for node in connected_nodes:
-			node.translate(get_movement_direction() * delta * get_movement_speed())
-	
-		var collision_info = platform.move_and_collide(get_movement_direction() * delta * get_movement_speed())
-		
-		if(collision_info != null):
-			if(collision_info.collider.has_method('push')):
-				collision_info.collider.push(collision_info.remainder)
-			
-			get_platform().translate(collision_info.remainder)
+		get_platform().move_and_push(get_movement_direction() * delta * get_movement_speed())
 		
 		if(has_arrived_at_next_point()):
 			set_previous_point(get_next_point())
@@ -96,26 +84,3 @@ func set_looping(value):
 
 func is_looping():
 	return looping
-
-func connect_node(node):
-	if(not connected_nodes.has(node)):
-		connected_nodes.push_back(node)
-		node.set_on_platform(true)
-		node.add_collision_exception_with(get_platform())
-
-func disconnect_node(node):
-	if(connected_nodes.has(node)):
-		connected_nodes.remove(connected_nodes.find(node))
-		node.set_on_platform(false)
-		node.remove_collision_exception_with(get_platform())
-
-func _on_platform_collided(info, moved_node):
-	if((moved_node == get_platform() and info.normal == Vector2(0,1))):
-		connect_node(info.collider)
-	if((not moved_node == get_platform() and info.normal == Vector2(0,-1))):
-		connect_node(moved_node)
-		
-
-
-func _on_standing_area_body_exited( body ):
-	disconnect_node(body)

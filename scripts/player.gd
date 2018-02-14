@@ -29,6 +29,8 @@ func _physics_process(delta):
 		else:
 			get_weapon().set_position(weapon_front_position.get_position())
 			get_weapon().set_rotation(weapon_front_position.get_rotation())
+
+
 func enter_state(state, previous):
 	match state:
 		STATES.FALLING:
@@ -66,6 +68,17 @@ func enter_state(state, previous):
 			animation_player.play("jump")
 		STATES.WALKING:
 			animation_player.play("run")
+			
+		STATES.CLIMBING:
+			get_ladder().snap_to(self)
+			set_gravity_enabled(false)
+		STATES.PUSHED:
+			set_velocity(-get_velocity())
+			set_acceleration(-get_acceleration())
+			
+			stunned_timer = 0
+			
+			set_gravity_enabled(false)
 func leave_state(state, new):
 	match state:
 		STATES.REGULAR_JUMPING:
@@ -78,12 +91,18 @@ func leave_state(state, new):
 			set_gravity_enabled(true)
 		STATES.WALL_SLIDING:
 			set_gravity_enabled(true)
+		STATES.CLIMBING:
+			set_gravity_enabled(true)
+		STATES.PUSHED:
+			set_gravity_enabled(true)
 			
 func process_state(state, delta):
 	match state:
 		STATES.REGULAR_JUMPING:
 			if(not Input.is_action_pressed("jump") or jumping_timer > calculate_max_airtime(get_jump_height(), get_gravity_vector().y)):
 				set_state(STATES.FALLING)
+			elif(Input.is_action_pressed("play_up") and is_inside_ladder()):
+				set_state(STATES.CLIMBING)
 			else:
 				set_velocity(get_velocity() + get_gravity_vector() * delta)
 				
@@ -108,6 +127,8 @@ func process_state(state, delta):
 		STATES.DOUBLE_JUMPING:
 			if(not Input.is_action_pressed("jump") or double_jumping_timer > calculate_max_airtime(get_double_jump_height(), get_gravity_vector().y)):
 				set_state(STATES.FALLING)
+			elif(Input.is_action_pressed("play_up") and is_inside_ladder()):
+				set_state(STATES.CLIMBING)
 			else:
 				set_velocity(get_velocity() + get_gravity_vector() * delta)
 				
@@ -131,6 +152,8 @@ func process_state(state, delta):
 		STATES.WALL_JUMPING:
 			if(not Input.is_action_pressed("jump") or wall_jumping_timer > 4):
 				set_state(STATES.FALLING)
+			elif(Input.is_action_pressed("play_up") and is_inside_ladder()):
+				set_state(STATES.CLIMBING)
 			else:
 				move_and_collide(get_gravity_vector() * -1 * delta)
 				
@@ -163,6 +186,8 @@ func process_state(state, delta):
 				set_state(STATES.STANDING)
 			elif(Input.is_action_just_pressed("jump") and can_double_jump()):
 				set_state(STATES.DOUBLE_JUMPING)
+			elif(Input.is_action_pressed("play_up") and is_inside_ladder()):
+				set_state(STATES.CLIMBING)
 			else:
 				var pressed = 0
 				if(Input.is_action_pressed("play_left")):
@@ -179,14 +204,35 @@ func process_state(state, delta):
 					set_wall_slide_side(get_direction().x)
 
 		STATES.CLIMBING:
-			pass
+			if(Input.is_action_just_pressed("jump")):
+				set_state(STATES.REGULAR_JUMPING)
+			elif(not is_inside_ladder()):
+				set_state(STATES.FALLING)
+			else:
+				var dir = 0
+				
+				if(Input.is_action_pressed("play_up")):
+					dir = -1
+				elif(Input.is_action_pressed("play_down")):
+					dir = 1
+			
+				move_and_collide(Vector2(0, dir) * get_climbing_speed() * delta)
 		STATES.CROUCHING:
 			pass
 		STATES.PUSHED:
-			pass
+			if(stunned_timer >= get_stunned_time()):
+				set_state(STATES.FALLING)
+			else:
+				set_velocity(get_velocity() + get_gravity_vector() * delta)
+					
+				move_and_collide(get_velocity() * delta)
+					
+				stunned_timer += delta
 		STATES.STANDING:
 			if(not is_grounded()):
 				set_state(STATES.FALLING)
+			elif(Input.is_action_pressed("play_up") and is_inside_ladder()):
+				set_state(STATES.CLIMBING)
 			elif(Input.is_action_just_pressed("jump") and can_jump()):
 				set_state(STATES.REGULAR_JUMPING)
 			elif(Input.is_action_pressed("play_left") or Input.is_action_pressed("play_right")):
@@ -194,6 +240,8 @@ func process_state(state, delta):
 		STATES.WALKING:
 			if(not is_grounded()):
 				set_state(STATES.FALLING)
+			elif(Input.is_action_pressed("play_up") and is_inside_ladder()):
+				set_state(STATES.CLIMBING)
 			elif(Input.is_action_just_pressed("jump") and can_jump()):
 				set_state(STATES.REGULAR_JUMPING)
 			elif(Input.is_action_pressed("play_left") or Input.is_action_pressed("play_right")):

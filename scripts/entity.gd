@@ -79,13 +79,16 @@ func get_max_HP():
 func set_max_HP(max_hp):
 	max_HP = max_hp
 
+func damage(d):
+	set_HP(get_HP() - d)
+
 func is_gravity_enabled():
 	return gravity_enabled
 
-func set_gravity_enabled(value):
+func set_gravity_enabled(value, starting_velocity = Vector2()):
 	gravity_enabled = value
 	
-	gravity_velocity = Vector2()
+	gravity_velocity = starting_velocity
 	
 
 func get_gravity_vector():

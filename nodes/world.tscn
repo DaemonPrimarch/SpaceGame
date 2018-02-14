@@ -13,16 +13,9 @@ arrival_pos_id = "arian"
 "warpable",
 ] instance=ExtResource( 2 )]
 
-max_slope_angle = 1.5708
-HP = 100
-max_HP = 100
-movement_speed = 256
 debug_state_label = NodePath("Label")
-debug_grounded_label = NodePath("Label2")
 gravity_enabled = true
-gravity_vector = Vector2( 0, 384 )
-flippedH = false
-flippedV = false
+stunned_time = 1
 
 [node name="Sprite" parent="player" index="0"]
 

@@ -12,9 +12,16 @@ export var jump_height = 64 * 4
 export var double_jump_height = 64 * 2
 export var wall_jump_distance = Vector2(64,64)
 
+export var stunned_time = 1
+
+export var climbing_speed = 64 * 2 
+
 var jumping_timer = 0
 var double_jumping_timer = 0
 var wall_jumping_timer = 0
+var stunned_timer = 0
+
+var inside_ladder = null
 
 var double_jumped = false
 
@@ -45,6 +52,29 @@ func _ready():
 	add_state("WALKING")
 	
 	set_state(STATES.STANDING)
+	
+func push_back():
+	yield(get_tree(), "idle_frame")
+	
+	set_state(STATES.PUSHED)
+
+func get_stunned_time():
+	return stunned_time
+
+func is_inside_ladder():
+	return inside_ladder != null
+	
+func set_ladder(ladder):
+	inside_ladder = ladder
+
+func get_ladder():
+	return inside_ladder
+
+func set_climbing_speed(speed):
+	climbing_speed = speed
+
+func get_climbing_speed():
+	return climbing_speed
 
 func get_jump_height():
 	return jump_height
