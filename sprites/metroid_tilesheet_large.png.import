@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/icon.png-487276ed1e3a0c39cad0279d744ee560.stex"
+path="res://.import/metroid_tilesheet_large.png-9f63b9e34fe8b6dd2374acf8000bc35d.stex"
 
 [deps]
 
-source_file="res://icon.png"
-source_md5="86aa1d9e8afaf5ec9cabb7e89945c7a8"
+source_file="res://sprites/metroid_tilesheet_large.png"
+source_md5="934b7d21b450e92d57bf75aa81f42363"
 
-dest_files=[ "res://.import/icon.png-487276ed1e3a0c39cad0279d744ee560.stex" ]
-dest_md5="de268f1fefb026236e22a224989920b8"
+dest_files=[ "res://.import/metroid_tilesheet_large.png-9f63b9e34fe8b6dd2374acf8000bc35d.stex" ]
+dest_md5="94b99eda22dd081b6907518a92b782c9"
 
 [params]
 
