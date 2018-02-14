@@ -3,13 +3,13 @@
 [ext_resource path="res://scripts/crushing_platform.gd" type="Script" id=1]
 [ext_resource path="res://nodes/player_stick_platform.tscn" type="PackedScene" id=2]
 
-[node name="crushing_platform" type="Node2D" index="0"]
+[node name="crushing_platform" type="Node2D"]
 
 script = ExtResource( 1 )
-forward_velocity = Vector2( 0, 0 )
-forward_acceleration = Vector2( 0, 0 )
-backward_velocity = Vector2( 0, 0 )
-backward_acceleration = Vector2( 0, 0 )
+forward_starting_velocity = 0
+forward_acceleration = 0
+backward_starting_velocity = 0
+backward_acceleration = 0
 
 [node name="platform" parent="." index="0" instance=ExtResource( 2 )]
 

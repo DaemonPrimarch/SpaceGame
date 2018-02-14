@@ -13,10 +13,6 @@ arrival_pos_id = "arian"
 "warpable",
 ] instance=ExtResource( 2 )]
 
-debug_state_label = NodePath("Label")
-gravity_enabled = true
-stunned_time = 1
-
 [node name="Sprite" parent="player" index="0"]
 
 frame = 17

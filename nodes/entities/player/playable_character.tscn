@@ -115,7 +115,7 @@ tracks/0/keys = {
 "values": [ 5, 6, 7, 8, 9 ]
 }
 
-[node name="playable_character" type="KinematicBody2D" index="0" groups=[
+[node name="playable_character" type="KinematicBody2D" groups=[
 "can_climb_ladder",
 ]]
 
@@ -142,6 +142,7 @@ wall_jump_enabled = true
 jump_height = 256
 double_jump_height = 128
 wall_jump_distance = Vector2( 64, 64 )
+stunned_time = 1
 climbing_speed = 128
 
 [node name="Sprite" type="Sprite" parent="." index="0"]
@@ -204,5 +205,14 @@ _sections_unfolded = [ "Transform" ]
 [node name="weapon_front" type="Position2D" parent="." index="7"]
 
 position = Vector2( 64, -32 )
+
+[node name="ground_detector" type="RayCast2D" parent="." index="8"]
+
+position = Vector2( 0, 30 )
+scale = Vector2( 1, 0.96875 )
+enabled = true
+exclude_parent = true
+cast_to = Vector2( 0, 5 )
+collision_mask = 1
 
 
