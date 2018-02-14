@@ -15,7 +15,7 @@ arrival_pos_id = "arian"
 
 [node name="Sprite" parent="player" index="0"]
 
-frame = 17
+frame = 16
 
 
 [editable path="player"]
