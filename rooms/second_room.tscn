@@ -9,7 +9,7 @@
 [ext_resource path="res://nodes/room_elements/crushing_platform.tscn" type="PackedScene" id=7]
 [ext_resource path="res://nodes/no_respawn_area.tscn" type="PackedScene" id=8]
 
-[node name="second_room" index="0" instance=ExtResource( 1 )]
+[node name="second_room" instance=ExtResource( 1 )]
 
 [node name="terrain" parent="." index="0"]
 
@@ -21,6 +21,7 @@ position = Vector2( 1184, 544 )
 
 [node name="moveable_platform" parent="." index="2" instance=ExtResource( 3 )]
 
+editor/display_folded = true
 position = Vector2( 1504, 64 )
 
 [node name="point_1" parent="moveable_platform" index="2"]
@@ -40,7 +41,7 @@ arrival_ID = "starting_room_arrival"
 
 [node name="vertical_ladder" parent="." index="4" instance=ExtResource( 5 )]
 
-position = Vector2( 1504, 224 )
+position = Vector2( 800, 288 )
 length = 320
 
 [node name="vertical_ladder2" parent="." index="5" instance=ExtResource( 6 )]

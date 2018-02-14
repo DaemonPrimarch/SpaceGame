@@ -46,8 +46,6 @@ func set_movement_speed(speed):
 func _physics_process(delta):
 	if(is_gravity_enabled()):
 		if(is_grounded()):
-			get_node("debuggyboy").set_cast_to(gravity_vector.normalized() * delta * (Vector2(get_movement_speed(), 0)).rotated(max_slope_angle) )
-			
 			if(test_move(get_global_transform(), gravity_vector.normalized() * 0.1)):
 				pass
 			elif(test_move(get_global_transform(), gravity_vector.normalized() * delta * (Vector2(get_movement_speed(), 0)).rotated(max_slope_angle))):
