@@ -60,7 +60,11 @@ func _physics_process(delta):
 	process_state(get_state(), delta)
 	
 func push(vector):
-	move_and_collide(vector)
+	if(move_and_collide(vector) != null):
+		crush() 
+
+func crush():
+	print("CRUSHED!")
 	
 func get_HP():
 	return HP
@@ -90,7 +94,6 @@ func set_gravity_enabled(value, starting_velocity = Vector2()):
 	
 	gravity_velocity = starting_velocity
 	
-
 func get_gravity_vector():
 	return gravity_vector
 

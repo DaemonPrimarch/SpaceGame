@@ -32,6 +32,10 @@ var wall_slide_side = 1 #1 is Right, -1 is Left
 var velocity = Vector2()
 var acceleration = Vector2()
 
+var in_no_respawn_area = false
+
+var last_safe_position = Vector2()
+
 onready var weapon_top_position = get_node("weapon_top")
 onready var weapon_top_front_position = get_node("weapon_top_front")
 onready var weapon_front_position = get_node("weapon_front")
@@ -52,7 +56,11 @@ func _ready():
 	add_state("WALKING")
 	
 	set_state(STATES.STANDING)
-	
+
+func _physics_process(delta):
+	if(not is_in_no_respawn_area() and is_grounded() and get_node("ground_detector").is_colliding() and get_node("ground_detector").get_collider().is_in_group("terrain")):
+			set_last_safe_position(get_position())
+		
 func push_back():
 	yield(get_tree(), "idle_frame")
 	
@@ -134,3 +142,23 @@ func set_weapon_path(path):
 
 func has_weapon():
 	return weapon_path != null
+	
+func respawn():
+	set_position(get_last_safe_position())
+	
+func crush():
+	.crush()
+	
+	respawn()
+
+func is_in_no_respawn_area():
+	return in_no_respawn_area
+
+func set_in_no_respawn_area(val):
+	in_no_respawn_area = val
+
+func get_last_safe_position():
+	return last_safe_position
+	
+func set_last_safe_position(v):
+	last_safe_position = v
