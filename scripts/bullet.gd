@@ -2,6 +2,8 @@ extends Area2D
 
 export var velocity = Vector2(64 * 4,0) setget set_velocity, get_velocity
 
+export var damage = 10
+
 func set_velocity(v):
 	velocity = v
 
@@ -10,6 +12,9 @@ func get_velocity():
 
 func _process(delta):
 	set_position(get_position() + get_velocity().rotated(get_rotation()) * delta)
+
+func get_damage():
+	return damage
 
 func destroy():
 	queue_free()

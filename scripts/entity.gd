@@ -189,5 +189,5 @@ func get_direction():
 	return dir
 	
 func destroy():
-	pass
+	queue_free()
 	
