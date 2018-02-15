@@ -1,8 +1,7 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://nodes/room.tscn" type="PackedScene" id=1]
 [ext_resource path="res://nodes/room_elements/regular_warp_tile.tscn" type="PackedScene" id=2]
-[ext_resource path="res://nodes/entities/player/player.tscn" type="PackedScene" id=3]
 
 [node name="central_hub" index="0" instance=ExtResource( 1 )]
 
@@ -49,9 +48,5 @@ scale = Vector2( -1, 1 )
 _sections_unfolded = [ "Collision", "Pause", "Transform" ]
 destination_room = "res://rooms/double_jump/room_1.tscn"
 arrival_pos_id = "central_hub_arrival"
-
-[node name="player" parent="." index="7" instance=ExtResource( 3 )]
-
-position = Vector2( 640, 800 )
 
 
