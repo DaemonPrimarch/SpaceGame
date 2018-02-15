@@ -33,6 +33,9 @@ func get_room_of_node(node):
 	while(not is_room_loaded(current_room)):
 		current_room = current_room.get_parent()
 		
+		if(current_room.is_in_group("room") and not is_room_loaded(current_room)):
+			add_room_as_loaded(current_room)
+		
 	return current_room
 
 func unload_room(room):
