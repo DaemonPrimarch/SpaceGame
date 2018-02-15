@@ -9,9 +9,11 @@ script = ExtResource( 1 )
 starting_room = "res://rooms/starting_room.tscn"
 arrival_pos_id = "arian"
 
-[node name="player" parent="." index="0" groups=[
-"warpable",
-] instance=ExtResource( 2 )]
+[node name="player" parent="." index="0" instance=ExtResource( 2 )]
+
+[node name="Sprite" parent="player" index="0"]
+
+frame = 16
 
 
 [editable path="player"]

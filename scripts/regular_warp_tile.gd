@@ -17,4 +17,3 @@ func on_change_name():
 		for node in get_children():
 			if(node is Position2D):
 				node.set_arrival_ID(name + "_arrival")
-		
