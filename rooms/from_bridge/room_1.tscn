@@ -22,4 +22,8 @@ scale = Vector2( -1, 1 )
 _sections_unfolded = [ "Collision", "Pause", "Transform" ]
 arrival_pos_id = "room_1_arrival"
 
+[node name="debug_player_spawner" parent="." index="3"]
+
+position = Vector2( 672, 512 )
+
 

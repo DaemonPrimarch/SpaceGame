@@ -13,7 +13,7 @@ func _ready():
 	on_change_name()
 
 func on_change_name():
-	if(Engine.is_editor_hint() and get_destination_room() != null):
+	if(get_destination_room() != null):
 		var name = get_destination_room().right(get_destination_room().find_last("/") + 1)
 		name = name.left(name.find_last(".tscn"))
 		
