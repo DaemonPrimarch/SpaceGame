@@ -33,6 +33,8 @@ func _physics_process(delta):
 
 func enter_state(state, previous):
 	match state:
+		STATES.CROUCHING:
+			set_scale(get_scale() * Vector2(1,0.5))
 		STATES.FALLING:
 			animation_player.play("fall")
 		
@@ -81,6 +83,8 @@ func enter_state(state, previous):
 			set_gravity_enabled(false)
 func leave_state(state, new):
 	match state:
+		STATES.CROUCHING:
+			set_scale(get_scale() * Vector2(1,2))
 		STATES.REGULAR_JUMPING:
 			set_gravity_enabled(true)
 		STATES.DOUBLE_JUMPING:
@@ -218,7 +222,13 @@ func process_state(state, delta):
 			
 				move_and_collide(Vector2(0, dir) * get_climbing_speed() * delta)
 		STATES.CROUCHING:
-			pass
+			if(not Input.is_action_pressed("play_down")):
+				set_state(STATES.STANDING)
+			else:
+				if(Input.is_action_pressed("play_left")):
+					set_flippedH(true)
+				elif(Input.is_action_pressed("play_right")):
+					set_flippedH(false)
 		STATES.PUSHED:
 			if(stunned_timer >= get_stunned_time()):
 				set_state(STATES.FALLING)
@@ -237,6 +247,8 @@ func process_state(state, delta):
 				set_state(STATES.REGULAR_JUMPING)
 			elif(Input.is_action_pressed("play_left") or Input.is_action_pressed("play_right")):
 				set_state(STATES.WALKING)
+			elif(Input.is_action_pressed("play_down")):
+				set_state(STATES.CROUCHING)
 		STATES.WALKING:
 			if(not is_grounded()):
 				set_state(STATES.FALLING)

@@ -31,5 +31,3 @@ func on_body_entered( body ):
 func on_area_entered( area ):
 	if(area.has_method("_on_bullet_hit")):
 		area._on_bullet_hit(self)
-	
-	destroy()
