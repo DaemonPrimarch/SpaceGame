@@ -17,7 +17,7 @@ func _physics_process(delta):
 		if(Input.is_action_pressed("aim_up")):
 			get_weapon().set_position(weapon_top_position.get_position())
 			get_weapon().set_rotation(weapon_top_position.get_rotation())
-		elif(Input.is_action_pressed("aim_down")):
+		elif(Input.is_action_pressed("aim_down") and (not is_grounded())):
 			get_weapon().set_position(weapon_bottom_position.get_position())
 			get_weapon().set_rotation(weapon_bottom_position.get_rotation())
 		elif(Input.is_action_pressed("aim_up_front")):

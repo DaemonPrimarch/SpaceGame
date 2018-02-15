@@ -5,7 +5,7 @@
 [ext_resource path="res://nodes/camera.tscn" type="PackedScene" id=3]
 [ext_resource path="res://nodes/weapons/gun.tscn" type="PackedScene" id=4]
 
-[node name="player" groups=[
+[node name="player" index="0" groups=[
 "warpable",
 ] instance=ExtResource( 1 )]
 
@@ -16,7 +16,6 @@ wall_jump_distance = Vector2( 0, 0 )
 
 [node name="Sprite" parent="." index="0"]
 
-frame = 20
 _sections_unfolded = [ "Animation", "Offset", "Region" ]
 
 [node name="CollisionPolygon2D" parent="." index="1"]
