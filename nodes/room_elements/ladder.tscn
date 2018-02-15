@@ -3,9 +3,10 @@
 [ext_resource path="res://scripts/ladder.gd" type="Script" id=1]
 [ext_resource path="res://icon.png" type="Texture" id=2]
 
-[node name="ladder" type="Node2D"]
+[node name="ladder" type="Node2D" index="0"]
 
 script = ExtResource( 1 )
+length = 64
 
 [node name="Area2D" type="Area2D" parent="." index="0"]
 
@@ -28,6 +29,8 @@ texture = ExtResource( 2 )
 region_enabled = true
 region_rect = Rect2( 0, 0, 64, 64 )
 _sections_unfolded = [ "Region" ]
+
+[connection signal="length_changed" from="." to="." method="_on_ladder_length_changed"]
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
 

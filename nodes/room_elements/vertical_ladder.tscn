@@ -11,7 +11,6 @@ b = Vector2( 32, 0 )
 [node name="vertical_ladder" instance=ExtResource( 1 )]
 
 _sections_unfolded = [ "Transform", "Z Index" ]
-length = 64
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." index="2"]
 
