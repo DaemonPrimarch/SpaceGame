@@ -20,6 +20,7 @@ arrival_pos_id = "room_3_arrival"
 [node name="door_out" parent="." index="2" instance=ExtResource( 2 )]
 
 position = Vector2( 32, 1216 )
+active = false
 destination_room = "res://rooms/from_bridge/room_4.tscn"
 arrival_pos_id = "room_3_arrival"
 
@@ -42,14 +43,15 @@ margin_bottom = 128.0
 [node name="bullet_switch" parent="." index="4" instance=ExtResource( 4 )]
 
 position = Vector2( 1184, 1248 )
+state = false
 
 [node name="debug_player_spawner" parent="." index="5"]
 
 position = Vector2( 128, 512 )
 
-[connection signal="switched_off" from="bullet_switch" to="door_out" method="interact"]
+[connection signal="switched_off" from="bullet_switch" to="door_out" method="set_active" binds= [ false ]]
 
-[connection signal="switched_on" from="bullet_switch" to="door_out" method="interact"]
+[connection signal="switched_on" from="bullet_switch" to="door_out" method="set_active" binds= [ true ]]
 
 
 [editable path="destroyable_block"]
