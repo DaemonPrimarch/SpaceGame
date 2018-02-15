@@ -8,6 +8,8 @@
 
 script = ExtResource( 2 )
 arrival_pos_id = "@@6327_arrival"
+flippedH = false
+flippedV = false
 
 [node name="CollisionPolygon2D" parent="." index="0"]
 
