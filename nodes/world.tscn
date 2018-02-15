@@ -13,9 +13,5 @@ arrival_pos_id = "arian"
 "warpable",
 ] instance=ExtResource( 2 )]
 
-[node name="Sprite" parent="player" index="0"]
-
-frame = 19
-
 
 [editable path="player"]
