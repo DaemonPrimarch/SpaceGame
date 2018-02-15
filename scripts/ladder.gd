@@ -16,25 +16,13 @@ signal children_loaded
 
 func _ready():
 	loaded = true
-	original_sprite_pos = get_node("Sprite").get_position()
 	
 	emit_signal("on_ready")
 	
 func set_length(l):
 	length = l
 
-	if(not loaded):
-		yield(self, "on_ready")
-	var polygon = get_node("Area2D/CollisionPolygon2D").get_polygon()
-
-	for i in range(0, polygon.size()):
-		if(polygon[i].y >= 0):
-			polygon[i] = Vector2(polygon[i].x, l - 32)
-	get_node("Area2D/CollisionPolygon2D").set_polygon(polygon)
-	
-	get_node("Sprite").set_region_rect(Rect2(0,0,64, l))
-	
-	get_node("Sprite").set_position(Vector2(get_node("Sprite").get_position().x, l/2 - 32))
+	emit_signal("length_changed")
 
 func snap_to(node):
 	pass
@@ -49,3 +37,15 @@ func _on_Area2D_body_entered( body ):
 func _on_Area2D_body_exited( body ):
 	if(body.is_in_group("can_climb_ladder")):
 		body.set_ladder(null)
+
+func _on_ladder_length_changed():
+	var polygon = get_node("Area2D/CollisionPolygon2D").get_polygon()
+
+	for i in range(0, polygon.size()):
+		if(polygon[i].y >= 0):
+			polygon[i] = Vector2(polygon[i].x, get_length() - 32)
+	get_node("Area2D/CollisionPolygon2D").set_polygon(polygon)
+	
+	get_node("Sprite").set_region_rect(Rect2(0,0,64, get_length()))
+	
+	get_node("Sprite").set_position(Vector2(get_node("Sprite").get_position().x, get_length()/2 - 32))
