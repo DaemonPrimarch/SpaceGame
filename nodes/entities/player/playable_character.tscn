@@ -162,7 +162,7 @@ __meta__ = {
 
 position = Vector2( -32, 0 )
 build_mode = 0
-polygon = PoolVector2Array( 64, 32, 0, 32, 0, -76, 64, -76 )
+polygon = PoolVector2Array( 62, 32, 2, 32, 2, -80, 62, -80 )
 __meta__ = {
 "_edit_lock_": true
 }

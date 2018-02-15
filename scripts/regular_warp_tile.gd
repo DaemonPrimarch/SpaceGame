@@ -6,6 +6,8 @@ func _ready():
 	var parent_room = self
 	
 	set_arrival_pos_id(get_parent().get_name() + "_arrival")
+	
+	on_change_name()
 
 func on_change_name():
 	if(Engine.is_editor_hint() and get_destination_room() != null):
