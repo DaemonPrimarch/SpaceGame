@@ -22,7 +22,7 @@ tracks/0/keys = {
 "values": [ 7, 6, 5, 4, 2, 1 ]
 }
 
-[node name="enemy_1" type="KinematicBody2D" index="0"]
+[node name="enemy_1" type="KinematicBody2D"]
 
 input_pickable = false
 collision_layer = 1

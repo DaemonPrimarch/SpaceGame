@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://nodes/room_elements/bullet_switch.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scripts/dialog_test.gd" type="Script" id=2]
+
+[node name="bullet_switch" instance=ExtResource( 1 )]
+
+script = ExtResource( 2 )
+state = false
+toggleable = false
+dialog = null
+
+[connection signal="switched_on" from="." to="." method="_on_bullet_switch_switched_on"]
+
+
