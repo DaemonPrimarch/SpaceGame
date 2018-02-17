@@ -12,6 +12,9 @@ func _ready():
 	
 	box.connect("pressed_continue", self, "box_finished_printing")
 	box.connect("option_selected", self, "box_option_selected")
+	
+	get_box().set_displaying(false)
+	displaying = false
 
 func get_current_dialog_element():
 	return current_element
