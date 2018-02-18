@@ -49,3 +49,5 @@ func _on_ladder_length_changed():
 	get_node("Sprite").set_region_rect(Rect2(0,0,64, get_length()))
 	
 	get_node("Sprite").set_position(Vector2(get_node("Sprite").get_position().x, get_length()/2 - 32))
+	
+	get_node("Control/Panel").rect_scale = Vector2(get_node("Control/Panel").rect_scale.x, get_length()/2)
