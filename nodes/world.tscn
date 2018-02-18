@@ -15,14 +15,5 @@ arrival_pos_id = "arian"
 
 frame = 18
 
-[node name="jumping_handler" parent="player" index="14"]
-
-jump_height = 268.8
-
-[node name="wall_jumping_handler" parent="player" index="19"]
-
-wall_jump_height = 128
-angle = -2.35619
-
 
 [editable path="player"]

@@ -9,6 +9,8 @@ func get_handled_state():
 func enter_state(previous_state):
 	.enter_state(previous_state)
 	
+	get_parent().animation_player.play("run")
+	
 func process_state(delta):
 	.process_state(delta)
 	
