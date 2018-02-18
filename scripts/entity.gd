@@ -5,6 +5,10 @@ extends "res://scripts/extended_kinematic_body_2D.gd"
 signal HP_changed
 signal room_entered
 
+signal state_entered(state, previous_state)
+signal state_processed(state, delta)
+signal state_left(state, new_state)
+
 export var HP = 100 setget set_HP, get_HP
 export var max_HP = 100 setget set_max_HP, get_max_HP
 
@@ -56,6 +60,8 @@ func _physics_process(delta):
 			apply_gravity(delta)
 	
 	process_state(get_state(), delta)
+	
+	emit_signal("state_processed", current_state, delta)
 	
 func push(vector):
 	if(move_and_collide(vector) != null):
@@ -134,7 +140,9 @@ func get_state():
 	return current_state
 	
 func set_state(state):
+	emit_signal("state_left", current_state, state)
 	leave_state(current_state, state)
+	emit_signal("state_entered", state, current_state)
 	enter_state(state, current_state)
 	current_state = state
 	

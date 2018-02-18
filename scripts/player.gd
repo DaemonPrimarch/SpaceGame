@@ -43,12 +43,13 @@ func enter_state(state, previous):
 			
 			animation_player.play("idle")
 		STATES.REGULAR_JUMPING:
-			set_gravity_enabled(false)
-			jumping_timer = 0
-			
-			set_velocity(Vector2(0,1) * calculate_starting_velocity_y(get_jump_height(), get_gravity_vector().y))
-			
-			animation_player.play("jump")
+#			set_gravity_enabled(false)
+#			jumping_timer = 0
+#
+#			set_velocity(Vector2(0,1) * calculate_starting_velocity_y(get_jump_height(), get_gravity_vector().y))
+#
+#			animation_player.play("jump")
+			pass
 		STATES.DOUBLE_JUMPING:
 			set_gravity_enabled(false)
 			double_jumping_timer = 0
@@ -86,7 +87,8 @@ func leave_state(state, new):
 		STATES.CROUCHING:
 			set_scale(get_scale() * Vector2(1,2))
 		STATES.REGULAR_JUMPING:
-			set_gravity_enabled(true)
+#			set_gravity_enabled(true)
+			pass
 		STATES.DOUBLE_JUMPING:
 			double_jumped = true
 			
@@ -103,31 +105,32 @@ func leave_state(state, new):
 func process_state(state, delta):
 	match state:
 		STATES.REGULAR_JUMPING:
-			if(not Input.is_action_pressed("jump") or jumping_timer > calculate_max_airtime(get_jump_height(), get_gravity_vector().y)):
-				set_state(STATES.FALLING)
-			elif(Input.is_action_pressed("play_up") and is_inside_ladder()):
-				set_state(STATES.CLIMBING)
-			else:
-				set_velocity(get_velocity() + get_gravity_vector() * delta)
-				
-				move_and_collide(get_velocity() * delta)
-				
-				var pressed = 0
-				
-				if(Input.is_action_pressed("play_left")):
-					set_flippedH(true)
-					pressed = 1
-				elif(Input.is_action_pressed("play_right")):
-					set_flippedH(false)
-					pressed = 1
-					
-				var collision_info = move_and_collide(Vector2(1,0) * get_direction() * pressed * delta * get_movement_speed())
-				
-				if(collision_info != null):
-					set_state(STATES.WALL_SLIDING)
-					set_wall_slide_side(get_direction().x)
-				
-				jumping_timer += delta
+			pass
+#			if(not Input.is_action_pressed("jump") or jumping_timer > calculate_max_airtime(get_jump_height(), get_gravity_vector().y)):
+#				set_state(STATES.FALLING)
+#			elif(Input.is_action_pressed("play_up") and is_inside_ladder()):
+#				set_state(STATES.CLIMBING)
+#			else:
+#				set_velocity(get_velocity() + get_gravity_vector() * delta)
+#
+#				move_and_collide(get_velocity() * delta)
+#
+#				var pressed = 0
+#
+#				if(Input.is_action_pressed("play_left")):
+#					set_flippedH(true)
+#					pressed = 1
+#				elif(Input.is_action_pressed("play_right")):
+#					set_flippedH(false)
+#					pressed = 1
+#
+#				var collision_info = move_and_collide(Vector2(1,0) * get_direction() * pressed * delta * get_movement_speed())
+#
+#				if(collision_info != null):
+#					set_state(STATES.WALL_SLIDING)
+#					set_wall_slide_side(get_direction().x)
+#
+#				jumping_timer += delta
 		STATES.DOUBLE_JUMPING:
 			if(not Input.is_action_pressed("jump") or double_jumping_timer > calculate_max_airtime(get_double_jump_height(), get_gravity_vector().y)):
 				set_state(STATES.FALLING)

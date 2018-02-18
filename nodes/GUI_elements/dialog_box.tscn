@@ -3,7 +3,7 @@
 [ext_resource path="res://scripts/dialog_box.gd" type="Script" id=1]
 [ext_resource path="res://nodes/GUI_elements/selectable_option.tscn" type="PackedScene" id=2]
 
-[node name="dialog_box" type="Control" index="0"]
+[node name="dialog_box" type="Control"]
 
 anchor_left = 0.0
 anchor_top = 0.0
