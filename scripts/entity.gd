@@ -59,8 +59,6 @@ func _physics_process(delta):
 		else:
 			apply_gravity(delta)
 	
-	process_state(get_state(), delta)
-	
 	emit_signal("state_processed", current_state, delta)
 	
 func push(vector):
@@ -141,9 +139,7 @@ func get_state():
 	
 func set_state(state):
 	emit_signal("state_left", current_state, state)
-	leave_state(current_state, state)
 	emit_signal("state_entered", state, current_state)
-	enter_state(state, current_state)
 	current_state = state
 	
 	if(has_debug_state_label()):
@@ -151,15 +147,6 @@ func set_state(state):
 
 func add_state(state):
 	STATES[state] = state
-
-func process_state(state, delta):
-	pass
-	
-func enter_state(state, previous_state):
-	pass
-	
-func leave_state(state, previous_state):
-	pass
 
 func is_flippedH():
 	return flippedH
