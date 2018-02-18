@@ -25,4 +25,8 @@ _sections_unfolded = [ "Collision", "Pause", "Transform" ]
 destination_room = "res://rooms/central_hub.tscn"
 arrival_pos_id = "room_1_arrival"
 
+[node name="debug_player_spawner" parent="." index="3"]
+
+position = Vector2( 1056, 448 )
+
 
