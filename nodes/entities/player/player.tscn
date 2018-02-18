@@ -20,10 +20,13 @@
 
 script = ExtResource( 2 )
 _sections_unfolded = [ "Pause", "Transform" ]
+movement_speed = 332
 debug_state_label = NodePath("Label")
 debug_grounded_label = NodePath("Label2")
 gravity_enabled = true
+gravity_vector = Vector2( 0, 1216 )
 weapon_path = NodePath("gun")
+jump_height = 288
 wall_jump_distance = Vector2( 0, 0 )
 
 [node name="Sprite" parent="." index="0"]
@@ -103,6 +106,8 @@ collision_mask = 1
 
 [node name="jumping_handler" parent="." index="14" instance=ExtResource( 5 )]
 
+jump_height = 268.8
+
 [node name="walking_handler" parent="." index="15" instance=ExtResource( 6 )]
 
 [node name="standing_handler" parent="." index="16" instance=ExtResource( 7 )]
@@ -112,6 +117,9 @@ collision_mask = 1
 [node name="double_jumping_handler" parent="." index="18" instance=ExtResource( 9 )]
 
 [node name="wall_jumping_handler" parent="." index="19" instance=ExtResource( 10 )]
+
+wall_jump_height = 128
+angle = -2.35619
 
 [node name="falling_handler" parent="." index="20" instance=ExtResource( 11 )]
 

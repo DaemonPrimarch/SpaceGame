@@ -18,7 +18,7 @@ export(NodePath) var debug_state_label
 export(NodePath) var debug_grounded_label
 
 export var gravity_enabled = false setget set_gravity_enabled, is_gravity_enabled
-export var gravity_vector = Vector2(0, 64 * 6)
+export var gravity_vector = Vector2(0, 64 * 4)
 
 export var flippedH = false setget set_flippedH, is_flippedH
 export var flippedV = false setget set_flippedV, is_flippedV

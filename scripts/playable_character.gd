@@ -98,6 +98,7 @@ func calculate_max_airtime(height, acceleration_y):
 	
 	return (-1 + sqrt(D))/acceleration_y
 
+
 func set_velocity(v):
 	velocity = v
 

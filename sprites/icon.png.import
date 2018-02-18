@@ -7,7 +7,7 @@ path="res://.import/icon.png-82ea131e750a89467e27b5ff9b11ce77.stex"
 [deps]
 
 source_file="res://sprites/icon.png"
-source_md5="86aa1d9e8afaf5ec9cabb7e89945c7a8"
+source_md5="b4caf6286e62fe95dbb312ca0bf24197"
 
 dest_files=[ "res://.import/icon.png-82ea131e750a89467e27b5ff9b11ce77.stex" ]
 dest_md5="de268f1fefb026236e22a224989920b8"

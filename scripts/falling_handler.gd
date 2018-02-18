@@ -26,11 +26,13 @@ func process_state(delta):
 		if(Input.is_action_pressed("play_left")):
 			get_parent().set_flippedH(true)
 			pressed = 1
+			get_parent().set_velocity(Vector2(0,get_parent().get_velocity().y))
 		elif(Input.is_action_pressed("play_right")):
 			get_parent().set_flippedH(false)
 			pressed = 1
+			get_parent().set_velocity(Vector2(0,get_parent().get_velocity().y))
 					
-		var collision_info = get_parent().move_and_collide(Vector2(1,0) * get_parent().get_direction() * delta * get_parent().get_movement_speed() * pressed)
+		var collision_info = get_parent().move_and_collide(Vector2(1,0) * get_parent().get_direction() * delta * (get_parent().get_velocity().x + get_parent().get_movement_speed() * pressed))
 				
 		if(collision_info != null):
 			get_parent().set_state(get_parent().STATES.WALL_SLIDING)

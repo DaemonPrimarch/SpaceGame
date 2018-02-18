@@ -36,19 +36,24 @@ func process_state(delta):
 	else:
 		get_parent().set_velocity(get_parent().get_velocity() + get_parent().get_gravity_vector() * delta)
 				
-		get_parent().move_and_collide(get_parent().get_velocity() * delta)
-				
-		var pressed = 0
-				
-		if(Input.is_action_pressed("play_left")):
-			get_parent().set_flippedH(true)
-			pressed = 1
-		elif(Input.is_action_pressed("play_right")):
-			get_parent().set_flippedH(false)
-			pressed = 1
+		var vertical_collision_info  = get_parent().move_and_collide(get_parent().get_velocity() * delta)
+		
+		if (vertical_collision_info != null):
+			get_parent().set_state(get_parent().STATES.FALLING)
+		
+		else:
 					
-		var collision_info = get_parent().move_and_collide(Vector2(1,0) * get_parent().get_direction() * delta * pressed * get_parent().get_movement_speed())
-				
-		if(collision_info != null):
-			get_parent().set_state(get_parent().STATES.WALL_SLIDING)
-			get_parent().set_wall_slide_side(get_parent().get_direction().x)
+			var pressed = 0
+					
+			if(Input.is_action_pressed("play_left")):
+				get_parent().set_flippedH(true)
+				pressed = 1
+			elif(Input.is_action_pressed("play_right")):
+				get_parent().set_flippedH(false)
+				pressed = 1
+						
+			var horizontal_collision_info = get_parent().move_and_collide(Vector2(1,0) * get_parent().get_direction() * delta * pressed * get_parent().get_movement_speed())
+					
+			if(horizontal_collision_info != null):
+				get_parent().set_state(get_parent().STATES.WALL_SLIDING)
+				get_parent().set_wall_slide_side(get_parent().get_direction().x)

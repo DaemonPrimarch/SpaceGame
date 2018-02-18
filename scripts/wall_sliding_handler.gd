@@ -6,6 +6,8 @@ func get_handled_state():
 func enter_state(previous_state):
 	.enter_state(previous_state)
 	
+	get_parent().set_velocity(Vector2(0, get_parent().get_velocity().y))
+	
 func leave_state(new_state):
 	.leave_state(new_state)
 	
