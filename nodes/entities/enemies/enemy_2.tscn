@@ -1,0 +1,112 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://scripts/enemy_2.gd" type="Script" id=1]
+[ext_resource path="res://scripts/enemy_idle_handler.gd" type="Script" id=2]
+[ext_resource path="res://scripts/enemy_charging_handler.gd" type="Script" id=3]
+[ext_resource path="res://scripts/enemy_stunned_handler.gd" type="Script" id=4]
+
+[node name="enemy_2" type="KinematicBody2D" index="0"]
+
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+collision/safe_margin = 0.08
+script = ExtResource( 1 )
+max_slope_angle = 1.5708
+HP = 100
+max_HP = 100
+movement_speed = 256
+debug_state_label = null
+debug_grounded_label = null
+gravity_enabled = false
+gravity_vector = Vector2( 0, 256 )
+flippedH = false
+flippedV = false
+charging_speed = 384
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." index="0"]
+
+build_mode = 0
+polygon = PoolVector2Array( 32, 32, 32, -32, -32, -32, -32, 32 )
+
+[node name="Area2D" type="Area2D" parent="." index="1"]
+
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D" index="0"]
+
+build_mode = 0
+polygon = PoolVector2Array( -32, -32, 32, -32, 32, 32, -32, 32 )
+
+[node name="Panel" type="Panel" parent="." index="2"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = -32.0
+margin_top = -32.0
+margin_right = 32.0
+margin_bottom = 32.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+
+[node name="Label" type="Label" parent="." index="3"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = -32.0
+margin_top = -32.0
+margin_right = 32.0
+margin_bottom = 32.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+text = "enemy_2"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="idle_handler" type="Node" parent="." index="4"]
+
+script = ExtResource( 2 )
+
+[node name="charging_handler" type="Node" parent="." index="5"]
+
+script = ExtResource( 3 )
+
+[node name="stunned_handler" type="Node" parent="." index="6"]
+
+script = ExtResource( 4 )
+
+[node name="player_detector" type="RayCast2D" parent="." index="7"]
+
+enabled = true
+exclude_parent = true
+cast_to = Vector2( 512, 0 )
+collision_mask = 1
+
+[node name="ground_detector" type="RayCast2D" parent="." index="8"]
+
+position = Vector2( 32, 0 )
+enabled = true
+exclude_parent = true
+cast_to = Vector2( 0, 60 )
+collision_mask = 1
+
+
