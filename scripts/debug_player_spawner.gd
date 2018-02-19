@@ -19,5 +19,7 @@ func load_player():
 		
 		get_parent().add_child(new_player)
 		
-		player.emit_signal("room_entered")
+		new_player.emit_signal("room_entered")
+		get_parent().emit_signal("player_entered", new_player)
+		print("TEST 2")
 		
