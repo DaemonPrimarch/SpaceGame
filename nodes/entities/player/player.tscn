@@ -15,11 +15,13 @@
 [ext_resource path="res://nodes/state_handlers/wall_sliding_handler.tscn" type="PackedScene" id=13]
 
 [node name="player" groups=[
+"player",
 "warpable",
 ] instance=ExtResource( 1 )]
 
+collision_layer = 2
 script = ExtResource( 2 )
-_sections_unfolded = [ "Pause", "Transform" ]
+_sections_unfolded = [ "Collision", "Pause", "Transform" ]
 movement_speed = 332
 debug_state_label = NodePath("Label")
 debug_grounded_label = NodePath("Label2")

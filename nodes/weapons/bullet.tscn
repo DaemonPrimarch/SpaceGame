@@ -8,17 +8,19 @@
 custom_solver_bias = 0.0
 radius = 10.0
 
-[node name="bullet" type="Area2D"]
+[node name="bullet" type="Area2D" index="0"]
 
 input_pickable = false
 gravity_vec = Vector2( 0, 1 )
 gravity = 98.0
 linear_damp = -1.0
 angular_damp = -1.0
+collision_layer = 4
+collision_mask = 0
 audio_bus_override = false
 audio_bus_name = "Master"
 script = ExtResource( 1 )
-_sections_unfolded = [ "Transform" ]
+_sections_unfolded = [ "Collision", "Transform" ]
 velocity = Vector2( 1024, 0 )
 damage = 10
 
