@@ -141,9 +141,7 @@ func can_wall_slide_on_node(node):
 	else:
 		return node.is_in_group("wall_slideable")
 
-func can_wall_slide():
-	print(is_in_no_wall_slide_area())
-	
+func can_wall_slide():	
 	return wall_jump_enabled and wall_slide_detector_up.is_colliding() and wall_slide_detector_down.is_colliding() and can_wall_slide_on_node(wall_slide_detector_down.get_collider()) and can_wall_slide_on_node(wall_slide_detector_up.get_collider()) and not is_in_no_wall_slide_area()
 
 func set_wall_slide_side(side):
