@@ -16,6 +16,8 @@ export var stunned_time = 1
 
 export var climbing_speed = 64 * 2 
 
+var inventory = {}
+
 var jumping_timer = 0
 var double_jumping_timer = 0
 var wall_jumping_timer = 0
@@ -163,3 +165,12 @@ func get_last_safe_position():
 	
 func set_last_safe_position(v):
 	last_safe_position = v
+
+func add_to_inventory(key):
+	inventory[key] = 1
+
+func has_in_inventory(key):
+	return (key in inventory)
+
+func remove_from_inventory(key):
+	inventory.erase(key)

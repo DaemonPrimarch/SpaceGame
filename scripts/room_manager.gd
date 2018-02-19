@@ -74,6 +74,7 @@ func warp_node_to_room(node, room, arrival_pos_id):
 	loaded_room.add_child(node)
 	
 	node.emit_signal("room_entered")
+	loaded_room.emit_signal("player_entered", node)
 	
 	#loaded_room.set_position(Vector2(0,0))
 	
