@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=2]
 
-[sub_resource type="Curve2D" id=3]
+[sub_resource type="Curve2D" id=1]
 
 bake_interval = 5.0
 _data = {
@@ -22,16 +22,21 @@ func _ready():
 
 func _physics_process(delta):
 	get_parent().set_offset(get_parent().get_offset() + (get_movement_speed()*delta))
+
+
+func _on_object_hit( body ):
+	pass # replace with function body
 "
 
-[node name="emeny_3_system" type="Node2D" index="0"]
+[node name="enemy_3_system" type="Node2D" index="0"]
 
 [node name="path" type="Path2D" parent="." index="0"]
 
-curve = SubResource( 3 )
+curve = SubResource( 1 )
 
 [node name="path_follower" type="PathFollow2D" parent="path" index="0"]
 
+position = Vector2( -32, -32 )
 offset = 0.0
 h_offset = 0.0
 v_offset = 0.0
@@ -44,11 +49,11 @@ _sections_unfolded = [ "Transform" ]
 [node name="enemy_3" type="KinematicBody2D" parent="path/path_follower" index="0"]
 
 input_pickable = false
-collision_layer = 1
-collision_mask = 1
+collision_layer = 0
+collision_mask = 5
 collision/safe_margin = 0.08
 script = SubResource( 2 )
-_sections_unfolded = [ "Transform" ]
+_sections_unfolded = [ "Collision", "Transform", "collision" ]
 __meta__ = {
 "_edit_group_": true
 }
@@ -62,6 +67,7 @@ gravity_enabled = false
 gravity_vector = Vector2( 0, 256 )
 flippedH = false
 flippedV = false
+damage = 1
 
 [node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="path/path_follower/enemy_3" index="0"]
 
@@ -75,8 +81,11 @@ gravity_vec = Vector2( 0, 1 )
 gravity = 98.0
 linear_damp = 0.1
 angular_damp = 1.0
+collision_layer = 0
+collision_mask = 2
 audio_bus_override = false
 audio_bus_name = "Master"
+_sections_unfolded = [ "Collision" ]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="path/path_follower/enemy_3/Area2D" index="0"]
 
@@ -119,9 +128,11 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
-text = "ENEMY 3"
+text = "enemy_3"
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
+
+[connection signal="body_entered" from="path/path_follower/enemy_3/Area2D" to="path/path_follower/enemy_3" method="_on_object_hit"]
 
 
