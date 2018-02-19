@@ -33,6 +33,7 @@ var velocity = Vector2()
 var acceleration = Vector2()
 
 var in_no_respawn_area = false
+var in_no_wall_slide = false
 
 var last_safe_position = Vector2()
 
@@ -139,7 +140,9 @@ func can_wall_slide_on_node(node):
 		return node.is_in_group("wall_slideable")
 
 func can_wall_slide():
-	return wall_jump_enabled and wall_slide_detector_up.is_colliding() and wall_slide_detector_down.is_colliding() and can_wall_slide_on_node(wall_slide_detector_down.get_collider()) and can_wall_slide_on_node(wall_slide_detector_up.get_collider())
+	print(is_in_no_wall_slide_area())
+	
+	return wall_jump_enabled and wall_slide_detector_up.is_colliding() and wall_slide_detector_down.is_colliding() and can_wall_slide_on_node(wall_slide_detector_down.get_collider()) and can_wall_slide_on_node(wall_slide_detector_up.get_collider()) and not is_in_no_wall_slide_area()
 
 func set_wall_slide_side(side):
 	wall_slide_side = side
@@ -163,6 +166,12 @@ func crush():
 	.crush()
 	
 	respawn()
+
+func is_in_no_wall_slide_area():
+	return in_no_wall_slide
+
+func set_in_no_wall_slide_area(val):
+	in_no_wall_slide = val
 
 func is_in_no_respawn_area():
 	return in_no_respawn_area

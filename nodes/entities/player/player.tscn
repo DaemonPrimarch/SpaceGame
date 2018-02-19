@@ -14,9 +14,9 @@
 [ext_resource path="res://nodes/state_handlers/climbing_handler.tscn" type="PackedScene" id=12]
 [ext_resource path="res://nodes/state_handlers/wall_sliding_handler.tscn" type="PackedScene" id=13]
 
-[node name="player" groups=[
-"warpable",
+[node name="player" index="0" groups=[
 "player",
+"warpable",
 ] instance=ExtResource( 1 )]
 
 collision_layer = 0
