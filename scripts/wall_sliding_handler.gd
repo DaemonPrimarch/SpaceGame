@@ -11,13 +11,15 @@ func enter_state(previous_state):
 func leave_state(new_state):
 	.leave_state(new_state)
 	
+func can_continue():
+	return get_parent().wall_slide_detector_up.is_colliding() and get_parent().can_wall_slide_on_node(get_parent().wall_slide_detector_up.get_collider())
+	
 func process_state(delta):
 	.process_state(delta)
 	
 	if(get_parent().is_grounded()):
 		get_parent().set_state(get_parent().STATES.STANDING)
-	elif(not get_parent().test_move(get_parent().get_global_transform(), Vector2(1, 0) * delta * get_parent().get_movement_speed() * get_parent().get_wall_slide_side())):
-		print("SIDE: " + String(get_parent().get_wall_slide_side()))
+	elif(not can_continue()):
 		get_parent().set_state(get_parent().STATES.FALLING)
 	elif(Input.is_action_just_pressed("jump") and get_parent().can_wall_jump()):
 		get_parent().set_state(get_parent().STATES.WALL_JUMPING)

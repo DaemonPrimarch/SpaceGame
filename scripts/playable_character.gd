@@ -45,6 +45,9 @@ onready var weapon_bottom_front_position = get_node("weapon_bottom_front")
 onready var weapon_bottom_position = get_node("weapon_bottom")
 onready var animation_player = get_node("AnimationPlayer")
 
+onready var wall_slide_detector_up = get_node("wall_slide_detector_up")
+onready var wall_slide_detector_down = get_node("wall_slide_detector_down")
+
 func _ready():
 	add_state("REGULAR_JUMPING")
 	add_state("DOUBLE_JUMPING")
@@ -130,6 +133,15 @@ func can_double_jump():
 	
 func can_wall_jump():
 	return wall_jump_enabled
+
+func can_wall_slide_on_node(node):
+	if(node is TileMap):
+		return true
+	else:
+		return node.is_in_group("wall_slideable")
+
+func can_wall_slide():
+	return wall_jump_enabled and wall_slide_detector_up.is_colliding() and wall_slide_detector_down.is_colliding() and can_wall_slide_on_node(wall_slide_detector_down.get_collider()) and can_wall_slide_on_node(wall_slide_detector_up.get_collider())
 
 func set_wall_slide_side(side):
 	wall_slide_side = side

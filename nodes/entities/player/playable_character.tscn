@@ -215,4 +215,20 @@ exclude_parent = true
 cast_to = Vector2( 0, 5 )
 collision_mask = 1
 
+[node name="wall_slide_detector_down" type="RayCast2D" parent="." index="9"]
+
+position = Vector2( 0, 24 )
+enabled = true
+exclude_parent = true
+cast_to = Vector2( 64, 0 )
+collision_mask = 1
+
+[node name="wall_slide_detector_up" type="RayCast2D" parent="." index="10"]
+
+position = Vector2( 0, -72 )
+enabled = true
+exclude_parent = true
+cast_to = Vector2( 64, 0 )
+collision_mask = 1
+
 

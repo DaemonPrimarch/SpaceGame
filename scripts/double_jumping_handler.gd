@@ -54,6 +54,6 @@ func process_state(delta):
 						
 			var horizontal_collision_info = get_parent().move_and_collide(Vector2(1,0) * get_parent().get_direction() * delta * pressed * get_parent().get_movement_speed())
 					
-			if(horizontal_collision_info != null):
+			if(horizontal_collision_info != null and get_parent().can_wall_slide()):
 				get_parent().set_state(get_parent().STATES.WALL_SLIDING)
 				get_parent().set_wall_slide_side(get_parent().get_direction().x)
