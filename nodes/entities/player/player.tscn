@@ -16,18 +16,20 @@
 
 [node name="player" groups=[
 "warpable",
+"player",
 ] instance=ExtResource( 1 )]
 
+collision_layer = 0
+collision_mask = 3
 script = ExtResource( 2 )
-_sections_unfolded = [ "Pause", "Transform" ]
-movement_speed = 332
+_sections_unfolded = [ "Collision", "Pause", "Transform" ]
+movement_speed = 327.68
 debug_state_label = NodePath("Label")
 debug_grounded_label = NodePath("Label2")
 gravity_enabled = true
-gravity_vector = Vector2( 0, 1216 )
+gravity_vector = Vector2( 0, 1152 )
+invulnerability_time = 1
 weapon_path = NodePath("gun")
-jump_height = 288
-wall_jump_distance = Vector2( 0, 0 )
 
 [node name="Sprite" parent="." index="0"]
 

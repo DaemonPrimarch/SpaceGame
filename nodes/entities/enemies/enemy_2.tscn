@@ -5,24 +5,29 @@
 [ext_resource path="res://scripts/enemy_charging_handler.gd" type="Script" id=3]
 [ext_resource path="res://scripts/enemy_stunned_handler.gd" type="Script" id=4]
 
-[node name="enemy_2" type="KinematicBody2D" index="0"]
+[node name="enemy_2" type="KinematicBody2D"]
 
 input_pickable = false
-collision_layer = 1
-collision_mask = 1
+collision_layer = 0
+collision_mask = 5
 collision/safe_margin = 0.08
 script = ExtResource( 1 )
+_sections_unfolded = [ "Collision", "collision" ]
 max_slope_angle = 1.5708
 HP = 100
 max_HP = 100
-movement_speed = 256
+movement_speed = 327.68
 debug_state_label = null
 debug_grounded_label = null
 gravity_enabled = false
-gravity_vector = Vector2( 0, 256 )
+gravity_vector = Vector2( 0, 1152 )
 flippedH = false
 flippedV = false
+invulnerability_time = 1
+damage = 1
 charging_speed = 384
+charging_time = 3
+stunned_time = 2
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." index="0"]
 
@@ -36,8 +41,11 @@ gravity_vec = Vector2( 0, 1 )
 gravity = 98.0
 linear_damp = 0.1
 angular_damp = 1.0
+collision_layer = 2
+collision_mask = 0
 audio_bus_override = false
 audio_bus_name = "Master"
+_sections_unfolded = [ "Collision" ]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D" index="0"]
 
@@ -99,7 +107,7 @@ script = ExtResource( 4 )
 enabled = true
 exclude_parent = true
 cast_to = Vector2( 512, 0 )
-collision_mask = 1
+collision_mask = 2
 
 [node name="ground_detector" type="RayCast2D" parent="." index="8"]
 
@@ -108,5 +116,7 @@ enabled = true
 exclude_parent = true
 cast_to = Vector2( 0, 60 )
 collision_mask = 1
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_object_hit"]
 
 
