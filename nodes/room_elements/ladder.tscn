@@ -3,7 +3,7 @@
 [ext_resource path="res://scripts/ladder.gd" type="Script" id=1]
 [ext_resource path="res://icon.png" type="Texture" id=2]
 
-[node name="ladder" type="Node2D" index="0"]
+[node name="ladder" type="Node2D"]
 
 script = ExtResource( 1 )
 length = 64
@@ -78,7 +78,7 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
-text = "LADDER"
+text = "Ladder"
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1

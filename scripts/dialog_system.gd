@@ -16,6 +16,14 @@ func _ready():
 	get_box().set_displaying(false)
 	displaying = false
 
+func queue_tree_from_json(path):
+	var file = File.new()
+	file.open(path, file.READ)
+	var text = file.get_as_text()
+	file.close()
+	
+	queue_tree(parse_json(text))
+
 func get_current_dialog_element():
 	return current_element
 
@@ -86,7 +94,5 @@ func box_option_selected(option):
 	display_current_element()
 	
 func display_current_element():
-	print("Display current element")
-	
 	get_box().start_dialog()
 	
