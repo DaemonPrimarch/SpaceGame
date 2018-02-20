@@ -48,16 +48,7 @@ position = Vector2( 704, 416 )
 [node name="warp_tile2" parent="." index="7" instance=ExtResource( 7 )]
 
 position = Vector2( 1248, 512 )
-input_pickable = true
-gravity_vec = Vector2( 0, 1 )
-gravity = 98.0
-linear_damp = 0.1
-angular_damp = 1.0
-audio_bus_override = false
-audio_bus_name = "Master"
-_sections_unfolded = [ "Collision", "Pause" ]
 active = false
-destination_room = null
 arrival_pos_id = "starting_room_arrival"
 flippedH = true
 
@@ -71,6 +62,10 @@ dialog = "res://JSONTEST.json"
 [node name="emeny_3_system" parent="." index="9" instance=ExtResource( 9 )]
 
 position = Vector2( 448, 256 )
+
+[node name="CanvasModulate" parent="." index="10"]
+
+color = Color( 1, 1, 1, 1 )
 
 
 [editable path="warp_tile"]

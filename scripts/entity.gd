@@ -43,7 +43,6 @@ func _ready():
 		
 	if(not Engine.is_editor_hint()):
 		connect("room_entered", self, "_room_enter")
-		emit_signal("room_entered")
 	
 	invulnerability_timer = Timer.new()
 	invulnerability_timer.connect("timeout",self,"_on_invulnerability_timer_timeout") 

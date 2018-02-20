@@ -28,7 +28,6 @@ debug_state_label = NodePath("Label")
 debug_grounded_label = NodePath("Label2")
 gravity_enabled = true
 gravity_vector = Vector2( 0, 1152 )
-invulnerability_time = 1
 weapon_path = NodePath("gun")
 
 [node name="Sprite" parent="." index="0"]

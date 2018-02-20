@@ -193,3 +193,9 @@ func has_in_inventory(key):
 
 func remove_from_inventory(key):
 	inventory.erase(key)
+
+func _on_room_entered():
+	if(get_node("/root/ROOM_MANAGER").get_room_of_node(self).is_dark()):
+		get_node("light").enabled = true
+	else:
+		get_node("light").enabled = false
