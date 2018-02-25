@@ -31,6 +31,8 @@ func get_room_of_node(node):
 	var current_room = node
 	
 	while(not is_room_loaded(current_room)):
+		print("Attemting to check ", current_room.get_name())
+		
 		current_room = current_room.get_parent()
 		
 		if(current_room.is_in_group("room") and not is_room_loaded(current_room)):
@@ -74,6 +76,7 @@ func warp_node_to_room(node, room, arrival_pos_id):
 	loaded_room.add_child(node)
 	
 	node.emit_signal("room_entered")
+	loaded_room.emit_signal("player_entered", node)
 	
 	#loaded_room.set_position(Vector2(0,0))
 	

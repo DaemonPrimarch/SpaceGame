@@ -7,7 +7,7 @@
 
 input_pickable = false
 collision_layer = 1
-collision_mask = 1
+collision_mask = 0
 collision/safe_margin = 0.08
 script = ExtResource( 1 )
 _sections_unfolded = [ "Collision", "Pickable", "Transform", "Visibility", "collision" ]
@@ -33,13 +33,15 @@ gravity_vec = Vector2( 0, 1 )
 gravity = 98.0
 linear_damp = 0.1
 angular_damp = 1.0
+collision_mask = 0
 audio_bus_override = false
 audio_bus_name = "Master"
+_sections_unfolded = [ "Collision" ]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="standing_area" index="0"]
 
 build_mode = 0
-polygon = PoolVector2Array( -96, -32, -97, -40, 96, -40, 96, -32 )
+polygon = PoolVector2Array( -100, -32, -100, -40, 100, -40, 100, -32 )
 
 [connection signal="collided" from="." to="." method="_on_platform_collided"]
 

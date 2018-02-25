@@ -22,33 +22,36 @@ tracks/0/keys = {
 "values": [ 7, 6, 5, 4, 2, 1 ]
 }
 
-[node name="enemy_1" type="KinematicBody2D" index="0"]
+[node name="enemy_1" type="KinematicBody2D"]
 
 input_pickable = false
-collision_layer = 1
-collision_mask = 1
+collision_layer = 0
+collision_mask = 5
 collision/safe_margin = 0.08
 script = ExtResource( 1 )
-_sections_unfolded = [ "Transform" ]
+_sections_unfolded = [ "Collision", "Transform" ]
 max_slope_angle = 1.5708
 HP = 100
 max_HP = 100
-movement_speed = 192
+movement_speed = 256
 debug_state_label = null
 debug_grounded_label = null
 gravity_enabled = true
-gravity_vector = Vector2( 0, 384 )
+gravity_vector = Vector2( 0, 256 )
 flippedH = false
 flippedV = false
+invulnerability_time = 1
+damage = 1
 
 [node name="Area2D" type="Area2D" parent="." index="0"]
 
+editor/display_folded = true
 input_pickable = true
 gravity_vec = Vector2( 0, 1 )
 gravity = 98.0
 linear_damp = 0.1
 angular_damp = 1.0
-collision_layer = 0
+collision_layer = 2
 collision_mask = 0
 audio_bus_override = false
 audio_bus_name = "Master"
@@ -104,5 +107,45 @@ enabled = false
 exclude_parent = true
 cast_to = Vector2( 0, 50 )
 collision_mask = 1
+
+[node name="Panel" type="Panel" parent="." index="7"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = -32.0
+margin_top = -32.0
+margin_right = 32.0
+margin_bottom = 32.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+
+[node name="Label" type="Label" parent="." index="8"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = -32.0
+margin_top = -32.0
+margin_right = 32.0
+margin_bottom = 32.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+text = "Enemy_1"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_object_hit"]
 
 

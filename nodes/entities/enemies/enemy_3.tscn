@@ -1,0 +1,139 @@
+[gd_scene load_steps=3 format=2]
+
+[sub_resource type="Curve2D" id=1]
+
+bake_interval = 5.0
+_data = {
+"points": PoolVector2Array( 0, 0, 0, 0, -32, -32, 0, 0, 0, 0, 32, -32, 0, 0, 0, 0, 32, 32, 0, 0, 0, 0, -32, 32, 0, 0, 0, 0, -32, -32 )
+}
+
+[sub_resource type="GDScript" id=2]
+
+script/source = "extends \"res://scripts/enemy.gd\"
+
+# class member variables go here, for example:
+# var a = 2
+# var b = \"textvar\"
+
+func _ready():
+	# Called every time the node is added to the scene.
+	# Initialization here
+	pass
+
+func _physics_process(delta):
+	get_parent().set_offset(get_parent().get_offset() + (get_movement_speed()*delta))
+
+
+func _on_object_hit( body ):
+	pass # replace with function body
+"
+
+[node name="enemy_3_system" type="Node2D"]
+
+[node name="path" type="Path2D" parent="." index="0"]
+
+curve = SubResource( 1 )
+
+[node name="path_follower" type="PathFollow2D" parent="path" index="0"]
+
+position = Vector2( -32, -32 )
+offset = 0.0
+h_offset = 0.0
+v_offset = 0.0
+rotate = false
+cubic_interp = true
+loop = true
+lookahead = 4.0
+_sections_unfolded = [ "Transform" ]
+
+[node name="enemy_3" type="KinematicBody2D" parent="path/path_follower" index="0"]
+
+input_pickable = false
+collision_layer = 0
+collision_mask = 5
+collision/safe_margin = 0.08
+script = SubResource( 2 )
+_sections_unfolded = [ "Collision", "Transform", "collision" ]
+__meta__ = {
+"_edit_group_": true
+}
+max_slope_angle = 1.5708
+HP = 100
+max_HP = 100
+movement_speed = 327.68
+debug_state_label = null
+debug_grounded_label = null
+gravity_enabled = false
+gravity_vector = Vector2( 0, 1152 )
+flippedH = false
+flippedV = false
+invulnerability_time = 1
+damage = 1
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="path/path_follower/enemy_3" index="0"]
+
+build_mode = 0
+polygon = PoolVector2Array( -32, -32, 32, -32, 32, 32, -32, 32 )
+
+[node name="Area2D" type="Area2D" parent="path/path_follower/enemy_3" index="1"]
+
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+collision_layer = 2
+collision_mask = 0
+audio_bus_override = false
+audio_bus_name = "Master"
+_sections_unfolded = [ "Collision" ]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="path/path_follower/enemy_3/Area2D" index="0"]
+
+build_mode = 0
+polygon = PoolVector2Array( -32, -32, 32, -32, 32, 32, -32, 32 )
+
+[node name="Sprite" type="Sprite" parent="path/path_follower/enemy_3" index="2"]
+
+[node name="Panel" type="Panel" parent="path/path_follower/enemy_3" index="3"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = -32.0
+margin_top = -32.0
+margin_right = 32.0
+margin_bottom = 32.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Label" type="Label" parent="path/path_follower/enemy_3" index="4"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = -28.0
+margin_top = -8.0
+margin_right = 36.0
+margin_bottom = 8.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+text = "enemy_3"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[connection signal="body_entered" from="path/path_follower/enemy_3/Area2D" to="path/path_follower/enemy_3" method="_on_object_hit"]
+
+

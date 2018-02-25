@@ -5,19 +5,30 @@ extends "res://scripts/extended_kinematic_body_2D.gd"
 signal HP_changed
 signal room_entered
 
+signal state_entered(state, previous_state)
+signal state_processed(state, delta)
+signal state_left(state, new_state)
+signal invulnerable_started()
+signal invulnerable_stopped()
+
 export var HP = 100 setget set_HP, get_HP
 export var max_HP = 100 setget set_max_HP, get_max_HP
 
-export var movement_speed = 64 * 4 setget set_movement_speed, get_movement_speed
+export var movement_speed = 64 * 5.12 setget set_movement_speed, get_movement_speed
 
 export(NodePath) var debug_state_label
 export(NodePath) var debug_grounded_label
 
 export var gravity_enabled = false setget set_gravity_enabled, is_gravity_enabled
-export var gravity_vector = Vector2(0, 64 * 6)
+export var gravity_vector = Vector2(0, 64 * 18)
 
 export var flippedH = false setget set_flippedH, is_flippedH
 export var flippedV = false setget set_flippedV, is_flippedV
+
+export var invulnerability_time = 1 setget set_invulnerability_time, get_invulnerability_time
+var invulnerability_timer
+var mask_save
+var invulnerable = false
 
 var grounded = false
 
@@ -32,7 +43,10 @@ func _ready():
 		
 	if(not Engine.is_editor_hint()):
 		connect("room_entered", self, "_room_enter")
-		emit_signal("room_entered")
+	
+	invulnerability_timer = Timer.new()
+	invulnerability_timer.connect("timeout",self,"_on_invulnerability_timer_timeout") 
+	add_child(invulnerability_timer)
 
 func _room_enter():
 	get_node("/root/GUI").add_HP_bar(self)
@@ -55,7 +69,7 @@ func _physics_process(delta):
 		else:
 			apply_gravity(delta)
 	
-	process_state(get_state(), delta)
+	emit_signal("state_processed", current_state, delta)
 	
 func push(vector):
 	if(move_and_collide(vector) != null):
@@ -83,6 +97,32 @@ func set_max_HP(max_hp):
 
 func damage(d):
 	set_HP(get_HP() - d)
+	invulnerability_timer.start()
+	set_invulnerable(true)
+	emit_signal("invulnerable_started")
+
+func set_invulnerability_time(value):
+	invulnerability_time = value
+
+func get_invulnerability_time():
+	return invulnerability_time
+
+func _on_invulnerability_timer_timeout():
+	set_invulnerable(false)
+	emit_signal("invulnerable_stopped")
+	invulnerability_timer.stop()
+
+func is_invulnerable():
+	return invulnerable
+
+func set_invulnerable(value):
+	invulnerable = value
+	if(value == true):
+		mask_save = collision_mask
+		collision_mask = 0
+		set_collision_mask_bit(0,1)
+	else:
+		collision_mask = mask_save
 
 func is_gravity_enabled():
 	return gravity_enabled
@@ -134,8 +174,8 @@ func get_state():
 	return current_state
 	
 func set_state(state):
-	leave_state(current_state, state)
-	enter_state(state, current_state)
+	emit_signal("state_left", current_state, state)
+	emit_signal("state_entered", state, current_state)
 	current_state = state
 	
 	if(has_debug_state_label()):
@@ -143,15 +183,6 @@ func set_state(state):
 
 func add_state(state):
 	STATES[state] = state
-
-func process_state(state, delta):
-	pass
-	
-func enter_state(state, previous_state):
-	pass
-	
-func leave_state(state, previous_state):
-	pass
 
 func is_flippedH():
 	return flippedH
@@ -190,4 +221,3 @@ func get_direction():
 	
 func destroy():
 	queue_free()
-	

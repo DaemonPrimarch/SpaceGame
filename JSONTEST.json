@@ -1,0 +1,1 @@
+{"start":{"name":"POOT","text":"HELLO WORLD!","next":"second"},"second":{"name":"STAN","next":["start","last","last"],"options":["A","B","C"],"text":"DIT IS EEN VRAAG"},"last":{"name":"DOOM","text":"OPTIE WAS JUIST"}}

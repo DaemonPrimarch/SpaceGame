@@ -13,9 +13,19 @@ _sections_unfolded = [ "Transform" ]
 __meta__ = {
 "_edit_lock_": true
 }
+dark = false
+dark_color = Color( 0, 0, 0, 1 )
 
 [node name="terrain" parent="." index="0" instance=ExtResource( 2 )]
 
 [node name="debug_player_spawner" parent="." index="1" instance=ExtResource( 3 )]
+
+[node name="CanvasModulate" type="CanvasModulate" parent="." index="2"]
+
+color = Color( 1, 1, 1, 1 )
+
+[connection signal="room_darkened" from="." to="." method="_on_room_room_darkened"]
+
+[connection signal="room_lit" from="." to="." method="_on_room_room_lit"]
 
 

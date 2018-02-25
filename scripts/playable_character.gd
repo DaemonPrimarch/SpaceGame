@@ -16,6 +16,8 @@ export var stunned_time = 1
 
 export var climbing_speed = 64 * 2 
 
+var inventory = {}
+
 var jumping_timer = 0
 var double_jumping_timer = 0
 var wall_jumping_timer = 0
@@ -33,6 +35,7 @@ var velocity = Vector2()
 var acceleration = Vector2()
 
 var in_no_respawn_area = false
+var in_no_wall_slide = false
 
 var last_safe_position = Vector2()
 
@@ -42,6 +45,9 @@ onready var weapon_front_position = get_node("weapon_front")
 onready var weapon_bottom_front_position = get_node("weapon_bottom_front")
 onready var weapon_bottom_position = get_node("weapon_bottom")
 onready var animation_player = get_node("AnimationPlayer")
+
+onready var wall_slide_detector_up = get_node("wall_slide_detector_up")
+onready var wall_slide_detector_down = get_node("wall_slide_detector_down")
 
 func _ready():
 	add_state("REGULAR_JUMPING")
@@ -98,6 +104,7 @@ func calculate_max_airtime(height, acceleration_y):
 	
 	return (-1 + sqrt(D))/acceleration_y
 
+
 func set_velocity(v):
 	velocity = v
 
@@ -128,6 +135,15 @@ func can_double_jump():
 func can_wall_jump():
 	return wall_jump_enabled
 
+func can_wall_slide_on_node(node):
+	if(node is TileMap):
+		return true
+	else:
+		return node.is_in_group("wall_slideable")
+
+func can_wall_slide():	
+	return wall_jump_enabled and wall_slide_detector_up.is_colliding() and wall_slide_detector_down.is_colliding() and can_wall_slide_on_node(wall_slide_detector_down.get_collider()) and can_wall_slide_on_node(wall_slide_detector_up.get_collider()) and not is_in_no_wall_slide_area()
+
 func set_wall_slide_side(side):
 	wall_slide_side = side
 	
@@ -151,6 +167,12 @@ func crush():
 	
 	respawn()
 
+func is_in_no_wall_slide_area():
+	return in_no_wall_slide
+
+func set_in_no_wall_slide_area(val):
+	in_no_wall_slide = val
+
 func is_in_no_respawn_area():
 	return in_no_respawn_area
 
@@ -162,3 +184,18 @@ func get_last_safe_position():
 	
 func set_last_safe_position(v):
 	last_safe_position = v
+
+func add_to_inventory(key):
+	inventory[key] = 1
+
+func has_in_inventory(key):
+	return (key in inventory)
+
+func remove_from_inventory(key):
+	inventory.erase(key)
+
+func _on_room_entered():
+	if(get_node("/root/ROOM_MANAGER").get_room_of_node(self).is_dark()):
+		get_node("light").enabled = true
+	else:
+		get_node("light").enabled = false
