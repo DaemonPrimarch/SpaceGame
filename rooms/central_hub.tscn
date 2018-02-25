@@ -15,38 +15,36 @@ position = Vector2( 32, 512 )
 destination_room = "res://rooms/to_engine/room_1.tscn"
 arrival_pos_id = "central_hub_arrival"
 
-[node name="warp_tile2" parent="." index="2" instance=ExtResource( 2 )]
+[node name="warp_tile4" parent="." index="2" instance=ExtResource( 2 )]
+
+position = Vector2( 1248, 512 )
+destination_room = "res://rooms/from_bridge/room_4.tscn"
+arrival_pos_id = "central_hub_arrival"
+flippedH = true
+
+[node name="warp_tile5" parent="." index="3" instance=ExtResource( 2 )]
+
+position = Vector2( 1248, 1216 )
+destination_room = "res://rooms/to_engine/room_1.tscn"
+arrival_pos_id = "central_hub_arrival"
+flippedH = true
+
+[node name="warp_tile6" parent="." index="4" instance=ExtResource( 2 )]
+
+position = Vector2( 1248, 1920 )
+destination_room = "res://rooms/double_jump/room_1.tscn"
+arrival_pos_id = "central_hub_arrival"
+flippedH = true
+
+[node name="warp_tile2" parent="." index="5" instance=ExtResource( 2 )]
 
 position = Vector2( 32, 1216 )
 arrival_pos_id = "central_hub_arrival"
 
-[node name="warp_tile3" parent="." index="3" instance=ExtResource( 2 )]
+[node name="warp_tile3" parent="." index="6" instance=ExtResource( 2 )]
 
 position = Vector2( 32, 1920 )
 destination_room = "res://rooms/wall_jump/room_1.tscn"
-arrival_pos_id = "central_hub_arrival"
-
-[node name="warp_tile4" parent="." index="4" instance=ExtResource( 2 )]
-
-position = Vector2( 1248, 512 )
-scale = Vector2( -1, 1 )
-_sections_unfolded = [ "Collision", "Pause", "Transform" ]
-destination_room = "res://rooms/from_bridge/room_4.tscn"
-arrival_pos_id = "central_hub_arrival"
-
-[node name="warp_tile5" parent="." index="5" instance=ExtResource( 2 )]
-
-position = Vector2( 1248, 1216 )
-scale = Vector2( -1, 1 )
-_sections_unfolded = [ "Collision", "Pause", "Transform" ]
-arrival_pos_id = "central_hub_arrival"
-
-[node name="warp_tile6" parent="." index="6" instance=ExtResource( 2 )]
-
-position = Vector2( 1248, 1920 )
-scale = Vector2( -1, 1 )
-_sections_unfolded = [ "Collision", "Pause", "Transform" ]
-destination_room = "res://rooms/double_jump/room_1.tscn"
 arrival_pos_id = "central_hub_arrival"
 
 

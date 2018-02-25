@@ -18,8 +18,8 @@ arrival_pos_id = "room_1_arrival"
 [node name="warp_tile2" parent="." index="2" instance=ExtResource( 2 )]
 
 position = Vector2( 1248, 512 )
-scale = Vector2( -1, 1 )
-_sections_unfolded = [ "Collision", "Pause", "Transform" ]
+destination_room = "res://rooms/from_bridge/room_2.tscn"
 arrival_pos_id = "room_1_arrival"
+flippedH = true
 
 
