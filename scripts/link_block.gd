@@ -1,6 +1,10 @@
 extends StaticBody2D
 
 export var key = ""
+export var active = true
+
+func _ready():
+	_set_active(active)
 
 func _set_active(value):
 	if(value):

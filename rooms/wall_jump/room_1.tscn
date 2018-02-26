@@ -21,7 +21,7 @@ arrival_pos_id = "room_1_arrival"
 [node name="door_in" parent="." index="2" instance=ExtResource( 2 )]
 
 position = Vector2( 1248, 512 )
-destination_room = "res://rooms/wall_jump/room_2.tscn"
+destination_room = "res://rooms/central_hub.tscn"
 arrival_pos_id = "room_1_arrival"
 flippedH = true
 
@@ -34,6 +34,7 @@ position = Vector2( 1152, 512 )
 position = Vector2( 608, 384 )
 scale = Vector2( 3, 2 )
 key = "key1"
+active = true
 
 [node name="bullet_switch" parent="." index="5" instance=ExtResource( 4 )]
 
