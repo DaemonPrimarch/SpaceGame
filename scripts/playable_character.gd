@@ -64,8 +64,10 @@ func _ready():
 	set_state(STATES.STANDING)
 
 func _physics_process(delta):
+	get_node("ground_detector").force_raycast_update()
+	
 	if(not is_in_no_respawn_area() and is_grounded() and get_node("ground_detector").is_colliding() and get_node("ground_detector").get_collider().is_in_group("terrain")):
-			set_last_safe_position(get_position())
+		set_last_safe_position(get_position())
 		
 func push_back():
 	yield(get_tree(), "idle_frame")
