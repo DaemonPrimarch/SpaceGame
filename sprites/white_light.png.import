@@ -7,7 +7,7 @@ path="res://.import/white_light.png-be6b19d54cb5191492c5a2ec92b74d86.stex"
 [deps]
 
 source_file="res://sprites/white_light.png"
-source_md5="e6a75c3b4f8416f281883f898e68bcfe"
+source_md5="af300737e9c3f683b4569850f389d7df"
 
 dest_files=[ "res://.import/white_light.png-be6b19d54cb5191492c5a2ec92b74d86.stex" ]
 dest_md5="182332e059593abfd8752eb2f743da19"
