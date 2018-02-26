@@ -41,9 +41,8 @@ var current_state = STATES.UNDEFINED
 func _ready():
 	set_physics_process(not Engine.is_editor_hint())
 		
-	get_node("/root/GUI").add_HP_bar(self)
-		
 	if(not Engine.is_editor_hint()):
+		get_node("/root/GUI").add_HP_bar(self)
 		connect("room_entered", self, "_room_enter")
 	
 	invulnerability_timer = Timer.new()

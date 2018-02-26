@@ -7,8 +7,7 @@ func get_handled_state():
 	return "WALKING"
 	
 func enter_state(previous_state):
-	.enter_state(previous_state)
-	
+	.enter_state(previous_state)	
 	get_parent().animation_player.play("run")
 	
 func process_state(delta):
@@ -26,6 +25,9 @@ func process_state(delta):
 		elif(Input.is_action_pressed("play_right")):
 			get_parent().set_flippedH(false)
 					
-		get_parent().move_and_collide_slope(Vector2(1,0) * delta * get_parent().get_direction() * get_parent().get_movement_speed())
+		if(get_parent().move_and_collide(Vector2(1,0) * delta * get_parent().get_direction() * get_parent().get_movement_speed()) != null):
+			print("CHECKING FOR CRAWL")
+			if(not get_parent().get_node("crawl_detector_up").is_colliding() and not get_parent().get_node("crawl_detector_up").is_colliding()):
+				get_parent().set_state(get_parent().STATES.CRAWLING)
 	else:
 		get_parent().set_state(get_parent().STATES.STANDING)

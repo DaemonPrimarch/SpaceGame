@@ -259,6 +259,30 @@ shadow_filter = 0
 shadow_filter_smooth = 0.0
 shadow_item_cull_mask = 1
 
+[node name="crawl_leave_detector" type="RayCast2D" parent="." index="12"]
+
+position = Vector2( -30, -80 )
+enabled = false
+exclude_parent = true
+cast_to = Vector2( 0, -20 )
+collision_mask = 1
+
+[node name="crawl_detector_up" type="RayCast2D" parent="." index="13"]
+
+position = Vector2( 30, -8 )
+enabled = true
+exclude_parent = true
+cast_to = Vector2( 128, 0 )
+collision_mask = 1
+
+[node name="crawl_detector_down" type="RayCast2D" parent="." index="14"]
+
+position = Vector2( 30, 24 )
+enabled = true
+exclude_parent = true
+cast_to = Vector2( 128, 0 )
+collision_mask = 1
+
 [connection signal="room_entered" from="." to="." method="_on_room_entered"]
 
 

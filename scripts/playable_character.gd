@@ -57,6 +57,7 @@ func _ready():
 	add_state("FALLING")
 	add_state("CLIMBING")
 	add_state("CROUCHING")
+	add_state("CRAWLING")
 	add_state("PUSHED")
 	add_state("STANDING")
 	add_state("WALKING")
