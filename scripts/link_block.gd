@@ -13,5 +13,9 @@ func _set_active(value):
 func check_for_key(player):
 	if(player.has_in_inventory(key)):
 		_set_active(true)
+		get_parent().get_node("Area2D").queue_free()
 	else:
 		_set_active(false)
+
+func on_area_enter(body,value):
+	_set_active(value)
