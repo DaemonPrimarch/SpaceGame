@@ -73,7 +73,7 @@ damage = 1
 [node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="path/path_follower/enemy_3" index="0"]
 
 build_mode = 0
-polygon = PoolVector2Array( -32, -32, 32, -32, 32, 32, -32, 32 )
+polygon = PoolVector2Array( -28, -28, 27, -28, 27, 32, -28, 32 )
 
 [node name="Area2D" type="Area2D" parent="path/path_follower/enemy_3" index="1"]
 
@@ -91,7 +91,7 @@ _sections_unfolded = [ "Collision" ]
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="path/path_follower/enemy_3/Area2D" index="0"]
 
 build_mode = 0
-polygon = PoolVector2Array( -32, -32, 32, -32, 32, 32, -32, 32 )
+polygon = PoolVector2Array( -28, -28, 27, -28, 27, 32, -28, 32 )
 
 [node name="Sprite" type="Sprite" parent="path/path_follower/enemy_3" index="2"]
 

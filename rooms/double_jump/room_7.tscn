@@ -28,7 +28,7 @@ flippedH = true
 [node name="door_3" parent="." index="3" instance=ExtResource( 2 )]
 
 position = Vector2( 32, 576 )
-destination_room = "res://rooms/double_jump/room_12.tscn"
+destination_room = "res://rooms/double_jump/room_11.tscn"
 arrival_pos_id = "room_7_arrival"
 
 [node name="debug_player_spawner" parent="." index="4"]

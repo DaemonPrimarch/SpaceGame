@@ -24,7 +24,7 @@ arrival_pos_id = "room_6_arrival"
 
 [node name="debug_player_spawner" parent="." index="3"]
 
-position = Vector2( 128, 512 )
+position = Vector2( 128, 2208 )
 
 [node name="damage_area" parent="." index="5" instance=ExtResource( 3 )]
 
