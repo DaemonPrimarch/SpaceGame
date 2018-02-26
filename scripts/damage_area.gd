@@ -12,17 +12,14 @@ export var damage = 10 setget set_damage, get_damage
 onready var area = get_node("Area2D")
 
 func set_active(val):
-	if(is_active() != val):
 		active = val
 		
 		if(val):
-			area.set_collision_layer_bit(0,1)
 			visible = true
-			emit_signal("activated")
+			call_deferred("emit_signal", "activated")
 		else:
-			area.set_collision_layer_bit(0,0)
 			visible = false
-			emit_signal("deactivated")
+			call_deferred("emit_signal", "deactivated")
 
 func is_active():
 	return active

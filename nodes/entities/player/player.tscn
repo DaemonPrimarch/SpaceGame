@@ -1,7 +1,7 @@
 [gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://nodes/entities/player/playable_character.tscn" type="PackedScene" id=1]
-[ext_resource path="res://scripts/player.gd" type="Script" id=2]
+[ext_resource path="res://rooms/double_jump/player.gd" type="Script" id=2]
 [ext_resource path="res://nodes/camera.tscn" type="PackedScene" id=3]
 [ext_resource path="res://nodes/weapons/gun.tscn" type="PackedScene" id=4]
 [ext_resource path="res://nodes/state_handlers/jumping_handler.tscn" type="PackedScene" id=5]
@@ -14,6 +14,7 @@
 [ext_resource path="res://nodes/state_handlers/climbing_handler.tscn" type="PackedScene" id=12]
 [ext_resource path="res://nodes/state_handlers/wall_sliding_handler.tscn" type="PackedScene" id=13]
 [ext_resource path="res://nodes/state_handlers/crawling_handler.tscn" type="PackedScene" id=14]
+
 
 [node name="player" groups=[
 "player",
