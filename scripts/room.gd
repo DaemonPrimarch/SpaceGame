@@ -27,8 +27,6 @@ func _on_player_enter(player):
 	print("player_enter")
 
 func _on_room_room_darkened():
-	print("GGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG")
-	
 	get_node("CanvasModulate").color = dark_color
 
 func _on_room_room_lit():

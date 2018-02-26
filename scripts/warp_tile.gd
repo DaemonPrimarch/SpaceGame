@@ -44,4 +44,4 @@ func get_arrival_pos_id():
 
 func on_body_enter( body ):	
 	if(is_active() and body.is_in_group("warpable") and has_destination_room()):
-		get_node("/root/ROOM_MANAGER").call_deferred("warp_node_to_room",body, get_destination_room(), get_arrival_pos_id())
+		get_node("/root/ROOM_MANAGER").warp_node_to_room(body, get_destination_room(), get_arrival_pos_id())
