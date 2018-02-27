@@ -11,8 +11,6 @@ func enter_state(previous_state):
 
 	get_parent().position += (Vector2(64, 10) * get_parent().get_direction())
 	get_parent().scale *= Vector2(1, 0.5)
-	
-	print("CRAWL ENTER")
 
 	get_parent().animation_player.play("jump")
 

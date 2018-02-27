@@ -15,8 +15,6 @@
 [ext_resource path="res://nodes/state_handlers/wall_sliding_handler.tscn" type="PackedScene" id=13]
 [ext_resource path="res://nodes/state_handlers/crawling_handler.tscn" type="PackedScene" id=14]
 
-
-
 [node name="player" groups=[
 "player",
 "warpable",
@@ -128,7 +126,7 @@ jump_height = 268.8
 
 [node name="wall_sliding_handler" parent="." index="22" instance=ExtResource( 13 )]
 
-[node name="crawling_handler" parent="." index="30" instance=ExtResource( 14 )]
+[node name="crawling_handler" parent="." index="29" instance=ExtResource( 14 )]
 
 [connection signal="room_entered" from="." to="camera" method="update_limit"]
 
