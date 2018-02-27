@@ -46,7 +46,9 @@ length = 320
 [node name="crushing_platform" parent="." index="5" instance=ExtResource( 6 )]
 
 position = Vector2( 1088, 448 )
+forward_starting_velocity = 320
 forward_acceleration = 1000
+backward_starting_velocity = 64
 backward_acceleration = 1000
 
 [node name="no_respawn_area" parent="." index="6" instance=ExtResource( 7 )]

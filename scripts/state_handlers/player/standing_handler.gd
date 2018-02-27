@@ -14,12 +14,12 @@ func process_state(delta):
 	.process_state(delta)
 	
 	if(not get_parent().is_grounded()):
-		get_parent().set_state(get_parent().STATES.FALLING)
+		get_parent().set_state("FALLING")
 	elif(Input.is_action_pressed("play_up") and get_parent().is_inside_ladder()):
-		get_parent().set_state(get_parent().STATES.CLIMBING)
+		get_parent().set_state("CLIMBING")
 	elif(Input.is_action_just_pressed("jump") and get_parent().can_jump()):
-		get_parent().set_state(get_parent().STATES.REGULAR_JUMPING)
+		get_parent().set_state("REGULAR_JUMPING")
 	elif(Input.is_action_pressed("play_left") or Input.is_action_pressed("play_right")):
-		get_parent().set_state(get_parent().STATES.WALKING)
+		get_parent().set_state("WALKING")
 	elif(Input.is_action_pressed("play_down")):
-		get_parent().set_state(get_parent().STATES.CROUCHING)
+		get_parent().set_state("CROUCHING")

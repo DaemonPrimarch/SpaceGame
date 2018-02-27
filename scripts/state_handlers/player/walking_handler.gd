@@ -14,11 +14,11 @@ func process_state(delta):
 	.process_state(delta)
 	
 	if(not get_parent().is_grounded()):
-		get_parent().set_state(get_parent().STATES.FALLING)
+		get_parent().set_state("FALLING")
 	elif(Input.is_action_pressed("play_up") and get_parent().is_inside_ladder()):
-		get_parent().set_state(get_parent().STATES.CLIMBING)
+		get_parent().set_state("CLIMBING")
 	elif(Input.is_action_just_pressed("jump") and get_parent().can_jump()):
-		get_parent().set_state(get_parent().STATES.REGULAR_JUMPING)
+		get_parent().set_state("REGULAR_JUMPING")
 	elif(Input.is_action_pressed("play_left") or Input.is_action_pressed("play_right")):
 		if(Input.is_action_pressed("play_left")):
 			get_parent().set_flippedH(true)
@@ -27,6 +27,6 @@ func process_state(delta):
 					
 		if(get_parent().move_and_collide(Vector2(1,0) * delta * get_parent().get_direction() * get_parent().get_movement_speed()) != null):
 			if(not get_parent().get_node("crawl_detector_up").is_colliding() and not get_parent().get_node("crawl_detector_up").is_colliding()):
-				get_parent().set_state(get_parent().STATES.CRAWLING)
+				get_parent().set_state("CRAWLING")
 	else:
-		get_parent().set_state(get_parent().STATES.STANDING)
+		get_parent().set_state("STANDING")

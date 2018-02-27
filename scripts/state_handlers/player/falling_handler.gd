@@ -16,11 +16,11 @@ func process_state(delta):
 
 	
 	if(get_parent().is_grounded()):
-		get_parent().set_state(get_parent().STATES.STANDING)
+		get_parent().set_state("STANDING")
 	elif(Input.is_action_just_pressed("jump") and get_parent().can_double_jump()):
-		get_parent().set_state(get_parent().STATES.DOUBLE_JUMPING)
+		get_parent().set_state("DOUBLE_JUMPING")
 	elif(Input.is_action_pressed("play_up") and get_parent().is_inside_ladder()):
-		get_parent().set_state(get_parent().STATES.CLIMBING)
+		get_parent().set_state("CLIMBING")
 	else:
 		var pressed = 0
 		if(Input.is_action_pressed("play_left")):
@@ -35,5 +35,5 @@ func process_state(delta):
 		var collision_info = get_parent().move_and_collide(Vector2(1,0) * get_parent().get_direction() * delta * (get_parent().get_velocity().x + get_parent().get_movement_speed() * pressed))
 				
 		if(collision_info != null and get_parent().can_wall_slide()):
-			get_parent().set_state(get_parent().STATES.WALL_SLIDING)
+			get_parent().set_state("WALL_SLIDING")
 			get_parent().set_wall_slide_side(get_parent().get_direction().x)

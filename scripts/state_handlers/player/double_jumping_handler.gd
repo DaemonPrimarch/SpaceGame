@@ -30,16 +30,16 @@ func process_state(delta):
 	.process_state(delta)
 	
 	if(not Input.is_action_pressed("jump") or get_timer() > get_parent().calculate_max_airtime(get_double_jump_height(), get_parent().get_gravity_vector().y)):
-		get_parent().set_state(get_parent().STATES.FALLING)
+		get_parent().set_state("FALLING")
 	elif(Input.is_action_pressed("play_up") and get_parent().is_inside_ladder()):
-		get_parent().set_state(get_parent().STATES.CLIMBING)
+		get_parent().set_state("CLIMBING")
 	else:
 		get_parent().set_velocity(get_parent().get_velocity() + get_parent().get_gravity_vector() * delta)
 				
 		var vertical_collision_info  = get_parent().move_and_collide(get_parent().get_velocity() * delta)
 		
 		if (vertical_collision_info != null):
-			get_parent().set_state(get_parent().STATES.FALLING)
+			get_parent().set_state("FALLING")
 		
 		else:
 					
@@ -55,5 +55,5 @@ func process_state(delta):
 			var horizontal_collision_info = get_parent().move_and_collide(Vector2(1,0) * get_parent().get_direction() * delta * pressed * get_parent().get_movement_speed())
 					
 			if(horizontal_collision_info != null and get_parent().can_wall_slide()):
-				get_parent().set_state(get_parent().STATES.WALL_SLIDING)
+				get_parent().set_state("WALL_SLIDING")
 				get_parent().set_wall_slide_side(get_parent().get_direction().x)

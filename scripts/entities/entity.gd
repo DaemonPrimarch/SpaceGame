@@ -36,7 +36,10 @@ var gravity_velocity = Vector2()
 var gravity_timer = 0
 
 var STATES = {"UNDEFINED": "UNDEFINED"}
-var current_state = STATES.UNDEFINED
+
+var valid_states = ["UNDEFINED"]
+
+var current_state = "UNDEFINED"
 
 func _ready():
 	set_physics_process(not Engine.is_editor_hint())
@@ -186,22 +189,31 @@ func get_state():
 	return current_state
 	
 func set_state(state):
-	emit_signal("state_left", current_state, state)
-	emit_signal("state_entered", state, current_state)
-	current_state = state
-	
-	if(has_debug_state_label()):
-		get_node(get_debug_state_label()).set_text(state)
+	if(not is_valid_state(state)):
+		print("ERROR, entity doesn't have state: ", state)
+	else:
+		emit_signal("state_left", current_state, state)
+		emit_signal("state_entered", state, current_state)
+		current_state = state
+		
+		if(has_debug_state_label()):
+			get_node(get_debug_state_label()).set_text(state)
 
 func add_state(state):
-	STATES[state] = state
+	if(is_valid_state(state)):
+		print("ERROR, entity already has state: ", state)
+	else:
+		valid_states.push_back(state)
 
 func is_flippedH():
 	return flippedH
 
 func is_flippedV():
 	return flippedV
-	
+
+func is_valid_state(state):
+	return valid_states.has(state)
+
 func set_flippedH(val):
 	if(val != is_flippedH()):
 		for child in get_children():

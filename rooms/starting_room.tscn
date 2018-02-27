@@ -7,8 +7,8 @@
 [ext_resource path="res://nodes/entities/enemies/enemy_1.tscn" type="PackedScene" id=5]
 [ext_resource path="res://nodes/room_elements/destroyable_block.tscn" type="PackedScene" id=6]
 [ext_resource path="res://nodes/room_elements/blocking_warp_tile.tscn" type="PackedScene" id=7]
-[ext_resource path="res://nodes/room_elements/dialog_tester.tscn" type="PackedScene" id=8]
-[ext_resource path="res://nodes/entities/enemies/enemy_3.tscn" type="PackedScene" id=9]
+[ext_resource path="res://nodes/entities/enemies/enemy_3.tscn" type="PackedScene" id=8]
+[ext_resource path="res://nodes/room_elements/dialog_tester.tscn" type="PackedScene" id=9]
 
 [node name="starting_room" instance=ExtResource( 1 )]
 
@@ -52,16 +52,15 @@ active = false
 arrival_pos_id = "starting_room_arrival"
 flippedH = true
 
-[node name="bullet_switch" parent="." index="8" instance=ExtResource( 8 )]
-
-editor/display_folded = true
-position = Vector2( 96, 224 )
-collision_mask = 1
-dialog = "res://JSONTEST.json"
-
-[node name="emeny_3_system" parent="." index="9" instance=ExtResource( 9 )]
+[node name="emeny_3_system" parent="." index="8" instance=ExtResource( 8 )]
 
 position = Vector2( 448, 256 )
+
+[node name="bullet_switch" parent="." index="10" instance=ExtResource( 9 )]
+
+position = Vector2( 96, 288 )
+toggleable = true
+dialog = "res://JSONTEST.json"
 
 
 [editable path="warp_tile"]
