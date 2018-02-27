@@ -4,6 +4,8 @@
 
 [node name="damage_area" instance=ExtResource( 1 )]
 
+damage = 5
+
 [node name="Sprite" parent="." index="1"]
 
 scale = Vector2( 1, 0.25 )

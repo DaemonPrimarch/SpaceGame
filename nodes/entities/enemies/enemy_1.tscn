@@ -31,8 +31,8 @@ collision/safe_margin = 0.08
 script = ExtResource( 1 )
 _sections_unfolded = [ "Collision", "Transform", "collision" ]
 max_slope_angle = 1.5708
-HP = 100
-max_HP = 100
+HP = 2
+max_HP = 2
 movement_speed = 256
 debug_state_label = null
 debug_grounded_label = null
@@ -40,7 +40,7 @@ gravity_enabled = true
 gravity_vector = Vector2( 0, 256 )
 flippedH = false
 flippedV = false
-invulnerability_time = 1
+invulnerability_time = 0.5
 damage = 1
 
 [node name="Area2D" type="Area2D" parent="." index="0"]

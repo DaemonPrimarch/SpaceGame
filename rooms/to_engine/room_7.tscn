@@ -23,6 +23,10 @@ destination_room = "res://rooms/to_engine/room_6.tscn"
 arrival_pos_id = "room_7_arrival"
 flippedH = true
 
+[node name="debug_player_spawner" parent="." index="3"]
+
+position = Vector2( 1152, 192 )
+
 [node name="enemy_2" parent="." index="5" instance=ExtResource( 3 )]
 
 position = Vector2( 544, 544 )

@@ -51,5 +51,5 @@ func _ready():
 	add_state("CHARGING")
 	add_state("STUNNED")
 	
-	set_state(STATES.IDLE)
+	set_state("IDLE")
 

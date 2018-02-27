@@ -14,3 +14,4 @@ func _on_warp_tile_activated():
 func _on_warp_tile_deactivated():
 	if(previous_layers != 0):
 		get_node("KinematicBody2D").set_collision_layer(previous_layers)
+

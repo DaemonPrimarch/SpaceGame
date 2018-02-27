@@ -8,7 +8,7 @@
 custom_solver_bias = 0.0
 radius = 10.0
 
-[node name="bullet" type="Area2D" index="0"]
+[node name="bullet" type="Area2D"]
 
 input_pickable = false
 gravity_vec = Vector2( 0, 1 )
@@ -22,7 +22,7 @@ audio_bus_name = "Master"
 script = ExtResource( 1 )
 _sections_unfolded = [ "Collision", "Transform" ]
 velocity = Vector2( 1024, 0 )
-damage = 10
+damage = 1
 
 [node name="Sprite" type="Sprite" parent="." index="0"]
 
