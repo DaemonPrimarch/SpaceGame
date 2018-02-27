@@ -221,4 +221,5 @@ func get_direction():
 	return dir
 	
 func destroy():
+	print("destrooooyy!!!!")
 	queue_free()

@@ -1,11 +1,11 @@
 extends Node2D
 
 export var active = true
-export var forward_starting_velocity = 0
-export var forward_acceleration = 0
+export var forward_starting_velocity = 64*5
+export var forward_acceleration = 64*3
 
-export var backward_starting_velocity = 0
-export var backward_acceleration = 0
+export var backward_starting_velocity = 64
+export var backward_acceleration = 64
 
 onready var start_position = get_node("start").get_position()
 onready var end_position = get_node("stop").get_position()
@@ -51,4 +51,5 @@ func _process(delta):
 				backward_velocity = backward_starting_velocity
 
 func area_enter_trigger( body , val ):
-	set_active(val)
+	if(body.is_in_group("player")):
+		set_active(val)

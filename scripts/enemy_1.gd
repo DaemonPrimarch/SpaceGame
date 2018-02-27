@@ -11,3 +11,7 @@ func _physics_process(delta):
 	if(not ground_detector.is_colliding() or wall_detector.is_colliding()):
 		set_flippedH(not is_flippedH())
 		
+
+func crush():
+	print("lel")
+	destroy()

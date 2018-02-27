@@ -121,11 +121,11 @@ tracks/0/keys = {
 ]]
 
 input_pickable = false
-collision_layer = 1
+collision_layer = 2
 collision_mask = 1
 collision/safe_margin = 0.08
 script = ExtResource( 1 )
-_sections_unfolded = [ "Pause" ]
+_sections_unfolded = [ "Collision", "Pause" ]
 max_slope_angle = 1.5708
 HP = 100
 max_HP = 100
