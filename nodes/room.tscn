@@ -23,6 +23,9 @@ dark_color = Color( 0, 0, 0, 1 )
 [node name="CanvasModulate" type="CanvasModulate" parent="." index="2"]
 
 color = Color( 1, 1, 1, 1 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [connection signal="room_darkened" from="." to="." method="_on_room_room_darkened"]
 

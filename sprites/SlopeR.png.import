@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/icon.png-487276ed1e3a0c39cad0279d744ee560.stex"
+path="res://.import/SlopeR.png-54d46823ed290dfff2e4897a0075b183.stex"
 
 [deps]
 
-source_file="res://icon.png"
-source_md5="ae7e641067601e2184afcade49abd283"
+source_file="res://sprites/SlopeR.png"
+source_md5="5081aa41a0109b8f9e97e58c61b50da3"
 
-dest_files=[ "res://.import/icon.png-487276ed1e3a0c39cad0279d744ee560.stex" ]
-dest_md5="f3ac00f2e4ea4f7009844ab942b0ffc8"
+dest_files=[ "res://.import/SlopeR.png-54d46823ed290dfff2e4897a0075b183.stex" ]
+dest_md5="e9430bb8fee0588b7e53272dd43ee741"
 
 [params]
 
@@ -18,7 +18,7 @@ compress/mode=0
 compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/normal_map=0
-flags/repeat=1
+flags/repeat=0
 flags/filter=true
 flags/mipmaps=false
 flags/anisotropic=false
