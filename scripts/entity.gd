@@ -103,7 +103,6 @@ func damage(d):
 	set_HP(get_HP() - d)
 	invulnerability_timer.start()
 	set_invulnerable(true)
-	emit_signal("invulnerable_started")
 
 func set_invulnerability_time(value):
 	invulnerability_time = value
@@ -113,7 +112,6 @@ func get_invulnerability_time():
 
 func _on_invulnerability_timer_timeout():
 	set_invulnerable(false)
-	emit_signal("invulnerable_stopped")
 	invulnerability_timer.stop()
 
 func is_invulnerable():
@@ -128,11 +126,15 @@ func set_invulnerable(value):
 		mask_save = collision_mask
 		collision_mask = 0
 		set_collision_mask_bit(0,1)
+		
+		emit_signal("invulnerable_started")
 	else:
 		collision_mask = mask_save
 		
 		if(has_node("debug_invulnerable_label")):
 			get_node("debug_invulnerable_label").text = ""
+		
+		emit_signal("invulnerable_stopped")
 
 func is_gravity_enabled():
 	return gravity_enabled

@@ -14,6 +14,7 @@ bounce = 0.0
 script = ExtResource( 1 )
 _sections_unfolded = [ "Collision" ]
 key = ""
+active = true
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." index="0"]
 

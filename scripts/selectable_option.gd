@@ -1,10 +1,10 @@
 extends Control
 
 func select():
-	get_node("main/selected").set_visible(true)
+	get_node("main/selected").visible = true
 
 func deselect():
-	get_node("main/selected").set_visible(false)
+	get_node("main/selected").visible  = false
 	
 func set_option(option):
 	get_node("main/Label").text = option

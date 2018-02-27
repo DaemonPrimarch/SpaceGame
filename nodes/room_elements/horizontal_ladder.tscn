@@ -16,4 +16,13 @@ position = Vector2( 24, 0 )
 scale = Vector2( 0.23127, 1 )
 _sections_unfolded = [ "Offset", "Region", "Transform", "Z Index" ]
 
+[node name="Label" parent="Control" index="1"]
+
+margin_left = 8.0
+margin_top = -23.0
+margin_right = 56.0
+margin_bottom = -9.0
+rect_rotation = 90.0
+_sections_unfolded = [ "Rect" ]
+
 
