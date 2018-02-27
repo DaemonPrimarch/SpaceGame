@@ -21,5 +21,4 @@ func load_player():
 		
 		new_player.emit_signal("room_entered")
 		get_parent().emit_signal("player_entered", new_player)
-		print("TEST 2")
 		

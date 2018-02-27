@@ -1,4 +1,4 @@
-extends "res://scripts/bullet_switch.gd"
+extends "res://scripts/room_elements/bullet_switch.gd"
 
 export(String, FILE, "*.json") var dialog 
 
