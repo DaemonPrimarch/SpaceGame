@@ -44,18 +44,29 @@ scale = Vector2( 1, 0.5 )
 
 position = Vector2( 0, -768 )
 
-[node name="damage_area" parent="." index="6" instance=ExtResource( 4 )]
-
-position = Vector2( 544, 832 )
-scale = Vector2( 3, 1 )
-
-[node name="damage_area2" parent="." index="7" instance=ExtResource( 4 )]
+[node name="damage_area2" parent="." index="6" instance=ExtResource( 4 )]
 
 position = Vector2( 160, 1248 )
 
-[node name="damage_area3" parent="." index="8" instance=ExtResource( 4 )]
+[node name="damage_area3" parent="." index="7" instance=ExtResource( 4 )]
 
 position = Vector2( 352, 1248 )
+
+[node name="damage_area8" parent="." index="8" instance=ExtResource( 4 )]
+
+position = Vector2( 480, 832 )
+
+[node name="CollisionPolygon2D" parent="damage_area8/Area2D" index="0"]
+
+polygon = PoolVector2Array( 160, -32, -32, -32, -32, 32, 160, 32 )
+
+[node name="Panel" parent="damage_area8" index="2"]
+
+margin_right = 160.0
+
+[node name="Label" parent="damage_area8" index="3"]
+
+margin_right = 160.0
 
 [node name="damage_area4" parent="." index="9" instance=ExtResource( 4 )]
 
@@ -103,4 +114,5 @@ length = 704
 
 
 [editable path="moveable_platform"]
+[editable path="damage_area8"]
 [editable path="moveable_platform2"]
