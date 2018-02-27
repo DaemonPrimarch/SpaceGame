@@ -30,40 +30,24 @@ flippedH = true
 
 position = Vector2( 2368, 128 )
 
-[node name="damage_area2" parent="." index="5" instance=ExtResource( 3 )]
-
-position = Vector2( 1312, 608 )
-
-[node name="damage_area3" parent="." index="6" instance=ExtResource( 3 )]
-
-position = Vector2( 1696, 608 )
-
-[node name="damage_area4" parent="." index="7" instance=ExtResource( 3 )]
-
-position = Vector2( 1952, 608 )
-
-[node name="damage_area5" parent="." index="8" instance=ExtResource( 3 )]
+[node name="damage_area5" parent="." index="5" instance=ExtResource( 3 )]
 
 position = Vector2( 1472, 160 )
 
-[node name="damage_area6" parent="." index="9" instance=ExtResource( 3 )]
+[node name="damage_area6" parent="." index="6" instance=ExtResource( 3 )]
 
 position = Vector2( 1472, 96 )
 
-[node name="damage_area" parent="." index="10" instance=ExtResource( 3 )]
-
-position = Vector2( 864, 608 )
-
-[node name="StaticBody2D" parent="." index="11" instance=ExtResource( 4 )]
+[node name="StaticBody2D" parent="." index="7" instance=ExtResource( 4 )]
 
 position = Vector2( 704, 128 )
 scale = Vector2( 1, 2 )
 
-[node name="bullet_switch" parent="." index="12" instance=ExtResource( 5 )]
+[node name="bullet_switch" parent="." index="8" instance=ExtResource( 5 )]
 
 position = Vector2( 608, 608 )
 
-[node name="moveable_platform_parent" parent="." index="13" instance=ExtResource( 6 )]
+[node name="moveable_platform_parent" parent="." index="9" instance=ExtResource( 6 )]
 
 editor/display_folded = true
 position = Vector2( 1344, 288 )
@@ -72,7 +56,7 @@ position = Vector2( 1344, 288 )
 
 position = Vector2( 256, 0 )
 
-[node name="moveable_platform_parent2" parent="." index="14" instance=ExtResource( 6 )]
+[node name="moveable_platform_parent2" parent="." index="10" instance=ExtResource( 6 )]
 
 position = Vector2( 640, 224 )
 
