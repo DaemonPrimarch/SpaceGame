@@ -18,9 +18,9 @@ func process_state(delta):
 	.process_state(delta)
 	
 	if(Input.is_action_just_pressed("jump")):
-		get_parent().set_state(get_parent().STATES.REGULAR_JUMPING)
+		get_parent().set_state("REGULAR_JUMPING")
 	elif(not get_parent().is_inside_ladder()):
-		get_parent().set_state(get_parent().STATES.FALLING)
+		get_parent().set_state("FALLING")
 	else:
 		var dir = 0
 				

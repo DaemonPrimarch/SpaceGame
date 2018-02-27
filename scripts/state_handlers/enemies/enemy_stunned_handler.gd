@@ -14,4 +14,4 @@ func process_state(delta):
 	
 	if(get_timer() > get_parent().get_stunned_time()):
 		get_parent().set_flippedH(not get_parent().is_flippedH())
-		get_parent().set_state(get_parent().STATES.IDLE)
+		get_parent().set_state("IDLE")

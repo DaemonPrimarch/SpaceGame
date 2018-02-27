@@ -9,7 +9,7 @@ _data = {
 "points": PoolVector2Array( 0, 0, 0, 0, -32, -32, 0, 0, 0, 0, 32, -32, 0, 0, 0, 0, 32, 32, 0, 0, 0, 0, -32, 32, 0, 0, 0, 0, -32, -32 )
 }
 
-[node name="enemy_3_system" type="Node2D" index="0"]
+[node name="enemy_3_system" type="Node2D"]
 
 [node name="path" type="Path2D" parent="." index="0"]
 

@@ -18,10 +18,10 @@ func process_state(delta):
 	.process_state(delta)
 	
 	if(get_parent().is_grounded()):
-		get_parent().set_state(get_parent().STATES.STANDING)
+		get_parent().set_state("STANDING")
 	elif(not can_continue()):
-		get_parent().set_state(get_parent().STATES.FALLING)
+		get_parent().set_state("FALLING")
 	elif(Input.is_action_just_pressed("jump") and get_parent().can_wall_jump()):
-		get_parent().set_state(get_parent().STATES.WALL_JUMPING)
+		get_parent().set_state("WALL_JUMPING")
 	else:
 		pass

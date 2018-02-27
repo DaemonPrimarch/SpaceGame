@@ -14,8 +14,8 @@ func process_state(delta):
 	if(get_timer() < get_parent().get_charging_time()):
 		var collider = get_parent().move_and_collide_slope(get_parent().get_direction() * Vector2(1,0) * delta * get_parent().get_charging_speed())
 		if(collider != null):
-			get_parent().set_state(get_parent().STATES.STUNNED)
+			get_parent().set_state("STUNNED")
 		elif(get_parent().get_ground_detector().is_colliding() == null):
-			get_parent().set_state(get_parent().STATES.STUNNED)
+			get_parent().set_state("STUNNED")
 	else:
-		get_parent().set_state(get_parent().STATES.STUNNED)
+		get_parent().set_state("STUNNED")

@@ -62,7 +62,7 @@ func _ready():
 	add_state("STANDING")
 	add_state("WALKING")
 	
-	set_state(STATES.STANDING)
+	set_state("STANDING")
 
 func _physics_process(delta):
 	get_node("ground_detector").force_raycast_update()

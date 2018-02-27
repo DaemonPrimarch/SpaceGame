@@ -25,7 +25,7 @@ func process_state(delta):
 	get_parent().get_node("crawl_leave_detector").force_raycast_update()
 
 	if(not get_parent().get_node("crawl_leave_detector").is_colliding()):
-		get_parent().set_state(get_parent().STATES.STANDING)
+		get_parent().set_state("STANDING")
 	else:
 		var pressed = 0
 
