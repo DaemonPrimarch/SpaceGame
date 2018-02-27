@@ -46,6 +46,9 @@ func _ready():
 		connect("room_entered", self, "_room_enter")
 	
 	invulnerability_timer = Timer.new()
+	
+	invulnerability_timer.set_name("invulnerable_timer")
+	
 	invulnerability_timer.connect("timeout",self,"_on_invulnerability_timer_timeout") 
 	add_child(invulnerability_timer)
 
@@ -118,12 +121,18 @@ func is_invulnerable():
 
 func set_invulnerable(value):
 	invulnerable = value
-	if(value == true):
+	if(value):
+		if(has_node("debug_invulnerable_label")):
+			get_node("debug_invulnerable_label").text = "INVULNERABLE"
+		
 		mask_save = collision_mask
 		collision_mask = 0
 		set_collision_mask_bit(0,1)
 	else:
 		collision_mask = mask_save
+		
+		if(has_node("debug_invulnerable_label")):
+			get_node("debug_invulnerable_label").text = ""
 
 func is_gravity_enabled():
 	return gravity_enabled
