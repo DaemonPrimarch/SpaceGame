@@ -2,8 +2,8 @@
 
 [ext_resource path="res://nodes/room.tscn" type="PackedScene" id=1]
 [ext_resource path="res://nodes/room_elements/regular_warp_tile.tscn" type="PackedScene" id=2]
-[ext_resource path="res://nodes/room_elements/moveable_platform.tscn" type="PackedScene" id=3]
-[ext_resource path="res://nodes/room_elements/regular_damage_area.tscn" type="PackedScene" id=4]
+[ext_resource path="res://nodes/room_elements/regular_damage_area.tscn" type="PackedScene" id=3]
+[ext_resource path="res://nodes/room_elements/moving_platforms/moveable_platform_small.tscn" type="PackedScene" id=4]
 
 [node name="room_14" index="0" instance=ExtResource( 1 )]
 
@@ -28,163 +28,136 @@ flippedH = true
 
 position = Vector2( 1152, 192 )
 
-[node name="moveable_platform" parent="." index="5" instance=ExtResource( 3 )]
-
-editor/display_folded = true
-position = Vector2( 160, 576 )
-
-[node name="platform" parent="moveable_platform" index="0"]
-
-scale = Vector2( 1, 0.5 )
-
-[node name="point_1" parent="moveable_platform" index="2"]
-
-position = Vector2( 256, 0 )
-
-[node name="moveable_platform2" parent="." index="6" instance=ExtResource( 3 )]
-
-editor/display_folded = true
-position = Vector2( 928, 448 )
-
-[node name="platform" parent="moveable_platform2" index="0"]
-
-scale = Vector2( 1, 0.5 )
-
-[node name="point_1" parent="moveable_platform2" index="2"]
-
-position = Vector2( -256, 0 )
-
-[node name="moveable_platform3" parent="." index="7" instance=ExtResource( 3 )]
-
-editor/display_folded = true
-position = Vector2( 576, 736 )
-
-[node name="platform" parent="moveable_platform3" index="0"]
-
-position = Vector2( 256, 0 )
-scale = Vector2( 1, 0.5 )
-
-[node name="point_1" parent="moveable_platform3" index="2"]
-
-position = Vector2( 256, 0 )
-
-[node name="moveable_platform4" parent="." index="8" instance=ExtResource( 3 )]
-
-editor/display_folded = true
-position = Vector2( 160, 928 )
-
-[node name="platform" parent="moveable_platform4" index="0"]
-
-scale = Vector2( 1, 0.5 )
-
-[node name="point_1" parent="moveable_platform4" index="2"]
-
-position = Vector2( 224, 0 )
-
-[node name="moveable_platform5" parent="." index="9" instance=ExtResource( 3 )]
-
-editor/display_folded = true
-position = Vector2( 608, 1056 )
-
-[node name="platform" parent="moveable_platform5" index="0"]
-
-scale = Vector2( 1, 0.5 )
-
-[node name="damage_area" parent="." index="10" instance=ExtResource( 4 )]
+[node name="damage_area" parent="." index="5" instance=ExtResource( 3 )]
 
 position = Vector2( 608, 384 )
 
-[node name="damage_area2" parent="." index="11" instance=ExtResource( 4 )]
+[node name="damage_area2" parent="." index="6" instance=ExtResource( 3 )]
 
 position = Vector2( 992, 544 )
 
-[node name="damage_area3" parent="." index="12" instance=ExtResource( 4 )]
+[node name="damage_area3" parent="." index="7" instance=ExtResource( 3 )]
 
 position = Vector2( 928, 512 )
 
-[node name="damage_area4" parent="." index="13" instance=ExtResource( 4 )]
+[node name="damage_area4" parent="." index="8" instance=ExtResource( 3 )]
 
 position = Vector2( 768, 512 )
 
-[node name="damage_area5" parent="." index="14" instance=ExtResource( 4 )]
+[node name="damage_area5" parent="." index="9" instance=ExtResource( 3 )]
 
 position = Vector2( 416, 640 )
 
-[node name="damage_area6" parent="." index="15" instance=ExtResource( 4 )]
+[node name="damage_area6" parent="." index="10" instance=ExtResource( 3 )]
 
 position = Vector2( 352, 672 )
 
-[node name="damage_area7" parent="." index="16" instance=ExtResource( 4 )]
+[node name="damage_area7" parent="." index="11" instance=ExtResource( 3 )]
 
 position = Vector2( 128, 672 )
 
-[node name="damage_area8" parent="." index="17" instance=ExtResource( 4 )]
+[node name="damage_area8" parent="." index="12" instance=ExtResource( 3 )]
 
 position = Vector2( 224, 736 )
 
-[node name="damage_area9" parent="." index="18" instance=ExtResource( 4 )]
+[node name="damage_area9" parent="." index="13" instance=ExtResource( 3 )]
 
 position = Vector2( 992, 992 )
 
-[node name="damage_area10" parent="." index="19" instance=ExtResource( 4 )]
+[node name="damage_area10" parent="." index="14" instance=ExtResource( 3 )]
 
 position = Vector2( 992, 928 )
 
-[node name="damage_area11" parent="." index="20" instance=ExtResource( 4 )]
+[node name="damage_area11" parent="." index="15" instance=ExtResource( 3 )]
 
 position = Vector2( 928, 992 )
 
-[node name="damage_area12" parent="." index="21" instance=ExtResource( 4 )]
+[node name="damage_area12" parent="." index="16" instance=ExtResource( 3 )]
 
 position = Vector2( 608, 832 )
 
-[node name="damage_area13" parent="." index="22" instance=ExtResource( 4 )]
+[node name="damage_area13" parent="." index="17" instance=ExtResource( 3 )]
 
 position = Vector2( 768, 832 )
 
-[node name="damage_area14" parent="." index="23" instance=ExtResource( 4 )]
+[node name="damage_area14" parent="." index="18" instance=ExtResource( 3 )]
 
 position = Vector2( 704, 800 )
 
-[node name="damage_area15" parent="." index="24" instance=ExtResource( 4 )]
+[node name="damage_area15" parent="." index="19" instance=ExtResource( 3 )]
 
 position = Vector2( 864, 1184 )
 
-[node name="damage_area16" parent="." index="25" instance=ExtResource( 4 )]
+[node name="damage_area16" parent="." index="20" instance=ExtResource( 3 )]
 
 position = Vector2( 800, 1152 )
 
-[node name="damage_area17" parent="." index="26" instance=ExtResource( 4 )]
+[node name="damage_area17" parent="." index="21" instance=ExtResource( 3 )]
 
 position = Vector2( 736, 1152 )
 
-[node name="damage_area18" parent="." index="27" instance=ExtResource( 4 )]
+[node name="damage_area18" parent="." index="22" instance=ExtResource( 3 )]
 
 position = Vector2( 672, 1184 )
 
-[node name="damage_area19" parent="." index="28" instance=ExtResource( 4 )]
+[node name="damage_area19" parent="." index="23" instance=ExtResource( 3 )]
 
 position = Vector2( 544, 1248 )
 
-[node name="damage_area20" parent="." index="29" instance=ExtResource( 4 )]
+[node name="damage_area20" parent="." index="24" instance=ExtResource( 3 )]
 
 position = Vector2( 96, 1024 )
 
-[node name="damage_area21" parent="." index="30" instance=ExtResource( 4 )]
+[node name="damage_area21" parent="." index="25" instance=ExtResource( 3 )]
 
 position = Vector2( 288, 1088 )
 
-[node name="damage_area22" parent="." index="31" instance=ExtResource( 4 )]
+[node name="damage_area22" parent="." index="26" instance=ExtResource( 3 )]
 
 position = Vector2( 192, 1056 )
 
-[node name="damage_area23" parent="." index="32" instance=ExtResource( 4 )]
+[node name="damage_area23" parent="." index="27" instance=ExtResource( 3 )]
 
 position = Vector2( 256, 1024 )
 
+[node name="moveable_platform_parent" parent="." index="28" instance=ExtResource( 4 )]
 
-[editable path="moveable_platform"]
-[editable path="moveable_platform2"]
-[editable path="moveable_platform3"]
-[editable path="moveable_platform4"]
-[editable path="moveable_platform5"]
+editor/display_folded = true
+position = Vector2( 896, 448 )
+
+[node name="point_1" parent="moveable_platform_parent" index="1"]
+
+position = Vector2( -320, 0 )
+
+[node name="moveable_platform_parent2" parent="." index="29" instance=ExtResource( 4 )]
+
+editor/display_folded = true
+position = Vector2( 896, 736 )
+
+[node name="moveable_platform_parent3" parent="." index="30" instance=ExtResource( 4 )]
+
+editor/display_folded = true
+position = Vector2( 768, 1088 )
+
+[node name="point_1" parent="moveable_platform_parent3" index="1"]
+
+position = Vector2( -224, 0 )
+
+[node name="moveable_platform_parent4" parent="." index="31" instance=ExtResource( 4 )]
+
+editor/display_folded = true
+position = Vector2( 192, 576 )
+
+[node name="point_1" parent="moveable_platform_parent4" index="1"]
+
+position = Vector2( 224, 0 )
+
+[node name="moveable_platform_parent5" parent="." index="32" instance=ExtResource( 4 )]
+
+editor/display_folded = true
+position = Vector2( 192, 928 )
+
+
+[editable path="moveable_platform_parent"]
+[editable path="moveable_platform_parent3"]
+[editable path="moveable_platform_parent4"]

@@ -4,7 +4,7 @@
 [ext_resource path="res://nodes/room_elements/regular_warp_tile.tscn" type="PackedScene" id=2]
 [ext_resource path="res://nodes/room_elements/regular_damage_area.tscn" type="PackedScene" id=3]
 
-[node name="room_12" instance=ExtResource( 1 )]
+[node name="room_12" index="0" instance=ExtResource( 1 )]
 
 [node name="terrain" parent="." index="0"]
 
@@ -26,6 +26,21 @@ flippedH = true
 [node name="damage_area" parent="." index="5" instance=ExtResource( 3 )]
 
 position = Vector2( 736, 416 )
-scale = Vector2( 1, 5 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="CollisionPolygon2D" parent="damage_area/Area2D" index="0"]
+
+polygon = PoolVector2Array( 32, -160, -32, -160, -32, 160, 32, 160 )
+
+[node name="Panel" parent="damage_area" index="2"]
+
+margin_top = -160.0
+margin_bottom = 160.0
+
+[node name="Label" parent="damage_area" index="3"]
+
+margin_top = -160.0
+margin_bottom = 160.0
 
 
+[editable path="damage_area"]

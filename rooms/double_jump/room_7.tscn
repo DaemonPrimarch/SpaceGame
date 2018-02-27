@@ -4,9 +4,9 @@
 [ext_resource path="res://nodes/room_elements/regular_warp_tile.tscn" type="PackedScene" id=2]
 [ext_resource path="res://nodes/room_elements/bullet_switch.tscn" type="PackedScene" id=3]
 [ext_resource path="res://nodes/room_elements/regular_damage_area.tscn" type="PackedScene" id=4]
-[ext_resource path="res://nodes/room_elements/moveable_platform.tscn" type="PackedScene" id=5]
+[ext_resource path="res://nodes/room_elements/moving_platforms/moveable_platform_medium.tscn" type="PackedScene" id=5]
 
-[node name="room_7" instance=ExtResource( 1 )]
+[node name="room_7" index="0" instance=ExtResource( 1 )]
 
 [node name="terrain" parent="." index="0"]
 
@@ -77,6 +77,8 @@ position = Vector2( 608, 1184 )
 
 [node name="toggable electric hazards" type="Node2D" parent="." index="8"]
 
+editor/display_folded = true
+
 [node name="damage_area9" parent="toggable electric hazards" index="0" instance=ExtResource( 4 )]
 
 editor/display_folded = true
@@ -94,24 +96,49 @@ margin_right = 128.0
 
 [node name="damage_area11" parent="toggable electric hazards" index="1" instance=ExtResource( 4 )]
 
+editor/display_folded = true
 position = Vector2( 960, 992 )
 _sections_unfolded = [ "Transform" ]
+
+[node name="CollisionPolygon2D" parent="toggable electric hazards/damage_area11/Area2D" index="0"]
+
+polygon = PoolVector2Array( 128, -32, -128, -32, -128, 32, 128, 32 )
+
+[node name="Panel" parent="toggable electric hazards/damage_area11" index="2"]
+
+margin_left = -128.0
+margin_right = 128.0
+
+[node name="Label" parent="toggable electric hazards/damage_area11" index="3"]
+
+margin_left = -128.0
+margin_right = 128.0
 
 [node name="damage_area10" parent="toggable electric hazards" index="2" instance=ExtResource( 4 )]
 
 position = Vector2( 960, 864 )
 _sections_unfolded = [ "Transform" ]
 
-[node name="moveable_platform" parent="." index="9" instance=ExtResource( 5 )]
+[node name="CollisionPolygon2D" parent="toggable electric hazards/damage_area10/Area2D" index="0"]
+
+polygon = PoolVector2Array( 128, -32, -128, -32, -128, 32, 128, 32 )
+
+[node name="Panel" parent="toggable electric hazards/damage_area10" index="2"]
+
+margin_left = -128.0
+margin_right = 128.0
+
+[node name="Label" parent="toggable electric hazards/damage_area10" index="3"]
+
+margin_left = -128.0
+margin_right = 128.0
+
+[node name="moveable_platform_parent" parent="." index="9" instance=ExtResource( 5 )]
 
 editor/display_folded = true
 position = Vector2( 960, 1248 )
 
-[node name="platform" parent="moveable_platform" index="0"]
-
-scale = Vector2( 1, 0.5 )
-
-[node name="point_1" parent="moveable_platform" index="2"]
+[node name="point_1" parent="moveable_platform_parent" index="1"]
 
 position = Vector2( 0, -608 )
 
@@ -130,4 +157,5 @@ position = Vector2( 0, -608 )
 
 [editable path="toggable electric hazards/damage_area9"]
 [editable path="toggable electric hazards/damage_area11"]
-[editable path="moveable_platform"]
+[editable path="toggable electric hazards/damage_area10"]
+[editable path="moveable_platform_parent"]
