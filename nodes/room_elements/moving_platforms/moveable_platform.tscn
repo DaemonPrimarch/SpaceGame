@@ -1,0 +1,19 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://scripts/room_elements/moveable_platform.gd" type="Script" id=1]
+
+[node name="moveable_platform_parent" type="Node2D" index="0"]
+
+script = ExtResource( 1 )
+active = true
+looping = false
+one_way = false
+moving_speed = 256
+
+[node name="point_0" type="Position2D" parent="." index="0"]
+
+[node name="point_1" type="Position2D" parent="." index="1"]
+
+position = Vector2( 192, 0 )
+
+

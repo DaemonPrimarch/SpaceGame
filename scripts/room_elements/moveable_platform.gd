@@ -3,7 +3,7 @@ extends Node2D
 export var active = true
 export var looping = false
 export var one_way = false
-export var moving_speed = 64 * 4
+export var moving_speed = 64 * 3
 
 var next_point_counter = 1
 var next_point = Vector2()
@@ -111,3 +111,10 @@ func switch():
 		next_point_counter += 2*direction
 		
 		set_next_point(get_node("point_" + String(next_point_counter)).get_position())
+
+func switch():
+	pass # replace with function body
+
+
+func switch():
+	pass # replace with function body

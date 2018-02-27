@@ -22,14 +22,14 @@ tracks/0/keys = {
 "values": [ 7, 6, 5, 4, 2, 1 ]
 }
 
-[node name="enemy_1" type="KinematicBody2D" index="0"]
+[node name="enemy_1" type="KinematicBody2D"]
 
 input_pickable = false
 collision_layer = 1024
 collision_mask = 5
 collision/safe_margin = 0.08
 script = ExtResource( 1 )
-_sections_unfolded = [ "Collision", "Transform" ]
+_sections_unfolded = [ "Collision", "Transform", "collision" ]
 max_slope_angle = 1.5708
 HP = 100
 max_HP = 100

@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://nodes/room_elements/moving_platforms/moveable_platform.tscn" type="PackedScene" id=1]
+[ext_resource path="res://nodes/player_stick_platform_medium.tscn" type="PackedScene" id=2]
+
+[node name="moveable_platform_parent" index="0" instance=ExtResource( 1 )]
+
+moving_speed = 192
+
+[node name="platform" parent="." index="2" instance=ExtResource( 2 )]
+
+position = Vector2( 0, 32 )
+
+

@@ -2,9 +2,9 @@
 
 [ext_resource path="res://nodes/room.tscn" type="PackedScene" id=1]
 [ext_resource path="res://nodes/room_elements/regular_warp_tile.tscn" type="PackedScene" id=2]
-[ext_resource path="res://nodes/room_elements/moveable_platform.tscn" type="PackedScene" id=3]
-[ext_resource path="res://nodes/room_elements/bullet_switch.tscn" type="PackedScene" id=4]
-[ext_resource path="res://nodes/no_respawn_area.tscn" type="PackedScene" id=5]
+[ext_resource path="res://nodes/room_elements/bullet_switch.tscn" type="PackedScene" id=3]
+[ext_resource path="res://nodes/room_elements/moving_platforms/moveable_platform_medium.tscn" type="PackedScene" id=4]
+[ext_resource path="res://nodes/room_elements/moving_platforms/vertical_moving_platform.tscn" type="PackedScene" id=5]
 
 [node name="room_15" index="0" instance=ExtResource( 1 )]
 
@@ -30,56 +30,51 @@ arrival_pos_id = "room_15_arrival"
 
 position = Vector2( 1152, 1216 )
 
-[node name="moveable_platform" parent="." index="5" instance=ExtResource( 3 )]
+[node name="bullet_switch" parent="." index="5" instance=ExtResource( 3 )]
+
+position = Vector2( 96, 288 )
+state = false
+
+[node name="moveable_platform_parent" parent="." index="6" instance=ExtResource( 4 )]
 
 editor/display_folded = true
 position = Vector2( 1120, 928 )
 active = false
 
-[node name="platform" parent="moveable_platform" index="0"]
-
-scale = Vector2( 1, 0.5 )
-
-[node name="point_0" parent="moveable_platform" index="1"]
+[node name="point_0" parent="moveable_platform_parent" index="0"]
 
 position = Vector2( 0, -160 )
 
-[node name="point_1" parent="moveable_platform" index="2"]
+[node name="point_1" parent="moveable_platform_parent" index="1"]
 
 position = Vector2( 0, -480 )
 
-[node name="moveable_platform2" parent="." index="6" instance=ExtResource( 3 )]
+[node name="moveable_platform_parent2" parent="." index="7" instance=ExtResource( 5 )]
 
 editor/display_folded = true
-position = Vector2( 352, 512 )
+position = Vector2( 416, 352 )
 
-[node name="platform" parent="moveable_platform2" index="0"]
+[node name="point_1" parent="moveable_platform_parent2" index="1"]
 
-position = Vector2( 32, -32 )
-scale = Vector2( 0.5, 2.5 )
+position = Vector2( 0, -128 )
 
-[node name="point_0" parent="moveable_platform2" index="1"]
+[node name="platform" parent="moveable_platform_parent2" index="2"]
 
-position = Vector2( 32, -32 )
+editor/display_folded = true
 
-[node name="point_1" parent="moveable_platform2" index="2"]
+[node name="CollisionPolygon2D" parent="moveable_platform_parent2/platform" index="0"]
 
-position = Vector2( 32, -320 )
+polygon = PoolVector2Array( 64, 96, 96, 96, 96, -32, 64, -32 )
 
-[node name="bullet_switch" parent="." index="7" instance=ExtResource( 4 )]
+[node name="Panel" parent="moveable_platform_parent2/platform" index="3"]
 
-position = Vector2( 96, 288 )
-state = false
+margin_bottom = 96.0
 
-[node name="no_respawn_area" parent="." index="8" instance=ExtResource( 5 )]
+[connection signal="switched_off" from="bullet_switch" to="moveable_platform_parent" method="set_active" binds= [ false ]]
 
-position = Vector2( 384, 512 )
-scale = Vector2( 4, 2 )
-
-[connection signal="switched_off" from="bullet_switch" to="moveable_platform" method="set_active" binds= [ false ]]
-
-[connection signal="switched_on" from="bullet_switch" to="moveable_platform" method="set_active" binds= [ true ]]
+[connection signal="switched_on" from="bullet_switch" to="moveable_platform_parent" method="set_active" binds= [ true ]]
 
 
-[editable path="moveable_platform"]
-[editable path="moveable_platform2"]
+[editable path="moveable_platform_parent"]
+[editable path="moveable_platform_parent2"]
+[editable path="moveable_platform_parent2/platform"]
