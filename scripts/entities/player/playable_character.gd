@@ -202,3 +202,9 @@ func _on_room_entered():
 		get_node("light").enabled = true
 	else:
 		get_node("light").enabled = false
+
+func enable_double_jump():
+	double_jump_enabled = true
+
+func enable_wall_jump():
+	wall_jump_enabled = true

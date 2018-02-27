@@ -3,7 +3,6 @@
 [ext_resource path="res://scripts/entities/enemies/enemy_1.gd" type="Script" id=1]
 [ext_resource path="res://sprites/enemy.png" type="Texture" id=2]
 
-
 [sub_resource type="Animation" id=1]
 
 resource_name = "walking"
@@ -26,7 +25,7 @@ tracks/0/keys = {
 [node name="enemy_1" type="KinematicBody2D" index="0"]
 
 input_pickable = false
-collision_layer = 0
+collision_layer = 1024
 collision_mask = 5
 collision/safe_margin = 0.08
 script = ExtResource( 1 )
@@ -51,8 +50,8 @@ gravity_vec = Vector2( 0, 1 )
 gravity = 98.0
 linear_damp = 0.1
 angular_damp = 1.0
-collision_layer = 2
-collision_mask = 0
+collision_layer = 0
+collision_mask = 2
 audio_bus_override = false
 audio_bus_name = "Master"
 _sections_unfolded = [ "Collision" ]
@@ -146,7 +145,7 @@ percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
 
-[node name="debug_invulnerable_label" type="Label" parent="." index="10"]
+[node name="debug_invulnerable_label" type="Label" parent="." index="9"]
 
 anchor_left = 0.0
 anchor_top = 0.0
