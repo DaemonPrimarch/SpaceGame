@@ -6,9 +6,10 @@
 [ext_resource path="res://nodes/room_elements/regular_warp_tile.tscn" type="PackedScene" id=4]
 [ext_resource path="res://nodes/room_elements/vertical_ladder.tscn" type="PackedScene" id=5]
 [ext_resource path="res://nodes/room_elements/walled_ladder.tscn" type="PackedScene" id=6]
-[ext_resource path="res://nodes/room_elements/crushing_platform.tscn" type="PackedScene" id=7]
+[ext_resource path="res://nodes/room_elements/crushing_platform_big.tscn" type="PackedScene" id=7]
 [ext_resource path="res://nodes/no_respawn_area.tscn" type="PackedScene" id=8]
 [ext_resource path="res://nodes/no_wall_slide_area.tscn" type="PackedScene" id=9]
+
 
 [node name="second_room" instance=ExtResource( 1 )]
 
