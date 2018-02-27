@@ -2085,7 +2085,6 @@ __meta__ = {
 
 [node name="dead_alien_1_L_1" type="Sprite" parent="." index="63"]
 
-editor/display_folded = true
 position = Vector2( 672, 96 )
 texture = ExtResource( 1 )
 vframes = 50
@@ -2096,29 +2095,8 @@ __meta__ = {
 "_edit_group_": true
 }
 
-[node name="StaticBody2D" type="StaticBody2D" parent="dead_alien_1_L_1" index="0"]
-
-editor/display_folded = true
-input_pickable = false
-collision_layer = 1
-collision_mask = 1
-constant_linear_velocity = Vector2( 0, 0 )
-constant_angular_velocity = 0.0
-friction = 1.0
-bounce = 0.0
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="dead_alien_1_L_1/StaticBody2D" index="0"]
-
-visible = false
-build_mode = 0
-polygon = PoolVector2Array( -32, -32, 32, -32, 32, 32, -32, 32 )
-__meta__ = {
-"_edit_lock_": true
-}
-
 [node name="dead_alien_1_L_2" type="Sprite" parent="." index="64"]
 
-editor/display_folded = true
 position = Vector2( 736, 96 )
 texture = ExtResource( 1 )
 vframes = 50
@@ -2129,29 +2107,8 @@ __meta__ = {
 "_edit_group_": true
 }
 
-[node name="StaticBody2D" type="StaticBody2D" parent="dead_alien_1_L_2" index="0"]
-
-editor/display_folded = true
-input_pickable = false
-collision_layer = 1
-collision_mask = 1
-constant_linear_velocity = Vector2( 0, 0 )
-constant_angular_velocity = 0.0
-friction = 1.0
-bounce = 0.0
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="dead_alien_1_L_2/StaticBody2D" index="0"]
-
-visible = false
-build_mode = 0
-polygon = PoolVector2Array( -32, -32, 32, -32, 32, 32, -32, 32 )
-__meta__ = {
-"_edit_lock_": true
-}
-
 [node name="dead_alien_1_L_3" type="Sprite" parent="." index="65"]
 
-editor/display_folded = true
 position = Vector2( 736, 32 )
 texture = ExtResource( 1 )
 vframes = 50
@@ -2162,29 +2119,8 @@ __meta__ = {
 "_edit_group_": true
 }
 
-[node name="StaticBody2D" type="StaticBody2D" parent="dead_alien_1_L_3" index="0"]
-
-editor/display_folded = true
-input_pickable = false
-collision_layer = 1
-collision_mask = 1
-constant_linear_velocity = Vector2( 0, 0 )
-constant_angular_velocity = 0.0
-friction = 1.0
-bounce = 0.0
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="dead_alien_1_L_3/StaticBody2D" index="0"]
-
-visible = false
-build_mode = 0
-polygon = PoolVector2Array( -32, -32, 32, -32, 32, 32, -32, 32 )
-__meta__ = {
-"_edit_lock_": true
-}
-
 [node name="dead_alien_1_L_4" type="Sprite" parent="." index="66"]
 
-editor/display_folded = true
 position = Vector2( 800, 96 )
 texture = ExtResource( 1 )
 vframes = 50
@@ -2195,29 +2131,8 @@ __meta__ = {
 "_edit_group_": true
 }
 
-[node name="StaticBody2D" type="StaticBody2D" parent="dead_alien_1_L_4" index="0"]
-
-editor/display_folded = true
-input_pickable = false
-collision_layer = 1
-collision_mask = 1
-constant_linear_velocity = Vector2( 0, 0 )
-constant_angular_velocity = 0.0
-friction = 1.0
-bounce = 0.0
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="dead_alien_1_L_4/StaticBody2D" index="0"]
-
-visible = false
-build_mode = 0
-polygon = PoolVector2Array( -32, -32, 32, -32, 32, 32, -32, 32 )
-__meta__ = {
-"_edit_lock_": true
-}
-
 [node name="dead_alien_1_L_5" type="Sprite" parent="." index="67"]
 
-editor/display_folded = true
 position = Vector2( 864, 96 )
 texture = ExtResource( 1 )
 vframes = 50
@@ -2226,26 +2141,6 @@ frame = 579
 _sections_unfolded = [ "Animation", "Region" ]
 __meta__ = {
 "_edit_group_": true
-}
-
-[node name="StaticBody2D" type="StaticBody2D" parent="dead_alien_1_L_5" index="0"]
-
-editor/display_folded = true
-input_pickable = false
-collision_layer = 1
-collision_mask = 1
-constant_linear_velocity = Vector2( 0, 0 )
-constant_angular_velocity = 0.0
-friction = 1.0
-bounce = 0.0
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="dead_alien_1_L_5/StaticBody2D" index="0"]
-
-visible = false
-build_mode = 0
-polygon = PoolVector2Array( -32, -32, 32, -32, 32, 32, -32, 32 )
-__meta__ = {
-"_edit_lock_": true
 }
 
 [node name="dead_alien_1_R_1" type="Sprite" parent="." index="68"]

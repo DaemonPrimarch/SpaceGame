@@ -79,18 +79,28 @@ position = Vector2( 608, 1184 )
 
 [node name="damage_area9" parent="toggable electric hazards" index="0" instance=ExtResource( 4 )]
 
+editor/display_folded = true
 position = Vector2( 960, 928 )
-scale = Vector2( 4, 1 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="CollisionPolygon2D" parent="toggable electric hazards/damage_area9/Area2D" index="0"]
+
+polygon = PoolVector2Array( 128, -32, -128, -32, -128, 32, 128, 32 )
+
+[node name="Panel" parent="toggable electric hazards/damage_area9" index="2"]
+
+margin_left = -128.0
+margin_right = 128.0
 
 [node name="damage_area11" parent="toggable electric hazards" index="1" instance=ExtResource( 4 )]
 
 position = Vector2( 960, 992 )
-scale = Vector2( 4, 1 )
+_sections_unfolded = [ "Transform" ]
 
 [node name="damage_area10" parent="toggable electric hazards" index="2" instance=ExtResource( 4 )]
 
 position = Vector2( 960, 864 )
-scale = Vector2( 4, 1 )
+_sections_unfolded = [ "Transform" ]
 
 [node name="moveable_platform" parent="." index="9" instance=ExtResource( 5 )]
 
@@ -118,4 +128,6 @@ position = Vector2( 0, -608 )
 [connection signal="switched_on" from="bullet_switch" to="toggable electric hazards/damage_area10" method="toggle_active"]
 
 
+[editable path="toggable electric hazards/damage_area9"]
+[editable path="toggable electric hazards/damage_area11"]
 [editable path="moveable_platform"]
