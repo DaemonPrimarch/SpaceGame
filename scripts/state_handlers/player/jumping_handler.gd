@@ -19,7 +19,7 @@ func enter_state(previous_state):
 			
 	get_parent().set_velocity(Vector2(0,1) * get_parent().calculate_starting_velocity_y(get_jump_height(), get_parent().get_gravity_vector().y))
 			
-	#animation_player.play("jump")
+	get_parent().animation_player.play("jump")
 	
 func process_state(delta):
 	.process_state(delta)
