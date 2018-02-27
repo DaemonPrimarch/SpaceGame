@@ -26,7 +26,6 @@ func process_state(delta):
 			get_parent().set_flippedH(false)
 					
 		if(get_parent().move_and_collide(Vector2(1,0) * delta * get_parent().get_direction() * get_parent().get_movement_speed()) != null):
-			print("CHECKING FOR CRAWL")
 			if(not get_parent().get_node("crawl_detector_up").is_colliding() and not get_parent().get_node("crawl_detector_up").is_colliding()):
 				get_parent().set_state(get_parent().STATES.CRAWLING)
 	else:

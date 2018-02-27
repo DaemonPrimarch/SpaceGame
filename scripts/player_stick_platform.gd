@@ -5,8 +5,6 @@ var connected_nodes = []
 onready var standing_area = get_node("standing_area")
 
 func connect_node(node):
-	print("ADDED")
-	
 	if(not connected_nodes.has(node)):
 		connected_nodes.push_back(node)
 		node.set_on_platform(true)
@@ -14,12 +12,9 @@ func connect_node(node):
 
 func disconnect_node(node):
 	if(connected_nodes.has(node)):
-		print("Exit TRUE!!")
 		connected_nodes.remove(connected_nodes.find(node))
 		node.set_on_platform(false)
 		node.remove_collision_exception_with(self)
-	else:
-		print("Exit FALSE!!")
 
 func _on_platform_collided(info, moved_node):
 	if((moved_node == self and info.normal == Vector2(0,1))):

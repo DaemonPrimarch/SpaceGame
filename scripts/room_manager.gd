@@ -26,7 +26,6 @@ func load_packed_room(packed, pos):
 	get_tree().get_root().add_child(loaded_room)
 	
 	add_room_as_loaded(loaded_room)
-	print("Loaded: ", packed.get_path())
 	
 	return loaded_room
 	
@@ -34,8 +33,6 @@ func get_room_of_node(node):
 	var current_room = node
 	
 	while(not is_room_loaded(current_room)):
-		print("Attemting to check ", current_room.get_name())
-		
 		current_room = current_room.get_parent()
 		
 		if(current_room.is_in_group("room") and not is_room_loaded(current_room)):
@@ -44,8 +41,6 @@ func get_room_of_node(node):
 	return current_room
 
 func unload_room(room):
-	print("Unloaded: ", room.get_path())
-	
 	remove_room_as_loaded(room)
 	
 	room.queue_free()

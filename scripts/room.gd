@@ -10,7 +10,7 @@ export var dark = true setget set_dark, is_dark
 export var dark_color = Color(0,0,0)
 
 func _ready():
-	connect("player_entered", self, "_on_player_enter")
+	pass
 
 func set_dark(val):
 	dark = val
@@ -22,9 +22,6 @@ func set_dark(val):
 
 func is_dark():
 	return dark
-
-func _on_player_enter(player):
-	print("player_enter")
 
 func _on_room_room_darkened():
 	get_node("CanvasModulate").color = dark_color
