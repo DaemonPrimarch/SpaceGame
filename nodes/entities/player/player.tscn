@@ -15,9 +15,9 @@
 [ext_resource path="res://nodes/state_handlers/wall_sliding_handler.tscn" type="PackedScene" id=13]
 [ext_resource path="res://nodes/state_handlers/crawling_handler.tscn" type="PackedScene" id=14]
 
-[node name="player" index="0" groups=[
-"player",
+[node name="player" groups=[
 "warpable",
+"player",
 ] instance=ExtResource( 1 )]
 
 script = ExtResource( 2 )

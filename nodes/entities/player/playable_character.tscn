@@ -4,7 +4,6 @@
 [ext_resource path="res://sprites/robot_demo.png" type="Texture" id=2]
 [ext_resource path="res://sprites/white_light.png" type="Texture" id=3]
 
-
 [sub_resource type="Animation" id=1]
 
 resource_name = "duck"
@@ -127,7 +126,7 @@ collision_mask = 1
 collision/safe_margin = 0.08
 script = ExtResource( 1 )
 _sections_unfolded = [ "Collision", "Pause" ]
-max_slope_angle = 1.5708
+max_slope_angle = 0.785398
 HP = 100
 max_HP = 100
 movement_speed = 256
@@ -284,7 +283,7 @@ exclude_parent = true
 cast_to = Vector2( 128, 0 )
 collision_mask = 1
 
-[node name="debug_invulnerable_label" type="Label" parent="." index="16"]
+[node name="debug_invulnerable_label" type="Label" parent="." index="15"]
 
 anchor_left = 0.0
 anchor_top = 0.0
