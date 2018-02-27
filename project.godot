@@ -16,10 +16,10 @@ config/icon="res://icon.png"
 
 [autoload]
 
-MATHS="*res://scripts/maths.gd"
-GUI="*res://scripts/GUI.gd"
-ROOM_MANAGER="*res://scripts/room_manager.gd"
-DIALOG_SYSTEM="*res://scripts/dialog_system.gd"
+MATHS="*res://scripts/singletons/maths.gd"
+GUI="*res://scripts/singletons/GUI.gd"
+DIALOG_SYSTEM="*res://scripts/singletons/dialog_system.gd"
+ROOM_MANAGER="*res://scripts/singletons/room_manager.gd"
 
 [debug]
 

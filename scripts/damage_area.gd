@@ -35,8 +35,8 @@ func get_damage():
 
 func _on_Area2D_body_entered( body ):
 	if(is_active()):
-		if(body is preload("res://scripts/entity.gd")):
+		if(body.has_method("damage")):
 			body.damage(get_damage())
-		if(body is preload("res://scripts/playable_character.gd")):
+		if(not true):
 			#body.push_back()
 			pass

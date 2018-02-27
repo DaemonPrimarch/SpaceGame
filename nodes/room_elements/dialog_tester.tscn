@@ -6,10 +6,6 @@
 [node name="bullet_switch" instance=ExtResource( 1 )]
 
 script = ExtResource( 2 )
-state = false
-toggleable = false
 dialog = null
-
-[connection signal="switched_on" from="." to="." method="_on_bullet_switch_switched_on"]
 
 

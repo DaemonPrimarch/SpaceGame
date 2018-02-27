@@ -1,7 +1,8 @@
 [gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://scripts/destroyable_block.gd" type="Script" id=1]
+[ext_resource path="res://scripts/room_elements/destroyable_block.gd" type="Script" id=1]
 [ext_resource path="res://sprites/icon.png" type="Texture" id=2]
+
 
 [node name="destroyable_block" type="StaticBody2D"]
 

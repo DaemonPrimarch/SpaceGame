@@ -1,5 +1,7 @@
 [gd_scene load_steps=3 format=2]
 
+[ext_resource path="res://scripts/entities/enemies/enemy_3.gd" type="Script" id=1]
+
 [sub_resource type="Curve2D" id=1]
 
 bake_interval = 5.0
@@ -52,7 +54,7 @@ input_pickable = false
 collision_layer = 0
 collision_mask = 5
 collision/safe_margin = 0.08
-script = SubResource( 2 )
+script = ExtResource( 1 )
 _sections_unfolded = [ "Collision", "Transform", "collision" ]
 __meta__ = {
 "_edit_group_": true
