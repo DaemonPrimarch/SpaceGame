@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://nodes/room.tscn" type="PackedScene" id=1]
 [ext_resource path="res://nodes/room_elements/regular_warp_tile.tscn" type="PackedScene" id=2]
+[ext_resource path="res://nodes/entities/enemies/enemy_2.tscn" type="PackedScene" id=3]
 
 [node name="room_7" index="0" instance=ExtResource( 1 )]
 
@@ -18,9 +19,12 @@ arrival_pos_id = "room_7_arrival"
 [node name="warp_tile2" parent="." index="2" instance=ExtResource( 2 )]
 
 position = Vector2( 1248, 192 )
-scale = Vector2( -1, 1 )
-_sections_unfolded = [ "Collision", "Pause", "Transform" ]
 destination_room = "res://rooms/to_engine/room_6.tscn"
 arrival_pos_id = "room_7_arrival"
+flippedH = true
+
+[node name="enemy_2" parent="." index="5" instance=ExtResource( 3 )]
+
+position = Vector2( 544, 544 )
 
 
