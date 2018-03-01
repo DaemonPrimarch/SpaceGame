@@ -25,6 +25,7 @@ func process_state(delta):
 	.process_state(delta)
 	
 	if(not Input.is_action_pressed("jump") or get_timer() > get_parent().calculate_max_airtime(get_jump_height(), get_parent().get_gravity_vector().y)):
+		get_parent().set_velocity(Vector2(get_parent().get_velocity().x,0))
 		get_parent().set_state("FALLING")
 	elif(Input.is_action_pressed("play_up") and get_parent().is_inside_ladder()):
 		get_parent().set_state("CLIMBING")
@@ -34,6 +35,7 @@ func process_state(delta):
 		var vertical_collision_info  = get_parent().move_and_collide(get_parent().get_velocity() * delta)
 		
 		if (vertical_collision_info != null):
+			get_parent().set_velocity(Vector2(get_parent().get_velocity().x,0))
 			get_parent().set_state("FALLING")
 		
 		else:

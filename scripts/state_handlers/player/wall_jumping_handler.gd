@@ -30,7 +30,6 @@ func enter_state(previous_state):
 	.enter_state(previous_state)
 	
 	get_parent().set_flippedH(not get_parent().is_flippedH())
-	get_parent().set_gravity_enabled(false)
 			
 	get_parent().set_velocity(Vector2(starting_speed_x,starting_speed_y))
 			
@@ -52,6 +51,7 @@ func process_state(delta):
 		var vertical_collision_info  = get_parent().move_and_collide(get_parent().get_velocity() * Vector2(0,1) * delta)
 		
 		if (vertical_collision_info != null):
+			get_parent().set_velocity(Vector2(get_parent().get_velocity().x,0))
 			get_parent().set_state("FALLING")
 				
 		else:

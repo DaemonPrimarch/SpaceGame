@@ -12,6 +12,10 @@ export var jump_height = 64 * 4
 export var double_jump_height = 64 * 2
 export var wall_jump_distance = Vector2(64,64)
 
+export var starting_wall_slide_speed = 64 setget set_starting_wall_slide_speed,get_starting_wall_slide_speed
+export var wall_slide_acceleration = 2*64 setget set_wall_slide_acceleration, get_wall_slide_acceleration
+export var max_wall_slide_speed = 4*64 setget set_max_wall_slide_speed, get_max_wall_slide_speed
+
 export var stunned_time = 1
 
 export var climbing_speed = 64 * 2 
@@ -208,3 +212,21 @@ func enable_double_jump():
 
 func enable_wall_jump():
 	wall_jump_enabled = true
+
+func set_starting_wall_slide_speed(val):
+	starting_wall_slide_speed = val
+	
+func get_starting_wall_slide_speed():
+	return starting_wall_slide_speed
+
+func set_wall_slide_acceleration(val):
+	wall_slide_acceleration = val
+
+func get_wall_slide_acceleration():
+	return wall_slide_acceleration
+
+func set_max_wall_slide_speed(val):
+	max_wall_slide_speed = val
+
+func get_max_wall_slide_speed():
+	return max_wall_slide_speed

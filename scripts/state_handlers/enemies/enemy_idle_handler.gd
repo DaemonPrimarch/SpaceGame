@@ -15,4 +15,5 @@ func process_state(delta):
 	if(get_parent().get_player_detector().is_colliding()):
 		var collider = get_parent().get_player_detector().get_collider()
 		if(collider.is_in_group("player")):
+			get_parent().set_charging_distance(abs(get_parent().position.x - collider.position.x) + get_parent().get_overrun_distance())
 			get_parent().set_state("CHARGING")

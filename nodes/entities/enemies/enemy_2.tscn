@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://scripts/entities/enemies/enemy_2.gd" type="Script" id=1]
 [ext_resource path="res://scripts/state_handlers/enemies/enemy_idle_handler.gd" type="Script" id=2]
 [ext_resource path="res://scripts/state_handlers/enemies/enemy_charging_handler.gd" type="Script" id=3]
-[ext_resource path="res://scripts/state_handlers/enemies/enemy_stunned_handler.gd" type="Script" id=4]
+[ext_resource path="res://scripts/state_handlers/enemies/enemy_stunned_by_crash_handler.gd" type="Script" id=4]
+[ext_resource path="res://scripts/state_handlers/enemies/stunned_by_exhaustion_handler.gd" type="Script" id=5]
 
 [node name="enemy_2" type="KinematicBody2D"]
 
@@ -25,9 +26,12 @@ flippedH = false
 flippedV = false
 invulnerability_time = 0.5
 damage = 1
-charging_speed = 384
-charging_time = 3
-stunned_time = 2
+charging_acceleration = 1920
+starting_speed = 256
+max_speed = 1152
+stunned_time_crashed = 2
+stunned_time_exhausted = 1
+overrun_distance = 256
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." index="0"]
 
@@ -98,7 +102,7 @@ script = ExtResource( 2 )
 
 script = ExtResource( 3 )
 
-[node name="stunned_handler" type="Node" parent="." index="6"]
+[node name="stunned_by_crash_handler" type="Node" parent="." index="6"]
 
 script = ExtResource( 4 )
 
@@ -116,6 +120,10 @@ enabled = true
 exclude_parent = true
 cast_to = Vector2( 0, 60 )
 collision_mask = 1
+
+[node name="stunned_by_exhaustion_handler" type="Node" parent="." index="9"]
+
+script = ExtResource( 5 )
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_object_hit"]
 
