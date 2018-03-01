@@ -62,10 +62,15 @@ func warp_node_to_room(node, room, arrival_pos_id):
 		
 		var loaded_room
 		
+		var new_pos = Vector2()
+		
+		if(old_pos.length() <= 30000):
+			new_pos = old_pos + Vector2(10000, 10000)
+		
 		if(typeof(room) == TYPE_STRING):
-			loaded_room = load_room(room, old_pos + Vector2(10000, 10000))
+			loaded_room = load_room(room, new_pos)
 		else:
-			loaded_room = load_packed_room(room, old_pos + Vector2(10000, 10000))
+			loaded_room = load_packed_room(room, new_pos)
 			
 		var arrivals = get_tree().get_nodes_in_group("warp_arrival")
 		var arrival_pos = Vector2(0,0)
