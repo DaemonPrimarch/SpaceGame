@@ -59,7 +59,7 @@ position = Vector2( 2336, 416 )
 
 [node name="stop" parent="crushing_platform_big" index="2"]
 
-position = Vector2( -768, 0 )
+position = Vector2( -832, 0 )
 
 [node name="no_respawn_area" parent="." index="9" instance=ExtResource( 6 )]
 

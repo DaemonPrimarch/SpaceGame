@@ -12,6 +12,7 @@ func leave_state(new_state):
 	.leave_state(new_state)
 	
 func can_continue():
+	get_parent().wall_slide_detector_up.force_raycast_update()
 	return get_parent().wall_slide_detector_up.is_colliding() and get_parent().can_wall_slide_on_node(get_parent().wall_slide_detector_up.get_collider())
 	
 func process_state(delta):
