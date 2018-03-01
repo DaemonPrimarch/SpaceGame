@@ -36,4 +36,4 @@ func process_state(delta):
 			get_parent().set_flippedH(false)
 			pressed = 1
 
-		get_parent().move_and_collide(get_parent().get_direction() * get_parent().get_movement_speed() * Vector2(1,0) * pressed * delta)
+		get_parent().move_and_collide(get_parent().get_direction() * get_parent().get_crawling_speed() * Vector2(1,0) * pressed * delta)

@@ -28,6 +28,11 @@ debug_grounded_label = NodePath("Label2")
 gravity_enabled = true
 gravity_vector = Vector2( 0, 1152 )
 weapon_path = NodePath("gun")
+starting_wall_slide_speed = 64
+wall_slide_acceleration = 128
+max_wall_slide_speed = 256
+crawling_speed = 128
+climbing_speed = 256
 
 [node name="Sprite" parent="." index="0"]
 

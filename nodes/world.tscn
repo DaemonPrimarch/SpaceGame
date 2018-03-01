@@ -11,6 +11,9 @@ arrival_pos_id = "arian"
 
 [node name="player" parent="." index="0" instance=ExtResource( 2 )]
 
+wall_slide_acceleration = 192
+max_wall_slide_speed = 384
+
 [node name="Sprite" parent="player" index="0"]
 
 frame = 18
