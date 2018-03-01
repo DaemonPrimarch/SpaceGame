@@ -15,10 +15,11 @@ export var wall_jump_distance = Vector2(64,64)
 export var starting_wall_slide_speed = 64 setget set_starting_wall_slide_speed,get_starting_wall_slide_speed
 export var wall_slide_acceleration = 2*64 setget set_wall_slide_acceleration, get_wall_slide_acceleration
 export var max_wall_slide_speed = 4*64 setget set_max_wall_slide_speed, get_max_wall_slide_speed
+export var crawling_speed = 2*64 setget set_crawling_speed, get_crawling_speed
 
 export var stunned_time = 1
 
-export var climbing_speed = 64 * 2 
+export var climbing_speed = 64 * 4
 
 var inventory = {}
 
@@ -230,3 +231,9 @@ func set_max_wall_slide_speed(val):
 
 func get_max_wall_slide_speed():
 	return max_wall_slide_speed
+
+func set_crawling_speed(val):
+	crawling_speed = val
+
+func get_crawling_speed():
+	return crawling_speed

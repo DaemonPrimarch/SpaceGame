@@ -58,9 +58,9 @@ arrival_pos_id = "room_8_arrival"
 
 position = Vector2( 416, 672 )
 
-[connection signal="switched_on" from="bullet_switch" to="StaticBody2D2" method="_set_active" binds= [ true ]]
-
 [connection signal="switched_on" from="bullet_switch" to="StaticBody2D" method="_set_active" binds= [ false ]]
+
+[connection signal="switched_on" from="bullet_switch" to="StaticBody2D2" method="_set_active" binds= [ true ]]
 
 [connection signal="switched_on" from="bullet_switch" to="warp_tile" method="set_active" binds= [ true ]]
 
