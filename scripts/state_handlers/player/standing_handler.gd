@@ -15,6 +15,13 @@ func process_state(delta):
 	
 	if(not get_parent().is_grounded()):
 		get_parent().set_state("FALLING")
+	elif(Input.is_action_pressed("play_down") and get_parent().is_in_top_ladder_area()):
+		get_parent().set_ladder(get_parent().get_ladder_top())
+		
+		get_parent().position += Vector2(0, 10)
+		
+		get_parent().set_state("CLIMBING")
+		
 	elif(Input.is_action_pressed("play_up") and get_parent().is_inside_ladder()):
 		get_parent().set_state("CLIMBING")
 	elif(Input.is_action_just_pressed("jump") and get_parent().can_jump()):

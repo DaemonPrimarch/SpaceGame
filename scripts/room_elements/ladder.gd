@@ -22,6 +22,7 @@ func _ready():
 func set_length(l):
 	length = l
 
+
 	emit_signal("length_changed")
 
 func snap_to(node):
