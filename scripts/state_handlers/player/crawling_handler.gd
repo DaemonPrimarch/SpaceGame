@@ -22,9 +22,10 @@ func leave_state(new_state):
 func process_state(delta):
 	.process_state(delta)
 
-	get_parent().get_node("crawl_leave_detector").force_raycast_update()
+	get_parent().get_node("crawl_leave_front_detector").force_raycast_update()
+	get_parent().get_node("crawl_leave_back_detector").force_raycast_update()
 
-	if(not get_parent().get_node("crawl_leave_detector").is_colliding()):
+	if(not get_parent().get_node("crawl_leave_front_detector").is_colliding() and not get_parent().get_node("crawl_leave_back_detector").is_colliding()):
 		get_parent().set_state("STANDING")
 	else:
 		var pressed = 0
