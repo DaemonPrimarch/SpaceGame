@@ -29,4 +29,5 @@ func process_state(delta):
 		elif(Input.is_action_pressed("play_down")):
 			dir = 1
 			
-		get_parent().move_and_collide(Vector2(0, dir) * get_parent().get_climbing_speed() * delta)
+		if(get_parent().move_and_collide(Vector2(0, dir) * get_parent().get_climbing_speed() * delta) != null):
+			get_parent().set_state("STANDING")

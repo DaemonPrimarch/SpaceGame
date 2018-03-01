@@ -144,6 +144,9 @@ wall_jump_enabled = true
 jump_height = 256
 double_jump_height = 128
 wall_jump_distance = Vector2( 64, 64 )
+starting_wall_slide_speed = 64
+wall_slide_acceleration = 128
+max_wall_slide_speed = 256
 stunned_time = 1
 climbing_speed = 128
 

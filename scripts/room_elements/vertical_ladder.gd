@@ -12,3 +12,6 @@ func _on_top_area_body_entered( body ):
 func _on_top_area_body_exited( body ):
 	if(body.has_method("set_top_ladder_area")):
 		body.set_top_ladder_area(null)
+
+func snap_to(player):
+	player.position.x = position.x
