@@ -3,7 +3,7 @@
 [ext_resource path="res://scripts/starter.gd" type="Script" id=1]
 [ext_resource path="res://nodes/entities/player/player.tscn" type="PackedScene" id=2]
 
-[node name="world" type="Node2D"]
+[node name="world" type="Node2D" index="0"]
 
 script = ExtResource( 1 )
 starting_room = "res://rooms/from_bridge/room_1.tscn"
@@ -11,10 +11,8 @@ arrival_pos_id = "arian"
 
 [node name="player" parent="." index="0" instance=ExtResource( 2 )]
 
-
 double_jump_enabled = false
 wall_jump_enabled = false
-wall_slide_acceleration = 192
 max_wall_slide_speed = 384
 
 [node name="Sprite" parent="player" index="0"]
