@@ -262,7 +262,7 @@ shadow_filter = 0
 shadow_filter_smooth = 0.0
 shadow_item_cull_mask = 1
 
-[node name="crawl_leave_detector" type="RayCast2D" parent="." index="12"]
+[node name="crawl_leave_back_detector" type="RayCast2D" parent="." index="12"]
 
 position = Vector2( -30, -80 )
 enabled = false
@@ -270,7 +270,15 @@ exclude_parent = true
 cast_to = Vector2( 0, -20 )
 collision_mask = 1
 
-[node name="crawl_detector_up" type="RayCast2D" parent="." index="13"]
+[node name="crawl_leave_front_detector" type="RayCast2D" parent="." index="13"]
+
+position = Vector2( 30, -80 )
+enabled = true
+exclude_parent = true
+cast_to = Vector2( 0, -20 )
+collision_mask = 1
+
+[node name="crawl_detector_up" type="RayCast2D" parent="." index="14"]
 
 position = Vector2( 30, -8 )
 enabled = true
@@ -278,7 +286,7 @@ exclude_parent = true
 cast_to = Vector2( 128, 0 )
 collision_mask = 1
 
-[node name="crawl_detector_down" type="RayCast2D" parent="." index="14"]
+[node name="crawl_detector_down" type="RayCast2D" parent="." index="15"]
 
 position = Vector2( 30, 24 )
 enabled = true
@@ -286,7 +294,7 @@ exclude_parent = true
 cast_to = Vector2( 128, 0 )
 collision_mask = 1
 
-[node name="debug_invulnerable_label" type="Label" parent="." index="15"]
+[node name="debug_invulnerable_label" type="Label" parent="." index="16"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -304,6 +312,14 @@ size_flags_vertical = 4
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
+
+[node name="crawl_pit_detector" type="RayCast2D" parent="." index="18"]
+
+position = Vector2( 60, 32 )
+enabled = true
+exclude_parent = true
+cast_to = Vector2( 0, 16 )
+collision_mask = 1
 
 [connection signal="room_entered" from="." to="." method="_on_room_entered"]
 

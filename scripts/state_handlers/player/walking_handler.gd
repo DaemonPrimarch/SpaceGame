@@ -26,7 +26,9 @@ func process_state(delta):
 			get_parent().set_flippedH(false)
 					
 		if(get_parent().move_and_collide_slope(Vector2(1,0) * delta * get_parent().get_direction() * get_parent().get_movement_speed()) != null):
-			if(not get_parent().get_node("crawl_detector_up").is_colliding() and not get_parent().get_node("crawl_detector_up").is_colliding()):
+			get_parent().get_node("crawl_detector_up").force_raycast_update()
+			get_parent().get_node("crawl_pit_detector").force_raycast_update()
+			if(not get_parent().get_node("crawl_detector_up").is_colliding() and get_parent().get_node("crawl_pit_detector").is_colliding()):
 				get_parent().set_state("CRAWLING")
 	else:
 		get_parent().set_state("STANDING")

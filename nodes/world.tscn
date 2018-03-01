@@ -11,9 +11,6 @@ arrival_pos_id = "arian"
 
 [node name="player" parent="." index="0" instance=ExtResource( 2 )]
 
-wall_slide_acceleration = 192
-max_wall_slide_speed = 384
-
 [node name="Sprite" parent="player" index="0"]
 
 frame = 18
@@ -21,6 +18,14 @@ frame = 18
 [node name="wall_slide_detector_up" parent="player" index="24"]
 
 _sections_unfolded = [ "Transform" ]
+
+[node name="crawl_leave_detector" type="RayCast2D" parent="player" index="26"]
+
+position = Vector2( -30, -80 )
+enabled = false
+exclude_parent = true
+cast_to = Vector2( 0, -20 )
+collision_mask = 1
 
 
 [editable path="player"]
