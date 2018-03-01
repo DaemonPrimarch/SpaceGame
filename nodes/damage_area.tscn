@@ -31,13 +31,13 @@ polygon = PoolVector2Array( 32, -32, -32, -32, -32, 32, 32, 32 )
 region_enabled = true
 region_rect = Rect2( 1920, 640, 64, 256 )
 
-[connection signal="activated" from="." to="Area2D" method="set_collision_layer_bit" binds= [ 0, 1 ]]
-
 [connection signal="activated" from="." to="Sprite" method="set_visible" binds= [ true ]]
 
-[connection signal="deactivated" from="." to="Area2D" method="set_collision_layer_bit" binds= [ 0, 0 ]]
+[connection signal="activated" from="." to="Area2D" method="set_collision_layer_bit" binds= [ 0, 1 ]]
 
 [connection signal="deactivated" from="." to="Sprite" method="set_visible" binds= [ false ]]
+
+[connection signal="deactivated" from="." to="Area2D" method="set_collision_layer_bit" binds= [ 0, 0 ]]
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
 

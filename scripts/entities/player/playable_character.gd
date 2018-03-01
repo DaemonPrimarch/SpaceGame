@@ -36,6 +36,7 @@ var acceleration = Vector2()
 
 var in_no_respawn_area = false
 var in_no_wall_slide = false
+var ladder_top = null
 
 var last_safe_position = Vector2()
 
@@ -83,6 +84,16 @@ func is_inside_ladder():
 	
 func set_ladder(ladder):
 	inside_ladder = ladder
+	
+func set_top_ladder_area(ladder):
+	ladder_top = ladder
+	
+func is_in_top_ladder_area():
+	return ladder_top != null
+
+func get_ladder_top():
+	return ladder_top
+	
 
 func get_ladder():
 	return inside_ladder
