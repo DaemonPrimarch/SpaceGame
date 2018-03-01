@@ -4,7 +4,7 @@
 [ext_resource path="res://nodes/room_elements/regular_warp_tile.tscn" type="PackedScene" id=2]
 [ext_resource path="res://nodes/room_elements/bullet_switch.tscn" type="PackedScene" id=3]
 [ext_resource path="res://nodes/room_elements/regular_damage_area.tscn" type="PackedScene" id=4]
-[ext_resource path="res://nodes/room_elements/moving_platforms/moveable_platform_medium.tscn" type="PackedScene" id=5]
+[ext_resource path="res://nodes/room_elements/moving_platforms/one_way_movable_platform.tscn" type="PackedScene" id=5]
 
 [node name="room_7" instance=ExtResource( 1 )]
 
@@ -135,24 +135,23 @@ margin_right = 128.0
 
 [node name="moveable_platform_parent" parent="." index="9" instance=ExtResource( 5 )]
 
-editor/display_folded = true
 position = Vector2( 960, 1248 )
 
-[node name="point_1" parent="moveable_platform_parent" index="1"]
+[node name="point_1" parent="moveable_platform_parent" index="2"]
 
-position = Vector2( 0, -608 )
+position = Vector2( 0, -768 )
 
 [connection signal="switched_off" from="bullet_switch" to="toggable electric hazards/damage_area9" method="toggle_active"]
 
-[connection signal="switched_off" from="bullet_switch" to="toggable electric hazards/damage_area11" method="toggle_active"]
-
 [connection signal="switched_off" from="bullet_switch" to="toggable electric hazards/damage_area10" method="toggle_active"]
+
+[connection signal="switched_off" from="bullet_switch" to="toggable electric hazards/damage_area11" method="toggle_active"]
 
 [connection signal="switched_on" from="bullet_switch" to="toggable electric hazards/damage_area9" method="toggle_active"]
 
-[connection signal="switched_on" from="bullet_switch" to="toggable electric hazards/damage_area11" method="toggle_active"]
-
 [connection signal="switched_on" from="bullet_switch" to="toggable electric hazards/damage_area10" method="toggle_active"]
+
+[connection signal="switched_on" from="bullet_switch" to="toggable electric hazards/damage_area11" method="toggle_active"]
 
 
 [editable path="toggable electric hazards/damage_area9"]

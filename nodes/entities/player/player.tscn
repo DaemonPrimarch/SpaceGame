@@ -15,7 +15,7 @@
 [ext_resource path="res://nodes/state_handlers/wall_sliding_handler.tscn" type="PackedScene" id=13]
 [ext_resource path="res://nodes/state_handlers/crawling_handler.tscn" type="PackedScene" id=14]
 
-[node name="player" index="0" groups=[
+[node name="player" groups=[
 "player",
 "warpable",
 ] instance=ExtResource( 1 )]
@@ -29,6 +29,7 @@ gravity_enabled = true
 gravity_vector = Vector2( 0, 1152 )
 weapon_path = NodePath("gun")
 wall_slide_acceleration = 192
+max_wall_slide_speed = 512
 crawling_speed = 128
 climbing_speed = 256
 

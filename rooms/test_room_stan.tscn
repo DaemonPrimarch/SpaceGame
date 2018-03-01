@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://nodes/room.tscn" type="PackedScene" id=1]
-[ext_resource path="res://nodes/entities/enemies/enemy_2.tscn" type="PackedScene" id=2]
+[ext_resource path="res://nodes/one_way_platform.tscn" type="PackedScene" id=2]
 
 [node name="room" index="0" instance=ExtResource( 1 )]
 
@@ -13,9 +13,8 @@ tile_data = PoolIntArray( 0, 0, 0, 1, 0, 0, 2, 0, 0, 3, 0, 0, 4, 0, 0, 5, 0, 0, 
 
 position = Vector2( 992, 512 )
 
-[node name="enemy_2" parent="." index="3" instance=ExtResource( 2 )]
+[node name="platform" parent="." index="3" instance=ExtResource( 2 )]
 
-position = Vector2( 96, 544 )
-overrun_distance = 256
+position = Vector2( 704, 416 )
 
 
