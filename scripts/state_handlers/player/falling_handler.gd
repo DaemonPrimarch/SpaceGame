@@ -6,6 +6,7 @@ func get_handled_state():
 func enter_state(previous_state):
 	.enter_state(previous_state)
 	
+	get_parent().gravity_velocity = Vector2(0,get_parent().get_velocity().y)
 	get_parent().animation_player.play("fall")
 	
 func leave_state(new_state):
@@ -31,7 +32,6 @@ func process_state(delta):
 			get_parent().set_flippedH(false)
 			pressed = 1
 			get_parent().set_velocity(Vector2(0,get_parent().get_velocity().y))
-					
 		var collision_info = get_parent().move_and_collide(Vector2(1,0) * get_parent().get_direction() * delta * (get_parent().get_velocity().x + get_parent().get_movement_speed() * pressed))
 				
 		if(collision_info != null and get_parent().can_wall_slide()):

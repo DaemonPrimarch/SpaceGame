@@ -16,8 +16,8 @@
 [ext_resource path="res://nodes/state_handlers/crawling_handler.tscn" type="PackedScene" id=14]
 
 [node name="player" groups=[
-"warpable",
 "player",
+"warpable",
 ] instance=ExtResource( 1 )]
 
 script = ExtResource( 2 )
@@ -28,8 +28,6 @@ debug_grounded_label = NodePath("Label2")
 gravity_enabled = true
 gravity_vector = Vector2( 0, 1152 )
 weapon_path = NodePath("gun")
-double_jump_enabled = false
-wall_jump_enabled = false
 
 [node name="Sprite" parent="." index="0"]
 

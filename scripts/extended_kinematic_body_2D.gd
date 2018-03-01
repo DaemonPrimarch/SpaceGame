@@ -26,7 +26,7 @@ func move_and_collide_slope(v):
 			#get_node("debuggyboy").set_cast_to(collision_info.remainder.dot(collision_info.normal.rotated(PI/2)) * collision_info.normal.rotated(PI/2) * 10000)
 			get_node("debuggyboy").set_cast_to(collision_info.normal.rotated(PI/2) * 10000)
 		
-		print(collision_info.normal.rotated(PI/2).angle())
+		#print(collision_info.normal.rotated(PI/2).angle())
 		
 		collision_info = move_and_collide(collision_info.remainder.dot(collision_info.normal.rotated(PI/2)) * collision_info.normal.rotated(PI/2)) 
 		
