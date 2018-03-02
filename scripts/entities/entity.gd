@@ -106,17 +106,11 @@ func get_max_HP():
 func set_max_HP(max_hp):
 	max_HP = max_hp
 
-func damage(d, object):
-	var direction
-	if(object.position.x > position.x):
-		direction = 1
-	else:
-		direction = -1
-	if(can_be_pushed):
-		damage_push(direction)
-	set_HP(get_HP() - d)
-	invulnerability_timer.start()
-	set_invulnerable(true)
+func damage(d):
+	if(not invulnerable):
+		set_HP(get_HP() - d)
+		invulnerability_timer.start()
+		set_invulnerable(true)
 
 func set_invulnerability_time(value):
 	invulnerability_time = value
@@ -257,6 +251,12 @@ func get_direction():
 func destroy():
 	queue_free()
 	
-func damage_push(direction):
-	is_pushed = true
-	push_direction = direction
+func damage_push(object):
+	if(can_be_pushed):
+		var direction
+		if(object.position.x > position.x):
+			direction = -1
+		else:
+			direction = 1
+		push_direction = direction
+		is_pushed = true

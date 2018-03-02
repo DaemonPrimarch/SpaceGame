@@ -46,4 +46,5 @@ func leave_state(new_state):
 	get_parent().is_pushed = false
 
 func calculate_starting_velocity():
+	print(get_parent().push_direction)
 	return Vector2(get_parent().push_direction * (damage_push_distance/damage_push_time), -damage_push_height/damage_push_time)
