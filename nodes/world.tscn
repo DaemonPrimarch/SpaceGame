@@ -3,7 +3,7 @@
 [ext_resource path="res://scripts/starter.gd" type="Script" id=1]
 [ext_resource path="res://nodes/entities/player/player.tscn" type="PackedScene" id=2]
 
-[node name="world" type="Node2D" index="0"]
+[node name="world" type="Node2D"]
 
 script = ExtResource( 1 )
 starting_room = "res://rooms/from_bridge/room_1.tscn"
@@ -11,9 +11,7 @@ arrival_pos_id = "arian"
 
 [node name="player" parent="." index="0" instance=ExtResource( 2 )]
 
-gravity_enabled = true
 can_be_pushed = true
-crawling_speed = 128
 
 [node name="Sprite" parent="player" index="0"]
 

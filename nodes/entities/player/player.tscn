@@ -16,7 +16,7 @@
 [ext_resource path="res://nodes/state_handlers/crawling_handler.tscn" type="PackedScene" id=14]
 [ext_resource path="res://nodes/state_handlers/pushed_handler.tscn" type="PackedScene" id=15]
 
-[node name="player" index="0" groups=[
+[node name="player" groups=[
 "player",
 "warpable",
 ] instance=ExtResource( 1 )]
@@ -133,6 +133,9 @@ jump_height = 268.8
 [node name="crawling_handler" parent="." index="29" instance=ExtResource( 14 )]
 
 [node name="pushed_handler" parent="." index="34" instance=ExtResource( 15 )]
+
+damage_push_distance = 64
+time_to_control = 0.0675
 
 [connection signal="room_entered" from="." to="camera" method="update_limit"]
 

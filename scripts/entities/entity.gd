@@ -252,7 +252,7 @@ func destroy():
 	queue_free()
 	
 func damage_push(object):
-	if(can_be_pushed):
+	if(can_be_pushed and not invulnerable):
 		var direction
 		if(object.position.x > position.x):
 			direction = -1
