@@ -11,9 +11,9 @@ arrival_pos_id = "arian"
 
 [node name="player" parent="." index="0" instance=ExtResource( 2 )]
 
-double_jump_enabled = false
-wall_jump_enabled = false
-max_wall_slide_speed = 384
+gravity_enabled = true
+can_be_pushed = true
+crawling_speed = 128
 
 [node name="Sprite" parent="player" index="0"]
 

@@ -25,6 +25,9 @@ export var gravity_vector = Vector2(0, 64 * 18)
 export var flippedH = false setget set_flippedH, is_flippedH
 export var flippedV = false setget set_flippedV, is_flippedV
 
+export var can_be_pushed = false
+var is_pushed = false
+
 export var invulnerability_time = 1.0 setget set_invulnerability_time, get_invulnerability_time
 var invulnerability_timer
 var mask_save
@@ -103,6 +106,8 @@ func set_max_HP(max_hp):
 	max_HP = max_hp
 
 func damage(d):
+	if(can_be_pushed):
+		damage_push()
 	set_HP(get_HP() - d)
 	invulnerability_timer.start()
 	set_invulnerable(true)
@@ -244,5 +249,7 @@ func get_direction():
 	return dir
 	
 func destroy():
-	print("destrooooyy!!!!")
 	queue_free()
+	
+func damage_push():
+	is_pushed = true

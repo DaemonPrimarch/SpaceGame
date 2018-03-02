@@ -35,6 +35,8 @@ func get_handled_state():
 
 func process_state(delta):
 	timer += delta
+	if(get_parent().can_be_pushed and get_parent().is_pushed):
+		get_parent().set_state("PUSHED")
 	
 func enter_state(previous_state):
 	reset_timer()
