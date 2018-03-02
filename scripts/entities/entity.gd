@@ -27,6 +27,7 @@ export var flippedV = false setget set_flippedV, is_flippedV
 
 export var can_be_pushed = false
 var is_pushed = false
+var push_direction
 
 export var invulnerability_time = 1.0 setget set_invulnerability_time, get_invulnerability_time
 var invulnerability_timer
@@ -105,9 +106,14 @@ func get_max_HP():
 func set_max_HP(max_hp):
 	max_HP = max_hp
 
-func damage(d):
+func damage(d, object):
+	var direction
+	if(object.position.x > position.x):
+		direction = 1
+	else:
+		direction = -1
 	if(can_be_pushed):
-		damage_push()
+		damage_push(direction)
 	set_HP(get_HP() - d)
 	invulnerability_timer.start()
 	set_invulnerable(true)
@@ -251,5 +257,6 @@ func get_direction():
 func destroy():
 	queue_free()
 	
-func damage_push():
+func damage_push(direction):
 	is_pushed = true
+	push_direction = direction

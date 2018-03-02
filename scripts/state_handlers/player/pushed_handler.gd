@@ -2,7 +2,7 @@ extends "res://scripts/state_handler.gd"
 
 export var damage_push_height = 60
 export var damage_push_distance = 32
-export var damage_push_time = 0.5
+export var damage_push_time = 0.125
 
 var pushed_timer
 
@@ -46,4 +46,4 @@ func leave_state(new_state):
 	get_parent().is_pushed = false
 
 func calculate_starting_velocity():
-	return Vector2(damage_push_distance/damage_push_time, -damage_push_height/damage_push_time)
+	return Vector2(get_parent().push_direction * (damage_push_distance/damage_push_time), -damage_push_height/damage_push_time)
