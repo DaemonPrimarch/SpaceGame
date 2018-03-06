@@ -116,7 +116,7 @@ tracks/0/keys = {
 "values": [ 5, 6, 7, 8, 9 ]
 }
 
-[node name="playable_character" type="KinematicBody2D" groups=[
+[node name="playable_character" type="KinematicBody2D" index="0" groups=[
 "can_climb_ladder",
 ]]
 
@@ -125,30 +125,7 @@ collision_layer = 2
 collision_mask = 1
 collision/safe_margin = 0.08
 script = ExtResource( 1 )
-_sections_unfolded = [ "Collision", "Pause" ]
-max_slope_angle = 0.785398
-HP = 100
-max_HP = 100
-movement_speed = 256
-debug_state_label = null
-debug_grounded_label = null
-gravity_enabled = false
-gravity_vector = Vector2( 0, 384 )
-flippedH = false
-flippedV = false
-invulnerability_time = 1
-weapon_path = null
-jump_enabled = true
-double_jump_enabled = true
-wall_jump_enabled = true
-jump_height = 256
-double_jump_height = 128
-wall_jump_distance = Vector2( 64, 64 )
-starting_wall_slide_speed = 64
-wall_slide_acceleration = 128
-max_wall_slide_speed = 256
-stunned_time = 1
-climbing_speed = 128
+_sections_unfolded = [ "Collision", "Pause", "Pickable", "collision" ]
 
 [node name="Sprite" type="Sprite" parent="." index="0"]
 
@@ -313,14 +290,12 @@ percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
 
-[node name="crawl_pit_detector" type="RayCast2D" parent="." index="18"]
+[node name="crawl_pit_detector" type="RayCast2D" parent="." index="17"]
 
 position = Vector2( 60, 32 )
 enabled = true
 exclude_parent = true
 cast_to = Vector2( 0, 16 )
 collision_mask = 1
-
-[connection signal="room_entered" from="." to="." method="_on_room_entered"]
 
 

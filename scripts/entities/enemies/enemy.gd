@@ -1,6 +1,6 @@
 tool
 
-extends "res://scripts/entities/entity.gd"
+extends "res://scripts/entities/living_entity.gd"
 
 export var damage = 1 setget set_damage, get_damage
 

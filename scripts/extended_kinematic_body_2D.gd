@@ -4,6 +4,44 @@ signal collided(info, moved_object)
 
 export var max_slope_angle = PI/4
 
+export var flippedH = false setget set_flippedH, is_flippedH
+export var flippedV = false setget set_flippedV, is_flippedV
+
+func is_flippedH():
+	return flippedH
+
+func is_flippedV():
+	return flippedV
+
+func set_flippedH(val):
+	if(val != is_flippedH()):
+		for child in get_children():
+			if(child is Node2D):
+				child.set_scale(child.get_scale() * Vector2(-1,1))
+				child.set_position(child.get_position() * Vector2(-1,1))
+				child.set_rotation(-child.get_rotation())
+	
+	flippedH = val
+
+func set_flippedV(val):
+	if(val != is_flippedV()):
+		for child in get_children():
+			if(child is Node2D):
+				child.set_scale(child.get_scale() * Vector2(1,-1))
+				child.set_position(child.get_position() * Vector2(1,-1))
+	
+	flippedV = val
+
+func get_direction():
+	var dir = Vector2(1,1)
+	
+	if(is_flippedH()):
+		dir.x = -1
+	if(is_flippedV()):
+		dir.y = -1
+	
+	return dir
+
 func get_max_slope_angle():
 	return max_slope_angle
 

@@ -1,6 +1,6 @@
 tool
 
-extends "res://scripts/entities/entity.gd"
+extends "res://scripts/entities/living_entity.gd"
 
 export(NodePath) var weapon_path setget set_weapon_path
 
@@ -69,6 +69,15 @@ func _ready():
 	add_state("WALKING")
 	
 	set_state("STANDING")
+	
+	connect("invulnerable_stopped", self, "on_invulnerable_stopped")
+	connect("invulnerable_started", self, "on_invulnerable_started")
+
+func on_invulnerable_started():
+	pass
+	
+func on_invulnerable_stopped():
+	pass
 
 func _physics_process(delta):
 	get_node("ground_detector").force_raycast_update()
@@ -79,7 +88,7 @@ func _physics_process(delta):
 func push_back():
 	yield(get_tree(), "idle_frame")
 	
-	set_state(STATES.PUSHED)
+	set_state("PUSHED")
 
 func get_stunned_time():
 	return stunned_time
