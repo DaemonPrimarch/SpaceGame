@@ -49,6 +49,12 @@ position = Vector2( 416, 928 )
 
 position = Vector2( 0, -320 )
 
+[node name="platform" parent="moveable_platform_parent" index="2"]
+
+flippedH = false
+flippedV = false
+one_way = false
+
 [node name="moveable_platform_parent2" parent="." index="9" instance=ExtResource( 4 )]
 
 position = Vector2( 224, 416 )
@@ -61,6 +67,12 @@ position = Vector2( 832, 448 )
 [node name="point_1" parent="moveable_platform_parent3" index="1"]
 
 position = Vector2( 256, 0 )
+
+[node name="platform" parent="moveable_platform_parent3" index="2"]
+
+flippedH = false
+flippedV = false
+one_way = false
 
 
 [editable path="moveable_platform_parent"]

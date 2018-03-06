@@ -4,6 +4,11 @@ var connected_nodes = []
 
 onready var standing_area = get_node("standing_area")
 
+export var one_way = false
+
+func is_one_way():
+	return one_way
+
 func connect_node(node):
 	if(not connected_nodes.has(node)):
 		connected_nodes.push_back(node)
@@ -29,7 +34,13 @@ func move_and_push(v):
 	for node in connected_nodes:
 		node.move_and_collide(v)
 	
-	var collision_info = move_and_collide(v)
+	
+	var collision_info
+	if(is_one_way()):
+		position += v
+	else:
+		move_and_collide(v)
+
 		
 	if(collision_info != null):
 		if(collision_info.collider.has_method('push')):

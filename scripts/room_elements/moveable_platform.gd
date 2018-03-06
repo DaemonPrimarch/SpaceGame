@@ -53,7 +53,6 @@ func _ready():
 	
 func _physics_process(delta):
 	if(is_active()):
-		
 		get_platform().move_and_push(get_movement_direction() * delta * get_movement_speed())
 		
 		if(has_arrived_at_next_point()):
