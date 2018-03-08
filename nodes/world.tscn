@@ -11,15 +11,16 @@ arrival_pos_id = "arian"
 
 [node name="player" parent="." index="0" instance=ExtResource( 2 )]
 
+editor/display_folded = true
 _sections_unfolded = [ "Collision", "Pause", "Pickable", "Transform", "collision" ]
 
-[node name="Sprite" parent="player" index="0"]
+[node name="crouch_leave_detector_left" parent="player" index="33"]
 
-frame = 18
+position = Vector2( -29, -80 )
 
-[node name="wall_slide_detector_up" parent="player" index="24"]
+[node name="crouch_leave_detector_right" parent="player" index="35"]
 
-_sections_unfolded = [ "Transform" ]
+position = Vector2( 29, -80 )
 
 
 [editable path="player"]

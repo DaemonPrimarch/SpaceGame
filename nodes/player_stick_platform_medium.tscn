@@ -4,10 +4,7 @@
 
 [node name="platform" instance=ExtResource( 1 )]
 
-flippedH = false
-flippedV = false
 moveable_by_collision = true
-one_way = false
 
 [node name="CollisionPolygon2D" parent="." index="0"]
 
