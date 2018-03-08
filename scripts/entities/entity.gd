@@ -29,6 +29,24 @@ var valid_states = ["UNDEFINED"]
 
 var current_state = "UNDEFINED"
 
+var platform = null
+
+func set_platform(plat):
+	platform = plat
+	
+	if(plat):
+		set_grounded(true)
+		print(is_grounded())
+
+func is_grounded():
+	return grounded
+
+func is_on_platform():
+	return platform != null
+
+func get_platform():
+	return platform
+
 func _ready():
 	set_physics_process(not Engine.is_editor_hint())
 
@@ -41,12 +59,13 @@ func set_movement_speed(speed):
 func _physics_process(delta):
 	if(is_gravity_enabled()):
 		if(is_grounded()):
-			if(test_move(get_global_transform(), gravity_vector.normalized() * 0.1)):
-				pass
-			elif(test_move(get_global_transform(), gravity_vector.normalized() * delta * (Vector2(get_movement_speed(), 0)).rotated(max_slope_angle))):
-				move_and_collide(gravity_vector.normalized() * delta * (Vector2(get_movement_speed(), 0)).rotated(max_slope_angle))
-			else:
-				set_grounded(false)
+			if(not is_on_platform()):
+				if(test_move(get_global_transform(), gravity_vector.normalized() * 0.1)):
+					pass
+				elif(test_move(get_global_transform(), gravity_vector.normalized() * delta * (Vector2(get_movement_speed(), 0)).rotated(max_slope_angle))):
+					move_and_collide(gravity_vector.normalized() * delta * (Vector2(get_movement_speed(), 0)).rotated(max_slope_angle))
+				else:
+					set_grounded(false)
 		else:
 			apply_gravity(delta)
 	
@@ -89,9 +108,6 @@ func has_debug_state_label():
 
 func get_debug_state_label():
 	return debug_state_label
-
-func is_grounded():
-	return grounded
 	
 func set_grounded(val):
 	grounded = val

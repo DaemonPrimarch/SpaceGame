@@ -23,16 +23,9 @@ export var climbing_speed = 64 * 4
 
 var inventory = {}
 
-var jumping_timer = 0
-var double_jumping_timer = 0
-var wall_jumping_timer = 0
-var stunned_timer = 0
-
 var inside_ladder = null
 
 var double_jumped = false
-
-var on_platform = false
 
 var wall_slide_side = 1 #1 is Right, -1 is Left
 
@@ -144,15 +137,6 @@ func set_acceleration(v):
 
 func get_acceleration():
 	return acceleration
-
-func is_on_platform():
-	return on_platform
-
-func set_on_platform(val):
-	on_platform = val
-
-func is_grounded():
-	return (.is_grounded() or is_on_platform())
 
 func can_jump():
 	return jump_enabled
