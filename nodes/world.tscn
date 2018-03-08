@@ -12,9 +12,6 @@ arrival_pos_id = "arian"
 [node name="player" parent="." index="0" instance=ExtResource( 2 )]
 
 _sections_unfolded = [ "Collision", "Pause", "Pickable", "Transform", "collision" ]
-max_slope_angle = 0.785398
-flippedH = false
-flippedV = false
 HP = 100
 max_HP = 100
 invulnerability_time = 1.0
