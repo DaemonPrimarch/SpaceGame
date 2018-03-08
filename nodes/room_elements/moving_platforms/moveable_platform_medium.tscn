@@ -11,9 +11,5 @@ snap = false
 [node name="platform" parent="." index="2" instance=ExtResource( 2 )]
 
 position = Vector2( 0, 32 )
-flippedH = false
-flippedV = false
-moveable_by_collision = false
-one_way = false
 
 

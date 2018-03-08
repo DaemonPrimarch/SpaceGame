@@ -3,7 +3,7 @@
 [ext_resource path="res://scripts/room_elements/player_stick_platform.gd" type="Script" id=1]
 [ext_resource path="res://sprites/metroid_tilesheet.png" type="Texture" id=2]
 
-[node name="platform" type="KinematicBody2D" index="0"]
+[node name="platform" type="KinematicBody2D"]
 
 input_pickable = false
 collision_layer = 1
