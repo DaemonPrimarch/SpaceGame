@@ -12,6 +12,10 @@ collision/safe_margin = 0.08
 script = ExtResource( 1 )
 _sections_unfolded = [ "Collision", "Pickable", "Transform", "Visibility", "collision" ]
 max_slope_angle = 1.5708
+flippedH = false
+flippedV = false
+moveable_by_collision = false
+one_way = false
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." index="0"]
 
