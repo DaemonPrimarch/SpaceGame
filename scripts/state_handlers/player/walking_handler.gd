@@ -24,11 +24,13 @@ func process_state(delta):
 			get_parent().set_flippedH(true)
 		elif(Input.is_action_pressed("play_right")):
 			get_parent().set_flippedH(false)
+			
+		var collision = get_parent().move_and_collide_slope(Vector2(1,0) * delta * get_parent().get_direction() * get_parent().get_movement_speed())
 					
-		if(get_parent().move_and_collide_slope(Vector2(1,0) * delta * get_parent().get_direction() * get_parent().get_movement_speed()) != null):
+		if(collision):
 			get_parent().get_node("crawl_detector_up").force_raycast_update()
 			get_parent().get_node("crawl_pit_detector").force_raycast_update()
-			if(not get_parent().get_node("crawl_detector_up").is_colliding() and get_parent().get_node("crawl_pit_detector").is_colliding()):
+			if(not get_parent().get_node("crawl_detector_up").is_colliding() and get_parent().get_node("crawl_pit_detector").is_colliding() and get_parent().can_crawl_under(collision.collider)):
 				get_parent().set_state("CRAWLING")
 	else:
 		get_parent().set_state("STANDING")

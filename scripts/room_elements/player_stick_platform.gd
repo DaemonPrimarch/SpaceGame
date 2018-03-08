@@ -34,17 +34,4 @@ func move_and_push(v):
 	for node in connected_nodes:
 		node.move_and_collide(v)
 	
-	
-	var collision_info
-	if(is_one_way()):
-		position += v
-	else:
-		move_and_collide(v)
-
-		
-	if(collision_info != null):
-		if(collision_info.collider.has_method('push')):
-			collision_info.collider.push(collision_info.remainder)
-			
-		translate(collision_info.remainder)
-		
+	.move_and_push(v)

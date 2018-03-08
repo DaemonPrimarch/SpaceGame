@@ -168,6 +168,9 @@ func can_wall_slide_on_node(node):
 		return true
 	else:
 		return node.is_in_group("wall_slideable")
+		
+func can_crawl_under(node):
+	return node.is_in_group("crawlable")
 
 func can_wall_slide():	
 	wall_slide_detector_up.force_raycast_update()
