@@ -5,7 +5,7 @@
 [ext_resource path="res://nodes/room_elements/bullet_switch.tscn" type="PackedScene" id=3]
 [ext_resource path="res://nodes/room_elements/moving_platforms/moveable_platform_small.tscn" type="PackedScene" id=4]
 
-[node name="room_2" instance=ExtResource( 1 )]
+[node name="room_2" index="0" instance=ExtResource( 1 )]
 
 [node name="terrain" parent="." index="0"]
 
@@ -20,7 +20,7 @@ arrival_pos_id = "room_2_arrival"
 [node name="door_out" parent="." index="2" instance=ExtResource( 2 )]
 
 position = Vector2( 1632, 384 )
-destination_room = "res://rooms/double_jump/room_3.tscn"
+destination_room = "res://rooms/double_jump/room_7.tscn"
 arrival_pos_id = "room_2_arrival"
 flippedH = true
 
