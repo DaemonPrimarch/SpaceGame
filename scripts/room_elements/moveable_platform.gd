@@ -4,6 +4,7 @@ export var active = true
 export var looping = false
 export var one_way = false
 export var moving_speed = 64 * 3
+export var snap = false
 
 var next_point_counter = 1
 var next_point = Vector2()
@@ -45,7 +46,7 @@ func has_arrived_at_next_point():
 	return ((get_next_point() - get_previous_point()).dot(get_movement_direction()) <= 0)
 
 func _ready():
-	if(is_active()):
+	if(is_active() and snap):
 		get_platform().set_position(get_node("point_0").get_position())
 	set_next_point(get_node("point_1").get_position())
 	set_previous_point(get_node("point_0").get_position())
@@ -110,3 +111,4 @@ func switch():
 		next_point_counter += 2*direction
 		
 		set_next_point(get_node("point_" + String(next_point_counter)).get_position())
+
