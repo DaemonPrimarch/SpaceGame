@@ -35,7 +35,7 @@ func leave_state(new_state):
 	
 	
 func can_enter():
-	return .can_enter() and not get_parent().is_inside_helper_area("no_wall_slide")
+	return .can_enter() and not get_parent().is_inside_helper_area("no_wall_slide") and get_parent().can_wall_jump()
 	
 func can_continue():
 	get_parent().wall_slide_detector_up.force_raycast_update()

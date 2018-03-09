@@ -116,7 +116,7 @@ tracks/0/keys = {
 "values": [ 5, 6, 7, 8, 9 ]
 }
 
-[node name="playable_character" type="KinematicBody2D" groups=[
+[node name="playable_character" type="KinematicBody2D" index="0" groups=[
 "can_climb_ladder",
 ]]
 
@@ -126,6 +126,24 @@ collision_mask = 1
 collision/safe_margin = 0.08
 script = ExtResource( 1 )
 _sections_unfolded = [ "Collision", "Pause", "Pickable", "collision" ]
+max_slope_angle = 0.785398
+flippedH = false
+flippedV = false
+moveable_by_collision = true
+movement_speed = 327.68
+debug_state_label = null
+debug_grounded_label = null
+gravity_enabled = false
+gravity_vector = Vector2( 0, 1152 )
+can_be_pushed = false
+HP = 100
+max_HP = 100
+invulnerability_time = 1.0
+weapon_path = null
+jump_enabled = true
+double_jump_enabled = true
+wall_jump_enabled = true
+stunned_time = 1
 
 [node name="Sprite" type="Sprite" parent="." index="0"]
 
