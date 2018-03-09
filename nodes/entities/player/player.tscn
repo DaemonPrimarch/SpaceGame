@@ -28,6 +28,8 @@ debug_grounded_label = NodePath("Label2")
 gravity_enabled = true
 can_be_pushed = true
 weapon_path = NodePath("gun")
+double_jump_enabled = false
+wall_jump_enabled = false
 
 [node name="Sprite" parent="." index="0"]
 
