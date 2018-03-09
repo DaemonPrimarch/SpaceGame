@@ -7,6 +7,14 @@ export var max_slope_angle = PI/4
 export var flippedH = false setget set_flippedH, is_flippedH
 export var flippedV = false setget set_flippedV, is_flippedV
 
+export var moveable_by_collision = true setget set_moveable_by_collision, is_moveable_by_collision
+
+func set_moveable_by_collision(val):
+	moveable_by_collision = val
+
+func is_moveable_by_collision():
+	return moveable_by_collision
+
 func is_flippedH():
 	return flippedH
 
@@ -46,9 +54,14 @@ func get_max_slope_angle():
 	return max_slope_angle
 
 func move_and_collide(v):
+	var prev_pos = position
+	
 	var collision_info = .move_and_collide(v)
 	
 	if(collision_info != null):
+		if(not is_moveable_by_collision()):
+			position = prev_pos +v
+		
 		emit_signal("collided", collision_info, self)
 		if(collision_info.collider is load("res://scripts/extended_kinematic_body_2D.gd")):
 			collision_info.collider.emit_signal("collided", collision_info, self)
@@ -64,9 +77,20 @@ func move_and_collide_slope(v):
 			#get_node("debuggyboy").set_cast_to(collision_info.remainder.dot(collision_info.normal.rotated(PI/2)) * collision_info.normal.rotated(PI/2) * 10000)
 			get_node("debuggyboy").set_cast_to(collision_info.normal.rotated(PI/2) * 10000)
 		
-		#print(collision_info.normal.rotated(PI/2).angle())
-		
 		collision_info = move_and_collide(collision_info.remainder.dot(collision_info.normal.rotated(PI/2)) * collision_info.normal.rotated(PI/2)) 
 		
 		
 	return collision_info
+
+func move_and_push(v):	
+	var collision_info = move_and_collide(v)
+		
+	if(collision_info):
+		if(collision_info.collider.has_method('push')):
+			collision_info.collider.push(collision_info.remainder)
+		else:
+			print("ERROR: Attempting to push object that can't be pushed")
+		
+		if(is_moveable_by_collision()):
+			position += collision_info.remainder
+	

@@ -116,7 +116,7 @@ tracks/0/keys = {
 "values": [ 5, 6, 7, 8, 9 ]
 }
 
-[node name="playable_character" type="KinematicBody2D" index="0" groups=[
+[node name="playable_character" type="KinematicBody2D" groups=[
 "can_climb_ladder",
 ]]
 
@@ -297,5 +297,23 @@ enabled = true
 exclude_parent = true
 cast_to = Vector2( 0, 16 )
 collision_mask = 1
+
+[node name="crouch_leave_detector_left" type="RayCast2D" parent="." index="18"]
+
+position = Vector2( -28, -80 )
+enabled = true
+exclude_parent = true
+cast_to = Vector2( 0, -128 )
+collision_mask = 1
+_sections_unfolded = [ "Transform" ]
+
+[node name="crouch_leave_detector_right" type="RayCast2D" parent="." index="19"]
+
+position = Vector2( 28, -80 )
+enabled = true
+exclude_parent = true
+cast_to = Vector2( 0, -128 )
+collision_mask = 1
+_sections_unfolded = [ "Transform" ]
 
 

@@ -28,7 +28,3 @@ func _on_room_room_darkened():
 
 func _on_room_room_lit():
 	get_node("CanvasModulate").color = Color(1,1,1)
-
-
-func set_active():
-	pass # replace with function body
