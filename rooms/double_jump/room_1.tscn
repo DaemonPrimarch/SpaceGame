@@ -65,36 +65,11 @@ margin_bottom = 96.0
 
 margin_bottom = 96.0
 
-[node name="warp_tile3" parent="." index="7" instance=ExtResource( 3 )]
-
-editor/display_folded = true
-position = Vector2( 1632, 1696 )
-destination_room = "res://rooms/double_jump/room_15.tscn"
-arrival_pos_id = "1"
-
-[node name="CollisionPolygon2D" parent="warp_tile3" index="0"]
-
-polygon = PoolVector2Array( 32, -32, 32, 96, -32, 96, -32, -32 )
-
-[node name="Panel" parent="warp_tile3" index="1"]
-
-margin_bottom = 96.0
-
-[node name="Label" parent="warp_tile3" index="2"]
-
-margin_bottom = 96.0
-
-[node name="warp_arrival2" parent="." index="8" instance=ExtResource( 4 )]
+[node name="warp_arrival2" parent="." index="7" instance=ExtResource( 4 )]
 
 position = Vector2( 1536, 768 )
 arrival_ID = "2"
 
-[node name="warp_arrival3" parent="." index="9" instance=ExtResource( 4 )]
-
-position = Vector2( 1536, 1728 )
-arrival_ID = "3"
-
 
 [editable path="warp_tile"]
 [editable path="warp_tile2"]
-[editable path="warp_tile3"]
