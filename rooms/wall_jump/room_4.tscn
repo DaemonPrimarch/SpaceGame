@@ -5,7 +5,7 @@
 [ext_resource path="res://nodes/room_elements/walled_ladder_no_top.tscn" type="PackedScene" id=3]
 [ext_resource path="res://nodes/room_elements/regular_damage_area.tscn" type="PackedScene" id=4]
 
-[node name="room_4" instance=ExtResource( 1 )]
+[node name="room_4" index="0" instance=ExtResource( 1 )]
 
 [node name="terrain" parent="." index="0"]
 
@@ -51,23 +51,23 @@ rect_scale = Vector2( 1, 192 )
 [node name="ladder5" parent="." index="6" instance=ExtResource( 3 )]
 
 editor/display_folded = true
-position = Vector2( 736, 1184 )
-length = 256
+position = Vector2( 736, 1248 )
+length = 192
 flippedH = false
 flippedV = false
 
 [node name="CollisionPolygon2D" parent="ladder5/Area2D" index="0"]
 
-polygon = PoolVector2Array( 16, -32, 16, 224, 32, 224, 32, -32 )
+polygon = PoolVector2Array( 16, -32, 16, 160, 32, 160, 32, -32 )
 
 [node name="Sprite" parent="ladder5" index="1"]
 
-position = Vector2( 0, 96 )
-region_rect = Rect2( 0, 0, 64, 256 )
+position = Vector2( 0, 64 )
+region_rect = Rect2( 0, 0, 64, 192 )
 
 [node name="Panel" parent="ladder5/Control" index="0"]
 
-rect_scale = Vector2( 1, 128 )
+rect_scale = Vector2( 1, 96 )
 
 [node name="ladder4" parent="." index="7" instance=ExtResource( 3 )]
 

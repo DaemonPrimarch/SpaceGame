@@ -43,7 +43,6 @@ flippedV = false
 
 [node name="moveable_platform_parent" parent="." index="7" instance=ExtResource( 5 )]
 
-editor/display_folded = true
 position = Vector2( 1888, 1760 )
 active = false
 
@@ -53,7 +52,7 @@ position = Vector2( 0, -608 )
 
 [node name="point_1" parent="moveable_platform_parent" index="1"]
 
-position = Vector2( 0, -1056 )
+position = Vector2( 0, -1248 )
 
 [node name="moveable_platform_parent2" parent="." index="8" instance=ExtResource( 5 )]
 

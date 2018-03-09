@@ -17,8 +17,8 @@
 [ext_resource path="res://nodes/state_handlers/pushed_handler.tscn" type="PackedScene" id=15]
 
 [node name="player" groups=[
-"warpable",
 "player",
+"warpable",
 ] instance=ExtResource( 1 )]
 
 script = ExtResource( 2 )
@@ -38,17 +38,9 @@ max_HP = 100
 invulnerability_time = 1.0
 weapon_path = NodePath("gun")
 jump_enabled = true
-double_jump_enabled = true
-wall_jump_enabled = true
-jump_height = 256
-double_jump_height = 128
-wall_jump_distance = Vector2( 64, 64 )
-starting_wall_slide_speed = 64
-wall_slide_acceleration = 192
-max_wall_slide_speed = 512
-crawling_speed = 128
+double_jump_enabled = false
+wall_jump_enabled = false
 stunned_time = 1
-climbing_speed = 256
 
 [node name="Sprite" parent="." index="0"]
 
@@ -127,6 +119,7 @@ collision_mask = 1
 
 [node name="jumping_handler" parent="." index="14" instance=ExtResource( 5 )]
 
+enabled = true
 jump_height = 268.8
 
 [node name="walking_handler" parent="." index="15" instance=ExtResource( 6 )]
@@ -137,15 +130,25 @@ jump_height = 268.8
 
 [node name="double_jumping_handler" parent="." index="18" instance=ExtResource( 9 )]
 
+double_jump_height = 134.4
+
 [node name="wall_jumping_handler" parent="." index="19" instance=ExtResource( 10 )]
 
 [node name="falling_handler" parent="." index="20" instance=ExtResource( 11 )]
 
 [node name="climbing_handler" parent="." index="21" instance=ExtResource( 12 )]
 
+climbing_speed = 256
+
 [node name="wall_sliding_handler" parent="." index="22" instance=ExtResource( 13 )]
 
+starting_wall_slide_speed = 64
+wall_slide_acceleration = 128
+max_wall_slide_speed = 256
+
 [node name="crawling_handler" parent="." index="29" instance=ExtResource( 14 )]
+
+crawling_speed = 128
 
 [node name="pushed_handler" parent="." index="34" instance=ExtResource( 15 )]
 
