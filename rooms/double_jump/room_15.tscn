@@ -17,7 +17,7 @@ tile_data = PoolIntArray( 0, 0, 0, 1, 0, 0, 2, 0, 0, 3, 0, 0, 4, 0, 0, 5, 0, 0, 
 [node name="warp_tile" parent="." index="1" instance=ExtResource( 2 )]
 
 position = Vector2( 1632, 1728 )
-destination_room = "res://rooms/double_jump/room_1.tscn"
+destination_room = "res://rooms/double_jump/room_14.tscn"
 arrival_pos_id = "room_15_arrival"
 flippedH = true
 
@@ -48,6 +48,7 @@ position = Vector2( 0, -416 )
 editor/display_folded = true
 position = Vector2( 864, 1056 )
 moving_speed = 192
+snap = false
 
 [node name="point_1" parent="moveable_platform_parent2" index="1"]
 
@@ -65,21 +66,7 @@ polygon = PoolVector2Array( 64, 96, 96, 96, 96, -32, 64, -32 )
 
 margin_bottom = 96.0
 
-[node name="moveable_platform_parent3" parent="." index="7" instance=ExtResource( 5 )]
-
-editor/display_folded = true
-position = Vector2( 1248, 576 )
-moving_speed = 192
-
-[node name="point_1" parent="moveable_platform_parent3" index="1"]
-
-position = Vector2( 0, -192 )
-
-[node name="platform" parent="moveable_platform_parent3" index="2"]
-
-editor/display_folded = true
-
-[node name="warp_tile2" parent="." index="8" instance=ExtResource( 6 )]
+[node name="warp_tile2" parent="." index="7" instance=ExtResource( 6 )]
 
 editor/display_folded = true
 position = Vector2( 32, 800 )
@@ -98,7 +85,7 @@ margin_top = -96.0
 
 margin_top = -96.0
 
-[node name="warp_tile3" parent="." index="9" instance=ExtResource( 6 )]
+[node name="warp_tile3" parent="." index="8" instance=ExtResource( 6 )]
 
 editor/display_folded = true
 position = Vector2( 32, 1760 )
@@ -117,12 +104,12 @@ margin_top = -96.0
 
 margin_top = -96.0
 
-[node name="warp_arrival" parent="." index="10" instance=ExtResource( 7 )]
+[node name="warp_arrival" parent="." index="9" instance=ExtResource( 7 )]
 
 position = Vector2( 128, 1728 )
 arrival_ID = "1"
 
-[node name="warp_arrival2" parent="." index="11" instance=ExtResource( 7 )]
+[node name="warp_arrival2" parent="." index="10" instance=ExtResource( 7 )]
 
 position = Vector2( 128, 768 )
 arrival_ID = "2"
@@ -135,6 +122,5 @@ arrival_ID = "2"
 [editable path="moveable_platform_parent"]
 [editable path="moveable_platform_parent2"]
 [editable path="moveable_platform_parent2/platform"]
-[editable path="moveable_platform_parent3"]
 [editable path="warp_tile2"]
 [editable path="warp_tile3"]

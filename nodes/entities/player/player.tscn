@@ -17,22 +17,37 @@
 [ext_resource path="res://nodes/state_handlers/pushed_handler.tscn" type="PackedScene" id=15]
 
 [node name="player" groups=[
-"player",
 "warpable",
+"player",
 ] instance=ExtResource( 1 )]
 
 script = ExtResource( 2 )
-_sections_unfolded = [ "Collision", "Pause", "Transform" ]
+_sections_unfolded = [ "Collision", "Pause", "Pickable", "Transform", "collision" ]
+max_slope_angle = 0.785398
+flippedH = false
+flippedV = false
+moveable_by_collision = true
 movement_speed = 327.68
 debug_state_label = NodePath("Label")
 debug_grounded_label = NodePath("Label2")
 gravity_enabled = true
 gravity_vector = Vector2( 0, 1152 )
 can_be_pushed = true
+HP = 100
+max_HP = 100
+invulnerability_time = 1.0
 weapon_path = NodePath("gun")
+jump_enabled = true
+double_jump_enabled = true
+wall_jump_enabled = true
+jump_height = 256
+double_jump_height = 128
+wall_jump_distance = Vector2( 64, 64 )
+starting_wall_slide_speed = 64
 wall_slide_acceleration = 192
 max_wall_slide_speed = 512
 crawling_speed = 128
+stunned_time = 1
 climbing_speed = 256
 
 [node name="Sprite" parent="." index="0"]
@@ -133,9 +148,6 @@ jump_height = 268.8
 [node name="crawling_handler" parent="." index="29" instance=ExtResource( 14 )]
 
 [node name="pushed_handler" parent="." index="34" instance=ExtResource( 15 )]
-
-damage_push_distance = 64
-time_to_control = 0.0675
 
 [connection signal="room_entered" from="." to="camera" method="update_limit"]
 
