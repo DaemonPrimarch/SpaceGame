@@ -30,7 +30,18 @@ var state_handlers = {}
 
 var current_state = "UNDEFINED"
 
+var inside_helper_areas = {}
+
 var platform = null
+
+func set_inside_helper_area(type, val):
+	if(val):
+		inside_helper_areas[type] = type
+	else:
+		inside_helper_areas.erase(type)
+	
+func is_inside_helper_area(type):
+	return inside_helper_areas.has(type)
 
 func set_platform(plat):
 	platform = plat
@@ -49,6 +60,7 @@ func get_platform():
 	return platform
 
 func _ready():
+	add_to_group("entity")	
 	set_physics_process(not Engine.is_editor_hint())
 
 func get_movement_speed():
@@ -107,6 +119,12 @@ func set_gravity_enabled(value, starting_velocity = Vector2()):
 	gravity_enabled = value
 	
 	gravity_velocity = starting_velocity
+
+func can_enter_state(state):
+	if(has_handler(state)):
+		return get_handler(state).can_enter()
+	else:
+		return false
 	
 func get_gravity_vector():
 	return gravity_vector
