@@ -116,7 +116,7 @@ tracks/0/keys = {
 "values": [ 5, 6, 7, 8, 9 ]
 }
 
-[node name="playable_character" type="KinematicBody2D" index="0" groups=[
+[node name="playable_character" type="KinematicBody2D" groups=[
 "can_climb_ladder",
 ]]
 
