@@ -8,9 +8,7 @@ var previous_gravity_enabled
 var timer = 0
 
 func _ready():
-	get_parent().connect("state_entered", self, "_on_state_enter")
-	get_parent().connect("state_processed", self, "_on_state_process")
-	get_parent().connect("state_left", self, "_on_state_leave")
+	get_parent().add_handler(self)
 
 func _on_state_enter(state, previous_state):
 	if(state == get_handled_state()):

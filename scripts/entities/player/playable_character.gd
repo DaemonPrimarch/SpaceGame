@@ -48,7 +48,7 @@ onready var animation_player = get_node("AnimationPlayer")
 onready var wall_slide_detector_up = get_node("wall_slide_detector_up")
 onready var wall_slide_detector_down = get_node("wall_slide_detector_down")
 
-func _ready():
+func _init():
 	add_state("REGULAR_JUMPING")
 	add_state("DOUBLE_JUMPING")
 	add_state("WALL_JUMPING")
@@ -62,7 +62,8 @@ func _ready():
 	add_state("WALKING")
 	
 	set_state("STANDING")
-	
+
+func _ready():
 	connect("invulnerable_stopped", self, "on_invulnerable_stopped")
 	connect("invulnerable_started", self, "on_invulnerable_started")
 

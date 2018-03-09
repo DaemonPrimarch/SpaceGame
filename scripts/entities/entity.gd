@@ -5,7 +5,6 @@ extends "res://scripts/extended_kinematic_body_2D.gd"
 signal room_entered
 
 signal state_entered(state, previous_state)
-signal state_processed(state, delta)
 signal state_left(state, new_state)
 
 export var movement_speed = 64 * 5.12 setget set_movement_speed, get_movement_speed
@@ -26,6 +25,8 @@ var gravity_velocity = Vector2()
 var gravity_timer = 0
 
 var valid_states = ["UNDEFINED"]
+
+var state_handlers = {}
 
 var current_state = "UNDEFINED"
 
@@ -69,7 +70,8 @@ func _physics_process(delta):
 		else:
 			apply_gravity(delta)
 	
-	emit_signal("state_processed", current_state, delta)
+	if(has_handler(get_state())):
+		get_handler(get_state()).process_state(delta)
 	
 func push(vector):
 	if(move_and_collide(vector) != null):
@@ -77,7 +79,27 @@ func push(vector):
 
 func crush():
 	print("CRUSHED!")
+
+func add_handler(handler):
+	var handled_state = handler.get_handled_state()
 	
+	if(is_valid_state(handled_state)):
+		state_handlers[handled_state] = handler
+	else:
+		print("ERROR Not valid state")
+	
+func has_handler(state):
+	return state_handlers.has(state)
+		
+func get_handler(state):
+	if(is_valid_state(state)):
+		if(has_handler(state)):
+			return state_handlers[state]
+		else:
+			print("ERROR: Handler for state ", state, " not found")
+	else:
+		print("ERROR: ", state, " not legal state.")
+
 func is_gravity_enabled():
 	return gravity_enabled
 
@@ -128,8 +150,17 @@ func set_state(state):
 	if(not is_valid_state(state)):
 		print("ERROR, entity doesn't have state: ", state)
 	else:
-		emit_signal("state_left", current_state, state)
-		emit_signal("state_entered", state, current_state)
+		var old_state = get_state()
+		
+		if(has_handler(get_state())):
+			get_handler(get_state()).leave_state(state)
+		
+		emit_signal("state_left", get_state(), state)
+		
+		if(has_handler(state)):
+			get_handler(state).enter_state(old_state)
+		
+		emit_signal("state_entered", state, old_state)
 		current_state = state
 		
 		if(has_debug_state_label()):
