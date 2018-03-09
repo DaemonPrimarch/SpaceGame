@@ -7,7 +7,7 @@
 [ext_resource path="res://nodes/room_elements/bullet_switch.tscn" type="PackedScene" id=5]
 [ext_resource path="res://nodes/room_elements/regular_warp_tile.tscn" type="PackedScene" id=6]
 
-[node name="room" instance=ExtResource( 1 )]
+[node name="room" index="0" instance=ExtResource( 1 )]
 
 [node name="terrain" parent="." index="0"]
 
@@ -161,6 +161,7 @@ margin_left = -224.0
 
 [node name="damage_area4" parent="." index="9" instance=ExtResource( 3 )]
 
+editor/display_folded = true
 position = Vector2( 864, 2400 )
 
 [node name="CollisionPolygon2D" parent="damage_area4/Area2D" index="0"]
@@ -205,6 +206,7 @@ flippedV = false
 
 [node name="moveable_platform_parent" parent="." index="12" instance=ExtResource( 4 )]
 
+editor/display_folded = true
 position = Vector2( 1024, 1888 )
 one_way = true
 snap = false
@@ -232,12 +234,14 @@ toggleable = true
 [node name="warp_tile" parent="." index="14" instance=ExtResource( 6 )]
 
 position = Vector2( 1632, 768 )
+destination_room = "res://rooms/wall_jump/room_16.tscn"
 arrival_pos_id = "room_arrival"
 flippedH = true
 
 [node name="warp_tile2" parent="." index="15" instance=ExtResource( 6 )]
 
 position = Vector2( 1632, 2688 )
+destination_room = "res://rooms/wall_jump/room_18.tscn"
 arrival_pos_id = "room_arrival"
 flippedH = true
 

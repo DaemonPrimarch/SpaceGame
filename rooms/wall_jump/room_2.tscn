@@ -14,7 +14,7 @@ tile_data = PoolIntArray( 0, 0, 0, 1, 0, 0, 2, 0, 0, 3, 0, 0, 4, 0, 0, 5, 0, 0, 
 [node name="door_3" parent="." index="1" instance=ExtResource( 2 )]
 
 position = Vector2( 32, 1728 )
-destination_room = "res://rooms/wall_jump/room_15.tscn"
+destination_room = "res://rooms/wall_jump/room_13.tscn"
 arrival_pos_id = "room_2_arrival"
 
 [node name="door_2" parent="." index="2" instance=ExtResource( 2 )]
@@ -39,6 +39,8 @@ position = Vector2( 1536, 576 )
 
 editor/display_folded = true
 position = Vector2( 32, 96 )
+destination_room = "res://rooms/wall_jump/room_14.tscn"
+arrival_pos_id = "2"
 
 [node name="CollisionPolygon2D" parent="warp_tile" index="0"]
 
@@ -56,6 +58,8 @@ margin_bottom = 96.0
 
 editor/display_folded = true
 position = Vector2( 32, 736 )
+destination_room = "res://rooms/wall_jump/room_14.tscn"
+arrival_pos_id = "1"
 
 [node name="CollisionPolygon2D" parent="warp_tile2" index="0"]
 

@@ -20,7 +20,7 @@ arrival_pos_id = "room_4_arrival"
 [node name="door_2" parent="." index="2" instance=ExtResource( 2 )]
 
 position = Vector2( 32, 1088 )
-destination_room = "res://rooms/wall_jump/room_5.tscn"
+destination_room = "res://rooms/wall_jump/room_16.tscn"
 arrival_pos_id = "room_4_arrival"
 
 [node name="debug_player_spawner" parent="." index="3"]

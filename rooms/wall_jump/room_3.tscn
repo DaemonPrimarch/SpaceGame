@@ -39,6 +39,7 @@ toggleable = true
 editor/display_folded = true
 position = Vector2( 1088, 800 )
 active = false
+snap = false
 
 [node name="point_0" parent="moveable_platform_parent" index="0"]
 
@@ -47,6 +48,12 @@ position = Vector2( 0, -128 )
 [node name="point_1" parent="moveable_platform_parent" index="1"]
 
 position = Vector2( 0, -288 )
+
+[node name="platform" parent="moveable_platform_parent" index="2"]
+
+flippedH = false
+flippedV = false
+one_way = false
 
 [connection signal="switched_off" from="bullet_switch" to="moveable_platform_parent" method="set_active" binds= [ false ]]
 
