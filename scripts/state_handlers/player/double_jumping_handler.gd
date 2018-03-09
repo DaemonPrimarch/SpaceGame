@@ -1,6 +1,11 @@
 extends "res://scripts/state_handler.gd"
 
-export var double_jump_height = 64 * 2 setget set_double_jump_height, get_double_jump_height
+export var double_jump_height = 64 * 2.1 setget set_double_jump_height, get_double_jump_height
+
+var double_jumped = false
+
+func has_double_jumped():
+	return double_jumped
 
 func get_double_jump_height():
 	return double_jump_height
@@ -13,6 +18,9 @@ func get_handled_state():
 	
 func _ready():
 	set_no_gravity(true)
+	
+func can_enter():
+	return .can_enter() and not get_parent().is_inside_helper_area("no_double_jump") and not has_double_jumped()
 
 func enter_state(previous_state):
 	.enter_state(previous_state)
@@ -21,7 +29,7 @@ func enter_state(previous_state):
 			
 	get_parent().animation_player.play("jump")
 	
-	get_parent().double_jumped = true
+	double_jumped = true
 	
 func leave_state(new_state):
 	.leave_state(new_state)
@@ -56,6 +64,5 @@ func process_state(delta):
 						
 			var horizontal_collision_info = get_parent().move_and_collide(Vector2(1,0) * get_parent().get_direction() * delta * pressed * get_parent().get_movement_speed())
 					
-			if(horizontal_collision_info != null and get_parent().can_wall_slide()):
+			if(horizontal_collision_info != null and get_parent().can_enter_state("WALL_SLIDING")):
 				get_parent().set_state("WALL_SLIDING")
-				get_parent().set_wall_slide_side(get_parent().get_direction().x)

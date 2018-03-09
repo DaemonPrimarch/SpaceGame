@@ -1,7 +1,6 @@
 extends "res://scripts/state_handler.gd"
 
 export var jump_height = 64 * 4.2 setget set_jump_height, get_jump_height
-
 func _ready():
 	set_no_gravity(true)
 
@@ -50,6 +49,5 @@ func process_state(delta):
 						
 			var horizontal_collision_info = get_parent().move_and_collide(Vector2(1,0) * get_parent().get_direction() * pressed * delta * get_parent().get_movement_speed())
 					
-			if(horizontal_collision_info != null and get_parent().can_wall_slide()):
+			if(horizontal_collision_info != null and get_parent().can_enter_state("WALL_SLIDING")):
 				get_parent().set_state("WALL_SLIDING")
-				get_parent().set_wall_slide_side(get_parent().get_direction().x)

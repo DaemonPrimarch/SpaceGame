@@ -1,5 +1,13 @@
 extends "res://scripts/state_handler.gd"
 
+export var crawling_speed = 2*64 setget set_crawling_speed, get_crawling_speed
+
+func set_crawling_speed(val):
+	crawling_speed = val
+
+func get_crawling_speed():
+	return crawling_speed
+
 func get_handled_state():
 	return "CRAWLING"
 
@@ -37,4 +45,4 @@ func process_state(delta):
 			get_parent().set_flippedH(false)
 			pressed = 1
 
-		get_parent().move_and_collide(get_parent().get_direction() * get_parent().get_crawling_speed() * Vector2(1,0) * pressed * delta)
+		get_parent().move_and_collide(get_parent().get_direction() * get_crawling_speed() * Vector2(1,0) * pressed * delta)
