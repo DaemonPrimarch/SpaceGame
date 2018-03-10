@@ -10,9 +10,6 @@ signal crushed
 
 export var movement_speed = 64 * 5.12 setget set_movement_speed, get_movement_speed
 
-export(NodePath) var debug_state_label
-export(NodePath) var debug_grounded_label
-
 export var gravity_enabled = false setget set_gravity_enabled, is_gravity_enabled
 export var gravity_vector = Vector2(0, 64 * 18)
 
@@ -139,19 +136,7 @@ func apply_gravity(delta):
 	
 	if(collision_info != null):
 		set_grounded(true)
-
-func has_debug_grounded_label():
-	return debug_grounded_label != null and debug_grounded_label != ""
-
-func get_debug_grounded_label():
-	return get_node(debug_grounded_label)
-
-func has_debug_state_label():
-	return debug_state_label != null and debug_state_label != ""
-
-func get_debug_state_label():
-	return debug_state_label
-	
+		
 func set_grounded(val):
 	grounded = val
 	
