@@ -18,7 +18,7 @@ func process_state(delta):
 	
 	if(get_parent().is_grounded()):
 		get_parent().set_state("STANDING")
-	elif(Input.is_action_just_pressed("jump") and get_parent().can_double_jump()):
+	elif(Input.is_action_just_pressed("jump") and get_parent().can_enter_state("DOUBLE_JUMPING")):
 		get_parent().set_state("DOUBLE_JUMPING")
 	elif(Input.is_action_pressed("play_up") and get_parent().is_inside_ladder()):
 		get_parent().set_state("CLIMBING")

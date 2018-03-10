@@ -23,7 +23,7 @@ func get_handled_state():
 	
 func _ready():
 	set_no_gravity(true)
-	starting_speed_y = get_parent().calculate_starting_velocity_y(get_wall_jump_height(), get_parent().get_gravity_vector().y)
+	starting_speed_y = PHYSICS_HELPER.calculate_jump_starting_velocity_y(get_wall_jump_height(), get_parent().get_gravity_vector().y)
 	starting_speed_x = starting_speed_y/atan(get_angle())
 
 func enter_state(previous_state):

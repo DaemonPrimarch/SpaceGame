@@ -16,44 +16,18 @@
 [ext_resource path="res://nodes/state_handlers/crawling_handler.tscn" type="PackedScene" id=14]
 [ext_resource path="res://nodes/state_handlers/pushed_handler.tscn" type="PackedScene" id=15]
 
-[node name="player" groups=[
+[node name="player" index="0" groups=[
 "warpable",
 "player",
 ] instance=ExtResource( 1 )]
 
 script = ExtResource( 2 )
 _sections_unfolded = [ "Collision", "Pause", "Pickable", "Transform", "collision" ]
-max_slope_angle = 0.785398
-flippedH = false
-flippedV = false
-moveable_by_collision = true
-movement_speed = 327.68
-debug_state_label = NodePath("Label")
-debug_grounded_label = NodePath("Label2")
-gravity_enabled = true
-gravity_vector = Vector2( 0, 1152 )
-can_be_pushed = true
-HP = 100
-max_HP = 100
-invulnerability_time = 1.0
-weapon_path = NodePath("gun")
-jump_enabled = true
-double_jump_enabled = true
-wall_jump_enabled = true
-jump_height = 256
-double_jump_height = 128
-wall_jump_distance = Vector2( 64, 64 )
-starting_wall_slide_speed = 64
-wall_slide_acceleration = 192
-max_wall_slide_speed = 512
-crawling_speed = 128
-stunned_time = 1
-climbing_speed = 256
 
 [node name="Sprite" parent="." index="0"]
 
 frame = 20
-_sections_unfolded = [ "Animation", "Offset", "Region" ]
+_sections_unfolded = [ "Animation", "Offset", "Region", "Transform" ]
 
 [node name="CollisionPolygon2D" parent="." index="1"]
 
@@ -63,91 +37,53 @@ polygon = PoolVector2Array( 60, 32, 4, 32, 4, -80, 60, -80 )
 
 current = true
 
-[node name="Label" type="Label" parent="." index="4"]
+[node name="light" parent="." index="4"]
 
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_left = -32.0
-margin_top = -96.0
-margin_right = 32.0
-margin_bottom = -82.0
-rect_pivot_offset = Vector2( 0, 0 )
-mouse_filter = 2
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 4
-text = "STANDING"
-percent_visible = 1.0
-lines_skipped = 0
-max_lines_visible = -1
+_sections_unfolded = [ "Transform" ]
 
-[node name="gun" parent="." index="5" instance=ExtResource( 4 )]
+[node name="weapon_manager" parent="." index="7"]
+
+editor/display_folded = true
+weapon_path = NodePath("gun")
+
+[node name="gun" parent="weapon_manager" index="5" instance=ExtResource( 4 )]
 
 position = Vector2( 64, -32 )
 
-[node name="Label2" type="Label" parent="." index="6"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_left = 32.0
-margin_top = -64.0
-margin_right = 72.0
-margin_bottom = -50.0
-rect_pivot_offset = Vector2( 0, 0 )
-mouse_filter = 2
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 4
-percent_visible = 1.0
-lines_skipped = 0
-max_lines_visible = -1
-
-[node name="weapon_bottom_front" parent="." index="7"]
-
-rotation = 0.832895
-
-[node name="weapon_top_front" parent="." index="8"]
-
-rotation = -0.617569
-
-[node name="weapon_top" parent="." index="9"]
-
-rotation = -1.5708
-
-[node name="debuggyboy" type="RayCast2D" parent="." index="12"]
+[node name="debuggyboy" type="RayCast2D" parent="." index="9"]
 
 enabled = false
 exclude_parent = true
 cast_to = Vector2( 0, 50 )
 collision_mask = 1
 
-[node name="jumping_handler" parent="." index="14" instance=ExtResource( 5 )]
+[node name="jumping_handler" parent="." index="10" instance=ExtResource( 5 )]
 
-jump_height = 268.8
+[node name="walking_handler" parent="." index="11" instance=ExtResource( 6 )]
 
-[node name="walking_handler" parent="." index="15" instance=ExtResource( 6 )]
+[node name="standing_handler" parent="." index="12" instance=ExtResource( 7 )]
 
-[node name="standing_handler" parent="." index="16" instance=ExtResource( 7 )]
+[node name="crouching_handler" parent="." index="13" instance=ExtResource( 8 )]
 
-[node name="crouching_handler" parent="." index="17" instance=ExtResource( 8 )]
+[node name="double_jumping_handler" parent="." index="14" instance=ExtResource( 9 )]
 
-[node name="double_jumping_handler" parent="." index="18" instance=ExtResource( 9 )]
+double_jump_height = 134.4
 
-[node name="wall_jumping_handler" parent="." index="19" instance=ExtResource( 10 )]
+[node name="wall_jumping_handler" parent="." index="15" instance=ExtResource( 10 )]
 
-[node name="falling_handler" parent="." index="20" instance=ExtResource( 11 )]
+[node name="falling_handler" parent="." index="16" instance=ExtResource( 11 )]
 
-[node name="climbing_handler" parent="." index="21" instance=ExtResource( 12 )]
+[node name="climbing_handler" parent="." index="17" instance=ExtResource( 12 )]
 
-[node name="wall_sliding_handler" parent="." index="22" instance=ExtResource( 13 )]
+climbing_speed = 256
 
-[node name="crawling_handler" parent="." index="29" instance=ExtResource( 14 )]
+[node name="wall_sliding_handler" parent="." index="18" instance=ExtResource( 13 )]
 
-[node name="pushed_handler" parent="." index="34" instance=ExtResource( 15 )]
+editor/display_folded = true
+
+[node name="crawling_handler" parent="." index="19" instance=ExtResource( 14 )]
+
+[node name="pushed_handler" parent="." index="20" instance=ExtResource( 15 )]
 
 [connection signal="room_entered" from="." to="camera" method="update_limit"]
 

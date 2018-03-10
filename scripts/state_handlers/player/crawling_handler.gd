@@ -13,7 +13,13 @@ func get_handled_state():
 
 func _ready():
 	set_no_gravity(true)
-
+	
+	get_node("crawl_leave_front_detector").add_exception(get_parent())
+	get_node("crawl_leave_back_detector").add_exception(get_parent())
+	get_node("crawl_detector_up").add_exception(get_parent())
+	get_node("crawl_detector_down").add_exception(get_parent())
+	get_node("crawl_pit_detector").add_exception(get_parent())
+	
 func enter_state(previous_state):
 	.enter_state(previous_state)
 
@@ -21,6 +27,14 @@ func enter_state(previous_state):
 	get_parent().scale *= Vector2(1, 0.5)
 
 	get_parent().animation_player.play("jump")
+	
+func can_crawl_under(node):
+	return node.is_in_group("crawlable")	
+
+func can_enter():
+	get_node("crawl_detector_up").force_raycast_update()
+	get_node("crawl_pit_detector").force_raycast_update()
+	return (.can_enter() and not get_node("crawl_detector_up").is_colliding() and get_node("crawl_pit_detector").is_colliding())
 
 func leave_state(new_state):
 	.leave_state(new_state)
@@ -30,10 +44,10 @@ func leave_state(new_state):
 func process_state(delta):
 	.process_state(delta)
 
-	get_parent().get_node("crawl_leave_front_detector").force_raycast_update()
-	get_parent().get_node("crawl_leave_back_detector").force_raycast_update()
+	get_node("crawl_leave_front_detector").force_raycast_update()
+	get_node("crawl_leave_back_detector").force_raycast_update()
 
-	if(not get_parent().get_node("crawl_leave_front_detector").is_colliding() and not get_parent().get_node("crawl_leave_back_detector").is_colliding()):
+	if(not get_node("crawl_leave_front_detector").is_colliding() and not get_node("crawl_leave_back_detector").is_colliding()):
 		get_parent().set_state("STANDING")
 	else:
 		var pressed = 0

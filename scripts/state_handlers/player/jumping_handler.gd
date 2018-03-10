@@ -16,14 +16,14 @@ func get_handled_state():
 func enter_state(previous_state):
 	.enter_state(previous_state)
 			
-	get_parent().set_velocity(Vector2(0,1) * get_parent().calculate_starting_velocity_y(get_jump_height(), get_parent().get_gravity_vector().y))
+	get_parent().set_velocity(Vector2(0,1) * PHYSICS_HELPER.calculate_jump_starting_velocity_y(get_jump_height(), get_parent().get_gravity_vector().y))
 			
 	get_parent().animation_player.play("jump")
 	
 func process_state(delta):
 	.process_state(delta)
 	
-	if(not Input.is_action_pressed("jump") or get_timer() > get_parent().calculate_max_airtime(get_jump_height(), get_parent().get_gravity_vector().y)):
+	if(not Input.is_action_pressed("jump") or get_timer() > PHYSICS_HELPER.calculate_jump_max_airtime(get_jump_height(), get_parent().get_gravity_vector().y)):
 		get_parent().set_velocity(Vector2(get_parent().get_velocity().x,0))
 		get_parent().set_state("FALLING")
 	elif(Input.is_action_pressed("play_up") and get_parent().is_inside_ladder()):

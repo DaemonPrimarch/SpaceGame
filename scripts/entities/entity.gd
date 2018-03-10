@@ -6,6 +6,7 @@ signal room_entered
 
 signal state_entered(state, previous_state)
 signal state_left(state, new_state)
+signal crushed
 
 export var movement_speed = 64 * 5.12 setget set_movement_speed, get_movement_speed
 
@@ -91,6 +92,8 @@ func push(vector):
 
 func crush():
 	print("CRUSHED!")
+	
+	emit_signal("crushed")
 
 func add_handler(handler):
 	var handled_state = handler.get_handled_state()
@@ -153,13 +156,6 @@ func set_grounded(val):
 	grounded = val
 	
 	gravity_velocity = Vector2()
-	
-	if(has_debug_grounded_label()):
-		if(val):
-			get_debug_grounded_label().set_text("G")
-		else:
-			get_debug_grounded_label().set_text("N")
-		
 
 func get_state():
 	return current_state
@@ -180,9 +176,6 @@ func set_state(state):
 		
 		emit_signal("state_entered", state, old_state)
 		current_state = state
-		
-		if(has_debug_state_label()):
-			get_node(get_debug_state_label()).set_text(state)
 
 func add_state(state):
 	if(is_valid_state(state)):
@@ -190,11 +183,9 @@ func add_state(state):
 	else:
 		valid_states.push_back(state)
 
-
 func is_valid_state(state):
 	return valid_states.has(state)
 
-	
 func destroy():
 	queue_free()
 	

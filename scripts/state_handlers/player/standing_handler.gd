@@ -24,7 +24,7 @@ func process_state(delta):
 		
 	elif(Input.is_action_pressed("play_up") and get_parent().is_inside_ladder()):
 		get_parent().set_state("CLIMBING")
-	elif(Input.is_action_just_pressed("jump") and get_parent().can_jump()):
+	elif(Input.is_action_just_pressed("jump") and get_parent().can_enter_state("REGULAR_JUMPING")):
 		get_parent().set_state("REGULAR_JUMPING")
 	elif(Input.is_action_pressed("play_left") or Input.is_action_pressed("play_right")):
 		get_parent().set_state("WALKING")

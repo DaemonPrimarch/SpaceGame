@@ -11,6 +11,4 @@ arrival_pos_id = "arian"
 
 [node name="player" parent="." index="0" instance=ExtResource( 2 )]
 
-double_jump_enabled = false
-
 

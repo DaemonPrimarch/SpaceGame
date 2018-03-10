@@ -4,7 +4,7 @@
 [ext_resource path="res://nodes/room_elements/moving_platforms/moveable_platform_medium.tscn" type="PackedScene" id=2]
 [ext_resource path="res://nodes/room_elements/helper_areas/no_wall_slide_area.tscn" type="PackedScene" id=3]
 
-[node name="room" index="0" instance=ExtResource( 1 )]
+[node name="room" instance=ExtResource( 1 )]
 
 [node name="terrain" parent="." index="0"]
 

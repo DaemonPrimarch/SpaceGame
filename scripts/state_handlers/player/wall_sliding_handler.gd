@@ -4,6 +4,9 @@ export var starting_wall_slide_speed = 64 setget set_starting_wall_slide_speed,g
 export var wall_slide_acceleration = 2*64 setget set_wall_slide_acceleration, get_wall_slide_acceleration
 export var max_wall_slide_speed = 4*64 setget set_max_wall_slide_speed, get_max_wall_slide_speed
 
+onready var wall_slide_detector_up = get_node("wall_slide_detector_up")
+onready var wall_slide_detector_down = get_node("wall_slide_detector_down")
+
 func set_starting_wall_slide_speed(val):
 	starting_wall_slide_speed = val
 	
@@ -33,20 +36,28 @@ func enter_state(previous_state):
 func leave_state(new_state):
 	.leave_state(new_state)
 	
+func can_wall_slide_on_node(node):
+	if(node is TileMap):
+		return true
+	else:
+		return node.is_in_group("wall_slideable")
 	
 func can_enter():
-	return .can_enter() and not get_parent().is_inside_helper_area("no_wall_slide")
+	wall_slide_detector_up.force_raycast_update()
+	wall_slide_detector_down.force_raycast_update()
 	
+	return .can_enter() and not get_parent().is_inside_helper_area("no_wall_slide") and wall_slide_detector_up.is_colliding() and wall_slide_detector_down.is_colliding() and can_wall_slide_on_node(wall_slide_detector_down.get_collider()) and can_wall_slide_on_node(wall_slide_detector_up.get_collider()) and not get_parent().is_inside_ladder()
+
 func can_continue():
-	get_parent().wall_slide_detector_up.force_raycast_update()
-	return get_parent().wall_slide_detector_up.is_colliding() and get_parent().can_wall_slide_on_node(get_parent().wall_slide_detector_up.get_collider())
+	wall_slide_detector_up.force_raycast_update()
+	return wall_slide_detector_up.is_colliding() and can_wall_slide_on_node(wall_slide_detector_up.get_collider()) and not get_parent().is_inside_helper_area("no_wall_slide") and not get_parent().is_inside_ladder()
 	
 func process_state(delta):
 	.process_state(delta)
 	
 	if(not can_continue()):
 		get_parent().set_state("FALLING")
-	elif(Input.is_action_just_pressed("jump") and get_parent().can_wall_jump()):
+	elif(Input.is_action_just_pressed("jump") and get_parent().can_enter_state("WALL_JUMPING")):
 		get_parent().set_state("WALL_JUMPING")
 	else:
 		pass
@@ -62,3 +73,6 @@ func process_state(delta):
 
 func _ready():
 	set_no_gravity(true)
+	
+	wall_slide_detector_up.add_exception(get_parent())
+	wall_slide_detector_down.add_exception(get_parent())

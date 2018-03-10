@@ -3,10 +3,27 @@
 [ext_resource path="res://nodes/state_handlers/state_handler.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scripts/state_handlers/player/wall_sliding_handler.gd" type="Script" id=2]
 
-
-
 [node name="wall_sliding_handler" instance=ExtResource( 1 )]
 
 script = ExtResource( 2 )
+starting_wall_slide_speed = 64
+wall_slide_acceleration = 128
+max_wall_slide_speed = 256
+
+[node name="wall_slide_detector_down" type="RayCast2D" parent="." index="0"]
+
+position = Vector2( 0, 24 )
+enabled = true
+exclude_parent = true
+cast_to = Vector2( 64, 0 )
+collision_mask = 1
+
+[node name="wall_slide_detector_up" type="RayCast2D" parent="." index="1"]
+
+position = Vector2( 0, 16 )
+enabled = true
+exclude_parent = true
+cast_to = Vector2( 64, 0 )
+collision_mask = 1
 
 
