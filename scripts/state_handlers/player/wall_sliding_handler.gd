@@ -45,7 +45,6 @@ func can_wall_slide_on_node(node):
 func can_enter():
 	wall_slide_detector_up.force_raycast_update()
 	wall_slide_detector_down.force_raycast_update()
-	
 	return .can_enter() and not get_parent().is_inside_helper_area("no_wall_slide") and wall_slide_detector_up.is_colliding() and wall_slide_detector_down.is_colliding() and can_wall_slide_on_node(wall_slide_detector_down.get_collider()) and can_wall_slide_on_node(wall_slide_detector_up.get_collider()) and not get_parent().is_inside_ladder()
 
 func can_continue():

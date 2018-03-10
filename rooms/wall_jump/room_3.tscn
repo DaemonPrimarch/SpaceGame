@@ -36,7 +36,6 @@ toggleable = true
 
 [node name="moveable_platform_parent" parent="." index="7" instance=ExtResource( 5 )]
 
-editor/display_folded = true
 position = Vector2( 1088, 800 )
 active = false
 snap = false
@@ -47,13 +46,7 @@ position = Vector2( 0, -128 )
 
 [node name="point_1" parent="moveable_platform_parent" index="1"]
 
-position = Vector2( 0, -288 )
-
-[node name="platform" parent="moveable_platform_parent" index="2"]
-
-flippedH = false
-flippedV = false
-one_way = false
+position = Vector2( 0, -416 )
 
 [connection signal="switched_off" from="bullet_switch" to="moveable_platform_parent" method="set_active" binds= [ false ]]
 
