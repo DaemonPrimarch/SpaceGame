@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://scripts/entities/player/playable_character.gd" type="Script" id=1]
 [ext_resource path="res://sprites/robot_demo.png" type="Texture" id=2]
@@ -7,6 +7,8 @@
 [ext_resource path="res://nodes/debug_labels/state_label.tscn" type="PackedScene" id=5]
 [ext_resource path="res://nodes/weapon_manager.tscn" type="PackedScene" id=6]
 [ext_resource path="res://nodes/respawner.tscn" type="PackedScene" id=7]
+[ext_resource path="res://nodes/debug_labels/on_platform.tscn" type="PackedScene" id=8]
+[ext_resource path="res://nodes/debug_labels/invulnerable_label.tscn" type="PackedScene" id=9]
 
 [sub_resource type="Animation" id=1]
 
@@ -120,7 +122,7 @@ tracks/0/keys = {
 "values": [ 5, 6, 7, 8, 9 ]
 }
 
-[node name="playable_character" type="KinematicBody2D" index="0" groups=[
+[node name="playable_character" type="KinematicBody2D" groups=[
 "can_climb_ladder",
 ]]
 
@@ -201,5 +203,19 @@ margin_bottom = -98.0
 weapon_path = null
 
 [node name="respawner" parent="." index="7" instance=ExtResource( 7 )]
+
+[node name="on_platform_label" parent="." index="8" instance=ExtResource( 8 )]
+
+margin_left = 30.0
+margin_top = -48.0
+margin_right = 70.0
+margin_bottom = -34.0
+
+[node name="invulnerable_label" parent="." index="9" instance=ExtResource( 9 )]
+
+margin_left = 30.0
+margin_top = -24.0
+margin_right = 70.0
+margin_bottom = -10.0
 
 

@@ -27,6 +27,7 @@ PHYSICS_HELPER="*res://scripts/singletons/physics_helper.gd"
 
 settings/fps/force_fps=60
 settings/output/verbose=true
+settings/debug_labels_enabled=true
 
 [display]
 

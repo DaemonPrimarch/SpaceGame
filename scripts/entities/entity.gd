@@ -46,10 +46,9 @@ func set_platform(plat):
 	
 	if(plat):
 		set_grounded(true)
-		print(is_grounded())
 
 func is_grounded():
-	return grounded
+	return grounded and is_gravity_enabled()
 
 func is_on_platform():
 	return platform != null
@@ -117,6 +116,8 @@ func is_gravity_enabled():
 
 func set_gravity_enabled(value, starting_velocity = Vector2()):
 	gravity_enabled = value
+	
+	grounded = false
 	
 	gravity_velocity = starting_velocity
 
