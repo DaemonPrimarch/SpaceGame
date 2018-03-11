@@ -11,4 +11,6 @@ arrival_pos_id = "arian"
 
 [node name="player" parent="." index="0" instance=ExtResource( 2 )]
 
+gravity_enabled = NodePath("Label")
+
 

@@ -41,6 +41,14 @@ current = true
 
 _sections_unfolded = [ "Transform" ]
 
+[node name="grounded_label" parent="." index="5"]
+
+rect_clip_content = false
+
+[node name="state_label" parent="." index="6"]
+
+rect_clip_content = false
+
 [node name="weapon_manager" parent="." index="7"]
 
 editor/display_folded = true
@@ -67,9 +75,12 @@ collision_mask = 1
 
 [node name="double_jumping_handler" parent="." index="14" instance=ExtResource( 9 )]
 
+enabled = false
 double_jump_height = 134.4
 
 [node name="wall_jumping_handler" parent="." index="15" instance=ExtResource( 10 )]
+
+enabled = false
 
 [node name="falling_handler" parent="." index="16" instance=ExtResource( 11 )]
 
@@ -79,9 +90,19 @@ climbing_speed = 256
 
 [node name="wall_sliding_handler" parent="." index="18" instance=ExtResource( 13 )]
 
+enabled = false
+
 [node name="crawling_handler" parent="." index="19" instance=ExtResource( 14 )]
 
 [node name="pushed_handler" parent="." index="20" instance=ExtResource( 15 )]
+
+[node name="on_platform_label" parent="." index="21"]
+
+rect_clip_content = false
+
+[node name="invulnerable_label" parent="." index="22"]
+
+rect_clip_content = false
 
 [connection signal="room_entered" from="." to="camera" method="update_limit"]
 
