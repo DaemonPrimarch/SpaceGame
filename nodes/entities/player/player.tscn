@@ -80,8 +80,6 @@ double_jump_height = 134.4
 
 [node name="wall_jumping_handler" parent="." index="15" instance=ExtResource( 10 )]
 
-enabled = false
-
 [node name="falling_handler" parent="." index="16" instance=ExtResource( 11 )]
 
 [node name="climbing_handler" parent="." index="17" instance=ExtResource( 12 )]
@@ -89,8 +87,6 @@ enabled = false
 climbing_speed = 256
 
 [node name="wall_sliding_handler" parent="." index="18" instance=ExtResource( 13 )]
-
-enabled = false
 
 [node name="crawling_handler" parent="." index="19" instance=ExtResource( 14 )]
 
