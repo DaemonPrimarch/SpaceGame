@@ -7,23 +7,32 @@ signal switched_off
 
 export var state = false setget set_state
 
+var first = false
+
 func set_state(new_state):
-	if(new_state):
-		switch_on()
-	else:
-		switch_off()
+	if(not(first and state != new_state)):
+		print(state)
+		
+		first = false
+		
+		if(new_state):
+			switch_on()
+		else:
+			switch_off()
 
 func switch_on():
-	if(not is_on()):
-		state = true
+	state = true
 		
-		emit_signal("switched_on")
+	call_deferred("emit_signal", "switched_on")
+	
+	print("SWITCHED ON!")
 
 func switch_off():
-	if(is_on()):
-		state = false
+	state = false
 		
-		emit_signal("switched_off")
+	call_deferred("emit_signal", "switched_off")
+	
+	print("SWITCHED OFF!")
 
 func is_on():
 	return state

@@ -32,7 +32,6 @@ position = Vector2( 128, 768 )
 
 position = Vector2( 928, 832 )
 one_way = true
-snap = false
 
 [node name="point_0" parent="moveable_platform_parent" index="0"]
 
@@ -42,17 +41,10 @@ position = Vector2( 0, 640 )
 
 position = Vector2( 0, 32 )
 
-[node name="platform" parent="moveable_platform_parent" index="2"]
-
-flippedH = false
-flippedV = false
-one_way = false
-
 [node name="moveable_platform_parent3" parent="." index="6" instance=ExtResource( 3 )]
 
 editor/display_folded = true
 position = Vector2( 1440, 1344 )
-snap = false
 
 [node name="point_0" parent="moveable_platform_parent3" index="0"]
 
@@ -62,18 +54,11 @@ position = Vector2( 0, 704 )
 
 position = Vector2( 0, 0 )
 
-[node name="platform" parent="moveable_platform_parent3" index="2"]
-
-flippedH = false
-flippedV = false
-one_way = false
-
 [node name="moveable_platform_parent5" parent="." index="7" instance=ExtResource( 3 )]
 
 editor/display_folded = true
 position = Vector2( 864, 2176 )
 one_way = true
-snap = false
 
 [node name="point_0" parent="moveable_platform_parent5" index="0"]
 
@@ -83,17 +68,10 @@ position = Vector2( 0, 512 )
 
 position = Vector2( 0, 32 )
 
-[node name="platform" parent="moveable_platform_parent5" index="2"]
-
-flippedH = false
-flippedV = false
-one_way = false
-
 [node name="moveable_platform_parent2" parent="." index="8" instance=ExtResource( 3 )]
 
 editor/display_folded = true
 position = Vector2( 224, 1472 )
-snap = false
 
 [node name="point_0" parent="moveable_platform_parent2" index="0"]
 
@@ -103,18 +81,11 @@ position = Vector2( 480, 0 )
 
 position = Vector2( 0, 0 )
 
-[node name="platform" parent="moveable_platform_parent2" index="2"]
-
-flippedH = false
-flippedV = false
-one_way = false
-
 [node name="moveable_platform_parent4" parent="." index="9" instance=ExtResource( 3 )]
 
 editor/display_folded = true
 position = Vector2( 224, 2080 )
 one_way = true
-snap = false
 
 [node name="point_0" parent="moveable_platform_parent4" index="0"]
 
@@ -123,12 +94,6 @@ position = Vector2( 960, 0 )
 [node name="point_1" parent="moveable_platform_parent4" index="1"]
 
 position = Vector2( 0, 0 )
-
-[node name="platform" parent="moveable_platform_parent4" index="2"]
-
-flippedH = false
-flippedV = false
-one_way = false
 
 [node name="damage_area" parent="." index="10" instance=ExtResource( 4 )]
 

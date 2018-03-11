@@ -4,5 +4,5 @@ func _ready():
 	connect("confirmed", self, "on_confirmed")
 
 func on_confirmed(body):
-	body.enable_double_jump()
+	body.get_handler("DOUBLE_JUMPING").set_enabled(true)
 	get_node("/root/DIALOG_SYSTEM").queue_message("Double jump unlocked")

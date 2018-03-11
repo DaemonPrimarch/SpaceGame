@@ -11,7 +11,7 @@ func get_velocity():
 	return velocity
 
 func _process(delta):
-	set_position(get_position() + get_velocity().rotated(get_rotation()) * delta)
+	position += get_velocity().rotated(get_rotation()) * delta
 
 func get_damage():
 	return damage

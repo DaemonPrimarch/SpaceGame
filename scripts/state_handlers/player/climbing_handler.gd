@@ -19,6 +19,8 @@ func enter_state(previous_state):
 	
 	get_parent().get_ladder().snap_to(get_parent())
 	
+	get_parent().set_velocity(Vector2())
+	
 func leave_state(new_state):
 	.leave_state(new_state)
 	
