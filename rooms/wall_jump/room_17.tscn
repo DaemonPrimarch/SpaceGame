@@ -39,11 +39,16 @@ position = Vector2( 0, 608 )
 scale = Vector2( -1, 1 )
 region_rect = Rect2( 0, 0, 64, 1280 )
 
+[node name="Control" parent="ladder" index="2"]
+
+rect_clip_content = false
+
 [node name="Panel" parent="ladder/Control" index="0"]
 
 margin_left = -32.0
 margin_right = -16.0
 rect_scale = Vector2( 1, 640 )
+rect_clip_content = false
 
 [node name="Label" parent="ladder/Control" index="1"]
 
@@ -51,6 +56,7 @@ margin_left = -32.0
 margin_top = 0.0
 margin_right = 16.0
 margin_bottom = 14.0
+rect_clip_content = false
 
 [node name="ladder3" parent="." index="4" instance=ExtResource( 2 )]
 
@@ -74,11 +80,16 @@ position = Vector2( 0, 320 )
 scale = Vector2( -1, 1 )
 region_rect = Rect2( 0, 0, 64, 704 )
 
+[node name="Control" parent="ladder3" index="2"]
+
+rect_clip_content = false
+
 [node name="Panel" parent="ladder3/Control" index="0"]
 
 margin_left = -32.0
 margin_right = -16.0
 rect_scale = Vector2( 1, 352 )
+rect_clip_content = false
 
 [node name="Label" parent="ladder3/Control" index="1"]
 
@@ -86,6 +97,7 @@ margin_left = -32.0
 margin_top = 0.0
 margin_right = 16.0
 margin_bottom = 14.0
+rect_clip_content = false
 
 [node name="damage_area" parent="." index="5" instance=ExtResource( 3 )]
 
@@ -99,10 +111,12 @@ polygon = PoolVector2Array( 32, -32, -224, -32, -224, 32, 32, 32 )
 [node name="Panel" parent="damage_area" index="2"]
 
 margin_left = -224.0
+rect_clip_content = false
 
 [node name="Label" parent="damage_area" index="3"]
 
 margin_left = -224.0
+rect_clip_content = false
 
 [node name="damage_area5" parent="." index="6" instance=ExtResource( 3 )]
 
@@ -117,11 +131,13 @@ polygon = PoolVector2Array( -96, -32, -224, -32, -224, 32, -96, 32 )
 
 margin_left = -224.0
 margin_right = -96.0
+rect_clip_content = false
 
 [node name="Label" parent="damage_area5" index="3"]
 
 margin_left = -224.0
 margin_right = -96.0
+rect_clip_content = false
 
 [node name="damage_area6" parent="." index="7" instance=ExtResource( 3 )]
 
@@ -136,11 +152,13 @@ polygon = PoolVector2Array( -96, -32, -224, -32, -224, 32, -96, 32 )
 
 margin_left = -224.0
 margin_right = -96.0
+rect_clip_content = false
 
 [node name="Label" parent="damage_area6" index="3"]
 
 margin_left = -224.0
 margin_right = -96.0
+rect_clip_content = false
 
 [node name="damage_area3" parent="." index="8" instance=ExtResource( 3 )]
 
@@ -154,10 +172,12 @@ polygon = PoolVector2Array( 32, -32, -224, -32, -224, 32, 32, 32 )
 [node name="Panel" parent="damage_area3" index="2"]
 
 margin_left = -224.0
+rect_clip_content = false
 
 [node name="Label" parent="damage_area3" index="3"]
 
 margin_left = -224.0
+rect_clip_content = false
 
 [node name="damage_area4" parent="." index="9" instance=ExtResource( 3 )]
 
@@ -172,11 +192,13 @@ polygon = PoolVector2Array( -32, -32, -224, -32, -224, 32, -32, 32 )
 
 margin_left = -224.0
 margin_right = -32.0
+rect_clip_content = false
 
 [node name="Label" parent="damage_area4" index="3"]
 
 margin_left = -224.0
 margin_right = -32.0
+rect_clip_content = false
 
 [node name="damage_area2" parent="." index="10" instance=ExtResource( 3 )]
 
@@ -191,11 +213,13 @@ polygon = PoolVector2Array( 544, -32, -224, -32, -224, 32, 544, 32 )
 
 margin_left = -224.0
 margin_right = 544.0
+rect_clip_content = false
 
 [node name="Label" parent="damage_area2" index="3"]
 
 margin_left = -224.0
 margin_right = 544.0
+rect_clip_content = false
 
 [node name="ladder2" parent="." index="11" instance=ExtResource( 2 )]
 
@@ -233,7 +257,7 @@ toggleable = true
 editor/display_folded = true
 position = Vector2( 1632, 2688 )
 destination_room = "res://rooms/wall_jump/room_18.tscn"
-arrival_pos_id = "room_arrival"
+arrival_pos_id = "room_17_arrival"
 flippedH = true
 
 [node name="CollisionPolygon2D" parent="warp_tile2" index="0"]
@@ -246,11 +270,19 @@ position = Vector2( -96, 0 )
 scale = Vector2( -1, 1 )
 arrival_ID = "room_18_arrival"
 
+[node name="Panel" parent="warp_tile2" index="2"]
+
+rect_clip_content = false
+
+[node name="Label" parent="warp_tile2" index="3"]
+
+rect_clip_content = false
+
 [node name="warp_tile" parent="." index="15" instance=ExtResource( 6 )]
 
 position = Vector2( 1632, 768 )
 destination_room = "res://rooms/wall_jump/room_16.tscn"
-arrival_pos_id = "room_arrival"
+arrival_pos_id = "room_17_arrival"
 flippedH = true
 
 [connection signal="switched_off" from="bullet_switch" to="moveable_platform_parent" method="switch"]

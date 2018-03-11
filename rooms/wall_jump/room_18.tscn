@@ -18,13 +18,13 @@ position = Vector2( 128, 768 )
 
 position = Vector2( 32, 768 )
 destination_room = "res://rooms/wall_jump/room_17.tscn"
-arrival_pos_id = "room_arrival"
+arrival_pos_id = "room_18_arrival"
 
 [node name="warp_tile2" parent="." index="4" instance=ExtResource( 2 )]
 
 position = Vector2( 1632, 768 )
 destination_room = "res://rooms/wall_jump/room_5.tscn"
-arrival_pos_id = "room_arrival"
+arrival_pos_id = "room_18_arrival"
 flippedH = true
 
 [node name="moveable_platform_parent" parent="." index="5" instance=ExtResource( 3 )]
