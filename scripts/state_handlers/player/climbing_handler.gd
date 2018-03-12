@@ -37,7 +37,7 @@ func process_state(delta):
 		var dir = 0
 				
 		if(Input.is_action_pressed("play_up")):
-			if(not top_reached()):
+			if(not top_reached() or get_parent().get_ladder().is_in_group("top")):
 				dir = -1
 		elif(Input.is_action_pressed("play_down")):
 			dir = 1
