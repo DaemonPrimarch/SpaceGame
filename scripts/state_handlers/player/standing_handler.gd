@@ -6,6 +6,7 @@ func get_handled_state():
 func enter_state(previous_state):
 	.enter_state(previous_state)
 	
+	get_parent().set_velocity(Vector2())
 	get_parent().get_handler("DOUBLE_JUMPING").double_jumped = false
 	
 	get_parent().animation_player.play("idle")
