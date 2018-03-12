@@ -41,7 +41,6 @@ editor/display_folded = true
 position = Vector2( 384, 448 )
 active = false
 moving_speed = 128
-snap = false
 
 [node name="point_0" parent="moveable_platform_parent" index="0"]
 
@@ -59,11 +58,6 @@ polygon = PoolVector2Array( 64, 192, 96, 192, 96, -32, 64, -32 )
 [node name="Panel" parent="moveable_platform_parent/platform" index="3"]
 
 margin_bottom = 192.0
-rect_clip_content = false
-
-[node name="Label" parent="moveable_platform_parent/platform" index="4"]
-
-rect_clip_content = false
 
 [node name="damage_area" parent="." index="7" instance=ExtResource( 5 )]
 

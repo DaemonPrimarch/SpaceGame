@@ -38,11 +38,13 @@ polygon = PoolVector2Array( 32, -160, -32, -160, -32, 160, 32, 160 )
 
 margin_top = -160.0
 margin_bottom = 160.0
+rect_clip_content = false
 
 [node name="Label" parent="damage_area" index="3"]
 
 margin_top = -160.0
 margin_bottom = 160.0
+rect_clip_content = false
 
 [node name="StaticBody2D" parent="." index="6" instance=ExtResource( 4 )]
 
@@ -56,10 +58,12 @@ polygon = PoolVector2Array( -32, -32, 32, -32, 32, 96, -32, 96 )
 [node name="Panel" parent="StaticBody2D" index="1"]
 
 margin_bottom = 96.0
+rect_clip_content = false
 
 [node name="Label" parent="StaticBody2D" index="2"]
 
 margin_bottom = 96.0
+rect_clip_content = false
 
 [node name="StaticBody2D2" parent="." index="7" instance=ExtResource( 4 )]
 
@@ -73,10 +77,12 @@ polygon = PoolVector2Array( -32, -32, 32, -32, 32, 96, -32, 96 )
 [node name="Panel" parent="StaticBody2D2" index="1"]
 
 margin_bottom = 96.0
+rect_clip_content = false
 
 [node name="Label" parent="StaticBody2D2" index="2"]
 
 margin_bottom = 96.0
+rect_clip_content = false
 
 [node name="bullet_switch" parent="." index="8" instance=ExtResource( 5 )]
 

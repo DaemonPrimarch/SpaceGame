@@ -6,7 +6,7 @@
 [ext_resource path="res://nodes/room_elements/link_block.tscn" type="PackedScene" id=4]
 [ext_resource path="res://nodes/room_elements/bullet_switch.tscn" type="PackedScene" id=5]
 
-[node name="room_3" instance=ExtResource( 1 )]
+[node name="room_3" index="0" instance=ExtResource( 1 )]
 
 [node name="terrain" parent="." index="0"]
 
@@ -33,7 +33,6 @@ position = Vector2( 128, 384 )
 
 editor/display_folded = true
 position = Vector2( 576, 480 )
-snap = false
 
 [node name="point_1" parent="moveable_platform_parent" index="1"]
 
@@ -41,8 +40,8 @@ position = Vector2( 416, 0 )
 
 [node name="moveable_platform_parent3" parent="." index="6" instance=ExtResource( 3 )]
 
+editor/display_folded = true
 position = Vector2( 1664, 480 )
-snap = false
 
 [node name="point_1" parent="moveable_platform_parent3" index="1"]
 
@@ -52,7 +51,6 @@ position = Vector2( 416, 0 )
 
 editor/display_folded = true
 position = Vector2( 1280, 480 )
-snap = false
 
 [node name="point_0" parent="moveable_platform_parent2" index="0"]
 
@@ -64,7 +62,7 @@ position = Vector2( -160, 0 )
 
 [node name="platform" parent="moveable_platform_parent2" index="2"]
 
-position = Vector2( 256, 32 )
+position = Vector2( 256, 0 )
 
 [node name="StaticBody2D" parent="." index="8" instance=ExtResource( 4 )]
 
@@ -78,28 +76,26 @@ polygon = PoolVector2Array( -32, -224, 32, -224, 32, 32, -32, 32 )
 [node name="Panel" parent="StaticBody2D" index="1"]
 
 margin_top = -224.0
+rect_clip_content = false
 
 [node name="Label" parent="StaticBody2D" index="2"]
 
 margin_top = -224.0
+rect_clip_content = false
 
 [node name="bullet_switch" parent="." index="9" instance=ExtResource( 5 )]
 
 position = Vector2( 2656, 160 )
-state = true
-toggleable = true
 
 [node name="bullet_switch2" parent="." index="10" instance=ExtResource( 5 )]
 
 position = Vector2( 3040, 800 )
-toggleable = true
 
 [node name="moveable_platform_parent4" parent="." index="11" instance=ExtResource( 3 )]
 
 editor/display_folded = true
 position = Vector2( 2944, 448 )
 one_way = true
-snap = false
 
 [node name="point_0" parent="moveable_platform_parent4" index="0"]
 
@@ -109,11 +105,7 @@ position = Vector2( 0, 224 )
 
 position = Vector2( 0, 0 )
 
-[connection signal="switched_off" from="bullet_switch" to="StaticBody2D" method="_set_active" binds= [ false ]]
-
-[connection signal="switched_on" from="bullet_switch" to="StaticBody2D" method="_set_active" binds= [ true ]]
-
-[connection signal="switched_off" from="bullet_switch2" to="moveable_platform_parent4" method="switch"]
+[connection signal="switched_on" from="bullet_switch" to="StaticBody2D" method="_set_active" binds= [ false ]]
 
 [connection signal="switched_on" from="bullet_switch2" to="moveable_platform_parent4" method="switch"]
 

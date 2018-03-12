@@ -5,6 +5,7 @@
 
 [node name="platform" type="KinematicBody2D"]
 
+position = Vector2( 0, 32 )
 input_pickable = false
 collision_layer = 1
 collision_mask = 0
@@ -58,6 +59,7 @@ margin_top = -32.0
 margin_right = 96.0
 margin_bottom = 32.0
 rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
 mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
@@ -74,6 +76,7 @@ margin_top = -32.0
 margin_right = 96.0
 margin_bottom = 32.0
 rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
 mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1

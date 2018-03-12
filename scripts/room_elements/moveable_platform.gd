@@ -111,4 +111,3 @@ func switch():
 		next_point_counter += 2*direction
 		
 		set_next_point(get_node("point_" + String(next_point_counter)).get_position())
-

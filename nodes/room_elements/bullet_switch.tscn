@@ -3,7 +3,7 @@
 [ext_resource path="res://scripts/room_elements/bullet_switch.gd" type="Script" id=1]
 [ext_resource path="res://sprites/metroid_tilesheet.png" type="Texture" id=2]
 
-[node name="bullet_switch" type="StaticBody2D" index="0"]
+[node name="bullet_switch" type="StaticBody2D"]
 
 input_pickable = false
 collision_layer = 1
@@ -24,7 +24,7 @@ polygon = PoolVector2Array( -32, -32, -32, 32, 32, 32, 32, -32 )
 
 [node name="Sprite" type="Sprite" parent="." index="1"]
 
-modulate = Color( 0, 1, 0.0625, 1 )
+modulate = Color( 1, 0, 0, 0.745843 )
 texture = ExtResource( 2 )
 vframes = 50
 hframes = 48

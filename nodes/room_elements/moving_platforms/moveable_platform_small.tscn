@@ -9,6 +9,4 @@ moving_speed = 192
 
 [node name="platform" parent="." index="2" instance=ExtResource( 2 )]
 
-position = Vector2( 0, 32 )
-
 

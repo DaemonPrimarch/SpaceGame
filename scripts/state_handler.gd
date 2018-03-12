@@ -22,7 +22,7 @@ var previous_gravity_enabled
 var timer = 0
 
 func process_state(delta):
-	pass
+	timer += delta
 
 func _ready():
 	get_parent().add_handler(self)

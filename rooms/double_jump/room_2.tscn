@@ -34,6 +34,7 @@ toggleable = true
 editor/display_folded = true
 position = Vector2( 384, 800 )
 active = false
+moving_speed = 128
 
 [node name="point_0" parent="moveable_platform_parent" index="0"]
 
@@ -45,6 +46,7 @@ position = Vector2( 0, -352 )
 
 [node name="moveable_platform_parent2" parent="." index="7" instance=ExtResource( 4 )]
 
+editor/display_folded = true
 position = Vector2( 1024, 448 )
 
 [node name="point_1" parent="moveable_platform_parent2" index="1"]

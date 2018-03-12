@@ -6,10 +6,7 @@
 [node name="moveable_platform_parent" instance=ExtResource( 1 )]
 
 moving_speed = 192
-snap = false
 
 [node name="platform" parent="." index="2" instance=ExtResource( 2 )]
-
-position = Vector2( 0, 32 )
 
 

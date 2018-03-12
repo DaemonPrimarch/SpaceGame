@@ -30,7 +30,6 @@ flippedH = true
 [node name="moveable_platform_parent" parent="." index="5" instance=ExtResource( 3 )]
 
 position = Vector2( 576, 544 )
-snap = false
 
 [node name="point_1" parent="moveable_platform_parent" index="1"]
 

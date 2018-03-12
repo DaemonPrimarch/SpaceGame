@@ -51,10 +51,12 @@ polygon = PoolVector2Array( 32, -32, 32, 96, -32, 96, -32, -32 )
 [node name="Panel" parent="warp_tile" index="1"]
 
 margin_bottom = 96.0
+rect_clip_content = false
 
 [node name="Label" parent="warp_tile" index="2"]
 
 margin_bottom = 96.0
+rect_clip_content = false
 
 [node name="warp_tile2" parent="." index="7" instance=ExtResource( 3 )]
 
@@ -70,10 +72,12 @@ polygon = PoolVector2Array( 32, -32, 32, 96, -32, 96, -32, -32 )
 [node name="Panel" parent="warp_tile2" index="1"]
 
 margin_bottom = 96.0
+rect_clip_content = false
 
 [node name="Label" parent="warp_tile2" index="2"]
 
 margin_bottom = 96.0
+rect_clip_content = false
 
 [node name="warp_arrival" parent="." index="8" instance=ExtResource( 4 )]
 
@@ -90,11 +94,14 @@ arrival_ID = "1"
 position = Vector2( 512, 288 )
 active = false
 one_way = true
-snap = false
 
 [node name="point_1" parent="moveable_platform_parent" index="1"]
 
 position = Vector2( -128, 0 )
+
+[node name="platform" parent="moveable_platform_parent" index="2"]
+
+position = Vector2( 0, 0 )
 
 [node name="CollisionPolygon2D" parent="moveable_platform_parent/platform" index="0"]
 
