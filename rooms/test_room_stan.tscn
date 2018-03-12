@@ -20,6 +20,7 @@ length = 512
 
 [node name="ladder2" parent="." index="4" instance=ExtResource( 2 )]
 
+editor/display_folded = true
 position = Vector2( 96, 352 )
 length = 512
 flippedH = true

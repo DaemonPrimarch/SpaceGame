@@ -43,7 +43,7 @@ func process_state(delta):
 	
 	if((not Input.is_action_pressed("jump") and get_timer() > 0.5) or get_timer() > 4):
 		get_parent().set_state("FALLING")
-	elif(Input.is_action_pressed("play_up") and get_parent().is_inside_ladder()):
+	elif((Input.is_action_pressed("play_up") and get_parent().is_inside_ladder()) or get_parent().is_inside_walled_ladder()):
 		get_parent().set_state("CLIMBING")
 	else:
 		get_parent().set_velocity(get_parent().get_velocity() + get_parent().get_gravity_vector() * delta)

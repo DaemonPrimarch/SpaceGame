@@ -5,6 +5,8 @@ extends "res://scripts/entities/living_entity.gd"
 var inventory = {}
 
 var inside_ladder = null
+var inside_walled_ladder = null
+var previous_ladder = null
 
 var velocity = Vector2()
 var acceleration = Vector2()
@@ -37,9 +39,15 @@ func push_back():
 
 func is_inside_ladder():
 	return inside_ladder != null
+
+func is_inside_walled_ladder():
+	return inside_walled_ladder != null
 	
 func set_ladder(ladder):
 	inside_ladder = ladder
+	inside_walled_ladder = null
+	if(ladder != null and ladder.is_in_group("walled_ladder")):
+		inside_walled_ladder = ladder
 	
 func set_top_ladder_area(ladder):
 	ladder_top = ladder
@@ -77,12 +85,14 @@ func remove_from_inventory(key):
 
 func get_AABB():
 	var pol = col_pol.get_polygon()
-	var max_y = pol[0].y
-	var min_y = pol[0].y
-	var max_x = pol[0].x
-	var min_x = pol[0].x
+	var new_pos = to_local(col_pol.to_global(pol[0]))
+	var max_y = new_pos.y
+	var min_y = new_pos.y
+	var max_x = new_pos.x
+	var min_x = new_pos.x
 	
-	for element in pol:
+	for element_local in pol:
+		var element = to_local(col_pol.to_global(element_local))
 		if(element.y < max_y):
 			max_y = element.y
 		elif(element.y > min_y):
@@ -92,4 +102,14 @@ func get_AABB():
 		if(element.x < min_x):
 			min_x = element.x
 	
-	return Rect2(Vector2(min_x, min_y), Vector2(max_x - min_x, max_y - min_y))
+	if(is_flippedH()):
+		var nbx = min_x
+		min_x = -max_x
+		max_x = -nbx
+	
+	#if(is_flippedV()):
+	#	var nby = min_y
+	#	min_y = -max_y
+	#	max_y = -nby
+	
+	return Rect2(Vector2(min_x, min_y), Vector2(abs(max_x - min_x), abs(max_y - min_y)))

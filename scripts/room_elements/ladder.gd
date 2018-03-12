@@ -67,7 +67,6 @@ func _on_Area2D_body_exited( body ):
 		body.set_ladder(null)
 
 func _on_ladder_length_changed():
-	print("check")
 	var polygon = get_node("Area2D/CollisionPolygon2D").get_polygon()
 
 	for i in range(0, polygon.size()):

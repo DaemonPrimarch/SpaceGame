@@ -24,11 +24,13 @@ func enter_state(previous_state):
 func leave_state(new_state):
 	.leave_state(new_state)
 	
+	get_parent().set_ladder(null)
+	
 func process_state(delta):
 	.process_state(delta)
 	
 	if(Input.is_action_just_pressed("jump")):
-		get_parent().set_state("REGULAR_JUMPING")
+		get_parent().set_state("WALL_JUMPING")
 	elif(not get_parent().is_inside_ladder()):
 		get_parent().set_state("FALLING")
 	else:
@@ -44,8 +46,7 @@ func process_state(delta):
 			get_parent().set_state("STANDING")
 
 func top_reached():
-	
-	if( get_parent().global_position.y + get_parent().get_AABB().size.y + get_parent().get_AABB().position.y < get_parent().get_ladder().global_position.y - 32):
+	if( get_parent().global_position.y - get_parent().get_AABB().size.y + get_parent().get_AABB().position.y < get_parent().get_ladder().global_position.y - 32):
 		return true
 	else:
 		return false
