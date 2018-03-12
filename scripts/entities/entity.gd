@@ -184,3 +184,6 @@ func damage_push(object):
 			direction = 1
 		push_direction = direction
 		is_pushed = true
+
+func get_AABB():
+	return AABB()

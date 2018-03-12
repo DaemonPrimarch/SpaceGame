@@ -35,9 +35,17 @@ func process_state(delta):
 		var dir = 0
 				
 		if(Input.is_action_pressed("play_up")):
-			dir = -1
+			if(not top_reached()):
+				dir = -1
 		elif(Input.is_action_pressed("play_down")):
 			dir = 1
 			
 		if(get_parent().move_and_collide(Vector2(0, dir) * get_climbing_speed() * delta) != null):
 			get_parent().set_state("STANDING")
+
+func top_reached():
+	
+	if( get_parent().global_position.y + get_parent().get_AABB().size.y + get_parent().get_AABB().position.y < get_parent().get_ladder().global_position.y - 32):
+		return true
+	else:
+		return false
