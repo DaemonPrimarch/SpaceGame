@@ -24,12 +24,11 @@ func is_flippedV():
 	return flippedV
 
 func set_flippedH(val):
-	if(val != is_flippedH()):
-		for child in get_children():
-			if(child is Node2D):
-				child.set_scale(child.get_scale() * Vector2(-1,1))
-				child.set_position(child.get_position() * Vector2(-1,1))
-				child.set_rotation(-child.get_rotation())
+	for child in get_children():
+		if(child is Node2D):
+			child.set_scale(child.get_scale() * Vector2(-1,1))
+			child.set_position(child.get_position() * Vector2(-1,1))
+			child.set_rotation(-child.get_rotation())
 	
 	flippedH = val
 
@@ -68,6 +67,7 @@ func _on_Area2D_body_exited( body ):
 		body.set_ladder(null)
 
 func _on_ladder_length_changed():
+	print("check")
 	var polygon = get_node("Area2D/CollisionPolygon2D").get_polygon()
 
 	for i in range(0, polygon.size()):

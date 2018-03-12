@@ -17,8 +17,8 @@
 [ext_resource path="res://nodes/state_handlers/pushed_handler.tscn" type="PackedScene" id=15]
 
 [node name="player" groups=[
-"warpable",
 "player",
+"warpable",
 ] instance=ExtResource( 1 )]
 
 script = ExtResource( 2 )
@@ -32,6 +32,7 @@ _sections_unfolded = [ "Animation", "Offset", "Region", "Transform" ]
 [node name="CollisionPolygon2D" parent="." index="1"]
 
 polygon = PoolVector2Array( 60, 32, 4, 32, 4, -80, 60, -80 )
+_sections_unfolded = [ "Transform" ]
 
 [node name="camera" parent="." index="3" instance=ExtResource( 3 )]
 
