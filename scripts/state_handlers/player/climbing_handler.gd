@@ -18,6 +18,7 @@ func enter_state(previous_state):
 	.enter_state(previous_state)
 	
 	get_parent().get_ladder().snap_to(get_parent())
+	
 	if(get_parent().get_ladder().is_flippedH()):
 		if(not get_parent().is_flippedH()):
 			get_parent().set_flippedH(true)

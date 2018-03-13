@@ -94,7 +94,7 @@ position = Vector2( 3040, 800 )
 [node name="moveable_platform_parent4" parent="." index="11" instance=ExtResource( 3 )]
 
 editor/display_folded = true
-position = Vector2( 2944, 448 )
+position = Vector2( 2944, 384 )
 one_way = true
 
 [node name="point_0" parent="moveable_platform_parent4" index="0"]
