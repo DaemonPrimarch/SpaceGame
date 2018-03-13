@@ -178,27 +178,27 @@ margin_bottom = 14.0
 
 position = Vector2( 224, 1440 )
 
-[connection signal="switched_on" from="bullet_switch" to="moveable_platform_parent" method="switch"]
-
 [connection signal="switched_on" from="bullet_switch" to="StaticBody2D2" method="_set_active" binds= [ false ]]
+
+[connection signal="switched_on" from="bullet_switch" to="moveable_platform_parent" method="switch"]
 
 [connection signal="switched_off" from="bullet_switch4" to="moveable_platform_parent" method="switch"]
 
 [connection signal="switched_on" from="bullet_switch4" to="moveable_platform_parent" method="switch"]
 
-[connection signal="switched_off" from="bullet_switch2" to="moveable_platform_parent2" method="switch"]
-
 [connection signal="switched_off" from="bullet_switch2" to="moveable_platform_parent3" method="switch"]
 
-[connection signal="switched_on" from="bullet_switch2" to="moveable_platform_parent2" method="switch"]
+[connection signal="switched_off" from="bullet_switch2" to="moveable_platform_parent2" method="switch"]
 
 [connection signal="switched_on" from="bullet_switch2" to="moveable_platform_parent3" method="switch"]
 
-[connection signal="switched_on" from="bullet_switch3" to="moveable_platform_parent2" method="switch"]
+[connection signal="switched_on" from="bullet_switch2" to="moveable_platform_parent2" method="switch"]
+
+[connection signal="switched_on" from="bullet_switch3" to="StaticBody2D" method="_set_active" binds= [ false ]]
 
 [connection signal="switched_on" from="bullet_switch3" to="moveable_platform_parent3" method="switch"]
 
-[connection signal="switched_on" from="bullet_switch3" to="StaticBody2D" method="_set_active" binds= [ false ]]
+[connection signal="switched_on" from="bullet_switch3" to="moveable_platform_parent2" method="switch"]
 
 
 [editable path="StaticBody2D"]

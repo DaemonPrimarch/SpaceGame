@@ -6,7 +6,7 @@
 [ext_resource path="res://nodes/warp_arrival.tscn" type="PackedScene" id=4]
 [ext_resource path="res://nodes/room_elements/regular_damage_area.tscn" type="PackedScene" id=5]
 
-[node name="room_15" instance=ExtResource( 1 )]
+[node name="room_15" index="0" instance=ExtResource( 1 )]
 
 [node name="terrain" parent="." index="0"]
 
@@ -37,12 +37,10 @@ polygon = PoolVector2Array( 32, -96, 32, 32, -32, 32, -32, -96 )
 [node name="Panel" parent="warp_tile2" index="1"]
 
 margin_top = -96.0
-rect_clip_content = false
 
 [node name="Label" parent="warp_tile2" index="2"]
 
 margin_top = -96.0
-rect_clip_content = false
 
 [node name="warp_arrival2" parent="." index="5" instance=ExtResource( 4 )]
 
@@ -61,12 +59,10 @@ polygon = PoolVector2Array( 32, -224, -32, -224, -32, 32, 32, 32 )
 [node name="Panel" parent="damage_area" index="2"]
 
 margin_top = -224.0
-rect_clip_content = false
 
 [node name="Label" parent="damage_area" index="3"]
 
 margin_top = -224.0
-rect_clip_content = false
 
 [node name="damage_area2" parent="." index="7" instance=ExtResource( 5 )]
 
@@ -80,12 +76,10 @@ polygon = PoolVector2Array( 32, -224, -32, -224, -32, 32, 32, 32 )
 [node name="Panel" parent="damage_area2" index="2"]
 
 margin_top = -224.0
-rect_clip_content = false
 
 [node name="Label" parent="damage_area2" index="3"]
 
 margin_top = -224.0
-rect_clip_content = false
 
 [node name="damage_area3" parent="." index="8" instance=ExtResource( 5 )]
 
@@ -98,12 +92,10 @@ polygon = PoolVector2Array( 160, -32, -32, -32, -32, 32, 160, 32 )
 [node name="Panel" parent="damage_area3" index="2"]
 
 margin_right = 160.0
-rect_clip_content = false
 
 [node name="Label" parent="damage_area3" index="3"]
 
 margin_right = 160.0
-rect_clip_content = false
 
 [node name="damage_area4" parent="." index="9" instance=ExtResource( 5 )]
 
@@ -116,12 +108,10 @@ polygon = PoolVector2Array( 96, -32, -32, -32, -32, 32, 96, 32 )
 [node name="Panel" parent="damage_area4" index="2"]
 
 margin_right = 96.0
-rect_clip_content = false
 
 [node name="Label" parent="damage_area4" index="3"]
 
 margin_right = 96.0
-rect_clip_content = false
 
 
 [editable path="warp_tile2"]
