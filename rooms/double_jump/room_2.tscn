@@ -28,7 +28,7 @@ flippedH = true
 
 position = Vector2( 800, 672 )
 state = false
-toggleable = false
+toggleable = true
 
 [node name="moveable_platform_parent" parent="." index="6" instance=ExtResource( 4 )]
 
