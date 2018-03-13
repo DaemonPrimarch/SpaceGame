@@ -5,6 +5,7 @@ export var angle = -(PI/4)*3 setget set_angle, get_angle
 
 var starting_speed_y
 var starting_speed_x
+var wall_jump_time
 
 func get_wall_jump_height():
 	return wall_jump_height
@@ -25,6 +26,7 @@ func _ready():
 	set_no_gravity(true)
 	starting_speed_y = PHYSICS_HELPER.calculate_jump_starting_velocity_y(get_wall_jump_height(), get_parent().get_gravity_vector().y)
 	starting_speed_x = starting_speed_y/atan(get_angle())
+	wall_jump_time = PHYSICS_HELPER.calculate_jump_max_airtime(wall_jump_height, get_parent().get_gravity_vector().y)
 
 func enter_state(previous_state):
 	.enter_state(previous_state)
@@ -41,7 +43,7 @@ func leave_state(new_state):
 func process_state(delta):
 	.process_state(delta)
 	
-	if((not Input.is_action_pressed("jump") and get_timer() > 0.5) or get_timer() > 4):
+	if((not Input.is_action_pressed("jump") and get_timer() > 0.5) or get_timer() > wall_jump_time):
 		get_parent().set_state("FALLING")
 	elif((Input.is_action_pressed("play_up") and get_parent().is_inside_ladder()) or get_parent().is_inside_walled_ladder()):
 		get_parent().set_state("CLIMBING")
