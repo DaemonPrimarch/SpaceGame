@@ -50,11 +50,15 @@ position = Vector2( 1376, 288 )
 
 position = Vector2( 1376, 352 )
 
-[node name="damage_area8" parent="." index="10" instance=ExtResource( 3 )]
+[node name="damage_area12" parent="." index="10" instance=ExtResource( 3 )]
+
+position = Vector2( 1376, 416 )
+
+[node name="damage_area8" parent="." index="11" instance=ExtResource( 3 )]
 
 position = Vector2( 2240, 448 )
 
-[node name="StaticBody2D" parent="." index="11" instance=ExtResource( 4 )]
+[node name="StaticBody2D" parent="." index="12" instance=ExtResource( 4 )]
 
 editor/display_folded = true
 position = Vector2( 672, 384 )
@@ -74,11 +78,13 @@ rect_clip_content = false
 margin_top = -160.0
 rect_clip_content = false
 
-[node name="bullet_switch" parent="." index="12" instance=ExtResource( 5 )]
+[node name="bullet_switch" parent="." index="13" instance=ExtResource( 5 )]
 
 position = Vector2( 1056, 224 )
+state = false
+toggleable = false
 
-[node name="moveable_platform_parent2" parent="." index="13" instance=ExtResource( 6 )]
+[node name="moveable_platform_parent2" parent="." index="14" instance=ExtResource( 6 )]
 
 editor/display_folded = true
 position = Vector2( 832, 512 )
@@ -87,9 +93,8 @@ position = Vector2( 832, 512 )
 
 position = Vector2( 832, 0 )
 
-[node name="moveable_platform_parent3" parent="." index="14" instance=ExtResource( 6 )]
+[node name="moveable_platform_parent3" parent="." index="15" instance=ExtResource( 6 )]
 
-editor/display_folded = true
 position = Vector2( 1792, 512 )
 
 [node name="point_1" parent="moveable_platform_parent3" index="1"]
@@ -98,7 +103,7 @@ position = Vector2( 832, 0 )
 
 [node name="platform" parent="moveable_platform_parent3" index="2"]
 
-position = Vector2( 832, 32 )
+position = Vector2( 832, 0 )
 
 [connection signal="switched_on" from="bullet_switch" to="StaticBody2D" method="_set_active" binds= [ false ]]
 

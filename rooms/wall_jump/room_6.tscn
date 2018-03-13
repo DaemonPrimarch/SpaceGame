@@ -79,6 +79,8 @@ rect_clip_content = false
 [node name="bullet_switch" parent="." index="8" instance=ExtResource( 5 )]
 
 position = Vector2( 864, 736 )
+state = false
+toggleable = false
 
 [node name="damage_area3" parent="." index="9" instance=ExtResource( 4 )]
 
@@ -234,6 +236,8 @@ rect_clip_content = false
 [node name="bullet_switch2" parent="." index="16" instance=ExtResource( 5 )]
 
 position = Vector2( 1568, 1696 )
+state = false
+toggleable = false
 
 [node name="ladder2" parent="." index="17" instance=ExtResource( 6 )]
 
