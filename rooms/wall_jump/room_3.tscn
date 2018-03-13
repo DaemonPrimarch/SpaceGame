@@ -36,6 +36,7 @@ position = Vector2( 480, 800 )
 [node name="bullet_switch" parent="." index="6" instance=ExtResource( 4 )]
 
 position = Vector2( 864, 608 )
+state = false
 toggleable = true
 
 [node name="moveable_platform_parent" parent="." index="7" instance=ExtResource( 5 )]
@@ -45,11 +46,11 @@ one_way = true
 
 [node name="point_0" parent="moveable_platform_parent" index="0"]
 
-position = Vector2( 0, -128 )
+position = Vector2( 0, -416 )
 
 [node name="point_1" parent="moveable_platform_parent" index="1"]
 
-position = Vector2( 0, -416 )
+position = Vector2( 0, -128 )
 
 [node name="platform" parent="moveable_platform_parent" index="2"]
 

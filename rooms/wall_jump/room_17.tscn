@@ -364,6 +364,7 @@ position = Vector2( -96, 0 )
 [node name="bullet_switch" parent="." index="18" instance=ExtResource( 5 )]
 
 position = Vector2( 1120, 1824 )
+state = false
 toggleable = true
 
 [node name="warp_tile2" parent="." index="19" instance=ExtResource( 6 )]
