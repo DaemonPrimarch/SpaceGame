@@ -31,55 +31,52 @@ position = Vector2( 128, 384 )
 [node name="bullet_switch" parent="." index="5" instance=ExtResource( 3 )]
 
 position = Vector2( 1568, 800 )
+state = false
 toggleable = true
 
 [node name="bullet_switch2" parent="." index="6" instance=ExtResource( 3 )]
 
 position = Vector2( 1568, 544 )
+state = false
 toggleable = true
 
 [node name="moveable_platform_parent" parent="." index="7" instance=ExtResource( 4 )]
 
 editor/display_folded = true
 position = Vector2( 576, 512 )
+active = false
 one_way = true
-
-[node name="point_0" parent="moveable_platform_parent" index="0"]
-
-position = Vector2( 0, 96 )
 
 [node name="point_1" parent="moveable_platform_parent" index="1"]
 
-position = Vector2( 0, 0 )
+position = Vector2( 0, 96 )
 
 [node name="moveable_platform_parent2" parent="." index="8" instance=ExtResource( 4 )]
 
+editor/display_folded = true
 position = Vector2( 1056, 512 )
+active = false
 one_way = true
-
-[node name="point_0" parent="moveable_platform_parent2" index="0"]
-
-position = Vector2( 0, -96 )
 
 [node name="point_1" parent="moveable_platform_parent2" index="1"]
 
-position = Vector2( 0, 0 )
+position = Vector2( 0, -96 )
 
-[connection signal="switched_off" from="bullet_switch" to="moveable_platform_parent2" method="switch"]
+[connection signal="switched_off" from="bullet_switch" to="moveable_platform_parent2" method="set_active" binds= [ true ]]
 
-[connection signal="switched_off" from="bullet_switch" to="moveable_platform_parent" method="switch"]
+[connection signal="switched_off" from="bullet_switch" to="moveable_platform_parent" method="set_active" binds= [ true ]]
 
-[connection signal="switched_on" from="bullet_switch" to="moveable_platform_parent2" method="switch"]
+[connection signal="switched_on" from="bullet_switch" to="moveable_platform_parent2" method="set_active" binds= [ true ]]
 
-[connection signal="switched_on" from="bullet_switch" to="moveable_platform_parent" method="switch"]
+[connection signal="switched_on" from="bullet_switch" to="moveable_platform_parent" method="set_active" binds= [ true ]]
 
-[connection signal="switched_off" from="bullet_switch2" to="moveable_platform_parent2" method="switch"]
+[connection signal="switched_off" from="bullet_switch2" to="moveable_platform_parent2" method="set_active" binds= [ true ]]
 
-[connection signal="switched_off" from="bullet_switch2" to="moveable_platform_parent" method="switch"]
+[connection signal="switched_off" from="bullet_switch2" to="moveable_platform_parent" method="set_active" binds= [ true ]]
 
-[connection signal="switched_on" from="bullet_switch2" to="moveable_platform_parent2" method="switch"]
+[connection signal="switched_on" from="bullet_switch2" to="moveable_platform_parent2" method="set_active" binds= [ true ]]
 
-[connection signal="switched_on" from="bullet_switch2" to="moveable_platform_parent" method="switch"]
+[connection signal="switched_on" from="bullet_switch2" to="moveable_platform_parent" method="set_active" binds= [ true ]]
 
 
 [editable path="moveable_platform_parent"]

@@ -89,8 +89,6 @@ climbing_speed = 256
 
 [node name="wall_sliding_handler" parent="." index="18" instance=ExtResource( 13 )]
 
-enabled = false
-
 [node name="crawling_handler" parent="." index="19" instance=ExtResource( 14 )]
 
 [node name="pushed_handler" parent="." index="20" instance=ExtResource( 15 )]

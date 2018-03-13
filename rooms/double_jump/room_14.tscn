@@ -4,7 +4,7 @@
 [ext_resource path="res://nodes/room_elements/regular_warp_tile.tscn" type="PackedScene" id=2]
 [ext_resource path="res://nodes/room_elements/regular_damage_area.tscn" type="PackedScene" id=3]
 
-[node name="room_14" index="0" instance=ExtResource( 1 )]
+[node name="room_14" instance=ExtResource( 1 )]
 
 [node name="terrain" parent="." index="0"]
 
@@ -39,10 +39,12 @@ polygon = PoolVector2Array( 608, -32, -32, -32, -32, 32, 608, 32 )
 [node name="Panel" parent="damage_area" index="2"]
 
 margin_right = 608.0
+rect_clip_content = false
 
 [node name="Label" parent="damage_area" index="3"]
 
 margin_right = 608.0
+rect_clip_content = false
 
 [node name="damage_area2" parent="." index="6" instance=ExtResource( 3 )]
 
@@ -56,10 +58,12 @@ polygon = PoolVector2Array( 608, -32, -32, -32, -32, 32, 608, 32 )
 [node name="Panel" parent="damage_area2" index="2"]
 
 margin_right = 608.0
+rect_clip_content = false
 
 [node name="Label" parent="damage_area2" index="3"]
 
 margin_right = 608.0
+rect_clip_content = false
 
 [node name="damage_area3" parent="." index="7" instance=ExtResource( 3 )]
 
@@ -73,10 +77,12 @@ polygon = PoolVector2Array( 160, -32, -32, -32, -32, 32, 160, 32 )
 [node name="Panel" parent="damage_area3" index="2"]
 
 margin_right = 160.0
+rect_clip_content = false
 
 [node name="Label" parent="damage_area3" index="3"]
 
 margin_right = 160.0
+rect_clip_content = false
 
 [node name="damage_area4" parent="." index="8" instance=ExtResource( 3 )]
 
@@ -89,10 +95,12 @@ polygon = PoolVector2Array( 288, -32, -32, -32, -32, 32, 288, 32 )
 [node name="Panel" parent="damage_area4" index="2"]
 
 margin_right = 288.0
+rect_clip_content = false
 
 [node name="Label" parent="damage_area4" index="3"]
 
 margin_right = 288.0
+rect_clip_content = false
 
 
 [editable path="damage_area"]
