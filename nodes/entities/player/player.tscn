@@ -85,6 +85,7 @@ double_jump_height = 134.4
 
 [node name="climbing_handler" parent="." index="17" instance=ExtResource( 12 )]
 
+enabled = false
 climbing_speed = 256
 
 [node name="wall_sliding_handler" parent="." index="18" instance=ExtResource( 13 )]
@@ -100,6 +101,10 @@ enabled = false
 rect_clip_content = false
 
 [node name="invulnerable_label" parent="." index="22"]
+
+rect_clip_content = false
+
+[node name="in_ladder_label" parent="." index="23"]
 
 rect_clip_content = false
 
