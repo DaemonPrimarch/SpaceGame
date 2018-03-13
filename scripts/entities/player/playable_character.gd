@@ -5,7 +5,7 @@ extends "res://scripts/entities/living_entity.gd"
 var inventory = {}
 
 var inside_ladder = null
-var inside_walled_ladder = null
+
 
 var velocity = Vector2()
 var acceleration = Vector2()
@@ -40,13 +40,10 @@ func is_inside_ladder():
 	return inside_ladder != null
 
 func is_inside_walled_ladder():
-	return inside_walled_ladder != null
+	return is_inside_ladder() and get_ladder().is_in_group("walled_ladder")
 	
 func set_ladder(ladder):
 	inside_ladder = ladder
-	inside_walled_ladder = null
-	if(ladder != null and ladder.is_in_group("walled_ladder")):
-		inside_walled_ladder = ladder
 	
 func set_top_ladder_area(ladder):
 	ladder_top = ladder
@@ -56,7 +53,6 @@ func is_in_top_ladder_area():
 
 func get_ladder_top():
 	return ladder_top
-	
 
 func get_ladder():
 	return inside_ladder

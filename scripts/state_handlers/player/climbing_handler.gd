@@ -36,8 +36,6 @@ func enter_state(previous_state):
 func leave_state(new_state):
 	.leave_state(new_state)
 	
-	get_parent().set_ladder(null)
-	
 func process_state(delta):
 	.process_state(delta)
 	
