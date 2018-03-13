@@ -66,3 +66,4 @@ func can_enter():
 
 func ladder_left(body):
 	is_inside_same_ladder = false
+	get_parent().get_ladder().get_node("Area2D").disconnect("body_exited", self, "ladder_left")

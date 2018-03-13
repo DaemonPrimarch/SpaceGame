@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://nodes/room.tscn" type="PackedScene" id=1]
 [ext_resource path="res://nodes/room_elements/regular_warp_tile.tscn" type="PackedScene" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://nodes/warp_arrival.tscn" type="PackedScene" id=6]
 [ext_resource path="res://nodes/warp_tile.tscn" type="PackedScene" id=7]
 [ext_resource path="res://nodes/room_elements/walled_ladder.tscn" type="PackedScene" id=8]
+[ext_resource path="res://nodes/room_elements/walled_ladder_no_top.tscn" type="PackedScene" id=9]
 
 [node name="room_1" index="0" instance=ExtResource( 1 )]
 
@@ -124,6 +125,40 @@ margin_bottom = 14.0
 
 scale = Vector2( -1, 1 )
 
+[node name="ladder2" parent="." index="10" instance=ExtResource( 9 )]
+
+editor/display_folded = true
+position = Vector2( 480, 96 )
+length = 256
+flippedH = true
+
+[node name="Area2D" parent="ladder2" index="0"]
+
+scale = Vector2( -1, 1 )
+
+[node name="CollisionPolygon2D" parent="ladder2/Area2D" index="0"]
+
+polygon = PoolVector2Array( 16, -32, 16, 224, 32, 224, 32, -32 )
+
+[node name="Sprite" parent="ladder2" index="1"]
+
+position = Vector2( 0, 96 )
+scale = Vector2( -1, 1 )
+region_rect = Rect2( 0, 0, 64, 256 )
+
+[node name="Panel" parent="ladder2/Control" index="0"]
+
+margin_left = -32.0
+margin_right = -16.0
+rect_scale = Vector2( 1, 128 )
+
+[node name="Label" parent="ladder2/Control" index="1"]
+
+margin_left = -32.0
+margin_top = 0.0
+margin_right = 16.0
+margin_bottom = 14.0
+
 [connection signal="player_entered" from="." to="StaticBody2D" method="check_for_key"]
 
 [connection signal="switched_on" from="bullet_switch" to="StaticBody2D" method="_set_active" binds= [ false ]]
@@ -135,3 +170,4 @@ scale = Vector2( -1, 1 )
 
 [editable path="warp_tile"]
 [editable path="ladder"]
+[editable path="ladder2"]
