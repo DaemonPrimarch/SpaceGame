@@ -84,6 +84,7 @@ position = Vector2( 0, -128 )
 
 [node name="moveable_platform_parent2" parent="." index="9" instance=ExtResource( 5 )]
 
+editor/display_folded = true
 position = Vector2( 576, 960 )
 active = false
 one_way = true

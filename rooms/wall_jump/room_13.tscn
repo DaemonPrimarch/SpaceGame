@@ -50,61 +50,39 @@ rect_clip_content = false
 
 [node name="damage_area" parent="." index="5" instance=ExtResource( 3 )]
 
+editor/display_folded = true
 position = Vector2( 608, 1120 )
-
-[node name="CollisionPolygon2D" parent="damage_area/Area2D" index="0"]
-
-polygon = PoolVector2Array( 224, -32, -32, -32, -32, 32, 224, 32 )
 
 [node name="Panel" parent="damage_area" index="2"]
 
-margin_right = 224.0
 rect_clip_content = false
 
 [node name="Label" parent="damage_area" index="3"]
 
-margin_right = 224.0
 rect_clip_content = false
 
 [node name="damage_area2" parent="." index="6" instance=ExtResource( 3 )]
 
 position = Vector2( 544, 1568 )
 
-[node name="CollisionPolygon2D" parent="damage_area2/Area2D" index="0"]
+[node name="damage_area5" parent="." index="7" instance=ExtResource( 3 )]
 
-polygon = PoolVector2Array( 96, -32, -32, -32, -32, 96, 96, 96 )
+position = Vector2( 608, 1568 )
 
-[node name="Panel" parent="damage_area2" index="2"]
+[node name="damage_area4" parent="." index="8" instance=ExtResource( 3 )]
 
-margin_right = 96.0
-margin_bottom = 96.0
-rect_clip_content = false
-
-[node name="Label" parent="damage_area2" index="3"]
-
-margin_right = 96.0
-margin_bottom = 96.0
-rect_clip_content = false
-
-[node name="damage_area4" parent="." index="7" instance=ExtResource( 3 )]
-
+editor/display_folded = true
 position = Vector2( 1120, 928 )
-
-[node name="CollisionPolygon2D" parent="damage_area4/Area2D" index="0"]
-
-polygon = PoolVector2Array( 32, -32, -32, -32, -32, 544, 32, 544 )
 
 [node name="Panel" parent="damage_area4" index="2"]
 
-margin_bottom = 544.0
 rect_clip_content = false
 
 [node name="Label" parent="damage_area4" index="3"]
 
-margin_bottom = 544.0
 rect_clip_content = false
 
-[node name="damage_area3" parent="." index="8" instance=ExtResource( 3 )]
+[node name="damage_area3" parent="." index="9" instance=ExtResource( 3 )]
 
 position = Vector2( 1248, 288 )
 
@@ -122,7 +100,7 @@ rect_clip_content = false
 margin_bottom = 288.0
 rect_clip_content = false
 
-[node name="ladder" parent="." index="9" instance=ExtResource( 4 )]
+[node name="ladder" parent="." index="10" instance=ExtResource( 4 )]
 
 editor/display_folded = true
 position = Vector2( 544, 928 )
@@ -156,15 +134,16 @@ margin_top = 0.0
 margin_right = 16.0
 margin_bottom = 14.0
 
-[node name="vertical_ladder" parent="." index="10" instance=ExtResource( 5 )]
+[node name="vertical_ladder" parent="." index="11" instance=ExtResource( 5 )]
 
 position = Vector2( 160, 1440 )
 length = 384
+flippedH = false
+flippedV = false
 
 
 [editable path="warp_tile"]
 [editable path="damage_area"]
-[editable path="damage_area2"]
 [editable path="damage_area4"]
 [editable path="damage_area3"]
 [editable path="ladder"]
