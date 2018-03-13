@@ -31,10 +31,14 @@ func enter_state(previous_state):
 		if(get_parent().is_flippedH()):
 			get_parent().set_flippedH(false)
 	
+	get_parent().get_node("weapon_manager").scale *= Vector2(-1,1)
+	
 	get_parent().set_velocity(Vector2())
 	
 func leave_state(new_state):
 	.leave_state(new_state)
+	
+	get_parent().get_node("weapon_manager").scale *= Vector2(-1,1)
 	
 func process_state(delta):
 	.process_state(delta)
