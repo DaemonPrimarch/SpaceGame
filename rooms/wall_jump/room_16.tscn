@@ -6,7 +6,7 @@
 [ext_resource path="res://nodes/room_elements/vertical_ladder.tscn" type="PackedScene" id=4]
 [ext_resource path="res://nodes/room_elements/regular_damage_area.tscn" type="PackedScene" id=5]
 
-[node name="room_16" instance=ExtResource( 1 )]
+[node name="room_16" index="0" instance=ExtResource( 1 )]
 
 [node name="terrain" parent="." index="0"]
 
@@ -42,20 +42,12 @@ rect_clip_content = false
 
 rect_clip_content = false
 
-[node name="ladder" parent="." index="5" instance=ExtResource( 3 )]
-
-position = Vector2( 1248, 224 )
-length = 640
-flippedH = false
-flippedV = false
-
-[node name="ladder2" parent="." index="6" instance=ExtResource( 3 )]
+[node name="ladder2" parent="." index="5" instance=ExtResource( 3 )]
 
 editor/display_folded = true
 position = Vector2( 928, 288 )
-length = 576
+length = 448
 flippedH = true
-flippedV = false
 
 [node name="Area2D" parent="ladder2" index="0"]
 
@@ -63,24 +55,19 @@ scale = Vector2( -1, 1 )
 
 [node name="CollisionPolygon2D" parent="ladder2/Area2D" index="0"]
 
-polygon = PoolVector2Array( 16, -32, 16, 544, 32, 544, 32, -32 )
+polygon = PoolVector2Array( 16, -32, 16, 416, 32, 416, 32, -32 )
 
 [node name="Sprite" parent="ladder2" index="1"]
 
-position = Vector2( 0, 256 )
+position = Vector2( 0, 192 )
 scale = Vector2( -1, 1 )
-region_rect = Rect2( 0, 0, 64, 576 )
-
-[node name="Control" parent="ladder2" index="2"]
-
-rect_clip_content = false
+region_rect = Rect2( 0, 0, 64, 448 )
 
 [node name="Panel" parent="ladder2/Control" index="0"]
 
 margin_left = -32.0
 margin_right = -16.0
-rect_scale = Vector2( 1, 288 )
-rect_clip_content = false
+rect_scale = Vector2( 1, 224 )
 
 [node name="Label" parent="ladder2/Control" index="1"]
 
@@ -88,20 +75,17 @@ margin_left = -32.0
 margin_top = 0.0
 margin_right = 16.0
 margin_bottom = 14.0
-rect_clip_content = false
 
 [node name="StaticBody2D" parent="ladder2" index="3"]
 
 scale = Vector2( -1, 1 )
 
-[node name="vertical_ladder" parent="." index="7" instance=ExtResource( 4 )]
+[node name="vertical_ladder" parent="." index="6" instance=ExtResource( 4 )]
 
 position = Vector2( 1440, 224 )
 length = 896
-flippedH = false
-flippedV = false
 
-[node name="damage_area" parent="." index="8" instance=ExtResource( 5 )]
+[node name="damage_area" parent="." index="7" instance=ExtResource( 5 )]
 
 editor/display_folded = true
 position = Vector2( 928, 864 )
@@ -120,7 +104,7 @@ rect_clip_content = false
 margin_right = 352.0
 rect_clip_content = false
 
-[node name="damage_area2" parent="." index="9" instance=ExtResource( 5 )]
+[node name="damage_area2" parent="." index="8" instance=ExtResource( 5 )]
 
 editor/display_folded = true
 position = Vector2( 160, 480 )
@@ -141,7 +125,7 @@ margin_left = 160.0
 margin_right = 352.0
 rect_clip_content = false
 
-[node name="damage_area3" parent="." index="10" instance=ExtResource( 5 )]
+[node name="damage_area3" parent="." index="9" instance=ExtResource( 5 )]
 
 editor/display_folded = true
 position = Vector2( 288, 928 )
@@ -160,7 +144,7 @@ rect_clip_content = false
 margin_right = 288.0
 rect_clip_content = false
 
-[node name="damage_area4" parent="." index="11" instance=ExtResource( 5 )]
+[node name="damage_area4" parent="." index="10" instance=ExtResource( 5 )]
 
 position = Vector2( 352, 1376 )
 
@@ -178,7 +162,7 @@ rect_clip_content = false
 margin_right = 288.0
 rect_clip_content = false
 
-[node name="damage_area5" parent="." index="12" instance=ExtResource( 5 )]
+[node name="damage_area5" parent="." index="11" instance=ExtResource( 5 )]
 
 editor/display_folded = true
 position = Vector2( 32, 1056 )
@@ -200,6 +184,11 @@ margin_left = 32.0
 margin_right = 96.0
 margin_bottom = 480.0
 rect_clip_content = false
+
+[node name="ladder" parent="." index="12" instance=ExtResource( 3 )]
+
+position = Vector2( 1248, 224 )
+length = 512
 
 
 [editable path="warp_tile2"]

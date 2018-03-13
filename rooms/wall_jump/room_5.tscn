@@ -138,10 +138,9 @@ position = Vector2( -32, 192 )
 [node name="ladder" parent="." index="15" instance=ExtResource( 7 )]
 
 editor/display_folded = true
-position = Vector2( 288, 544 )
+position = Vector2( 288, 416 )
 length = 448
 flippedH = true
-flippedV = false
 
 [node name="Area2D" parent="ladder" index="0"]
 
@@ -157,16 +156,11 @@ position = Vector2( 0, 192 )
 scale = Vector2( -1, 1 )
 region_rect = Rect2( 0, 0, 64, 448 )
 
-[node name="Control" parent="ladder" index="2"]
-
-rect_clip_content = false
-
 [node name="Panel" parent="ladder/Control" index="0"]
 
 margin_left = -32.0
 margin_right = -16.0
 rect_scale = Vector2( 1, 224 )
-rect_clip_content = false
 
 [node name="Label" parent="ladder/Control" index="1"]
 
@@ -174,7 +168,6 @@ margin_left = -32.0
 margin_top = 0.0
 margin_right = 16.0
 margin_bottom = 14.0
-rect_clip_content = false
 
 [node name="StaticBody2D2" parent="." index="16" instance=ExtResource( 5 )]
 
@@ -188,19 +181,19 @@ position = Vector2( 224, 1440 )
 
 [connection signal="switched_on" from="bullet_switch4" to="moveable_platform_parent" method="switch"]
 
-[connection signal="switched_off" from="bullet_switch2" to="moveable_platform_parent3" method="switch"]
-
 [connection signal="switched_off" from="bullet_switch2" to="moveable_platform_parent2" method="switch"]
 
-[connection signal="switched_on" from="bullet_switch2" to="moveable_platform_parent3" method="switch"]
+[connection signal="switched_off" from="bullet_switch2" to="moveable_platform_parent3" method="switch"]
 
 [connection signal="switched_on" from="bullet_switch2" to="moveable_platform_parent2" method="switch"]
 
+[connection signal="switched_on" from="bullet_switch2" to="moveable_platform_parent3" method="switch"]
+
 [connection signal="switched_off" from="bullet_switch3" to="moveable_platform_parent3" method="switch"]
 
-[connection signal="switched_on" from="bullet_switch3" to="moveable_platform_parent3" method="switch"]
-
 [connection signal="switched_on" from="bullet_switch3" to="StaticBody2D" method="_set_active" binds= [ false ]]
+
+[connection signal="switched_on" from="bullet_switch3" to="moveable_platform_parent3" method="switch"]
 
 
 [editable path="StaticBody2D"]

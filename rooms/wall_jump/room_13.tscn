@@ -106,7 +106,6 @@ editor/display_folded = true
 position = Vector2( 544, 928 )
 length = 640
 flippedH = true
-flippedV = false
 
 [node name="Area2D" parent="ladder" index="0"]
 
@@ -122,16 +121,11 @@ position = Vector2( 0, 288 )
 scale = Vector2( -1, 1 )
 region_rect = Rect2( 0, 0, 64, 640 )
 
-[node name="Control" parent="ladder" index="2"]
-
-rect_clip_content = false
-
 [node name="Panel" parent="ladder/Control" index="0"]
 
 margin_left = -32.0
 margin_right = -16.0
 rect_scale = Vector2( 1, 320 )
-rect_clip_content = false
 
 [node name="Label" parent="ladder/Control" index="1"]
 
@@ -139,7 +133,6 @@ margin_left = -32.0
 margin_top = 0.0
 margin_right = 16.0
 margin_bottom = 14.0
-rect_clip_content = false
 
 [node name="vertical_ladder" parent="." index="11" instance=ExtResource( 5 )]
 

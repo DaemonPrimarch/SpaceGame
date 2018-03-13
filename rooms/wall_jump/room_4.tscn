@@ -27,103 +27,12 @@ arrival_pos_id = "room_4_arrival"
 
 position = Vector2( 128, 768 )
 
-[node name="ladder" parent="." index="5" instance=ExtResource( 3 )]
+[node name="ladder2" parent="." index="5" instance=ExtResource( 3 )]
 
 editor/display_folded = true
-position = Vector2( 544, 480 )
-length = 384
-flippedH = false
-flippedV = false
-
-[node name="CollisionPolygon2D" parent="ladder/Area2D" index="0"]
-
-polygon = PoolVector2Array( 16, -32, 16, 352, 32, 352, 32, -32 )
-
-[node name="Sprite" parent="ladder" index="1"]
-
-position = Vector2( 0, 160 )
-region_rect = Rect2( 0, 0, 64, 384 )
-
-[node name="Control" parent="ladder" index="2"]
-
-rect_clip_content = false
-
-[node name="Panel" parent="ladder/Control" index="0"]
-
-rect_scale = Vector2( 1, 192 )
-rect_clip_content = false
-
-[node name="Label" parent="ladder/Control" index="1"]
-
-rect_clip_content = false
-
-[node name="ladder5" parent="." index="6" instance=ExtResource( 3 )]
-
-editor/display_folded = true
-position = Vector2( 736, 1248 )
-length = 192
-flippedH = false
-flippedV = false
-
-[node name="CollisionPolygon2D" parent="ladder5/Area2D" index="0"]
-
-polygon = PoolVector2Array( 16, -32, 16, 160, 32, 160, 32, -32 )
-
-[node name="Sprite" parent="ladder5" index="1"]
-
-position = Vector2( 0, 64 )
-region_rect = Rect2( 0, 0, 64, 192 )
-
-[node name="Control" parent="ladder5" index="2"]
-
-rect_clip_content = false
-
-[node name="Panel" parent="ladder5/Control" index="0"]
-
-rect_scale = Vector2( 1, 96 )
-rect_clip_content = false
-
-[node name="Label" parent="ladder5/Control" index="1"]
-
-rect_clip_content = false
-
-[node name="ladder4" parent="." index="7" instance=ExtResource( 3 )]
-
-editor/display_folded = true
-position = Vector2( 1184, 96 )
-length = 1728
-flippedH = false
-flippedV = false
-
-[node name="CollisionPolygon2D" parent="ladder4/Area2D" index="0"]
-
-polygon = PoolVector2Array( 16, -32, 16, 1696, 32, 1696, 32, -32 )
-
-[node name="Sprite" parent="ladder4" index="1"]
-
-position = Vector2( 0, 832 )
-region_rect = Rect2( 0, 0, 64, 1728 )
-
-[node name="Control" parent="ladder4" index="2"]
-
-rect_clip_content = false
-
-[node name="Panel" parent="ladder4/Control" index="0"]
-
-rect_scale = Vector2( 1, 864 )
-rect_clip_content = false
-
-[node name="Label" parent="ladder4/Control" index="1"]
-
-rect_clip_content = false
-
-[node name="ladder2" parent="." index="8" instance=ExtResource( 3 )]
-
-editor/display_folded = true
-position = Vector2( 288, 352 )
+position = Vector2( 288, 288 )
 length = 192
 flippedH = true
-flippedV = false
 
 [node name="Area2D" parent="ladder2" index="0"]
 
@@ -142,14 +51,12 @@ region_rect = Rect2( 0, 0, 64, 192 )
 [node name="Control" parent="ladder2" index="2"]
 
 editor/display_folded = true
-rect_clip_content = false
 
 [node name="Panel" parent="ladder2/Control" index="0"]
 
 margin_left = -32.0
 margin_right = -16.0
 rect_scale = Vector2( 1, 96 )
-rect_clip_content = false
 
 [node name="Label" parent="ladder2/Control" index="1"]
 
@@ -157,15 +64,13 @@ margin_left = -32.0
 margin_top = 0.0
 margin_right = 16.0
 margin_bottom = 14.0
-rect_clip_content = false
 
-[node name="ladder6" parent="." index="9" instance=ExtResource( 3 )]
+[node name="ladder6" parent="." index="6" instance=ExtResource( 3 )]
 
 editor/display_folded = true
 position = Vector2( 480, 1376 )
 length = 256
 flippedH = true
-flippedV = false
 
 [node name="Area2D" parent="ladder6" index="0"]
 
@@ -184,14 +89,12 @@ region_rect = Rect2( 0, 0, 64, 256 )
 [node name="Control" parent="ladder6" index="2"]
 
 editor/display_folded = true
-rect_clip_content = false
 
 [node name="Panel" parent="ladder6/Control" index="0"]
 
 margin_left = -32.0
 margin_right = -16.0
 rect_scale = Vector2( 1, 128 )
-rect_clip_content = false
 
 [node name="Label" parent="ladder6/Control" index="1"]
 
@@ -199,15 +102,13 @@ margin_left = -32.0
 margin_top = 0.0
 margin_right = 16.0
 margin_bottom = 14.0
-rect_clip_content = false
 
-[node name="ladder3" parent="." index="10" instance=ExtResource( 3 )]
+[node name="ladder3" parent="." index="7" instance=ExtResource( 3 )]
 
 editor/display_folded = true
 position = Vector2( 928, 480 )
 length = 1216
 flippedH = true
-flippedV = false
 
 [node name="Area2D" parent="ladder3" index="0"]
 
@@ -226,14 +127,12 @@ region_rect = Rect2( 0, 0, 64, 1216 )
 [node name="Control" parent="ladder3" index="2"]
 
 editor/display_folded = true
-rect_clip_content = false
 
 [node name="Panel" parent="ladder3/Control" index="0"]
 
 margin_left = -32.0
 margin_right = -16.0
 rect_scale = Vector2( 1, 608 )
-rect_clip_content = false
 
 [node name="Label" parent="ladder3/Control" index="1"]
 
@@ -241,9 +140,8 @@ margin_left = -32.0
 margin_top = 0.0
 margin_right = 16.0
 margin_bottom = 14.0
-rect_clip_content = false
 
-[node name="damage_area" parent="." index="11" instance=ExtResource( 4 )]
+[node name="damage_area" parent="." index="8" instance=ExtResource( 4 )]
 
 editor/display_folded = true
 position = Vector2( 1120, 800 )
@@ -262,7 +160,7 @@ rect_clip_content = false
 margin_right = 96.0
 rect_clip_content = false
 
-[node name="damage_area2" parent="." index="12" instance=ExtResource( 4 )]
+[node name="damage_area2" parent="." index="9" instance=ExtResource( 4 )]
 
 editor/display_folded = true
 position = Vector2( 928, 1248 )
@@ -281,7 +179,7 @@ rect_clip_content = false
 margin_right = 160.0
 rect_clip_content = false
 
-[node name="damage_area3" parent="." index="13" instance=ExtResource( 4 )]
+[node name="damage_area3" parent="." index="10" instance=ExtResource( 4 )]
 
 editor/display_folded = true
 position = Vector2( 1056, 1760 )
@@ -300,17 +198,73 @@ rect_clip_content = false
 margin_right = 160.0
 rect_clip_content = false
 
-[node name="damage_area4" parent="." index="14" instance=ExtResource( 4 )]
+[node name="damage_area4" parent="." index="11" instance=ExtResource( 4 )]
 
 position = Vector2( 736, 1568 )
 
+[node name="ladder" parent="." index="12" instance=ExtResource( 3 )]
 
-[editable path="ladder"]
-[editable path="ladder5"]
-[editable path="ladder4"]
+editor/display_folded = true
+position = Vector2( 544, 480 )
+length = 384
+
+[node name="CollisionPolygon2D" parent="ladder/Area2D" index="0"]
+
+polygon = PoolVector2Array( 16, -32, 16, 352, 32, 352, 32, -32 )
+
+[node name="Sprite" parent="ladder" index="1"]
+
+position = Vector2( 0, 160 )
+region_rect = Rect2( 0, 0, 64, 384 )
+
+[node name="Panel" parent="ladder/Control" index="0"]
+
+rect_scale = Vector2( 1, 192 )
+
+[node name="ladder4" parent="." index="13" instance=ExtResource( 3 )]
+
+editor/display_folded = true
+position = Vector2( 1184, 96 )
+length = 1728
+
+[node name="CollisionPolygon2D" parent="ladder4/Area2D" index="0"]
+
+polygon = PoolVector2Array( 16, -32, 16, 1696, 32, 1696, 32, -32 )
+
+[node name="Sprite" parent="ladder4" index="1"]
+
+position = Vector2( 0, 832 )
+region_rect = Rect2( 0, 0, 64, 1728 )
+
+[node name="Panel" parent="ladder4/Control" index="0"]
+
+rect_scale = Vector2( 1, 864 )
+
+[node name="ladder5" parent="." index="14" instance=ExtResource( 3 )]
+
+position = Vector2( 736, 1184 )
+length = 192
+
+[node name="CollisionPolygon2D" parent="ladder5/Area2D" index="0"]
+
+polygon = PoolVector2Array( 16, -32, 16, 160, 32, 160, 32, -32 )
+
+[node name="Sprite" parent="ladder5" index="1"]
+
+position = Vector2( 0, 64 )
+region_rect = Rect2( 0, 0, 64, 192 )
+
+[node name="Panel" parent="ladder5/Control" index="0"]
+
+rect_scale = Vector2( 1, 96 )
+
+
 [editable path="ladder2"]
 [editable path="ladder6"]
 [editable path="ladder3"]
 [editable path="damage_area"]
 [editable path="damage_area2"]
 [editable path="damage_area3"]
+[editable path="ladder"]
+[editable path="ladder4"]
+[editable path="ladder5"]

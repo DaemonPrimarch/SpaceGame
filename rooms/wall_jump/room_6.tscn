@@ -7,7 +7,7 @@
 [ext_resource path="res://nodes/room_elements/bullet_switch.tscn" type="PackedScene" id=5]
 [ext_resource path="res://nodes/room_elements/walled_ladder_no_top.tscn" type="PackedScene" id=6]
 
-[node name="room_6" index="0" instance=ExtResource( 1 )]
+[node name="room_6" instance=ExtResource( 1 )]
 
 [node name="terrain" parent="." index="0"]
 
@@ -145,6 +145,7 @@ rect_clip_content = false
 
 [node name="damage_area9" parent="." index="12" instance=ExtResource( 4 )]
 
+editor/display_folded = true
 position = Vector2( 864, 2720 )
 
 [node name="CollisionPolygon2D" parent="damage_area9/Area2D" index="0"]
@@ -234,34 +235,12 @@ rect_clip_content = false
 
 position = Vector2( 1568, 1696 )
 
-[node name="ladder4" parent="." index="17" instance=ExtResource( 6 )]
-
-position = Vector2( 928, 2400 )
-length = 320
-flippedH = false
-flippedV = false
-
-[node name="ladder3" parent="." index="18" instance=ExtResource( 6 )]
-
-position = Vector2( 1504, 1760 )
-length = 960
-flippedH = false
-flippedV = false
-
-[node name="ladder6" parent="." index="19" instance=ExtResource( 6 )]
-
-position = Vector2( 736, 2912 )
-length = 768
-flippedH = false
-flippedV = false
-
-[node name="ladder2" parent="." index="20" instance=ExtResource( 6 )]
+[node name="ladder2" parent="." index="17" instance=ExtResource( 6 )]
 
 editor/display_folded = true
 position = Vector2( 224, 352 )
 length = 320
 flippedH = true
-flippedV = false
 
 [node name="Area2D" parent="ladder2" index="0"]
 
@@ -280,14 +259,12 @@ region_rect = Rect2( 0, 0, 64, 320 )
 [node name="Control" parent="ladder2" index="2"]
 
 editor/display_folded = true
-rect_clip_content = false
 
 [node name="Panel" parent="ladder2/Control" index="0"]
 
 margin_left = -32.0
 margin_right = -16.0
 rect_scale = Vector2( 1, 160 )
-rect_clip_content = false
 
 [node name="Label" parent="ladder2/Control" index="1"]
 
@@ -295,14 +272,13 @@ margin_left = -32.0
 margin_top = 0.0
 margin_right = 16.0
 margin_bottom = 14.0
-rect_clip_content = false
 
-[node name="ladder5" parent="." index="21" instance=ExtResource( 6 )]
+[node name="ladder5" parent="." index="18" instance=ExtResource( 6 )]
 
+editor/display_folded = true
 position = Vector2( 608, 2464 )
 length = 704
 flippedH = true
-flippedV = false
 
 [node name="Area2D" parent="ladder5" index="0"]
 
@@ -318,16 +294,11 @@ position = Vector2( 0, 320 )
 scale = Vector2( -1, 1 )
 region_rect = Rect2( 0, 0, 64, 704 )
 
-[node name="Control" parent="ladder5" index="2"]
-
-rect_clip_content = false
-
 [node name="Panel" parent="ladder5/Control" index="0"]
 
 margin_left = -32.0
 margin_right = -16.0
 rect_scale = Vector2( 1, 352 )
-rect_clip_content = false
 
 [node name="Label" parent="ladder5/Control" index="1"]
 
@@ -335,7 +306,21 @@ margin_left = -32.0
 margin_top = 0.0
 margin_right = 16.0
 margin_bottom = 14.0
-rect_clip_content = false
+
+[node name="ladder" parent="." index="19" instance=ExtResource( 6 )]
+
+position = Vector2( 1504, 1760 )
+length = 896
+
+[node name="ladder3" parent="." index="20" instance=ExtResource( 6 )]
+
+position = Vector2( 928, 2400 )
+length = 320
+
+[node name="ladder4" parent="." index="21" instance=ExtResource( 6 )]
+
+position = Vector2( 736, 2912 )
+length = 704
 
 [connection signal="switched_on" from="bullet_switch" to="moveable_platform_parent" method="switch"]
 
