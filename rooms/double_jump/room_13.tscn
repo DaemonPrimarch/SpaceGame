@@ -33,13 +33,13 @@ position = Vector2( 3200, 640 )
 [node name="bullet_switch" parent="." index="5" instance=ExtResource( 3 )]
 
 position = Vector2( 1184, 1760 )
+state = false
+toggleable = false
 
 [node name="vertical_ladder" parent="." index="6" instance=ExtResource( 4 )]
 
 position = Vector2( 3040, 736 )
 length = 512
-flippedH = false
-flippedV = false
 
 [node name="moveable_platform_parent" parent="." index="7" instance=ExtResource( 5 )]
 
@@ -57,7 +57,7 @@ position = Vector2( 0, -1248 )
 [node name="moveable_platform_parent2" parent="." index="8" instance=ExtResource( 5 )]
 
 editor/display_folded = true
-position = Vector2( 352, 1376 )
+position = Vector2( 352, 1344 )
 
 [node name="point_1" parent="moveable_platform_parent2" index="1"]
 

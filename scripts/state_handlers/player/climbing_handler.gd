@@ -22,7 +22,7 @@ func enter_state(previous_state):
 	get_parent().get_ladder().snap_to(get_parent())
 	
 	is_inside_same_ladder = true
-	get_parent().get_ladder().get_node("Area2D").connect("body_exited", self, "ladder_left")
+	get_parent().get_ladder().get_node("Area2D").connect("body_exited", self, "ladder_left", [get_parent().get_ladder()])
 	
 	if(get_parent().get_ladder().is_flippedH()):
 		if(not get_parent().is_flippedH()):
@@ -68,6 +68,6 @@ func top_reached():
 func can_enter():
 	return .can_enter() and not (is_inside_same_ladder and get_parent().get_ladder().is_in_group("walled_ladder"))
 
-func ladder_left(body):
+func ladder_left(body,ladder):
 	is_inside_same_ladder = false
-	get_parent().get_ladder().get_node("Area2D").disconnect("body_exited", self, "ladder_left")
+	ladder.get_node("Area2D").disconnect("body_exited", self, "ladder_left")
