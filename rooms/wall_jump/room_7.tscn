@@ -77,6 +77,8 @@ rect_clip_content = false
 [node name="bullet_switch" parent="." index="12" instance=ExtResource( 5 )]
 
 position = Vector2( 1056, 224 )
+state = false
+toggleable = false
 
 [node name="moveable_platform_parent2" parent="." index="13" instance=ExtResource( 6 )]
 
