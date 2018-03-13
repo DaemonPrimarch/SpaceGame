@@ -1,12 +1,13 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://nodes/room.tscn" type="PackedScene" id=1]
 [ext_resource path="res://nodes/room_elements/regular_warp_tile.tscn" type="PackedScene" id=2]
 [ext_resource path="res://nodes/room_elements/moving_platforms/moveable_platform_small.tscn" type="PackedScene" id=3]
 [ext_resource path="res://nodes/room_elements/link_block.tscn" type="PackedScene" id=4]
 [ext_resource path="res://nodes/room_elements/bullet_switch.tscn" type="PackedScene" id=5]
+[ext_resource path="res://nodes/room_elements/bullet_hit_block.tscn" type="PackedScene" id=6]
 
-[node name="room_3" instance=ExtResource( 1 )]
+[node name="room_3" index="0" instance=ExtResource( 1 )]
 
 [node name="terrain" parent="." index="0"]
 
@@ -89,16 +90,11 @@ position = Vector2( 2656, 160 )
 state = false
 toggleable = false
 
-[node name="bullet_switch2" parent="." index="10" instance=ExtResource( 5 )]
-
-position = Vector2( 3040, 800 )
-state = false
-toggleable = false
-
-[node name="moveable_platform_parent4" parent="." index="11" instance=ExtResource( 3 )]
+[node name="moveable_platform_parent4" parent="." index="10" instance=ExtResource( 3 )]
 
 editor/display_folded = true
 position = Vector2( 2944, 384 )
+active = false
 one_way = true
 
 [node name="point_0" parent="moveable_platform_parent4" index="0"]
@@ -109,9 +105,13 @@ position = Vector2( 0, 224 )
 
 position = Vector2( 0, 0 )
 
+[node name="StaticBody2D2" parent="." index="11" instance=ExtResource( 6 )]
+
+position = Vector2( 3040, 800 )
+
 [connection signal="switched_on" from="bullet_switch" to="StaticBody2D" method="_set_active" binds= [ false ]]
 
-[connection signal="switched_on" from="bullet_switch2" to="moveable_platform_parent4" method="switch"]
+[connection signal="toggle" from="StaticBody2D2" to="moveable_platform_parent4" method="set_active" binds= [ true ]]
 
 
 [editable path="moveable_platform_parent"]

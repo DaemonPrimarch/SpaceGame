@@ -16,9 +16,9 @@
 [ext_resource path="res://nodes/state_handlers/crawling_handler.tscn" type="PackedScene" id=14]
 [ext_resource path="res://nodes/state_handlers/pushed_handler.tscn" type="PackedScene" id=15]
 
-[node name="player" groups=[
-"player",
+[node name="player" index="0" groups=[
 "warpable",
+"player",
 ] instance=ExtResource( 1 )]
 
 script = ExtResource( 2 )
@@ -88,6 +88,8 @@ double_jump_height = 134.4
 climbing_speed = 256
 
 [node name="wall_sliding_handler" parent="." index="18" instance=ExtResource( 13 )]
+
+enabled = false
 
 [node name="crawling_handler" parent="." index="19" instance=ExtResource( 14 )]
 
