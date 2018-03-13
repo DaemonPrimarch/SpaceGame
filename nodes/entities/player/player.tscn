@@ -16,7 +16,7 @@
 [ext_resource path="res://nodes/state_handlers/crawling_handler.tscn" type="PackedScene" id=14]
 [ext_resource path="res://nodes/state_handlers/pushed_handler.tscn" type="PackedScene" id=15]
 
-[node name="player" groups=[
+[node name="player" index="0" groups=[
 "player",
 "warpable",
 ] instance=ExtResource( 1 )]
@@ -100,6 +100,10 @@ enabled = false
 rect_clip_content = false
 
 [node name="invulnerable_label" parent="." index="22"]
+
+rect_clip_content = false
+
+[node name="in_ladder_label" parent="." index="23"]
 
 rect_clip_content = false
 

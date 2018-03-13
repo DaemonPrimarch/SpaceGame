@@ -26,7 +26,7 @@ func process_state(delta):
 	if(not Input.is_action_pressed("jump") or get_timer() > PHYSICS_HELPER.calculate_jump_max_airtime(get_jump_height(), get_parent().get_gravity_vector().y)):
 		get_parent().set_velocity(Vector2(get_parent().get_velocity().x,0))
 		get_parent().set_state("FALLING")
-	elif((Input.is_action_pressed("play_up") and get_parent().is_inside_ladder()) or get_parent().is_inside_walled_ladder()):
+	elif(((Input.is_action_pressed("play_up") and get_parent().is_inside_ladder()) or get_parent().is_inside_walled_ladder()) and get_parent().can_enter_state("CLIMBING")):
 		get_parent().set_state("CLIMBING")
 	else:
 		get_parent().set_velocity(get_parent().get_velocity() + get_parent().get_gravity_vector() * delta)
