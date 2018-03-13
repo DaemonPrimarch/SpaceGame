@@ -7,6 +7,8 @@
 
 script = ExtResource( 1 )
 length = 64
+flippedH = false
+flippedV = false
 
 [node name="Area2D" type="Area2D" parent="." index="0"]
 
@@ -43,6 +45,7 @@ anchor_bottom = 0.0
 margin_right = 40.0
 margin_bottom = 40.0
 rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
 mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
@@ -60,6 +63,7 @@ margin_right = 32.0
 margin_bottom = -30.0
 rect_scale = Vector2( 1, 32 )
 rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
 mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
@@ -77,6 +81,7 @@ margin_top = -8.0
 margin_right = 24.0
 margin_bottom = 6.0
 rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
 mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1

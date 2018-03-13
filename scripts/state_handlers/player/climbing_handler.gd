@@ -2,6 +2,8 @@ extends "res://scripts/state_handler.gd"
 
 export var climbing_speed = 64 * 4
 
+var is_inside_same_ladder = false
+
 func get_climbing_speed():
 	return climbing_speed
 	
@@ -18,6 +20,9 @@ func enter_state(previous_state):
 	.enter_state(previous_state)
 	
 	get_parent().get_ladder().snap_to(get_parent())
+	
+	is_inside_same_ladder = true
+	get_parent().get_ladder().get_node("Area2D").connect("body_exited", self, "ladder_left")
 	
 	if(get_parent().get_ladder().is_flippedH()):
 		if(not get_parent().is_flippedH()):
@@ -57,3 +62,9 @@ func top_reached():
 		return true
 	else:
 		return false
+
+func can_enter():
+	return .can_enter() and not is_inside_same_ladder
+
+func ladder_left(body):
+	is_inside_same_ladder = false

@@ -6,7 +6,6 @@ var inventory = {}
 
 var inside_ladder = null
 var inside_walled_ladder = null
-var previous_ladder = null
 
 var velocity = Vector2()
 var acceleration = Vector2()
