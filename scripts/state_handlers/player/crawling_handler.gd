@@ -34,7 +34,7 @@ func can_crawl_under(node):
 func can_enter():
 	get_node("crawl_detector_up").force_raycast_update()
 	get_node("crawl_pit_detector").force_raycast_update()
-	return (.can_enter() and not get_node("crawl_detector_up").is_colliding() and get_node("crawl_pit_detector").is_colliding())
+	return (.can_enter() and not get_node("crawl_detector_up").is_colliding() and get_node("crawl_pit_detector").is_colliding() and not get_parent().is_on_platform())
 
 func leave_state(new_state):
 	.leave_state(new_state)

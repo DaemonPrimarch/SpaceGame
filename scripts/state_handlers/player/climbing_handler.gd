@@ -66,7 +66,7 @@ func top_reached():
 		return false
 
 func can_enter():
-	return .can_enter() and not is_inside_same_ladder
+	return .can_enter() and not (is_inside_same_ladder and get_parent().get_ladder().is_in_group("walled_ladder"))
 
 func ladder_left(body,ladder):
 	is_inside_same_ladder = false

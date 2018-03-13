@@ -187,11 +187,9 @@ position = Vector2( 224, 1440 )
 
 [connection signal="switched_on" from="bullet_switch4" to="moveable_platform_parent" method="switch"]
 
-[connection signal="switched_off" from="bullet_switch2" to="moveable_platform_parent3" method="switch"]
-
 [connection signal="switched_off" from="bullet_switch2" to="moveable_platform_parent2" method="switch"]
 
-[connection signal="switched_on" from="bullet_switch2" to="moveable_platform_parent3" method="switch"]
+[connection signal="switched_off" from="bullet_switch2" to="moveable_platform_parent3" method="switch"]
 
 [connection signal="switched_on" from="bullet_switch2" to="moveable_platform_parent2" method="switch"]
 
@@ -200,6 +198,8 @@ position = Vector2( 224, 1440 )
 [connection signal="switched_on" from="bullet_switch3" to="moveable_platform_parent3" method="switch"]
 
 [connection signal="switched_on" from="bullet_switch3" to="moveable_platform_parent2" method="switch"]
+
+[connection signal="switched_on" from="bullet_switch3" to="moveable_platform_parent3" method="switch"]
 
 
 [editable path="StaticBody2D"]

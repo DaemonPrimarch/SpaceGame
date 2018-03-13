@@ -50,6 +50,9 @@ func _ready():
 		get_platform().set_position(get_node("point_0").get_position())
 	set_next_point(get_node("point_1").get_position())
 	set_previous_point(get_node("point_0").get_position())
+	
+	get_platform().position = get_node("point_0").position
+	
 	connect("arrived_at_next_point",self,"one_way_stop")
 	
 func _physics_process(delta):
