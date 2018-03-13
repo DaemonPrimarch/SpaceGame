@@ -95,6 +95,14 @@ func is_looping():
 func one_way_stop(point):
 	set_active(false)
 	arrived = true
+	set_previous_point(get_next_point())
+				
+	next_point_counter += direction
+	direction = -direction
+		
+	next_point_counter += 2*direction
+	
+	set_next_point(get_node("point_" + String(next_point_counter)).get_position())
 
 func switch():
 	set_active(true)
@@ -114,3 +122,4 @@ func switch():
 		next_point_counter += 2*direction
 		
 		set_next_point(get_node("point_" + String(next_point_counter)).get_position())
+

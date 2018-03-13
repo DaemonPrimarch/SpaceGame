@@ -3,7 +3,7 @@
 [ext_resource path="res://scripts/room_elements/player_stick_platform.gd" type="Script" id=1]
 [ext_resource path="res://sprites/metroid_tilesheet.png" type="Texture" id=2]
 
-[node name="platform" type="KinematicBody2D" index="0"]
+[node name="platform" type="KinematicBody2D"]
 
 position = Vector2( 0, 32 )
 input_pickable = false
@@ -93,8 +93,8 @@ max_lines_visible = -1
 position = Vector2( -94, -32 )
 enabled = true
 exclude_parent = true
-cast_to = Vector2( 0, -3 )
-collision_mask = 2
+cast_to = Vector2( 0, -1 )
+collision_mask = 1
 _sections_unfolded = [ "Transform" ]
 
 [node name="right_detector" type="RayCast2D" parent="." index="6"]
@@ -102,8 +102,8 @@ _sections_unfolded = [ "Transform" ]
 position = Vector2( 94, -32 )
 enabled = true
 exclude_parent = true
-cast_to = Vector2( 0, -3 )
-collision_mask = 2
+cast_to = Vector2( 0, -1 )
+collision_mask = 1
 _sections_unfolded = [ "Transform" ]
 
 [connection signal="collided" from="." to="." method="_on_platform_collided"]
