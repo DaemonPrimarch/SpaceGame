@@ -184,10 +184,14 @@ rect_clip_content = false
 [node name="bullet_switch" parent="." index="13" instance=ExtResource( 4 )]
 
 position = Vector2( 1568, 1056 )
+state = false
+toggleable = false
 
 [node name="bullet_switch2" parent="." index="14" instance=ExtResource( 4 )]
 
 position = Vector2( 1568, 1248 )
+state = false
+toggleable = false
 
 [node name="moveable_platform_parent" parent="." index="15" instance=ExtResource( 5 )]
 
@@ -204,7 +208,6 @@ editor/display_folded = true
 position = Vector2( 352, 1440 )
 length = 384
 flippedH = true
-flippedV = false
 
 [node name="Area2D" parent="ladder" index="0"]
 
@@ -220,16 +223,11 @@ position = Vector2( 0, 160 )
 scale = Vector2( -1, 1 )
 region_rect = Rect2( 0, 0, 64, 384 )
 
-[node name="Control" parent="ladder" index="2"]
-
-rect_clip_content = false
-
 [node name="Panel" parent="ladder/Control" index="0"]
 
 margin_left = -32.0
 margin_right = -16.0
 rect_scale = Vector2( 1, 192 )
-rect_clip_content = false
 
 [node name="Label" parent="ladder/Control" index="1"]
 
@@ -237,7 +235,6 @@ margin_left = -32.0
 margin_top = 0.0
 margin_right = 16.0
 margin_bottom = 14.0
-rect_clip_content = false
 
 [node name="StaticBody2D" parent="ladder" index="3"]
 
