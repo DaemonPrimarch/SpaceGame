@@ -3,60 +3,132 @@ extends Node
 const epsilon = 10
 
 func min_arr(array):
-    var min_val = array[0]
+	var min_val = array[0]
 
-    for val in array:
-        min_val = min(min_val, val)
+	for val in array:
+		min_val = min(min_val, val)
 
-    return min_val
+	return min_val
 
 func max_arr(array):
-    var max_val = array[0]
+	var max_val = array[0]
 
-    for val in array:
-        max_val = min(max_val, val)
+	for val in array:
+		max_val = min(max_val, val)
 
-    return max_val
+	return max_val
 
 func cross(v1, v2):
 	return v1.x * v2.y - v1.y * v2.x
 #
 func is_zero(a):
 	return abs(a) < epsilon
+	
+
+#https://stackoverflow.com/questions/217578/how-can-i-determine-whether-a-2d-point-is-within-a-polygon/2922778#2922778	
+	
+func is_point_in_polygon(point, polygon):
+	var isInside = false;
+	var minX = polygon[0].x
+	var maxX = polygon[0].x
+	var minY = polygon[0].y
+	var maxY = polygon[0].y
+
+	for p in polygon:
+		minX = min(p.x, minX);
+		maxX = max(p.x, maxX);
+		minY = min(p.y, minY);
+		maxY = max(p.y, maxY);
+
+	if (point.x < minX || point.x > maxX || point.y < minY || point.y > maxY):
+		return false;
+
+	for i in range(polygon.size()):
+		var p1 = polygon[i]
+		var p2 = polygon[(i + 1)%polygon.size()]
+		
+		if ( (p1.y > point.y) != (p2.y > point.y) && point.x < (p2.x - p1.x) * (point.y - p1.y) / (p2.y - p1.y) + p1.x ):
+			isInside = !isInside
+
+	return isInside;
+
+func offset_point_polygon(point, polygon):
+	#https://stackoverflow.com/questions/10983872/distance-from-a-point-to-a-polygon
+	# https://stackoverflow.com/questions/849211/shortest-distance-between-a-point-and-a-line-segment
+	var minDist = 1000000
+	var offset = Vector2()
+	
+	for i in range(polygon.size()):
+		var p1 = polygon[i]
+		var p2 = polygon[(i + 1)%polygon.size()]
+		
+		var A = point.x - p1.x;
+		var B = point.y - p1.y;
+		var C = p2.x - p1.x;
+		var D = p2.y - p1.y;
+
+		var dot = A * C + B * D;
+		var len_sq = C * C + D * D;
+		var param = -1;
+		if (len_sq != 0):
+			param = dot / len_sq;
+
+		var xx
+		var yy
+
+		if (param < 0):
+			xx = p1.x;
+			yy = p1.y;
+		elif (param > 1):
+			xx = p2.x;
+			yy = p2.y;
+		else:
+			xx = p1.x + param * C;
+			yy = p1.y + param * D;
+		var dx = point.x - xx
+		var dy = point.y - yy;
+		
+		if(sqrt(dx * dx + dy * dy) < minDist):
+			minDist = sqrt(dx * dx + dy * dy)
+			
+			offset = Vector2(dx, dy)
+		
+	return offset
+
 
 ##https://www.codeproject.com/Tips/862988/Find-the-Intersection-Point-of-Two-Line-Segments
-#
+
 func line_segements_intersect(p, p2, q, q2):
-    var intersection = Vector2()
+	var intersection = Vector2()
 
-    var r = p2 - p
-    var s = q2 - q
-    var rxs = r * s #cross
-    var qpxr = cross(q - p, r);
+	var r = p2 - p
+	var s = q2 - q
+	var rxs = r * s #cross
+	var qpxr = cross(q - p, r);
 
-    #If r x s = 0 and (q - p) x r = 0, then the two lines are collinear.
-    if (is_zero(rxs) and is_zero(qpxr)):
-        return false
+	#If r x s = 0 and (q - p) x r = 0, then the two lines are collinear.
+	if (is_zero(rxs) and is_zero(qpxr)):
+		return false
 
-    #If r x s = 0 and (q - p) x r != 0, then the two lines are parallel and non-intersecting.
-    if (is_zero(rxs) and ! is_zero(qpxr)):
-        return false
+	#If r x s = 0 and (q - p) x r != 0, then the two lines are parallel and non-intersecting.
+	if (is_zero(rxs) and ! is_zero(qpxr)):
+		return false
 
-    #t = (q - p) x s / (r x s)
-    var t = cross(q - p,s)/rxs
+	#t = (q - p) x s / (r x s)
+	var t = cross(q - p,s)/rxs
 
-    #u = (q - p) x r / (r x s)
+	#u = (q - p) x r / (r x s)
 
-    var u = cross(q - p,r)/rxs
+	var u = cross(q - p,r)/rxs
 
-    #4. If r x s != 0 and 0 <= t <= 1 and 0 <= u <= 1
-    #the two line segments meet at the point p + t r = q + u s.
-    if (!is_zero(rxs) and (0 <= t && t <= 1) and (0 <= u && u <= 1)):
-        #We can calculate the intersection point using either t or u.
-        intersection = p + t*r;
+	#4. If r x s != 0 and 0 <= t <= 1 and 0 <= u <= 1
+	#the two line segments meet at the point p + t r = q + u s.
+	if (!is_zero(rxs) and (0 <= t && t <= 1) and (0 <= u && u <= 1)):
+		#We can calculate the intersection point using either t or u.
+		intersection = p + t*r;
 
-        #An intersection was found.
-        return intersection
+		#An intersection was found.
+		return intersection
 
-    #5. Otherwise, the two line segments are not parallel but do not intersect.
-    return null
+	#5. Otherwise, the two line segments are not parallel but do not intersect.
+	return null

@@ -13,5 +13,4 @@ func _physics_process(delta):
 		
 
 func crush():
-	print("lel")
 	destroy()
