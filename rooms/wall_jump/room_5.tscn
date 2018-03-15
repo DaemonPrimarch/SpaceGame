@@ -54,14 +54,12 @@ polygon = PoolVector2Array( -32, -352, 96, -352, 96, -32, -32, -32 )
 margin_top = -352.0
 margin_right = 96.0
 margin_bottom = -32.0
-rect_clip_content = false
 
 [node name="Label" parent="StaticBody2D" index="2"]
 
 margin_top = -352.0
 margin_right = 96.0
 margin_bottom = -32.0
-rect_clip_content = false
 
 [node name="moveable_platform_parent" parent="." index="8" instance=ExtResource( 5 )]
 
@@ -172,6 +170,10 @@ position = Vector2( 1312, 1120 )
 [node name="StaticBody2D6" parent="." index="16" instance=ExtResource( 7 )]
 
 position = Vector2( 96, 1440 )
+
+[node name="camera_container" parent="." index="17"]
+
+polygon = PoolVector2Array( 0, 0, 0, 1920, 1664, 1920, 1664, 0 )
 
 [connection signal="toggle" from="StaticBody2D3" to="StaticBody2D2" method="_set_active" binds= [ false ]]
 

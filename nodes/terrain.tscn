@@ -3,8 +3,8 @@
 [ext_resource path="res://tilesets/metroid_tileset.tres" type="TileSet" id=1]
 
 [node name="terrain" type="TileMap" groups=[
-"crawlable",
 "terrain",
+"crawlable",
 ]]
 
 mode = 0

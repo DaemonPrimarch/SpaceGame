@@ -26,4 +26,8 @@ flippedH = true
 
 position = Vector2( 1536, 1728 )
 
+[node name="camera_container" parent="." index="5"]
+
+polygon = PoolVector2Array( 0, 0, 0, 1920, 1664, 1920, 1664, 0 )
+
 

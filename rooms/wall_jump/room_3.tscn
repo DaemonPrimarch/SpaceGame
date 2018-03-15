@@ -55,6 +55,10 @@ position = Vector2( 0, -416 )
 
 position = Vector2( 864, 608 )
 
+[node name="camera_container" parent="." index="8"]
+
+polygon = PoolVector2Array( 0, 0, 0, 960, 1664, 960, 1664, 0 )
+
 [connection signal="toggle" from="StaticBody2D" to="moveable_platform_parent" method="set_active" binds= [ true ]]
 
 

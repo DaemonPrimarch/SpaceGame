@@ -8,7 +8,7 @@
 [node name="room_10" instance=ExtResource( 1 )]
 
 dark = true
-dark_color = Color( 0.433594, 0.416656, 0.416656, 1 )
+dark_color = Color( 0.371094, 0.371094, 0.371094, 1 )
 
 [node name="terrain" parent="." index="0"]
 
@@ -26,11 +26,15 @@ position = Vector2( 832, 416 )
 
 [node name="CanvasModulate" parent="." index="3"]
 
-color = Color( 0.433594, 0.416656, 0.416656, 1 )
+color = Color( 0, 0, 0, 1 )
 
 [node name="Area2D" parent="." index="4" instance=ExtResource( 3 )]
 
 position = Vector2( 928, 480 )
 script = ExtResource( 4 )
+
+[node name="camera_container" parent="." index="5"]
+
+polygon = PoolVector2Array( 0, 0, 0, 960, 1664, 960, 1664, 0 )
 
 

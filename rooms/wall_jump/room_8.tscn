@@ -112,6 +112,10 @@ length = 192
 position = Vector2( 1120, 992 )
 length = 256
 
+[node name="camera_container" parent="." index="10"]
+
+polygon = PoolVector2Array( 0, 0, 0, 1920, 1664, 1920, 1664, 0 )
+
 
 [editable path="ladder4"]
 [editable path="ladder5"]

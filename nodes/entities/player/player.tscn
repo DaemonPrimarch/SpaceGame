@@ -16,7 +16,7 @@
 [ext_resource path="res://nodes/state_handlers/player/pushed_handler.tscn" type="PackedScene" id=14]
 [ext_resource path="res://nodes/camera.tscn" type="PackedScene" id=15]
 
-[node name="player" index="0" groups=[
+[node name="player" groups=[
 "player",
 "warpable",
 ] instance=ExtResource( 1 )]
