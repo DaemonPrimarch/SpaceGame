@@ -2,7 +2,6 @@
 
 [ext_resource path="res://scripts/room_elements/bullet_hit_block.gd" type="Script" id=1]
 
-
 [node name="StaticBody2D" type="StaticBody2D"]
 
 input_pickable = false
@@ -52,8 +51,8 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
-text = "toggle
-switch"
+text = "bullet
+hit_block"
 align = 1
 valign = 1
 percent_visible = 1.0
