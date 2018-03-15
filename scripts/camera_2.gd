@@ -6,7 +6,7 @@ var default_pos = Vector2()
 
 var original_size = Vector2()
 
-export var zoom = 1 setget set_zoom, get_zoom
+export var zoom = 1.0 setget set_zoom, get_zoom
 
 export var stay_within_terrain = true
 
@@ -34,7 +34,10 @@ func set_zoom(new_zoom):
 func scale_viewport(scale):
 #	print("scale", scale)
 #	get_viewport().set_size_override (true)
-#	get_viewport().canvas_transform.scaled(scale)
+	var pos = get_viewport().canvas_transform.origin
+	get_viewport().canvas_transform.origin = Vector2()
+	get_viewport().canvas_transform = get_viewport().canvas_transform.scaled(scale)
+	get_viewport().canvas_transform.origin = pos
 #	print(get_viewport().size)
 #	get_viewport().size *= scale
 #	print(get_viewport().size)
@@ -54,7 +57,12 @@ func _physics_process(delta):
 #		position += Vector2(64 * 2, 0) * delta
 	if(active):
 		if(stay_within_terrain):
-			var dir = (default_pos - position).normalized() * 64
+			var dir = Vector2()
+			
+			if((default_pos - position).length() <= 64):
+				dir = default_pos - position
+			else:
+				dir = (default_pos - position).normalized() * 64
 			
 			get_node("debug/default_pos").position = -position + default_pos
 			
@@ -68,10 +76,10 @@ func _physics_process(delta):
 			get_node("debug/tl").modulate = Color(255, 0, 0)
 			get_node("debug/bl").modulate = Color(255, 0, 0)
 			
-			var bottom_right = get_viewport().size/2 /PHYSICS_HELPER.get_global_scale_of_node(self)
-			var bottom_left = get_viewport().size/2 * Vector2(-1, 1) / PHYSICS_HELPER.get_global_scale_of_node(self)
-			var top_right = get_viewport().size/2 * Vector2(1, -1) / PHYSICS_HELPER.get_global_scale_of_node(self)
-			var top_left = get_viewport().size/2 * -1 / PHYSICS_HELPER.get_global_scale_of_node(self)
+			var bottom_right = get_viewport().size/2 / PHYSICS_HELPER.get_global_scale_of_node(self) / zoom
+			var bottom_left = get_viewport().size/2 * Vector2(-1, 1) / PHYSICS_HELPER.get_global_scale_of_node(self) / zoom
+			var top_right = get_viewport().size/2 * Vector2(1, -1) / PHYSICS_HELPER.get_global_scale_of_node(self) / zoom
+			var top_left = get_viewport().size/2 * -1 / PHYSICS_HELPER.get_global_scale_of_node(self) / zoom
 			
 			get_node("debug/tr").position = top_right
 			get_node("debug/br").position = bottom_right
@@ -127,4 +135,5 @@ func _physics_process(delta):
 							offset.y = new_offset.y
 		
 					position -= offset
-		get_viewport().canvas_transform.origin = -global_position + get_viewport_rect().size/2
+					
+		get_viewport().canvas_transform.origin = (-global_position  * get_viewport().canvas_transform.get_scale()) + get_viewport_rect().size/2
