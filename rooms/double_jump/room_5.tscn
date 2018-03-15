@@ -64,6 +64,10 @@ length = 640
 
 position = Vector2( 544, 800 )
 
+[node name="camera_container" parent="." index="9"]
+
+polygon = PoolVector2Array( 0, 0, 0, 960, 1664, 960, 1664, 0 )
+
 [connection signal="switched_on" from="bullet_switch" to="StaticBody2D" method="_set_active" binds= [ false ]]
 
 

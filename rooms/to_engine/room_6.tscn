@@ -43,65 +43,88 @@ length = 576
 [node name="enemy_1" parent="." index="7" instance=ExtResource( 4 )]
 
 position = Vector2( 4608, 1568 )
+moveable_by_collision = true
+can_be_pushed = false
 
 [node name="enemy_2" parent="." index="8" instance=ExtResource( 4 )]
 
 position = Vector2( 4960, 1952 )
+moveable_by_collision = true
+can_be_pushed = false
 
 [node name="enemy_3" parent="." index="9" instance=ExtResource( 4 )]
 
 position = Vector2( 4576, 1952 )
+moveable_by_collision = true
+can_be_pushed = false
 
 [node name="enemy_4" parent="." index="10" instance=ExtResource( 4 )]
 
 position = Vector2( 4320, 2240 )
+moveable_by_collision = true
+can_be_pushed = false
 
 [node name="enemy_5" parent="." index="11" instance=ExtResource( 4 )]
 
 position = Vector2( 4864, 2240 )
+moveable_by_collision = true
+can_be_pushed = false
 
 [node name="enemy_6" parent="." index="12" instance=ExtResource( 4 )]
 
 position = Vector2( 4960, 2656 )
+moveable_by_collision = true
+can_be_pushed = false
 
 [node name="enemy_8" parent="." index="13" instance=ExtResource( 4 )]
 
 position = Vector2( 3552, 2656 )
+moveable_by_collision = true
+can_be_pushed = false
 
 [node name="enemy_9" parent="." index="14" instance=ExtResource( 4 )]
 
 position = Vector2( 896, 2656 )
+moveable_by_collision = true
+can_be_pushed = false
 
 [node name="enemy_10" parent="." index="15" instance=ExtResource( 4 )]
 
 position = Vector2( 1216, 2656 )
+moveable_by_collision = true
+can_be_pushed = false
 
 [node name="enemy_7" parent="." index="16" instance=ExtResource( 5 )]
 
 position = Vector2( 2240, 2656 )
-overrun_distance = 256
+moveable_by_collision = true
+can_be_pushed = false
 
 [node name="enemy_11" parent="." index="17" instance=ExtResource( 5 )]
 
 position = Vector2( 800, 2144 )
 flippedH = true
-overrun_distance = 256
+moveable_by_collision = true
+can_be_pushed = false
 
 [node name="enemy_12" parent="." index="18" instance=ExtResource( 5 )]
 
 position = Vector2( 2688, 2144 )
 flippedH = true
-overrun_distance = 256
+moveable_by_collision = true
+can_be_pushed = false
 
 [node name="enemy_13" parent="." index="19" instance=ExtResource( 5 )]
 
 position = Vector2( 2720, 1568 )
-overrun_distance = 256
+moveable_by_collision = true
+can_be_pushed = false
 
 [node name="enemy_14" parent="." index="20" instance=ExtResource( 5 )]
 
 position = Vector2( 2560, 1056 )
-overrun_distance = 256
+moveable_by_collision = true
+can_be_pushed = false
 
 [node name="enemy_3_system" parent="." index="21" instance=ExtResource( 6 )]
 
@@ -134,5 +157,9 @@ position = Vector2( 3328, 736 )
 [node name="enemy_3_system8" parent="." index="28" instance=ExtResource( 6 )]
 
 position = Vector2( 1280, 1376 )
+
+[node name="camera_container" parent="." index="29"]
+
+polygon = PoolVector2Array( 0, 0, 0, 2816, 5120, 2816, 5120, 0 )
 
 

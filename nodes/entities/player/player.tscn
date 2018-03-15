@@ -108,9 +108,9 @@ rect_clip_content = false
 
 current = false
 
-[node name="camera2" parent="." index="25" instance=ExtResource( 16 )]
+[node name="camera2" parent="." index="24" instance=ExtResource( 16 )]
 
-active = true
+position = Vector2( 0, -384 )
 
 [connection signal="room_entered" from="." to="camera" method="update_limit"]
 

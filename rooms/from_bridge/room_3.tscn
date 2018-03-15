@@ -48,5 +48,9 @@ rect_clip_content = false
 position = Vector2( 128, 768 )
 arrival_ID = "1"
 
+[node name="camera_container" parent="." index="6"]
+
+polygon = PoolVector2Array( 0, 0, 0, 960, 1664, 960, 1664, 0 )
+
 
 [editable path="warp_tile"]

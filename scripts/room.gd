@@ -18,9 +18,9 @@ func set_dark(val):
 	dark = val
 	
 	if(not val):
-		emit_signal("room_lit")
+		call_deferred("emit_signal","room_lit")
 	else:
-		emit_signal("room_darkened")
+		call_deferred("emit_signal","room_darkened")
 
 func is_dark():
 	return dark

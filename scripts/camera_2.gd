@@ -2,10 +2,10 @@ extends Node2D
 
 export var active = true
 
+var default_pos = Vector2()
+
 func _ready():
-	# Called every time the node is added to the scene.
-	# Initialization here
-	pass
+	default_pos = position
 
 func _physics_process(delta):
 #	if(Input.is_action_pressed("play_up")):
@@ -17,6 +17,8 @@ func _physics_process(delta):
 #	if(Input.is_action_pressed("play_right")):
 #		position += Vector2(64 * 2, 0) * delta
 	if(active):
+		get_node("debug/RayCast2D").cast_to = -(position / 4)
+		
 		position -= (position / 4)
 		
 		get_node("debug/Sprite").modulate = Color(255, 0, 0)
