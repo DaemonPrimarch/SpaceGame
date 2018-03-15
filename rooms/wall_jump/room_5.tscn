@@ -178,19 +178,19 @@ position = Vector2( 96, 1440 )
 
 polygon = PoolVector2Array( 0, 0, 0, 1920, 1664, 1920, 1664, 0 )
 
-[connection signal="toggle" from="StaticBody2D3" to="moveable_platform_parent" method="set_active" binds= [ true ]]
-
 [connection signal="toggle" from="StaticBody2D3" to="StaticBody2D2" method="_set_active" binds= [ false ]]
+
+[connection signal="toggle" from="StaticBody2D3" to="moveable_platform_parent" method="set_active" binds= [ true ]]
 
 [connection signal="toggle" from="StaticBody2D4" to="StaticBody2D" method="_set_active" binds= [ false ]]
 
-[connection signal="toggle" from="StaticBody2D4" to="moveable_platform_parent3" method="set_active" binds= [ true ]]
-
 [connection signal="toggle" from="StaticBody2D4" to="moveable_platform_parent2" method="set_active" binds= [ true ]]
 
-[connection signal="toggle" from="StaticBody2D5" to="moveable_platform_parent3" method="set_active" binds= [ true ]]
+[connection signal="toggle" from="StaticBody2D4" to="moveable_platform_parent3" method="set_active" binds= [ true ]]
 
 [connection signal="toggle" from="StaticBody2D5" to="moveable_platform_parent2" method="set_active" binds= [ true ]]
+
+[connection signal="toggle" from="StaticBody2D5" to="moveable_platform_parent3" method="set_active" binds= [ true ]]
 
 [connection signal="toggle" from="StaticBody2D6" to="moveable_platform_parent" method="set_active" binds= [ true ]]
 

@@ -190,6 +190,10 @@ rect_clip_content = false
 position = Vector2( 1248, 224 )
 length = 512
 
+[node name="camera_container" parent="." index="13"]
+
+polygon = PoolVector2Array( 0, 0, 0, 1920, 1664, 1920, 1664, 0 )
+
 
 [editable path="warp_tile2"]
 [editable path="ladder2"]

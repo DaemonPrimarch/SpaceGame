@@ -36,10 +36,12 @@ polygon = PoolVector2Array( 32, -32, 32, 96, -32, 96, -32, -32 )
 [node name="Panel" parent="warp_tile" index="1"]
 
 margin_bottom = 96.0
+rect_clip_content = false
 
 [node name="Label" parent="warp_tile" index="2"]
 
 margin_bottom = 96.0
+rect_clip_content = false
 
 [node name="warp_arrival" parent="." index="5" instance=ExtResource( 4 )]
 
@@ -60,10 +62,12 @@ polygon = PoolVector2Array( 32, -32, 32, 96, -32, 96, -32, -32 )
 [node name="Panel" parent="warp_tile2" index="1"]
 
 margin_bottom = 96.0
+rect_clip_content = false
 
 [node name="Label" parent="warp_tile2" index="2"]
 
 margin_bottom = 96.0
+rect_clip_content = false
 
 [node name="warp_arrival2" parent="." index="7" instance=ExtResource( 4 )]
 

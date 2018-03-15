@@ -6,7 +6,7 @@
 [ext_resource path="res://nodes/room_elements/bullet_switch.tscn" type="PackedScene" id=4]
 [ext_resource path="res://nodes/room_elements/blocking_warp_tile.tscn" type="PackedScene" id=5]
 
-[node name="room_2" index="0" instance=ExtResource( 1 )]
+[node name="room_2" instance=ExtResource( 1 )]
 
 [node name="terrain" parent="." index="0"]
 
@@ -44,12 +44,18 @@ margin_top = -224.0
 [node name="bullet_switch" parent="." index="5" instance=ExtResource( 4 )]
 
 position = Vector2( 1504, 1440 )
+state = false
+toggleable = false
 
 [node name="warp_tile2" parent="." index="6" instance=ExtResource( 5 )]
 
 position = Vector2( 32, 1408 )
 destination_room = "res://rooms/from_bridge/room_3.tscn"
 arrival_pos_id = "room_2_arrival"
+
+[node name="camera_container" parent="." index="7"]
+
+polygon = PoolVector2Array( 0, 0, 0, 1920, 1664, 1920, 1664, 0 )
 
 [connection signal="switched_on" from="bullet_switch" to="warp_tile2" method="set_active" binds= [ true ]]
 

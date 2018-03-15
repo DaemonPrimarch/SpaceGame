@@ -8,6 +8,7 @@
 ]]
 
 script = ExtResource( 1 )
+active = true
 
 [node name="debug" type="Node2D" parent="." index="0"]
 
@@ -35,5 +36,12 @@ texture = ExtResource( 2 )
 
 scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 2 )
+
+[node name="RayCast2D" type="RayCast2D" parent="debug" index="5"]
+
+enabled = false
+exclude_parent = true
+cast_to = Vector2( 0, 50 )
+collision_mask = 1
 
 

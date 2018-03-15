@@ -46,6 +46,14 @@ position = Vector2( -96, 0 )
 scale = Vector2( -1, 1 )
 arrival_ID = "room_2_arrival"
 
+[node name="Panel" parent="warp_tile" index="2"]
+
+rect_clip_content = false
+
+[node name="Label" parent="warp_tile" index="3"]
+
+rect_clip_content = false
+
 [node name="StaticBody2D" parent="." index="6" instance=ExtResource( 4 )]
 
 editor/display_folded = true
@@ -58,10 +66,12 @@ polygon = PoolVector2Array( -32, -32, 32, -32, 32, 96, -32, 96 )
 [node name="Panel" parent="StaticBody2D" index="1"]
 
 margin_bottom = 96.0
+rect_clip_content = false
 
 [node name="Label" parent="StaticBody2D" index="2"]
 
 margin_bottom = 96.0
+rect_clip_content = false
 
 [node name="bullet_switch" parent="." index="7" instance=ExtResource( 5 )]
 
@@ -72,6 +82,7 @@ toggleable = false
 [node name="camera_container" parent="." index="8"]
 
 polygon = PoolVector2Array( 0, 0, 0, 1920, 1664, 1920, 1664, 0 )
+_sections_unfolded = [ "Transform" ]
 
 [connection signal="switched_off" from="bullet_switch" to="StaticBody2D" method="_set_active" binds= [ true ]]
 
