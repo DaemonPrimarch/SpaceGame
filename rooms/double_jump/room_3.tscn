@@ -92,18 +92,13 @@ toggleable = false
 
 [node name="moveable_platform_parent4" parent="." index="10" instance=ExtResource( 3 )]
 
-editor/display_folded = true
 position = Vector2( 2944, 384 )
 active = false
 one_way = true
 
-[node name="point_0" parent="moveable_platform_parent4" index="0"]
-
-position = Vector2( 0, 224 )
-
 [node name="point_1" parent="moveable_platform_parent4" index="1"]
 
-position = Vector2( 0, 0 )
+position = Vector2( 0, 224 )
 
 [node name="StaticBody2D2" parent="." index="11" instance=ExtResource( 6 )]
 

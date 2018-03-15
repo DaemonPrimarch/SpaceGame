@@ -8,7 +8,6 @@
 
 [node name="block_1" type="Sprite" parent="." index="0"]
 
-editor/display_folded = true
 position = Vector2( 32, 32 )
 texture = ExtResource( 1 )
 vframes = 50
