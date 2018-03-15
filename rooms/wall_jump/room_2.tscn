@@ -51,12 +51,10 @@ polygon = PoolVector2Array( 32, -32, 32, 96, -32, 96, -32, -32 )
 [node name="Panel" parent="warp_tile" index="1"]
 
 margin_bottom = 96.0
-rect_clip_content = false
 
 [node name="Label" parent="warp_tile" index="2"]
 
 margin_bottom = 96.0
-rect_clip_content = false
 
 [node name="warp_tile2" parent="." index="7" instance=ExtResource( 3 )]
 
@@ -72,12 +70,10 @@ polygon = PoolVector2Array( 32, -32, 32, 96, -32, 96, -32, -32 )
 [node name="Panel" parent="warp_tile2" index="1"]
 
 margin_bottom = 96.0
-rect_clip_content = false
 
 [node name="Label" parent="warp_tile2" index="2"]
 
 margin_bottom = 96.0
-rect_clip_content = false
 
 [node name="warp_arrival" parent="." index="8" instance=ExtResource( 4 )]
 
@@ -111,11 +107,23 @@ polygon = PoolVector2Array( 64, 288, 96, 288, 96, -32, 64, -32 )
 
 margin_bottom = 288.0
 
+[node name="left_detector" parent="moveable_platform_parent/platform" index="5"]
+
+collision_mask = 1
+
+[node name="right_detector" parent="moveable_platform_parent/platform" index="6"]
+
+collision_mask = 1
+
 [node name="bullet_switch" parent="." index="11" instance=ExtResource( 6 )]
 
 position = Vector2( 96, 544 )
 state = false
 toggleable = false
+
+[node name="camera_container" parent="." index="12"]
+
+polygon = PoolVector2Array( 0, 0, 0, 1920, 1664, 1920, 1664, 0 )
 
 [connection signal="switched_on" from="bullet_switch" to="moveable_platform_parent" method="set_active" binds= [ true ]]
 

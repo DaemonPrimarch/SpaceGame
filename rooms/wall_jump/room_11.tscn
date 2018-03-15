@@ -39,12 +39,14 @@ polygon = PoolVector2Array( 672, -32, -32, -32, -32, 32, 672, 32 )
 [node name="Panel" parent="damage_area" index="2"]
 
 margin_right = 672.0
-rect_clip_content = false
 
 [node name="Label" parent="damage_area" index="3"]
 
 margin_right = 672.0
-rect_clip_content = false
+
+[node name="camera_container" parent="." index="6"]
+
+polygon = PoolVector2Array( 0, 0, 0, 2880, 1664, 2880, 1664, 0 )
 
 
 [editable path="damage_area"]

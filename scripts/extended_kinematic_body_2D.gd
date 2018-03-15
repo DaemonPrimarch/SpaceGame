@@ -24,7 +24,7 @@ func is_flippedV():
 func set_flippedH(val):
 	if(val != is_flippedH()):
 		for child in get_children():
-			if(child is Node2D):
+			if(child is Node2D and not child.is_in_group("no_flip")):
 				child.set_scale(child.get_scale() * Vector2(-1,1))
 				child.set_position(child.get_position() * Vector2(-1,1))
 				child.set_rotation(-child.get_rotation())
@@ -34,7 +34,7 @@ func set_flippedH(val):
 func set_flippedV(val):
 	if(val != is_flippedV()):
 		for child in get_children():
-			if(child is Node2D):
+			if(child is Node2D and not child.is_in_group("no_flip")):
 				child.set_scale(child.get_scale() * Vector2(1,-1))
 				child.set_position(child.get_position() * Vector2(1,-1))
 	
@@ -74,7 +74,6 @@ func move_and_collide_slope(v):
 
 	if(collision_info != null and abs(collision_info.normal.rotated(PI/2).angle()) < max_slope_angle and abs(collision_info.normal.rotated(PI/2).angle()) > 0):
 		if(has_node("debuggyboy")):
-			#get_node("debuggyboy").set_cast_to(collision_info.remainder.dot(collision_info.normal.rotated(PI/2)) * collision_info.normal.rotated(PI/2) * 10000)
 			get_node("debuggyboy").set_cast_to(collision_info.normal.rotated(PI/2) * 10000)
 		
 		collision_info = move_and_collide(collision_info.remainder.dot(collision_info.normal.rotated(PI/2)) * collision_info.normal.rotated(PI/2)) 

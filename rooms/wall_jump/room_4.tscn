@@ -81,12 +81,10 @@ polygon = PoolVector2Array( 32, -32, -224, -32, -224, 32, 32, 32 )
 [node name="Panel" parent="damage_area5" index="2"]
 
 margin_left = -224.0
-rect_clip_content = false
 
 [node name="Label" parent="damage_area5" index="3"]
 
 margin_left = -224.0
-rect_clip_content = false
 
 [node name="damage_area8" parent="." index="8" instance=ExtResource( 4 )]
 
@@ -100,12 +98,10 @@ polygon = PoolVector2Array( 32, -32, -224, -32, -224, 32, 32, 32 )
 [node name="Panel" parent="damage_area8" index="2"]
 
 margin_left = -224.0
-rect_clip_content = false
 
 [node name="Label" parent="damage_area8" index="3"]
 
 margin_left = -224.0
-rect_clip_content = false
 
 [node name="damage_area6" parent="." index="9" instance=ExtResource( 4 )]
 
@@ -120,13 +116,11 @@ polygon = PoolVector2Array( 32, 32, -32, 32, -32, 320, 32, 320 )
 
 margin_top = 32.0
 margin_bottom = 320.0
-rect_clip_content = false
 
 [node name="Label" parent="damage_area6" index="3"]
 
 margin_top = 32.0
 margin_bottom = 320.0
-rect_clip_content = false
 
 [node name="damage_area7" parent="." index="10" instance=ExtResource( 4 )]
 
@@ -140,12 +134,10 @@ polygon = PoolVector2Array( 32, -32, -32, -32, -32, 96, 32, 96 )
 [node name="Panel" parent="damage_area7" index="2"]
 
 margin_bottom = 96.0
-rect_clip_content = false
 
 [node name="Label" parent="damage_area7" index="3"]
 
 margin_bottom = 96.0
-rect_clip_content = false
 
 [node name="damage_area9" parent="." index="11" instance=ExtResource( 4 )]
 
@@ -160,13 +152,11 @@ polygon = PoolVector2Array( 160, -32, -32, -32, -32, 96, 160, 96 )
 
 margin_right = 160.0
 margin_bottom = 96.0
-rect_clip_content = false
 
 [node name="Label" parent="damage_area9" index="3"]
 
 margin_right = 160.0
 margin_bottom = 96.0
-rect_clip_content = false
 
 [node name="damage_area10" parent="." index="12" instance=ExtResource( 4 )]
 
@@ -179,12 +169,10 @@ polygon = PoolVector2Array( 160, -32, -32, -32, -32, 32, 160, 32 )
 [node name="Panel" parent="damage_area10" index="2"]
 
 margin_right = 160.0
-rect_clip_content = false
 
 [node name="Label" parent="damage_area10" index="3"]
 
 margin_right = 160.0
-rect_clip_content = false
 
 [node name="ladder" parent="." index="13" instance=ExtResource( 3 )]
 
@@ -223,6 +211,10 @@ region_rect = Rect2( 0, 0, 64, 320 )
 [node name="Panel" parent="ladder5/Control" index="0"]
 
 rect_scale = Vector2( 1, 160 )
+
+[node name="camera_container" parent="." index="15"]
+
+polygon = PoolVector2Array( 0, 0, 0, 1920, 1664, 1920, 1664, 0 )
 
 
 [editable path="ladder6"]

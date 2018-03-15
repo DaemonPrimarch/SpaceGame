@@ -1,9 +1,11 @@
 extends Position2D
 
 export(PackedScene) var player
+export var enabled = true
 
 func _ready():
-	call_deferred("load_player")
+	if(enabled):
+		call_deferred("load_player")
 
 func load_player():
 	if(get_node("/root/ROOM_MANAGER").is_room_loaded(get_parent())):

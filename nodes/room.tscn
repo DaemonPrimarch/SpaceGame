@@ -15,14 +15,37 @@ __meta__ = {
 }
 dark = false
 dark_color = Color( 0, 0, 0, 1 )
+auto_generate_camera_container = true
 
 [node name="terrain" parent="." index="0" instance=ExtResource( 2 )]
 
 [node name="debug_player_spawner" parent="." index="1" instance=ExtResource( 3 )]
 
+enabled = true
+
 [node name="CanvasModulate" type="CanvasModulate" parent="." index="2"]
 
 color = Color( 1, 1, 1, 1 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="camera_container" type="Polygon2D" parent="." index="3" groups=[
+"camera_container",
+]]
+
+polygon = PoolVector2Array( 0, 0, 0, 0, 0, 0, 0, 0 )
+uv = PoolVector2Array(  )
+color = Color( 0, 0.0625, 1, 0.309412 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 0, 0 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation_degrees = 0.0
+invert_enable = false
+invert_border = 100.0
 __meta__ = {
 "_edit_lock_": true
 }

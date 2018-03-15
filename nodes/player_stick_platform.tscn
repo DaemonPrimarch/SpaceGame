@@ -94,7 +94,7 @@ position = Vector2( -94, -32 )
 enabled = true
 exclude_parent = true
 cast_to = Vector2( 0, -1 )
-collision_mask = 1
+collision_mask = 2
 _sections_unfolded = [ "Transform" ]
 
 [node name="right_detector" type="RayCast2D" parent="." index="6"]
@@ -103,7 +103,7 @@ position = Vector2( 94, -32 )
 enabled = true
 exclude_parent = true
 cast_to = Vector2( 0, -1 )
-collision_mask = 1
+collision_mask = 2
 _sections_unfolded = [ "Transform" ]
 
 [connection signal="collided" from="." to="." method="_on_platform_collided"]

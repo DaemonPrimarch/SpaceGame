@@ -5,8 +5,24 @@ func _ready():
 	update_limit()
 
 func _process(delta):
+#	for pol in get_tree().get_nodes_in_group("camera_container"):
+#		if(MATHS.is_point_in_polygon(global_position + get_viewport_rect().size/2, pol.polygon)):
+#			if(not MATHS.is_point_in_polygon(global_position + get_viewport_rect().size, pol.polygon)):
+#				position -= MATHS.offset_point_polygon(global_position + get_viewport_rect().size, pol.polygon)
+#			elif(not MATHS.is_point_in_polygon(global_position, pol.polygon)):
+#				position -= MATHS.offset_point_polygon(global_position, pol.polygon)
+#			elif(not MATHS.is_point_in_polygon(global_position + get_viewport_rect().size * Vector2(0,1), pol.polygon)):
+#				position -= MATHS.offset_point_polygon(global_position + get_viewport_rect().size * Vector2(0,1), pol.polygon)
+#			elif(not MATHS.is_point_in_polygon(global_position + get_viewport_rect().size * Vector2(1,0), pol.polygon)):
+#				position -= MATHS.offset_point_polygon(global_position + get_viewport_rect().size * Vector2(1,0), pol.polygon)
+#
+#
+#	print(get_camera_position(), position)
+#	get_node("Sprite").position = get_viewport_rect().size
+#	get_node("Sprite2").position = Vector2()
+#	get_node("Sprite3").position = get_viewport_rect().size * Vector2(1,0)
+#	get_node("Sprite4").position = get_viewport_rect().size * Vector2(0,1)
 	pass
-	
 func update_limit():
 	var terrains = get_tree().get_nodes_in_group("terrain")
 

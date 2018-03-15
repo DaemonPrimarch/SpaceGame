@@ -10,7 +10,7 @@ func set_velocity(v):
 func get_velocity():
 	return velocity
 
-func _process(delta):
+func _physics_process(delta):
 	position += get_velocity().rotated(get_rotation()) * delta
 
 func get_damage():
