@@ -10,6 +10,12 @@ export var zoom = 1.0 setget set_zoom, get_zoom
 
 export var stay_within_terrain = true
 
+var zooming_in = false
+var zooming_in_to = 1.0
+var zooming_in_time = 1.0
+
+signal completed_zoom
+
 func _ready():
 	#set_zoom(get_zoom())
 	default_pos = position
@@ -30,23 +36,42 @@ func set_zoom(new_zoom):
 	
 		
 	zoom = new_zoom
+
+func zoom_to(zoom, time):
+	if(zoom != get_zoom()):
+		zooming_in = true
+		zooming_in_to = zoom
+		zooming_in_time = time
 	
 func scale_viewport(scale):
 #	print("scale", scale)
 #	get_viewport().set_size_override (true)
-	var pos = get_viewport().canvas_transform.origin
-	get_viewport().canvas_transform.origin = Vector2()
-	get_viewport().canvas_transform = get_viewport().canvas_transform.scaled(scale)
-	get_viewport().canvas_transform.origin = pos
+	if(is_inside_tree()):
+		var pos = get_viewport().canvas_transform.origin
+		get_viewport().canvas_transform.origin = Vector2()
+		get_viewport().canvas_transform = get_viewport().canvas_transform.scaled(scale)
+		get_viewport().canvas_transform.origin = pos
+	else:
+		print("NOT IN TREE")
 #	print(get_viewport().size)
 #	get_viewport().size *= scale
 #	print(get_viewport().size)
-	pass
+
 func get_zoom():
 	return zoom
 
 func _physics_process(delta):
-	
+	if(zooming_in):
+		print(zoom)
+		var zoom_dir = (zooming_in_to - get_zoom())/abs (zooming_in_to - get_zoom())
+
+		set_zoom(get_zoom() + zoom_dir / zooming_in_time * delta )
+#
+		if((zooming_in_to - get_zoom())/abs (zooming_in_to - get_zoom()) != zoom_dir or zooming_in_to - get_zoom() == 0):
+			set_zoom(zooming_in_to)
+			zooming_in = false
+			emit_signal("completed_zoom")
+			print("STOPPED")
 #	if(Input.is_action_pressed("play_up")):
 #		position += Vector2(0, -64 * 2) * delta
 #	if(Input.is_action_pressed("play_down")):

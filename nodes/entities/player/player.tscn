@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://nodes/entities/player/playable_character.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scripts/entities/player/player.gd" type="Script" id=2]
@@ -16,8 +16,9 @@
 [ext_resource path="res://nodes/state_handlers/player/pushed_handler.tscn" type="PackedScene" id=14]
 [ext_resource path="res://nodes/camera.tscn" type="PackedScene" id=15]
 [ext_resource path="res://nodes/camera_2.tscn" type="PackedScene" id=16]
+[ext_resource path="res://nodes/camera_zoom_out_manager.tscn" type="PackedScene" id=17]
 
-[node name="player" index="0" groups=[
+[node name="player" groups=[
 "player",
 "warpable",
 ] instance=ExtResource( 1 )]
@@ -114,6 +115,8 @@ current = false
 position = Vector2( 0, -320 )
 _sections_unfolded = [ "Transform" ]
 stay_within_terrain = true
+
+[node name="camera_zoom_out_manager" parent="." index="26" instance=ExtResource( 17 )]
 
 [connection signal="room_entered" from="." to="camera" method="update_limit"]
 
