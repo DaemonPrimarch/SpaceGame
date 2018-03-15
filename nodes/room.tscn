@@ -16,6 +16,9 @@ __meta__ = {
 dark = false
 dark_color = Color( 0, 0, 0, 1 )
 auto_generate_camera_container = true
+uses_default_camera_position = false
+default_camera_position = Vector2( 0, 0 )
+camera_zoom_out = false
 
 [node name="terrain" parent="." index="0" instance=ExtResource( 2 )]
 

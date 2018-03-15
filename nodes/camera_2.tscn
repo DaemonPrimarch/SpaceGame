@@ -9,6 +9,8 @@
 
 script = ExtResource( 1 )
 active = true
+zoom = 1
+stay_within_terrain = true
 
 [node name="debug" type="Node2D" parent="." index="0"]
 
@@ -32,12 +34,17 @@ texture = ExtResource( 2 )
 scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 2 )
 
-[node name="br" type="Sprite" parent="debug" index="4"]
+[node name="default_pos" type="Sprite" parent="debug" index="4"]
 
 scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 2 )
 
-[node name="RayCast2D" type="RayCast2D" parent="debug" index="5"]
+[node name="br" type="Sprite" parent="debug" index="5"]
+
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 2 )
+
+[node name="RayCast2D" type="RayCast2D" parent="debug" index="6"]
 
 enabled = false
 exclude_parent = true

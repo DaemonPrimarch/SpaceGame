@@ -38,7 +38,8 @@ func can_enter():
 
 func leave_state(new_state):
 	.leave_state(new_state)
-
+	
+	get_parent().position -= (Vector2(0, 16) * get_parent().get_direction())
 	get_parent().scale *= Vector2(1, 2)
 
 func process_state(delta):

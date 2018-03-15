@@ -110,7 +110,9 @@ current = false
 
 [node name="camera2" parent="." index="24" instance=ExtResource( 16 )]
 
-position = Vector2( 0, -384 )
+position = Vector2( 0, -320 )
+_sections_unfolded = [ "Transform" ]
+zoom = 2
 
 [connection signal="room_entered" from="." to="camera" method="update_limit"]
 
