@@ -22,7 +22,7 @@ tracks/0/keys = {
 "values": [ 7, 6, 5, 4, 2, 1 ]
 }
 
-[node name="enemy_1" type="KinematicBody2D" index="0"]
+[node name="enemy_1" type="KinematicBody2D"]
 
 input_pickable = false
 collision_layer = 1024
@@ -31,16 +31,16 @@ collision/safe_margin = 0.08
 script = ExtResource( 1 )
 _sections_unfolded = [ "Collision", "Transform", "collision" ]
 max_slope_angle = 1.5708
-HP = 2
-max_HP = 2
-movement_speed = 128.0
-debug_state_label = null
-debug_grounded_label = null
-gravity_enabled = true
-gravity_vector = Vector2( 0, 256 )
 flippedH = false
 flippedV = false
-invulnerability_time = 0.5
+moveable_by_collision = true
+movement_speed = 128.0
+gravity_enabled = true
+gravity_vector = Vector2( 0, 256 )
+can_be_pushed = false
+HP = 2
+max_HP = 2
+invulnerability_time = 0.1
 damage = 1
 
 [node name="Area2D" type="Area2D" parent="." index="0"]
@@ -118,6 +118,7 @@ margin_top = -32.0
 margin_right = 32.0
 margin_bottom = 32.0
 rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
 mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
@@ -134,6 +135,7 @@ margin_top = -32.0
 margin_right = 32.0
 margin_bottom = 32.0
 rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
 mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
@@ -156,6 +158,7 @@ margin_top = -64.0
 margin_right = 8.0
 margin_bottom = -50.0
 rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
 mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1

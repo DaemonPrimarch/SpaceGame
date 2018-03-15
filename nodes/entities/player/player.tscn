@@ -72,7 +72,6 @@ collision_mask = 1
 
 [node name="double_jumping_handler" parent="." index="13" instance=ExtResource( 8 )]
 
-enabled = false
 double_jump_height = 134.4
 
 [node name="wall_jumping_handler" parent="." index="14" instance=ExtResource( 9 )]
@@ -84,8 +83,6 @@ double_jump_height = 134.4
 climbing_speed = 256
 
 [node name="wall_sliding_handler" parent="." index="17" instance=ExtResource( 12 )]
-
-enabled = false
 
 [node name="crawling_handler" parent="." index="18" instance=ExtResource( 13 )]
 

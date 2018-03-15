@@ -40,10 +40,12 @@ polygon = PoolVector2Array( 32, -32, 32, 96, -32, 96, -32, -32 )
 [node name="Panel" parent="warp_tile" index="1"]
 
 margin_bottom = 96.0
+rect_clip_content = false
 
 [node name="Label" parent="warp_tile" index="2"]
 
 margin_bottom = 96.0
+rect_clip_content = false
 
 [node name="camera_container" parent="." index="6"]
 
