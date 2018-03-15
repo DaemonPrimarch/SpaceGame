@@ -11,7 +11,7 @@ export var dark_color = Color(0,0,0)
 export var auto_generate_camera_container = true
 
 func _ready():
-	if(auto_generate_camera_container):
+	if(Engine.editor_hint and auto_generate_camera_container):
 		generate_camera_container()
 
 func set_dark(val):

@@ -49,6 +49,14 @@ scale = Vector2( 1, 2 )
 
 wait_time = 1.0
 
+[node name="Panel" parent="damage_area" index="3"]
+
+rect_clip_content = false
+
+[node name="Label" parent="damage_area" index="4"]
+
+rect_clip_content = false
+
 [node name="non-active_timer" parent="damage_area" index="5"]
 
 wait_time = 2.0

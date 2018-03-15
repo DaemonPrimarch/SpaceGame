@@ -32,6 +32,10 @@ script = ExtResource( 4 )
 
 polygon = PoolVector2Array( -96, -32, 96, -32, 96, 32, -96, 32 )
 
+[node name="Label" parent="Area2D" index="1"]
+
+rect_clip_content = false
+
 [node name="camera_container" parent="." index="5"]
 
 polygon = PoolVector2Array( 0, 0, 0, 960, 1664, 960, 1664, 0 )

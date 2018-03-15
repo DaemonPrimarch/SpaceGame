@@ -3,13 +3,16 @@
 [ext_resource path="res://scripts/camera_2.gd" type="Script" id=1]
 [ext_resource path="res://icon.png" type="Texture" id=2]
 
-[node name="camera" type="Node2D" groups=[
+[node name="camera" type="Node2D" index="0" groups=[
 "no_flip",
 ]]
 
 script = ExtResource( 1 )
+active = true
 
 [node name="debug" type="Node2D" parent="." index="0"]
+
+visible = false
 
 [node name="Sprite" type="Sprite" parent="debug" index="0"]
 
