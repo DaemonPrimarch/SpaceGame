@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://nodes/entities/player/playable_character.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scripts/entities/player/player.gd" type="Script" id=2]
@@ -16,6 +16,7 @@
 [ext_resource path="res://nodes/state_handlers/player/pushed_handler.tscn" type="PackedScene" id=14]
 [ext_resource path="res://nodes/camera.tscn" type="PackedScene" id=15]
 [ext_resource path="res://nodes/camera_2.tscn" type="PackedScene" id=16]
+[ext_resource path="res://nodes/camera_zoom_out_manager.tscn" type="PackedScene" id=17]
 
 [node name="player" groups=[
 "player",
@@ -73,6 +74,7 @@ collision_mask = 1
 
 [node name="double_jumping_handler" parent="." index="13" instance=ExtResource( 8 )]
 
+enabled = false
 double_jump_height = 134.4
 
 [node name="wall_jumping_handler" parent="." index="14" instance=ExtResource( 9 )]
@@ -85,6 +87,8 @@ climbing_speed = 256
 
 [node name="wall_sliding_handler" parent="." index="17" instance=ExtResource( 12 )]
 
+enabled = false
+
 [node name="crawling_handler" parent="." index="18" instance=ExtResource( 13 )]
 
 [node name="pushed_handler" parent="." index="19" instance=ExtResource( 14 )]
@@ -95,6 +99,7 @@ rect_clip_content = false
 
 [node name="invulnerable_label" parent="." index="21"]
 
+visible = false
 rect_clip_content = false
 
 [node name="in_ladder_label" parent="." index="22"]
@@ -105,9 +110,12 @@ rect_clip_content = false
 
 [node name="camera2" parent="." index="24" instance=ExtResource( 16 )]
 
-visible = false
-position = Vector2( 0, -384 )
-active = false
+
+position = Vector2( 0, -320 )
+_sections_unfolded = [ "Transform" ]
+stay_within_terrain = true
+
+[node name="camera_zoom_out_manager" parent="." index="26" instance=ExtResource( 17 )]
 
 [connection signal="room_entered" from="." to="camera" method="update_limit"]
 

@@ -10,6 +10,20 @@ export var dark = true setget set_dark, is_dark
 export var dark_color = Color(0,0,0)
 export var auto_generate_camera_container = true
 
+export var uses_default_camera_position = false
+export var default_camera_position = Vector2()
+
+export var camera_zoom_out = false
+
+func can_camera_zoom_out():
+	return camera_zoom_out
+
+func has_default_camera_position():
+	return uses_default_camera_position
+
+func get_default_camera_position():
+	return default_camera_position
+
 func _ready():
 	if(Engine.editor_hint and auto_generate_camera_container):
 		generate_camera_container()
