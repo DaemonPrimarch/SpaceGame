@@ -15,23 +15,23 @@ collision/safe_margin = 0.08
 script = ExtResource( 1 )
 _sections_unfolded = [ "Collision", "collision" ]
 max_slope_angle = 1.5708
-HP = 4
-max_HP = 4
-movement_speed = 327.68
-debug_state_label = null
-debug_grounded_label = null
-gravity_enabled = false
-gravity_vector = Vector2( 0, 1152 )
 flippedH = false
 flippedV = false
-invulnerability_time = 0.5
+moveable_by_collision = true
+movement_speed = 327.68
+gravity_enabled = false
+gravity_vector = Vector2( 0, 1152 )
+can_be_pushed = false
+HP = 4
+max_HP = 4
+invulnerability_time = 0.1
 damage = 1
 charging_acceleration = 1920
 starting_speed = 256
 max_speed = 1152
-stunned_time_crashed = 2
-stunned_time_exhausted = 1
-overrun_distance = 256
+stunned_time_crashed = 4
+stunned_time_exhausted = 3
+overrun_distance = 384
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." index="0"]
 
@@ -67,6 +67,7 @@ margin_top = -32.0
 margin_right = 32.0
 margin_bottom = 32.0
 rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
 mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
@@ -83,6 +84,7 @@ margin_top = -32.0
 margin_right = 32.0
 margin_bottom = 32.0
 rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
 mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
@@ -97,14 +99,17 @@ max_lines_visible = -1
 [node name="idle_handler" type="Node" parent="." index="4"]
 
 script = ExtResource( 2 )
+enabled = true
 
 [node name="charging_handler" type="Node" parent="." index="5"]
 
 script = ExtResource( 3 )
+enabled = true
 
 [node name="stunned_by_crash_handler" type="Node" parent="." index="6"]
 
 script = ExtResource( 4 )
+enabled = true
 
 [node name="player_detector" type="RayCast2D" parent="." index="7"]
 
@@ -124,6 +129,7 @@ collision_mask = 1
 [node name="stunned_by_exhaustion_handler" type="Node" parent="." index="9"]
 
 script = ExtResource( 5 )
+enabled = true
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_object_hit"]
 

@@ -48,7 +48,7 @@ gravity_vector = Vector2( 0, 1152 )
 can_be_pushed = false
 HP = 1
 max_HP = 1
-invulnerability_time = 0.5
+invulnerability_time = 0.1
 damage = 1
 
 [node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="path/path_follower/enemy_3" index="0"]

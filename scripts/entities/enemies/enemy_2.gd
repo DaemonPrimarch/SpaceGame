@@ -75,7 +75,7 @@ func _on_bullet_hit(bullet):
 			#miss
 			pass
 
-func _ready():
+func _init():
 	add_state("IDLE")
 	add_state("CHARGING")
 	add_state("STUNNED_BY_CRASH")
