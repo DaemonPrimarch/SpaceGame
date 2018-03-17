@@ -98,7 +98,6 @@ current = false
 
 position = Vector2( 0, -320 )
 _sections_unfolded = [ "Transform" ]
-stay_within_terrain = true
 
 [node name="camera_zoom_out_manager" parent="." index="25" instance=ExtResource( 17 )]
 

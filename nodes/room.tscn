@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://scripts/room.gd" type="Script" id=1]
 [ext_resource path="res://nodes/terrain.tscn" type="PackedScene" id=2]
 [ext_resource path="res://nodes/debug_player_spawner.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scripts/camera_container.gd" type="Script" id=4]
 
 [node name="room" type="Node2D" groups=[
 "room",
@@ -16,9 +17,6 @@ __meta__ = {
 dark = false
 dark_color = Color( 0, 0, 0, 1 )
 auto_generate_camera_container = true
-uses_default_camera_position = false
-default_camera_position = Vector2( 0, 0 )
-camera_zoom_out = false
 
 [node name="terrain" parent="." index="0" instance=ExtResource( 2 )]
 
@@ -50,9 +48,13 @@ texture_scale = Vector2( 1, 1 )
 texture_rotation_degrees = 0.0
 invert_enable = false
 invert_border = 100.0
+script = ExtResource( 4 )
 __meta__ = {
 "_edit_lock_": true
 }
+has_default_camera_pos = false
+default_camera_pos = Vector2( 0, 0 )
+default_zoom = 1
 
 [connection signal="room_darkened" from="." to="." method="_on_room_room_darkened"]
 

@@ -3,7 +3,8 @@
 [ext_resource path="res://scripts/camera_2.gd" type="Script" id=1]
 [ext_resource path="res://icon.png" type="Texture" id=2]
 
-[node name="camera" type="Node2D" index="0" groups=[
+[node name="camera" type="Node2D" groups=[
+"camera",
 "no_flip",
 ]]
 
@@ -52,6 +53,16 @@ cast_to = Vector2( 0, 50 )
 collision_mask = 1
 
 [node name="zoom_to" type="Tween" parent="." index="1"]
+
+repeat = false
+playback_process_mode = 0
+playback_speed = 1.0
+playback/active = false
+playback/repeat = false
+playback/speed = 1.0
+_sections_unfolded = [ "playback" ]
+
+[node name="move_to_center" type="Tween" parent="." index="2"]
 
 repeat = false
 playback_process_mode = 0
