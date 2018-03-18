@@ -19,6 +19,8 @@ signal entered_container
 
 var container = null
 
+var temp_containers = []
+
 enum {FOLLOW_PARENT, DIRECT_CONTROL}
 
 export var mode = FOLLOW_PARENT
@@ -48,9 +50,16 @@ func is_in_container():
 	return container != null
 	
 func set_container(cont):
+	var old_cont = container
+	
 	container = cont
 	
-	set_zoom(1)
+	if(cont):
+		set_zoom(cont.get_default_camera_zoom())
+		if(cont.has_default_camera_offset()):
+			move_offset_to(cont.get_default_camera_offset(), 0.2)
+		if(old_cont):
+			temp_containers = [old_cont]
 	
 func get_container():
 	return container
@@ -58,11 +67,27 @@ func get_container():
 func get_follow_point():
 	return get_parent().global_position
 
-func _ready():
-	set_offset(position)
+func set_stay_within_terrain(val):
+	stay_within_terrain = val
+	
+func is_staying_within_terrain():
+	return stay_within_terrain
 
-func set_zoom(new_zoom):	
-	call_deferred("scale_viewport", (Vector2(new_zoom/get_zoom(), new_zoom/get_zoom())))
+func _ready():
+	print("READY")
+	
+	set_offset(position)
+	
+	get_parent().set_camera(self)
+
+func set_zoom(new_zoom):
+	
+	var zum = get_zoom()
+	
+	if(zum == null):
+		zum = 1
+	
+	call_deferred("scale_viewport",(Vector2(new_zoom/zum, new_zoom/zum)))
 
 	zoom = new_zoom
 
@@ -72,13 +97,10 @@ func zoom_to(zoom, time):
 	get_node("zoom_to").start()
 	
 func scale_viewport(scale):
-	if(is_inside_tree()):
-		var pos = get_viewport().canvas_transform.origin
-		get_viewport().canvas_transform.origin = Vector2()
-		get_viewport().canvas_transform = get_viewport().canvas_transform.scaled(scale)
-		get_viewport().canvas_transform.origin = pos
-	else:
-		print("NOT IN TREE")
+	var pos = get_viewport().canvas_transform.origin
+	get_viewport().canvas_transform.origin = Vector2()
+	get_viewport().canvas_transform = get_viewport().canvas_transform.scaled(scale)
+	get_viewport().canvas_transform.origin = pos
 
 func get_zoom():
 	return zoom
@@ -186,3 +208,5 @@ func _physics_process(delta):
 		
 		get_viewport().canvas_transform.origin = ((-global_position - position + position * PHYSICS_HELPER.get_global_scale_of_node(self))  * get_viewport().canvas_transform.get_scale()) + get_viewport_rect().size/2
 		
+
+

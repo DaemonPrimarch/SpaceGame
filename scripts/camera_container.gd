@@ -1,7 +1,7 @@
 extends Polygon2D
 
-export var has_default_camera_pos = false
-export var default_camera_pos = Vector2()
+export var has_default_offset = false
+export var default_offset = Vector2()
 
 export var default_zoom = 1
 
@@ -13,11 +13,11 @@ func _ready():
 func get_default_camera_zoom():
 	return default_zoom
 	
-func get_default_camera_position():
-	return default_camera_pos
+func get_default_camera_offset():
+	return default_offset
 	
-func has_default_camera_position():
-	return default_camera_pos
+func has_default_camera_offset():
+	return default_offset
 	
 func get_global_polygon():
 	var pol = []
