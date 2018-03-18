@@ -14,7 +14,6 @@ func on_state_left(state, new_state):
 	if(state == "STANDING"):
 		get_node("Timer").stop()
 		if(zoomed):
-			print("Zoomoon")
 			get_parent().get_node("camera2").zoom_to(1, 0.5)
 			zoomed = false
 

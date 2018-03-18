@@ -98,6 +98,7 @@ current = false
 
 position = Vector2( 0, -320 )
 _sections_unfolded = [ "Transform" ]
+mode = 0
 
 [node name="camera_zoom_out_manager" parent="." index="25" instance=ExtResource( 17 )]
 

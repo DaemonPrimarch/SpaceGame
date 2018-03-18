@@ -12,6 +12,9 @@ script = ExtResource( 1 )
 active = true
 zoom = 1.0
 stay_within_terrain = true
+debug_controls = true
+debug_labels = true
+mode = 1
 
 [node name="debug" type="Node2D" parent="." index="0"]
 
@@ -62,14 +65,13 @@ playback/repeat = false
 playback/speed = 1.0
 _sections_unfolded = [ "playback" ]
 
-[node name="move_to_center" type="Tween" parent="." index="2"]
+[node name="offset_move" type="Tween" parent="." index="2"]
 
 repeat = false
-playback_process_mode = 0
+playback_process_mode = 1
 playback_speed = 1.0
 playback/active = false
 playback/repeat = false
 playback/speed = 1.0
-_sections_unfolded = [ "playback" ]
 
 

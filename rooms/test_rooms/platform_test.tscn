@@ -1,10 +1,9 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://nodes/room.tscn" type="PackedScene" id=1]
 [ext_resource path="res://nodes/room_elements/moving_platforms/moveable_platform_medium.tscn" type="PackedScene" id=2]
 [ext_resource path="res://nodes/room_elements/helper_areas/no_wall_slide_area.tscn" type="PackedScene" id=3]
 [ext_resource path="res://nodes/room_elements/vertical_ladder.tscn" type="PackedScene" id=4]
-[ext_resource path="res://scripts/camera_container.gd" type="Script" id=5]
 
 [node name="room" instance=ExtResource( 1 )]
 
@@ -42,11 +41,7 @@ length = 384
 [node name="camera_container" parent="." index="6"]
 
 polygon = PoolVector2Array( -1344, 0, -1344, 2112, 1664, 2112, 1664, 0 )
-script = ExtResource( 5 )
 _sections_unfolded = [ "Transform" ]
-has_default_camera_pos = false
-default_camera_pos = Vector2( 0, 0 )
-default_zoom = 1
 
 
 [editable path="moveable_platform_parent"]
