@@ -21,6 +21,8 @@ var container = null
 
 var temp_containers = []
 
+var fixed_position = Vector2()
+
 enum {FOLLOW_PARENT, DIRECT_CONTROL}
 
 export var mode = FOLLOW_PARENT
@@ -39,6 +41,9 @@ func debug_labels_enabled():
 
 func set_control_mode(m):
 	mode = m
+	
+	if(mode == DIRECT_CONTROL):
+		fixed_position = get_parent().global_position
 
 func set_offset(position):
 	offset = position
@@ -60,6 +65,12 @@ func set_container(cont):
 			move_offset_to(cont.get_default_camera_offset(), 0.2)
 		if(old_cont):
 			temp_containers = [old_cont]
+
+func _on_camer_transfer_timer_timeout():
+	temp_containers = []
+	moving = false
+	
+	set_control_mode(FOLLOW_PARENT)
 	
 func get_container():
 	return container
@@ -113,15 +124,26 @@ func move_offset_to(to, time):
 	get_node("offset_move").interpolate_method (self, "set_offset", get_offset(), to, time, Tween.TRANS_LINEAR, Tween.EASE_OUT_IN, 0 )
 	get_node("offset_move").start()
 
+var moving = false
+func move_to(pos, time):
+	print("MOVe")
+	moving  = true
+	get_node("camer_transfer_timer").start()
+	
+	get_node("move_to").stop_all()
+	get_node("move_to").interpolate_property (self, "position", position, pos, time, Tween.TRANS_LINEAR, Tween.EASE_OUT_IN, 0 )
+	get_node("move_to").start()
+
+var time = 0
+
 func _physics_process(delta):
-	if(is_active()):
-		
+	if(is_active()):	
 		get_node("debug").visible = debug_labels_enabled()
 		
-		var bottom_right = get_viewport().size/2 / PHYSICS_HELPER.get_global_scale_of_node(self) / zoom
-		var bottom_left = get_viewport().size/2 * Vector2(-1, 1) / PHYSICS_HELPER.get_global_scale_of_node(self) / zoom
-		var top_right = get_viewport().size/2 * Vector2(1, -1) / PHYSICS_HELPER.get_global_scale_of_node(self) / zoom
-		var top_left = get_viewport().size/2 * -1 / PHYSICS_HELPER.get_global_scale_of_node(self) / zoom
+		var bottom_right = get_viewport().size/2  / zoom
+		var bottom_left = get_viewport().size/2 * Vector2(-1, 1) / zoom
+		var top_right = get_viewport().size/2 * Vector2(1, -1)  / zoom
+		var top_left = get_viewport().size/2 * -1 / zoom		
 		
 		if(debug_labels_enabled()):	
 			get_node("debug/Sprite").modulate = Color(255, 0, 0)
@@ -162,8 +184,9 @@ func _physics_process(delta):
 				if(Input.is_action_pressed("play_right")):
 					position += Vector2(speed, 0) * delta
 		
+			position -= (get_parent().global_position - fixed_position)
 		if(stay_within_terrain and is_in_container()):
-			var offset = Vector2()
+			offset = Vector2()
 				
 			var polygon  = get_container().get_global_polygon()
 				
@@ -204,9 +227,34 @@ func _physics_process(delta):
 						offset.x = new_offset.x
 					if(abs(offset.y) < abs(new_offset.y)):
 						offset.y = new_offset.y	
-				position -= offset
+				
+				var fancy_offset = offset
+				
+				offset = Vector2()
+				
+				for container in temp_containers:
+					polygon  = container.get_global_polygon()
+					
+					offset = MATHS.offset_rect_polygon(Rect2(to_global(top_left), bottom_right - top_left), polygon)
+				
+				if(temp_containers.size()):
+					if(not moving):
+						
+						var old_pos = position
+						position -= offset
+						
+						print(offset, fancy_offset)
+						
+						get_parent().get_node("start").position = position
+						get_parent().get_node("stop").position = (position - fancy_offset)
+						#get_parent().set_gravity_enabled(false)
+						
+						set_control_mode(DIRECT_CONTROL)
+						
+						move_to(old_pos - fancy_offset, 0.5)
+						print("MOVING TO: ", fancy_offset)
+				else:
+					position -= fancy_offset
 		
 		get_viewport().canvas_transform.origin = ((-global_position - position + position * PHYSICS_HELPER.get_global_scale_of_node(self))  * get_viewport().canvas_transform.get_scale()) + get_viewport_rect().size/2
-		
-
 

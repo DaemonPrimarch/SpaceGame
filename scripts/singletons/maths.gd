@@ -94,7 +94,45 @@ func offset_point_polygon(point, polygon):
 			offset = Vector2(dx, dy)
 		
 	return offset
+	
+func offset_rect_polygon(rect, polygon):
+	var offset = Vector2()
 
+	
+	var bottom_right = rect.position + rect.size
+	var bottom_left = rect.position + rect.size * Vector2(0, 1)
+	var top_right = rect.position + rect.size * Vector2(1, 0)
+	var top_left = rect.position
+						
+	if(not is_point_in_polygon(top_left, polygon)):
+		var new_offset = offset_point_polygon(top_left, polygon)
+						
+		if(abs(offset.x) < abs(new_offset.x)):
+			offset.x = new_offset.x
+		if(abs(offset.y) < abs(new_offset.y)):
+			offset.y = new_offset.y
+	if(not is_point_in_polygon(top_right, polygon)):
+		var new_offset = offset_point_polygon(top_right, polygon)
+						
+		if(abs(offset.x) < abs(new_offset.x)):
+			offset.x = new_offset.x
+		if(abs(offset.y) < abs(new_offset.y)):
+			offset.y = new_offset.y
+	if(not is_point_in_polygon(bottom_left, polygon)):
+		var new_offset = offset_point_polygon(bottom_left, polygon)
+						
+		if(abs(offset.x) < abs(new_offset.x)):
+			offset.x = new_offset.x
+		if(abs(offset.y) < abs(new_offset.y)):
+			offset.y = new_offset.y
+	if(not is_point_in_polygon((bottom_right),polygon)):
+		var new_offset = offset_point_polygon(bottom_right, polygon)
+						
+		if(abs(offset.x) < abs(new_offset.x)):
+			offset.x = new_offset.x
+		if(abs(offset.y) < abs(new_offset.y)):
+			offset.y = new_offset.y	
+	return offset
 func get_aabb_of_polygon(polygon):
 	var pol = polygon
 	var new_pos = pol[0]
