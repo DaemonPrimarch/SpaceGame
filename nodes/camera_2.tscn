@@ -10,6 +10,7 @@
 
 script = ExtResource( 1 )
 active = true
+velocity = Vector2( 64, 64 )
 zoom = 1.0
 stay_within_terrain = true
 debug_controls = true
