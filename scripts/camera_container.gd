@@ -1,15 +1,34 @@
-extends Area2D
+extends Polygon2D
 
-# class member variables go here, for example:
-# var a = 2
-# var b = "textvar"
+export var has_default_offset = false
+export var default_offset = Vector2()
+
+export var default_zoom = 1
 
 func _ready():
 	# Called every time the node is added to the scene.
 	# Initialization here
 	pass
 
-#func _process(delta):
-#	# Called every frame. Delta is time since last frame.
-#	# Update game logic here.
-#	pass
+func get_default_camera_zoom():
+	return default_zoom
+	
+func get_default_camera_offset():
+	return default_offset
+	
+func has_default_camera_offset():
+	return default_offset
+	
+func get_global_polygon():
+	var pol = []
+	
+	for p in polygon:
+		pol.push_back(to_global(p))
+		
+	return pol
+
+func _physics_process(delta):
+	for camera in get_tree().get_nodes_in_group("camera"):
+		
+		if(not (camera.is_in_container() and camera.get_container() == self) and MATHS.is_point_in_polygon(camera.get_follow_point(), get_global_polygon())):
+			camera.set_container(self)

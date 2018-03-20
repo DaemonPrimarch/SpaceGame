@@ -3,14 +3,19 @@
 [ext_resource path="res://scripts/camera_2.gd" type="Script" id=1]
 [ext_resource path="res://icon.png" type="Texture" id=2]
 
-[node name="camera" type="Node2D" groups=[
+[node name="camera" type="Node2D" index="0" groups=[
+"camera",
 "no_flip",
 ]]
 
 script = ExtResource( 1 )
 active = true
+velocity = Vector2( 64, 64 )
 zoom = 1.0
-stay_within_terrain = false
+stay_within_terrain = true
+debug_controls = true
+debug_labels = true
+mode = 1
 
 [node name="debug" type="Node2D" parent="." index="0"]
 
@@ -50,5 +55,42 @@ enabled = false
 exclude_parent = true
 cast_to = Vector2( 0, 50 )
 collision_mask = 1
+
+[node name="zoom_to" type="Tween" parent="." index="1"]
+
+repeat = false
+playback_process_mode = 0
+playback_speed = 1.0
+playback/active = false
+playback/repeat = false
+playback/speed = 1.0
+_sections_unfolded = [ "playback" ]
+
+[node name="offset_move" type="Tween" parent="." index="2"]
+
+repeat = false
+playback_process_mode = 1
+playback_speed = 1.0
+playback/active = false
+playback/repeat = false
+playback/speed = 1.0
+
+[node name="move_to" type="Tween" parent="." index="3"]
+
+repeat = false
+playback_process_mode = 0
+playback_speed = 1.0
+playback/active = false
+playback/repeat = false
+playback/speed = 1.0
+
+[node name="camer_transfer_timer" type="Timer" parent="." index="4"]
+
+process_mode = 1
+wait_time = 0.5
+one_shot = false
+autostart = false
+
+[connection signal="timeout" from="camer_transfer_timer" to="." method="_on_camer_transfer_timer_timeout"]
 
 

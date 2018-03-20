@@ -30,6 +30,17 @@ var current_state = "UNDEFINED"
 
 var inside_helper_areas = {}
 
+var camera = null
+
+func has_camera():
+	return camera != null
+	
+func set_camera(cam):
+	camera = cam
+
+func get_camera():
+	return camera
+
 var platform = null
 
 func set_inside_helper_area(type, val):
