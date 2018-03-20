@@ -19,7 +19,7 @@
 [ext_resource path="res://nodes/camera_zoom_out_manager.tscn" type="PackedScene" id=17]
 [ext_resource path="res://icon.png" type="Texture" id=18]
 
-[node name="player" groups=[
+[node name="player" index="0" groups=[
 "player",
 "warpable",
 ] instance=ExtResource( 1 )]
@@ -120,6 +120,7 @@ mode = 0
 
 [node name="start" type="Sprite" parent="." index="26"]
 
+visible = false
 modulate = Color( 1, 0, 0, 1 )
 scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 18 )
@@ -127,6 +128,7 @@ _sections_unfolded = [ "Visibility" ]
 
 [node name="stop" type="Sprite" parent="." index="27"]
 
+visible = false
 modulate = Color( 0, 0.0859375, 1, 1 )
 scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 18 )
