@@ -6,7 +6,7 @@
 [ext_resource path="res://nodes/room_elements/link_block.tscn" type="PackedScene" id=4]
 [ext_resource path="res://nodes/room_elements/bullet_switch.tscn" type="PackedScene" id=5]
 
-[node name="room_12" instance=ExtResource( 1 )]
+[node name="room_12" index="0" instance=ExtResource( 1 )]
 
 [node name="terrain" parent="." index="0"]
 
@@ -95,6 +95,12 @@ toggleable = true
 position = Vector2( 1312, 672 )
 state = true
 toggleable = true
+
+[node name="camera_container" parent="." index="10"]
+
+polygon = PoolVector2Array( 0, 0, 0, 960, 1664, 960, 1664, 0 )
+has_default_offset = false
+default_offset = Vector2( 0, 0 )
 
 [connection signal="switched_off" from="bullet_switch" to="StaticBody2D" method="_set_active" binds= [ false ]]
 

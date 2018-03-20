@@ -6,7 +6,7 @@
 [ext_resource path="res://nodes/room_elements/moving_platforms/vertical_moving_platform.tscn" type="PackedScene" id=4]
 [ext_resource path="res://nodes/room_elements/regular_damage_area.tscn" type="PackedScene" id=5]
 
-[node name="room_12" instance=ExtResource( 1 )]
+[node name="room_12" index="0" instance=ExtResource( 1 )]
 
 [node name="terrain" parent="." index="0"]
 
@@ -98,6 +98,8 @@ position = Vector2( 96, 1376 )
 [node name="camera_container" parent="." index="14"]
 
 polygon = PoolVector2Array( 0, 0, 0, 1920, 1664, 1920, 1664, 0 )
+has_default_offset = false
+default_offset = Vector2( 0, 0 )
 
 [connection signal="switched_off" from="bullet_switch" to="moveable_platform_parent" method="set_active" binds= [ false ]]
 

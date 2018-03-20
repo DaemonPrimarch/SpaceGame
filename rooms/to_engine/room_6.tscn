@@ -43,6 +43,8 @@ length = 704
 [node name="camera_container" parent="." index="7"]
 
 polygon = PoolVector2Array( 0, 0, 0, 3840, 6656, 3840, 6656, 0 )
+has_default_offset = false
+default_offset = Vector2( 0, 0 )
 
 [node name="enemy_1" parent="." index="8" instance=ExtResource( 4 )]
 

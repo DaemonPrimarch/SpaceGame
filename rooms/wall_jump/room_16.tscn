@@ -6,9 +6,7 @@
 [ext_resource path="res://nodes/room_elements/vertical_ladder.tscn" type="PackedScene" id=4]
 [ext_resource path="res://nodes/room_elements/regular_damage_area.tscn" type="PackedScene" id=5]
 
-[node name="room_16" instance=ExtResource( 1 )]
-
-camera_zoom_out = false
+[node name="room_16" index="0" instance=ExtResource( 1 )]
 
 [node name="terrain" parent="." index="0"]
 
@@ -195,6 +193,8 @@ length = 512
 [node name="camera_container" parent="." index="13"]
 
 polygon = PoolVector2Array( 0, 0, 0, 1920, 1664, 1920, 1664, 0 )
+has_default_offset = false
+default_offset = Vector2( 0, 0 )
 
 
 [editable path="warp_tile2"]
