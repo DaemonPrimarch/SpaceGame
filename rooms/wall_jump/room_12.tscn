@@ -6,7 +6,7 @@
 [ext_resource path="res://nodes/room_elements/moving_platforms/vertical_moving_platform.tscn" type="PackedScene" id=4]
 [ext_resource path="res://nodes/room_elements/regular_damage_area.tscn" type="PackedScene" id=5]
 
-[node name="room_12" index="0" instance=ExtResource( 1 )]
+[node name="room_12" instance=ExtResource( 1 )]
 
 [node name="terrain" parent="." index="0"]
 

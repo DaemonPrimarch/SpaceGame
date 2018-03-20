@@ -19,7 +19,7 @@
 [ext_resource path="res://nodes/camera_zoom_out_manager.tscn" type="PackedScene" id=17]
 [ext_resource path="res://icon.png" type="Texture" id=18]
 
-[node name="player" index="0" groups=[
+[node name="player" groups=[
 "player",
 "warpable",
 ] instance=ExtResource( 1 )]
@@ -88,8 +88,6 @@ climbing_speed = 256
 
 [node name="wall_sliding_handler" parent="." index="17" instance=ExtResource( 12 )]
 
-enabled = false
-
 [node name="crawling_handler" parent="." index="18" instance=ExtResource( 13 )]
 
 [node name="pushed_handler" parent="." index="19" instance=ExtResource( 14 )]
@@ -120,14 +118,14 @@ mode = 0
 
 [node name="camera_zoom_out_manager" parent="." index="25" instance=ExtResource( 17 )]
 
-[node name="start" type="Sprite" parent="." index="27"]
+[node name="start" type="Sprite" parent="." index="26"]
 
 modulate = Color( 1, 0, 0, 1 )
 scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 18 )
 _sections_unfolded = [ "Visibility" ]
 
-[node name="stop" type="Sprite" parent="." index="28"]
+[node name="stop" type="Sprite" parent="." index="27"]
 
 modulate = Color( 0, 0.0859375, 1, 1 )
 scale = Vector2( 0.5, 0.5 )
