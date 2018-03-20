@@ -196,6 +196,9 @@ func _physics_process(delta):
 		get_node("debug/tl").position = top_left
 		get_node("debug/bl").position = bottom_left	
 		if(is_staying_within_terrain() and is_in_container() and not is_moving()):
-			position -= MATHS.offset_rect_polygon(Rect2(to_global(top_left), bottom_right - top_left), get_container().get_global_polygon())
-		get_viewport().canvas_transform.origin = ((-global_position - position + position * PHYSICS_HELPER.get_global_scale_of_node(self))  * get_viewport().canvas_transform.get_scale()) + get_viewport_rect().size/2
+			position -= MATHS.offset_rect_polygon(Rect2(to_global(top_left) + (top_left + position) * (Vector2(1,1) - PHYSICS_HELPER.get_global_scale_of_node(self).abs()), bottom_right - top_left), get_container().get_global_polygon())
+			#print(to_global(top_left) + top_left * (Vector2(1,1) - PHYSICS_HELPER.get_global_scale_of_node(self).abs()))
+	
+		#print((-global_position - position * (Vector2(1,1) - PHYSICS_HELPER.get_global_scale_of_node(self).abs())))
+		get_viewport().canvas_transform.origin = ((-global_position - position * (Vector2(1,1) - PHYSICS_HELPER.get_global_scale_of_node(self).abs()))  * get_viewport().canvas_transform.get_scale()) + get_viewport_rect().size/2
 
