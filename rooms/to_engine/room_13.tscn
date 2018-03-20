@@ -7,7 +7,7 @@
 [ext_resource path="res://nodes/room_elements/link_block.tscn" type="PackedScene" id=5]
 [ext_resource path="res://nodes/room_elements/regular_damage_area.tscn" type="PackedScene" id=6]
 
-[node name="room_13" instance=ExtResource( 1 )]
+[node name="room_13" index="0" instance=ExtResource( 1 )]
 
 [node name="terrain" parent="." index="0"]
 
@@ -41,13 +41,13 @@ position = Vector2( 1184, 1760 )
 
 position = Vector2( 32, 1664 )
 destination_room = "res://rooms/to_engine/room_6.tscn"
-arrival_pos_id = "room_arrival"
+arrival_pos_id = "room_13_arrival"
 
 [node name="warp_tile2" parent="." index="9" instance=ExtResource( 3 )]
 
 position = Vector2( 1632, 192 )
 destination_room = "res://rooms/to_engine/room_5.tscn"
-arrival_pos_id = "room_arrival"
+arrival_pos_id = "room_13_arrival"
 flippedH = true
 
 [node name="bullet_switch" parent="." index="10" instance=ExtResource( 4 )]
