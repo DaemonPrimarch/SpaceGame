@@ -19,7 +19,7 @@
 [ext_resource path="res://nodes/camera_zoom_out_manager.tscn" type="PackedScene" id=17]
 [ext_resource path="res://icon.png" type="Texture" id=18]
 
-[node name="player" index="0" groups=[
+[node name="player" groups=[
 "player",
 "warpable",
 ] instance=ExtResource( 1 )]
@@ -40,14 +40,6 @@ _sections_unfolded = [ "Transform" ]
 [node name="light" parent="." index="3"]
 
 _sections_unfolded = [ "Transform" ]
-
-[node name="grounded_label" parent="." index="4"]
-
-rect_clip_content = false
-
-[node name="state_label" parent="." index="5"]
-
-rect_clip_content = false
 
 [node name="weapon_manager" parent="." index="6"]
 
@@ -92,18 +84,9 @@ climbing_speed = 256
 
 [node name="pushed_handler" parent="." index="19" instance=ExtResource( 14 )]
 
-[node name="on_platform_label" parent="." index="20"]
-
-rect_clip_content = false
-
 [node name="invulnerable_label" parent="." index="21"]
 
 visible = false
-rect_clip_content = false
-
-[node name="in_ladder_label" parent="." index="22"]
-
-rect_clip_content = false
 
 [node name="camera" parent="." index="23" instance=ExtResource( 15 )]
 

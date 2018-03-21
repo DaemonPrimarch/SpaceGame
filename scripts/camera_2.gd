@@ -1,6 +1,6 @@
 extends Node2D
 
-export var active = true
+export var active = true setget set_active, is_active
 
 var offset = Vector2()
 
@@ -30,6 +30,15 @@ export var mode = FOLLOW_PARENT
 
 func is_active():
 	return active
+
+func set_active(val):
+	active = val
+	
+	if(is_inside_tree()):
+		if(not active and get_node("/root/CAMERA_MANAGER").get_active_camera() == self):	
+			get_node("/root/CAMERA_MANAGER").set_active_camera(null)
+		elif(active):
+			get_node("/root/CAMERA_MANAGER").set_active_camera(self)
 	
 func get_control_mode():
 	return mode
@@ -99,7 +108,10 @@ func _ready():
 	
 	set_offset(position)
 	
-	get_parent().set_camera(self)
+	set_active(is_active())
+	
+	if(get_parent().has_method("set_camera")):
+		get_parent().set_camera(self)
 
 func set_zoom(new_zoom):
 	
@@ -199,4 +211,3 @@ func _physics_process(delta):
 			position -= MATHS.offset_rect_polygon(Rect2(to_global(top_left) + (top_left + position) * (Vector2(1,1) - PHYSICS_HELPER.get_global_scale_of_node(self).abs()), bottom_right - top_left), get_container().get_global_polygon())
 	
 		get_viewport().canvas_transform.origin = ((-global_position - position * (Vector2(1,1) - PHYSICS_HELPER.get_global_scale_of_node(self).abs()))  * get_viewport().canvas_transform.get_scale()) + get_viewport_rect().size/2
-
