@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://nodes/room.tscn" type="PackedScene" id=1]
 [ext_resource path="res://nodes/room_elements/blocking_warp_tile.tscn" type="PackedScene" id=2]
 [ext_resource path="res://nodes/warp_arrival.tscn" type="PackedScene" id=3]
 [ext_resource path="res://nodes/warp_tile.tscn" type="PackedScene" id=4]
+[ext_resource path="res://nodes/room_elements/camera_change_area.tscn" type="PackedScene" id=5]
 
 [node name="central_hub" instance=ExtResource( 1 )]
 
@@ -134,12 +135,21 @@ arrival_ID = "3"
 
 [node name="camera_container" parent="." index="13"]
 
-polygon = PoolVector2Array( 0, 192, 0, 2880, 1664, 2880, 1664, 192 )
+polygon = PoolVector2Array( 0, 320, 0, 2880, 1664, 2880, 1664, 320 )
 has_default_offset = false
 default_offset = Vector2( 0, 0 )
+
+[node name="camera_change_area2" parent="." index="14" instance=ExtResource( 5 )]
+
+position = Vector2( 1440, 1376 )
+
+[node name="CollisionPolygon2D" parent="camera_change_area2" index="0"]
+
+polygon = PoolVector2Array( 160, -992, -1376, -992, -1376, 1376, 160, 1376 )
 
 
 [editable path="warp_tile"]
 [editable path="warp_tile7"]
 [editable path="warp_tile8"]
 [editable path="warp_tile9"]
+[editable path="camera_change_area2"]
