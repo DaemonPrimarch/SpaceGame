@@ -57,6 +57,7 @@ func set_platform(plat):
 	
 	if(plat):
 		set_grounded(true)
+		plat.snap_to(plat)
 
 func is_grounded():
 	return (grounded and is_gravity_enabled()) or is_on_platform()

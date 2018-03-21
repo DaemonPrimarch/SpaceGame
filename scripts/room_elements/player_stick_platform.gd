@@ -49,7 +49,7 @@ func disconnect_node(node):
 		
 		emit_signal("stepped_off", node)
 
-func _on_platform_collided(info, moved_node):
+func _on_platform_collided(info, moved_node):	
 	if((moved_node == self and info.normal == Vector2(0,1))):
 		connect_node(info.collider)
 	if((not moved_node == self and info.normal == Vector2(0,-1))):
@@ -62,6 +62,11 @@ func _on_standing_area_body_exited( body ):
 
 func move_and_push(v):
 	for node in connected_nodes:
-		node.move_and_collide(v)
+		node.push(Vector2(0,v.y))
+		node.move_and_collide(Vector2(v.x, 0))
+		#node.move_and_collide(v)
 	
 	.move_and_push(v)
+
+func snap_to(node):
+	pass
