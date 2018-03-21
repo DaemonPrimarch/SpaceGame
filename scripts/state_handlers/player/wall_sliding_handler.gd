@@ -67,6 +67,7 @@ func process_state(delta):
 	var vertical_collision_info = get_parent().move_and_collide(get_parent().get_velocity() * Vector2(0,1) * delta)
 	
 	if(vertical_collision_info != null):
+		
 		get_parent().set_state("STANDING")
 
 
