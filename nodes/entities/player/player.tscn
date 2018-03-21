@@ -41,14 +41,6 @@ _sections_unfolded = [ "Transform" ]
 
 _sections_unfolded = [ "Transform" ]
 
-[node name="grounded_label" parent="." index="4"]
-
-rect_clip_content = false
-
-[node name="state_label" parent="." index="5"]
-
-rect_clip_content = false
-
 [node name="weapon_manager" parent="." index="6"]
 
 editor/display_folded = true
@@ -91,18 +83,9 @@ climbing_speed = 256
 
 [node name="pushed_handler" parent="." index="19" instance=ExtResource( 14 )]
 
-[node name="on_platform_label" parent="." index="20"]
-
-rect_clip_content = false
-
 [node name="invulnerable_label" parent="." index="21"]
 
 visible = false
-rect_clip_content = false
-
-[node name="in_ladder_label" parent="." index="22"]
-
-rect_clip_content = false
 
 [node name="camera" parent="." index="23" instance=ExtResource( 15 )]
 
@@ -119,6 +102,7 @@ mode = 0
 
 [node name="start" type="Sprite" parent="." index="26"]
 
+visible = false
 modulate = Color( 1, 0, 0, 1 )
 scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 18 )
@@ -126,6 +110,7 @@ _sections_unfolded = [ "Visibility" ]
 
 [node name="stop" type="Sprite" parent="." index="27"]
 
+visible = false
 modulate = Color( 0, 0.0859375, 1, 1 )
 scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 18 )

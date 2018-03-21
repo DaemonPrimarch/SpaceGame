@@ -13,12 +13,14 @@ active = true
 velocity = Vector2( 64, 64 )
 zoom = 1.0
 stay_within_terrain = true
-debug_controls = true
+debug_controls = false
 debug_labels = true
 transition_time = 1
 mode = 1
 
 [node name="debug" type="Node2D" parent="." index="0"]
+
+visible = false
 
 [node name="Sprite" type="Sprite" parent="debug" index="0"]
 
