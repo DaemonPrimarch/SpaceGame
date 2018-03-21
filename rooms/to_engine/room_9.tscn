@@ -10,11 +10,11 @@
 [ext_resource path="res://nodes/room_elements/timed_damage_area.tscn" type="PackedScene" id=8]
 [ext_resource path="res://nodes/warp_tile.tscn" type="PackedScene" id=9]
 [ext_resource path="res://nodes/warp_arrival.tscn" type="PackedScene" id=10]
-[ext_resource path="res://nodes/no_respawn_area.tscn" type="PackedScene" id=11]
+[ext_resource path="res://nodes/room_elements/helper_areas/no_respawn_area.tscn" type="PackedScene" id=11]
 [ext_resource path="res://nodes/room_elements/crushing_platform_medium.tscn" type="PackedScene" id=12]
 [ext_resource path="res://nodes/room_elements/regular_damage_area.tscn" type="PackedScene" id=13]
 
-[node name="room_9" index="0" instance=ExtResource( 1 )]
+[node name="room_9" instance=ExtResource( 1 )]
 
 [node name="crushing_platform_big3" parent="." index="0" instance=ExtResource( 2 )]
 
@@ -163,6 +163,14 @@ editor/display_folded = true
 position = Vector2( 2400, 2528 )
 scale = Vector2( 3, 1 )
 
+[node name="Panel" parent="damage_area" index="3"]
+
+rect_clip_content = false
+
+[node name="Label" parent="damage_area" index="4"]
+
+rect_clip_content = false
+
 [node name="non-active_timer" parent="damage_area" index="5"]
 
 wait_time = 3.0
@@ -230,6 +238,12 @@ position = Vector2( 1088, 2272 )
 [node name="damage_area6" parent="." index="30" instance=ExtResource( 13 )]
 
 position = Vector2( 1184, 2336 )
+
+[node name="camera_container" parent="." index="31"]
+
+polygon = PoolVector2Array( 0, 0, 0, 4224, 2560, 4224, 2560, 0 )
+has_default_offset = false
+default_offset = Vector2( 0, 0 )
 
 [connection signal="body_entered" from="Area2D" to="crushing_platform_small" method="area_enter_trigger" binds= [ true ]]
 

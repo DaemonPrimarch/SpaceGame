@@ -12,6 +12,9 @@ func enter_state(previous_state):
 	if(previous_state == "WALL_JUMPING"):
 		wall_jumped = true
 		wall_jump_direction = get_parent().get_direction()
+	else:
+		wall_jumped = false
+		wall_jump_direction = Vector2()
 	get_parent().gravity_velocity = Vector2(0,get_parent().get_velocity().y)
 	get_parent().animation_player.play("fall")
 	
@@ -37,6 +40,7 @@ func process_state(delta):
 			else:
 				get_parent().set_velocity(Vector2(0,get_parent().get_velocity().y))
 	else:
+		wall_jump_direction = Vector2()
 		var pressed = 0
 		if(Input.is_action_pressed("play_left")):
 			get_parent().set_flippedH(true)

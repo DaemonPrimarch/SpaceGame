@@ -15,6 +15,8 @@ export var debug_controls = false
 
 export var debug_labels = true
 
+export var transition_time = 1
+
 signal completed_zoom
 signal entered_container
 
@@ -73,8 +75,8 @@ func set_container(cont):
 			position -= MATHS.offset_rect_polygon(Rect2(to_global(top_left), bottom_right - top_left), old_cont.get_global_polygon())
 
 			set_control_mode(DIRECT_CONTROL)
-		
-			move_to(position - MATHS.offset_rect_polygon(Rect2(to_global(top_left), bottom_right - top_left), cont.get_global_polygon()), 0.5)
+			get_node("camer_transfer_timer").wait_time = transition_time
+			move_to(position - MATHS.offset_rect_polygon(Rect2(to_global(top_left), bottom_right - top_left), cont.get_global_polygon()), transition_time)
 	
 func _on_camer_transfer_timer_timeout():
 	temp_containers = []

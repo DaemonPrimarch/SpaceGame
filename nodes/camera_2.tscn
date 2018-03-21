@@ -3,9 +3,9 @@
 [ext_resource path="res://scripts/camera_2.gd" type="Script" id=1]
 [ext_resource path="res://icon.png" type="Texture" id=2]
 
-[node name="camera" type="Node2D" index="0" groups=[
-"camera",
+[node name="camera" type="Node2D" groups=[
 "no_flip",
+"camera",
 ]]
 
 script = ExtResource( 1 )
@@ -15,6 +15,7 @@ zoom = 1.0
 stay_within_terrain = true
 debug_controls = true
 debug_labels = true
+transition_time = 1
 mode = 1
 
 [node name="debug" type="Node2D" parent="." index="0"]
