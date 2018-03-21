@@ -11,6 +11,8 @@ export var damage = 10 setget set_damage, get_damage
 
 onready var area = get_node("Area2D")
 
+var prev_layer = -1
+
 func set_active(val):
 		active = val
 		
@@ -41,3 +43,11 @@ func _on_Area2D_body_entered( body ):
 		if(not true):
 			#body.push_back()
 			pass
+
+
+func _on_damage_area_activated():
+	pass # replace with function body
+
+
+func _on_damage_area_deactivated():
+	pass

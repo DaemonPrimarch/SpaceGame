@@ -15,8 +15,8 @@ gravity_vec = Vector2( 0, 1 )
 gravity = 98.0
 linear_damp = 0.1
 angular_damp = 1.0
-collision_layer = 3
-collision_mask = 0
+collision_layer = 524288
+collision_mask = 2
 audio_bus_override = false
 audio_bus_name = "Master"
 _sections_unfolded = [ "Collision" ]
@@ -33,11 +33,11 @@ region_rect = Rect2( 1920, 640, 64, 256 )
 
 [connection signal="activated" from="." to="Sprite" method="set_visible" binds= [ true ]]
 
-[connection signal="activated" from="." to="Area2D" method="set_collision_layer_bit" binds= [ 0, 1 ]]
+[connection signal="activated" from="." to="." method="_on_damage_area_activated"]
 
 [connection signal="deactivated" from="." to="Sprite" method="set_visible" binds= [ false ]]
 
-[connection signal="deactivated" from="." to="Area2D" method="set_collision_layer_bit" binds= [ 0, 0 ]]
+[connection signal="deactivated" from="." to="." method="_on_damage_area_deactivated"]
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
 

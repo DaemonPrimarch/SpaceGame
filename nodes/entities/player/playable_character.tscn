@@ -11,6 +11,9 @@
 [ext_resource path="res://nodes/debug_labels/invulnerable_label.tscn" type="PackedScene" id=9]
 [ext_resource path="res://nodes/debug_labels/in_ladder_label.tscn" type="PackedScene" id=10]
 
+
+
+
 [sub_resource type="Animation" id=1]
 
 resource_name = "duck"
@@ -129,7 +132,7 @@ tracks/0/keys = {
 
 input_pickable = false
 collision_layer = 2
-collision_mask = 1
+collision_mask = 3
 collision/safe_margin = 0.08
 script = ExtResource( 1 )
 _sections_unfolded = [ "Collision", "Pause", "Pickable", "collision" ]
