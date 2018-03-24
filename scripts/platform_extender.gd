@@ -41,24 +41,24 @@ func _process(delta):
 	if(is_active()):
 		var flipped = 1
 			
-		if(get_platform().is_flippedH() or not get_platform().is_flippedV()):
+		if(get_platform().is_flippedH() or get_platform().is_flippedV()):
 			flipped = -1
 		if(moving_forward):
-			get_platform().move_and_push(get_extending_direction() * forward_velocity * delta * flipped)
+			get_platform().move_and_push(get_extending_direction() * forward_velocity * delta * flipped * Vector2(1,-1))
 			
 			forward_velocity += forward_acceleration * delta
 			
 			
-			if((extending_direction * extending_distance - get_platform().get_position() * flipped).normalized().dot((extending_direction * extending_distance).normalized()) <= 0):
+			if((extending_direction * extending_distance - get_platform().get_position() * flipped * Vector2(1,-1)).normalized().dot((extending_direction * extending_distance).normalized()) <= 0):
 				moving_forward = false
 				
 				forward_velocity = forward_starting_velocity
 		else:
-			get_platform().move_and_push(get_extending_direction() * backward_velocity * delta * -1 * flipped)
+			get_platform().move_and_push(get_extending_direction() * backward_velocity * delta * -1 * flipped * Vector2(1,-1))
 
 			backward_velocity += backward_acceleration * delta
 
-			if((get_platform().get_position() * flipped).normalized().dot((extending_direction * extending_distance).normalized()) <= 0):
+			if((get_platform().get_position() * flipped * Vector2(1,-1)).normalized().dot((extending_direction * extending_distance).normalized()) <= 0):
 				moving_forward = true
 
 				backward_velocity = backward_starting_velocity

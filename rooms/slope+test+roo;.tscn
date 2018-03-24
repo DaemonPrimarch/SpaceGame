@@ -1,23 +1,18 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://nodes/room.tscn" type="PackedScene" id=1]
-[ext_resource path="res://nodes/room_elements/moving_platforms/moveable_platform_small.tscn" type="PackedScene" id=2]
-[ext_resource path="res://nodes/room_elements/moving_platforms/moveable_platform.tscn" type="PackedScene" id=3]
-[ext_resource path="res://nodes/extending_player_stick_platform.tscn" type="PackedScene" id=4]
-[ext_resource path="res://nodes/platform_extender.tscn" type="PackedScene" id=5]
-[ext_resource path="res://nodes/player_stick_platform.tscn" type="PackedScene" id=6]
-[ext_resource path="res://nodes/room_elements/moving_platforms/platform_mover.tscn" type="PackedScene" id=7]
-[ext_resource path="res://nodes/platform.tscn" type="PackedScene" id=8]
+[ext_resource path="res://nodes/platform_extender.tscn" type="PackedScene" id=2]
+[ext_resource path="res://nodes/player_stick_platform.tscn" type="PackedScene" id=3]
 
 [node name="room" index="0" instance=ExtResource( 1 )]
 
 [node name="terrain" parent="." index="0"]
 
-tile_data = PoolIntArray( 0, 0, 0, 1, 0, 0, 2, 0, 0, 3, 0, 0, 4, 0, 0, 5, 0, 0, 6, 0, 0, 7, 0, 0, 8, 0, 0, 9, 0, 0, 10, 0, 0, 11, 0, 0, 12, 0, 0, 13, 0, 0, 14, 0, 0, 15, 0, 0, 16, 0, 0, 17, 0, 0, 18, 0, 0, 19, 9, 0, 20, 9, 0, 21, 9, 0, 22, 9, 0, 23, 9, 0, 24, 9, 0, 25, 9, 0, 65536, 0, 0, 65561, 9, 0, 131072, 0, 0, 131097, 9, 0, 196608, 0, 0, 196633, 9, 0, 262144, 0, 0, 262169, 9, 0, 327680, 0, 0, 327694, 93, 0, 327695, 93, 0, 327696, 93, 0, 327697, 93, 0, 327698, 93, 0, 327699, 93, 0, 327700, 93, 0, 327701, 93, 0, 327702, 93, 0, 327705, 9, 0, 393216, 0, 0, 393225, 89, 0, 393226, 92, 0, 393227, 90, 0, 393228, 91, 0, 393241, 9, 0, 458752, 0, 0, 458759, 89, 0, 458760, 92, 0, 458761, 9, 0, 458762, 9, 0, 458765, 90, 0, 458766, 91, 0, 458775, 9, 0, 458776, 9, 0, 458777, 9, 0, 524288, 0, 0, 524293, 89, 0, 524294, 92, 0, 524303, 90, 0, 524304, 91, 0, 524313, 9, 0, 589824, 0, 0, 589825, 0, 0, 589826, 0, 0, 589827, 0, 0, 589828, 0, 0, 589829, 0, 0, 589830, 0, 0, 589831, 0, 0, 589832, 0, 0, 589833, 0, 0, 589834, 0, 0, 589835, 0, 0, 589836, 0, 0, 589837, 0, 0, 589838, 0, 0, 589839, 0, 0, 589840, 0, 0, 589841, 0, 0, 589842, 0, 0, 589843, 0, 0, 589844, 9, 0, 589849, 9, 0, 655360, 0, 0, 655361, 0, 0, 655362, 0, 0, 655363, 0, 0, 655364, 0, 0, 655365, 0, 0, 655366, 0, 0, 655367, 0, 0, 655368, 0, 0, 655369, 0, 0, 655370, 0, 0, 655371, 0, 0, 655372, 0, 0, 655373, 0, 0, 655374, 0, 0, 655375, 0, 0, 655376, 0, 0, 655377, 0, 0, 655378, 0, 0, 655379, 0, 0, 655380, 9, 0, 655385, 9, 0, 786431, 25, 0, 720896, 25, 0, 720921, 25, 0, 851967, 25, 0, 786432, 25, 0, 786457, 25, 0, 851968, 25, 0, 851993, 25, 0, 917504, 25, 0, 917505, 25, 0, 917506, 25, 0, 917507, 25, 0, 917508, 25, 0, 917509, 25, 0, 917510, 25, 0, 917511, 25, 0, 917512, 25, 0, 917513, 25, 0, 917514, 25, 0, 917515, 25, 0, 917516, 25, 0, 917517, 25, 0, 917518, 25, 0, 917519, 25, 0, 917520, 25, 0, 917521, 25, 0, 917522, 25, 0, 917523, 25, 0, 917524, 25, 0, 917525, 25, 0, 917526, 25, 0, 917527, 25, 0, 917528, 25, 0, 917529, 25, 0 )
+tile_data = PoolIntArray( 0, 0, 0, 1, 0, 0, 2, 0, 0, 3, 0, 0, 4, 0, 0, 5, 0, 0, 6, 0, 0, 7, 0, 0, 8, 0, 0, 9, 0, 0, 10, 0, 0, 11, 0, 0, 12, 0, 0, 13, 0, 0, 14, 0, 0, 15, 0, 0, 16, 0, 0, 17, 0, 0, 18, 0, 0, 19, 9, 0, 20, 9, 0, 21, 9, 0, 22, 9, 0, 23, 9, 0, 24, 9, 0, 25, 9, 0, 65536, 0, 0, 65561, 9, 0, 131072, 0, 0, 131097, 9, 0, 196608, 0, 0, 196633, 9, 0, 262144, 0, 0, 262169, 9, 0, 327680, 0, 0, 327705, 9, 0, 393216, 0, 0, 393225, 89, 0, 393226, 92, 0, 393241, 9, 0, 458752, 0, 0, 458759, 89, 0, 458760, 92, 0, 458761, 9, 0, 458762, 9, 0, 458766, 91, 0, 458775, 9, 0, 458776, 9, 0, 458777, 9, 0, 524288, 0, 0, 524293, 89, 0, 524294, 92, 0, 524303, 90, 0, 524304, 91, 0, 524313, 9, 0, 589824, 0, 0, 589825, 0, 0, 589826, 0, 0, 589827, 0, 0, 589828, 0, 0, 589829, 0, 0, 589830, 0, 0, 589831, 0, 0, 589832, 0, 0, 589833, 0, 0, 589834, 0, 0, 589835, 0, 0, 589836, 0, 0, 589837, 0, 0, 589838, 0, 0, 589839, 0, 0, 589840, 0, 0, 589841, 0, 0, 589842, 0, 0, 589843, 0, 0, 589844, 9, 0, 589849, 9, 0, 655360, 0, 0, 655361, 0, 0, 655362, 0, 0, 655363, 0, 0, 655364, 0, 0, 655365, 0, 0, 655366, 0, 0, 655367, 0, 0, 655368, 0, 0, 655369, 0, 0, 655370, 0, 0, 655371, 0, 0, 655372, 0, 0, 655373, 0, 0, 655374, 0, 0, 655375, 0, 0, 655376, 0, 0, 655377, 0, 0, 655378, 0, 0, 655379, 0, 0, 655380, 9, 0, 655385, 9, 0, 786431, 25, 0, 720896, 25, 0, 720921, 25, 0, 851967, 25, 0, 786432, 25, 0, 786457, 25, 0, 851968, 25, 0, 851993, 25, 0, 917504, 25, 0, 917505, 25, 0, 917506, 25, 0, 917507, 25, 0, 917508, 25, 0, 917509, 25, 0, 917510, 25, 0, 917511, 25, 0, 917512, 25, 0, 917513, 25, 0, 917514, 25, 0, 917515, 25, 0, 917516, 25, 0, 917517, 25, 0, 917518, 25, 0, 917519, 25, 0, 917520, 25, 0, 917521, 25, 0, 917522, 25, 0, 917523, 25, 0, 917524, 25, 0, 917525, 25, 0, 917526, 25, 0, 917527, 25, 0, 917528, 25, 0, 917529, 25, 0 )
 
 [node name="debug_player_spawner" parent="." index="1"]
 
-position = Vector2( 243.847, 422.556 )
+position = Vector2( 80, 524.556 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." index="3"]
 
@@ -28,6 +23,7 @@ constant_linear_velocity = Vector2( 0, 0 )
 constant_angular_velocity = 0.0
 friction = 1.0
 bounce = 0.0
+_sections_unfolded = [ "Collision" ]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D" index="0"]
 
@@ -42,66 +38,15 @@ polygon = PoolVector2Array( -64, 0, -64, 960, 1664, 960, 1664, 0 )
 has_default_offset = false
 default_offset = Vector2( 0, 0 )
 
-[node name="moveable_platform_parent" parent="." index="5" instance=ExtResource( 2 )]
+[node name="platform_extender" parent="." index="5" instance=ExtResource( 2 )]
 
-position = Vector2( 1140, 510 )
-
-[node name="point_1" parent="moveable_platform_parent" index="1"]
-
-position = Vector2( 0, -310 )
-
-[node name="platform" parent="moveable_platform_parent" index="2"]
-
-extending = true
-
-[node name="moveable_platform_parent2" parent="." index="6" instance=ExtResource( 3 )]
-
-position = Vector2( 1690, 470 )
-
-[node name="point_0" parent="moveable_platform_parent2" index="0"]
-
-position = Vector2( 210, 60 )
-
-[node name="point_1" parent="moveable_platform_parent2" index="1"]
-
-position = Vector2( 220, 230 )
-
-[node name="platform" parent="moveable_platform_parent2" index="2" instance=ExtResource( 4 )]
-
-position = Vector2( 210, 60 )
-moveable_by_collision = false
-
-[node name="Panel" parent="moveable_platform_parent2/platform" index="3"]
-
-_sections_unfolded = [ "Anchor", "Grow Direction", "Hint", "Margin", "Mouse", "Rect", "Size Flags", "Theme" ]
-
-[node name="platform_extender" parent="." index="7" instance=ExtResource( 5 )]
-
-position = Vector2( 930, 470 )
-extending_direction = Vector2( 0, 1 )
+position = Vector2( 740, 410 )
 extending_distance = 256
 
-[node name="player_stick_platform" parent="platform_extender" index="0" instance=ExtResource( 6 )]
+[node name="player_stick_platform" parent="platform_extender" index="0" instance=ExtResource( 3 )]
 
-moveable_by_collision = false
-extending = true
-
-[node name="platform_mover" parent="." index="8" instance=ExtResource( 7 )]
-
-position = Vector2( 350, 340 )
-
-[node name="point_1" parent="platform_mover" index="1"]
-
-position = Vector2( 0, -160 )
-
-[node name="platform" parent="platform_mover" index="2" instance=ExtResource( 8 )]
-
-_sections_unfolded = [ "Collision", "Transform" ]
+editor/display_folded = true
 extending = true
 
 
-[editable path="moveable_platform_parent"]
-[editable path="moveable_platform_parent2"]
-[editable path="moveable_platform_parent2/platform"]
 [editable path="platform_extender"]
-[editable path="platform_mover"]
