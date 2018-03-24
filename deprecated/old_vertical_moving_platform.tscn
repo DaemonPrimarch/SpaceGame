@@ -1,7 +1,9 @@
 [gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://nodes/room_elements/moving_platforms/moveable_platform.tscn" type="PackedScene" id=1]
+[ext_resource path="res://deprecated/old_moveable_platform.tscn" type="PackedScene" id=1]
 [ext_resource path="res://deprecated/old_vertical_platform.tscn" type="PackedScene" id=2]
+
+
 
 
 
