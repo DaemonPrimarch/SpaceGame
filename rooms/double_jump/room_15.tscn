@@ -89,6 +89,7 @@ rect_clip_content = false
 
 [node name="damage_area3" parent="." index="8" instance=ExtResource( 5 )]
 
+editor/display_folded = true
 position = Vector2( 992, 1376 )
 
 [node name="CollisionPolygon2D" parent="damage_area3/Area2D" index="0"]
@@ -107,6 +108,7 @@ rect_clip_content = false
 
 [node name="damage_area4" parent="." index="9" instance=ExtResource( 5 )]
 
+editor/display_folded = true
 position = Vector2( 992, 928 )
 
 [node name="CollisionPolygon2D" parent="damage_area4/Area2D" index="0"]
@@ -125,7 +127,7 @@ rect_clip_content = false
 
 [node name="camera_container" parent="." index="10"]
 
-polygon = PoolVector2Array( 0, 0, 0, 1920, 1664, 1920, 1664, 0 )
+polygon = PoolVector2Array( 0, 512, 0, 1920, 1664, 1920, 1664, 512 )
 has_default_offset = false
 default_offset = Vector2( 0, 0 )
 

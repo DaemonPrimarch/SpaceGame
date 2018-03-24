@@ -237,6 +237,7 @@ position = Vector2( 1504, 544 )
 scale = Vector2( 3, 1 )
 offset = Vector2( 0, 256 )
 changes_zoom = false
+transition_time = 1
 
 [node name="camera_change_area3" parent="." index="17" instance=ExtResource( 5 )]
 
@@ -244,6 +245,7 @@ position = Vector2( 1216, 928 )
 scale = Vector2( 10, 5 )
 offset = Vector2( 0, 64 )
 changes_zoom = false
+transition_time = 1
 
 
 [editable path="ladder6"]
