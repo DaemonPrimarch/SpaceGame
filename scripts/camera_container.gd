@@ -5,6 +5,8 @@ export var default_offset = Vector2()
 
 export var default_zoom = 1
 
+export var can_zoom_out = false
+
 func _ready():
 	# Called every time the node is added to the scene.
 	# Initialization here
