@@ -41,7 +41,7 @@ func _process(delta):
 	if(is_active()):
 		var flipped = 1
 			
-		if(get_platform().is_flippedH() or get_platform().is_flippedV()):
+		if(get_platform().is_flippedH() or not get_platform().is_flippedV()):
 			flipped = -1
 		if(moving_forward):
 			get_platform().move_and_push(get_extending_direction() * forward_velocity * delta * flipped)

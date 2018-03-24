@@ -1,12 +1,13 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://nodes/room.tscn" type="PackedScene" id=1]
 [ext_resource path="res://nodes/room_elements/moving_platforms/moveable_platform_small.tscn" type="PackedScene" id=2]
 [ext_resource path="res://nodes/room_elements/moving_platforms/moveable_platform.tscn" type="PackedScene" id=3]
 [ext_resource path="res://nodes/extending_player_stick_platform.tscn" type="PackedScene" id=4]
 [ext_resource path="res://nodes/platform_extender.tscn" type="PackedScene" id=5]
-[ext_resource path="res://nodes/platform.tscn" type="PackedScene" id=6]
+[ext_resource path="res://nodes/player_stick_platform.tscn" type="PackedScene" id=6]
 [ext_resource path="res://nodes/room_elements/moving_platforms/platform_mover.tscn" type="PackedScene" id=7]
+[ext_resource path="res://nodes/platform.tscn" type="PackedScene" id=8]
 
 [node name="room" index="0" instance=ExtResource( 1 )]
 
@@ -43,11 +44,15 @@ default_offset = Vector2( 0, 0 )
 
 [node name="moveable_platform_parent" parent="." index="5" instance=ExtResource( 2 )]
 
-position = Vector2( 1600, 780 )
+position = Vector2( 1140, 510 )
 
 [node name="point_1" parent="moveable_platform_parent" index="1"]
 
 position = Vector2( 0, -310 )
+
+[node name="platform" parent="moveable_platform_parent" index="2"]
+
+extending = true
 
 [node name="moveable_platform_parent2" parent="." index="6" instance=ExtResource( 3 )]
 
@@ -72,22 +77,24 @@ _sections_unfolded = [ "Anchor", "Grow Direction", "Hint", "Margin", "Mouse", "R
 
 [node name="platform_extender" parent="." index="7" instance=ExtResource( 5 )]
 
-position = Vector2( 930, 350 )
+position = Vector2( 930, 470 )
 extending_direction = Vector2( 0, 1 )
 extending_distance = 256
 
-[node name="platform" parent="platform_extender" index="0" instance=ExtResource( 6 )]
+[node name="player_stick_platform" parent="platform_extender" index="0" instance=ExtResource( 6 )]
 
-position = Vector2( 530, 10 )
-_sections_unfolded = [ "Collision", "Transform", "collision" ]
-flippedV = true
+moveable_by_collision = false
 extending = true
 
 [node name="platform_mover" parent="." index="8" instance=ExtResource( 7 )]
 
-position = Vector2( 100, 230 )
+position = Vector2( 350, 340 )
 
-[node name="platform" parent="platform_mover" index="2" instance=ExtResource( 6 )]
+[node name="point_1" parent="platform_mover" index="1"]
+
+position = Vector2( 0, -160 )
+
+[node name="platform" parent="platform_mover" index="2" instance=ExtResource( 8 )]
 
 _sections_unfolded = [ "Collision", "Transform" ]
 extending = true
@@ -96,3 +103,5 @@ extending = true
 [editable path="moveable_platform_parent"]
 [editable path="moveable_platform_parent2"]
 [editable path="moveable_platform_parent2/platform"]
+[editable path="platform_extender"]
+[editable path="platform_mover"]

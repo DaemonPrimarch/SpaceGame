@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=2]
 
-[ext_resource path="res://nodes/platform.gd" type="Script" id=1]
+[ext_resource path="res://scripts/platform.gd" type="Script" id=1]
 
 [node name="platform" type="KinematicBody2D" groups=[
 "platform",
@@ -39,6 +39,7 @@ mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
+_sections_unfolded = [ "Anchor", "Grow Direction", "Margin", "Rect" ]
 
 [node name="Label" type="Label" parent="." index="2"]
 

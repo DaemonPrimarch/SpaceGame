@@ -1,4 +1,4 @@
-extends "res://scripts/extended_kinematic_body_2D.gd"
+extends "res://scripts/platform.gd"
 
 signal stepped_on(node)
 signal stepped_off(node)
@@ -78,7 +78,7 @@ func extend(v):
 			standing_polygon[1] -= Vector2(v.x,0)
 			
 	if(v.y != 0):		
-		if(if_flippedV()):			
+		if(is_flippedV()):
 			pass
 			
 	get_node("standing_area/CollisionPolygon2D").polygon = standing_polygon

@@ -29,15 +29,15 @@ func extend(v):
 			platform_polygon[2] -= Vector2(v.x,0)
 			
 	if(v.y != 0):		
-		if(is_flippedV()):
+		if(not is_flippedV()):
 			get_node("Panel").margin_bottom -= v.y
 				
-			platform_polygon[1] += Vector2(0,v.y)
-			platform_polygon[0] += Vector2(0,v.y)
+			platform_polygon[2] -= Vector2(0,v.y)
+			platform_polygon[3] -= Vector2(0,v.y)
 		else:
 			get_node("Panel").margin_top -= v.y
 				
-			platform_polygon[1] -= Vector2(0,v.y)
-			platform_polygon[0] -= Vector2(0,v.y)
+			platform_polygon[2] += Vector2(0,v.y)
+			platform_polygon[3] += Vector2(0,v.y)
 
 	get_node("CollisionPolygon2D").polygon = platform_polygon
