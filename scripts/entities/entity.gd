@@ -59,7 +59,7 @@ func set_platform(plat):
 		set_grounded(true)
 
 func is_grounded():
-	return grounded and is_gravity_enabled()
+	return (grounded and is_gravity_enabled()) or is_on_platform()
 
 func is_on_platform():
 	return platform != null

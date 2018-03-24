@@ -31,3 +31,6 @@ func process_state(delta):
 		get_parent().set_state("WALKING")
 	elif(Input.is_action_pressed("play_down")):
 		get_parent().set_state("CROUCHING")
+
+func _init():
+	pass

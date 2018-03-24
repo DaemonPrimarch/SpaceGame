@@ -27,11 +27,9 @@ func _init():
 	add_state("PUSHED")
 	add_state("STANDING")
 	add_state("WALKING")
-	
-	set_state("STANDING")
 
 func _ready():
-	pass
+	set_state("STANDING")
 	
 func push_back():
 	call_deferred("set_state", "PUSHED")
