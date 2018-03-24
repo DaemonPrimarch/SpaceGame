@@ -19,7 +19,7 @@
 [ext_resource path="res://nodes/camera_zoom_out_manager.tscn" type="PackedScene" id=17]
 [ext_resource path="res://icon.png" type="Texture" id=18]
 
-[node name="player" index="0" groups=[
+[node name="player" groups=[
 "player",
 "warpable",
 ] instance=ExtResource( 1 )]
@@ -75,7 +75,6 @@ collision_mask = 1
 
 [node name="double_jumping_handler" parent="." index="13" instance=ExtResource( 8 )]
 
-enabled = false
 double_jump_height = 134.4
 
 [node name="wall_jumping_handler" parent="." index="14" instance=ExtResource( 9 )]
