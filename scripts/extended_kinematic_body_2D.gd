@@ -53,6 +53,10 @@ func get_direction():
 func get_max_slope_angle():
 	return max_slope_angle
 
+
+func move_no_collision(v):
+	position += v
+
 func move_and_collide(v):
 	var prev_pos = position
 	
@@ -60,7 +64,8 @@ func move_and_collide(v):
 	
 	if(collision_info != null):
 		if(not is_moveable_by_collision()):
-			position = prev_pos +v
+			position = prev_pos + v
+			
 		
 		emit_signal("collided", collision_info, self)
 		if(collision_info.collider is load("res://scripts/extended_kinematic_body_2D.gd")):
@@ -90,6 +95,6 @@ func move_and_push(v):
 		else:
 			print("ERROR: Attempting to push object that can't be pushed")
 		
-		if(is_moveable_by_collision()):
-			position += collision_info.remainder
+#		if(not is_moveable_by_collision()):
+#			position += collision_info.remainder
 	

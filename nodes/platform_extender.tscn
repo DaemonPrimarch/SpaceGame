@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://scripts/platform_extender.gd" type="Script" id=1]
+
+[node name="platform_extender" type="Node2D"]
+
+script = ExtResource( 1 )
+active = true
+extending_direction = Vector2( 1, 0 )
+extending_distance = 64
+forward_starting_velocity = 320
+forward_acceleration = 192
+backward_starting_velocity = 64
+backward_acceleration = 64
+
+
