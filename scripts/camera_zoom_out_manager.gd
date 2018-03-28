@@ -18,7 +18,7 @@ func on_state_left(state, new_state):
 			zoomed = false
 
 func _on_Timer_timeout():
-	if(get_parent().get_node("camera2").is_in_container()):
+	if(get_parent().get_node("camera2").is_in_container() and get_parent().get_node("camera2").get_container().can_zoom_out):
 		var size = get_node("/root/MATHS").get_aabb_of_polygon(get_parent().get_node("camera2").get_container().polygon).size / get_viewport_rect().size
 		
 		var target = 1.0/min(size.x, size.y)
