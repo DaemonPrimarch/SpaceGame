@@ -135,9 +135,10 @@ arrival_ID = "3"
 
 [node name="camera_container" parent="." index="13"]
 
-polygon = PoolVector2Array( 0, 0, 0, 2880, 1664, 2880, 1664, 0 )
+polygon = PoolVector2Array( 0, 320, 0, 2880, 1664, 2880, 1664, 320 )
 has_default_offset = false
 default_offset = Vector2( 0, 0 )
+can_zoom_out = false
 
 [node name="camera_change_area2" parent="." index="14" instance=ExtResource( 5 )]
 
