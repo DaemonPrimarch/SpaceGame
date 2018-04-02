@@ -23,8 +23,12 @@ margin_bottom = 32.0
 align = 1
 valign = 1
 
-[node name="standing_area" parent="." index="3"]
+[node name="CollisionPolygon2D" parent="standing_area" index="0"]
 
-editor/display_folded = true
+polygon = PoolVector2Array( -34, -32, -34, -40, 163, -39, 163, -32 )
+
+[node name="right_detector" parent="." index="5"]
+
+position = Vector2( 156, -34 )
 
 
