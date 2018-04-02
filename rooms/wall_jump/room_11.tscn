@@ -51,6 +51,7 @@ rect_clip_content = false
 polygon = PoolVector2Array( 0, 0, 0, 2880, 1664, 2880, 1664, 0 )
 has_default_offset = false
 default_offset = Vector2( 0, 0 )
+can_zoom_out = false
 
 
 [editable path="damage_area"]

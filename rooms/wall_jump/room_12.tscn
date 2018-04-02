@@ -6,8 +6,6 @@
 [ext_resource path="res://deprecated/old_vertical_moving_platform.tscn" type="PackedScene" id=4]
 [ext_resource path="res://nodes/room_elements/regular_damage_area.tscn" type="PackedScene" id=5]
 
-
-
 [node name="room_12" instance=ExtResource( 1 )]
 
 [node name="terrain" parent="." index="0"]
@@ -16,7 +14,7 @@ tile_data = PoolIntArray( 0, 0, 0, 1, 0, 0, 2, 0, 0, 3, 0, 0, 4, 0, 0, 5, 0, 0, 
 
 [node name="debug_player_spawner" parent="." index="1"]
 
-position = Vector2( 1536, 1728 )
+position = Vector2( 832, 320 )
 
 [node name="warp_tile" parent="." index="3" instance=ExtResource( 2 )]
 
@@ -102,6 +100,7 @@ position = Vector2( 96, 1376 )
 polygon = PoolVector2Array( 0, 0, 0, 1920, 1664, 1920, 1664, 0 )
 has_default_offset = false
 default_offset = Vector2( 0, 0 )
+can_zoom_out = false
 
 [connection signal="switched_off" from="bullet_switch" to="moveable_platform_parent" method="set_active" binds= [ false ]]
 

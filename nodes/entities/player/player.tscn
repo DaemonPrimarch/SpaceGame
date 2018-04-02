@@ -20,8 +20,8 @@
 [ext_resource path="res://icon.png" type="Texture" id=18]
 
 [node name="player" groups=[
-"warpable",
 "player",
+"warpable",
 ] instance=ExtResource( 1 )]
 
 script = ExtResource( 2 )

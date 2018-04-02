@@ -26,7 +26,7 @@ flippedH = true
 
 [node name="debug_player_spawner" parent="." index="3"]
 
-position = Vector2( 128, 448 )
+position = Vector2( 1536, 192 )
 
 [node name="vertical_ladder" parent="." index="5" instance=ExtResource( 3 )]
 
