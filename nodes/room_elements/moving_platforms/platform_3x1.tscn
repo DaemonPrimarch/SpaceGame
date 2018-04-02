@@ -25,7 +25,7 @@ valign = 1
 
 [node name="CollisionPolygon2D" parent="standing_area" index="0"]
 
-polygon = PoolVector2Array( -34, -32, -34, -40, 163, -39, 163, -32 )
+polygon = PoolVector2Array( -38, -32, -38, -49, 167, -48, 167, -32 )
 
 [node name="right_detector" parent="." index="5"]
 
