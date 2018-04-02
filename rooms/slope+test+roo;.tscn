@@ -4,7 +4,7 @@
 [ext_resource path="res://nodes/platform_extender.tscn" type="PackedScene" id=2]
 [ext_resource path="res://nodes/player_stick_platform.tscn" type="PackedScene" id=3]
 
-[node name="room" index="0" instance=ExtResource( 1 )]
+[node name="room" instance=ExtResource( 1 )]
 
 [node name="terrain" parent="." index="0"]
 
@@ -37,6 +37,7 @@ visible = true
 polygon = PoolVector2Array( -64, 0, -64, 960, 1664, 960, 1664, 0 )
 has_default_offset = false
 default_offset = Vector2( 0, 0 )
+can_zoom_out = false
 
 [node name="platform_extender" parent="." index="5" instance=ExtResource( 2 )]
 

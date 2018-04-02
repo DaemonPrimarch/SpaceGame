@@ -37,7 +37,7 @@ func is_active():
 func get_extending_direction():
 	return extending_direction
 
-func _process(delta):
+func _physics_process(delta):
 	if(is_active()):
 		var flipped = 1
 			

@@ -116,15 +116,15 @@ func _ready():
 		get_parent().set_camera(self)
 
 func set_zoom(new_zoom):
+	if(is_inside_tree()):
+		var zum = get_zoom()
+		
+		if(zum == null):
+			zum = 1
+		
+		scale_viewport(Vector2(new_zoom/zum, new_zoom/zum))
 	
-	var zum = get_zoom()
-	
-	if(zum == null):
-		zum = 1
-	
-	call_deferred("scale_viewport",(Vector2(new_zoom/zum, new_zoom/zum)))
-
-	zoom = new_zoom
+		zoom = new_zoom
 
 func zoom_to(zoom, time):
 	get_node("zoom_to").stop_all()
