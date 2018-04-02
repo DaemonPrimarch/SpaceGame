@@ -24,17 +24,16 @@ func _physics_process(delta):
 		connect_node(get_node("right_detector").get_collider())
 
 func connect_node(node):
-#	if(not connected_nodes.has(node)):
-#		still_on = true
-#
-#		connected_nodes.push_back(node)
-#		if(node.is_on_platform()):
-#			node.get_platform().disconnect_node(node)
-#		node.set_platform(self)
-#		node.add_collision_exception_with(self)
-#
-#		emit_signal("stepped_on", node)
-	pass
+	if(not connected_nodes.has(node)):
+		still_on = true
+
+		connected_nodes.push_back(node)
+		if(node.is_on_platform()):
+			node.get_platform().disconnect_node(node)
+		node.set_platform(self)
+		node.add_collision_exception_with(self)
+
+		emit_signal("stepped_on", node)
 
 func disconnect_node(node):
 	if(connected_nodes.has(node)):
@@ -70,7 +69,6 @@ func extend(v):
 	
 	var standing_polygon = get_node("standing_area/CollisionPolygon2D").polygon
 	if(v.x != 0):
-		get_node("standing_area").monitoring = false
 		
 		if(is_flippedH()):
 			get_node("right_detector").position -= Vector2(v.x,0)
@@ -82,7 +80,6 @@ func extend(v):
 			standing_polygon[1] -= Vector2(v.x,0)
 			
 		get_node("standing_area/CollisionPolygon2D").polygon = standing_polygon
-		get_node("standing_area").monitoring = true
 	
 func snap_to(node):
 	pass
