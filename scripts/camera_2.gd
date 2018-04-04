@@ -74,7 +74,7 @@ func set_container(cont):
 	if(cont):
 		set_zoom(cont.get_default_camera_zoom())
 		if(cont.has_default_camera_offset()):
-			move_offset_to(cont.get_default_camera_offset(), 0.2)
+			move_offset_to(cont.get_default_camera_offset(), 0)
 		if(old_cont):
 			var bottom_right = get_viewport().size/2  / zoom
 			var bottom_left = get_viewport().size/2 * Vector2(-1, 1) / zoom
@@ -144,9 +144,12 @@ func _exit_tree():
 	set_container(null)
 	
 func move_offset_to(to, time):
-	get_node("offset_move").stop_all()
-	get_node("offset_move").interpolate_method (self, "set_offset", get_offset(), to, time, Tween.TRANS_LINEAR, Tween.EASE_OUT_IN, 0 )
-	get_node("offset_move").start()
+	if(time == 0):
+		set_offset(to)
+	else:
+		get_node("offset_move").stop_all()
+		get_node("offset_move").interpolate_method (self, "set_offset", get_offset(), to, time, Tween.TRANS_LINEAR, Tween.EASE_OUT_IN, 0 )
+		get_node("offset_move").start()
 
 var moving = false
 func move_to(pos, time):
@@ -161,7 +164,7 @@ func is_moving():
 	return moving
 
 func _physics_process(delta):
-	if(is_active()):	
+	if(is_active()):
 		get_node("debug").visible = debug_labels_enabled()
 		
 		if(debug_labels_enabled()):	
@@ -205,11 +208,12 @@ func _physics_process(delta):
 		var bottom_left = get_viewport().size/2 * Vector2(-1, 1) / zoom
 		var top_right = get_viewport().size/2 * Vector2(1, -1)  / zoom
 		var top_left = get_viewport().size/2 * -1 / zoom		
-		get_node("debug/tr").position = top_right
-		get_node("debug/br").position = bottom_right
-		get_node("debug/tl").position = top_left
-		get_node("debug/bl").position = bottom_left	
+
 		if(is_staying_within_terrain() and is_in_container() and not is_moving()):
 			position -= MATHS.offset_rect_polygon(Rect2(to_global(top_left) + (top_left + position) * (Vector2(1,1) - PHYSICS_HELPER.get_global_scale_of_node(self).abs()), bottom_right - top_left), get_container().get_global_polygon())
 	
 		get_viewport().canvas_transform.origin = ((-global_position - position * (Vector2(1,1) - PHYSICS_HELPER.get_global_scale_of_node(self).abs()))  * get_viewport().canvas_transform.get_scale()) + get_viewport_rect().size/2
+
+
+func _on_camera_tree_exited():
+	set_container(null)

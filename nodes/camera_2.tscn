@@ -4,8 +4,8 @@
 [ext_resource path="res://icon.png" type="Texture" id=2]
 
 [node name="camera" type="Node2D" groups=[
-"no_flip",
 "camera",
+"no_flip",
 ]]
 
 script = ExtResource( 1 )
@@ -93,6 +93,8 @@ process_mode = 1
 wait_time = 0.5
 one_shot = false
 autostart = false
+
+[connection signal="tree_exited" from="." to="." method="_on_camera_tree_exited"]
 
 [connection signal="timeout" from="camer_transfer_timer" to="." method="_on_camer_transfer_timer_timeout"]
 

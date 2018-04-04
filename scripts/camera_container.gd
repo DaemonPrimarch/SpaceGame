@@ -2,14 +2,13 @@ extends Polygon2D
 
 export var has_default_offset = false
 export var default_offset = Vector2()
+export var default_offset_move_time = 0
 
 export var default_zoom = 1
 
 export var can_zoom_out = false
 
 func _ready():
-	# Called every time the node is added to the scene.
-	# Initialization here
 	pass
 
 func get_default_camera_zoom():
@@ -31,6 +30,5 @@ func get_global_polygon():
 
 func _physics_process(delta):
 	for camera in get_tree().get_nodes_in_group("camera"):
-		
 		if(not (camera.is_in_container() and camera.get_container() == self) and MATHS.is_point_in_polygon(camera.get_follow_point(), get_global_polygon())):
 			camera.set_container(self)
