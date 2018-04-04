@@ -22,6 +22,8 @@ invert_border = 100.0
 script = ExtResource( 1 )
 has_default_offset = false
 default_offset = Vector2( 0, 0 )
+offset_move_time = 0
 default_zoom = 1
+can_zoom_out = false
 
 

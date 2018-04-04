@@ -230,6 +230,7 @@ rect_scale = Vector2( 1, 160 )
 polygon = PoolVector2Array( 0, 0, 0, 1920, 1664, 1920, 1664, 0 )
 has_default_offset = false
 default_offset = Vector2( 0, 0 )
+default_offset_move_time = 0
 can_zoom_out = false
 
 [node name="camera_change_area2" parent="." index="16" instance=ExtResource( 5 )]
@@ -238,7 +239,6 @@ position = Vector2( 1504, 544 )
 scale = Vector2( 3, 1 )
 offset = Vector2( 0, 256 )
 changes_zoom = false
-transition_time = 1
 
 [node name="camera_change_area3" parent="." index="17" instance=ExtResource( 5 )]
 
@@ -246,13 +246,11 @@ position = Vector2( 1216, 928 )
 scale = Vector2( 10, 5 )
 offset = Vector2( 0, 64 )
 changes_zoom = false
-transition_time = 1
 
 [node name="camera_change_area" parent="." index="18" instance=ExtResource( 5 )]
 
 position = Vector2( 128, 768 )
 offset = Vector2( 0, -320 )
-transition_time = 1
 
 
 [editable path="ladder6"]
