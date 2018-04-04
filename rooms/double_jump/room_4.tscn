@@ -4,8 +4,6 @@
 [ext_resource path="res://nodes/room_elements/regular_warp_tile.tscn" type="PackedScene" id=2]
 [ext_resource path="res://deprecated/old_moveable_platform_small.tscn" type="PackedScene" id=3]
 
-
-
 [node name="room_4" instance=ExtResource( 1 )]
 
 [node name="terrain" parent="." index="0"]
@@ -78,6 +76,7 @@ position = Vector2( 320, 0 )
 polygon = PoolVector2Array( 0, 0, 0, 1920, 1664, 1920, 1664, 0 )
 has_default_offset = false
 default_offset = Vector2( 0, 0 )
+can_zoom_out = false
 
 
 [editable path="moveable_platform_parent"]

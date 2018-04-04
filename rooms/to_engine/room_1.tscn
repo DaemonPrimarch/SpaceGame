@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://nodes/room.tscn" type="PackedScene" id=1]
 [ext_resource path="res://nodes/room_elements/regular_warp_tile.tscn" type="PackedScene" id=2]
 [ext_resource path="res://nodes/warp_arrival.tscn" type="PackedScene" id=3]
 [ext_resource path="res://nodes/warp_tile.tscn" type="PackedScene" id=4]
+[ext_resource path="res://nodes/room_elements/camera_change_area.tscn" type="PackedScene" id=5]
 
 [node name="room_1" instance=ExtResource( 1 )]
 
@@ -49,9 +50,43 @@ rect_clip_content = false
 
 [node name="camera_container" parent="." index="6"]
 
-polygon = PoolVector2Array( 0, 0, 0, 1920, 1664, 1920, 1664, 0 )
+polygon = PoolVector2Array( 0, 512, 0, 1920, 1664, 1920, 1664, 512 )
 has_default_offset = false
 default_offset = Vector2( 0, 0 )
+can_zoom_out = false
+
+[node name="camera_change_area" parent="." index="7" instance=ExtResource( 5 )]
+
+editor/display_folded = true
+position = Vector2( 832, 1568 )
+offset = Vector2( 0, -384 )
+
+[node name="camera_change_area4" parent="." index="8" instance=ExtResource( 5 )]
+
+editor/display_folded = true
+position = Vector2( 1536, 768 )
+
+[node name="camera_change_area2" parent="." index="9" instance=ExtResource( 5 )]
+
+editor/display_folded = true
+position = Vector2( 672, 1632 )
+
+[node name="CollisionPolygon2D" parent="camera_change_area2" index="0"]
+
+polygon = PoolVector2Array( 32, -352, -32, -352, -32, 32, 32, 32 )
+
+[node name="camera_change_area3" parent="." index="10" instance=ExtResource( 5 )]
+
+editor/display_folded = true
+position = Vector2( 992, 1632 )
+
+[node name="CollisionPolygon2D" parent="camera_change_area3" index="0"]
+
+polygon = PoolVector2Array( 32, -352, -32, -352, -32, 32, 32, 32 )
 
 
 [editable path="warp_tile"]
+[editable path="camera_change_area"]
+[editable path="camera_change_area4"]
+[editable path="camera_change_area2"]
+[editable path="camera_change_area3"]
