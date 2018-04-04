@@ -17,6 +17,8 @@ export var debug_labels = true
 
 export var transition_time = 1
 
+var debug_mode = false
+
 signal completed_zoom
 signal entered_container
 
@@ -179,7 +181,7 @@ func _physics_process(delta):
 	if(is_active()):
 		get_node("debug").visible = debug_labels_enabled()
 		
-		if(debug_labels_enabled()):	
+		if(debug_labels_enabled() and debug_mode):	
 			get_node("debug/Sprite").modulate = Color(255, 0, 0)
 			get_node("debug/tr").modulate = Color(255, 0, 0)
 			get_node("debug/br").modulate = Color(255, 0, 0)
@@ -189,10 +191,10 @@ func _physics_process(delta):
 		if(get_control_mode() == FOLLOW_PARENT):
 			var dir = Vector2()
 				
-			if((get_offset() - position).length() <= 64):
-				dir = get_offset() - position
-			else:
-				dir = (get_offset() - position).normalized() * 64
+			#if((get_offset() - position).length() <= 64 * 2):
+			dir = get_offset() - position
+			#else:
+				#dir = (get_offset() - position).normalized() * 64
 			
 			if(debug_labels_enabled()):
 				get_node("debug/default_pos").position = -position + get_offset()
