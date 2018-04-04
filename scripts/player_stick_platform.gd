@@ -1,3 +1,5 @@
+tool
+
 extends "res://scripts/platform.gd"
 
 signal stepped_on(node)
@@ -71,9 +73,9 @@ func extend(v):
 	if(v.x != 0):
 		
 		if(is_flippedH()):
-			get_node("right_detector").position -= Vector2(v.x,0)
-			standing_polygon[2] -= Vector2(v.x,0)
-			standing_polygon[3] -= Vector2(v.x,0)
+			get_node("left_detector").position -= Vector2(v.x,0)
+			standing_polygon[0] += Vector2(v.x,0)
+			standing_polygon[1] += Vector2(v.x,0)
 		else:
 			get_node("left_detector").position -= Vector2(v.x,0)
 			standing_polygon[0] -= Vector2(v.x,0)
