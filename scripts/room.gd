@@ -32,6 +32,8 @@ func _on_room_room_lit():
 	get_node("CanvasModulate").color = Color(1,1,1)
 
 func generate_camera_container():
+	print("GENERATED CAMERA CONTAINER")
+	
 	var min_point = Vector2(10000, 10000)
 	
 	for tile in get_node("terrain").get_used_cells():

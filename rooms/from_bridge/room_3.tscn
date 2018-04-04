@@ -53,6 +53,8 @@ arrival_ID = "1"
 polygon = PoolVector2Array( 0, 0, 0, 960, 1664, 960, 1664, 0 )
 has_default_offset = false
 default_offset = Vector2( 0, 0 )
+offset_move_time = 0
+can_zoom_out = false
 
 
 [editable path="warp_tile"]

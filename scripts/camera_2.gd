@@ -80,8 +80,20 @@ func set_container(cont):
 			var bottom_left = get_viewport().size/2 * Vector2(-1, 1) / zoom
 			var top_right = get_viewport().size/2 * Vector2(1, -1)  / zoom
 			var top_left = get_viewport().size/2 * -1 / zoom
-
-			position -= MATHS.offset_rect_polygon(Rect2(to_global(top_left), bottom_right - top_left), old_cont.get_global_polygon())
+			
+			var quick_offset_move = MATHS.offset_rect_polygon(Rect2(to_global(top_left), bottom_right - top_left), old_cont.get_global_polygon())
+			
+			var new_offset =  MATHS.offset_rect_polygon(Rect2(to_global(top_left), bottom_right - top_left), cont.get_global_polygon())
+			
+			var final_offset = Vector2()
+			
+			if(abs(new_offset.x) == abs(quick_offset_move.x)):
+				final_offset.x = new_offset.x
+			if(abs(new_offset.y) == abs(quick_offset_move.y)):
+				final_offset.y = new_offset.y
+			
+			
+			position -= final_offset
 
 			set_control_mode(DIRECT_CONTROL)
 			get_node("camer_transfer_timer").wait_time = transition_time
