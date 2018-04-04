@@ -2,7 +2,7 @@ extends Polygon2D
 
 export var has_default_offset = false
 export var default_offset = Vector2()
-export var default_offset_move_time = 0
+export var offset_move_time = 0
 
 export var default_zoom = 1
 
@@ -18,7 +18,7 @@ func get_default_camera_offset():
 	return default_offset
 	
 func has_default_camera_offset():
-	return default_offset
+	return has_default_offset
 	
 func get_global_polygon():
 	var pol = []
