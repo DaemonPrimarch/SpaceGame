@@ -83,6 +83,7 @@ position = Vector2( 96, 1376 )
 polygon = PoolVector2Array( 0, 0, 0, 1920, 1664, 1920, 1664, 0 )
 has_default_offset = false
 default_offset = Vector2( 0, 0 )
+offset_move_time = 0
 can_zoom_out = false
 
 [connection signal="switched_on" from="bullet_switch" to="platform_extender" method="set_active" binds= [ true ]]
