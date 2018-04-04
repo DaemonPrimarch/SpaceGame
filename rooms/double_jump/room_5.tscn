@@ -69,6 +69,8 @@ position = Vector2( 544, 800 )
 polygon = PoolVector2Array( 0, 0, 0, 960, 1664, 960, 1664, 0 )
 has_default_offset = false
 default_offset = Vector2( 0, 0 )
+offset_move_time = 0
+can_zoom_out = false
 
 [connection signal="switched_on" from="bullet_switch" to="StaticBody2D" method="_set_active" binds= [ false ]]
 
