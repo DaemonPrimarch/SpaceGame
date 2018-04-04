@@ -13,7 +13,7 @@ func _ready():
 	get_platform().position = Vector2()
 
 export var active = true
-
+export var one_way = false
 export var extending_direction = Vector2(1,0)
 export var extending_distance = 64
 
@@ -33,6 +33,9 @@ func set_active(value):
 
 func is_active():
 	return active
+
+func is_one_way():
+	return one_way
 
 func get_extending_direction():
 	return extending_direction
@@ -62,3 +65,6 @@ func _physics_process(delta):
 				moving_forward = true
 
 				backward_velocity = backward_starting_velocity
+				
+				if(is_one_way()):
+					set_active(false)

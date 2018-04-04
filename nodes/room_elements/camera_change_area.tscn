@@ -9,14 +9,18 @@ gravity_vec = Vector2( 0, 1 )
 gravity = 98.0
 linear_damp = 0.1
 angular_damp = 1.0
+collision_layer = 0
+collision_mask = 2
 audio_bus_override = false
 audio_bus_name = "Master"
 script = ExtResource( 1 )
+_sections_unfolded = [ "Collision" ]
 one_way = true
 changes_offset = true
 offset = Vector2( 0, 0 )
 changes_zoom = true
 zoom = 1
+transition_time = 1
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." index="0"]
 
