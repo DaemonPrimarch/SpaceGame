@@ -31,7 +31,6 @@ position = Vector2( 128, 768 )
 polygon = PoolVector2Array( 0, 0, 0, 960, 1664, 960, 1664, 0 )
 has_default_offset = false
 default_offset = Vector2( 0, 0 )
-default_offset_move_time = 0
 can_zoom_out = false
 
 
