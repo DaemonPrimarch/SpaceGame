@@ -51,3 +51,6 @@ func generate_camera_container():
 	polygon.push_back((rect.position + rect.size * Vector2(1, 0)) * terrain.cell_size)
 	
 	get_node("camera_container").polygon = polygon
+
+func _on_room_player_entered(player):
+	get_node("/root/GUI").set_room_name(get_path())

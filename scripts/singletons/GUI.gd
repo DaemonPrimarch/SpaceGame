@@ -40,3 +40,6 @@ func reflow_HP_bars():
 	for bar in hp_bars:
 		hp_bars[bar].set_position(Vector2(hp_bars[bar].get_position().x, hp_bars[bar].get_size().y * i))
 		i += 1
+
+func set_room_name(name):
+	get_layer().get_node("room_label").text = name
