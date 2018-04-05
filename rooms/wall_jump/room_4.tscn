@@ -261,6 +261,7 @@ changes_zoom = false
 
 position = Vector2( 128, 768 )
 offset = Vector2( 0, -320 )
+transition_time = 0
 
 
 [editable path="ladder6"]

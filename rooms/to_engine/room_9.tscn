@@ -16,7 +16,7 @@
 [ext_resource path="res://nodes/room_elements/helper_areas/no_respawn_area.tscn" type="PackedScene" id=14]
 [ext_resource path="res://nodes/room_elements/bullet_hit_block.tscn" type="PackedScene" id=15]
 
-[node name="room_9" index="0" instance=ExtResource( 1 )]
+[node name="room_9" instance=ExtResource( 1 )]
 
 auto_generate_camera_container = false
 
@@ -337,6 +337,7 @@ position = Vector2( 1056, 3008 )
 
 [node name="camera_container" parent="." index="28"]
 
+visible = true
 polygon = PoolVector2Array( 0, 0, 0, 4793.92, -3328, 4800, -3328, 5760, 1664, 5760, 1664, 3840, 3328, 3840, 3328, 960, 1664, 960, 1664, 0 )
 
 [node name="warp_tile3" parent="." index="29" instance=ExtResource( 6 )]

@@ -349,6 +349,8 @@ polygon = PoolVector2Array( 0, 3840, 1664, 3840, 1664, 960, 0, 960 )
 [node name="camera_change_area" parent="." index="24" instance=ExtResource( 9 )]
 
 position = Vector2( 160, 768 )
+offset = Vector2( 0, -320 )
+transition_time = 0
 
 [connection signal="switched_on" from="bullet_switch" to="moveable_platform_parent" method="set_active" binds= [ true ]]
 
