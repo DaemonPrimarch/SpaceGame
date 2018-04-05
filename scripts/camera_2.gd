@@ -179,7 +179,7 @@ func is_moving():
 
 func _physics_process(delta):
 	if(is_active()):
-		get_node("debug").visible = debug_labels_enabled()
+		get_node("debug").visible = debug_labels_enabled() and debug_mode 
 		
 		if(debug_labels_enabled() and debug_mode):	
 			get_node("debug/Sprite").modulate = Color(255, 0, 0)
