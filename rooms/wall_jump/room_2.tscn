@@ -92,7 +92,7 @@ arrival_ID = "1"
 
 polygon = PoolVector2Array( 0, 0, 0, 1920, 1664, 1920, 1664, 0 )
 has_default_offset = true
-default_offset = Vector2( 0, -128 )
+default_offset = Vector2( 0, -320 )
 
 [node name="damage_area" parent="." index="11" instance=ExtResource( 5 )]
 
