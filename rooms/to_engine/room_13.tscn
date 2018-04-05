@@ -163,8 +163,8 @@ margin_bottom = 160.0
 
 [node name="Sprite" parent="damage_area5" index="2"]
 
-position = Vector2( 0, 64 )
-scale = Vector2( 1, 0.75 )
+position = Vector2( 0, 96 )
+scale = Vector2( 1, 0.5 )
 
 [node name="Label" parent="damage_area5" index="3"]
 
