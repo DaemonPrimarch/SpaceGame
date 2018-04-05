@@ -1,6 +1,8 @@
 extends Node2D
 
 var platform = null
+signal end_reached
+signal start_reached
 
 func get_platform():
 	return platform
@@ -56,6 +58,7 @@ func _physics_process(delta):
 				moving_forward = false
 				
 				forward_velocity = forward_starting_velocity
+				emit_signal("end_reached")
 		else:
 			get_platform().move_and_push(get_extending_direction() * backward_velocity * delta * -1 * flipped * Vector2(1,-1))
 
@@ -65,6 +68,6 @@ func _physics_process(delta):
 				moving_forward = true
 
 				backward_velocity = backward_starting_velocity
-				
+				emit_signal("start_reached")
 				if(is_one_way()):
 					set_active(false)
