@@ -333,7 +333,7 @@ flippedH = true
 
 [node name="debug_player_spawner" parent="." index="26"]
 
-position = Vector2( 1056, 3008 )
+position = Vector2( 1536, 192 )
 
 [node name="camera_container" parent="." index="28"]
 
@@ -584,7 +584,9 @@ position = Vector2( 1472, 192 )
 
 editor/display_folded = true
 position = Vector2( 736, 896 )
+changes_offset = false
 offset = Vector2( 0, -320 )
+changes_zoom = false
 
 [node name="CollisionPolygon2D" parent="camera_change_area5" index="0"]
 

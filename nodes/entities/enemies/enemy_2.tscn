@@ -76,13 +76,30 @@ size_flags_vertical = 1
 
 [node name="Sprite" type="Sprite" parent="." index="3"]
 
-modulate = Color( 0.558594, 0.538223, 0.0370941, 1 )
+modulate = Color( 0.558588, 0.538223, 0.0370941, 1 )
 position = Vector2( 3.05176e-05, 1.52588e-05 )
 scale = Vector2( 0.0555556, 0.0987654 )
 texture = ExtResource( 2 )
 _sections_unfolded = [ "Visibility" ]
 
-[node name="Label" type="Label" parent="." index="4"]
+[node name="eye_white" type="Sprite" parent="." index="4"]
+
+modulate = Color( 0.87502, 0.868863, 0.717765, 1 )
+position = Vector2( 16, -16 )
+scale = Vector2( 0.0138889, 0.0246914 )
+texture = ExtResource( 2 )
+_sections_unfolded = [ "Visibility" ]
+
+[node name="eye_black" type="Sprite" parent="." index="5"]
+
+modulate = Color( 0.875, 0.868858, 0.717773, 1 )
+self_modulate = Color( 0, 0, 0, 1 )
+position = Vector2( 20, -16 )
+scale = Vector2( 0.00607639, 0.0108025 )
+texture = ExtResource( 2 )
+_sections_unfolded = [ "Visibility" ]
+
+[node name="Label" type="Label" parent="." index="6"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -105,29 +122,29 @@ percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
 
-[node name="idle_handler" type="Node" parent="." index="5"]
+[node name="idle_handler" type="Node" parent="." index="7"]
 
 script = ExtResource( 3 )
 enabled = true
 
-[node name="charging_handler" type="Node" parent="." index="6"]
+[node name="charging_handler" type="Node" parent="." index="8"]
 
 script = ExtResource( 4 )
 enabled = true
 
-[node name="stunned_by_crash_handler" type="Node" parent="." index="7"]
+[node name="stunned_by_crash_handler" type="Node" parent="." index="9"]
 
 script = ExtResource( 5 )
 enabled = true
 
-[node name="player_detector" type="RayCast2D" parent="." index="8"]
+[node name="player_detector" type="RayCast2D" parent="." index="10"]
 
 enabled = true
 exclude_parent = true
 cast_to = Vector2( 512, 0 )
 collision_mask = 2
 
-[node name="ground_detector" type="RayCast2D" parent="." index="9"]
+[node name="ground_detector" type="RayCast2D" parent="." index="11"]
 
 position = Vector2( 32, 0 )
 enabled = true
@@ -135,7 +152,7 @@ exclude_parent = true
 cast_to = Vector2( 0, 60 )
 collision_mask = 1
 
-[node name="stunned_by_exhaustion_handler" type="Node" parent="." index="10"]
+[node name="stunned_by_exhaustion_handler" type="Node" parent="." index="12"]
 
 script = ExtResource( 6 )
 enabled = true
