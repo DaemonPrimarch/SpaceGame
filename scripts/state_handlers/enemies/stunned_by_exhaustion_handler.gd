@@ -5,6 +5,7 @@ func get_handled_state():
 	
 func enter_state(previous_state):
 	.enter_state(previous_state)
+	get_parent().get_node("eye_white").set("modulate", Color(0,0,0))
 	
 func leave_state(new_state):
 	.leave_state(new_state)
