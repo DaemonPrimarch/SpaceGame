@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://scripts/entities/enemies/enemy_2.gd" type="Script" id=1]
-[ext_resource path="res://scripts/state_handlers/enemies/enemy_idle_handler.gd" type="Script" id=2]
-[ext_resource path="res://scripts/state_handlers/enemies/enemy_charging_handler.gd" type="Script" id=3]
-[ext_resource path="res://scripts/state_handlers/enemies/enemy_stunned_by_crash_handler.gd" type="Script" id=4]
-[ext_resource path="res://scripts/state_handlers/enemies/stunned_by_exhaustion_handler.gd" type="Script" id=5]
+[ext_resource path="res://sprites/white.png" type="Texture" id=2]
+[ext_resource path="res://scripts/state_handlers/enemies/enemy_idle_handler.gd" type="Script" id=3]
+[ext_resource path="res://scripts/state_handlers/enemies/enemy_charging_handler.gd" type="Script" id=4]
+[ext_resource path="res://scripts/state_handlers/enemies/enemy_stunned_by_crash_handler.gd" type="Script" id=5]
+[ext_resource path="res://scripts/state_handlers/enemies/stunned_by_exhaustion_handler.gd" type="Script" id=6]
 
 [node name="enemy_2" type="KinematicBody2D"]
 
@@ -73,7 +74,15 @@ mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
 
-[node name="Label" type="Label" parent="." index="3"]
+[node name="Sprite" type="Sprite" parent="." index="3"]
+
+modulate = Color( 0.558594, 0.538223, 0.0370941, 1 )
+position = Vector2( 3.05176e-05, 1.52588e-05 )
+scale = Vector2( 0.0555556, 0.0987654 )
+texture = ExtResource( 2 )
+_sections_unfolded = [ "Visibility" ]
+
+[node name="Label" type="Label" parent="." index="4"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -96,29 +105,29 @@ percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
 
-[node name="idle_handler" type="Node" parent="." index="4"]
-
-script = ExtResource( 2 )
-enabled = true
-
-[node name="charging_handler" type="Node" parent="." index="5"]
+[node name="idle_handler" type="Node" parent="." index="5"]
 
 script = ExtResource( 3 )
 enabled = true
 
-[node name="stunned_by_crash_handler" type="Node" parent="." index="6"]
+[node name="charging_handler" type="Node" parent="." index="6"]
 
 script = ExtResource( 4 )
 enabled = true
 
-[node name="player_detector" type="RayCast2D" parent="." index="7"]
+[node name="stunned_by_crash_handler" type="Node" parent="." index="7"]
+
+script = ExtResource( 5 )
+enabled = true
+
+[node name="player_detector" type="RayCast2D" parent="." index="8"]
 
 enabled = true
 exclude_parent = true
 cast_to = Vector2( 512, 0 )
 collision_mask = 2
 
-[node name="ground_detector" type="RayCast2D" parent="." index="8"]
+[node name="ground_detector" type="RayCast2D" parent="." index="9"]
 
 position = Vector2( 32, 0 )
 enabled = true
@@ -126,9 +135,9 @@ exclude_parent = true
 cast_to = Vector2( 0, 60 )
 collision_mask = 1
 
-[node name="stunned_by_exhaustion_handler" type="Node" parent="." index="9"]
+[node name="stunned_by_exhaustion_handler" type="Node" parent="." index="10"]
 
-script = ExtResource( 5 )
+script = ExtResource( 6 )
 enabled = true
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_object_hit"]

@@ -8,7 +8,7 @@
 [ext_resource path="res://nodes/room_elements/bullet_hit_block.tscn" type="PackedScene" id=6]
 [ext_resource path="res://nodes/room_elements/camera_change_area.tscn" type="PackedScene" id=7]
 
-[node name="room_3" instance=ExtResource( 1 )]
+[node name="room_3" index="0" instance=ExtResource( 1 )]
 
 [node name="terrain" parent="." index="0"]
 
@@ -84,7 +84,6 @@ position = Vector2( -160, 0 )
 
 [node name="StaticBody2D" parent="." index="8" instance=ExtResource( 4 )]
 
-editor/display_folded = true
 position = Vector2( 2208, 416 )
 
 [node name="CollisionPolygon2D" parent="StaticBody2D" index="0"]
@@ -94,12 +93,15 @@ polygon = PoolVector2Array( -32, -224, 32, -224, 32, 32, -32, 32 )
 [node name="Panel" parent="StaticBody2D" index="1"]
 
 margin_top = -224.0
-rect_clip_content = false
 
-[node name="Label" parent="StaticBody2D" index="2"]
+[node name="Sprite" parent="StaticBody2D" index="2"]
+
+position = Vector2( 0, -96 )
+scale = Vector2( 0.0555556, 0.395062 )
+
+[node name="Label" parent="StaticBody2D" index="3"]
 
 margin_top = -224.0
-rect_clip_content = false
 
 [node name="bullet_switch" parent="." index="9" instance=ExtResource( 5 )]
 
@@ -124,9 +126,6 @@ position = Vector2( 3040, 800 )
 [node name="camera_container" parent="." index="12"]
 
 polygon = PoolVector2Array( 0, 0, 0, 960, 3328, 960, 3328, 0 )
-has_default_offset = false
-default_offset = Vector2( 0, 0 )
-can_zoom_out = false
 
 [node name="camera_change_area" parent="." index="13" instance=ExtResource( 7 )]
 

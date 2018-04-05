@@ -6,7 +6,7 @@
 [ext_resource path="res://nodes/room_elements/link_block.tscn" type="PackedScene" id=4]
 [ext_resource path="res://nodes/room_elements/bullet_switch.tscn" type="PackedScene" id=5]
 
-[node name="room_12" instance=ExtResource( 1 )]
+[node name="room_12" index="0" instance=ExtResource( 1 )]
 
 [node name="terrain" parent="." index="0"]
 
@@ -34,21 +34,23 @@ _sections_unfolded = [ "Transform" ]
 
 polygon = PoolVector2Array( 32, -160, -32, -160, -32, 160, 32, 160 )
 
-[node name="Panel" parent="damage_area" index="2"]
+[node name="Panel" parent="damage_area" index="1"]
 
 margin_top = -160.0
 margin_bottom = 160.0
-rect_clip_content = false
+
+[node name="Sprite" parent="damage_area" index="2"]
+
+position = Vector2( 0, 7.62939e-06 )
+scale = Vector2( 1, 1.25 )
 
 [node name="Label" parent="damage_area" index="3"]
 
 margin_top = -160.0
 margin_bottom = 160.0
-rect_clip_content = false
 
 [node name="StaticBody2D" parent="." index="6" instance=ExtResource( 4 )]
 
-editor/display_folded = true
 position = Vector2( 608, 736 )
 
 [node name="CollisionPolygon2D" parent="StaticBody2D" index="0"]
@@ -58,16 +60,18 @@ polygon = PoolVector2Array( -32, -32, 32, -32, 32, 96, -32, 96 )
 [node name="Panel" parent="StaticBody2D" index="1"]
 
 margin_bottom = 96.0
-rect_clip_content = false
 
-[node name="Label" parent="StaticBody2D" index="2"]
+[node name="Sprite" parent="StaticBody2D" index="2"]
+
+position = Vector2( 0, 32 )
+scale = Vector2( 0.0555556, 0.197531 )
+
+[node name="Label" parent="StaticBody2D" index="3"]
 
 margin_bottom = 96.0
-rect_clip_content = false
 
 [node name="StaticBody2D2" parent="." index="7" instance=ExtResource( 4 )]
 
-editor/display_folded = true
 position = Vector2( 1248, 736 )
 
 [node name="CollisionPolygon2D" parent="StaticBody2D2" index="0"]
@@ -77,12 +81,15 @@ polygon = PoolVector2Array( -32, -32, 32, -32, 32, 96, -32, 96 )
 [node name="Panel" parent="StaticBody2D2" index="1"]
 
 margin_bottom = 96.0
-rect_clip_content = false
 
-[node name="Label" parent="StaticBody2D2" index="2"]
+[node name="Sprite" parent="StaticBody2D2" index="2"]
+
+position = Vector2( 0, 32 )
+scale = Vector2( 0.0555556, 0.197531 )
+
+[node name="Label" parent="StaticBody2D2" index="3"]
 
 margin_bottom = 96.0
-rect_clip_content = false
 
 [node name="bullet_switch" parent="." index="8" instance=ExtResource( 5 )]
 
@@ -99,8 +106,6 @@ toggleable = true
 [node name="camera_container" parent="." index="10"]
 
 polygon = PoolVector2Array( 0, 0, 0, 960, 1664, 960, 1664, 0 )
-has_default_offset = false
-default_offset = Vector2( 0, 0 )
 
 [connection signal="switched_off" from="bullet_switch" to="StaticBody2D" method="_set_active" binds= [ false ]]
 

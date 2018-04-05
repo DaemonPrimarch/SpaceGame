@@ -146,22 +146,24 @@ position = Vector2( 6496, 1664 )
 
 [node name="damage_area" parent="." index="32" instance=ExtResource( 8 )]
 
-editor/display_folded = true
 position = Vector2( 3552, 2976 )
 
 [node name="CollisionPolygon2D" parent="damage_area/Area2D" index="0"]
 
 polygon = PoolVector2Array( 96, -32, -32, -32, -32, 32, 96, 32 )
 
-[node name="Panel" parent="damage_area" index="2"]
+[node name="Panel" parent="damage_area" index="1"]
 
 margin_right = 96.0
-rect_clip_content = false
+
+[node name="Sprite" parent="damage_area" index="2"]
+
+position = Vector2( 32, 0 )
+scale = Vector2( 2, 0.25 )
 
 [node name="Label" parent="damage_area" index="3"]
 
 margin_right = 96.0
-rect_clip_content = false
 
 [node name="damage_area2" parent="." index="33" instance=ExtResource( 8 )]
 
@@ -171,15 +173,18 @@ position = Vector2( 1696, 96 )
 
 polygon = PoolVector2Array( 32, -32, -32, -32, -32, 416, 32, 416 )
 
-[node name="Panel" parent="damage_area2" index="2"]
+[node name="Panel" parent="damage_area2" index="1"]
 
 margin_bottom = 416.0
-rect_clip_content = false
+
+[node name="Sprite" parent="damage_area2" index="2"]
+
+position = Vector2( 0, 192 )
+scale = Vector2( 1, 1.75 )
 
 [node name="Label" parent="damage_area2" index="3"]
 
 margin_bottom = 416.0
-rect_clip_content = false
 
 [node name="damage_area3" parent="." index="34" instance=ExtResource( 8 )]
 
@@ -189,15 +194,18 @@ position = Vector2( 2080, 608 )
 
 polygon = PoolVector2Array( 32, -32, -32, -32, -32, 1312, 32, 1312 )
 
-[node name="Panel" parent="damage_area3" index="2"]
+[node name="Panel" parent="damage_area3" index="1"]
 
 margin_bottom = 1312.0
-rect_clip_content = false
+
+[node name="Sprite" parent="damage_area3" index="2"]
+
+position = Vector2( 0, 640 )
+scale = Vector2( 1, 5.25 )
 
 [node name="Label" parent="damage_area3" index="3"]
 
 margin_bottom = 1280.0
-rect_clip_content = false
 
 [node name="damage_area4" parent="." index="35" instance=ExtResource( 8 )]
 
@@ -208,14 +216,6 @@ position = Vector2( 1696, 1312 )
 editor/display_folded = true
 position = Vector2( 2016, 736 )
 
-[node name="Panel" parent="damage_area5" index="2"]
-
-rect_clip_content = false
-
-[node name="Label" parent="damage_area5" index="3"]
-
-rect_clip_content = false
-
 [node name="damage_area6" parent="." index="37" instance=ExtResource( 8 )]
 
 position = Vector2( 1952, 800 )
@@ -224,15 +224,18 @@ position = Vector2( 1952, 800 )
 
 polygon = PoolVector2Array( 96, -32, -32, -32, -32, 32, 96, 32 )
 
-[node name="Panel" parent="damage_area6" index="2"]
+[node name="Panel" parent="damage_area6" index="1"]
 
 margin_right = 96.0
-rect_clip_content = false
+
+[node name="Sprite" parent="damage_area6" index="2"]
+
+position = Vector2( 32, 0 )
+scale = Vector2( 2, 0.25 )
 
 [node name="Label" parent="damage_area6" index="3"]
 
 margin_right = 96.0
-rect_clip_content = false
 
 [node name="damage_area7" parent="." index="38" instance=ExtResource( 8 )]
 
@@ -242,17 +245,19 @@ position = Vector2( 1888, 864 )
 
 polygon = PoolVector2Array( 96, -32, 32, -32, 32, 32, 96, 32 )
 
-[node name="Panel" parent="damage_area7" index="2"]
+[node name="Panel" parent="damage_area7" index="1"]
 
 margin_left = 32.0
 margin_right = 96.0
-rect_clip_content = false
+
+[node name="Sprite" parent="damage_area7" index="2"]
+
+position = Vector2( 32, 0 )
+scale = Vector2( 2, 0.25 )
 
 [node name="Label" parent="damage_area7" index="3"]
 
-margin_left = 32.0
 margin_right = 96.0
-rect_clip_content = false
 
 [node name="damage_area8" parent="." index="39" instance=ExtResource( 8 )]
 
@@ -262,15 +267,18 @@ position = Vector2( 1888, 928 )
 
 polygon = PoolVector2Array( 96, -32, -32, -32, -32, 32, 96, 32 )
 
-[node name="Panel" parent="damage_area8" index="2"]
+[node name="Panel" parent="damage_area8" index="1"]
 
 margin_right = 96.0
-rect_clip_content = false
+
+[node name="Sprite" parent="damage_area8" index="2"]
+
+position = Vector2( 32, 0 )
+scale = Vector2( 2, 0.25 )
 
 [node name="Label" parent="damage_area8" index="3"]
 
 margin_right = 96.0
-rect_clip_content = false
 
 [node name="damage_area9" parent="." index="40" instance=ExtResource( 8 )]
 
@@ -280,15 +288,18 @@ position = Vector2( 1760, 928 )
 
 polygon = PoolVector2Array( 96, -32, -32, -32, -32, 32, 96, 32 )
 
-[node name="Panel" parent="damage_area9" index="2"]
+[node name="Panel" parent="damage_area9" index="1"]
 
 margin_right = 96.0
-rect_clip_content = false
+
+[node name="Sprite" parent="damage_area9" index="2"]
+
+position = Vector2( 32, 0 )
+scale = Vector2( 2, 0.25 )
 
 [node name="Label" parent="damage_area9" index="3"]
 
 margin_right = 96.0
-rect_clip_content = false
 
 
 [editable path="damage_area"]

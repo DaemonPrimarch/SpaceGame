@@ -1,9 +1,9 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://scripts/room_elements/link_block.gd" type="Script" id=1]
+[ext_resource path="res://sprites/white.png" type="Texture" id=2]
 
-
-[node name="StaticBody2D" type="StaticBody2D"]
+[node name="StaticBody2D" type="StaticBody2D" index="0"]
 
 input_pickable = false
 collision_layer = 1
@@ -33,12 +33,21 @@ margin_top = -32.0
 margin_right = 32.0
 margin_bottom = 32.0
 rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
 mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
 
-[node name="Label" type="Label" parent="." index="2"]
+[node name="Sprite" type="Sprite" parent="." index="2"]
+
+modulate = Color( 0.00772095, 0.0919878, 0.988281, 1 )
+position = Vector2( 0, 1.52588e-05 )
+scale = Vector2( 0.0555556, 0.0987654 )
+texture = ExtResource( 2 )
+_sections_unfolded = [ "Visibility" ]
+
+[node name="Label" type="Label" parent="." index="3"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -49,6 +58,7 @@ margin_top = -32.0
 margin_right = 32.0
 margin_bottom = 32.0
 rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
 mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1

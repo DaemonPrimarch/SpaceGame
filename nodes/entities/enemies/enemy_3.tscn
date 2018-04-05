@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://scripts/entities/enemies/enemy_3.gd" type="Script" id=1]
+[ext_resource path="res://sprites/white.png" type="Texture" id=2]
 
 [sub_resource type="Curve2D" id=1]
 
@@ -74,9 +75,7 @@ _sections_unfolded = [ "Collision" ]
 build_mode = 0
 polygon = PoolVector2Array( -28, -28, 27, -28, 27, 32, -28, 32 )
 
-[node name="Sprite" type="Sprite" parent="path/path_follower/enemy_3" index="2"]
-
-[node name="Panel" type="Panel" parent="path/path_follower/enemy_3" index="3"]
+[node name="Panel" type="Panel" parent="path/path_follower/enemy_3" index="2"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -95,6 +94,14 @@ size_flags_vertical = 1
 __meta__ = {
 "_edit_lock_": true
 }
+
+[node name="Sprite" type="Sprite" parent="path/path_follower/enemy_3" index="3"]
+
+modulate = Color( 0.84375, 0.336182, 0.812027, 1 )
+position = Vector2( 0, 1.52588e-05 )
+scale = Vector2( 0.0555556, 0.0987654 )
+texture = ExtResource( 2 )
+_sections_unfolded = [ "Visibility" ]
 
 [node name="Label" type="Label" parent="path/path_follower/enemy_3" index="4"]
 

@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://scripts/entities/enemies/enemy_1.gd" type="Script" id=1]
-[ext_resource path="res://sprites/enemy.png" type="Texture" id=2]
+[ext_resource path="res://sprites/white.png" type="Texture" id=2]
 
 [sub_resource type="Animation" id=1]
 
@@ -61,20 +61,12 @@ _sections_unfolded = [ "Collision" ]
 build_mode = 0
 polygon = PoolVector2Array( 30, -30, 30, 32, -30, 32, -30, -30 )
 
-[node name="Sprite" type="Sprite" parent="." index="1"]
-
-scale = Vector2( 1.10938, 2 )
-texture = ExtResource( 2 )
-hframes = 8
-frame = 5
-_sections_unfolded = [ "Animation", "Region" ]
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." index="2"]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." index="1"]
 
 build_mode = 0
 polygon = PoolVector2Array( -30, -30, 30, -30, 30, 32, -30, 32 )
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="3"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="2"]
 
 root_node = NodePath("..")
 autoplay = "walking"
@@ -84,7 +76,7 @@ playback_speed = 1.0
 anims/walking = SubResource( 1 )
 blend_times = [  ]
 
-[node name="ground_detector" type="RayCast2D" parent="." index="4"]
+[node name="ground_detector" type="RayCast2D" parent="." index="3"]
 
 position = Vector2( -32.1745, 31.7773 )
 enabled = true
@@ -92,7 +84,7 @@ exclude_parent = true
 cast_to = Vector2( 0, 50 )
 collision_mask = 1
 
-[node name="wall_detector" type="RayCast2D" parent="." index="5"]
+[node name="wall_detector" type="RayCast2D" parent="." index="4"]
 
 position = Vector2( 13.5053, 0.794434 )
 enabled = true
@@ -100,14 +92,14 @@ exclude_parent = true
 cast_to = Vector2( -50, 0 )
 collision_mask = 1
 
-[node name="debug_vector" type="RayCast2D" parent="." index="6"]
+[node name="debug_vector" type="RayCast2D" parent="." index="5"]
 
 enabled = false
 exclude_parent = true
 cast_to = Vector2( 0, 50 )
 collision_mask = 1
 
-[node name="Panel" type="Panel" parent="." index="7"]
+[node name="Panel" type="Panel" parent="." index="6"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -123,6 +115,16 @@ mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
+
+[node name="Sprite" type="Sprite" parent="." index="7"]
+
+modulate = Color( 0.374426, 0.0258179, 0.550781, 1 )
+position = Vector2( 3.8147e-06, -3.35317e-05 )
+scale = Vector2( 0.444444, 0.0987653 )
+texture = ExtResource( 2 )
+hframes = 8
+frame = 5
+_sections_unfolded = [ "Animation", "Region", "Visibility" ]
 
 [node name="Label" type="Label" parent="." index="8"]
 

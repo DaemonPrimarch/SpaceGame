@@ -50,10 +50,7 @@ rect_clip_content = false
 
 [node name="camera_container" parent="." index="6"]
 
-polygon = PoolVector2Array( 0, 512, 0, 1920, 1664, 1920, 1664, 512 )
-has_default_offset = false
-default_offset = Vector2( 0, 0 )
-can_zoom_out = false
+polygon = PoolVector2Array( 0, 0, 0, 1920, 1664, 1920, 1664, 0 )
 
 [node name="camera_change_area" parent="." index="7" instance=ExtResource( 5 )]
 

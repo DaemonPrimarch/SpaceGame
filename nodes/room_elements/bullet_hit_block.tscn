@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://scripts/room_elements/bullet_hit_block.gd" type="Script" id=1]
+[ext_resource path="res://sprites/white.png" type="Texture" id=2]
 
 [node name="StaticBody2D" type="StaticBody2D"]
 
@@ -35,7 +36,15 @@ mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
 
-[node name="Label" type="Label" parent="." index="2"]
+[node name="Sprite" type="Sprite" parent="." index="2"]
+
+modulate = Color( 0.621094, 0.3404, 0.0121307, 1 )
+position = Vector2( 0, 1.52588e-05 )
+scale = Vector2( 0.0555556, 0.0987654 )
+texture = ExtResource( 2 )
+_sections_unfolded = [ "Visibility" ]
+
+[node name="Label" type="Label" parent="." index="3"]
 
 anchor_left = 0.0
 anchor_top = 0.0

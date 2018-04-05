@@ -72,18 +72,15 @@ position = Vector2( 1536, 1728 )
 [node name="camera_container" parent="." index="8"]
 
 polygon = PoolVector2Array( 0, 0, 0, 1920, 1664, 1920, 1664, 0 )
-has_default_offset = false
-default_offset = Vector2( 0, 0 )
-can_zoom_out = false
 
 [node name="StaticBody2D" parent="." index="9" instance=ExtResource( 5 )]
 
 position = Vector2( 96, 1568 )
 
+[connection signal="toggle" from="StaticBody2D" to="platform_extender3" method="set_active" binds= [ true ]]
+
 [connection signal="toggle" from="StaticBody2D" to="platform_extender" method="set_active" binds= [ true ]]
 
 [connection signal="toggle" from="StaticBody2D" to="platform_extender2" method="set_active" binds= [ true ]]
-
-[connection signal="toggle" from="StaticBody2D" to="platform_extender3" method="set_active" binds= [ true ]]
 
 

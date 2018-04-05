@@ -33,121 +33,133 @@ flippedH = true
 
 [node name="damage_area" parent="." index="5" instance=ExtResource( 3 )]
 
-editor/display_folded = true
 position = Vector2( 800, 672 )
 
 [node name="CollisionPolygon2D" parent="damage_area/Area2D" index="0"]
 
 polygon = PoolVector2Array( 32, -32, -608, -32, -608, 32, 32, 32 )
 
-[node name="Panel" parent="damage_area" index="2"]
+[node name="Panel" parent="damage_area" index="1"]
 
 margin_left = -608.0
-rect_clip_content = false
+
+[node name="Sprite" parent="damage_area" index="2"]
+
+position = Vector2( -288, 0 )
+scale = Vector2( 10, 0.25 )
 
 [node name="Label" parent="damage_area" index="3"]
 
 margin_left = -608.0
-rect_clip_content = false
 
 [node name="damage_area5" parent="." index="6" instance=ExtResource( 3 )]
 
-editor/display_folded = true
 position = Vector2( 992, 2528 )
 
 [node name="CollisionPolygon2D" parent="damage_area5/Area2D" index="0"]
 
 polygon = PoolVector2Array( 32, -32, -672, -32, -672, 32, 32, 32 )
 
-[node name="Panel" parent="damage_area5" index="2"]
+[node name="Panel" parent="damage_area5" index="1"]
 
 margin_left = -672.0
-rect_clip_content = false
+
+[node name="Sprite" parent="damage_area5" index="2"]
+
+position = Vector2( -320, 0 )
+scale = Vector2( 11, 0.25 )
 
 [node name="Label" parent="damage_area5" index="3"]
 
 margin_left = -672.0
-rect_clip_content = false
 
 [node name="damage_area2" parent="." index="7" instance=ExtResource( 3 )]
 
-editor/display_folded = true
 position = Vector2( 864, 1248 )
 
 [node name="CollisionPolygon2D" parent="damage_area2/Area2D" index="0"]
 
 polygon = PoolVector2Array( 608, -32, -32, -32, -32, 32, 608, 32 )
 
-[node name="Panel" parent="damage_area2" index="2"]
+[node name="Panel" parent="damage_area2" index="1"]
 
 margin_right = 608.0
-rect_clip_content = false
+
+[node name="Sprite" parent="damage_area2" index="2"]
+
+position = Vector2( 288, 0 )
+scale = Vector2( 10, 0.25 )
 
 [node name="Label" parent="damage_area2" index="3"]
 
 margin_right = 608.0
-rect_clip_content = false
 
 [node name="damage_area3" parent="." index="8" instance=ExtResource( 3 )]
 
-editor/display_folded = true
 position = Vector2( 1440, 1696 )
 
 [node name="CollisionPolygon2D" parent="damage_area3/Area2D" index="0"]
 
 polygon = PoolVector2Array( 96, -32, -288, -32, -288, 32, 96, 32 )
 
-[node name="Panel" parent="damage_area3" index="2"]
+[node name="Panel" parent="damage_area3" index="1"]
 
 margin_left = -288.0
 margin_right = 96.0
-rect_clip_content = false
+
+[node name="Sprite" parent="damage_area3" index="2"]
+
+position = Vector2( -95.9999, 0 )
+scale = Vector2( 6, 0.25 )
 
 [node name="Label" parent="damage_area3" index="3"]
 
 margin_left = -288.0
 margin_right = 96.0
-rect_clip_content = false
 
 [node name="damage_area6" parent="." index="9" instance=ExtResource( 3 )]
 
-editor/display_folded = true
 position = Vector2( 1440, 2464 )
 
 [node name="CollisionPolygon2D" parent="damage_area6/Area2D" index="0"]
 
 polygon = PoolVector2Array( 96, -32, -416, -32, -416, 32, 96, 32 )
 
-[node name="Panel" parent="damage_area6" index="2"]
+[node name="Panel" parent="damage_area6" index="1"]
 
 margin_left = -416.0
 margin_right = 96.0
-rect_clip_content = false
+
+[node name="Sprite" parent="damage_area6" index="2"]
+
+position = Vector2( -160, 0 )
+scale = Vector2( 8, 0.25 )
 
 [node name="Label" parent="damage_area6" index="3"]
 
 margin_left = -416.0
 margin_right = 96.0
-rect_clip_content = false
 
 [node name="damage_area4" parent="." index="10" instance=ExtResource( 3 )]
 
-editor/display_folded = true
 position = Vector2( 1504, 1760 )
 
 [node name="CollisionPolygon2D" parent="damage_area4/Area2D" index="0"]
 
 polygon = PoolVector2Array( 32, -32, -32, -32, -32, 672, 32, 672 )
 
-[node name="Panel" parent="damage_area4" index="2"]
+[node name="Panel" parent="damage_area4" index="1"]
 
 margin_bottom = 672.0
-rect_clip_content = false
+
+[node name="Sprite" parent="damage_area4" index="2"]
+
+position = Vector2( 0, 320 )
+scale = Vector2( 1, 2.75 )
 
 [node name="Label" parent="damage_area4" index="3"]
 
 margin_bottom = 672.0
-rect_clip_content = false
 
 [node name="moveable_platform_parent" parent="." index="11" instance=ExtResource( 4 )]
 
@@ -169,10 +181,6 @@ toggleable = false
 [node name="camera_container" parent="." index="13"]
 
 polygon = PoolVector2Array( 0, 0, 0, 2880, 1664, 2880, 1664, 0 )
-has_default_offset = false
-default_offset = Vector2( 0, 0 )
-offset_move_time = 0
-can_zoom_out = false
 
 [node name="enemy_1" parent="." index="14" instance=ExtResource( 6 )]
 
@@ -196,15 +204,18 @@ position = Vector2( 1376, 1184 )
 
 polygon = PoolVector2Array( 32, -32, -416, -32, -416, 32, 32, 32 )
 
-[node name="Panel" parent="damage_area7" index="2"]
+[node name="Panel" parent="damage_area7" index="1"]
 
 margin_left = -416.0
-rect_clip_content = false
+
+[node name="Sprite" parent="damage_area7" index="2"]
+
+position = Vector2( -192, 0 )
+scale = Vector2( 7, 0.25 )
 
 [node name="Label" parent="damage_area7" index="3"]
 
 margin_left = -416.0
-rect_clip_content = false
 
 [connection signal="switched_on" from="bullet_switch" to="moveable_platform_parent" method="set_active" binds= [ true ]]
 

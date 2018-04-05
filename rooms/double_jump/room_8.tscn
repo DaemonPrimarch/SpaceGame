@@ -41,15 +41,18 @@ position = Vector2( 288, 800 )
 
 polygon = PoolVector2Array( 352, -32, -32, -32, -32, 32, 352, 32 )
 
-[node name="Panel" parent="damage_area" index="2"]
+[node name="Panel" parent="damage_area" index="1"]
 
 margin_right = 352.0
-rect_clip_content = false
+
+[node name="Sprite" parent="damage_area" index="2"]
+
+position = Vector2( 160, 0 )
+scale = Vector2( 6, 0.25 )
 
 [node name="Label" parent="damage_area" index="3"]
 
 margin_right = 352.0
-rect_clip_content = false
 
 [node name="damage_area2" parent="." index="7" instance=ExtResource( 4 )]
 
@@ -58,9 +61,6 @@ position = Vector2( 1248, 672 )
 [node name="camera_container" parent="." index="8"]
 
 polygon = PoolVector2Array( 0, 0, 0, 960, 1664, 960, 1664, 0 )
-has_default_offset = false
-default_offset = Vector2( 0, 0 )
-can_zoom_out = false
 
 
 [editable path="damage_area"]

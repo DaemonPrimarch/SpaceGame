@@ -4,7 +4,7 @@
 [ext_resource path="res://nodes/room_elements/regular_warp_tile.tscn" type="PackedScene" id=2]
 [ext_resource path="res://nodes/room_elements/regular_damage_area.tscn" type="PackedScene" id=3]
 
-[node name="room_11" instance=ExtResource( 1 )]
+[node name="room_11" index="0" instance=ExtResource( 1 )]
 
 [node name="terrain" parent="." index="0"]
 
@@ -29,30 +29,28 @@ position = Vector2( 1536, 2688 )
 
 [node name="damage_area" parent="." index="5" instance=ExtResource( 3 )]
 
-editor/display_folded = true
 position = Vector2( 352, 864 )
 
 [node name="CollisionPolygon2D" parent="damage_area/Area2D" index="0"]
 
 polygon = PoolVector2Array( 672, -32, -32, -32, -32, 32, 672, 32 )
 
-[node name="Panel" parent="damage_area" index="2"]
+[node name="Panel" parent="damage_area" index="1"]
 
 margin_right = 672.0
-rect_clip_content = false
+
+[node name="Sprite" parent="damage_area" index="2"]
+
+position = Vector2( 320, 0 )
+scale = Vector2( 11, 0.25 )
 
 [node name="Label" parent="damage_area" index="3"]
 
 margin_right = 672.0
-rect_clip_content = false
 
 [node name="camera_container" parent="." index="6"]
 
 polygon = PoolVector2Array( 0, 0, 0, 2880, 1664, 2880, 1664, 0 )
-has_default_offset = false
-default_offset = Vector2( 0, 0 )
-default_offset_move_time = 0
-can_zoom_out = false
 
 
 [editable path="damage_area"]

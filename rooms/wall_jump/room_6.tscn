@@ -10,7 +10,7 @@
 [ext_resource path="res://nodes/room_elements/camera_container.tscn" type="PackedScene" id=8]
 [ext_resource path="res://nodes/room_elements/camera_change_area.tscn" type="PackedScene" id=9]
 
-[node name="room_6" instance=ExtResource( 1 )]
+[node name="room_6" index="0" instance=ExtResource( 1 )]
 
 [node name="terrain" parent="." index="0"]
 
@@ -56,22 +56,24 @@ position = Vector2( 896, 0 )
 
 [node name="damage_area2" parent="." index="7" instance=ExtResource( 4 )]
 
-editor/display_folded = true
 position = Vector2( 800, 1568 )
 
 [node name="CollisionPolygon2D" parent="damage_area2/Area2D" index="0"]
 
 polygon = PoolVector2Array( 32, -32, -544, -32, -544, 32, 32, 32 )
 
-[node name="Panel" parent="damage_area2" index="2"]
+[node name="Panel" parent="damage_area2" index="1"]
 
 margin_left = -544.0
-rect_clip_content = false
+
+[node name="Sprite" parent="damage_area2" index="2"]
+
+position = Vector2( -256, 0 )
+scale = Vector2( 9, 0.25 )
 
 [node name="Label" parent="damage_area2" index="3"]
 
 margin_left = -544.0
-rect_clip_content = false
 
 [node name="bullet_switch" parent="." index="8" instance=ExtResource( 5 )]
 
@@ -81,7 +83,6 @@ toggleable = false
 
 [node name="damage_area3" parent="." index="9" instance=ExtResource( 4 )]
 
-editor/display_folded = true
 position = Vector2( 96, 1888 )
 
 [node name="Area2D" parent="damage_area3" index="0"]
@@ -92,135 +93,150 @@ editor/display_folded = true
 
 polygon = PoolVector2Array( 1056, -32, -32, -32, -32, 32, 1056, 32 )
 
-[node name="Panel" parent="damage_area3" index="2"]
+[node name="Panel" parent="damage_area3" index="1"]
 
 margin_right = 1056.0
-rect_clip_content = false
+
+[node name="Sprite" parent="damage_area3" index="2"]
+
+position = Vector2( 512, 0 )
+scale = Vector2( 17, 0.25 )
 
 [node name="Label" parent="damage_area3" index="3"]
 
 margin_right = 1056.0
-rect_clip_content = false
 
 [node name="damage_area4" parent="." index="10" instance=ExtResource( 4 )]
 
-editor/display_folded = true
 position = Vector2( 416, 1696 )
 
 [node name="CollisionPolygon2D" parent="damage_area4/Area2D" index="0"]
 
 polygon = PoolVector2Array( 480, -32, 32, -32, 32, 32, 480, 32 )
 
-[node name="Panel" parent="damage_area4" index="2"]
+[node name="Panel" parent="damage_area4" index="1"]
 
 margin_left = 32.0
 margin_right = 480.0
-rect_clip_content = false
+
+[node name="Sprite" parent="damage_area4" index="2"]
+
+position = Vector2( 224, 0 )
+scale = Vector2( 8, 0.25 )
 
 [node name="Label" parent="damage_area4" index="3"]
 
 margin_left = 32.0
 margin_right = 480.0
-rect_clip_content = false
 
 [node name="damage_area5" parent="." index="11" instance=ExtResource( 4 )]
 
-editor/display_folded = true
 position = Vector2( 1312, 2720 )
 
 [node name="CollisionPolygon2D" parent="damage_area5/Area2D" index="0"]
 
 polygon = PoolVector2Array( 224, -32, -32, -32, -32, 32, 224, 32 )
 
-[node name="Panel" parent="damage_area5" index="2"]
+[node name="Panel" parent="damage_area5" index="1"]
 
 margin_right = 224.0
-rect_clip_content = false
+
+[node name="Sprite" parent="damage_area5" index="2"]
+
+position = Vector2( 96, 0 )
+scale = Vector2( 4, 0.25 )
 
 [node name="Label" parent="damage_area5" index="3"]
 
 margin_right = 224.0
-rect_clip_content = false
 
 [node name="damage_area9" parent="." index="12" instance=ExtResource( 4 )]
 
-editor/display_folded = true
 position = Vector2( 864, 2720 )
 
 [node name="CollisionPolygon2D" parent="damage_area9/Area2D" index="0"]
 
 polygon = PoolVector2Array( 96, -32, -96, -32, -96, 32, 96, 32 )
 
-[node name="Panel" parent="damage_area9" index="2"]
+[node name="Panel" parent="damage_area9" index="1"]
 
 margin_left = -96.0
 margin_right = 96.0
-rect_clip_content = false
+
+[node name="Sprite" parent="damage_area9" index="2"]
+
+scale = Vector2( 3, 0.25 )
 
 [node name="Label" parent="damage_area9" index="3"]
 
 margin_left = -96.0
 margin_right = 96.0
-rect_clip_content = false
 
 [node name="damage_area10" parent="." index="13" instance=ExtResource( 4 )]
 
-editor/display_folded = true
 position = Vector2( 352, 3680 )
 
 [node name="CollisionPolygon2D" parent="damage_area10/Area2D" index="0"]
 
 polygon = PoolVector2Array( 416, -32, -32, -32, -32, 32, 416, 32 )
 
-[node name="Panel" parent="damage_area10" index="2"]
+[node name="Panel" parent="damage_area10" index="1"]
 
 margin_right = 416.0
-rect_clip_content = false
+
+[node name="Sprite" parent="damage_area10" index="2"]
+
+position = Vector2( 192, 0 )
+scale = Vector2( 7, 0.25 )
 
 [node name="Label" parent="damage_area10" index="3"]
 
 margin_right = 416.0
-rect_clip_content = false
 
 [node name="damage_area6" parent="." index="14" instance=ExtResource( 4 )]
 
-editor/display_folded = true
 position = Vector2( 704, 2144 )
 
 [node name="CollisionPolygon2D" parent="damage_area6/Area2D" index="0"]
 
 polygon = PoolVector2Array( 64, -32, 0, -32, 0, 160, 64, 160 )
 
-[node name="Panel" parent="damage_area6" index="2"]
+[node name="Panel" parent="damage_area6" index="1"]
 
 margin_left = 0.0
 margin_right = 64.0
 margin_bottom = 160.0
-rect_clip_content = false
+
+[node name="Sprite" parent="damage_area6" index="2"]
+
+position = Vector2( 32, 64 )
+scale = Vector2( 1, 0.75 )
 
 [node name="Label" parent="damage_area6" index="3"]
 
 margin_left = 0.0
 margin_right = 64.0
 margin_bottom = 160.0
-rect_clip_content = false
 
 [node name="damage_area7" parent="." index="15" instance=ExtResource( 4 )]
 
-editor/display_folded = true
 position = Vector2( 704, 2656 )
 
 [node name="CollisionPolygon2D" parent="damage_area7/Area2D" index="0"]
 
 polygon = PoolVector2Array( 64, 32, 0, 32, 0, 224, 64, 224 )
 
-[node name="Panel" parent="damage_area7" index="2"]
+[node name="Panel" parent="damage_area7" index="1"]
 
 margin_left = 0.0
 margin_top = 32.0
 margin_right = 64.0
 margin_bottom = 224.0
-rect_clip_content = false
+
+[node name="Sprite" parent="damage_area7" index="2"]
+
+position = Vector2( 32, 128 )
+scale = Vector2( 1, 0.75 )
 
 [node name="Label" parent="damage_area7" index="3"]
 
@@ -228,7 +244,6 @@ margin_left = 0.0
 margin_top = 32.0
 margin_right = 64.0
 margin_bottom = 224.0
-rect_clip_content = false
 
 [node name="bullet_switch2" parent="." index="16" instance=ExtResource( 5 )]
 
@@ -326,16 +341,10 @@ length = 320
 [node name="camera_container" parent="." index="22"]
 
 polygon = PoolVector2Array( 0, 0, 0, 3840, 1664, 3840, 1664, 0 )
-has_default_offset = false
-default_offset = Vector2( 0, 0 )
-default_offset_move_time = 0
-can_zoom_out = false
 
 [node name="camera_container2" parent="." index="23" instance=ExtResource( 8 )]
 
 polygon = PoolVector2Array( 0, 3840, 1664, 3840, 1664, 960, 0, 960 )
-default_offset_move_time = 0
-can_zoom_out = false
 
 [node name="camera_change_area" parent="." index="24" instance=ExtResource( 9 )]
 
