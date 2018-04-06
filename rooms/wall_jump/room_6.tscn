@@ -340,7 +340,7 @@ length = 320
 
 [node name="camera_container" parent="." index="22"]
 
-polygon = PoolVector2Array( 0, 0, 0, 3840, 1664, 3840, 1664, 0 )
+polygon = PoolVector2Array( 0, 0, 0, 960, 1664, 960, 1664, 0 )
 
 [node name="camera_container2" parent="." index="23" instance=ExtResource( 8 )]
 

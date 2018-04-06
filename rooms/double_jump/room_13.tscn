@@ -8,7 +8,7 @@
 [ext_resource path="res://nodes/room_elements/regular_damage_area.tscn" type="PackedScene" id=6]
 [ext_resource path="res://nodes/room_elements/camera_change_area.tscn" type="PackedScene" id=7]
 
-[node name="room_13" index="0" instance=ExtResource( 1 )]
+[node name="room_13" instance=ExtResource( 1 )]
 
 [node name="terrain" parent="." index="0"]
 

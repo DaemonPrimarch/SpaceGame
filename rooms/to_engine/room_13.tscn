@@ -7,7 +7,7 @@
 [ext_resource path="res://nodes/room_elements/link_block.tscn" type="PackedScene" id=5]
 [ext_resource path="res://nodes/room_elements/regular_damage_area.tscn" type="PackedScene" id=6]
 
-[node name="room_13" index="0" instance=ExtResource( 1 )]
+[node name="room_13" instance=ExtResource( 1 )]
 
 [node name="terrain" parent="." index="0"]
 
@@ -20,22 +20,27 @@ position = Vector2( 1536, 192 )
 [node name="enemy_1" parent="." index="3" instance=ExtResource( 2 )]
 
 position = Vector2( 1248, 736 )
+hp_drop_chance = null
 
 [node name="enemy_2" parent="." index="4" instance=ExtResource( 2 )]
 
 position = Vector2( 1056, 736 )
+hp_drop_chance = null
 
 [node name="enemy_3" parent="." index="5" instance=ExtResource( 2 )]
 
 position = Vector2( 800, 1760 )
+hp_drop_chance = null
 
 [node name="enemy_4" parent="." index="6" instance=ExtResource( 2 )]
 
 position = Vector2( 992, 1760 )
+hp_drop_chance = null
 
 [node name="enemy_5" parent="." index="7" instance=ExtResource( 2 )]
 
 position = Vector2( 1184, 1760 )
+hp_drop_chance = null
 
 [node name="warp_tile" parent="." index="8" instance=ExtResource( 3 )]
 
