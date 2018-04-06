@@ -333,10 +333,11 @@ flippedH = true
 
 [node name="debug_player_spawner" parent="." index="26"]
 
-position = Vector2( 1536, 192 )
+position = Vector2( 1056, 3008 )
 
 [node name="camera_container" parent="." index="28"]
 
+visible = true
 polygon = PoolVector2Array( 0, 0, 0, 4793.92, -3328, 4800, -3328, 5760, 1664, 5760, 1664, 3840, 3328, 3840, 3328, 960, 1664, 960, 1664, 0 )
 
 [node name="warp_tile3" parent="." index="29" instance=ExtResource( 6 )]
@@ -583,9 +584,7 @@ position = Vector2( 1472, 192 )
 
 editor/display_folded = true
 position = Vector2( 736, 896 )
-changes_offset = false
 offset = Vector2( 0, -320 )
-changes_zoom = false
 
 [node name="CollisionPolygon2D" parent="camera_change_area5" index="0"]
 

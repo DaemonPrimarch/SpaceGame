@@ -2,7 +2,7 @@
 
 [ext_resource path="res://nodes/player_stick_platform.tscn" type="PackedScene" id=1]
 
-[node name="player_stick_platform" groups=[
+[node name="player_stick_platform" index="0" groups=[
 "wall_slideable",
 ] instance=ExtResource( 1 )]
 
@@ -25,7 +25,7 @@ valign = 1
 
 [node name="CollisionPolygon2D" parent="standing_area" index="0"]
 
-polygon = PoolVector2Array( -38, -32, -38, -49, 167, -48, 167, -32 )
+polygon = PoolVector2Array( -38, -32, -38, -40, 166, -40, 166, -32 )
 
 [node name="right_detector" parent="." index="5"]
 
