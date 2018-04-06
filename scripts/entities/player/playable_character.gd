@@ -106,3 +106,6 @@ func get_AABB():
 	#	max_y = -nby
 	
 	return Rect2(Vector2(min_x, min_y), Vector2(abs(max_x - min_x), abs(max_y - min_y)))
+
+func damage(d):
+	.damage(d)
