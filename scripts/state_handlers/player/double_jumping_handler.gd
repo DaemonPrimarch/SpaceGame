@@ -1,6 +1,6 @@
 extends "res://scripts/state_handler.gd"
 
-export var double_jump_height = 64 * 2.1 setget set_double_jump_height, get_double_jump_height
+export var double_jump_height = 64 * 2.75 setget set_double_jump_height, get_double_jump_height
 
 var double_jumped = false
 

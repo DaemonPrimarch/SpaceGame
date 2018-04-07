@@ -6,7 +6,7 @@
 [ext_resource path="res://nodes/warp_tile.tscn" type="PackedScene" id=4]
 [ext_resource path="res://nodes/room_elements/camera_change_area.tscn" type="PackedScene" id=5]
 
-[node name="room_1" instance=ExtResource( 1 )]
+[node name="room_1" index="0" instance=ExtResource( 1 )]
 
 [node name="terrain" parent="." index="0"]
 
@@ -50,7 +50,7 @@ rect_clip_content = false
 
 [node name="camera_container" parent="." index="6"]
 
-polygon = PoolVector2Array( 0, 0, 0, 1920, 1664, 1920, 1664, 0 )
+polygon = PoolVector2Array( -32, 512, 0, 1920, 1664, 1920, 1664, 512 )
 
 [node name="camera_change_area" parent="." index="7" instance=ExtResource( 5 )]
 
