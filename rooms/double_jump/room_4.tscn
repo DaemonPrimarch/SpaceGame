@@ -33,9 +33,6 @@ position = Vector2( 128, 1344 )
 
 polygon = PoolVector2Array( 0, 0, 0, 1920, 1664, 1920, 1664, 0 )
 has_default_offset = true
-default_offset = Vector2( 0, 0 )
-offset_move_time = 0
-can_zoom_out = false
 
 [node name="platform_mover" parent="." index="6" instance=ExtResource( 3 )]
 

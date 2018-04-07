@@ -65,7 +65,7 @@ func _physics_process(delta):
 		
 		if(has_arrived_at_next_point()):
 			if(is_one_way()):
-				position = get_next_point()
+				get_platform().position = get_next_point()
 				
 				emit_signal("arrived_at_next_point", get_next_point())
 			else:
