@@ -15,7 +15,7 @@ position = Vector2( 224, 32 )
 active = false
 one_way = false
 extending_direction = Vector2( 0, 1 )
-extending_distance = 576
+extending_distance = 704
 
 [node name="player_stick_platform" parent="platform_extender" index="0" instance=ExtResource( 3 )]
 
@@ -81,10 +81,6 @@ position = Vector2( 96, 1376 )
 [node name="camera_container" parent="." index="14"]
 
 polygon = PoolVector2Array( 0, 0, 0, 1920, 1664, 1920, 1664, 0 )
-has_default_offset = false
-default_offset = Vector2( 0, 0 )
-offset_move_time = 0
-can_zoom_out = false
 
 [connection signal="switched_on" from="bullet_switch" to="platform_extender" method="set_active" binds= [ true ]]
 
