@@ -19,7 +19,7 @@
 [ext_resource path="res://nodes/managers/camera_zoom_out_manager.tscn" type="PackedScene" id=17]
 [ext_resource path="res://icon.png" type="Texture" id=18]
 
-[node name="player" groups=[
+[node name="player" index="0" groups=[
 "player",
 "warpable",
 ] instance=ExtResource( 1 )]
@@ -140,10 +140,12 @@ _sections_unfolded = [ "Visibility" ]
 
 pause_mode = 2
 process_mode = 1
-wait_time = 0.35
+wait_time = 0.1
 one_shot = false
 autostart = false
 _sections_unfolded = [ "Pause" ]
+
+[connection signal="invulnerable_started" from="." to="." method="_on_player_invulnerable_started"]
 
 [connection signal="timeout" from="damage_timer" to="." method="_on_damage_timer_timeout"]
 

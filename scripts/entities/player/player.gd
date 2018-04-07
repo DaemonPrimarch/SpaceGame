@@ -11,9 +11,12 @@ func _physics_process(delta):
 
 func damage(d):
 	.damage(d)
-	damage_timer.start()
-	get_tree().set_pause(true)
 
 func _on_damage_timer_timeout():
 	damage_timer.stop()
 	get_tree().set_pause(false)
+
+
+func _on_player_invulnerable_started():
+	damage_timer.start()
+	get_tree().set_pause(true)
