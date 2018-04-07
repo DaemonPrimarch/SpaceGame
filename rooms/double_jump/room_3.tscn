@@ -1,12 +1,14 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://nodes/room.tscn" type="PackedScene" id=1]
 [ext_resource path="res://nodes/room_elements/regular_warp_tile.tscn" type="PackedScene" id=2]
-[ext_resource path="res://deprecated/old_moveable_platform_small.tscn" type="PackedScene" id=3]
-[ext_resource path="res://nodes/room_elements/link_block.tscn" type="PackedScene" id=4]
-[ext_resource path="res://nodes/room_elements/bullet_switch.tscn" type="PackedScene" id=5]
+[ext_resource path="res://nodes/room_elements/link_block.tscn" type="PackedScene" id=3]
+[ext_resource path="res://nodes/room_elements/bullet_switch.tscn" type="PackedScene" id=4]
+[ext_resource path="res://deprecated/old_moveable_platform_small.tscn" type="PackedScene" id=5]
 [ext_resource path="res://nodes/room_elements/bullet_hit_block.tscn" type="PackedScene" id=6]
 [ext_resource path="res://nodes/room_elements/camera_change_area.tscn" type="PackedScene" id=7]
+[ext_resource path="res://nodes/room_elements/moving_platforms/controllers/platform_mover.tscn" type="PackedScene" id=8]
+[ext_resource path="res://nodes/room_elements/moving_platforms/platforms/platform_2x05.tscn" type="PackedScene" id=9]
 
 [node name="room_3" index="0" instance=ExtResource( 1 )]
 
@@ -31,58 +33,7 @@ flippedH = true
 
 position = Vector2( 128, 384 )
 
-[node name="moveable_platform_parent" parent="." index="5" instance=ExtResource( 3 )]
-
-editor/display_folded = true
-position = Vector2( 576, 480 )
-
-[node name="point_0" parent="moveable_platform_parent" index="0"]
-
-position = Vector2( 416, 0 )
-
-[node name="point_1" parent="moveable_platform_parent" index="1"]
-
-position = Vector2( 0, 0 )
-
-[node name="platform" parent="moveable_platform_parent" index="2"]
-
-position = Vector2( 416, 0 )
-
-[node name="moveable_platform_parent3" parent="." index="6" instance=ExtResource( 3 )]
-
-editor/display_folded = true
-position = Vector2( 1664, 480 )
-
-[node name="point_0" parent="moveable_platform_parent3" index="0"]
-
-position = Vector2( 416, 0 )
-
-[node name="point_1" parent="moveable_platform_parent3" index="1"]
-
-position = Vector2( 0, 0 )
-
-[node name="platform" parent="moveable_platform_parent3" index="2"]
-
-position = Vector2( 416, 0 )
-
-[node name="moveable_platform_parent2" parent="." index="7" instance=ExtResource( 3 )]
-
-editor/display_folded = true
-position = Vector2( 1280, 480 )
-
-[node name="point_0" parent="moveable_platform_parent2" index="0"]
-
-position = Vector2( -160, 0 )
-
-[node name="point_1" parent="moveable_platform_parent2" index="1"]
-
-position = Vector2( 256, 0 )
-
-[node name="platform" parent="moveable_platform_parent2" index="2"]
-
-position = Vector2( -160, 0 )
-
-[node name="StaticBody2D" parent="." index="8" instance=ExtResource( 4 )]
+[node name="StaticBody2D" parent="." index="5" instance=ExtResource( 3 )]
 
 position = Vector2( 2208, 416 )
 
@@ -103,13 +54,13 @@ scale = Vector2( 0.0555556, 0.395062 )
 
 margin_top = -224.0
 
-[node name="bullet_switch" parent="." index="9" instance=ExtResource( 5 )]
+[node name="bullet_switch" parent="." index="6" instance=ExtResource( 4 )]
 
 position = Vector2( 2656, 160 )
 state = false
 toggleable = false
 
-[node name="moveable_platform_parent4" parent="." index="10" instance=ExtResource( 3 )]
+[node name="moveable_platform_parent4" parent="." index="7" instance=ExtResource( 5 )]
 
 position = Vector2( 2944, 384 )
 active = false
@@ -119,30 +70,75 @@ one_way = true
 
 position = Vector2( 0, 224 )
 
-[node name="StaticBody2D2" parent="." index="11" instance=ExtResource( 6 )]
+[node name="StaticBody2D2" parent="." index="8" instance=ExtResource( 6 )]
 
 position = Vector2( 3040, 800 )
 
-[node name="camera_container" parent="." index="12"]
+[node name="camera_container" parent="." index="9"]
 
 polygon = PoolVector2Array( 0, 0, 0, 960, 3328, 960, 3328, 0 )
 
-[node name="camera_change_area" parent="." index="13" instance=ExtResource( 7 )]
+[node name="camera_change_area" parent="." index="10" instance=ExtResource( 7 )]
 
 position = Vector2( 160, 384 )
 offset = Vector2( 192, 0 )
 
-[node name="camera_change_area2" parent="." index="14" instance=ExtResource( 7 )]
+[node name="camera_change_area2" parent="." index="11" instance=ExtResource( 7 )]
 
 position = Vector2( 2560, 512 )
+
+[node name="platform_mover" parent="." index="12" instance=ExtResource( 8 )]
+
+editor/display_folded = true
+position = Vector2( 576, 448 )
+
+[node name="point_0" parent="platform_mover" index="0"]
+
+position = Vector2( 416, 0 )
+
+[node name="point_1" parent="platform_mover" index="1"]
+
+position = Vector2( 0, 0 )
+
+[node name="player_stick_platform" parent="platform_mover" index="2" instance=ExtResource( 9 )]
+
+position = Vector2( 416, 0 )
+
+[node name="platform_mover2" parent="." index="13" instance=ExtResource( 8 )]
+
+editor/display_folded = true
+position = Vector2( 1120, 448 )
+
+[node name="point_1" parent="platform_mover2" index="1"]
+
+position = Vector2( 416, 0 )
+
+[node name="player_stick_platform" parent="platform_mover2" index="2" instance=ExtResource( 9 )]
+
+[node name="platform_mover3" parent="." index="14" instance=ExtResource( 8 )]
+
+editor/display_folded = true
+position = Vector2( 1664, 448 )
+
+[node name="point_0" parent="platform_mover3" index="0"]
+
+position = Vector2( 416, 0 )
+
+[node name="point_1" parent="platform_mover3" index="1"]
+
+position = Vector2( 0, 0 )
+
+[node name="player_stick_platform" parent="platform_mover3" index="2" instance=ExtResource( 9 )]
+
+position = Vector2( 416, 0 )
 
 [connection signal="switched_on" from="bullet_switch" to="StaticBody2D" method="_set_active" binds= [ false ]]
 
 [connection signal="toggle" from="StaticBody2D2" to="moveable_platform_parent4" method="set_active" binds= [ true ]]
 
 
-[editable path="moveable_platform_parent"]
-[editable path="moveable_platform_parent3"]
-[editable path="moveable_platform_parent2"]
 [editable path="StaticBody2D"]
 [editable path="moveable_platform_parent4"]
+[editable path="platform_mover"]
+[editable path="platform_mover2"]
+[editable path="platform_mover3"]
