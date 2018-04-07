@@ -39,6 +39,7 @@ _sections_unfolded = [ "Transform" ]
 
 [node name="light" parent="." index="3"]
 
+energy = 0.01
 _sections_unfolded = [ "Transform" ]
 
 [node name="grounded_label" parent="." index="4"]
