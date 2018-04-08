@@ -22,8 +22,6 @@ auto_generate_camera_container = true
 
 [node name="debug_player_spawner" parent="." index="1" instance=ExtResource( 3 )]
 
-enabled = true
-
 [node name="CanvasModulate" type="CanvasModulate" parent="." index="2"]
 
 color = Color( 1, 1, 1, 1 )

@@ -2,7 +2,7 @@
 
 [ext_resource path="res://nodes/GUI_elements/dialog_box.tscn" type="PackedScene" id=1]
 
-[node name="GUI_layer" type="CanvasLayer"]
+[node name="GUI_layer" type="CanvasLayer" index="0"]
 
 layer = 1
 offset = Vector2( 0, 0 )
@@ -12,11 +12,15 @@ transform = Transform2D( 1, 0, 0, 1, 0, 0 )
 
 [node name="dialog_box" parent="." index="0" instance=ExtResource( 1 )]
 
-margin_left = 480.0
-margin_top = 576.0
-margin_right = 520.0
-margin_bottom = 616.0
-rect_clip_content = false
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -128.0
+margin_top = -128.0
+margin_right = -88.0
+margin_bottom = -88.0
+_sections_unfolded = [ "Anchor", "Grow Direction", "Margin" ]
 
 [node name="room_label" type="Label" parent="." index="1"]
 
@@ -28,7 +32,6 @@ margin_left = 1536.0
 margin_right = 1636.0
 margin_bottom = 14.0
 rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
 mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1

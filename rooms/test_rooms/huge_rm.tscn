@@ -18,7 +18,6 @@ position = Vector2( 1016.98, 1879.08 )
 
 visible = true
 polygon = PoolVector2Array( 0, 0, 0, 2112, 3264, 2112, 3264, 0 )
-has_default_offset = false
 default_offset = Vector2( 400, 0 )
 
 [node name="camera_offset_mover" parent="." index="4" instance=ExtResource( 2 )]
