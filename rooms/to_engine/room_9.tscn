@@ -16,8 +16,6 @@
 [ext_resource path="res://nodes/room_elements/helper_areas/no_respawn_area.tscn" type="PackedScene" id=14]
 [ext_resource path="res://nodes/room_elements/bullet_hit_block.tscn" type="PackedScene" id=15]
 
-
-
 [node name="room_9" instance=ExtResource( 1 )]
 
 auto_generate_camera_container = false
@@ -84,8 +82,19 @@ active = false
 one_way = false
 extending_distance = 576
 
-[node name="player_stick_platform" parent="platform_extender" index="0" instance=ExtResource( 4 )]
+[node name="player_stick_platform" parent="platform_extender" index="0" groups=[
+"platform",
+] instance=ExtResource( 4 )]
 
+input_pickable = false
+collision_layer = 1
+collision_mask = 0
+collision/safe_margin = 0.08
+_sections_unfolded = [ "Collision" ]
+max_slope_angle = 0.785398
+flippedH = false
+flippedV = false
+moveable_by_collision = false
 extending = true
 
 [node name="platform_extender15" parent="." index="3" instance=ExtResource( 3 )]
@@ -94,8 +103,19 @@ position = Vector2( 320, 3808 )
 one_way = false
 extending_distance = 928
 
-[node name="player_stick_platform" parent="platform_extender15" index="0" instance=ExtResource( 4 )]
+[node name="player_stick_platform" parent="platform_extender15" index="0" groups=[
+"platform",
+] instance=ExtResource( 4 )]
 
+input_pickable = false
+collision_layer = 1
+collision_mask = 0
+collision/safe_margin = 0.08
+_sections_unfolded = [ "Collision" ]
+max_slope_angle = 0.785398
+flippedH = false
+flippedV = false
+moveable_by_collision = false
 extending = true
 
 [node name="platform_extender8" parent="." index="4" instance=ExtResource( 3 )]
@@ -105,8 +125,19 @@ position = Vector2( 2880, 1568 )
 one_way = false
 extending_distance = 384
 
-[node name="player_stick_platform" parent="platform_extender8" index="0" instance=ExtResource( 4 )]
+[node name="player_stick_platform" parent="platform_extender8" index="0" groups=[
+"platform",
+] instance=ExtResource( 4 )]
 
+input_pickable = false
+collision_layer = 1
+collision_mask = 0
+collision/safe_margin = 0.08
+_sections_unfolded = [ "Collision" ]
+max_slope_angle = 0.785398
+flippedH = false
+flippedV = false
+moveable_by_collision = false
 extending = true
 
 [node name="platform_extender9" parent="." index="5" instance=ExtResource( 3 )]
@@ -116,8 +147,19 @@ position = Vector2( 2880, 2080 )
 one_way = false
 extending_distance = 384
 
-[node name="player_stick_platform" parent="platform_extender9" index="0" instance=ExtResource( 4 )]
+[node name="player_stick_platform" parent="platform_extender9" index="0" groups=[
+"platform",
+] instance=ExtResource( 4 )]
 
+input_pickable = false
+collision_layer = 1
+collision_mask = 0
+collision/safe_margin = 0.08
+_sections_unfolded = [ "Collision" ]
+max_slope_angle = 0.785398
+flippedH = false
+flippedV = false
+moveable_by_collision = false
 extending = true
 
 [node name="platform_extender21" parent="." index="6" instance=ExtResource( 3 )]
@@ -126,8 +168,19 @@ position = Vector2( 2880, 2592 )
 one_way = false
 extending_distance = 384
 
-[node name="player_stick_platform" parent="platform_extender21" index="0" instance=ExtResource( 4 )]
+[node name="player_stick_platform" parent="platform_extender21" index="0" groups=[
+"platform",
+] instance=ExtResource( 4 )]
 
+input_pickable = false
+collision_layer = 1
+collision_mask = 0
+collision/safe_margin = 0.08
+_sections_unfolded = [ "Collision" ]
+max_slope_angle = 0.785398
+flippedH = false
+flippedV = false
+moveable_by_collision = false
 extending = true
 
 [node name="platform_extender22" parent="." index="7" instance=ExtResource( 3 )]
@@ -137,8 +190,19 @@ active = false
 one_way = false
 extending_distance = 640
 
-[node name="player_stick_platform" parent="platform_extender22" index="0" instance=ExtResource( 4 )]
+[node name="player_stick_platform" parent="platform_extender22" index="0" groups=[
+"platform",
+] instance=ExtResource( 4 )]
 
+input_pickable = false
+collision_layer = 1
+collision_mask = 0
+collision/safe_margin = 0.08
+_sections_unfolded = [ "Collision" ]
+max_slope_angle = 0.785398
+flippedH = false
+flippedV = false
+moveable_by_collision = false
 extending = true
 
 [node name="top_cp" parent="." index="8" instance=ExtResource( 3 )]
@@ -147,8 +211,19 @@ position = Vector2( 2112, 2848 )
 one_way = false
 extending_distance = 640
 
-[node name="player_stick_platform" parent="top_cp" index="0" instance=ExtResource( 4 )]
+[node name="player_stick_platform" parent="top_cp" index="0" groups=[
+"platform",
+] instance=ExtResource( 4 )]
 
+input_pickable = false
+collision_layer = 1
+collision_mask = 0
+collision/safe_margin = 0.08
+_sections_unfolded = [ "Collision" ]
+max_slope_angle = 0.785398
+flippedH = false
+flippedV = false
+moveable_by_collision = false
 extending = true
 
 [node name="platform_extender7" parent="." index="9" instance=ExtResource( 3 )]
@@ -158,9 +233,19 @@ position = Vector2( 3296, 1824 )
 one_way = false
 extending_distance = 384
 
-[node name="player_stick_platform" parent="platform_extender7" index="0" instance=ExtResource( 4 )]
+[node name="player_stick_platform" parent="platform_extender7" index="0" groups=[
+"platform",
+] instance=ExtResource( 4 )]
 
+input_pickable = false
+collision_layer = 1
+collision_mask = 0
+collision/safe_margin = 0.08
+_sections_unfolded = [ "Collision" ]
+max_slope_angle = 0.785398
 flippedH = true
+flippedV = false
+moveable_by_collision = false
 extending = true
 
 [node name="platform_extender20" parent="." index="10" instance=ExtResource( 3 )]
@@ -169,9 +254,19 @@ position = Vector2( 3296, 2336 )
 one_way = false
 extending_distance = 384
 
-[node name="player_stick_platform" parent="platform_extender20" index="0" instance=ExtResource( 4 )]
+[node name="player_stick_platform" parent="platform_extender20" index="0" groups=[
+"platform",
+] instance=ExtResource( 4 )]
 
+input_pickable = false
+collision_layer = 1
+collision_mask = 0
+collision/safe_margin = 0.08
+_sections_unfolded = [ "Collision" ]
+max_slope_angle = 0.785398
 flippedH = true
+flippedV = false
+moveable_by_collision = false
 extending = true
 
 [node name="platform_extender24" parent="." index="11" instance=ExtResource( 3 )]
@@ -180,9 +275,19 @@ position = Vector2( 2784, 2592 )
 one_way = false
 extending_distance = 640
 
-[node name="player_stick_platform" parent="platform_extender24" index="0" instance=ExtResource( 4 )]
+[node name="player_stick_platform" parent="platform_extender24" index="0" groups=[
+"platform",
+] instance=ExtResource( 4 )]
 
+input_pickable = false
+collision_layer = 1
+collision_mask = 0
+collision/safe_margin = 0.08
+_sections_unfolded = [ "Collision" ]
+max_slope_angle = 0.785398
 flippedH = true
+flippedV = false
+moveable_by_collision = false
 extending = true
 
 [node name="platform_extender14" parent="." index="12" instance=ExtResource( 3 )]
@@ -192,9 +297,19 @@ position = Vector2( 1056, 3488 )
 one_way = false
 extending_distance = 704
 
-[node name="player_stick_platform" parent="platform_extender14" index="0" instance=ExtResource( 4 )]
+[node name="player_stick_platform" parent="platform_extender14" index="0" groups=[
+"platform",
+] instance=ExtResource( 4 )]
 
+input_pickable = false
+collision_layer = 1
+collision_mask = 0
+collision/safe_margin = 0.08
+_sections_unfolded = [ "Collision" ]
+max_slope_angle = 0.785398
 flippedH = true
+flippedV = false
+moveable_by_collision = false
 extending = true
 
 [node name="P_down_1" parent="." index="13" instance=ExtResource( 3 )]
@@ -204,9 +319,19 @@ one_way = false
 extending_direction = Vector2( 0, 1 )
 extending_distance = 384
 
-[node name="player_stick_platform" parent="P_down_1" index="0" instance=ExtResource( 5 )]
+[node name="player_stick_platform" parent="P_down_1" index="0" groups=[
+"platform",
+] instance=ExtResource( 5 )]
 
+input_pickable = false
+collision_layer = 1
+collision_mask = 0
+collision/safe_margin = 0.08
+_sections_unfolded = [ "Collision" ]
+max_slope_angle = 0.785398
+flippedH = false
 flippedV = true
+moveable_by_collision = false
 extending = true
 
 [node name="P_up_1" parent="." index="14" instance=ExtResource( 3 )]
@@ -216,8 +341,19 @@ one_way = false
 extending_direction = Vector2( 0, 1 )
 extending_distance = 384
 
-[node name="player_stick_platform" parent="P_up_1" index="0" instance=ExtResource( 5 )]
+[node name="player_stick_platform" parent="P_up_1" index="0" groups=[
+"platform",
+] instance=ExtResource( 5 )]
 
+input_pickable = false
+collision_layer = 1
+collision_mask = 0
+collision/safe_margin = 0.08
+_sections_unfolded = [ "Collision" ]
+max_slope_angle = 0.785398
+flippedH = false
+flippedV = false
+moveable_by_collision = false
 extending = true
 
 [node name="P_up_2" parent="." index="15" instance=ExtResource( 3 )]
@@ -227,8 +363,19 @@ one_way = false
 extending_direction = Vector2( 0, 1 )
 extending_distance = 704
 
-[node name="player_stick_platform" parent="P_up_2" index="0" instance=ExtResource( 5 )]
+[node name="player_stick_platform" parent="P_up_2" index="0" groups=[
+"platform",
+] instance=ExtResource( 5 )]
 
+input_pickable = false
+collision_layer = 1
+collision_mask = 0
+collision/safe_margin = 0.08
+_sections_unfolded = [ "Collision" ]
+max_slope_angle = 0.785398
+flippedH = false
+flippedV = false
+moveable_by_collision = false
 extending = true
 
 [node name="P_up_3" parent="." index="16" instance=ExtResource( 3 )]
@@ -239,8 +386,19 @@ one_way = false
 extending_direction = Vector2( 0, 1 )
 extending_distance = 704
 
-[node name="player_stick_platform" parent="P_up_3" index="0" instance=ExtResource( 5 )]
+[node name="player_stick_platform" parent="P_up_3" index="0" groups=[
+"platform",
+] instance=ExtResource( 5 )]
 
+input_pickable = false
+collision_layer = 1
+collision_mask = 0
+collision/safe_margin = 0.08
+_sections_unfolded = [ "Collision" ]
+max_slope_angle = 0.785398
+flippedH = false
+flippedV = false
+moveable_by_collision = false
 extending = true
 
 [node name="platform_extender11" parent="." index="17" instance=ExtResource( 3 )]
@@ -250,8 +408,19 @@ one_way = false
 extending_direction = Vector2( 0, 1 )
 extending_distance = 384
 
-[node name="player_stick_platform" parent="platform_extender11" index="0" instance=ExtResource( 5 )]
+[node name="player_stick_platform" parent="platform_extender11" index="0" groups=[
+"platform",
+] instance=ExtResource( 5 )]
 
+input_pickable = false
+collision_layer = 1
+collision_mask = 0
+collision/safe_margin = 0.08
+_sections_unfolded = [ "Collision" ]
+max_slope_angle = 0.785398
+flippedH = false
+flippedV = false
+moveable_by_collision = false
 extending = true
 
 [node name="platform_extender12" parent="." index="18" instance=ExtResource( 3 )]
@@ -262,8 +431,19 @@ one_way = false
 extending_direction = Vector2( 0, 1 )
 extending_distance = 640
 
-[node name="player_stick_platform" parent="platform_extender12" index="0" instance=ExtResource( 5 )]
+[node name="player_stick_platform" parent="platform_extender12" index="0" groups=[
+"platform",
+] instance=ExtResource( 5 )]
 
+input_pickable = false
+collision_layer = 1
+collision_mask = 0
+collision/safe_margin = 0.08
+_sections_unfolded = [ "Collision" ]
+max_slope_angle = 0.785398
+flippedH = false
+flippedV = false
+moveable_by_collision = false
 extending = true
 
 [node name="wall_left" parent="." index="19" instance=ExtResource( 3 )]
@@ -273,8 +453,19 @@ one_way = false
 extending_direction = Vector2( 0, 1 )
 extending_distance = 640
 
-[node name="player_stick_platform" parent="wall_left" index="0" instance=ExtResource( 5 )]
+[node name="player_stick_platform" parent="wall_left" index="0" groups=[
+"platform",
+] instance=ExtResource( 5 )]
 
+input_pickable = false
+collision_layer = 1
+collision_mask = 0
+collision/safe_margin = 0.08
+_sections_unfolded = [ "Collision" ]
+max_slope_angle = 0.785398
+flippedH = false
+flippedV = false
+moveable_by_collision = false
 extending = true
 
 [node name="horizontal_bridge" parent="." index="20" instance=ExtResource( 3 )]
@@ -284,9 +475,19 @@ active = false
 one_way = true
 extending_distance = 960
 
-[node name="player_stick_platform" parent="horizontal_bridge" index="0" instance=ExtResource( 4 )]
+[node name="player_stick_platform" parent="horizontal_bridge" index="0" groups=[
+"platform",
+] instance=ExtResource( 4 )]
 
+input_pickable = false
+collision_layer = 1
+collision_mask = 0
+collision/safe_margin = 0.08
+_sections_unfolded = [ "Collision" ]
+max_slope_angle = 0.785398
 flippedH = true
+flippedV = false
+moveable_by_collision = false
 extending = true
 
 [node name="platform_extender18" parent="." index="21" instance=ExtResource( 3 )]
@@ -297,9 +498,19 @@ active = false
 one_way = false
 extending_distance = 768
 
-[node name="player_stick_platform" parent="platform_extender18" index="0" instance=ExtResource( 4 )]
+[node name="player_stick_platform" parent="platform_extender18" index="0" groups=[
+"platform",
+] instance=ExtResource( 4 )]
 
+input_pickable = false
+collision_layer = 1
+collision_mask = 0
+collision/safe_margin = 0.08
+_sections_unfolded = [ "Collision" ]
+max_slope_angle = 0.785398
 flippedH = true
+flippedV = false
+moveable_by_collision = false
 extending = true
 
 [node name="platform_extender17" parent="." index="22" groups=[
@@ -312,9 +523,19 @@ active = false
 one_way = false
 extending_distance = 896
 
-[node name="player_stick_platform" parent="platform_extender17" index="0" instance=ExtResource( 4 )]
+[node name="player_stick_platform" parent="platform_extender17" index="0" groups=[
+"platform",
+] instance=ExtResource( 4 )]
 
+input_pickable = false
+collision_layer = 1
+collision_mask = 0
+collision/safe_margin = 0.08
+_sections_unfolded = [ "Collision" ]
+max_slope_angle = 0.785398
 flippedH = true
+flippedV = false
+moveable_by_collision = false
 extending = true
 
 [node name="terrain" parent="." index="23"]
@@ -502,10 +723,12 @@ wait_time = 2.0
 [node name="enemy_1" parent="." index="38" instance=ExtResource( 9 )]
 
 position = Vector2( 992, 800 )
+hp_drop_chance = 0.5
 
 [node name="enemy_2" parent="." index="39" instance=ExtResource( 9 )]
 
 position = Vector2( 1120, 800 )
+hp_drop_chance = 0.5
 
 [node name="Area2D" type="Area2D" parent="." index="40"]
 

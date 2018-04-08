@@ -9,7 +9,7 @@
 [ext_resource path="res://nodes/room_elements/camera_change_area.tscn" type="PackedScene" id=7]
 [ext_resource path="res://nodes/room_elements/regular_damage_area.tscn" type="PackedScene" id=8]
 
-[node name="room_6" index="0" instance=ExtResource( 1 )]
+[node name="room_6" instance=ExtResource( 1 )]
 
 [node name="terrain" parent="." index="0"]
 
@@ -49,72 +49,89 @@ polygon = PoolVector2Array( 0, 0, 0, 3840, 6656, 3840, 6656, 0 )
 [node name="enemy_1" parent="." index="8" instance=ExtResource( 4 )]
 
 position = Vector2( 6208, 2688 )
+hp_drop_chance = 0.5
 
 [node name="enemy_2" parent="." index="9" instance=ExtResource( 4 )]
 
 position = Vector2( 5696, 3392 )
+hp_drop_chance = 0.5
 
 [node name="enemy_3" parent="." index="10" instance=ExtResource( 4 )]
 
 position = Vector2( 5440, 3648 )
+hp_drop_chance = 0.5
 
 [node name="enemy_4" parent="." index="11" instance=ExtResource( 4 )]
 
 position = Vector2( 4736, 3616 )
+hp_drop_chance = 0.5
 
 [node name="enemy_5" parent="." index="12" instance=ExtResource( 4 )]
 
 position = Vector2( 3744, 3648 )
+hp_drop_chance = 0.5
 
 [node name="enemy_6" parent="." index="13" instance=ExtResource( 4 )]
 
 position = Vector2( 3968, 3616 )
+hp_drop_chance = 0.5
 
 [node name="enemy_7" parent="." index="14" instance=ExtResource( 4 )]
 
 position = Vector2( 3424, 3616 )
+hp_drop_chance = 0.5
 
 [node name="enemy_8" parent="." index="15" instance=ExtResource( 4 )]
 
 position = Vector2( 2176, 3616 )
+hp_drop_chance = 0.5
 
 [node name="enemy_9" parent="." index="16" instance=ExtResource( 4 )]
 
 position = Vector2( 1280, 3616 )
+hp_drop_chance = 0.5
 
 [node name="enemy_10" parent="." index="17" instance=ExtResource( 4 )]
 
 position = Vector2( 544, 3168 )
+hp_drop_chance = 0.5
 
 [node name="enemy_11" parent="." index="18" instance=ExtResource( 4 )]
 
 position = Vector2( 704, 1824 )
+hp_drop_chance = 0.5
 
 [node name="enemy_12" parent="." index="19" instance=ExtResource( 4 )]
 
 position = Vector2( 2272, 576 )
+hp_drop_chance = 0.5
 
 [node name="enemy_13" parent="." index="20" instance=ExtResource( 4 )]
 
 position = Vector2( 2816, 544 )
+hp_drop_chance = 0.5
 
 [node name="enemy_14" parent="." index="21" instance=ExtResource( 4 )]
 
 position = Vector2( 3424, 544 )
+hp_drop_chance = 0.5
 
 [node name="enemy_15" parent="." index="22" instance=ExtResource( 5 )]
 
 position = Vector2( 3616, 2400 )
 flippedH = true
+hp_drop_chance = 0.5
 
 [node name="enemy_16" parent="." index="23" instance=ExtResource( 5 )]
 
 position = Vector2( 3744, 1696 )
+hp_drop_chance = 0.5
 
 [node name="enemy_17" parent="." index="24" instance=ExtResource( 5 )]
 
 position = Vector2( 3552, 1056 )
 flippedH = true
+hp_drop_chance = 0.5
 
 [node name="enemy_3_system" parent="." index="25" instance=ExtResource( 6 )]
 
