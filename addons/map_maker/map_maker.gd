@@ -59,6 +59,8 @@ func generate_map():
 	var max_counter = 100
 	var room_size = Vector2(1664, 960)
 	var position = Vector2(6000, 2000)
+	var minimum = Vector2()
+	var maximum = Vector2()
 	
 	checked_rooms.push_back(starting_room)
 	var current_room = load(starting_room).instance()
@@ -95,6 +97,12 @@ func generate_map():
 			
 			current_room.position = new_pos + current_tile.get_parent().position
 			
+			maximum.x = max(current_room.position.x, maximum.x)
+			maximum.y = max(current_room.position.y, maximum.y)
+			minimum.x = min(current_room.position.x, minimum.x)
+			minimum.y = min(current_room.position.y, minimum.y)
+			
+			
 			position += Vector2(room_size.x,0)
 			var nodereino = Node2D.new()
 			container.add_child(nodereino)
@@ -128,7 +136,9 @@ func generate_map():
 			pass
 		if(counter== 33):
 			print("e")
-		
+	container.position = (-minimum + room_size)* container.scale
+	window.get_node("HScrollBar").min_value = (minimum.x - room_size.x) * container.scale.x
+	window.get_node("HScrollBar").max_value = (maximum.x+ room_size.x) * container.scale.x - window.rect_size.x
 	window.rect_position = Vector2(0, 200)
 	window.show()
 	window.get_close_button().connect("pressed", container, "free")
