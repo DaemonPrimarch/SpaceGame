@@ -249,7 +249,19 @@ scale = Vector2( 3, 1 )
 offset = Vector2( 0, 256 )
 changes_zoom = false
 
-[node name="camera_change_area3" parent="." index="17" instance=ExtResource( 5 )]
+[node name="camera_change_area4" parent="." index="17" instance=ExtResource( 5 )]
+
+position = Vector2( 864, 1696 )
+scale = Vector2( 3, 1 )
+offset = Vector2( 0, 256 )
+changes_zoom = false
+transition_time = 0
+
+[node name="CollisionPolygon2D" parent="camera_change_area4" index="0"]
+
+polygon = PoolVector2Array( -10.6667, -32, -32, -32, -32, 96, -10.6667, 96 )
+
+[node name="camera_change_area3" parent="." index="18" instance=ExtResource( 5 )]
 
 visible = false
 position = Vector2( 1216, 928 )
@@ -257,7 +269,7 @@ scale = Vector2( 10, 5 )
 offset = Vector2( 0, 64 )
 changes_zoom = false
 
-[node name="camera_change_area" parent="." index="18" instance=ExtResource( 5 )]
+[node name="camera_change_area" parent="." index="19" instance=ExtResource( 5 )]
 
 position = Vector2( 128, 768 )
 offset = Vector2( 0, -320 )
@@ -273,3 +285,4 @@ transition_time = 0
 [editable path="damage_area10"]
 [editable path="ladder"]
 [editable path="ladder5"]
+[editable path="camera_change_area4"]

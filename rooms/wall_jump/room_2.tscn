@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://nodes/room.tscn" type="PackedScene" id=1]
 [ext_resource path="res://nodes/room_elements/regular_warp_tile.tscn" type="PackedScene" id=2]
 [ext_resource path="res://nodes/warp_tile.tscn" type="PackedScene" id=3]
 [ext_resource path="res://nodes/warp_arrival.tscn" type="PackedScene" id=4]
 [ext_resource path="res://nodes/room_elements/regular_damage_area.tscn" type="PackedScene" id=5]
+[ext_resource path="res://nodes/camera_offset_mover.tscn" type="PackedScene" id=6]
 
 [node name="room_2" instance=ExtResource( 1 )]
 
@@ -78,11 +79,15 @@ margin_bottom = 96.0
 
 position = Vector2( 128, 128 )
 arrival_ID = "2"
+has_map_making_offset = false
+map_making_offset = Vector2( 0, 0 )
 
 [node name="warp_arrival2" parent="." index="9" instance=ExtResource( 4 )]
 
 position = Vector2( 128, 768 )
 arrival_ID = "1"
+has_map_making_offset = false
+map_making_offset = Vector2( 0, 0 )
 
 [node name="camera_container" parent="." index="10"]
 
@@ -173,6 +178,16 @@ scale = Vector2( 1, 0.5 )
 
 margin_bottom = 96.0
 
+[node name="camera_offset_mover" parent="." index="15" instance=ExtResource( 6 )]
+
+position = Vector2( 1536, 576 )
+offset = Vector2( 0, -128 )
+time = 0
+
+[node name="CollisionPolygon2D" parent="camera_offset_mover" index="0"]
+
+polygon = PoolVector2Array( -32, -32, 32, -32, 32, 32, -32, 32 )
+
 
 [editable path="warp_tile"]
 [editable path="warp_tile2"]
@@ -180,3 +195,4 @@ margin_bottom = 96.0
 [editable path="damage_area2"]
 [editable path="damage_area3"]
 [editable path="damage_area4"]
+[editable path="camera_offset_mover"]
