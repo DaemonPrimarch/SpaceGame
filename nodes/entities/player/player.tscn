@@ -39,7 +39,7 @@ _sections_unfolded = [ "Transform" ]
 
 [node name="light" parent="." index="3"]
 
-enabled = true
+energy = 0.01
 _sections_unfolded = [ "Transform" ]
 
 [node name="grounded_label" parent="." index="4"]
@@ -52,6 +52,7 @@ rect_clip_content = false
 
 [node name="weapon_manager" parent="." index="6"]
 
+editor/display_folded = true
 weapon_path = NodePath("gun")
 
 [node name="gun" parent="weapon_manager" index="5" instance=ExtResource( 3 )]
@@ -144,6 +145,8 @@ wait_time = 0.35
 one_shot = false
 autostart = false
 _sections_unfolded = [ "Pause" ]
+
+[connection signal="invulnerable_started" from="." to="." method="_on_player_invulnerable_started"]
 
 [connection signal="timeout" from="damage_timer" to="." method="_on_damage_timer_timeout"]
 
