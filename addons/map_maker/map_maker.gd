@@ -85,7 +85,6 @@ func generate_map():
 		if(current_tile.get_destination_room() != null and not checked_rooms.has(current_tile.get_destination_room())):
 			checked_rooms.push_back(current_tile.get_destination_room())
 			current_room = load(current_tile.get_destination_room()).instance()
-			
 			#print(current_tile.global_position)
 			
 			var new_pos = current_tile.position/ room_size
@@ -107,6 +106,7 @@ func generate_map():
 			var nodereino = Node2D.new()
 			container.add_child(nodereino)
 			nodereino.add_child(current_room)
+			current_room.set_dark(false)
 #
 #			print("Attempting to find: ", current_tile.get_arrival_pos_id())
 #			print("In: ",current_tile.get_destination_room()) 
