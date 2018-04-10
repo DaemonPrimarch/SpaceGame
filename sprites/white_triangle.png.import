@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/shadow_test.png-29acd26ad573f3bacd21a624dc701474.stex"
+path="res://.import/white_triangle.png-85451cede00f794cf0b4e0f9b2a4f1ae.stex"
 
 [deps]
 
-source_file="res://sprites/shadow_test.png"
-source_md5="31d0f2e10f7e653675babf2dd10a7e26"
+source_file="res://sprites/white_triangle.png"
+source_md5="1d118b1eec19619f704ab25552fea430"
 
-dest_files=[ "res://.import/shadow_test.png-29acd26ad573f3bacd21a624dc701474.stex" ]
-dest_md5="1ff70253f64122f41595d88fa9948f88"
+dest_files=[ "res://.import/white_triangle.png-85451cede00f794cf0b4e0f9b2a4f1ae.stex" ]
+dest_md5="aad759c80d703c1edb6b86e40bf4e122"
 
 [params]
 
