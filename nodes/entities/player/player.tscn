@@ -141,12 +141,10 @@ _sections_unfolded = [ "Visibility" ]
 
 pause_mode = 2
 process_mode = 1
-wait_time = 0.1
+wait_time = 0.35
 one_shot = false
 autostart = false
 _sections_unfolded = [ "Pause" ]
-
-[connection signal="invulnerable_started" from="." to="." method="_on_player_invulnerable_started"]
 
 [connection signal="timeout" from="damage_timer" to="." method="_on_damage_timer_timeout"]
 
