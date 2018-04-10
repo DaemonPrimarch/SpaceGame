@@ -12,7 +12,7 @@ _sections_unfolded = [ "Transform" ]
 
 rotation = 3.14159
 scale = Vector2( 1.06667, 1.28 )
-enabled = true
+enabled = false
 editor_only = false
 texture = ExtResource( 2 )
 offset = Vector2( -300, 0 )
