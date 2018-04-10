@@ -270,10 +270,12 @@ margin_right = 352.0
 [node name="enemy_1" parent="." index="17" instance=ExtResource( 5 )]
 
 position = Vector2( 2400, 1248 )
+hp_drop_chance = 0.5
 
 [node name="enemy_2" parent="." index="18" instance=ExtResource( 6 )]
 
 position = Vector2( 480, 1760 )
+hp_drop_chance = 0.5
 
 [node name="enemy_3_system" parent="." index="19" instance=ExtResource( 7 )]
 

@@ -10,7 +10,7 @@
 [ext_resource path="res://nodes/room_elements/walled_ladder.tscn" type="PackedScene" id=8]
 [ext_resource path="res://nodes/room_elements/walled_ladder_no_top.tscn" type="PackedScene" id=9]
 
-[node name="room_1" index="0" instance=ExtResource( 1 )]
+[node name="room_1" instance=ExtResource( 1 )]
 
 [node name="terrain" parent="." index="0"]
 
@@ -81,12 +81,10 @@ polygon = PoolVector2Array( 32, -32, 32, 96, -32, 96, -32, -32 )
 [node name="Panel" parent="warp_tile" index="1"]
 
 margin_bottom = 96.0
-rect_clip_content = false
 
 [node name="Label" parent="warp_tile" index="2"]
 
 margin_bottom = 96.0
-rect_clip_content = false
 
 [node name="ladder" parent="." index="9" instance=ExtResource( 8 )]
 

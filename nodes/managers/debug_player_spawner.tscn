@@ -7,5 +7,6 @@
 
 script = ExtResource( 1 )
 player = ExtResource( 2 )
+enabled = true
 
 

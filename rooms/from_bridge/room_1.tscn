@@ -43,14 +43,6 @@ position = Vector2( -96, 0 )
 scale = Vector2( -1, 1 )
 arrival_ID = "room_2_arrival"
 
-[node name="Panel" parent="warp_tile" index="2"]
-
-rect_clip_content = false
-
-[node name="Label" parent="warp_tile" index="3"]
-
-rect_clip_content = false
-
 [node name="StaticBody2D" parent="." index="5" instance=ExtResource( 4 )]
 
 position = Vector2( 864, 736 )
