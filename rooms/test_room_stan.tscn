@@ -4,7 +4,9 @@
 [ext_resource path="res://sprites/guun.png" type="Texture" id=2]
 [ext_resource path="res://sprites/shadow_test.png" type="Texture" id=3]
 
-[node name="room" instance=ExtResource( 1 )]
+[node name="room" index="0" instance=ExtResource( 1 )]
+
+dark = true
 
 [node name="Sprite" type="Sprite" parent="." index="0"]
 
@@ -18,6 +20,10 @@ tile_data = PoolIntArray( 0, 0, 0, 1, 0, 0, 2, 0, 0, 3, 0, 0, 4, 0, 0, 5, 0, 0, 
 [node name="debug_player_spawner" parent="." index="2"]
 
 position = Vector2( 864, 480 )
+
+[node name="CanvasModulate" parent="." index="3"]
+
+color = Color( 0, 0, 0, 1 )
 
 [node name="camera_container" parent="." index="4"]
 
