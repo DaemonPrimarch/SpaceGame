@@ -66,6 +66,8 @@ __meta__ = {
 
 position = Vector2( 1536, 768 )
 arrival_ID = "1"
+has_map_making_offset = false
+map_making_offset = Vector2( 0, 0 )
 
 [node name="warp_tile" parent="." index="8" instance=ExtResource( 7 )]
 
@@ -166,9 +168,9 @@ polygon = PoolVector2Array( 0, 0, 0, 960, 1664, 960, 1664, 0 )
 
 [connection signal="switched_on" from="bullet_switch" to="StaticBody2D" method="_set_active" binds= [ false ]]
 
-[connection signal="body_entered" from="Area2D" to="Area2D" method="_on_area_enter"]
-
 [connection signal="body_entered" from="Area2D" to="StaticBody2D" method="on_area_enter" binds= [ true ]]
+
+[connection signal="body_entered" from="Area2D" to="Area2D" method="_on_area_enter"]
 
 [connection signal="player_entered" from="Area2D" to="Area2D" method="give_key" binds= [ "key1" ]]
 
