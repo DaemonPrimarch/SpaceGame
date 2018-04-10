@@ -1,5 +1,8 @@
 extends "res://scripts/weapon.gd"
 
+func _ready():
+	get_parent().get_parent().connect("room_entered",self,"on_room_entered")
+
 
 func press_trigger():
 	var bullet = preload("res://nodes/weapons/bullet.tscn").instance()
@@ -18,3 +21,9 @@ func press_trigger():
 
 
 	#HAX https://github.com/godotengine/godot/issues/17405
+	
+func on_room_entered():
+	if(ROOM_MANAGER.get_room_of_node(self).is_dark()):
+		get_node("flashlight").enabled = true
+	else:
+		get_node("flashlight").enabled = false

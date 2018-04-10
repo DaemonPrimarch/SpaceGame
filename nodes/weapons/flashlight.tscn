@@ -3,7 +3,7 @@
 [ext_resource path="res://scripts/flashlight.gd" type="Script" id=1]
 [ext_resource path="res://sprites/white_triangle.png" type="Texture" id=2]
 
-[node name="flashlight" type="Node2D" index="0"]
+[node name="flashlight" type="Node2D"]
 
 script = ExtResource( 1 )
 _sections_unfolded = [ "Transform" ]
