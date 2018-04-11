@@ -19,7 +19,7 @@
 [ext_resource path="res://nodes/managers/camera_zoom_out_manager.tscn" type="PackedScene" id=17]
 [ext_resource path="res://icon.png" type="Texture" id=18]
 
-[node name="player" groups=[
+[node name="player" index="0" groups=[
 "player",
 "warpable",
 ] instance=ExtResource( 1 )]
@@ -41,7 +41,6 @@ _sections_unfolded = [ "Transform" ]
 
 [node name="light" parent="." index="3"]
 
-energy = 0.01
 _sections_unfolded = [ "Transform" ]
 
 [node name="grounded_label" parent="." index="4"]
