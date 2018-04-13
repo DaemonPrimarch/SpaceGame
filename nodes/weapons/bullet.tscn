@@ -1,14 +1,15 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://scripts/bullet.gd" type="Script" id=1]
 [ext_resource path="res://sprites/white_light.png" type="Texture" id=2]
+[ext_resource path="res://sprites/white.png" type="Texture" id=3]
 
 [sub_resource type="CircleShape2D" id=1]
 
 custom_solver_bias = 0.0
 radius = 10.0
 
-[node name="bullet" type="Area2D"]
+[node name="bullet" type="Area2D" index="0"]
 
 input_pickable = false
 gravity_vec = Vector2( 0, 1 )
@@ -26,6 +27,7 @@ damage = 1
 
 [node name="Sprite" type="Sprite" parent="." index="0"]
 
+visible = false
 scale = Vector2( 0.045, 0.045 )
 texture = ExtResource( 2 )
 
@@ -42,7 +44,6 @@ autostart = true
 
 [node name="Light2D" type="Light2D" parent="." index="3"]
 
-position = Vector2( -3.8147e-06, -8.58307e-06 )
 scale = Vector2( 0.48, 0.48 )
 enabled = true
 editor_only = false
@@ -65,6 +66,12 @@ shadow_gradient_length = 0.0
 shadow_filter = 0
 shadow_filter_smooth = 0.0
 shadow_item_cull_mask = 1
+
+[node name="Sprite2" type="Sprite" parent="." index="4"]
+
+position = Vector2( 12, 0 )
+scale = Vector2( 0.0583333, 0.00740741 )
+texture = ExtResource( 3 )
 
 [connection signal="area_entered" from="." to="." method="on_area_entered"]
 

@@ -34,12 +34,15 @@ func _input(event):
 				set_options_active(false)
 				
 				emit_signal("option_selected", options[selected_option_index])
-		elif(finished):
+		elif(is_next_indicator_enabled()):
 			if(event.is_action_pressed("ui_accept")):
 				emit_signal("pressed_continue")
 
 func set_using_options(val):
 	using_otions = val
+
+func is_next_indicator_enabled():
+	return get_node("box/next_indicator").visible
 	
 func is_using_options():
 	return using_otions
@@ -48,6 +51,9 @@ func set_displaying(val):
 	displaying = val
 	
 	self.visible = val
+	
+func set_next_indicator_enabled(val):
+	get_node("box/next_indicator").visible = val
 
 func is_displaying():
 	return displaying
@@ -116,8 +122,6 @@ func _on_scroll_timer_timeout():
 		
 		emit_signal("text_finished_scrolling")
 
-		if(not is_using_options()):
-			get_node("box/next_indicator").visible = true
-		else:
+		if(is_using_options()):
 			set_options_active(true)
 			

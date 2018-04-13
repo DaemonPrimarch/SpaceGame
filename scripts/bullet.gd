@@ -31,3 +31,6 @@ func on_body_entered( body ):
 func on_area_entered( area ):
 	if(area.has_method("_on_bullet_hit")):
 		area._on_bullet_hit(self)
+
+func _ready():
+	get_node("Light2D").enabled = (get_node("/root/ROOM_MANAGER").get_room_of_node(self).is_dark())

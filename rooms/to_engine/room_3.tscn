@@ -30,6 +30,7 @@ position = Vector2( 1536, 448 )
 [node name="enemy_1" parent="." index="5" instance=ExtResource( 3 )]
 
 position = Vector2( 800, 736 )
+hp_drop_chance = 0.5
 
 [node name="camera_container" parent="." index="6"]
 

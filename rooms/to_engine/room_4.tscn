@@ -185,6 +185,7 @@ polygon = PoolVector2Array( 0, 0, 0, 2880, 1664, 2880, 1664, 0 )
 [node name="enemy_1" parent="." index="14" instance=ExtResource( 6 )]
 
 position = Vector2( 672, 1184 )
+hp_drop_chance = 0.5
 
 [node name="camera_change_area" parent="." index="15" instance=ExtResource( 7 )]
 

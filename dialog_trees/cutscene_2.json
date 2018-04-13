@@ -1,0 +1,1 @@
+{"start":{"name":"NAME","text":"Whoa!","next":"second","auto_advance":false},"second":{"name":"NAME","text":"...", "next":"last","auto_advance":false}, "last":{"name":"NAME", "text":"So that's where all these creatures are coming from","auto_advance":false, "scroll_speed":20}}}

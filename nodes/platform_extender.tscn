@@ -6,6 +6,7 @@
 
 script = ExtResource( 1 )
 active = true
+one_way = false
 extending_direction = Vector2( 1, 0 )
 extending_distance = 64
 forward_starting_velocity = 320
