@@ -26,6 +26,8 @@
 
 script = ExtResource( 2 )
 _sections_unfolded = [ "Collision", "Pause", "Pickable", "Transform", "collision" ]
+movement_speed = 359.68
+gravity_vector = Vector2( 0, 1344 )
 
 [node name="Sprite" parent="." index="0"]
 

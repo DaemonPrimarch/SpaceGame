@@ -7,7 +7,6 @@ func _ready():
 	_set_active(active)
 
 func _set_active(value):
-	print("UIT")
 	if(value):
 		set_collision_layer_bit(0,1)
 		visible = true
