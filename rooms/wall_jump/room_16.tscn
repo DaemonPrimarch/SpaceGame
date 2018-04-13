@@ -34,14 +34,6 @@ arrival_pos_id = "room_16_arrival"
 
 arrival_ID = "room_17_arrival"
 
-[node name="Panel" parent="warp_tile2" index="2"]
-
-rect_clip_content = false
-
-[node name="Label" parent="warp_tile2" index="3"]
-
-rect_clip_content = false
-
 [node name="ladder2" parent="." index="5" instance=ExtResource( 3 )]
 
 editor/display_folded = true

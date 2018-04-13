@@ -35,6 +35,7 @@ polygon = PoolVector2Array( 0, 0, 0, 960, 1664, 960, 1664, 0 )
 [node name="enemy_2" parent="." index="6" instance=ExtResource( 3 )]
 
 position = Vector2( 736, 416 )
+hp_drop_chance = 0.5
 
 [node name="damage_area" parent="." index="7" instance=ExtResource( 4 )]
 

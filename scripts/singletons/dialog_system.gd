@@ -10,7 +10,8 @@ var current_element
 func _ready():
 	box = get_node("/root/GUI").get_layer().get_node("dialog_box")
 	
-	box.connect("pressed_continue", self, "box_finished_printing")
+	box.connect("text_finished_scrolling", self, "box_finished_printing")
+	box.connect("pressed_continue", self, "box_pressed_continue")
 	box.connect("option_selected", self, "box_option_selected")
 	
 	get_box().set_displaying(false)
@@ -46,6 +47,11 @@ func set_current_dialog_element(element):
 		get_box().set_options(element.options)
 	else:
 		get_box().set_using_options(false)
+		
+	if(element.has("scroll_speed")):
+		get_box().set_text_scroll_speed(element.scroll_speed)
+	else:
+		get_box().set_text_scroll_speed(get_box().default_scroll_speed)
 
 func set_current_dialog_tree(tree):
 	current_tree = tree
@@ -68,6 +74,16 @@ func load_next_tree():
 		get_box().set_displaying(false)
 		displaying = false
 
+func advance_current_tree():
+	print("ADVANCED")
+	if(get_current_dialog_element().has("options")):
+		pass
+	elif(get_current_dialog_element().has("next")):
+		set_current_dialog_element(get_current_dialog_tree()[get_current_dialog_element().next])
+		display_current_element()
+	else:
+		load_next_tree()
+
 func get_box():
 	return box
 
@@ -80,14 +96,17 @@ func queue_tree(tree):
 func queue_message(message):
 	queue_tree({"start": {"text": message}})
 
+func box_pressed_continue():
+	advance_current_tree()
+
 func box_finished_printing():
-	if(get_current_dialog_element().has("options")):
-		pass
-	elif(get_current_dialog_element().has("next")):
-		set_current_dialog_element(get_current_dialog_tree()[get_current_dialog_element().next])
-		display_current_element()
+	if(get_current_dialog_element().has("auto_advance")):
+		if(get_current_dialog_element().auto_advance):
+			advance_current_tree()
+		else:
+			pass
 	else:
-		load_next_tree()
+		box.set_next_indicator_enabled(true)
 		
 func box_option_selected(option):	
 	set_current_dialog_element(get_current_dialog_tree()[get_current_dialog_element().next[get_current_dialog_element().options.find(option)]])

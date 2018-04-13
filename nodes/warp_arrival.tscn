@@ -8,5 +8,7 @@
 
 script = ExtResource( 1 )
 arrival_ID = ""
+has_map_making_offset = false
+map_making_offset = Vector2( 0, 0 )
 
 

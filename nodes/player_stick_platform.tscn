@@ -7,6 +7,14 @@
 
 script = ExtResource( 2 )
 
+[node name="Panel" parent="." index="1"]
+
+rect_clip_content = false
+
+[node name="Label" parent="." index="2"]
+
+rect_clip_content = false
+
 [node name="standing_area" type="Area2D" parent="." index="3"]
 
 input_pickable = true

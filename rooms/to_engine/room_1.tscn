@@ -27,11 +27,10 @@ flippedH = true
 
 position = Vector2( 1536, 1728 )
 arrival_ID = "1"
-has_map_making_offset = false
-map_making_offset = Vector2( 0, 0 )
 
 [node name="warp_tile" parent="." index="5" instance=ExtResource( 4 )]
 
+editor/display_folded = true
 position = Vector2( 1632, 1696 )
 destination_room = "res://rooms/central_hub.tscn"
 arrival_pos_id = "1"

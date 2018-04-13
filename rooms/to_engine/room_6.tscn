@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://nodes/room.tscn" type="PackedScene" id=1]
 [ext_resource path="res://nodes/room_elements/regular_warp_tile.tscn" type="PackedScene" id=2]
@@ -8,6 +8,54 @@
 [ext_resource path="res://nodes/entities/enemies/enemy_3.tscn" type="PackedScene" id=6]
 [ext_resource path="res://nodes/room_elements/camera_change_area.tscn" type="PackedScene" id=7]
 [ext_resource path="res://nodes/room_elements/regular_damage_area.tscn" type="PackedScene" id=8]
+[ext_resource path="res://nodes/play_animation_on_enter.tscn" type="PackedScene" id=9]
+
+[sub_resource type="Animation" id=1]
+
+resource_name = "main"
+length = 10.0
+loop = false
+step = 0.1
+tracks/0/type = "method"
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 8 ),
+"transitions": PoolRealArray( 1, 1 ),
+"values": [ {
+"args": [ 0.25, 1.0 ],
+"method": "camera_zoom_out_to"
+}, {
+"args": [ 1.0, 1.0 ],
+"method": "camera_zoom_out_to"
+} ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath("/root/DIALOG_SYSTEM")
+tracks/1/interp = 1
+tracks/1/loop_wrap = false
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 1.2, 2, 3.5, 8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"values": [ {
+"args": [ "res://dialog_trees/cutscene_2.json" ],
+"method": "queue_tree_from_json"
+}, {
+"args": [  ],
+"method": "advance_current_tree"
+}, {
+"args": [  ],
+"method": "advance_current_tree"
+}, {
+"args": [  ],
+"method": "advance_current_tree"
+} ]
+}
 
 [node name="room_6" instance=ExtResource( 1 )]
 
@@ -163,6 +211,7 @@ position = Vector2( 6496, 1664 )
 
 [node name="damage_area" parent="." index="32" instance=ExtResource( 8 )]
 
+editor/display_folded = true
 position = Vector2( 3552, 2976 )
 
 [node name="CollisionPolygon2D" parent="damage_area/Area2D" index="0"]
@@ -184,6 +233,7 @@ margin_right = 96.0
 
 [node name="damage_area2" parent="." index="33" instance=ExtResource( 8 )]
 
+editor/display_folded = true
 position = Vector2( 1696, 96 )
 
 [node name="CollisionPolygon2D" parent="damage_area2/Area2D" index="0"]
@@ -205,6 +255,7 @@ margin_bottom = 416.0
 
 [node name="damage_area3" parent="." index="34" instance=ExtResource( 8 )]
 
+editor/display_folded = true
 position = Vector2( 2080, 608 )
 
 [node name="CollisionPolygon2D" parent="damage_area3/Area2D" index="0"]
@@ -235,6 +286,7 @@ position = Vector2( 2016, 736 )
 
 [node name="damage_area6" parent="." index="37" instance=ExtResource( 8 )]
 
+editor/display_folded = true
 position = Vector2( 1952, 800 )
 
 [node name="CollisionPolygon2D" parent="damage_area6/Area2D" index="0"]
@@ -256,6 +308,7 @@ margin_right = 96.0
 
 [node name="damage_area7" parent="." index="38" instance=ExtResource( 8 )]
 
+editor/display_folded = true
 position = Vector2( 1888, 864 )
 
 [node name="CollisionPolygon2D" parent="damage_area7/Area2D" index="0"]
@@ -278,6 +331,7 @@ margin_right = 96.0
 
 [node name="damage_area8" parent="." index="39" instance=ExtResource( 8 )]
 
+editor/display_folded = true
 position = Vector2( 1888, 928 )
 
 [node name="CollisionPolygon2D" parent="damage_area8/Area2D" index="0"]
@@ -299,6 +353,7 @@ margin_right = 96.0
 
 [node name="damage_area9" parent="." index="40" instance=ExtResource( 8 )]
 
+editor/display_folded = true
 position = Vector2( 1760, 928 )
 
 [node name="CollisionPolygon2D" parent="damage_area9/Area2D" index="0"]
@@ -318,6 +373,14 @@ scale = Vector2( 2, 0.25 )
 
 margin_right = 96.0
 
+[node name="play_animation_on_enter" parent="." index="41" instance=ExtResource( 9 )]
+
+position = Vector2( 6496, 1664 )
+
+[node name="AnimationPlayer" parent="play_animation_on_enter" index="1"]
+
+anims/main = SubResource( 1 )
+
 
 [editable path="damage_area"]
 [editable path="damage_area2"]
@@ -327,3 +390,4 @@ margin_right = 96.0
 [editable path="damage_area7"]
 [editable path="damage_area8"]
 [editable path="damage_area9"]
+[editable path="play_animation_on_enter"]
