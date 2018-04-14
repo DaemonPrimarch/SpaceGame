@@ -10,7 +10,7 @@ length = 1.0
 loop = false
 step = 0.1
 tracks/0/type = "value"
-tracks/0/path = NodePath("../Sprite:scale:y")
+tracks/0/path = NodePath("../CollisionPolygon2D:polygon")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -19,10 +19,10 @@ tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ 1.0 ]
+"values": [ PoolVector2Array( 60, 32, 4, 32, 4, -32, 60, -32 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("../Sprite:position:y")
+tracks/1/path = NodePath("crouch_leave_detector_right:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -30,11 +30,11 @@ tracks/1/enabled = true
 tracks/1/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ 4.0 ]
+"update": 0,
+"values": [ Vector2( 28, -40 ) ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("../CollisionPolygon2D:polygon")
+tracks/2/path = NodePath("crouch_leave_detector_left:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -42,11 +42,11 @@ tracks/2/enabled = true
 tracks/2/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ PoolVector2Array( 60, 32, 4, 32, 4, -32, 60, -32 ) ]
+"update": 0,
+"values": [ Vector2( -28, -40 ) ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("crouch_leave_detector_right:position")
+tracks/3/path = NodePath("../Sprite:frame")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -54,11 +54,11 @@ tracks/3/enabled = true
 tracks/3/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Vector2( 28, -40 ) ]
+"update": 1,
+"values": [ 22 ]
 }
 tracks/4/type = "value"
-tracks/4/path = NodePath("crouch_leave_detector_left:position")
+tracks/4/path = NodePath("../weapon_manager/weapon_front:position")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
@@ -67,7 +67,7 @@ tracks/4/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( -28, -40 ) ]
+"values": [ Vector2( 28.9474, 0.174698 ) ]
 }
 
 [sub_resource type="Animation" id=2]
@@ -77,7 +77,7 @@ length = 1.0
 loop = false
 step = 0.1
 tracks/0/type = "value"
-tracks/0/path = NodePath("../Sprite:scale:y")
+tracks/0/path = NodePath("../CollisionPolygon2D:polygon")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -86,10 +86,10 @@ tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ 2.0 ]
+"values": [ PoolVector2Array( 60, 32, 4, 32, 4, -80, 60, -80 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("../Sprite:position:y")
+tracks/1/path = NodePath("crouch_leave_detector_right:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -97,11 +97,11 @@ tracks/1/enabled = true
 tracks/1/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ -24.0 ]
+"update": 0,
+"values": [ Vector2( 28, -80 ) ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("../CollisionPolygon2D:polygon")
+tracks/2/path = NodePath("crouch_leave_detector_left:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -109,11 +109,11 @@ tracks/2/enabled = true
 tracks/2/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ PoolVector2Array( 60, 32, 4, 32, 4, -80, 60, -80 ) ]
+"update": 0,
+"values": [ Vector2( -28, -80 ) ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("crouch_leave_detector_right:position")
+tracks/3/path = NodePath("../weapon_manager/weapon_front:position")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -122,19 +122,7 @@ tracks/3/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( 28, -80 ) ]
-}
-tracks/4/type = "value"
-tracks/4/path = NodePath("crouch_leave_detector_left:position")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Vector2( -28, -80 ) ]
+"values": [ Vector2( 28.153, -29.2195 ) ]
 }
 
 [node name="crouching_handler" instance=ExtResource( 1 )]

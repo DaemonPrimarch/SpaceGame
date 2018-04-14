@@ -10,6 +10,7 @@ func enter_state(previous_state):
 	.enter_state(previous_state)
 	
 	$AnimationPlayer.play("crouch_start")
+	get_parent().get_node("AnimationPlayer").stop()
 	
 #	get_parent().set_scale(get_parent().get_scale() * Vector2(1,0.5))
 #	get_parent().position += Vector2(0, 16)

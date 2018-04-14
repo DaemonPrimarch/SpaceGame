@@ -31,6 +31,7 @@ gravity_vector = Vector2( 0, 1344 )
 
 [node name="Sprite" parent="." index="0"]
 
+frame = 22
 _sections_unfolded = [ "Animation", "Offset", "Region", "Transform" ]
 
 [node name="CollisionPolygon2D" parent="." index="1"]
@@ -53,6 +54,19 @@ rect_clip_content = false
 [node name="weapon_manager" parent="." index="6"]
 
 weapon_path = NodePath("gun")
+
+[node name="weapon_bottom_front" parent="weapon_manager" index="0"]
+
+position = Vector2( 26.6167, -3.8147e-06 )
+
+[node name="weapon_top" parent="weapon_manager" index="2"]
+
+position = Vector2( 0, -80.5085 )
+
+[node name="weapon_front" parent="weapon_manager" index="3"]
+
+position = Vector2( 27.7558, -32 )
+_sections_unfolded = [ "Transform" ]
 
 [node name="gun" parent="weapon_manager" index="5" instance=ExtResource( 3 )]
 
@@ -163,4 +177,5 @@ _sections_unfolded = [ "Pause" ]
 [connection signal="timeout" from="damage_timer" to="." method="_on_damage_timer_timeout"]
 
 
+[editable path="weapon_manager"]
 [editable path="crouching_handler"]

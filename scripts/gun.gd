@@ -9,7 +9,7 @@ func press_trigger():
 	
 	var room = ROOM_MANAGER.get_room_of_node(self)
 	
-	bullet.set_position(room.to_local(to_global(Vector2(40, 0))))
+	bullet.set_position(room.to_local(to_global(Vector2(20, 0))))
 	
 	bullet.set_velocity(Vector2(64 * 16, 0))
 	if(PHYSICS_HELPER.get_global_scale_of_node(self).x <0):
