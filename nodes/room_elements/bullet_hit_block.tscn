@@ -39,8 +39,8 @@ size_flags_vertical = 1
 [node name="Sprite" type="Sprite" parent="." index="2"]
 
 modulate = Color( 0.621094, 0.3404, 0.0121307, 1 )
-position = Vector2( 0, 1.52588e-05 )
-scale = Vector2( 0.0555556, 0.0987654 )
+position = Vector2( -7.15256e-07, -4.76837e-07 )
+scale = Vector2( 0.0666667, 0.118519 )
 texture = ExtResource( 2 )
 _sections_unfolded = [ "Visibility" ]
 

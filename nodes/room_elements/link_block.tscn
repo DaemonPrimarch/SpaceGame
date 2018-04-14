@@ -3,7 +3,7 @@
 [ext_resource path="res://scripts/room_elements/link_block.gd" type="Script" id=1]
 [ext_resource path="res://sprites/white.png" type="Texture" id=2]
 
-[node name="StaticBody2D" type="StaticBody2D" index="0"]
+[node name="StaticBody2D" type="StaticBody2D"]
 
 input_pickable = false
 collision_layer = 1
@@ -42,8 +42,8 @@ size_flags_vertical = 1
 [node name="Sprite" type="Sprite" parent="." index="2"]
 
 modulate = Color( 0.00772095, 0.0919878, 0.988281, 1 )
-position = Vector2( 0, 1.52588e-05 )
-scale = Vector2( 0.0555556, 0.0987654 )
+position = Vector2( -7.15256e-07, -4.76837e-07 )
+scale = Vector2( 0.0666667, 0.118519 )
 texture = ExtResource( 2 )
 _sections_unfolded = [ "Visibility" ]
 

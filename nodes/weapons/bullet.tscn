@@ -9,7 +9,7 @@
 custom_solver_bias = 0.0
 radius = 10.0
 
-[node name="bullet" type="Area2D" index="0"]
+[node name="bullet" type="Area2D"]
 
 input_pickable = false
 gravity_vec = Vector2( 0, 1 )
@@ -69,8 +69,8 @@ shadow_item_cull_mask = 1
 
 [node name="Sprite2" type="Sprite" parent="." index="4"]
 
-position = Vector2( 12, 0 )
-scale = Vector2( 0.0583333, 0.00740741 )
+position = Vector2( 8.00001, 0 )
+scale = Vector2( 0.05, 0.00740741 )
 texture = ExtResource( 3 )
 
 [connection signal="area_entered" from="." to="." method="on_area_entered"]

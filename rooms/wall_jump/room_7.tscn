@@ -185,7 +185,10 @@ position = Vector2( 480, 0 )
 
 [node name="camera_container" parent="." index="13"]
 
+visible = true
 polygon = PoolVector2Array( 0, 0, 0, 960, 3328, 960, 3328, 0 )
+has_default_offset = true
+default_offset = Vector2( 0, 384 )
 
 [connection signal="switched_on" from="bullet_switch" to="StaticBody2D" method="_set_active" binds= [ false ]]
 
