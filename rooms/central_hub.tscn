@@ -6,7 +6,9 @@
 [ext_resource path="res://nodes/warp_tile.tscn" type="PackedScene" id=4]
 [ext_resource path="res://nodes/room_elements/camera_change_area.tscn" type="PackedScene" id=5]
 
-[node name="central_hub" instance=ExtResource( 1 )]
+[node name="central_hub" index="0" instance=ExtResource( 1 )]
+
+auto_generate_camera_container = false
 
 [node name="terrain" parent="." index="0"]
 
@@ -127,11 +129,13 @@ arrival_ID = "3"
 
 [node name="camera_container" parent="." index="13"]
 
-polygon = PoolVector2Array( 0, 0, 0, 2880, 1664, 2880, 1664, 0 )
+polygon = PoolVector2Array( 0, 256, 0, 2880, 1664, 2880, 1664, 256 )
 
 [node name="camera_change_area2" parent="." index="14" instance=ExtResource( 5 )]
 
 position = Vector2( 1440, 1376 )
+changes_zoom = false
+transition_time = 0
 
 [node name="CollisionPolygon2D" parent="camera_change_area2" index="0"]
 

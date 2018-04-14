@@ -23,6 +23,7 @@ ROOM_MANAGER="*res://scripts/singletons/room_manager.gd"
 PAUSE_MANAGER="*res://scripts/singletons/pause_manager.gd"
 PHYSICS_HELPER="*res://scripts/singletons/physics_helper.gd"
 CAMERA_MANAGER="*res://scripts/singletons/camera_manager.gd"
+SAVE_MANAGER="*res://scripts/singletons/save_manager.gd"
 
 [debug]
 
