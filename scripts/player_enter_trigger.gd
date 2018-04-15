@@ -9,6 +9,7 @@ func is_oneshot():
 	return oneshot
 
 func saves_oneshot():
+	print("SAVE: ",save_path != null)
 	return save_path != null
 	
 func _ready():
@@ -16,9 +17,11 @@ func _ready():
 		queue_free()
 
 func _on_Area2D_body_entered(body):
-	emit_signal("player_entered", body)
-	
-	if(saves_oneshot()):
-		get_node("/root/SAVE_MANAGER").set_property(save_path, true)
-	
-	queue_free() 
+	if(body.is_in_group("player")):
+		emit_signal("player_entered", body)
+		
+		if(is_oneshot()):
+			if(saves_oneshot()):
+				get_node("/root/SAVE_MANAGER").set_property(save_path, true)
+		
+			queue_free() 

@@ -3,7 +3,7 @@ extends Area2D
 export var one_way = true
 export var changes_offset = true
 export var offset = Vector2()
-export var changes_zoom = true
+export var changes_zoom = false
 export var zoom = 1
 export var transition_time = 1
 

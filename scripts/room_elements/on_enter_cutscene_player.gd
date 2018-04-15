@@ -1,10 +1,8 @@
-extends "res://scripts/player_enter_trigger.gd"
+extends Node2D
 
-
-
-
-func _on_on_enter_cutscene_player_player_entered(player):
-	if(has_node("AnimationPlayer")):
-		get_node("AnimationPlayer").play("cutscene")
+func _on_enter_trigger_player_entered(player):
+	if(has_node("cutscene_player")):
+		print("PLAYYYYYYYY")
+		get_node("cutscene_player").play_cutscene()
 	else:
 		print("Cutscene not found!")
