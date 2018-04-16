@@ -1,3 +1,4 @@
+tool
 extends Control
 
 var default_scroll_speed = 10
@@ -37,6 +38,7 @@ func _input(event):
 		elif(is_next_indicator_enabled()):
 			if(event.is_action_pressed("ui_accept")):
 				emit_signal("pressed_continue")
+				print("PRRRRRRRRR")
 
 func set_using_options(val):
 	using_otions = val
