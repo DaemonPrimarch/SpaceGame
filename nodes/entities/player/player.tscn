@@ -20,8 +20,8 @@
 [ext_resource path="res://icon.png" type="Texture" id=18]
 
 [node name="player" groups=[
-"warpable",
 "player",
+"warpable",
 ] instance=ExtResource( 1 )]
 
 script = ExtResource( 2 )
@@ -54,6 +54,7 @@ rect_clip_content = false
 [node name="weapon_manager" parent="." index="6"]
 
 weapon_path = NodePath("gun")
+enabled = false
 
 [node name="weapon_bottom_front" parent="weapon_manager" index="0"]
 
@@ -70,6 +71,7 @@ _sections_unfolded = [ "Transform" ]
 
 [node name="gun" parent="weapon_manager" index="5" instance=ExtResource( 3 )]
 
+visible = false
 position = Vector2( 56, -40 )
 
 [node name="debuggyboy" type="RayCast2D" parent="." index="8"]
@@ -86,6 +88,8 @@ collision_mask = 1
 [node name="standing_handler" parent="." index="11" instance=ExtResource( 6 )]
 
 [node name="crouching_handler" parent="." index="12" instance=ExtResource( 7 )]
+
+editor/display_folded = true
 
 [node name="crouch_leave_detector_left" parent="crouching_handler" index="0"]
 

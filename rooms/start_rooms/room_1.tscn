@@ -5,7 +5,7 @@
 [ext_resource path="res://nodes/room_elements/regular_warp_tile.tscn" type="PackedScene" id=3]
 [ext_resource path="res://nodes/room_elements/blocking_warp_tile.tscn" type="PackedScene" id=4]
 
-[node name="room_1" index="0" instance=ExtResource( 1 )]
+[node name="room_1" instance=ExtResource( 1 )]
 
 [node name="terrain" parent="." index="0"]
 
@@ -23,8 +23,6 @@ polygon = PoolVector2Array( 0, 0, 0, 960, 1664, 960, 1664, 0 )
 
 position = Vector2( 320, 768 )
 arrival_ID = "start"
-has_map_making_offset = false
-map_making_offset = Vector2( 0, 0 )
 
 [node name="warp_tile" parent="." index="5" instance=ExtResource( 3 )]
 
