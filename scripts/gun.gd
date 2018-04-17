@@ -11,7 +11,7 @@ func press_trigger():
 	
 	bullet.set_position(room.to_local(to_global(Vector2(20, 0))))
 	
-	bullet.set_velocity(Vector2(64 * 16, 0))
+	bullet.set_velocity(bullet.get_velocity())
 	if(PHYSICS_HELPER.get_global_scale_of_node(self).x <0):
 		bullet.set_rotation(PI - rotation)
 	else:
