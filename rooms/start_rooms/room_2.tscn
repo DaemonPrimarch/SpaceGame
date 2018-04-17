@@ -22,7 +22,7 @@ arrival_pos_id = "room_2_arrival"
 [node name="warp_tile2" parent="." index="5" instance=ExtResource( 2 )]
 
 position = Vector2( 1632, 256 )
-destination_room = "res://rooms/start_rooms/room_7.tscn"
+destination_room = "res://rooms/start_rooms/room_3.tscn"
 arrival_pos_id = "room_2_arrival"
 flippedH = true
 
