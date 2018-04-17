@@ -1,6 +1,7 @@
 extends Area2D
 
 signal player_entered(player)
+signal player_entered_no_par()
 
 export var oneshot = false
 export(String) var save_path
@@ -19,6 +20,7 @@ func _ready():
 func _on_Area2D_body_entered(body):
 	if(body.is_in_group("player")):
 		emit_signal("player_entered", body)
+		emit_signal("player_entered_no_par")
 		
 		if(is_oneshot()):
 			if(saves_oneshot()):

@@ -46,7 +46,7 @@ _sections_unfolded = [ "Transform" ]
 [node name="weapon_manager" parent="." index="6"]
 
 weapon_path = NodePath("gun")
-enabled = false
+enabled = true
 
 [node name="weapon_bottom_front" parent="weapon_manager" index="0"]
 
