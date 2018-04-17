@@ -7,6 +7,7 @@ onready var weapon_bottom_front_position = get_node("weapon_bottom_front")
 onready var weapon_bottom_position = get_node("weapon_bottom")
 
 export(NodePath) var weapon_path
+export var enabled = false
 
 func has_weapon():
 	return weapon_path != null
@@ -14,8 +15,12 @@ func has_weapon():
 func get_weapon():
 	return get_node(weapon_path)
 
+func set_enabled(val):
+	enabled = val
+	get_weapon().visible = val
+
 func _physics_process(delta):
-	if(has_weapon()):
+	if(has_weapon() and enabled):
 		if(Input.is_action_just_pressed("fire")):
 			get_weapon().press_trigger()
 		if(Input.is_action_pressed("fire")):

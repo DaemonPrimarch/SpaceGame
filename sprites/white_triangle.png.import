@@ -7,7 +7,7 @@ path="res://.import/white_triangle.png-85451cede00f794cf0b4e0f9b2a4f1ae.stex"
 [deps]
 
 source_file="res://sprites/white_triangle.png"
-source_md5="7b66b15142fd149802ec2a79629548aa"
+source_md5="1d118b1eec19619f704ab25552fea430"
 
 dest_files=[ "res://.import/white_triangle.png-85451cede00f794cf0b4e0f9b2a4f1ae.stex" ]
 dest_md5="aad759c80d703c1edb6b86e40bf4e122"
