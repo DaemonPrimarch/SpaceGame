@@ -19,6 +19,10 @@ func set_enabled(val):
 	enabled = val
 	get_weapon().visible = val
 
+func _ready():
+	if(enabled):
+		get_weapon().visible = true
+
 func _physics_process(delta):
 	if(has_weapon() and enabled):
 		if(Input.is_action_just_pressed("fire")):
