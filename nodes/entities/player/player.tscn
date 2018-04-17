@@ -20,8 +20,8 @@
 [ext_resource path="res://icon.png" type="Texture" id=18]
 
 [node name="player" groups=[
-"player",
 "warpable",
+"player",
 ] instance=ExtResource( 1 )]
 
 script = ExtResource( 2 )
@@ -43,18 +43,10 @@ _sections_unfolded = [ "Transform" ]
 
 _sections_unfolded = [ "Transform" ]
 
-[node name="grounded_label" parent="." index="4"]
-
-rect_clip_content = false
-
-[node name="state_label" parent="." index="5"]
-
-rect_clip_content = false
-
 [node name="weapon_manager" parent="." index="6"]
 
 weapon_path = NodePath("gun")
-enabled = false
+enabled = true
 
 [node name="weapon_bottom_front" parent="weapon_manager" index="0"]
 
@@ -125,18 +117,9 @@ enabled = false
 
 [node name="pushed_handler" parent="." index="19" instance=ExtResource( 14 )]
 
-[node name="on_platform_label" parent="." index="20"]
-
-rect_clip_content = false
-
 [node name="invulnerable_label" parent="." index="21"]
 
 visible = false
-rect_clip_content = false
-
-[node name="in_ladder_label" parent="." index="22"]
-
-rect_clip_content = false
 
 [node name="camera" parent="." index="23" instance=ExtResource( 15 )]
 

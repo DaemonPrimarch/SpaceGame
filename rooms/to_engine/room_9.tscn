@@ -11,10 +11,11 @@
 [ext_resource path="res://nodes/entities/enemies/enemy_1.tscn" type="PackedScene" id=9]
 [ext_resource path="res://scripts/trigger_area.gd" type="Script" id=10]
 [ext_resource path="res://nodes/room_elements/bullet_switch.tscn" type="PackedScene" id=11]
-[ext_resource path="res://nodes/room_elements/link_block.tscn" type="PackedScene" id=12]
+[ext_resource path="res://deprecated/link_block.tscn" type="PackedScene" id=12]
 [ext_resource path="res://nodes/room_elements/camera_change_area.tscn" type="PackedScene" id=13]
 [ext_resource path="res://nodes/room_elements/helper_areas/no_respawn_area.tscn" type="PackedScene" id=14]
 [ext_resource path="res://nodes/room_elements/bullet_hit_block.tscn" type="PackedScene" id=15]
+
 
 
 
