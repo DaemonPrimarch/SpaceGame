@@ -9,15 +9,19 @@ func get_handled_state():
 func enter_state(previous_state):
 	.enter_state(previous_state)
 	
-	get_parent().set_scale(get_parent().get_scale() * Vector2(1,0.5))
-	get_parent().position += Vector2(0, 16)
+	$AnimationPlayer.play("crouch_start")
+	get_parent().get_node("AnimationPlayer").stop()
+	
+#	get_parent().set_scale(get_parent().get_scale() * Vector2(1,0.5))
+#	get_parent().position += Vector2(0, 16)
 	
 func leave_state(new_state):
 	.leave_state(new_state)
 	
-	get_parent().set_scale(get_parent().get_scale() * Vector2(1,2))
-	
-	get_parent().position -= Vector2(0, 16)
+	$AnimationPlayer.play("crouch_stop")
+#	get_parent().set_scale(get_parent().get_scale() * Vector2(1,2))
+#
+#	get_parent().position -= Vector2(0, 16)
 	
 func process_state(delta):
 	.process_state(delta)

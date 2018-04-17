@@ -62,13 +62,13 @@ position = Vector2( 1568, 800 )
 
 polygon = PoolVector2Array( 0, 0, 0, 960, 1664, 960, 1664, 0 )
 
-[connection signal="toggle" from="StaticBody2D" to="moveable_platform_parent" method="set_active" binds= [ true ]]
-
 [connection signal="toggle" from="StaticBody2D" to="moveable_platform_parent2" method="set_active" binds= [ true ]]
 
-[connection signal="toggle" from="StaticBody2D2" to="moveable_platform_parent" method="set_active" binds= [ true ]]
+[connection signal="toggle" from="StaticBody2D" to="moveable_platform_parent" method="set_active" binds= [ true ]]
 
 [connection signal="toggle" from="StaticBody2D2" to="moveable_platform_parent2" method="set_active" binds= [ true ]]
+
+[connection signal="toggle" from="StaticBody2D2" to="moveable_platform_parent" method="set_active" binds= [ true ]]
 
 
 [editable path="moveable_platform_parent"]

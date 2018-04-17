@@ -33,4 +33,10 @@ func on_area_entered( area ):
 		area._on_bullet_hit(self)
 
 func _ready():
+#	SAVE_MANAGER.set_property("hello/test", "test?")
+#	print(SAVE_MANAGER.get_property("d/d"))
+#
+#	print(SAVE_MANAGER.save_file)
+#	SAVE_MANAGER.save_current_file()
+	
 	get_node("Light2D").enabled = (get_node("/root/ROOM_MANAGER").get_room_of_node(self).is_dark())
