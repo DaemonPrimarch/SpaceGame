@@ -8,7 +8,8 @@
 [ext_resource path="res://nodes/entities/enemies/enemy_3.tscn" type="PackedScene" id=6]
 [ext_resource path="res://nodes/room_elements/camera_change_area.tscn" type="PackedScene" id=7]
 [ext_resource path="res://nodes/room_elements/regular_damage_area.tscn" type="PackedScene" id=8]
-[ext_resource path="res://nodes/play_animation_on_enter.tscn" type="PackedScene" id=9]
+[ext_resource path="res://deprecated/play_animation_on_enter.tscn" type="PackedScene" id=9]
+
 
 [sub_resource type="Animation" id=1]
 
