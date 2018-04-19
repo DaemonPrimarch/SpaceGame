@@ -3,9 +3,7 @@
 [ext_resource path="res://scripts/gun.gd" type="Script" id=1]
 [ext_resource path="res://sprites/white_triangle.png" type="Texture" id=2]
 
-[node name="gun" type="Node2D" groups=[
-"weapon",
-]]
+[node name="gun" type="Node2D"]
 
 script = ExtResource( 1 )
 _sections_unfolded = [ "Transform" ]

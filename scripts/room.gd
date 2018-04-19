@@ -13,8 +13,6 @@ export var auto_generate_camera_container = true
 func _ready():
 	if(Engine.editor_hint and auto_generate_camera_container):
 		generate_camera_container()
-		$background.position = $terrain.get_used_rect().position
-		$background.scale = $terrain.get_used_rect().size
 
 func set_dark(val):
 	dark = val

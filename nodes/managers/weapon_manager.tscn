@@ -6,7 +6,6 @@
 
 script = ExtResource( 1 )
 weapon_path = null
-enabled = false
 
 [node name="weapon_bottom_front" type="Position2D" parent="." index="0"]
 

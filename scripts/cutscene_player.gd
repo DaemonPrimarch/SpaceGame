@@ -13,6 +13,7 @@ func _ready():
 	camera = get_node("/root/CAMERA_MANAGER").get_active_camera()
 
 func play_dialog_tree():
+	print("Q")
 	get_node("/root/DIALOG_SYSTEM").queue_tree_from_json(dialog_tree)
 	
 func play_cutscene():
