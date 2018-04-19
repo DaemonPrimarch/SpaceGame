@@ -13,20 +13,9 @@ func _ready():
 			platform = node
 			
 	get_platform().position = Vector2()
-	
-	var flipped = 1
-			
-	if(get_platform().is_flippedH() or get_platform().is_flippedV()):
-		flipped = -1
-	
-	if(extended):
-		get_platform().move_and_push(get_extending_direction() * extending_distance * flipped * Vector2(1,-1))
-		moving_forward = false
-		forward_velocity = forward_starting_velocity
 
 export var active = true
 export var one_way = false
-export var extended = false
 export var extending_direction = Vector2(1,0)
 export var extending_distance = 64
 

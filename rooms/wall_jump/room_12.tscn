@@ -7,15 +7,12 @@
 [ext_resource path="res://nodes/room_elements/bullet_switch.tscn" type="PackedScene" id=5]
 [ext_resource path="res://nodes/room_elements/regular_damage_area.tscn" type="PackedScene" id=6]
 
-
-
-[node name="room_12" instance=ExtResource( 1 )]
+[node name="room_12" index="0" instance=ExtResource( 1 )]
 
 [node name="platform_extender" parent="." index="0" instance=ExtResource( 2 )]
 
 position = Vector2( 224, 32 )
 active = false
-one_way = false
 extending_direction = Vector2( 0, 1 )
 extending_distance = 704
 
@@ -49,8 +46,6 @@ flippedH = true
 [node name="bullet_switch" parent="." index="6" instance=ExtResource( 5 )]
 
 position = Vector2( 672, 864 )
-state = false
-toggleable = false
 
 [node name="damage_area" parent="." index="7" instance=ExtResource( 6 )]
 
