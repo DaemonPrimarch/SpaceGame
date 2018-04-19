@@ -9,23 +9,17 @@ onready var weapon_bottom_position = get_node("weapon_bottom")
 export(NodePath) var weapon_path
 export var enabled = false
 
-var weapon
-
 func has_weapon():
 	return weapon_path != null
 	
 func get_weapon():
-	return weapon
+	return get_node(weapon_path)
 
 func set_enabled(val):
 	enabled = val
 	get_weapon().visible = val
 
 func _ready():
-	for child in get_children():
-		if(child.is_in_group("weapon")):
-			weapon = child
-	
 	if(enabled):
 		get_weapon().visible = true
 

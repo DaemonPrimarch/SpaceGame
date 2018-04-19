@@ -58,7 +58,7 @@ position = Vector2( 0, -80.5085 )
 
 [node name="weapon_front" parent="weapon_manager" index="3"]
 
-position = Vector2( 28.153, -29.2195 )
+position = Vector2( 27.7558, -32 )
 _sections_unfolded = [ "Transform" ]
 
 [node name="gun" parent="weapon_manager" index="5" instance=ExtResource( 3 )]
@@ -80,6 +80,8 @@ collision_mask = 1
 [node name="standing_handler" parent="." index="11" instance=ExtResource( 6 )]
 
 [node name="crouching_handler" parent="." index="12" instance=ExtResource( 7 )]
+
+editor/display_folded = true
 
 [node name="crouch_leave_detector_left" parent="crouching_handler" index="0"]
 
