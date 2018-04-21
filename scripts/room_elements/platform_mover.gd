@@ -5,12 +5,15 @@ export var looping = false
 export var one_way = false
 export var moving_speed = 64 * 3
 export var snap = false
+export var step = false
 
 var next_point_counter = 1
 var next_point = Vector2()
 var previous_point = Vector2()
 var arrived = false
 var direction = 1
+
+var current_point = 0
 
 signal arrived_at_next_point(point)
 var platform = null
@@ -64,6 +67,7 @@ func _physics_process(delta):
 		get_platform().move_and_push(get_movement_direction() * delta * get_movement_speed())
 		
 		if(has_arrived_at_next_point()):
+			current_point = next_point_counter
 			if(is_one_way()):
 				get_platform().position = get_next_point()
 				
@@ -85,6 +89,9 @@ func _physics_process(delta):
 					next_point_counter += 2*direction
 					
 					set_next_point(get_node("point_" + String(next_point_counter)).get_position())
+			if(step):
+				set_active(false)
+				arrived = true
 
 func set_active(value):
 	active = value
@@ -110,22 +117,34 @@ func one_way_stop(point):
 	
 	set_next_point(get_node("point_" + String(next_point_counter)).get_position())
 
-func switch():
+func switch(counter):
+
+	if(next_point_counter == counter + 1):
+		pass
+	elif(next_point_counter == counter + 2):
+		next_point_counter = counter
+		counter += 1
+	elif(counter == next_point_counter):
+		counter += 1
+	else:
+		return
+
 	set_active(true)
 	arrived = false
-	set_previous_point(get_next_point())
+	set_previous_point(get_node("point_" + String(counter)).get_position())
 			
-	next_point_counter += direction
 	if(has_node("point_" + String(next_point_counter))):
 		set_next_point(get_node("point_" + String(next_point_counter)).get_position())
-	elif(is_looping()):
-		next_point_counter = 0
-		
-		set_next_point(get_node("point_" + String(next_point_counter)).get_position())
 	else:
-		direction = -direction
-		
-		next_point_counter += 2*direction
-		
-		set_next_point(get_node("point_" + String(next_point_counter)).get_position())
+		print("no such node found")
 
+func go_to(point):
+	if(not is_active()):
+		set_active(true)
+		arrived = false
+		set_previous_point(get_node("point_" + String(current_point)).get_position())
+				
+		if(has_node("point_" + String(point))):
+			set_next_point(get_node("point_" + String(point)).get_position())
+		else:
+			print("no such node found")
