@@ -137,12 +137,10 @@ func one_way_stop(point):
 
 func switch(counter):
 
-	if(next_point_counter == counter + 1):
-		pass
-	elif(next_point_counter == counter + 2):
+	if(current_point == counter):
+		next_point_counter = counter + 1
+	elif(current_point == counter + 1):
 		next_point_counter = counter
-		counter += 1
-	elif(counter == next_point_counter):
 		counter += 1
 	else:
 		return

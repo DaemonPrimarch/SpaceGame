@@ -7,7 +7,7 @@
 [ext_resource path="res://nodes/room_elements/bullet_hit_block.tscn" type="PackedScene" id=5]
 [ext_resource path="res://nodes/warp_arrival.tscn" type="PackedScene" id=6]
 
-[node name="room_11" instance=ExtResource( 1 )]
+[node name="room_11" index="0" instance=ExtResource( 1 )]
 
 [node name="mid_platform" parent="." index="0" instance=ExtResource( 2 )]
 
@@ -75,7 +75,7 @@ position = Vector2( 384, 640 )
 
 [node name="camera_container" parent="." index="6"]
 
-polygon = PoolVector2Array( 0, 1600, 1664, 1600, 1664, 0, 0, 0, 0, 0 )
+polygon = PoolVector2Array( 0, 0, 0, 1920, 1664, 1920, 1664, 0 )
 has_default_offset = true
 
 [node name="warp_tile" parent="." index="7" instance=ExtResource( 4 )]
@@ -132,25 +132,25 @@ wait_time = 8.0
 one_shot = false
 autostart = false
 
-[connection signal="toggle" from="third_switch" to="Timer" method="start"]
-
 [connection signal="toggle" from="third_switch" to="mid_platform" method="go_to" binds= [ 1 ]]
 
 [connection signal="toggle" from="third_switch" to="right_platform" method="go_to" binds= [ 2 ]]
 
 [connection signal="toggle" from="third_switch" to="left_platform" method="go_to" binds= [ 2 ]]
 
+[connection signal="toggle" from="third_switch" to="Timer" method="start"]
+
 [connection signal="toggle" from="second_switch" to="left_platform" method="switch" binds= [ 0 ]]
 
 [connection signal="toggle" from="first_switch" to="right_platform" method="switch" binds= [ 0 ]]
-
-[connection signal="timeout" from="Timer" to="Timer" method="stop"]
 
 [connection signal="timeout" from="Timer" to="mid_platform" method="go_to" binds= [ 0 ]]
 
 [connection signal="timeout" from="Timer" to="right_platform" method="go_to" binds= [ 1 ]]
 
 [connection signal="timeout" from="Timer" to="left_platform" method="go_to" binds= [ 1 ]]
+
+[connection signal="timeout" from="Timer" to="Timer" method="stop"]
 
 
 [editable path="mid_platform"]
