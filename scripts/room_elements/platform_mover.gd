@@ -6,6 +6,7 @@ export var one_way = false
 export var moving_speed = 64 * 3
 export var snap = false
 export var step = false
+export var start_at = 0
 
 var next_point_counter = 1
 var next_point = Vector2()
@@ -61,6 +62,23 @@ func _ready():
 	get_platform().position = get_node("point_0").position
 	
 	connect("arrived_at_next_point",self,"one_way_stop")
+	
+	if(start_at != 0):
+		get_platform().move_and_push(get_node("point_" + String(start_at)).get_position() - get_node("point_" + String(0)).get_position())
+		current_point = start_at
+		
+		if(has_node("point_" + String(start_at + 1))):
+			next_point_counter = start_at + 1
+			set_next_point(get_node("point_" + String(next_point_counter)).get_position())
+		elif(is_looping()):
+			next_point_counter = 0
+			
+			set_next_point(get_node("point_" + String(next_point_counter)).get_position())
+		else:
+			direction = -direction
+			next_point_counter = start_at + direction
+			set_next_point(get_node("point_" + String(next_point_counter)).get_position())
+	
 	
 func _physics_process(delta):
 	if(is_active()):
