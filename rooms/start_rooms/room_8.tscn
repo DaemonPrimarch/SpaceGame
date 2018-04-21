@@ -7,14 +7,13 @@
 [ext_resource path="res://nodes/room_elements/regular_warp_tile.tscn" type="PackedScene" id=5]
 [ext_resource path="res://nodes/room_elements/bullet_switch.tscn" type="PackedScene" id=6]
 
-[node name="room_8" instance=ExtResource( 1 )]
+[node name="room_8" index="0" instance=ExtResource( 1 )]
 
 [node name="platform_extender2" parent="." index="0" instance=ExtResource( 2 )]
 
 position = Vector2( 1504, 352 )
 active = false
 one_way = true
-extended = true
 extending_distance = 512
 backward_starting_velocity = 320
 backward_acceleration = 0
@@ -29,7 +28,6 @@ extending = true
 position = Vector2( 608, 864 )
 active = false
 one_way = true
-extended = false
 extending_direction = Vector2( 0, 1 )
 extending_distance = 192
 forward_acceleration = 0
@@ -53,11 +51,13 @@ polygon = PoolVector2Array( 0, 0, 0, 960, 1664, 960, 1664, 0 )
 [node name="warp_tile" parent="." index="6" instance=ExtResource( 5 )]
 
 position = Vector2( 32, 768 )
+destination_room = "res://rooms/start_rooms/room_7.tscn"
 arrival_pos_id = "room_8_arrival"
 
 [node name="warp_tile2" parent="." index="7" instance=ExtResource( 5 )]
 
 position = Vector2( 1632, 768 )
+destination_room = "res://rooms/start_rooms/room_9.tscn"
 arrival_pos_id = "room_8_arrival"
 flippedH = true
 
