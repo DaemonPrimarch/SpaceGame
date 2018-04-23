@@ -155,7 +155,7 @@ func switch(counter):
 		print("no such node found")
 
 func go_to(point):
-	if(not is_active()):
+	if(not is_active() and not current_point == point):
 		set_active(true)
 		arrived = false
 		set_previous_point(get_node("point_" + String(current_point)).get_position())

@@ -1,13 +1,81 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://nodes/room.tscn" type="PackedScene" id=1]
 [ext_resource path="res://nodes/room_elements/regular_warp_tile.tscn" type="PackedScene" id=2]
+[ext_resource path="res://nodes/room_elements/on_enter_cutscene_player.tscn" type="PackedScene" id=3]
+[ext_resource path="res://nodes/cutscene_player.tscn" type="PackedScene" id=4]
 
-[node name="room_13" instance=ExtResource( 1 )]
+[sub_resource type="Animation" id=1]
+
+resource_name = "cutscene"
+length = 7.0
+loop = false
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("..:dark")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath("cutscene_player")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 1 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "play_dialog_tree"
+} ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath("cutscene_player:dialog_system")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 3, 5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"values": [ {
+"args": [  ],
+"method": "advance_current_tree"
+}, {
+"args": [  ],
+"method": "advance_current_tree"
+} ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("cutscene_player:dialog_tree")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "res://dialog_trees/power_blackout_1.json" ]
+}
+
+[node name="room_13" index="0" instance=ExtResource( 1 )]
 
 [node name="terrain" parent="." index="0"]
 
 tile_data = PoolIntArray( 0, 0, 0, 1, 0, 0, 2, 0, 0, 3, 0, 0, 4, 0, 0, 5, 0, 0, 6, 0, 0, 7, 0, 0, 8, 0, 0, 9, 0, 0, 10, 0, 0, 11, 0, 0, 12, 0, 0, 13, 0, 0, 14, 0, 0, 15, 0, 0, 16, 0, 0, 17, 0, 0, 18, 0, 0, 19, 0, 0, 20, 0, 0, 21, 0, 0, 22, 0, 0, 23, 0, 0, 24, 0, 0, 25, 0, 0, 65536, 0, 0, 65537, 0, 0, 65538, 0, 0, 65558, 0, 0, 65559, 0, 0, 65560, 0, 0, 65561, 0, 0, 131072, 0, 0, 131073, 0, 0, 131074, 0, 0, 131094, 0, 0, 131095, 0, 0, 131096, 0, 0, 131097, 0, 0, 196608, 0, 0, 196609, 0, 0, 196610, 0, 0, 196630, 0, 0, 196631, 0, 0, 196632, 0, 0, 196633, 0, 0, 262144, 0, 0, 262145, 0, 0, 262146, 0, 0, 262166, 0, 0, 262167, 0, 0, 262168, 0, 0, 262169, 0, 0, 327680, 0, 0, 327681, 0, 0, 327682, 0, 0, 327702, 0, 0, 327703, 0, 0, 327704, 0, 0, 327705, 0, 0, 393216, 0, 0, 393217, 0, 0, 393218, 0, 0, 393238, 0, 0, 393239, 0, 0, 393240, 0, 0, 393241, 0, 0, 458774, 0, 0, 458775, 0, 0, 458776, 0, 0, 458777, 0, 0, 524310, 0, 0, 524311, 0, 0, 524312, 0, 0, 524313, 0, 0, 589824, 0, 0, 589825, 0, 0, 589826, 0, 0, 589827, 0, 0, 589828, 0, 0, 589829, 0, 0, 589846, 0, 0, 589847, 0, 0, 589848, 0, 0, 589849, 0, 0, 655360, 0, 0, 655361, 0, 0, 655362, 0, 0, 655363, 0, 0, 655364, 0, 0, 655365, 0, 0, 655382, 0, 0, 655383, 0, 0, 655384, 0, 0, 655385, 0, 0, 720896, 0, 0, 720897, 0, 0, 720898, 0, 0, 720899, 0, 0, 720900, 0, 0, 720901, 0, 0, 786432, 0, 0, 786433, 0, 0, 786434, 0, 0, 786435, 0, 0, 786436, 0, 0, 786437, 0, 0, 851968, 0, 0, 851969, 0, 0, 851970, 0, 0, 851971, 0, 0, 851972, 0, 0, 851973, 0, 0, 851974, 0, 0, 851975, 0, 0, 851976, 0, 0, 851977, 0, 0, 851978, 0, 0, 851979, 0, 0, 851980, 0, 0, 851981, 0, 0, 851982, 0, 0, 851983, 0, 0, 851984, 0, 0, 851985, 0, 0, 851986, 0, 0, 851987, 0, 0, 851988, 0, 0, 851989, 0, 0, 851990, 0, 0, 851991, 0, 0, 851992, 0, 0, 851993, 0, 0, 917504, 0, 0, 917505, 0, 0, 917506, 0, 0, 917507, 0, 0, 917508, 0, 0, 917509, 0, 0, 917510, 0, 0, 917511, 0, 0, 917512, 0, 0, 917513, 0, 0, 917514, 0, 0, 917515, 0, 0, 917516, 0, 0, 917517, 0, 0, 917518, 0, 0, 917519, 0, 0, 917520, 0, 0, 917521, 0, 0, 917522, 0, 0, 917523, 0, 0, 917524, 0, 0, 917525, 0, 0, 917526, 0, 0, 917527, 0, 0, 917528, 0, 0, 917529, 0, 0 )
+
+[node name="debug_player_spawner" parent="." index="1"]
+
+position = Vector2( 128, 512 )
 
 [node name="camera_container" parent="." index="3"]
 
@@ -17,13 +85,32 @@ polygon = PoolVector2Array( 0, 0, 0, 960, 1664, 960, 1664, 0 )
 
 position = Vector2( 32, 512 )
 destination_room = "res://rooms/start_rooms/room_10.tscn"
-arrival_pos_id = "room_arrival"
+arrival_pos_id = "room_13_arrival"
 
 [node name="warp_tile2" parent="." index="5" instance=ExtResource( 2 )]
 
 position = Vector2( 1632, 768 )
 destination_room = "res://rooms/start_rooms/room_14.tscn"
-arrival_pos_id = "room_arrival"
+arrival_pos_id = "room_13_arrival"
 flippedH = true
 
+[node name="on_enter_cutscene_player" parent="." index="6" instance=ExtResource( 3 )]
 
+position = Vector2( 864, 768 )
+
+[node name="enter_trigger" parent="on_enter_cutscene_player" index="0"]
+
+oneshot = true
+save_path = "cutscenes/darkenede"
+
+[node name="CollisionPolygon2D" parent="on_enter_cutscene_player/enter_trigger" index="0"]
+
+polygon = PoolVector2Array( 32, -704, -32, -704, -32, 64, 32, 64 )
+
+[node name="cutscene_player" parent="on_enter_cutscene_player" index="1" instance=ExtResource( 4 )]
+
+anims/cutscene = SubResource( 1 )
+dialog_tree = "res://dialog_trees/power_blackout_1.json"
+
+
+[editable path="on_enter_cutscene_player"]

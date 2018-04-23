@@ -134,25 +134,25 @@ wait_time = 8.0
 one_shot = false
 autostart = false
 
-[connection signal="toggle" from="third_switch" to="Timer" method="start"]
+[connection signal="toggle" from="third_switch" to="left_platform" method="go_to" binds= [ 2 ]]
 
 [connection signal="toggle" from="third_switch" to="right_platform" method="go_to" binds= [ 2 ]]
 
-[connection signal="toggle" from="third_switch" to="left_platform" method="go_to" binds= [ 2 ]]
-
 [connection signal="toggle" from="third_switch" to="mid_platform" method="go_to" binds= [ 1 ]]
+
+[connection signal="toggle" from="third_switch" to="Timer" method="start"]
 
 [connection signal="toggle" from="second_switch" to="left_platform" method="switch" binds= [ 0 ]]
 
 [connection signal="toggle" from="first_switch" to="right_platform" method="switch" binds= [ 0 ]]
 
-[connection signal="timeout" from="Timer" to="Timer" method="stop"]
+[connection signal="timeout" from="Timer" to="left_platform" method="go_to" binds= [ 1 ]]
 
 [connection signal="timeout" from="Timer" to="right_platform" method="go_to" binds= [ 1 ]]
 
-[connection signal="timeout" from="Timer" to="left_platform" method="go_to" binds= [ 1 ]]
-
 [connection signal="timeout" from="Timer" to="mid_platform" method="go_to" binds= [ 0 ]]
+
+[connection signal="timeout" from="Timer" to="Timer" method="stop"]
 
 
 [editable path="mid_platform"]
