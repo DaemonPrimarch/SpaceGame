@@ -31,7 +31,7 @@ position = Vector2( 128, 1728 )
 
 [node name="camera_container" parent="." index="4"]
 
-polygon = PoolVector2Array( 0, 448, 0, 1920, 1664, 1920, 1664, 448 )
+polygon = PoolVector2Array( 0, 0, 0, 1920, 1664, 1920, 1664, 0 )
 has_default_offset = true
 
 [node name="warp_tile" parent="." index="5" instance=ExtResource( 4 )]
@@ -43,7 +43,7 @@ arrival_pos_id = "room_8_arrival"
 [node name="warp_tile2" parent="." index="6" instance=ExtResource( 4 )]
 
 position = Vector2( 1632, 1728 )
-destination_room = "res://rooms/start_rooms/room_9.tscn"
+destination_room = "res://rooms/start_rooms/room_3.tscn"
 arrival_pos_id = "room_8_arrival"
 flippedH = true
 

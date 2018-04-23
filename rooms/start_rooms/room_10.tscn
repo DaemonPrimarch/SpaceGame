@@ -12,7 +12,6 @@
 
 [node name="room_10" instance=ExtResource( 1 )]
 
-editor/display_folded = true
 auto_generate_camera_container = false
 
 [node name="platform_extender3" parent="." index="0" instance=ExtResource( 2 )]
@@ -81,6 +80,7 @@ flippedH = true
 [node name="warp_tile2" parent="." index="8" instance=ExtResource( 5 )]
 
 position = Vector2( 1632, 512 )
+destination_room = "res://rooms/start_rooms/room_13.tscn"
 arrival_pos_id = "room_10_arrival"
 flippedH = true
 

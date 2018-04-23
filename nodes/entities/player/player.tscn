@@ -20,8 +20,8 @@
 [ext_resource path="res://icon.png" type="Texture" id=18]
 
 [node name="player" groups=[
-"warpable",
 "player",
+"warpable",
 ] instance=ExtResource( 1 )]
 
 script = ExtResource( 2 )
@@ -65,6 +65,7 @@ _sections_unfolded = [ "Transform" ]
 
 visible = false
 position = Vector2( 56, -40 )
+flashlight_enabled = false
 
 [node name="debuggyboy" type="RayCast2D" parent="." index="8"]
 
