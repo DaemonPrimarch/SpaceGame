@@ -16,3 +16,6 @@ func is_active():
 
 func _ready():
 	set_active(is_active())
+
+func switch():
+	set_active(not is_active())

@@ -16,7 +16,7 @@ polygon = PoolVector2Array( 0, 0, 0, 960, 1664, 960, 1664, 0 )
 [node name="warp_tile" parent="." index="4" instance=ExtResource( 2 )]
 
 position = Vector2( 32, 768 )
-destination_room = "res://rooms/start_rooms/room_3.tscn"
+destination_room = "res://rooms/start_rooms/room_2.tscn"
 arrival_pos_id = "room_4_arrival"
 
 [node name="warp_tile2" parent="." index="5" instance=ExtResource( 2 )]
