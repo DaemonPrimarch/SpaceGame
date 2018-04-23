@@ -1,6 +1,7 @@
 extends "res://scripts/entities/enemies/enemy.gd"
 
 export var attack_duration = 0.2
+export var eyes_enabled = true setget set_eyes_enabled
 
 var attacking = false
 
@@ -8,6 +9,11 @@ func _ready():
 	# Called every time the node is added to the scene.
 	# Initialization here
 	pass
+
+func set_eyes_enabled(val):
+	if(is_inside_tree()):
+		$eye1.enabled = val
+		$eye2.enabled = val
 	
 func get_player():
 	for play in get_tree().get_nodes_in_group("player"):
@@ -24,6 +30,7 @@ func attack_player():
 		$attack.start()
 	
 func _on_shadow_monster_light_entered(source):
+	print("ROEMI")
 	if(not attacking):
 		visible = false
 
