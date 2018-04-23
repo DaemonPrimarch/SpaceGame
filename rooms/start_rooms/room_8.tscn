@@ -8,6 +8,8 @@
 
 [node name="room_8" instance=ExtResource( 1 )]
 
+auto_generate_camera_container = false
+
 [node name="platform_extender" parent="." index="0" instance=ExtResource( 2 )]
 
 position = Vector2( 608, 1824 )
@@ -31,7 +33,7 @@ position = Vector2( 128, 1728 )
 
 [node name="camera_container" parent="." index="4"]
 
-polygon = PoolVector2Array( 0, 0, 0, 1920, 1664, 1920, 1664, 0 )
+polygon = PoolVector2Array( 0, 448, 0, 1920, 1664, 1920, 1664, 448 )
 has_default_offset = true
 
 [node name="warp_tile" parent="." index="5" instance=ExtResource( 4 )]
