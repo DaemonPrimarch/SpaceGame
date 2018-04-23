@@ -24,6 +24,6 @@ func press_trigger():
 	
 func on_room_entered():
 	if(ROOM_MANAGER.get_room_of_node(self).is_dark()):
-		get_node("flashlight").enabled = true
+		get_node("flashlight").get_node("Light").enabled = true
 	else:
-		get_node("flashlight").enabled = false
+		get_node("flashlight").get_node("Light").enabled = false

@@ -1,0 +1,38 @@
+extends "res://scripts/entities/enemies/enemy.gd"
+
+export var attack_duration = 0.2
+
+var attacking = false
+
+func _ready():
+	# Called every time the node is added to the scene.
+	# Initialization here
+	pass
+	
+func get_player():
+	for play in get_tree().get_nodes_in_group("player"):
+		return play
+	
+	return null
+
+func attack_player():	
+	var play = get_player()
+	attacking = true
+	
+	if(play):
+		$attack.interpolate_property(self, "position", position, play.position, attack_duration, Tween.TRANS_LINEAR,Tween.EASE_IN_OUT)
+		$attack.start()
+	
+func _on_shadow_monster_light_entered(source):
+	if(not attacking):
+		visible = false
+
+
+func _on_shadow_monster_light_exited(source):
+	visible = true
+
+
+func _on_attack_tween_completed(object, key):
+	queue_free()
+	
+	get_player().damage(get_damage())

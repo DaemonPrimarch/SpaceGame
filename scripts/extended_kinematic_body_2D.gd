@@ -1,6 +1,9 @@
 extends KinematicBody2D
 
 signal collided(info, moved_object)
+signal light_entered(source)
+signal light_exited(source)
+signal bullet_hit(bullet)
 
 export var max_slope_angle = PI/4
 
@@ -8,6 +11,11 @@ export var flippedH = false setget set_flippedH, is_flippedH
 export var flippedV = false setget set_flippedV, is_flippedV
 
 export var moveable_by_collision = true setget set_moveable_by_collision, is_moveable_by_collision
+
+func _ready():
+	add_to_group("extended_kinematic_body_2D")
+	add_to_group("light_detecting")
+	add_to_group("bullet_detecting")
 
 func set_moveable_by_collision(val):
 	moveable_by_collision = val
