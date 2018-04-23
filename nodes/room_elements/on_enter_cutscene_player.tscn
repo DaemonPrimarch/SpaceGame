@@ -19,6 +19,7 @@ audio_bus_name = "Master"
 script = ExtResource( 2 )
 oneshot = false
 save_path = null
+trigger_on_unload = false
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="enter_trigger" index="0"]
 

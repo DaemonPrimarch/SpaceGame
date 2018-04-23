@@ -25,7 +25,7 @@ func press_trigger():
 	#HAX https://github.com/godotengine/godot/issues/17405
 	
 func on_room_entered():
-	if(ROOM_MANAGER.get_room_of_node(self).is_dark() and flashlight_enabled):
-		get_node("flashlight").enabled = true
+	if(ROOM_MANAGER.get_room_of_node(self).is_dark()and flashlight_enabled):
+		get_node("flashlight").get_node("Light").enabled = true
 	else:
-		get_node("flashlight").enabled = false
+		get_node("flashlight").get_node("Light").enabled = false

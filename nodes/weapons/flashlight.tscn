@@ -35,4 +35,25 @@ shadow_filter_smooth = 0.0
 shadow_item_cull_mask = 1
 _sections_unfolded = [ "Range", "Shadow", "Transform" ]
 
+[node name="light_area" type="Area2D" parent="." index="1"]
+
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+collision_layer = 524289
+audio_bus_override = false
+audio_bus_name = "Master"
+_sections_unfolded = [ "Collision" ]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="light_area" index="0"]
+
+build_mode = 0
+polygon = PoolVector2Array( 0, 0, 832, -256, 832, 288 )
+
+[connection signal="body_entered" from="light_area" to="." method="_on_light_area_body_entered"]
+
+[connection signal="body_exited" from="light_area" to="." method="_on_light_area_body_exited"]
+
 
