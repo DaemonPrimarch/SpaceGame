@@ -23,6 +23,9 @@ func load_packed_room(packed, pos):
 	
 	loaded_room.set_position(pos)
 	
+	if(loaded_room.has_node("player")):
+		loaded_room.get_node("player").free()
+	
 	get_tree().get_root().add_child(loaded_room)
 	
 	add_room_as_loaded(loaded_room)
