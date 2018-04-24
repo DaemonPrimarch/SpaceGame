@@ -19,7 +19,7 @@
 [ext_resource path="res://nodes/managers/camera_zoom_out_manager.tscn" type="PackedScene" id=17]
 [ext_resource path="res://icon.png" type="Texture" id=18]
 
-[node name="player" groups=[
+[node name="player" index="0" groups=[
 "player",
 "warpable",
 ] instance=ExtResource( 1 )]
@@ -65,7 +65,6 @@ _sections_unfolded = [ "Transform" ]
 
 visible = false
 position = Vector2( 56, -40 )
-flashlight_enabled = false
 
 [node name="debuggyboy" type="RayCast2D" parent="." index="8"]
 
