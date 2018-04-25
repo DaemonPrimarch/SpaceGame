@@ -125,13 +125,8 @@ func _on_dialog_box_text_finished_scrolling():
 				$inputs/message/message_edit.grab_click_focus()
 				$preview/dialog_box.set_next_indicator_enabled(true)
 		if((get_current_element().has("next_indicator") and not get_current_element().next_indicator) or not get_current_element().has("next_indicator")):
-			if(get_current_element().has("auto_advance")):
-				if(get_current_element().auto_advance):
-					_on_next_button_pressed()
-					_on_play_button_pressed()
-				else:
-					_on_next_button_pressed()
-					_on_play_button_pressed()
+			_on_next_button_pressed()
+			_on_play_button_pressed()
 	else:
 		playing_full = false
 
