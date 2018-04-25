@@ -32,5 +32,10 @@ func process_state(delta):
 	elif(Input.is_action_pressed("play_down")):
 		get_parent().set_state("CROUCHING")
 
+func leave_state(new):
+	.leave_state(new)
+	
+	get_parent().animation_player.stop()
+
 func _init():
 	pass
