@@ -105,8 +105,9 @@ func box_finished_printing():
 			advance_current_tree()
 		else:
 			pass
-	else:
-		box.set_next_indicator_enabled(true)
+	elif(get_current_dialog_element().has("next_indicator")):
+		if(get_current_dialog_element().next_indicator):
+			box.set_next_indicator_enabled(true)
 		
 func box_option_selected(option):	
 	set_current_dialog_element(get_current_dialog_tree()[get_current_dialog_element().next[get_current_dialog_element().options.find(option)]])
