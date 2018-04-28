@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://nodes/room.tscn" type="PackedScene" id=1]
 [ext_resource path="res://nodes/room_elements/moving_platforms/controllers/platform_extender.tscn" type="PackedScene" id=2]
 [ext_resource path="res://nodes/room_elements/moving_platforms/platforms/platform_2x1.tscn" type="PackedScene" id=3]
 [ext_resource path="res://nodes/room_elements/regular_warp_tile.tscn" type="PackedScene" id=4]
 [ext_resource path="res://nodes/room_elements/bullet_switch.tscn" type="PackedScene" id=5]
+[ext_resource path="res://rooms/start_rooms/room_darkener_helper.tscn" type="PackedScene" id=6]
 
 [node name="room_8" instance=ExtResource( 1 )]
 
@@ -53,9 +54,7 @@ flippedH = true
 
 position = Vector2( 1120, 1312 )
 
-[node name="player" parent="." index="8"]
-
-max_movement_speed = 360
+[node name="room_darkener_helper" parent="." index="9" instance=ExtResource( 6 )]
 
 [connection signal="end_reached" from="platform_extender" to="platform_extender" method="set_active" binds= [ false ]]
 

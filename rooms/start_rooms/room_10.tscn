@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://nodes/room.tscn" type="PackedScene" id=1]
 [ext_resource path="res://nodes/room_elements/moving_platforms/controllers/platform_extender.tscn" type="PackedScene" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://nodes/warp_tile.tscn" type="PackedScene" id=8]
 [ext_resource path="res://nodes/warp_arrival.tscn" type="PackedScene" id=9]
 [ext_resource path="res://nodes/room_elements/camera_change_area.tscn" type="PackedScene" id=10]
+[ext_resource path="res://rooms/start_rooms/room_darkener_helper.tscn" type="PackedScene" id=11]
 
 [node name="room_10" instance=ExtResource( 1 )]
 
@@ -144,7 +145,6 @@ arrival_ID = "1"
 [node name="player" parent="." index="15"]
 
 position = Vector2( 1536, 1216 )
-max_movement_speed = 360
 
 [node name="camera_change_area" parent="." index="16" instance=ExtResource( 10 )]
 
@@ -171,13 +171,15 @@ changes_zoom = false
 
 polygon = PoolVector2Array( 1504, -480, -32, -480, -32, 416, 1504, 416 )
 
+[node name="room_darkener_helper" parent="." index="18" instance=ExtResource( 11 )]
+
 [connection signal="end_reached" from="platform_extender3" to="platform_extender3" method="set_active" binds= [ false ]]
 
 [connection signal="end_reached" from="platform_extender2" to="platform_extender2" method="set_active" binds= [ false ]]
 
-[connection signal="toggle" from="StaticBody2D" to="platform_extender2" method="set_active" binds= [ true ]]
-
 [connection signal="toggle" from="StaticBody2D" to="platform_mover" method="switch" binds= [ 0 ]]
+
+[connection signal="toggle" from="StaticBody2D" to="platform_extender2" method="set_active" binds= [ true ]]
 
 [connection signal="switched_on" from="bullet_switch" to="platform_extender3" method="set_active" binds= [ true ]]
 

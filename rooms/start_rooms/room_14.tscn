@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://nodes/room.tscn" type="PackedScene" id=1]
 [ext_resource path="res://nodes/room_elements/regular_warp_tile.tscn" type="PackedScene" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://sprites/white_light.png" type="Texture" id=4]
 [ext_resource path="res://nodes/activatable_block.tscn" type="PackedScene" id=5]
 [ext_resource path="res://nodes/room_elements/vertical_ladder.tscn" type="PackedScene" id=6]
+[ext_resource path="res://rooms/start_rooms/room_darkener_helper.tscn" type="PackedScene" id=7]
 
 [node name="room_14" instance=ExtResource( 1 )]
 
@@ -108,11 +109,12 @@ length = 384
 
 editor/display_folded = true
 position = Vector2( 128, 800 )
-max_movement_speed = 360
 
 [node name="light" parent="player" index="3"]
 
 enabled = true
+
+[node name="room_darkener_helper" parent="." index="12" instance=ExtResource( 7 )]
 
 [connection signal="switched_on" from="bullet_switch" to="activatable_block" method="set_active" binds= [ false ]]
 
