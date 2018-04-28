@@ -1,4 +1,7 @@
 extends "res://scripts/debug_label.gd"
 
-func _process(delta):
-	text = get_parent().get_state()
+export (NodePath) var node_path
+export var tracked_value = ""
+
+func _physics_process(delta):
+	text = str(get_node(node_path)[tracked_value])

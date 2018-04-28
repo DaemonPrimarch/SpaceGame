@@ -135,7 +135,27 @@ wait_time = 8.0
 one_shot = false
 autostart = false
 
+[node name="player" parent="." index="15" groups=[
+"can_climb_ladder",
+]]
+
+input_pickable = false
+collision_layer = 2
+collision_mask = 3
+collision/safe_margin = 0.08
+max_slope_angle = 0.785398
+flippedH = false
+flippedV = false
+moveable_by_collision = true
+gravity_enabled = true
+can_be_pushed = false
+HP = 100
+max_HP = 100
+invulnerability_time = 1.0
+
 [node name="room_darkener_helper" parent="." index="16" instance=ExtResource( 7 )]
+
+[connection signal="toggle" from="third_switch" to="Timer" method="start"]
 
 [connection signal="toggle" from="third_switch" to="mid_platform" method="go_to" binds= [ 1 ]]
 
@@ -143,19 +163,17 @@ autostart = false
 
 [connection signal="toggle" from="third_switch" to="left_platform" method="go_to" binds= [ 2 ]]
 
-[connection signal="toggle" from="third_switch" to="Timer" method="start"]
-
 [connection signal="toggle" from="second_switch" to="left_platform" method="switch" binds= [ 0 ]]
 
 [connection signal="toggle" from="first_switch" to="right_platform" method="switch" binds= [ 0 ]]
+
+[connection signal="timeout" from="Timer" to="Timer" method="stop"]
 
 [connection signal="timeout" from="Timer" to="mid_platform" method="go_to" binds= [ 0 ]]
 
 [connection signal="timeout" from="Timer" to="right_platform" method="go_to" binds= [ 1 ]]
 
 [connection signal="timeout" from="Timer" to="left_platform" method="go_to" binds= [ 1 ]]
-
-[connection signal="timeout" from="Timer" to="Timer" method="stop"]
 
 
 [editable path="mid_platform"]

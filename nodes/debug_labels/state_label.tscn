@@ -6,5 +6,7 @@
 [node name="state_label" instance=ExtResource( 1 )]
 
 script = ExtResource( 2 )
+node_path = null
+tracked_value = ""
 
 

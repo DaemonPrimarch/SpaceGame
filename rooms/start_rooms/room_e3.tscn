@@ -14,9 +14,24 @@ tile_data = PoolIntArray( 0, 0, 0, 1, 0, 0, 2, 0, 0, 3, 0, 0, 4, 0, 0, 5, 0, 0, 
 
 polygon = PoolVector2Array( 0, 0, 0, 960, 1664, 960, 1664, 0 )
 
-[node name="player" parent="." index="4"]
+[node name="player" parent="." index="4" groups=[
+"can_climb_ladder",
+]]
 
 position = Vector2( 128, 800 )
+input_pickable = false
+collision_layer = 2
+collision_mask = 3
+collision/safe_margin = 0.08
+max_slope_angle = 0.785398
+flippedH = false
+flippedV = false
+moveable_by_collision = true
+gravity_enabled = true
+can_be_pushed = false
+HP = 100
+max_HP = 100
+invulnerability_time = 1.0
 
 [node name="warp_tile" parent="." index="5" instance=ExtResource( 2 )]
 
