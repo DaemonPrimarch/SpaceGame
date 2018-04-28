@@ -41,6 +41,8 @@ _sections_unfolded = [ "Transform" ]
 
 [node name="light" parent="." index="3"]
 
+texture_scale = 1.25
+energy = 0.75
 _sections_unfolded = [ "Transform" ]
 
 [node name="weapon_manager" parent="." index="6"]
@@ -65,7 +67,6 @@ _sections_unfolded = [ "Transform" ]
 
 visible = false
 position = Vector2( 56, -40 )
-flashlight_enabled = false
 
 [node name="debuggyboy" type="RayCast2D" parent="." index="8"]
 
