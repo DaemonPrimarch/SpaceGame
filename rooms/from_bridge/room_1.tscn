@@ -79,7 +79,7 @@ polygon = PoolVector2Array( -32, -32, 32, -32, 32, 96, -32, 96 )
 
 margin_bottom = 96.0
 
-[node name="Label" parent="activatable_block" index="2"]
+[node name="Label" parent="activatable_block" index="3"]
 
 margin_top = 15.0
 margin_bottom = 46.0

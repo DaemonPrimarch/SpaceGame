@@ -59,23 +59,9 @@ offset_move_time = 0
 default_zoom = 1
 can_zoom_out = false
 
-[node name="player" parent="." index="4" groups=[
-"can_climb_ladder",
-] instance=ExtResource( 5 )]
+[node name="player" parent="." index="4" instance=ExtResource( 5 )]
 
-input_pickable = false
-collision_layer = 2
-collision_mask = 3
-collision/safe_margin = 0.08
-max_slope_angle = 0.785398
-flippedH = false
-flippedV = false
-moveable_by_collision = true
-gravity_enabled = true
-can_be_pushed = false
-HP = 100
-max_HP = 100
-invulnerability_time = 1.0
+max_movement_speed = 360
 
 [connection signal="player_entered" from="." to="." method="_on_room_player_entered"]
 

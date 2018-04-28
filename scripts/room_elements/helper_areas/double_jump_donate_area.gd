@@ -5,4 +5,5 @@ func _ready():
 
 func on_confirmed(body):
 	body.get_handler("DOUBLE_JUMPING").set_enabled(true)
+	SAVE_MANAGER.set_property("player/double_jump_enabled", true)
 	get_node("/root/DIALOG_SYSTEM").queue_message("Double jump unlocked")

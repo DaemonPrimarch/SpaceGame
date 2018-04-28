@@ -78,8 +78,6 @@ margin_left = -544.0
 [node name="bullet_switch" parent="." index="8" instance=ExtResource( 5 )]
 
 position = Vector2( 864, 736 )
-state = false
-toggleable = false
 
 [node name="damage_area3" parent="." index="9" instance=ExtResource( 4 )]
 
@@ -248,8 +246,6 @@ margin_bottom = 224.0
 [node name="bullet_switch2" parent="." index="16" instance=ExtResource( 5 )]
 
 position = Vector2( 1568, 1696 )
-state = false
-toggleable = false
 
 [node name="ladder2" parent="." index="17" instance=ExtResource( 6 )]
 
@@ -353,6 +349,24 @@ has_default_offset = true
 position = Vector2( 160, 768 )
 offset = Vector2( 0, -320 )
 transition_time = 0
+
+[node name="player" parent="." index="25" groups=[
+"can_climb_ladder",
+]]
+
+input_pickable = false
+collision_layer = 2
+collision_mask = 3
+collision/safe_margin = 0.08
+max_slope_angle = 0.785398
+flippedH = false
+flippedV = false
+moveable_by_collision = true
+gravity_enabled = true
+can_be_pushed = false
+HP = 100
+max_HP = 100
+invulnerability_time = 1.0
 
 [connection signal="switched_on" from="bullet_switch" to="moveable_platform_parent" method="set_active" binds= [ true ]]
 

@@ -34,4 +34,23 @@ polygon = PoolVector2Array( 0, 0, 0, 1920, 1664, 1920, 1664, 0 )
 
 position = Vector2( 160, 192 )
 
+[node name="player" parent="." index="7" groups=[
+"can_climb_ladder",
+]]
+
+position = Vector2( 416, 1696 )
+input_pickable = false
+collision_layer = 2
+collision_mask = 3
+collision/safe_margin = 0.08
+max_slope_angle = 0.785398
+flippedH = false
+flippedV = false
+moveable_by_collision = true
+gravity_enabled = true
+can_be_pushed = false
+HP = 100
+max_HP = 100
+invulnerability_time = 1.0
+
 

@@ -4,6 +4,8 @@ func _ready():
 	connect("confirmed", self, "on_confirmed")
 
 func on_confirmed(body):
-	body.get_handler("WALL_SLIDING").set_enabled(true)
 	get_node("/root/DIALOG_SYSTEM").queue_message("walljump unlocked")
+
+	SAVE_MANAGER.set_property("player/wall_jump_enabled", true)
+	
 	self.queue_free()

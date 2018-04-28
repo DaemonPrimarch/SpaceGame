@@ -67,8 +67,6 @@ func move_and_push(v):
 func extend(v):
 	.extend(v)
 	
-	
-	
 	var standing_polygon = get_node("standing_area/CollisionPolygon2D").polygon
 	if(v.x != 0):
 		

@@ -1,5 +1,7 @@
 extends Node
 
+signal save_changed(value)
+
 var save_file = {}
 
 func load_file(path = "res://saves/test_save.json"):
@@ -33,6 +35,8 @@ func set_property(path, value):
 			container[elem] = {}
 		
 		container = container[elem]
+	
+	emit_signal("save_changed", path)
 	
 
 func get_property(path):

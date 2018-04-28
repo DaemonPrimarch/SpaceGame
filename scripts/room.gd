@@ -53,4 +53,4 @@ func generate_camera_container():
 	get_node("camera_container").polygon = polygon
 
 func _on_room_player_entered(player):
-	get_node("/root/GUI").set_room_name(get_path())
+	get_node("/root/GUI").set_room_name(get_node("/root/ROOM_MANAGER").get_path_of_room(self))

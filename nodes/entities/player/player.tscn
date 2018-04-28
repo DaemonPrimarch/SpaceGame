@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://nodes/entities/player/playable_character.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scripts/entities/player/player.gd" type="Script" id=2]
@@ -8,16 +8,17 @@
 [ext_resource path="res://nodes/state_handlers/player/standing_handler.tscn" type="PackedScene" id=6]
 [ext_resource path="res://nodes/state_handlers/player/crouching_handler.tscn" type="PackedScene" id=7]
 [ext_resource path="res://nodes/state_handlers/player/double_jumping_handler.tscn" type="PackedScene" id=8]
-[ext_resource path="res://nodes/state_handlers/player/wall_jumping_handler.tscn" type="PackedScene" id=9]
-[ext_resource path="res://nodes/state_handlers/player/falling_handler.tscn" type="PackedScene" id=10]
-[ext_resource path="res://nodes/state_handlers/player/climbing_handler.tscn" type="PackedScene" id=11]
-[ext_resource path="res://nodes/state_handlers/player/wall_sliding_handler.tscn" type="PackedScene" id=12]
-[ext_resource path="res://nodes/state_handlers/player/crawling_handler.tscn" type="PackedScene" id=13]
-[ext_resource path="res://nodes/state_handlers/player/pushed_handler.tscn" type="PackedScene" id=14]
-[ext_resource path="res://deprecated/old_camera.tscn" type="PackedScene" id=15]
-[ext_resource path="res://nodes/camera_2.tscn" type="PackedScene" id=16]
-[ext_resource path="res://nodes/managers/camera_zoom_out_manager.tscn" type="PackedScene" id=17]
-[ext_resource path="res://icon.png" type="Texture" id=18]
+[ext_resource path="res://nodes/value_setter_from_save.tscn" type="PackedScene" id=9]
+[ext_resource path="res://nodes/state_handlers/player/wall_jumping_handler.tscn" type="PackedScene" id=10]
+[ext_resource path="res://nodes/state_handlers/player/falling_handler.tscn" type="PackedScene" id=11]
+[ext_resource path="res://nodes/state_handlers/player/climbing_handler.tscn" type="PackedScene" id=12]
+[ext_resource path="res://nodes/state_handlers/player/wall_sliding_handler.tscn" type="PackedScene" id=13]
+[ext_resource path="res://nodes/state_handlers/player/crawling_handler.tscn" type="PackedScene" id=14]
+[ext_resource path="res://nodes/state_handlers/player/pushed_handler.tscn" type="PackedScene" id=15]
+[ext_resource path="res://deprecated/old_camera.tscn" type="PackedScene" id=16]
+[ext_resource path="res://nodes/camera_2.tscn" type="PackedScene" id=17]
+[ext_resource path="res://nodes/managers/camera_zoom_out_manager.tscn" type="PackedScene" id=18]
+[ext_resource path="res://icon.png" type="Texture" id=19]
 
 [node name="player" groups=[
 "warpable",
@@ -28,6 +29,7 @@ script = ExtResource( 2 )
 _sections_unfolded = [ "Collision", "Pause", "Pickable", "Transform", "collision" ]
 movement_speed = 359.68
 gravity_vector = Vector2( 0, 1344 )
+max_movement_speed = 360
 
 [node name="Sprite" parent="." index="0"]
 
@@ -101,45 +103,57 @@ _sections_unfolded = [ "Pause", "Playback Options" ]
 enabled = false
 double_jump_height = 176.0
 
-[node name="wall_jumping_handler" parent="." index="14" instance=ExtResource( 9 )]
+[node name="value_setter_from_save" parent="double_jumping_handler" index="0" instance=ExtResource( 9 )]
 
-[node name="falling_handler" parent="." index="15" instance=ExtResource( 10 )]
+node_path = NodePath("..")
+value = "enabled"
+save_value = "player/double_jump_enabled"
 
-[node name="climbing_handler" parent="." index="16" instance=ExtResource( 11 )]
+[node name="wall_jumping_handler" parent="." index="14" instance=ExtResource( 10 )]
+
+[node name="falling_handler" parent="." index="15" instance=ExtResource( 11 )]
+
+[node name="climbing_handler" parent="." index="16" instance=ExtResource( 12 )]
 
 climbing_speed = 256
 
-[node name="wall_sliding_handler" parent="." index="17" instance=ExtResource( 12 )]
+[node name="wall_sliding_handler" parent="." index="17" instance=ExtResource( 13 )]
 
 enabled = false
 
-[node name="crawling_handler" parent="." index="18" instance=ExtResource( 13 )]
+[node name="value_setter_from_save" parent="wall_sliding_handler" index="2" instance=ExtResource( 9 )]
 
-[node name="pushed_handler" parent="." index="19" instance=ExtResource( 14 )]
+node_path = NodePath("..")
+value = "enabled"
+save_value = "player/wall_jump_enabled"
+
+[node name="crawling_handler" parent="." index="18" instance=ExtResource( 14 )]
+
+[node name="pushed_handler" parent="." index="19" instance=ExtResource( 15 )]
 
 [node name="invulnerable_label" parent="." index="21"]
 
 visible = false
 
-[node name="camera" parent="." index="23" instance=ExtResource( 15 )]
+[node name="camera" parent="." index="23" instance=ExtResource( 16 )]
 
 position = Vector2( 0, -320 )
 current = false
 
-[node name="camera2" parent="." index="24" instance=ExtResource( 16 )]
+[node name="camera2" parent="." index="24" instance=ExtResource( 17 )]
 
 position = Vector2( 0, -320 )
 _sections_unfolded = [ "Transform" ]
 mode = 0
 
-[node name="camera_zoom_out_manager" parent="." index="25" instance=ExtResource( 17 )]
+[node name="camera_zoom_out_manager" parent="." index="25" instance=ExtResource( 18 )]
 
 [node name="start" type="Sprite" parent="." index="26"]
 
 visible = false
 modulate = Color( 1, 0, 0, 1 )
 scale = Vector2( 0.5, 0.5 )
-texture = ExtResource( 18 )
+texture = ExtResource( 19 )
 _sections_unfolded = [ "Visibility" ]
 
 [node name="stop" type="Sprite" parent="." index="27"]
@@ -147,7 +161,7 @@ _sections_unfolded = [ "Visibility" ]
 visible = false
 modulate = Color( 0, 0.0859375, 1, 1 )
 scale = Vector2( 0.5, 0.5 )
-texture = ExtResource( 18 )
+texture = ExtResource( 19 )
 _sections_unfolded = [ "Visibility" ]
 
 [node name="damage_timer" type="Timer" parent="." index="28"]

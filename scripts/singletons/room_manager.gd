@@ -1,25 +1,35 @@
 extends Node
 
+signal PHYS
+
 var loaded_rooms = {}
+var path_rooms = {}
+var test = {"1":2}
 
 var done = 0
 
-signal PHYS
+func _ready():
+	pass
 
-func add_room_as_loaded(room):
-	loaded_rooms[room.get_path()] = room
+func add_room_as_loaded(room, path):
+	loaded_rooms[path] = room
+	path_rooms[room] = path
+	
+	print("Added room as loaded")
 	
 func remove_room_as_loaded(room):
 	loaded_rooms.erase(room)
+	path_rooms.erase(get_path_of_room(room))
 	
 func is_room_loaded(path):
-	return loaded_rooms.has(path.get_path())
+	return loaded_rooms.has(path)
+func is_room_managed(room):
+	return path_rooms.has(room)
+func get_path_of_room(room):
+	return path_rooms[room]
 
 func load_room(path, pos):
-	return load_packed_room(load(path), pos)
-
-func load_packed_room(packed, pos):
-	var loaded_room = packed.instance()
+	var loaded_room = load(path).instance()
 	
 	loaded_room.set_position(pos)
 	
@@ -28,18 +38,18 @@ func load_packed_room(packed, pos):
 	
 	get_tree().get_root().add_child(loaded_room)
 	
-	add_room_as_loaded(loaded_room)
+	add_room_as_loaded(loaded_room, path)
 	
-	return loaded_room
+	return loaded_room	
 	
 func get_room_of_node(node):
 	var current_room = node
 	
-	while(not is_room_loaded(current_room)):
+	while(not is_room_managed(current_room)):
 		current_room = current_room.get_parent()
 		
-		if(current_room.is_in_group("room") and not is_room_loaded(current_room)):
-			add_room_as_loaded(current_room)
+		if(current_room.is_in_group("room") and not is_room_managed(current_room)):
+			add_room_as_loaded(current_room, "INVALID")
 		
 	return current_room
 
@@ -75,17 +85,37 @@ func warp_node_to_room(node, room, arrival_pos_id):
 		else:
 			loaded_room = load_packed_room(room, new_pos)
 			
+		yield(self, "PHYS")
+		print("Starting")
 		var arrivals = get_tree().get_nodes_in_group("warp_arrival")
 		var arrival_pos = Vector2(0,0)
-		
 		if(arrival_pos_id != null and arrival_pos_id != ""):
 			for arrival in arrivals:
-				if(arrival.get_arrival_ID() == arrival_pos_id and get_room_of_node(arrival) == loaded_room):
+				if(arrival.get_arrival_ID() == arrival_pos_id):
 					arrival_pos = (arrival.get_global_position())
 					arrival_pos = loaded_room.to_local(arrival_pos)
+#				if(arrival.get_arrival_ID() == arrival_pos_id and not get_room_of_node(arrival) == loaded_room):
+#					print(get_room_of_node(arrival).name)
+#					print(loaded_rooms.size())
+#
+#					for room in loaded_rooms:
+#						print(name)
+#
+#					print("DIT IS HET")
 
-		yield(self, "PHYS")
+# AAAARG and get_room_of_node(arrival) == loaded_room)
+					
+		else:
+			print("NEVER!")
 
+		
+		if(arrival_pos == Vector2(0,0)):
+			print("ARRIVAL ID: ", arrival_pos_id)
+			print("ARRIVAL POSITION NOT FOUND!")
+		
+		if(loaded_room.has_node("player")):
+			print("OLD PLAYER STILL PRESENT")
+		
 		node.set_position(arrival_pos)
 		loaded_room.add_child(node)
 		
