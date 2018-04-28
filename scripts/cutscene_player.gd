@@ -2,6 +2,8 @@ tool
 
 extends AnimationPlayer
 
+signal cutscene_finished
+
 export(String, FILE, "*.json") var dialog_tree
 
 var dialog_system

@@ -2,6 +2,8 @@ tool
 
 extends "res://scripts/entities/living_entity.gd"
 
+export var max_movement_speed = 360
+
 var inventory = {}
 
 var inside_ladder = null
@@ -33,6 +35,9 @@ func _ready():
 	
 func push_back():
 	call_deferred("set_state", "PUSHED")
+	
+func get_max_movement_speed():
+	return max_movement_speed
 
 func is_inside_ladder():
 	return inside_ladder != null

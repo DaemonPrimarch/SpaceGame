@@ -17,6 +17,9 @@ func _ready():
 	get_box().set_displaying(false)
 	displaying = false
 
+func hide_dialog_box():
+	get_box().visible = false
+
 func queue_tree_from_json(path):
 	var file = File.new()
 	file.open(path, file.READ)
@@ -32,6 +35,7 @@ func get_current_dialog_tree():
 	return current_tree
 
 func set_current_dialog_element(element):
+	get_box().visible = true
 	current_element = element
 	
 	if(element.has("name")):
@@ -105,8 +109,9 @@ func box_finished_printing():
 			advance_current_tree()
 		else:
 			pass
-	else:
-		box.set_next_indicator_enabled(true)
+	elif(get_current_dialog_element().has("next_indicator")):
+		if(get_current_dialog_element().next_indicator):
+			box.set_next_indicator_enabled(true)
 		
 func box_option_selected(option):	
 	set_current_dialog_element(get_current_dialog_tree()[get_current_dialog_element().next[get_current_dialog_element().options.find(option)]])

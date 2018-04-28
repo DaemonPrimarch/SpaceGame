@@ -27,3 +27,4 @@ size_flags_vertical = 1
 [node name="flashlight" parent="." index="1" instance=ExtResource( 2 )]
 
 
+[editable path="flashlight"]

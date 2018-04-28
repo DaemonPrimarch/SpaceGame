@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://nodes/entities/player/player.tscn" type="PackedScene" id=1]
+
+[node name="player" instance=ExtResource( 1 )]
+
+pause_mode = 1
+
+
+[editable path="weapon_manager"]
+[editable path="crouching_handler"]

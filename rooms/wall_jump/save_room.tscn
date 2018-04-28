@@ -4,8 +4,4 @@
 
 [node name="save_room" instance=ExtResource( 1 )]
 
-[node name="warp_tile" parent="." index="5"]
-
-arrival_pos_id = "save_room_arrival"
-
 

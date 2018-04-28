@@ -18,7 +18,7 @@ func _ready():
 	if(is_oneshot() and saves_oneshot() and get_node("/root/SAVE_MANAGER").has_property(save_path) and get_node("/root/SAVE_MANAGER").get_property(save_path)):		
 		if(trigger_on_unload):
 			call_deferred("emit_signal", "triggered")
-		queue_free()
+		unload()
 
 func _on_Area2D_body_entered(body):
 	if(body.is_in_group("player")):
@@ -28,5 +28,7 @@ func _on_Area2D_body_entered(body):
 		if(is_oneshot()):
 			if(saves_oneshot()):
 				get_node("/root/SAVE_MANAGER").set_property(save_path, true)
-		
-			queue_free() 
+			unload()
+
+func unload():
+	queue_free() 
