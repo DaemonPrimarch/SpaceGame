@@ -4,7 +4,6 @@ signal PHYS
 
 var loaded_rooms = {}
 var path_rooms = {}
-var test = {"1":2}
 
 var done = 0
 
@@ -91,20 +90,9 @@ func warp_node_to_room(node, room, arrival_pos_id):
 		var arrival_pos = Vector2(0,0)
 		if(arrival_pos_id != null and arrival_pos_id != ""):
 			for arrival in arrivals:
-				if(arrival.get_arrival_ID() == arrival_pos_id):
+				if(arrival.get_arrival_ID() == arrival_pos_id and get_room_of_node(arrival) == loaded_room):
 					arrival_pos = (arrival.get_global_position())
 					arrival_pos = loaded_room.to_local(arrival_pos)
-#				if(arrival.get_arrival_ID() == arrival_pos_id and not get_room_of_node(arrival) == loaded_room):
-#					print(get_room_of_node(arrival).name)
-#					print(loaded_rooms.size())
-#
-#					for room in loaded_rooms:
-#						print(name)
-#
-#					print("DIT IS HET")
-
-# AAAARG and get_room_of_node(arrival) == loaded_room)
-					
 		else:
 			print("NEVER!")
 
