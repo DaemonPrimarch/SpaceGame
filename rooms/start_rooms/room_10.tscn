@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://nodes/room.tscn" type="PackedScene" id=1]
 [ext_resource path="res://nodes/room_elements/moving_platforms/controllers/platform_extender.tscn" type="PackedScene" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://nodes/room_elements/bullet_switch.tscn" type="PackedScene" id=7]
 [ext_resource path="res://nodes/warp_tile.tscn" type="PackedScene" id=8]
 [ext_resource path="res://nodes/warp_arrival.tscn" type="PackedScene" id=9]
+[ext_resource path="res://nodes/room_elements/camera_change_area.tscn" type="PackedScene" id=10]
 
 [node name="room_10" instance=ExtResource( 1 )]
 
@@ -80,7 +81,7 @@ flippedH = true
 [node name="warp_tile2" parent="." index="8" instance=ExtResource( 5 )]
 
 position = Vector2( 1632, 512 )
-destination_room = "res://rooms/start_rooms/room_13.tscn"
+destination_room = "res://rooms/start_rooms/room_e1.tscn"
 arrival_pos_id = "room_10_arrival"
 flippedH = true
 
@@ -140,6 +141,36 @@ arrival_ID = "2"
 position = Vector2( 128, 1408 )
 arrival_ID = "1"
 
+[node name="player" parent="." index="15"]
+
+position = Vector2( 1536, 1216 )
+max_movement_speed = 360
+
+[node name="camera_change_area" parent="." index="16" instance=ExtResource( 10 )]
+
+editor/display_folded = true
+position = Vector2( 96, 544 )
+one_way = false
+offset = Vector2( 0, -320 )
+changes_zoom = false
+transition_time = 0
+
+[node name="CollisionPolygon2D" parent="camera_change_area" index="0"]
+
+polygon = PoolVector2Array( 1504, -480, -32, -480, -32, 32, 1504, 32 )
+
+[node name="camera_change_area2" parent="." index="17" instance=ExtResource( 10 )]
+
+editor/display_folded = true
+visible = false
+position = Vector2( 96, 1184 )
+one_way = false
+changes_zoom = false
+
+[node name="CollisionPolygon2D" parent="camera_change_area2" index="0"]
+
+polygon = PoolVector2Array( 1504, -480, -32, -480, -32, 416, 1504, 416 )
+
 [connection signal="end_reached" from="platform_extender3" to="platform_extender3" method="set_active" binds= [ false ]]
 
 [connection signal="end_reached" from="platform_extender2" to="platform_extender2" method="set_active" binds= [ false ]]
@@ -154,3 +185,5 @@ arrival_ID = "1"
 [editable path="platform_mover"]
 [editable path="warp_tile3"]
 [editable path="warp_tile4"]
+[editable path="camera_change_area"]
+[editable path="camera_change_area2"]

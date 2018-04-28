@@ -91,7 +91,7 @@ tracks/5/keys = {
 "values": [ 0.0, 0.75 ]
 }
 
-[node name="room_13" index="0" instance=ExtResource( 1 )]
+[node name="room_13" instance=ExtResource( 1 )]
 
 [node name="terrain" parent="." index="0"]
 
@@ -108,7 +108,7 @@ polygon = PoolVector2Array( 0, 0, 0, 960, 1664, 960, 1664, 0 )
 [node name="warp_tile" parent="." index="4" instance=ExtResource( 2 )]
 
 position = Vector2( 32, 768 )
-destination_room = "res://rooms/start_rooms/room_10.tscn"
+destination_room = "res://rooms/start_rooms/room_e2.tscn"
 arrival_pos_id = "room_13_arrival"
 
 [node name="warp_tile2" parent="." index="5" instance=ExtResource( 2 )]
@@ -120,6 +120,7 @@ flippedH = true
 
 [node name="on_enter_cutscene_player" parent="." index="6" instance=ExtResource( 3 )]
 
+editor/display_folded = true
 position = Vector2( 800, 768 )
 
 [node name="enter_trigger" parent="on_enter_cutscene_player" index="0"]
@@ -136,5 +137,12 @@ polygon = PoolVector2Array( 32, -704, -32, -704, -32, 64, 32, 64 )
 anims/cutscene = SubResource( 1 )
 dialog_tree = "res://dialog_trees/power_blackout_1.json"
 
+[node name="player" parent="." index="7"]
+
+editor/display_folded = true
+position = Vector2( 224, 800 )
+max_movement_speed = 360
+
 
 [editable path="on_enter_cutscene_player"]
+[editable path="player"]

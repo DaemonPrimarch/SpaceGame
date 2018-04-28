@@ -90,6 +90,11 @@ scale = Vector2( 0.0555556, 0.197531 )
 
 margin_bottom = 96.0
 
+[node name="player" parent="." index="11"]
+
+position = Vector2( 128, 480 )
+max_movement_speed = 360
+
 [connection signal="switched_off" from="bullet_switch" to="activatable_block" method="set_active" binds= [ false ]]
 
 [connection signal="switched_on" from="bullet_switch" to="activatable_block" method="set_active" binds= [ true ]]
