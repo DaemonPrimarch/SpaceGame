@@ -98,7 +98,7 @@ func queue_tree(tree):
 		load_next_tree()
 	
 func queue_message(message):
-	queue_tree({"start": {"text": message}})
+	queue_tree({"start": {"text": message, "auto_advance": true}})
 
 func box_pressed_continue():
 	advance_current_tree()

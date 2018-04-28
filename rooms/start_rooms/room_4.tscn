@@ -26,4 +26,22 @@ destination_room = "res://rooms/start_rooms/room_5.tscn"
 arrival_pos_id = "room_4_arrival"
 flippedH = true
 
+[node name="player" parent="." index="6" groups=[
+"can_climb_ladder",
+]]
+
+input_pickable = false
+collision_layer = 2
+collision_mask = 3
+collision/safe_margin = 0.08
+max_slope_angle = 0.785398
+flippedH = false
+flippedV = false
+moveable_by_collision = true
+gravity_enabled = true
+can_be_pushed = false
+HP = 100
+max_HP = 100
+invulnerability_time = 1.0
+
 

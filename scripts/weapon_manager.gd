@@ -7,7 +7,7 @@ onready var weapon_bottom_front_position = get_node("weapon_bottom_front")
 onready var weapon_bottom_position = get_node("weapon_bottom")
 
 export(NodePath) var weapon_path
-export var enabled = false
+export var enabled = false setget set_enabled
 
 func has_weapon():
 	return weapon_path != null
@@ -17,7 +17,8 @@ func get_weapon():
 
 func set_enabled(val):
 	enabled = val
-	get_weapon().visible = val
+	if(is_inside_tree()):
+		get_weapon().visible = val
 
 func _ready():
 	if(enabled):

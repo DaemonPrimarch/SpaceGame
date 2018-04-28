@@ -90,11 +90,11 @@ scale = Vector2( 0.0555556, 0.197531 )
 
 margin_bottom = 96.0
 
-
 [node name="player" parent="." index="11" groups=[
 "can_climb_ladder",
 ]]
 
+position = Vector2( 128, 480 )
 input_pickable = false
 collision_layer = 2
 collision_mask = 3
@@ -108,8 +108,6 @@ can_be_pushed = false
 HP = 100
 max_HP = 100
 invulnerability_time = 1.0
-position = Vector2( 128, 480 )
-max_movement_speed = 360
 
 [connection signal="switched_off" from="bullet_switch" to="activatable_block" method="set_active" binds= [ false ]]
 
