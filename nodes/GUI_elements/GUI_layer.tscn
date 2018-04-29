@@ -4,7 +4,7 @@
 [ext_resource path="res://nodes/debug_labels/state_label.tscn" type="PackedScene" id=2]
 [ext_resource path="res://nodes/GUI_elements/menu.tscn" type="PackedScene" id=3]
 
-[node name="GUI_layer" type="CanvasLayer" index="0"]
+[node name="GUI_layer" type="CanvasLayer"]
 
 layer = 1
 offset = Vector2( 0, 0 )
