@@ -11,7 +11,6 @@
 [ext_resource path="res://nodes/debug_labels/invulnerable_label.tscn" type="PackedScene" id=9]
 [ext_resource path="res://nodes/debug_labels/in_ladder_label.tscn" type="PackedScene" id=10]
 
-
 [sub_resource type="Animation" id=1]
 
 resource_name = "duck"
@@ -145,6 +144,7 @@ can_be_pushed = false
 HP = 100
 max_HP = 100
 invulnerability_time = 1.0
+max_movement_speed = 360
 
 [node name="Sprite" type="Sprite" parent="." index="0"]
 
