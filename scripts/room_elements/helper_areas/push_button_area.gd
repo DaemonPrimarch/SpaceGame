@@ -10,3 +10,5 @@ func _physics_process(delta):
 			emit_signal("confirmed", get_overlapping_bodies()[0])
 			get_node('Label').visible = false
 			confirmed = true
+	else:
+		get_node('Label').visible = false
