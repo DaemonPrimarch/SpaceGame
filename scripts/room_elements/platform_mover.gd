@@ -158,9 +158,18 @@ func switch(counter):
 		print("no such node found")
 
 func go_to(point):
+	get_node("Timer").stop()
 	set_active(true)
 	arrived = false
-	set_previous_point(get_node("point_" + String(current_point)).get_position())
+	if(point == 0):
+		var i = 1
+		while(has_node("point_" + String(i))):
+				i += 1
+		set_previous_point(get_node("point_" + String(i-1)).get_position())
+		current_point = i-1
+	else:
+		set_previous_point(get_node("point_" + String(0)).get_position())
+		current_point = 0
 			
 	if(has_node("point_" + String(point))):
 		set_next_point(get_node("point_" + String(point)).get_position())

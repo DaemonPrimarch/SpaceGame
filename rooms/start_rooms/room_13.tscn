@@ -50,7 +50,6 @@ extending = true
 
 [node name="left_platform" parent="." index="2" instance=ExtResource( 2 )]
 
-editor/display_folded = true
 position = Vector2( 1056, 1504 )
 active = false
 step = true
@@ -147,15 +146,15 @@ position = Vector2( 160, 1440 )
 
 [node name="room_darkener_helper" parent="." index="15" instance=ExtResource( 7 )]
 
-[connection signal="toggle" from="third_switch" to="mid_platform" method="go_to" binds= [ 1 ]]
+[connection signal="toggle" from="third_switch" to="left_platform" method="go_to" binds= [ 2 ]]
 
 [connection signal="toggle" from="third_switch" to="right_platform" method="go_to" binds= [ 2 ]]
 
-[connection signal="toggle" from="third_switch" to="left_platform" method="go_to" binds= [ 2 ]]
+[connection signal="toggle" from="third_switch" to="mid_platform" method="go_to" binds= [ 1 ]]
 
-[connection signal="toggle" from="second_switch" to="left_platform" method="switch" binds= [ 0 ]]
+[connection signal="toggle" from="second_switch" to="left_platform" method="go_to" binds= [ 1 ]]
 
-[connection signal="toggle" from="first_switch" to="right_platform" method="switch" binds= [ 0 ]]
+[connection signal="toggle" from="first_switch" to="right_platform" method="go_to" binds= [ 1 ]]
 
 
 [editable path="mid_platform"]
