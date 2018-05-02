@@ -18,7 +18,7 @@ position = Vector2( 128, 1728 )
 
 [node name="camera_container" parent="." index="3"]
 
-polygon = PoolVector2Array( 0, 128, 0, 1920, 1664, 1920, 1664, 128 )
+polygon = PoolVector2Array( 0, 0, 0, 960, 1664, 960, 1664, 0 )
 has_default_offset = true
 
 [node name="warp_tile" parent="." index="4" instance=ExtResource( 2 )]
