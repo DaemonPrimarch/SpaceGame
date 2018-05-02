@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/icon.png-487276ed1e3a0c39cad0279d744ee560.stex"
+path="res://.import/fading_light_3.png-5755161db853a5d504039cd165dbac58.stex"
 
 [deps]
 
-source_file="res://icon.png"
-source_md5="86aa1d9e8afaf5ec9cabb7e89945c7a8"
+source_file="res://sprites/fading_light_3.png"
+source_md5="5237216a27c2efc43c4c5ebb1dda1433"
 
-dest_files=[ "res://.import/icon.png-487276ed1e3a0c39cad0279d744ee560.stex" ]
-dest_md5="de7b2cc3f29d5ad9b5cf257f4608a7c2"
+dest_files=[ "res://.import/fading_light_3.png-5755161db853a5d504039cd165dbac58.stex" ]
+dest_md5="7bffd145895bb7f80199b8f7ea4ee247"
 
 [params]
 
@@ -18,7 +18,7 @@ compress/mode=0
 compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/normal_map=0
-flags/repeat=1
+flags/repeat=0
 flags/filter=true
 flags/mipmaps=false
 flags/anisotropic=false
