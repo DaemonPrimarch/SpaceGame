@@ -10,6 +10,8 @@ looping = false
 one_way = false
 moving_speed = 192
 snap = false
+step = false
+start_at = 0
 
 [node name="point_0" type="Position2D" parent="." index="0"]
 

@@ -15,7 +15,7 @@ var arrived = false
 var direction = 1
 
 var current_point = 0
-
+signal platform_loaded
 signal arrived_at_next_point(point)
 var platform = null
 
@@ -28,6 +28,9 @@ func is_one_way():
 func has_arrived_at_end():
 	return arrived
 
+func is_moving():
+	return not has_arrived_at_end()
+
 func get_platform():
 	return platform
 
@@ -36,7 +39,6 @@ func set_next_point(point):
 
 func set_previous_point(point):
 	previous_point = point
-	
 func get_next_point():
 	return next_point
 
@@ -54,8 +56,8 @@ func _ready():
 		if(child.is_in_group("platform")):
 			platform = child
 	
-	if(is_active() and snap):
-		get_platform().set_position(get_node("point_0").get_position())
+	emit_signal("platform_loaded")
+			
 	set_next_point(get_node("point_1").get_position())
 	set_previous_point(get_node("point_0").get_position())
 	
@@ -78,6 +80,9 @@ func _ready():
 			direction = -direction
 			next_point_counter = start_at + direction
 			set_next_point(get_node("point_" + String(next_point_counter)).get_position())
+		
+	if(not active):
+		arrived = true
 	
 	
 func _physics_process(delta):
