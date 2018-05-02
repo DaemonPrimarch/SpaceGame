@@ -157,6 +157,7 @@ script = ExtResource( 5 )
 
 [node name="player" parent="." index="8"]
 
+editor/display_folded = true
 position = Vector2( 320, 768 )
 
 [node name="AnimationPlayer" parent="player" index="2"]
