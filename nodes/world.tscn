@@ -4,7 +4,7 @@
 [ext_resource path="res://nodes/entities/player/player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://nodes/GUI_elements/start_panel.tscn" type="PackedScene" id=3]
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id=1]
 
 resource_name = "duck"
 length = 1.0
@@ -131,7 +131,7 @@ max_movement_speed = 500
 
 [node name="AnimationPlayer" parent="player" index="2"]
 
-anims/duck = SubResource( 7 )
+anims/duck = SubResource( 1 )
 anims/fall = SubResource( 2 )
 anims/idle = SubResource( 3 )
 anims/jump = SubResource( 4 )

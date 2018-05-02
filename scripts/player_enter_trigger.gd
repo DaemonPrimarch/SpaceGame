@@ -3,9 +3,11 @@ extends Area2D
 signal player_entered(player)
 signal triggered
 
+export var enabled = true
 export var oneshot = false
 export(String) var save_path
 export var trigger_on_unload = false
+
 
 func is_oneshot():
 	return oneshot
@@ -21,7 +23,7 @@ func _ready():
 		unload()
 
 func _on_Area2D_body_entered(body):
-	if(body.is_in_group("player")):
+	if(body.is_in_group("player") and enabled):
 		emit_signal("player_entered", body)
 		emit_signal("triggered")
 		

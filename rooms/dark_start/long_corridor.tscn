@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://nodes/room.tscn" type="PackedScene" id=1]
 [ext_resource path="res://nodes/room_elements/on_enter_cutscene_player.tscn" type="PackedScene" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://nodes/cutscene_player.tscn" type="PackedScene" id=5]
 [ext_resource path="res://nodes/entities/human_puppet.tscn" type="PackedScene" id=6]
 [ext_resource path="res://nodes/torch_light.tscn" type="PackedScene" id=7]
+[ext_resource path="res://nodes/room_elements/regular_warp_tile.tscn" type="PackedScene" id=8]
 
 [sub_resource type="Animation" id=1]
 
@@ -134,7 +135,7 @@ tracks/7/keys = {
 } ]
 }
 
-[node name="long_corridor" index="0" instance=ExtResource( 1 )]
+[node name="long_corridor" instance=ExtResource( 1 )]
 
 [node name="terrain" parent="." index="0"]
 
@@ -146,8 +147,7 @@ polygon = PoolVector2Array( 0, 0, 0, 960, 5056, 960, 5056, 0 )
 
 [node name="player" parent="." index="4"]
 
-position = Vector2( 4966.27, 669.455 )
-max_movement_speed = 360
+position = Vector2( 4704, 672 )
 
 [node name="on_enter_cutscene_player" parent="." index="5" instance=ExtResource( 2 )]
 
@@ -161,12 +161,15 @@ script = ExtResource( 4 )
 [node name="enter_trigger" parent="on_enter_cutscene_player" index="1"]
 
 editor/display_folded = true
+enabled = true
 oneshot = true
+save_path = "cutscenes/long_corridor"
 
 [node name="cutscene_player" parent="on_enter_cutscene_player" index="2" instance=ExtResource( 5 )]
 
 anims/cutscene = SubResource( 1 )
 dialog_tree = "res://dialog_trees/exposition_dump.json"
+paused = false
 
 [node name="puppet_1" parent="on_enter_cutscene_player" index="3" instance=ExtResource( 6 )]
 
@@ -192,6 +195,13 @@ _sections_unfolded = [ "Animation", "Offset", "Transform", "Visibility" ]
 
 scale = Vector2( 3, 3 )
 _sections_unfolded = [ "Transform" ]
+
+[node name="warp_tile" parent="." index="6" instance=ExtResource( 8 )]
+
+position = Vector2( 5024, 640 )
+destination_room = "res://rooms/dark_start/call_to_adventure.tscn"
+arrival_pos_id = "long_corridor_arrival"
+flippedH = true
 
 [connection signal="triggered" from="on_enter_cutscene_player/enter_trigger" to="on_enter_cutscene_player/cutscene_helper" method="set_active" binds= [ true ]]
 

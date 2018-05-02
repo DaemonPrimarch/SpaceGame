@@ -2,7 +2,7 @@
 
 [ext_resource path="res://scripts/room_elements/warp_tile.gd" type="Script" id=1]
 
-[node name="warp_tile" type="Area2D" index="0" groups=[
+[node name="warp_tile" type="Area2D" groups=[
 "warp_tile",
 ]]
 
