@@ -6,6 +6,7 @@ export var one_way = false
 export var moving_speed = 64 * 3
 export var snap = false
 export var step = false
+export var timed = false
 export var start_at = 0
 
 var next_point_counter = 1
@@ -90,6 +91,8 @@ func _physics_process(delta):
 		get_platform().move_and_push(get_movement_direction() * delta * get_movement_speed())
 		
 		if(has_arrived_at_next_point()):
+			if(timed):
+				get_node("Timer").start()
 			current_point = next_point_counter
 			if(is_one_way()):
 				get_platform().position = get_next_point()
@@ -160,12 +163,21 @@ func switch(counter):
 		print("no such node found")
 
 func go_to(point):
-	if(not is_active() and not current_point == point):
-		set_active(true)
-		arrived = false
-		set_previous_point(get_node("point_" + String(current_point)).get_position())
-				
-		if(has_node("point_" + String(point))):
-			set_next_point(get_node("point_" + String(point)).get_position())
-		else:
-			print("no such node found")
+	get_node("Timer").stop()
+	set_active(true)
+	arrived = false
+	if(point == 0):
+		var i = 1
+		while(has_node("point_" + String(i))):
+				i += 1
+		set_previous_point(get_node("point_" + String(i-1)).get_position())
+		current_point = i-1
+	else:
+		set_previous_point(get_node("point_" + String(0)).get_position())
+		current_point = 0
+			
+	if(has_node("point_" + String(point))):
+		set_next_point(get_node("point_" + String(point)).get_position())
+	else:
+		print("no such node found")
+		

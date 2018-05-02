@@ -7,6 +7,7 @@
 
 script = ExtResource( 2 )
 one_way = true
+timed = false
 in_back_ground = false
 player_background_layer = null
 player_background_mask = null

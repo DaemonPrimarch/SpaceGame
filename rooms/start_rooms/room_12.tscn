@@ -1,0 +1,186 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://nodes/room.tscn" type="PackedScene" id=1]
+[ext_resource path="res://nodes/room_elements/moving_platforms/controllers/platform_mover.tscn" type="PackedScene" id=2]
+[ext_resource path="res://nodes/room_elements/moving_platforms/platforms/platform_1x2.tscn" type="PackedScene" id=3]
+[ext_resource path="res://nodes/room_elements/regular_warp_tile.tscn" type="PackedScene" id=4]
+[ext_resource path="res://nodes/room_elements/bullet_hit_block.tscn" type="PackedScene" id=5]
+[ext_resource path="res://nodes/room_elements/bullet_switch.tscn" type="PackedScene" id=6]
+[ext_resource path="res://nodes/warp_tile.tscn" type="PackedScene" id=7]
+[ext_resource path="res://nodes/warp_arrival.tscn" type="PackedScene" id=8]
+[ext_resource path="res://nodes/room_elements/camera_change_area.tscn" type="PackedScene" id=9]
+[ext_resource path="res://rooms/start_rooms/room_darkener_helper.tscn" type="PackedScene" id=10]
+
+[node name="room_12" index="0" instance=ExtResource( 1 )]
+
+auto_generate_camera_container = false
+
+[node name="platform_mover2" parent="." index="0" instance=ExtResource( 2 )]
+
+editor/display_folded = true
+position = Vector2( 544, 1504 )
+active = false
+step = true
+start_at = 1
+
+[node name="player_stick_platform" parent="platform_mover2" index="3" instance=ExtResource( 3 )]
+
+extending = true
+
+[node name="platform_mover" parent="." index="1" instance=ExtResource( 2 )]
+
+editor/display_folded = true
+position = Vector2( 1312, 1504 )
+active = false
+step = true
+
+[node name="point_1" parent="platform_mover" index="1"]
+
+position = Vector2( -192, 0 )
+
+[node name="player_stick_platform" parent="platform_mover" index="2" instance=ExtResource( 3 )]
+
+flippedH = true
+extending = true
+
+[node name="platform_mover3" parent="." index="2" instance=ExtResource( 2 )]
+
+editor/display_folded = true
+position = Vector2( 1312, 608 )
+active = false
+step = true
+
+[node name="point_1" parent="platform_mover3" index="1"]
+
+position = Vector2( -896, 0 )
+
+[node name="player_stick_platform" parent="platform_mover3" index="3" instance=ExtResource( 3 )]
+
+flippedH = true
+extending = true
+
+[node name="terrain" parent="." index="3"]
+
+tile_data = PoolIntArray( 0, 0, 0, 1, 0, 0, 2, 0, 0, 3, 0, 0, 4, 0, 0, 5, 0, 0, 6, 0, 0, 7, 0, 0, 8, 0, 0, 9, 0, 0, 10, 0, 0, 11, 0, 0, 12, 0, 0, 13, 0, 0, 14, 0, 0, 15, 0, 0, 16, 0, 0, 17, 0, 0, 18, 0, 0, 19, 0, 0, 20, 0, 0, 21, 0, 0, 22, 0, 0, 23, 0, 0, 24, 0, 0, 25, 0, 0, 65536, 0, 0, 65537, 0, 0, 65538, 0, 0, 65559, 0, 0, 65560, 0, 0, 65561, 0, 0, 131072, 0, 0, 131073, 0, 0, 131074, 0, 0, 131095, 0, 0, 131096, 0, 0, 131097, 0, 0, 196608, 0, 0, 196609, 0, 0, 196610, 0, 0, 196631, 0, 0, 196632, 0, 0, 196633, 0, 0, 262144, 0, 0, 262145, 0, 0, 262146, 0, 0, 262167, 0, 0, 262168, 0, 0, 262169, 0, 0, 327680, 0, 0, 327681, 0, 0, 327682, 0, 0, 327703, 0, 0, 327704, 0, 0, 327705, 0, 0, 393216, 0, 0, 393217, 0, 0, 393218, 0, 0, 393239, 0, 0, 393240, 0, 0, 393241, 0, 0, 589824, 0, 0, 589825, 0, 0, 589826, 0, 0, 589827, 0, 0, 589828, 0, 0, 589829, 0, 0, 589844, 0, 0, 589845, 0, 0, 589846, 0, 0, 589847, 0, 0, 589848, 0, 0, 589849, 0, 0, 655360, 0, 0, 655361, 0, 0, 655362, 0, 0, 655363, 0, 0, 655364, 0, 0, 655365, 0, 0, 655380, 0, 0, 655381, 0, 0, 655382, 0, 0, 655383, 0, 0, 655384, 0, 0, 655385, 0, 0, 720896, 0, 0, 720897, 0, 0, 720920, 0, 0, 720921, 0, 0, 786432, 0, 0, 786433, 0, 0, 786456, 0, 0, 786457, 0, 0, 851968, 0, 0, 851969, 0, 0, 851992, 0, 0, 851993, 0, 0, 917504, 0, 0, 917505, 0, 0, 917528, 0, 0, 917529, 0, 0, 983040, 0, 0, 983041, 0, 0, 983064, 0, 0, 983065, 0, 0, 1048576, 0, 0, 1048577, 0, 0, 1048600, 0, 0, 1048601, 0, 0, 1114112, 0, 0, 1114113, 0, 0, 1114136, 0, 0, 1114137, 0, 0, 1179648, 0, 0, 1179649, 0, 0, 1179673, 0, 0, 1245184, 0, 0, 1245185, 0, 0, 1245208, 0, 0, 1245209, 0, 0, 1310720, 0, 0, 1310721, 0, 0, 1310744, 0, 0, 1310745, 0, 0, 1376256, 0, 0, 1376257, 0, 0, 1441792, 0, 0, 1441793, 0, 0, 1507328, 0, 0, 1507329, 0, 0, 1507335, 0, 0, 1507336, 0, 0, 1507348, 0, 0, 1507349, 0, 0, 1507350, 0, 0, 1507351, 0, 0, 1507352, 0, 0, 1507353, 0, 0, 1572864, 0, 0, 1572865, 0, 0, 1572866, 0, 0, 1572871, 0, 0, 1572872, 0, 0, 1572884, 0, 0, 1572885, 0, 0, 1572886, 0, 0, 1572887, 0, 0, 1572888, 0, 0, 1572889, 0, 0, 1638400, 0, 0, 1638401, 0, 0, 1638402, 0, 0, 1638420, 0, 0, 1638421, 0, 0, 1638422, 0, 0, 1638423, 0, 0, 1638424, 0, 0, 1638425, 0, 0, 1703956, 0, 0, 1703957, 0, 0, 1703958, 0, 0, 1703959, 0, 0, 1703960, 0, 0, 1703961, 0, 0, 1769492, 0, 0, 1769493, 0, 0, 1769494, 0, 0, 1769495, 0, 0, 1769496, 0, 0, 1769497, 0, 0, 1835008, 0, 0, 1835009, 0, 0, 1835010, 0, 0, 1835011, 0, 0, 1835012, 0, 0, 1835013, 0, 0, 1835014, 0, 0, 1835015, 0, 0, 1835016, 0, 0, 1835017, 0, 0, 1835018, 0, 0, 1835019, 0, 0, 1835020, 0, 0, 1835021, 0, 0, 1835022, 0, 0, 1835023, 0, 0, 1835024, 0, 0, 1835025, 0, 0, 1835026, 0, 0, 1835027, 0, 0, 1835028, 0, 0, 1835029, 0, 0, 1835030, 0, 0, 1835031, 0, 0, 1835032, 0, 0, 1835033, 0, 0, 1900544, 0, 0, 1900545, 0, 0, 1900546, 0, 0, 1900547, 0, 0, 1900548, 0, 0, 1900549, 0, 0, 1900550, 0, 0, 1900551, 0, 0, 1900552, 0, 0, 1900553, 0, 0, 1900554, 0, 0, 1900555, 0, 0, 1900556, 0, 0, 1900557, 0, 0, 1900558, 0, 0, 1900559, 0, 0, 1900560, 0, 0, 1900561, 0, 0, 1900562, 0, 0, 1900563, 0, 0, 1900564, 0, 0, 1900565, 0, 0, 1900566, 0, 0, 1900567, 0, 0, 1900568, 0, 0, 1900569, 0, 0 )
+
+[node name="debug_player_spawner" parent="." index="4"]
+
+position = Vector2( 1536, 1216 )
+
+[node name="camera_container" parent="." index="6"]
+
+polygon = PoolVector2Array( 0, 0, 0, 1920, 1664, 1920, 1664, 0 )
+has_default_offset = true
+
+[node name="warp_tile" parent="." index="7" instance=ExtResource( 4 )]
+
+position = Vector2( 32, 1728 )
+destination_room = "res://rooms/start_rooms/room_11.tscn"
+arrival_pos_id = "room_10_arrival"
+
+[node name="warp_tile2" parent="." index="8" instance=ExtResource( 4 )]
+
+position = Vector2( 32, 512 )
+destination_room = "res://rooms/start_rooms/room_14.tscn"
+arrival_pos_id = "room_10_arrival"
+
+[node name="StaticBody2D" parent="." index="9" instance=ExtResource( 5 )]
+
+position = Vector2( 1568, 1184 )
+
+[node name="bullet_switch" parent="." index="10" instance=ExtResource( 6 )]
+
+position = Vector2( 800, 96 )
+
+[node name="warp_tile3" parent="." index="11" instance=ExtResource( 7 )]
+
+editor/display_folded = true
+position = Vector2( 1632, 480 )
+destination_room = "res://rooms/start_rooms/room_13.tscn"
+arrival_pos_id = "2"
+
+[node name="CollisionPolygon2D" parent="warp_tile3" index="0"]
+
+polygon = PoolVector2Array( 32, -32, 32, 96, -32, 96, -32, -32 )
+
+[node name="Panel" parent="warp_tile3" index="1"]
+
+margin_bottom = 96.0
+
+[node name="Label" parent="warp_tile3" index="2"]
+
+margin_bottom = 96.0
+
+[node name="warp_tile4" parent="." index="12" instance=ExtResource( 7 )]
+
+editor/display_folded = true
+position = Vector2( 1632, 1376 )
+destination_room = "res://rooms/start_rooms/room_13.tscn"
+arrival_pos_id = "1"
+
+[node name="CollisionPolygon2D" parent="warp_tile4" index="0"]
+
+polygon = PoolVector2Array( 32, -32, 32, 96, -32, 96, -32, -32 )
+
+[node name="Panel" parent="warp_tile4" index="1"]
+
+margin_bottom = 96.0
+
+[node name="Label" parent="warp_tile4" index="2"]
+
+margin_bottom = 96.0
+
+[node name="warp_arrival" parent="." index="13" instance=ExtResource( 8 )]
+
+position = Vector2( 1536, 512 )
+arrival_ID = "2"
+
+[node name="warp_arrival2" parent="." index="14" instance=ExtResource( 8 )]
+
+position = Vector2( 1536, 1408 )
+arrival_ID = "1"
+
+[node name="player" parent="." index="15"]
+
+position = Vector2( 160, 1760 )
+
+[node name="camera_change_area" parent="." index="16" instance=ExtResource( 9 )]
+
+editor/display_folded = true
+position = Vector2( 96, 544 )
+one_way = false
+offset = Vector2( 0, -320 )
+changes_zoom = false
+transition_time = 0
+
+[node name="CollisionPolygon2D" parent="camera_change_area" index="0"]
+
+polygon = PoolVector2Array( 1504, -480, -32, -480, -32, 32, 1504, 32 )
+
+[node name="camera_change_area2" parent="." index="17" instance=ExtResource( 9 )]
+
+editor/display_folded = true
+visible = false
+position = Vector2( 96, 1184 )
+one_way = false
+changes_zoom = false
+
+[node name="CollisionPolygon2D" parent="camera_change_area2" index="0"]
+
+polygon = PoolVector2Array( 1504, -480, -32, -480, -32, 416, 1504, 416 )
+
+[node name="room_darkener_helper" parent="." index="18" instance=ExtResource( 10 )]
+
+[connection signal="toggle" from="StaticBody2D" to="platform_mover2" method="switch" binds= [ 0 ]]
+
+[connection signal="toggle" from="StaticBody2D" to="platform_mover" method="switch" binds= [ 0 ]]
+
+[connection signal="switched_on" from="bullet_switch" to="platform_mover3" method="go_to" binds= [ 1 ]]
+
+
+[editable path="platform_mover"]
+[editable path="platform_mover3"]
+[editable path="warp_tile3"]
+[editable path="warp_tile4"]
+[editable path="camera_change_area"]
+[editable path="camera_change_area2"]
