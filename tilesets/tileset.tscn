@@ -10,7 +10,7 @@ closed = true
 cull_mode = 0
 polygon = PoolVector2Array( 32, 32, -32, 32, -32, -32, 32, -32 )
 
-[node name="tileset" type="Node2D" index="0"]
+[node name="tileset" type="Node2D"]
 
 [node name="block_1" type="Sprite" parent="." index="0"]
 
@@ -2955,6 +2955,7 @@ constant_linear_velocity = Vector2( 0, 0 )
 constant_angular_velocity = 0.0
 friction = 1.0
 bounce = 0.0
+_sections_unfolded = [ "Collision" ]
 __meta__ = {
 "_edit_lock_": true
 }
@@ -3035,5 +3036,161 @@ one_way_collision = true
 __meta__ = {
 "_edit_lock_": true
 }
+
+[node name="glass_left_elevator" type="Sprite" parent="." index="94"]
+
+position = Vector2( 704, 544 )
+texture = ExtResource( 1 )
+vframes = 50
+hframes = 48
+frame = 929
+_sections_unfolded = [ "Animation" ]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="glass_left_elevator" index="0"]
+
+visible = false
+input_pickable = false
+collision_layer = 32
+collision_mask = 0
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+_sections_unfolded = [ "Collision" ]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="glass_left_elevator/StaticBody2D" index="0"]
+
+build_mode = 0
+polygon = PoolVector2Array( -32, -32, 0, -32, 0, 32, -32, 32 )
+
+[node name="glass_left" type="Sprite" parent="." index="95"]
+
+position = Vector2( 704, 640 )
+texture = ExtResource( 1 )
+vframes = 50
+hframes = 48
+frame = 929
+_sections_unfolded = [ "Animation" ]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="glass_left" index="0"]
+
+visible = false
+input_pickable = false
+collision_layer = 33
+collision_mask = 0
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+_sections_unfolded = [ "Collision" ]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="glass_left/StaticBody2D" index="0"]
+
+build_mode = 0
+polygon = PoolVector2Array( -32, -32, 0, -32, 0, 32, -32, 32 )
+
+[node name="glass_middle" type="Sprite" parent="." index="96"]
+
+position = Vector2( 800, 576 )
+texture = ExtResource( 1 )
+vframes = 50
+hframes = 48
+frame = 930
+_sections_unfolded = [ "Animation" ]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="glass_middle" index="0"]
+
+visible = false
+input_pickable = false
+collision_layer = 0
+collision_mask = 0
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+_sections_unfolded = [ "Collision" ]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="glass_middle/StaticBody2D" index="0"]
+
+build_mode = 0
+polygon = PoolVector2Array( -32, -32, 32, -32, 32, 32, -32, 32 )
+
+[node name="glass_right1" type="Sprite" parent="." index="97"]
+
+position = Vector2( 992, 576 )
+texture = ExtResource( 1 )
+vframes = 50
+hframes = 48
+frame = 933
+_sections_unfolded = [ "Animation" ]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="glass_right1" index="0"]
+
+visible = false
+input_pickable = false
+collision_layer = 0
+collision_mask = 0
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+_sections_unfolded = [ "Collision" ]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="glass_right1/StaticBody2D" index="0"]
+
+build_mode = 0
+polygon = PoolVector2Array( -32, -32, 32, -32, 32, 32, -32, 32 )
+
+[node name="glass_right2_elevator" type="Sprite" parent="." index="98"]
+
+position = Vector2( 896, 576 )
+texture = ExtResource( 1 )
+vframes = 50
+hframes = 48
+frame = 934
+_sections_unfolded = [ "Animation" ]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="glass_right2_elevator" index="0"]
+
+visible = false
+input_pickable = false
+collision_layer = 32
+collision_mask = 0
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+_sections_unfolded = [ "Collision" ]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="glass_right2_elevator/StaticBody2D" index="0"]
+
+build_mode = 0
+polygon = PoolVector2Array( 0, -32, 32, -32, 32, 32, 0, 32 )
+
+[node name="glass_right2" type="Sprite" parent="." index="99"]
+
+position = Vector2( 896, 576 )
+texture = ExtResource( 1 )
+vframes = 50
+hframes = 48
+frame = 934
+_sections_unfolded = [ "Animation" ]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="glass_right2" index="0"]
+
+visible = false
+input_pickable = false
+collision_layer = 33
+collision_mask = 0
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+_sections_unfolded = [ "Collision" ]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="glass_right2/StaticBody2D" index="0"]
+
+build_mode = 0
+polygon = PoolVector2Array( 0, -32, 32, -32, 32, 32, 0, 32 )
 
 

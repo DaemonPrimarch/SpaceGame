@@ -1,17 +1,16 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://nodes/room.tscn" type="PackedScene" id=1]
 [ext_resource path="res://nodes/room_elements/moving_platforms/controllers/platform_mover.tscn" type="PackedScene" id=2]
 [ext_resource path="res://nodes/room_elements/moving_platforms/platforms/platform_1x2.tscn" type="PackedScene" id=3]
-[ext_resource path="res://nodes/room_elements/regular_warp_tile.tscn" type="PackedScene" id=4]
-[ext_resource path="res://nodes/room_elements/bullet_hit_block.tscn" type="PackedScene" id=5]
-[ext_resource path="res://nodes/room_elements/bullet_switch.tscn" type="PackedScene" id=6]
-[ext_resource path="res://nodes/warp_tile.tscn" type="PackedScene" id=7]
-[ext_resource path="res://nodes/warp_arrival.tscn" type="PackedScene" id=8]
-[ext_resource path="res://nodes/room_elements/camera_change_area.tscn" type="PackedScene" id=9]
-[ext_resource path="res://rooms/start_rooms/room_darkener_helper.tscn" type="PackedScene" id=10]
+[ext_resource path="res://nodes/room_elements/bullet_hit_block.tscn" type="PackedScene" id=4]
+[ext_resource path="res://nodes/room_elements/bullet_switch.tscn" type="PackedScene" id=5]
+[ext_resource path="res://nodes/warp_tile.tscn" type="PackedScene" id=6]
+[ext_resource path="res://nodes/warp_arrival.tscn" type="PackedScene" id=7]
+[ext_resource path="res://nodes/room_elements/camera_change_area.tscn" type="PackedScene" id=8]
+[ext_resource path="res://rooms/start_rooms/room_darkener_helper.tscn" type="PackedScene" id=9]
 
-[node name="room_12" index="0" instance=ExtResource( 1 )]
+[node name="room_12" instance=ExtResource( 1 )]
 
 auto_generate_camera_container = false
 
@@ -72,27 +71,15 @@ position = Vector2( 1536, 1216 )
 polygon = PoolVector2Array( 0, 0, 0, 1920, 1664, 1920, 1664, 0 )
 has_default_offset = true
 
-[node name="warp_tile" parent="." index="7" instance=ExtResource( 4 )]
-
-position = Vector2( 32, 1728 )
-destination_room = "res://rooms/start_rooms/room_11.tscn"
-arrival_pos_id = "room_10_arrival"
-
-[node name="warp_tile2" parent="." index="8" instance=ExtResource( 4 )]
-
-position = Vector2( 32, 512 )
-destination_room = "res://rooms/start_rooms/room_14.tscn"
-arrival_pos_id = "room_10_arrival"
-
-[node name="StaticBody2D" parent="." index="9" instance=ExtResource( 5 )]
+[node name="StaticBody2D" parent="." index="7" instance=ExtResource( 4 )]
 
 position = Vector2( 1568, 1184 )
 
-[node name="bullet_switch" parent="." index="10" instance=ExtResource( 6 )]
+[node name="bullet_switch" parent="." index="8" instance=ExtResource( 5 )]
 
 position = Vector2( 800, 96 )
 
-[node name="warp_tile3" parent="." index="11" instance=ExtResource( 7 )]
+[node name="warp_tile3" parent="." index="9" instance=ExtResource( 6 )]
 
 editor/display_folded = true
 position = Vector2( 1632, 480 )
@@ -111,7 +98,45 @@ margin_bottom = 96.0
 
 margin_bottom = 96.0
 
-[node name="warp_tile4" parent="." index="12" instance=ExtResource( 7 )]
+[node name="warp_tile5" parent="." index="10" instance=ExtResource( 6 )]
+
+editor/display_folded = true
+position = Vector2( 32, 480 )
+destination_room = "res://rooms/start_rooms/room_14.tscn"
+arrival_pos_id = "2"
+
+[node name="CollisionPolygon2D" parent="warp_tile5" index="0"]
+
+polygon = PoolVector2Array( 32, -32, 32, 96, -32, 96, -32, -32 )
+
+[node name="Panel" parent="warp_tile5" index="1"]
+
+margin_bottom = 96.0
+
+[node name="Label" parent="warp_tile5" index="2"]
+
+margin_bottom = 96.0
+
+[node name="warp_tile6" parent="." index="11" instance=ExtResource( 6 )]
+
+editor/display_folded = true
+position = Vector2( 32, 1696 )
+destination_room = "res://rooms/start_rooms/room_14.tscn"
+arrival_pos_id = "1"
+
+[node name="CollisionPolygon2D" parent="warp_tile6" index="0"]
+
+polygon = PoolVector2Array( 32, -32, 32, 96, -32, 96, -32, -32 )
+
+[node name="Panel" parent="warp_tile6" index="1"]
+
+margin_bottom = 96.0
+
+[node name="Label" parent="warp_tile6" index="2"]
+
+margin_bottom = 96.0
+
+[node name="warp_tile4" parent="." index="12" instance=ExtResource( 6 )]
 
 editor/display_folded = true
 position = Vector2( 1632, 1376 )
@@ -130,21 +155,31 @@ margin_bottom = 96.0
 
 margin_bottom = 96.0
 
-[node name="warp_arrival" parent="." index="13" instance=ExtResource( 8 )]
+[node name="warp_arrival" parent="." index="13" instance=ExtResource( 7 )]
 
 position = Vector2( 1536, 512 )
 arrival_ID = "2"
 
-[node name="warp_arrival2" parent="." index="14" instance=ExtResource( 8 )]
+[node name="warp_arrival3" parent="." index="14" instance=ExtResource( 7 )]
+
+position = Vector2( 128, 512 )
+arrival_ID = "3"
+
+[node name="warp_arrival4" parent="." index="15" instance=ExtResource( 7 )]
+
+position = Vector2( 128, 1728 )
+arrival_ID = "4"
+
+[node name="warp_arrival2" parent="." index="16" instance=ExtResource( 7 )]
 
 position = Vector2( 1536, 1408 )
 arrival_ID = "1"
 
-[node name="player" parent="." index="15"]
+[node name="player" parent="." index="17"]
 
 position = Vector2( 160, 1760 )
 
-[node name="camera_change_area" parent="." index="16" instance=ExtResource( 9 )]
+[node name="camera_change_area" parent="." index="18" instance=ExtResource( 8 )]
 
 editor/display_folded = true
 position = Vector2( 96, 544 )
@@ -157,7 +192,7 @@ transition_time = 0
 
 polygon = PoolVector2Array( 1504, -480, -32, -480, -32, 32, 1504, 32 )
 
-[node name="camera_change_area2" parent="." index="17" instance=ExtResource( 9 )]
+[node name="camera_change_area2" parent="." index="19" instance=ExtResource( 8 )]
 
 editor/display_folded = true
 visible = false
@@ -169,7 +204,7 @@ changes_zoom = false
 
 polygon = PoolVector2Array( 1504, -480, -32, -480, -32, 416, 1504, 416 )
 
-[node name="room_darkener_helper" parent="." index="18" instance=ExtResource( 10 )]
+[node name="room_darkener_helper" parent="." index="20" instance=ExtResource( 9 )]
 
 [connection signal="toggle" from="StaticBody2D" to="platform_mover2" method="switch" binds= [ 0 ]]
 
@@ -181,6 +216,8 @@ polygon = PoolVector2Array( 1504, -480, -32, -480, -32, 416, 1504, 416 )
 [editable path="platform_mover"]
 [editable path="platform_mover3"]
 [editable path="warp_tile3"]
+[editable path="warp_tile5"]
+[editable path="warp_tile6"]
 [editable path="warp_tile4"]
 [editable path="camera_change_area"]
 [editable path="camera_change_area2"]

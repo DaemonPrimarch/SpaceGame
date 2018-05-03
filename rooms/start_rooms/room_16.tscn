@@ -18,14 +18,14 @@ polygon = PoolVector2Array( 0, 0, 0, 960, 1664, 960, 1664, 0 )
 [node name="warp_tile" parent="." index="4" instance=ExtResource( 2 )]
 
 position = Vector2( 32, 768 )
-destination_room = "res://rooms/start_rooms/room_15.tscn"
-arrival_pos_id = "room_e1_arrival"
+destination_room = "res://rooms/start_rooms/room_14.tscn"
+arrival_pos_id = "room_16_arrival"
 
 [node name="warp_tile2" parent="." index="5" instance=ExtResource( 2 )]
 
 position = Vector2( 1632, 256 )
 destination_room = "res://rooms/start_rooms/room_17.tscn"
-arrival_pos_id = "room_e1_arrival"
+arrival_pos_id = "room_16_arrival"
 flippedH = true
 
 [node name="player" parent="." index="6"]

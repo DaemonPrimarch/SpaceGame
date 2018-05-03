@@ -77,13 +77,13 @@ has_default_offset = true
 
 position = Vector2( 32, 1728 )
 destination_room = "res://rooms/start_rooms/room_9.tscn"
-arrival_pos_id = "room_9_arrival"
+arrival_pos_id = "room_10_arrival"
 
 [node name="warp_tile2" parent="." index="8" instance=ExtResource( 5 )]
 
 position = Vector2( 1632, 768 )
-destination_room = "res://rooms/start_rooms/room_11.tscn"
-arrival_pos_id = "room_9_arrival"
+destination_room = "res://rooms/start_rooms/room_14.tscn"
+arrival_pos_id = "room_10_arrival"
 flippedH = true
 
 [node name="StaticBody2D" parent="." index="9" instance=ExtResource( 6 )]

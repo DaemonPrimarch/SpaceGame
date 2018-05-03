@@ -21,7 +21,7 @@
 [ext_resource path="res://nodes/managers/camera_zoom_out_manager.tscn" type="PackedScene" id=19]
 [ext_resource path="res://icon.png" type="Texture" id=20]
 
-[node name="player" index="0" groups=[
+[node name="player" groups=[
 "player",
 "warpable",
 ] instance=ExtResource( 1 )]
