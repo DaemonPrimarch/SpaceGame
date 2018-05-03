@@ -8,4 +8,6 @@ pause_mode = 1
 
 
 [editable path="weapon_manager"]
+[editable path="weapon_manager/gun"]
+[editable path="weapon_manager/gun/flashlight"]
 [editable path="crouching_handler"]
