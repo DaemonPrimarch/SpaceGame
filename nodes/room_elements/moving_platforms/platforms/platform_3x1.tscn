@@ -2,8 +2,7 @@
 
 [ext_resource path="res://nodes/room_elements/moving_platforms/platforms/player_stick_platform.tscn" type="PackedScene" id=1]
 
-
-[node name="player_stick_platform" index="0" groups=[
+[node name="player_stick_platform" groups=[
 "wall_slideable",
 ] instance=ExtResource( 1 )]
 
