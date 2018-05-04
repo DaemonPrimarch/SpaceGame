@@ -5,7 +5,7 @@
 [ext_resource path="res://nodes/room_elements/regular_warp_tile.tscn" type="PackedScene" id=3]
 [ext_resource path="res://nodes/entities/enemies/shadow_monster.tscn" type="PackedScene" id=4]
 
-[node name="room_24" instance=ExtResource( 1 )]
+[node name="room_24" index="0" instance=ExtResource( 1 )]
 
 dark = true
 auto_generate_camera_container = false

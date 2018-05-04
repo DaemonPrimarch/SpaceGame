@@ -16,10 +16,10 @@ func set_eyes_enabled(val):
 		$eye2.enabled = val
 	
 func get_player():
-	for play in get_tree().get_nodes_in_group("player"):
-		return play
-	
-	return null
+	#for play in get_tree().get_nodes_in_group("player"):
+	#	return play
+	return get_parent().get_node("player")
+	#return null
 
 func attack_player():	
 	var play = get_player()
@@ -30,7 +30,6 @@ func attack_player():
 		$attack.start()
 	
 func _on_shadow_monster_light_entered(source):
-	print("ROEMI")
 	if(not attacking):
 		visible = false
 
