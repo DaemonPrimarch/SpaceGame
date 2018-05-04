@@ -32,19 +32,18 @@ _sections_unfolded = [ "Collision", "Pause", "Pickable", "Transform", "collision
 movement_speed = 359.68
 gravity_vector = Vector2( 0, 1344 )
 
-[node name="Sprite" parent="." index="0"]
+[node name="Sprite" parent="." index="1"]
 
 frame = 22
 _sections_unfolded = [ "Animation", "Offset", "Region", "Transform" ]
 
-[node name="CollisionPolygon2D" parent="." index="1"]
+[node name="CollisionPolygon2D" parent="." index="2"]
 
 polygon = PoolVector2Array( 60, 32, 4, 32, 4, -80, 60, -80 )
 _sections_unfolded = [ "Transform" ]
 
 [node name="light_2" type="Light2D" parent="." index="3"]
 
-scale = Vector2( 1, 1 )
 enabled = false
 editor_only = false
 texture = ExtResource( 3 )
@@ -70,7 +69,6 @@ script = ExtResource( 4 )
 
 [node name="light_3" type="Light2D" parent="." index="4"]
 
-scale = Vector2( 1, 1 )
 enabled = false
 editor_only = false
 texture = ExtResource( 3 )
@@ -94,14 +92,14 @@ shadow_filter_smooth = 0.0
 shadow_item_cull_mask = 1
 script = ExtResource( 4 )
 
-[node name="light" parent="." index="5"]
+[node name="light" parent="." index="6"]
 
 texture = ExtResource( 3 )
 texture_scale = 2.0
 energy = 0.8
 _sections_unfolded = [ "Transform" ]
 
-[node name="weapon_manager" parent="." index="8"]
+[node name="weapon_manager" parent="." index="9"]
 
 weapon_path = NodePath("gun")
 enabled = true
@@ -193,7 +191,7 @@ save_value = "player/wall_jump_enabled"
 
 [node name="pushed_handler" parent="." index="21" instance=ExtResource( 17 )]
 
-[node name="invulnerable_label" parent="." index="23"]
+[node name="invulnerable_label" parent="." index="24"]
 
 visible = false
 
