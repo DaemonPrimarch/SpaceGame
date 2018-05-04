@@ -97,7 +97,6 @@ func _physics_process(delta):
 			if(is_one_way()):
 				get_platform().position = get_next_point()
 				
-				emit_signal("arrived_at_next_point", get_next_point())
 			else:
 				set_previous_point(get_next_point())
 				
@@ -115,6 +114,9 @@ func _physics_process(delta):
 					next_point_counter += 2*direction
 					
 					set_next_point(get_node("point_" + String(next_point_counter)).get_position())
+					
+			emit_signal("arrived_at_next_point", get_next_point())
+			
 			if(step):
 				set_active(false)
 				arrived = true

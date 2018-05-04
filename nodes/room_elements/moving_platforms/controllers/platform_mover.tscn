@@ -27,8 +27,8 @@ wait_time = 4.0
 one_shot = false
 autostart = false
 
-[connection signal="timeout" from="Timer" to="Timer" method="stop"]
-
 [connection signal="timeout" from="Timer" to="." method="go_to" binds= [ 0 ]]
+
+[connection signal="timeout" from="Timer" to="Timer" method="stop"]
 
 

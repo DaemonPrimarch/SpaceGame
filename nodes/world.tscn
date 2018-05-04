@@ -1,9 +1,8 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://scripts/starter.gd" type="Script" id=1]
 [ext_resource path="res://nodes/entities/player/player.tscn" type="PackedScene" id=2]
-[ext_resource path="res://sprites/robot_demo.png" type="Texture" id=3]
-[ext_resource path="res://nodes/GUI_elements/start_panel.tscn" type="PackedScene" id=4]
+[ext_resource path="res://nodes/GUI_elements/start_panel.tscn" type="PackedScene" id=3]
 
 [sub_resource type="Animation" id=1]
 
@@ -130,21 +129,11 @@ position = Vector2( 831.14, 805.328 )
 collision_mask = 1
 max_movement_speed = 500
 
-[node name="Sprite" parent="player" index="0"]
+[node name="layer_changer" parent="player" index="0"]
 
-position = Vector2( 12, -24 )
-scale = Vector2( 1.5, 2 )
-texture = ExtResource( 3 )
-vframes = 2
-hframes = 16
+linked_to_parent = false
 
-[node name="CollisionPolygon2D" parent="player" index="1"]
-
-position = Vector2( -32, 0 )
-scale = Vector2( 1, 1 )
-build_mode = 0
-
-[node name="AnimationPlayer" parent="player" index="2"]
+[node name="AnimationPlayer" parent="player" index="5"]
 
 anims/duck = SubResource( 1 )
 anims/fall = SubResource( 2 )
@@ -152,22 +141,12 @@ anims/idle = SubResource( 3 )
 anims/jump = SubResource( 4 )
 anims/run = SubResource( 5 )
 anims/run_gun = SubResource( 6 )
-_sections_unfolded = [ "Playback Options" ]
-
-[node name="on_platform_label" parent="player" index="22"]
-
-visible = true
-
-[node name="invulnerable_label" parent="player" index="23"]
-
-margin_top = -24.0
-margin_bottom = -10.0
 
 [node name="camera2" parent="player" index="26"]
 
 active = false
 
-[node name="start_panel" parent="." index="1" instance=ExtResource( 4 )]
+[node name="start_panel" parent="." index="1" instance=ExtResource( 3 )]
 
 [node name="AcceptDialog" type="AcceptDialog" parent="start_panel" index="3"]
 

@@ -36,10 +36,9 @@ func start_elevator():
 	set_active(true)
 	
 	for play in get_platform().connected_nodes:
-		print("PLACED IN BACKGROUND 2")
 		if(play.is_in_group("layer_changeable")):
 			play.get_node("layer_changer").set_in_background(true)
-			print("PLACED IN BACKGROUND")
+			get_platform().get_node("layer_changer").set_in_background(true)
 		player = play
 	
 func place_player_in_background(player):
@@ -70,6 +69,9 @@ func place_player_in_foreground(player):
 	player.collision_layer = old_platform_background_layer
 
 func _on_elevator_system_arrived_at_next_point(point):
+	print("DOOOONE")
 	if(started):
-		place_player_in_background(player)
+		print("DONEEEE")
+		player.get_node("layer_changer").set_in_background(false)
+		get_platform().get_node("layer_changer").set_in_background(false)
 		started = false

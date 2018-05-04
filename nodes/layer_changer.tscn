@@ -6,5 +6,6 @@
 
 script = ExtResource( 1 )
 in_background = false
+linked_to_parent = false
 
 
