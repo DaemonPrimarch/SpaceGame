@@ -40,26 +40,31 @@ func start_elevator():
 		player = play
 	
 func place_player_in_background(player):
-	old_player_background_mask = player.mask
-	old_platform_background_layer = player.layer
+	old_player_background_mask = player.collision_mask
+	old_platform_background_layer = player.collision_layer
 	
-	player.mask = player_background_mask
-	player.layer = player_background_layer
+	player.collision_mask = player_background_mask
+	player.collision_layer = player_background_layer
 	
 func place_platform_in_background():
-	old_platform_background_layer = get_platform().layer
-	old_platform_background_mask = get_platform().mask
+	old_platform_background_layer = get_platform().collision_layer
+	old_platform_background_mask = get_platform().collision_mask
 	
-	get_platform().mask = platform_background_mask
-	get_platform().layer = platform_background_layer
+	get_platform().collision_mask = platform_background_mask
+	get_platform().collision_layer = platform_background_layer
+	get_platform().get_node("standing_area").collision_mask = platform_background_mask
+	get_platform().get_node("standing_area").collision_layer = platform_background_layer
 
 func place_platform_in_foreground():
-	get_platform().mask = old_platform_background_mask
-	get_platform().layer = old_platform_background_layer
+	get_platform().collision_mask = old_platform_background_mask
+	get_platform().collision_layer = old_platform_background_layer
+	
+	get_platform().get_node("standing_area").collision_mask = old_platform_background_mask
+	get_platform().get_node("standing_area").collision_layer = old_platform_background_layer
 
 func place_player_in_foreground(player):
-	player.mask = old_player_background_mask
-	player.layer = old_platform_background_layer
+	player.collision_mask = old_player_background_mask
+	player.collision_layer = old_platform_background_layer
 
 func _on_elevator_system_arrived_at_next_point(point):
 	if(started):

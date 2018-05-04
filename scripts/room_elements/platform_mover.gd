@@ -30,7 +30,7 @@ func has_arrived_at_end():
 	return arrived
 
 func is_moving():
-	return not has_arrived_at_end()
+	return is_active()
 
 func get_platform():
 	return platform
