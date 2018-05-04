@@ -2,5 +2,8 @@ extends StaticBody2D
 
 signal toggle
 
+export var enabled = true
+
 func _on_bullet_hit(bullet):
-	emit_signal("toggle")
+	if(enabled):
+		emit_signal("toggle")
