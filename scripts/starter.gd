@@ -20,7 +20,8 @@ func _on_new_game_pressed():
 
 
 func _on_load_game_pressed():
-	$start_panel/FileDialog.popup()
+	#$start_panel/FileDialog.popup()
+	pass
 
 func _on_FileDialog_file_selected(path):
 	SAVE_MANAGER.load_file(path)
@@ -35,6 +36,6 @@ func _on_FileDialog_file_selected(path):
 
 		queue_free()
 	else:
-		$start_panel/AcceptDialog.popup()
+		#$start_panel/AcceptDialog.popup()
 		_on_new_game_pressed()
 	

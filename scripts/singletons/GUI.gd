@@ -1,17 +1,9 @@
-extends Node
-
-var layer
+extends CanvasLayer
 
 var hp_bars = {}
 
-func _ready():
-	#Add CanvasLayer to root
-	layer = preload("res://nodes/GUI_elements/GUI_layer.tscn").instance()
-	
-	get_tree().get_root().call_deferred("add_child",layer)
-
 func get_layer():
-	return layer
+	return self
 
 #HP Bars:
 func add_HP_bar(tracked_object):
