@@ -7,10 +7,10 @@ path="res://.import/guun.png-640349bbacec78dd050cc7277575d191.stex"
 [deps]
 
 source_file="res://sprites/guun.png"
-source_md5="69870ad72f64bf230956b76ebda995da"
+source_md5="0998a84592fa73096971d237ae4c2abc"
 
 dest_files=[ "res://.import/guun.png-640349bbacec78dd050cc7277575d191.stex" ]
-dest_md5="79047b3b10d5ede5e0f6a48526e6c577"
+dest_md5="8932c350412b64adbf80f0dac88d60e8"
 
 [params]
 

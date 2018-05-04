@@ -9,6 +9,7 @@
 scale = Vector2( 0.0533333, 0.0533333 )
 texture = ExtResource( 1 )
 script = ExtResource( 2 )
+enabled = true
 flickering = false
 
 [node name="Light2D" type="Light2D" parent="." index="0"]
@@ -17,9 +18,9 @@ enabled = true
 editor_only = false
 texture = ExtResource( 3 )
 offset = Vector2( 0, 0 )
-texture_scale = 10.0
+texture_scale = 15.0
 color = Color( 1, 0, 0, 1 )
-energy = 1.0
+energy = 1.5
 mode = 0
 range_height = 0.0
 range_z_min = -1024
