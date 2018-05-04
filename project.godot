@@ -17,7 +17,7 @@ config/icon="res://icon.png"
 [autoload]
 
 MATHS="*res://scripts/singletons/maths.gd"
-GUI="*res://scripts/singletons/GUI.gd"
+GUI="*res://nodes/singletons/GUI.tscn"
 DIALOG_SYSTEM="*res://scripts/singletons/dialog_system.gd"
 ROOM_MANAGER="*res://scripts/singletons/room_manager.gd"
 PHYSICS_HELPER="*res://scripts/singletons/physics_helper.gd"

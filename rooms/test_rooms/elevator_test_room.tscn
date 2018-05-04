@@ -5,7 +5,7 @@
 [ext_resource path="res://nodes/room_elements/moving_platforms/controllers/elevator_system.tscn" type="PackedScene" id=3]
 [ext_resource path="res://nodes/room_elements/moving_platforms/platforms/platform_3x1.tscn" type="PackedScene" id=4]
 
-[node name="room" index="0" instance=ExtResource( 1 )]
+[node name="room" instance=ExtResource( 1 )]
 
 [node name="terrain" parent="." index="0"]
 
