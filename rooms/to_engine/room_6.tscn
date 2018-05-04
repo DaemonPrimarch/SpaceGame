@@ -57,7 +57,7 @@ tracks/1/keys = {
 } ]
 }
 
-[node name="room_6" index="0" instance=ExtResource( 1 )]
+[node name="room_6" instance=ExtResource( 1 )]
 
 [node name="terrain" parent="." index="0"]
 
