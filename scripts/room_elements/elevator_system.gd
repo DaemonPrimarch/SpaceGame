@@ -36,7 +36,10 @@ func start_elevator():
 	set_active(true)
 	
 	for play in get_platform().connected_nodes:
-		place_player_in_background(play)
+		print("PLACED IN BACKGROUND 2")
+		if(play.is_in_group("layer_changeable")):
+			play.get_node("layer_changer").set_in_background(true)
+			print("PLACED IN BACKGROUND")
 		player = play
 	
 func place_player_in_background(player):
