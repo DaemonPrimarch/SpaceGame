@@ -53,6 +53,10 @@ destination_room = "res://rooms/start_rooms/room_23.tscn"
 arrival_pos_id = "room_22_arrival"
 flippedH = true
 
+[node name="player" parent="." index="8"]
+
+position = Vector2( 224, 800 )
+
 [node name="room_darkener_helper" parent="." index="9" instance=ExtResource( 6 )]
 
 [node name="bullet_switch" parent="." index="10" instance=ExtResource( 7 )]
@@ -65,8 +69,8 @@ enabled = true
 editor_only = false
 texture = ExtResource( 8 )
 offset = Vector2( 0, 0 )
-texture_scale = 1.0
-color = Color( 1, 0.00390625, 0.00390625, 1 )
+texture_scale = 0.5
+color = Color( 0.976563, 0.976563, 0.976563, 1 )
 energy = 1.0
 mode = 0
 range_height = 0.0
@@ -92,7 +96,6 @@ flickering = true
 [node name="emergency_light2" parent="." index="12" instance=ExtResource( 9 )]
 
 position = Vector2( 1408, 288 )
-enabled = true
 
 [connection signal="switched_on" from="bullet_switch" to="emergency_light" method="enable"]
 

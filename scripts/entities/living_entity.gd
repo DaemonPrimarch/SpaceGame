@@ -35,12 +35,16 @@ func get_HP():
 	return HP
 
 func set_HP(hp):
-	HP = hp
-	
-	emit_signal("HP_changed")
-	
-	if(hp <= 0):
-		destroy()
+	if(hp <= get_max_HP()):
+		HP = hp
+		
+		emit_signal("HP_changed")
+		
+		if(hp <= 0):
+			destroy()
+	else:
+		HP = get_max_HP()
+		emit_signal("HP_changed")
 	
 func get_max_HP():
 	return max_HP

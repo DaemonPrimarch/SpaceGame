@@ -17,6 +17,7 @@ func set_tracked_object(object):
 	set_max(object.get_max_HP())
 	set_value(object.get_HP())
 	set_step(1)
+	get_node("health").text = String(object.get_HP())
 	update()
 
 func remove_tracked_object():
@@ -24,6 +25,7 @@ func remove_tracked_object():
 
 func hp_changed():
 	set_value(get_tracked_object().get_HP())
+	get_node("health").text = String(get_tracked_object().get_HP())
 	update()
 
 func destroy():

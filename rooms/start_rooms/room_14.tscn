@@ -106,7 +106,7 @@ flippedH = true
 
 [node name="player" parent="." index="9"]
 
-position = Vector2( 352, 1632 )
+position = Vector2( 1056, 2624 )
 
 [node name="warp_tile" parent="." index="10" instance=ExtResource( 4 )]
 
