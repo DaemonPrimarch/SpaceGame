@@ -27,6 +27,9 @@ damage = 1
 hp_drop_chance = 0.5
 attack_duration = 0.2
 eyes_enabled = true
+shadow = true
+shadow_distance = 192
+eyes_shadow_distance = 768
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." index="0"]
 
@@ -50,14 +53,14 @@ playback/speed = 1.0
 
 [node name="eye1" type="Light2D" parent="." index="3"]
 
-position = Vector2( -11.9184, -15.9962 )
+position = Vector2( -11.9707, -21.647 )
 scale = Vector2( 0.0201902, 0.02 )
 enabled = true
 editor_only = false
 texture = ExtResource( 3 )
 offset = Vector2( 0, 0 )
 texture_scale = 1.0
-color = Color( 1, 1, 1, 1 )
+color = Color( 0.382824, 0.296078, 0, 1 )
 energy = 6.0
 mode = 0
 range_height = 0.0
@@ -83,7 +86,7 @@ editor_only = false
 texture = ExtResource( 3 )
 offset = Vector2( 0, 0 )
 texture_scale = 1.0
-color = Color( 1, 1, 1, 1 )
+color = Color( 0.382824, 0.296078, 0, 1 )
 energy = 6.0
 mode = 0
 range_height = 0.0
@@ -99,10 +102,6 @@ shadow_gradient_length = 0.0
 shadow_filter = 0
 shadow_filter_smooth = 0.0
 shadow_item_cull_mask = 1
-
-[connection signal="light_entered" from="." to="." method="_on_shadow_monster_light_entered"]
-
-[connection signal="light_exited" from="." to="." method="_on_shadow_monster_light_exited"]
 
 [connection signal="tween_completed" from="attack" to="." method="_on_attack_tween_completed"]
 

@@ -11,7 +11,7 @@ var current_list
 func _ready():
 	randomize()
 	if(flickering):
-		var length = floor(rand_range(5,20))
+		var length = floor(rand_range(15,40))
 		var i = 0
 		while (i < length):
 			time_list.append(rand_range(1.0, 8.0))
