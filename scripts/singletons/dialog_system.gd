@@ -8,7 +8,7 @@ var current_tree
 var current_element
 
 func _ready():
-	box = get_node("/root/GUI").get_layer().get_node("dialog_box")
+	box = get_node("/root/GUI").get_node("dialog_box")
 	
 	box.connect("text_finished_scrolling", self, "box_finished_printing")
 	box.connect("pressed_continue", self, "box_pressed_continue")

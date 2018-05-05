@@ -11,7 +11,7 @@ func add_HP_bar(tracked_object):
 		var new_bar = preload("res://nodes/GUI_elements/hp_bar.tscn").instance();
 		new_bar.set_tracked_object(tracked_object)
 		hp_bars[tracked_object] = new_bar
-		GUI.get_layer().add_child(new_bar)
+		add_child(new_bar)
 		call_deferred("reflow_HP_bars")
 		
 	reflow_HP_bars()

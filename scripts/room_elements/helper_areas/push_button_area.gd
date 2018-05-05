@@ -12,7 +12,5 @@ func _physics_process(delta):
 			emit_signal("accepted")
 			get_node('Label').visible = false
 			confirmed = true
-			
-			print("COMFIRRRR")
 	else:
 		get_node('Label').visible = false

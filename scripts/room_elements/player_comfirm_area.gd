@@ -15,7 +15,7 @@ func _physics_process(delta):
 	if(not get_overlapping_bodies().empty() and is_enabled()):
 		get_node('Label').visible = true
 		if(Input.is_action_just_pressed("ui_accept")):
-			emit_signal("confirmed_by", get_overlapping_bodies()[0])
+			emit_signal("comfirmed_by", get_overlapping_bodies()[0])
 			emit_signal("comfirmed")
 			get_node('Label').visible = false
 			set_enabled(false)
