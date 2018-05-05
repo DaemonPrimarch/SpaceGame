@@ -18,6 +18,7 @@ var direction = 1
 var current_point = 0
 signal platform_loaded
 signal arrived_at_next_point(point)
+signal arrived
 var platform = null
 
 func get_movement_speed():
@@ -116,6 +117,7 @@ func _physics_process(delta):
 					set_next_point(get_node("point_" + String(next_point_counter)).get_position())
 					
 			emit_signal("arrived_at_next_point", get_next_point())
+			emit_signal("arrived")
 			
 			if(step):
 				set_active(false)

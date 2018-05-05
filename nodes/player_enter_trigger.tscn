@@ -12,9 +12,11 @@ angular_damp = 1.0
 audio_bus_override = false
 audio_bus_name = "Master"
 script = ExtResource( 1 )
+enabled = true
 oneshot = false
+free_on_disabled = false
 save_path = null
-trigger_on_unload = false
+trigger_on_freed = false
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." index="0"]
 
