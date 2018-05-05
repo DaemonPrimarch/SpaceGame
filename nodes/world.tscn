@@ -116,7 +116,7 @@ tracks/0/keys = {
 "values": [ 5, 6, 7, 8, 9 ]
 }
 
-[node name="world" type="Node2D"]
+[node name="world" type="Node2D" index="0"]
 
 script = ExtResource( 1 )
 starting_room = "res://rooms/start_rooms/room_1.tscn"
@@ -127,11 +127,7 @@ arrival_pos_id = "start"
 editor/display_folded = true
 position = Vector2( 831.14, 805.328 )
 collision_mask = 1
-max_movement_speed = 500
-
-[node name="layer_changer" parent="player" index="0"]
-
-linked_to_parent = false
+current_state = "STANDING"
 
 [node name="AnimationPlayer" parent="player" index="5"]
 

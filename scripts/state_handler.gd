@@ -1,5 +1,6 @@
 extends Node
 
+export var handled_state = "UNDEFINED"
 export var enabled = true setget set_enabled, is_enabled
 
 signal enabled
@@ -37,7 +38,7 @@ func reset_timer():
 	timer = 0
 	
 func get_handled_state():
-	return "UNDEFINED"
+	return handled_state
 	
 func enter_state(previous_state):
 	reset_timer()
@@ -49,7 +50,7 @@ func enter_state(previous_state):
 func leave_state(new_state):
 	if(has_no_gravity()):
 		get_parent().set_gravity_enabled(previous_gravity_enabled)
-
+		
 func set_no_gravity(val):
 	no_gravity = val
 

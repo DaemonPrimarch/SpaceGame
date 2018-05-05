@@ -29,8 +29,6 @@
 
 script = ExtResource( 2 )
 _sections_unfolded = [ "Collision", "Pause", "Pickable", "Transform", "collision" ]
-movement_speed = 359.68
-gravity_vector = Vector2( 0, 1344 )
 
 [node name="Sprite" parent="." index="1"]
 
@@ -137,6 +135,8 @@ collision_mask = 1
 
 [node name="jumping_handler" parent="." index="11" instance=ExtResource( 7 )]
 
+handled_state = "UNDEFINED"
+
 [node name="walking_handler" parent="." index="12" instance=ExtResource( 8 )]
 
 [node name="standing_handler" parent="." index="13" instance=ExtResource( 9 )]
@@ -232,8 +232,6 @@ wait_time = 0.35
 one_shot = false
 autostart = false
 _sections_unfolded = [ "Pause" ]
-
-[connection signal="invulnerable_started" from="." to="." method="_on_player_invulnerable_started"]
 
 [connection signal="timeout" from="damage_timer" to="." method="_on_damage_timer_timeout"]
 

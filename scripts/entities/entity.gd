@@ -8,6 +8,8 @@ signal state_entered(state, previous_state)
 signal state_left(state, new_state)
 signal crushed
 
+export var current_state = "UNDEFINED" setget set_state
+
 export var movement_speed = 64 * 5.12 setget set_movement_speed, get_movement_speed
 
 export var gravity_enabled = false setget set_gravity_enabled, is_gravity_enabled
@@ -25,8 +27,6 @@ var gravity_timer = 0
 var valid_states = ["UNDEFINED"]
 
 var state_handlers = {}
-
-var current_state = "UNDEFINED"
 
 var inside_helper_areas = {}
 
@@ -69,6 +69,8 @@ func get_platform():
 	return platform
 
 func _ready():
+	set_state(get_state())
+	
 	add_to_group("entity")	
 	set_physics_process(not Engine.is_editor_hint())
 
@@ -159,21 +161,22 @@ func get_state():
 	return current_state
 	
 func set_state(state):
-	if(not is_valid_state(state)):
-		print("ERROR, entity doesn't have state: ", state)
-	else:
-		var old_state = get_state()
-		
-		if(has_handler(get_state())):
-			get_handler(get_state()).leave_state(state)
-		
-		emit_signal("state_left", get_state(), state)
-		
-		if(has_handler(state)):
-			get_handler(state).enter_state(old_state)
-		
-		emit_signal("state_entered", state, old_state)
-		current_state = state
+	if(is_inside_tree()):
+		if(not is_valid_state(state)):
+			print("ERROR, entity doesn't have state: ", state)
+		else:
+			var old_state = get_state()
+			
+			if(has_handler(get_state())):
+				get_handler(get_state()).leave_state(state)
+			
+			emit_signal("state_left", get_state(), state)
+			
+			if(has_handler(state)):
+				get_handler(state).enter_state(old_state)
+			
+			emit_signal("state_entered", state, old_state)
+			current_state = state
 
 func add_state(state):
 	if(is_valid_state(state)):
