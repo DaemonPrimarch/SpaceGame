@@ -7,22 +7,33 @@
 
 [sub_resource type="GDScript" id=1]
 
-script/source = "extends \"res://scripts/state_handler.gd\"
+script/source = "tool
+
+extends \"res://scripts/state_handler.gd\"
 
 func enter_state(old_state):
+	.enter_state(old_state)
+	
 	get_parent().get_node(\"body\").visible = false
 	
 func leave_state(new_state):
+	.leave_state(new_state)
 	get_parent().get_node(\"body\").visible = true"
 
 [sub_resource type="GDScript" id=2]
 
-script/source = "extends \"res://scripts/state_handler.gd\"
+script/source = "tool
+
+extends \"res://scripts/state_handler.gd\"
 
 func enter_state(old_state):
+	.enter_state(old_state)
+	get_parent().get_node(\"body\").visible = false
 	get_parent().get_node(\"sillouette\").visible = true
 
 func leave_state(new_state):
+	.leave_state(new_state)
+	get_parent().get_node(\"body\").visible = true
 	get_parent().get_node(\"sillouette\").visible = false"
 
 [node name="shadow_monster" type="KinematicBody2D" index="0"]

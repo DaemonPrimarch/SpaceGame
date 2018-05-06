@@ -1,3 +1,5 @@
+tool
+
 extends Node
 
 export var handled_state = "UNDEFINED"

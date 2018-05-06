@@ -16,15 +16,10 @@ tile_data = PoolIntArray( 0, 0, 0, 1, 0, 0, 2, 0, 0, 3, 0, 0, 4, 0, 0, 5, 0, 0, 
 
 polygon = PoolVector2Array( 0, 0, 0, 960, 4416, 960, 4416, 0 )
 
-[node name="player" parent="." index="4" groups=[
-"can_climb_ladder",
-]]
+[node name="player" parent="." index="4"]
 
 position = Vector2( 160, 800 )
-input_pickable = false
-collision_layer = 2
-collision_mask = 3
-collision/safe_margin = 0.08
+current_state = "STANDING"
 
 [node name="StaticBody2D" parent="." index="5" instance=ExtResource( 2 )]
 
@@ -48,9 +43,15 @@ position = Vector2( 3200, 0 )
 
 [node name="shadow_monster" parent="." index="7" instance=ExtResource( 5 )]
 
-position = Vector2( 960, 832 )
+position = Vector2( 736, 800 )
+current_state = "BODY_INVISIBLE"
+
+[node name="body" parent="shadow_monster" index="2"]
+
+visible = false
 
 [connection signal="toggle" from="StaticBody2D" to="elevator_system" method="start_elevator"]
 
 
 [editable path="elevator_system"]
+[editable path="shadow_monster"]

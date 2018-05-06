@@ -30,6 +30,8 @@ var state_handlers = {}
 
 var inside_helper_areas = {}
 
+var first_state = true
+
 var camera = null
 
 func has_camera():
@@ -69,10 +71,10 @@ func get_platform():
 	return platform
 
 func _ready():
-	set_state(get_state())
-	
 	add_to_group("entity")	
 	set_physics_process(not Engine.is_editor_hint())
+	
+	call_deferred("set_state",get_state())
 
 func get_movement_speed():
 	return movement_speed
@@ -167,8 +169,10 @@ func set_state(state):
 		else:
 			var old_state = get_state()
 			
-			if(has_handler(get_state())):
+			if(not first_state and has_handler(get_state())):
 				get_handler(get_state()).leave_state(state)
+			else:
+				first_state = false
 			
 			emit_signal("state_left", get_state(), state)
 			
@@ -177,6 +181,8 @@ func set_state(state):
 			
 			emit_signal("state_entered", state, old_state)
 			current_state = state
+	else:
+		current_state = state
 
 func add_state(state):
 	if(is_valid_state(state)):

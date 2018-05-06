@@ -7,13 +7,10 @@ export var eyes_visible= true setget set_eyes_visible
 
 var attacking = false
 
-func _enter_tree():
+func _init():
 	add_state("BODY_INVISIBLE")
 	add_state("SILLOUETTE_VISIBLE")
 	add_state("FULL_VISIBLE")
-	
-func _ready():
-	set_state("FULL_VISIBLE")
 	
 func set_eyes_visible(val):
 	if(is_inside_tree()):
