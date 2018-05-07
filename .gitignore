@@ -1,7 +1,7 @@
 *.exe
 *.png
 *.PNG
+*.png.import
 **/.DS_Store
 .import/
 random/
-*.png.import

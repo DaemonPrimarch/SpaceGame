@@ -7,7 +7,7 @@ path="res://.import/red_circle.png-6d30b307d321af8c3457ce55042961f1.stex"
 [deps]
 
 source_file="res://sprites/red_circle.png"
-source_md5="ffb028337dcf664dd3de31c08156d159"
+source_md5="5ff4865bf938edae78bfb16bfca0abb3"
 
 dest_files=[ "res://.import/red_circle.png-6d30b307d321af8c3457ce55042961f1.stex" ]
 dest_md5="59400d0a9a82c3134af8d03a9170434e"

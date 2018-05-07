@@ -24,19 +24,21 @@ func decay_timer_timeout():
 
 func on_body_entered( body ):
 	if(body.has_method("_on_bullet_hit")):
+		#DEPRECATED
 		body._on_bullet_hit(self)
+	
+	if(body.is_in_group("bullet_detecting")):
+		body.emit_signal("bullet_hit", self)
 	
 	destroy()
 	
 func on_area_entered( area ):
 	if(area.has_method("_on_bullet_hit")):
+		#DEPRECATED
 		area._on_bullet_hit(self)
+	
+	if(area.is_in_group("bullet_detecting")):
+		area.emit_signal("bullet_hit", self)
 
 func _ready():
-#	SAVE_MANAGER.set_property("hello/test", "test?")
-#	print(SAVE_MANAGER.get_property("d/d"))
-#
-#	print(SAVE_MANAGER.save_file)
-#	SAVE_MANAGER.save_current_file()
-	
 	get_node("Light2D").enabled = (get_node("/root/ROOM_MANAGER").get_room_of_node(self).is_dark())

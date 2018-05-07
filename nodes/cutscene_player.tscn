@@ -12,5 +12,6 @@ playback_speed = 1.0
 blend_times = [  ]
 script = ExtResource( 1 )
 dialog_tree = null
+paused = false
 
 

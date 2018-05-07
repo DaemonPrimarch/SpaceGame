@@ -23,11 +23,9 @@ func _physics_process(delta):
 	clear_caches()
 
 func play_dialog_tree():
-	print("Q")
 	get_node("/root/DIALOG_SYSTEM").queue_tree_from_json(dialog_tree)
 	
 func play_cutscene():
-	print("PLA")
 	play("cutscene")
 
 func set_paused(val):
@@ -35,10 +33,10 @@ func set_paused(val):
 		if(val):
 			print("PAUSED")
 			paused_position = current_animation_position
-			#stop(false)
+			stop(false)
 		else:
 			if(not Engine.editor_hint):
 				current_animation = "cutscene"
-				#seek(paused_position )
+				seek(paused_position )
 	
 	paused = val
