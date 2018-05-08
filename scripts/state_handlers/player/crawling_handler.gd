@@ -8,9 +8,6 @@ func set_crawling_speed(val):
 func get_crawling_speed():
 	return crawling_speed
 
-func get_handled_state():
-	return "CRAWLING"
-
 func _ready():
 	set_no_gravity(true)
 	
@@ -23,10 +20,12 @@ func _ready():
 func enter_state(previous_state):
 	.enter_state(previous_state)
 
-	get_parent().position += (Vector2(64, 10) * get_parent().get_direction())
-	get_parent().scale *= Vector2(1, 0.5)
+	get_parent().position += (Vector2(64, 0) * get_parent().get_direction())
+#	get_parent().scale *= Vector2(1, 0.5)
 
-	get_parent().animation_player.play("jump")
+	get_parent().animation_player.stop()
+
+	$AnimationPlayer.play("crawl_start")
 	
 func can_crawl_under(node):
 	return node.is_in_group("crawlable")	
@@ -39,8 +38,9 @@ func can_enter():
 func leave_state(new_state):
 	.leave_state(new_state)
 	
-	get_parent().position -= (Vector2(0, 16) * get_parent().get_direction())
-	get_parent().scale *= Vector2(1, 2)
+	$AnimationPlayer.play("crawl_leave")
+#	get_parent().position -= (Vector2(0, 16) * get_parent().get_direction())
+#	get_parent().scale *= Vector2(1, 2)
 
 func process_state(delta):
 	.process_state(delta)

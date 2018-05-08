@@ -139,6 +139,7 @@ max_slope_angle = 0.785398
 flippedH = false
 flippedV = false
 moveable_by_collision = true
+current_state = "UNDEFINED"
 movement_speed = 327.68
 gravity_enabled = true
 gravity_vector = Vector2( 0, 1152 )
