@@ -8,9 +8,7 @@ func set_crawling_speed(val):
 func get_crawling_speed():
 	return crawling_speed
 
-func _ready():
-	set_no_gravity(true)
-	
+func _ready():	
 	get_node("crawl_leave_front_detector").add_exception(get_parent())
 	get_node("crawl_leave_back_detector").add_exception(get_parent())
 	get_node("crawl_detector_up").add_exception(get_parent())
@@ -21,7 +19,6 @@ func enter_state(previous_state):
 	.enter_state(previous_state)
 
 	get_parent().position += (Vector2(64, 0) * get_parent().get_direction())
-#	get_parent().scale *= Vector2(1, 0.5)
 
 	get_parent().animation_player.stop()
 
@@ -33,14 +30,13 @@ func can_crawl_under(node):
 func can_enter():
 	get_node("crawl_detector_up").force_raycast_update()
 	get_node("crawl_pit_detector").force_raycast_update()
+	
 	return (.can_enter() and not get_node("crawl_detector_up").is_colliding() and get_node("crawl_pit_detector").is_colliding() and not get_parent().is_on_platform())
 
 func leave_state(new_state):
 	.leave_state(new_state)
 	
 	$AnimationPlayer.play("crawl_leave")
-#	get_parent().position -= (Vector2(0, 16) * get_parent().get_direction())
-#	get_parent().scale *= Vector2(1, 2)
 
 func process_state(delta):
 	.process_state(delta)

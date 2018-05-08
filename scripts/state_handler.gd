@@ -4,6 +4,7 @@ extends Node
 
 export var handled_state = "UNDEFINED"
 export var enabled = true setget set_enabled, is_enabled
+export var no_gravity = false setget set_no_gravity
 
 signal enabled
 signal disabled
@@ -19,7 +20,6 @@ func set_enabled(val):
 	else:
 		call_deferred("emit_signal", "disabled")
 	
-var no_gravity = false
 var previous_gravity_enabled
 
 var timer = 0
@@ -57,4 +57,4 @@ func set_no_gravity(val):
 	no_gravity = val
 
 func has_no_gravity():
-	return no_gravity
+	return no_gravity 

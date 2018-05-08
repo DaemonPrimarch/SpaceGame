@@ -2,10 +2,11 @@
 
 [ext_resource path="res://scripts/state_handler.gd" type="Script" id=1]
 
-[node name="state_handler" type="Node2D"]
+[node name="state_handler" type="Node2D" index="0"]
 
 script = ExtResource( 1 )
 handled_state = "UNDEFINED"
 enabled = true
+no_gravity = false
 
 
