@@ -2,7 +2,7 @@
 
 [ext_resource path="res://scripts/save_boolean_reader.gd" type="Script" id=1]
 
-[node name="save_boolean_reader" type="Node"]
+[node name="save_boolean_reader" type="Node" index="0"]
 
 script = ExtResource( 1 )
 property = ""

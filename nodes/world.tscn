@@ -138,6 +138,10 @@ anims/jump = SubResource( 4 )
 anims/run = SubResource( 5 )
 anims/run_gun = SubResource( 6 )
 
+[node name="jumping_handler" parent="player" index="11"]
+
+no_gravity = false
+
 [node name="camera2" parent="player" index="26"]
 
 active = false

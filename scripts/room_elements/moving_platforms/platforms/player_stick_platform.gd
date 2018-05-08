@@ -1,6 +1,6 @@
 tool
 
-extends "res://scripts/platform.gd"
+extends "res://scripts/room_elements/platforms/platform.gd"
 
 signal stepped_on(node)
 signal stepped_off(node)

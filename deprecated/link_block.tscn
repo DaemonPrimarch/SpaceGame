@@ -1,8 +1,9 @@
 [gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://scripts/room_elements/link_block.gd" type="Script" id=1]
+[ext_resource path="res://deprecated/link_block.gd" type="Script" id=1]
 [ext_resource path="res://sprites/white.png" type="Texture" id=2]
 [ext_resource path="res://nodes/deprecated_notifier.tscn" type="PackedScene" id=3]
+
 
 [node name="StaticBody2D" type="StaticBody2D" index="0"]
 

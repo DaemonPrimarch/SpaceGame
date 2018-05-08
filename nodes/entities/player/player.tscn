@@ -246,6 +246,7 @@ collision_mask = 1
 [node name="jumping_handler" parent="." index="11" instance=ExtResource( 7 )]
 
 handled_state = "UNDEFINED"
+no_gravity = false
 
 [node name="walking_handler" parent="." index="12" instance=ExtResource( 8 )]
 
@@ -314,7 +315,6 @@ _sections_unfolded = [ "Transform" ]
 
 anims/crawl_leave = SubResource( 2 )
 anims/crawl_start = SubResource( 1 )
-_sections_unfolded = [ "Playback Options" ]
 
 [node name="pushed_handler" parent="." index="21" instance=ExtResource( 17 )]
 

@@ -4,7 +4,7 @@
 [ext_resource path="res://nodes/room_elements/regular_warp_tile.tscn" type="PackedScene" id=2]
 [ext_resource path="res://rooms/start_rooms/room_darkener_helper.tscn" type="PackedScene" id=3]
 
-[node name="room_18" index="0" instance=ExtResource( 1 )]
+[node name="room_18" instance=ExtResource( 1 )]
 
 [node name="terrain" parent="." index="0"]
 
@@ -22,13 +22,13 @@ position = Vector2( 128, 224 )
 
 position = Vector2( 32, 192 )
 destination_room = "res://rooms/start_rooms/room_17.tscn"
-arrival_pos_id = "room_e3_arrival"
+arrival_pos_id = "room_18_arrival"
 
 [node name="warp_tile2" parent="." index="6" instance=ExtResource( 2 )]
 
 position = Vector2( 1632, 768 )
 destination_room = "res://rooms/start_rooms/room_19.tscn"
-arrival_pos_id = "room_e3_arrival"
+arrival_pos_id = "room_18_arrival"
 flippedH = true
 
 [node name="room_darkener_helper" parent="." index="7" instance=ExtResource( 3 )]

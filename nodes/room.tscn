@@ -61,8 +61,6 @@ can_zoom_out = false
 
 [node name="player" parent="." index="4" instance=ExtResource( 5 )]
 
-max_movement_speed = 360
-
 [connection signal="player_entered" from="." to="." method="_on_room_player_entered"]
 
 [connection signal="room_darkened" from="." to="." method="_on_room_room_darkened"]

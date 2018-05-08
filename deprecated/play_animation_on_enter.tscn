@@ -1,6 +1,7 @@
 [gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://scripts/play_animation_on_enter.gd" type="Script" id=1]
+[ext_resource path="res://deprecated/play_animation_on_enter.gd" type="Script" id=1]
+
 
 [sub_resource type="Animation" id=1]
 

@@ -6,7 +6,7 @@
 [ext_resource path="res://nodes/room_elements/vertical_ladder.tscn" type="PackedScene" id=4]
 [ext_resource path="res://nodes/room_elements/walled_ladder.tscn" type="PackedScene" id=5]
 
-[node name="room_17" index="0" instance=ExtResource( 1 )]
+[node name="room_17" instance=ExtResource( 1 )]
 
 [node name="terrain" parent="." index="0"]
 
@@ -24,18 +24,35 @@ polygon = PoolVector2Array( 0, 0, 0, 960, 3328, 960, 3328, 0 )
 
 position = Vector2( 32, 256 )
 destination_room = "res://rooms/start_rooms/room_16.tscn"
-arrival_pos_id = "room_e2_arrival"
+arrival_pos_id = "room_17_arrival"
 
 [node name="warp_tile3" parent="." index="5" instance=ExtResource( 2 )]
 
 position = Vector2( 3296, 192 )
 destination_room = "res://rooms/start_rooms/room_18.tscn"
-arrival_pos_id = "room_e2_arrival"
+arrival_pos_id = "room_17_arrival"
 flippedH = true
 
-[node name="player" parent="." index="6"]
+[node name="player" parent="." index="6" groups=[
+"can_climb_ladder",
+]]
 
 position = Vector2( 224, 256 )
+input_pickable = false
+collision_layer = 2
+collision_mask = 3
+collision/safe_margin = 0.08
+max_slope_angle = 0.785398
+flippedH = false
+flippedV = false
+moveable_by_collision = true
+movement_speed = 327.68
+gravity_enabled = true
+gravity_vector = Vector2( 0, 1152 )
+can_be_pushed = false
+HP = 100
+max_HP = 100
+invulnerability_time = 1.0
 
 [node name="room_darkener_helper" parent="." index="7" instance=ExtResource( 3 )]
 
