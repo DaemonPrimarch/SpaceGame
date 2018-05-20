@@ -107,6 +107,7 @@ func generate_map():
 			container.add_child(nodereino)
 			nodereino.add_child(current_room)
 			current_room.set_dark(false)
+			current_room.get_node("player").queue_free()
 #
 #			print("Attempting to find: ", current_tile.get_arrival_pos_id())
 #			print("In: ",current_tile.get_destination_room()) 

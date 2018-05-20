@@ -14,4 +14,6 @@ script = ExtResource( 1 )
 dialog_tree = null
 paused = false
 
+[connection signal="animation_finished" from="." to="." method="_on_cutscene_player_animation_finished"]
+
 

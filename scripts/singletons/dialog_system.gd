@@ -7,6 +7,9 @@ var displaying = false
 var current_tree
 var current_element
 
+signal option_selected(option)
+signal options_shown()
+
 func _ready():
 	box = get_node("/root/GUI").get_node("dialog_box")
 	

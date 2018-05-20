@@ -1,4 +1,4 @@
-extends "res://scripts/room_elements/platform_mover.gd"
+extends "res://scripts/room_elements/moving_platforms/controllers/platform_mover.gd"
 
 export var in_back_ground = false
 
