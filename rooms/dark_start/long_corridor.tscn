@@ -161,7 +161,6 @@ script = ExtResource( 4 )
 [node name="enter_trigger" parent="on_enter_cutscene_player" index="1"]
 
 editor/display_folded = true
-enabled = true
 oneshot = true
 save_path = "cutscenes/long_corridor"
 
@@ -169,7 +168,6 @@ save_path = "cutscenes/long_corridor"
 
 anims/cutscene = SubResource( 1 )
 dialog_tree = "res://dialog_trees/exposition_dump.json"
-paused = false
 
 [node name="puppet_1" parent="on_enter_cutscene_player" index="3" instance=ExtResource( 6 )]
 
@@ -196,6 +194,21 @@ _sections_unfolded = [ "Animation", "Offset", "Transform", "Visibility" ]
 scale = Vector2( 3, 3 )
 _sections_unfolded = [ "Transform" ]
 
+[node name="StaticBody2D" type="StaticBody2D" parent="on_enter_cutscene_player" index="5"]
+
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="on_enter_cutscene_player/StaticBody2D" index="0"]
+
+build_mode = 0
+polygon = PoolVector2Array( 0, -97.274, 64, -97.274, 64, 30.726, 0, 30.726 )
+
 [node name="warp_tile" parent="." index="6" instance=ExtResource( 8 )]
 
 position = Vector2( 5024, 640 )
@@ -203,9 +216,20 @@ destination_room = "res://rooms/dark_start/call_to_adventure.tscn"
 arrival_pos_id = "long_corridor_arrival"
 flippedH = true
 
+[node name="CollisionPolygon2D" parent="warp_tile" index="0"]
+
+scale = Vector2( -1, 1 )
+
+[node name="tileset_arrival" parent="warp_tile" index="1"]
+
+position = Vector2( -127.284, -3.41278 )
+scale = Vector2( -1, 1 )
+arrival_ID = "call_to_adventure_arrival"
+
 [connection signal="triggered" from="on_enter_cutscene_player/enter_trigger" to="on_enter_cutscene_player/cutscene_helper" method="set_active" binds= [ true ]]
 
 
 [editable path="on_enter_cutscene_player"]
 [editable path="on_enter_cutscene_player/puppet_1"]
 [editable path="on_enter_cutscene_player/puppet_2"]
+[editable path="warp_tile"]
