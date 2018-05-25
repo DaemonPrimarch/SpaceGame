@@ -89,36 +89,18 @@ flippedH = true
 [node name="StaticBody2D" parent="." index="9" instance=ExtResource( 6 )]
 
 position = Vector2( 352, 1504 )
-enabled = true
 
 [node name="StaticBody2D3" parent="." index="10" instance=ExtResource( 6 )]
 
 position = Vector2( 288, 800 )
-enabled = true
 
 [node name="StaticBody2D6" parent="." index="11" instance=ExtResource( 6 )]
 
 position = Vector2( 1248, 1312 )
-enabled = true
 
-[node name="player" parent="." index="12" groups=[
-"can_climb_ladder",
-]]
+[node name="player" parent="." index="12"]
 
 position = Vector2( 128, 1760 )
-input_pickable = false
-collision_layer = 2
-collision_mask = 3
-collision/safe_margin = 0.08
-max_slope_angle = 0.785398
-flippedH = false
-flippedV = false
-moveable_by_collision = true
-gravity_enabled = true
-can_be_pushed = false
-HP = 100
-max_HP = 100
-invulnerability_time = 1.0
 
 [node name="room_darkener_helper" parent="." index="13" instance=ExtResource( 7 )]
 

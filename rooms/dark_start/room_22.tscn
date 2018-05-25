@@ -43,13 +43,13 @@ polygon = PoolVector2Array( 0, 0, 0, 960, 1664, 960, 1664, 0 )
 [node name="warp_tile" parent="." index="6" instance=ExtResource( 5 )]
 
 position = Vector2( 32, 768 )
-destination_room = "res://rooms/start_rooms/room_21.tscn"
+destination_room = "res://rooms/dark_start/room_21.tscn"
 arrival_pos_id = "room_22_arrival"
 
 [node name="warp_tile2" parent="." index="7" instance=ExtResource( 5 )]
 
 position = Vector2( 1632, 384 )
-destination_room = "res://rooms/start_rooms/room_23.tscn"
+destination_room = "res://rooms/dark_start/room_23.tscn"
 arrival_pos_id = "room_22_arrival"
 flippedH = true
 
@@ -97,9 +97,9 @@ flickering = true
 
 position = Vector2( 1408, 288 )
 
-[connection signal="switched_on" from="bullet_switch" to="emergency_light" method="enable"]
-
 [connection signal="switched_on" from="bullet_switch" to="platform_mover" method="go_to" binds= [ 1 ]]
+
+[connection signal="switched_on" from="bullet_switch" to="emergency_light" method="enable"]
 
 
 [editable path="platform_mover"]

@@ -140,32 +140,17 @@ arrival_ID = "2"
 position = Vector2( 128, 1408 )
 arrival_ID = "1"
 
-[node name="player" parent="." index="14" groups=[
-"can_climb_ladder",
-]]
+[node name="player" parent="." index="14"]
 
 position = Vector2( 160, 1440 )
-input_pickable = false
-collision_layer = 2
-collision_mask = 3
-collision/safe_margin = 0.08
-max_slope_angle = 0.785398
-flippedH = false
-flippedV = false
-moveable_by_collision = true
-gravity_enabled = true
-can_be_pushed = false
-HP = 100
-max_HP = 100
-invulnerability_time = 1.0
 
 [node name="room_darkener_helper" parent="." index="15" instance=ExtResource( 7 )]
+
+[connection signal="toggle" from="third_switch" to="mid_platform" method="go_to" binds= [ 1 ]]
 
 [connection signal="toggle" from="third_switch" to="right_platform" method="go_to" binds= [ 2 ]]
 
 [connection signal="toggle" from="third_switch" to="left_platform" method="go_to" binds= [ 2 ]]
-
-[connection signal="toggle" from="third_switch" to="mid_platform" method="go_to" binds= [ 1 ]]
 
 [connection signal="toggle" from="second_switch" to="left_platform" method="go_to" binds= [ 1 ]]
 

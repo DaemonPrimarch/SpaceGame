@@ -12,7 +12,7 @@
 [sub_resource type="Animation" id=1]
 
 resource_name = "cutscene"
-length = 35.0
+length = 28.8
 loop = false
 step = 0.1
 tracks/0/type = "value"
@@ -418,7 +418,7 @@ _sections_unfolded = [ "Transform" ]
 
 [node name="enter_trigger" parent="on_enter_cutscene_player" index="0"]
 
-position = Vector2( 672, 800 )
+position = Vector2( 544, 806 )
 oneshot = true
 free_on_disabled = true
 save_path = "cutscenes/call_to_adventure_1"
@@ -443,7 +443,6 @@ polygon = PoolVector2Array( 64, 382, 96, 382, 96, 512, 64, 512 )
 [node name="player_enter_trigger" parent="on_enter_cutscene_player" index="2" instance=ExtResource( 4 )]
 
 position = Vector2( 352, 548 )
-enabled = false
 save_path = "cutscenes/call_to_adventure_2"
 
 [node name="cutscene_player" parent="on_enter_cutscene_player" index="3" instance=ExtResource( 5 )]
@@ -453,6 +452,7 @@ anims/cutscene = SubResource( 1 )
 "anims/cutscene (copy)" = SubResource( 2 )
 _sections_unfolded = [ "Playback Options" ]
 dialog_tree = "res://dialog_trees/meeting.json"
+paused = true
 
 [node name="player_move_cutscene" parent="on_enter_cutscene_player" index="4" instance=ExtResource( 5 )]
 
@@ -463,7 +463,8 @@ _sections_unfolded = [ "Playback Options" ]
 
 [node name="human_puppet2" parent="on_enter_cutscene_player" index="5" instance=ExtResource( 6 )]
 
-position = Vector2( 160, 454 )
+visible = false
+position = Vector2( 32, 456 )
 _sections_unfolded = [ "Transform", "Visibility" ]
 
 [node name="Light2D" type="Light2D" parent="on_enter_cutscene_player/human_puppet2" index="2"]
@@ -474,7 +475,7 @@ enabled = true
 editor_only = false
 texture = ExtResource( 7 )
 offset = Vector2( 0, 0 )
-texture_scale = 0.1
+texture_scale = 1.0
 color = Color( 1, 1, 1, 1 )
 energy = 1.0
 mode = 0
@@ -494,7 +495,8 @@ shadow_item_cull_mask = 1
 
 [node name="human_puppet" parent="on_enter_cutscene_player" index="6" instance=ExtResource( 6 )]
 
-position = Vector2( 96, 454 )
+visible = false
+position = Vector2( 32, 452 )
 _sections_unfolded = [ "Transform", "Visibility" ]
 
 [node name="room_darkener_helper" parent="." index="7" instance=ExtResource( 8 )]

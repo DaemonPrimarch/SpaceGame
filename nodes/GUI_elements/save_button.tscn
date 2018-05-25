@@ -1,6 +1,7 @@
 [gd_scene load_steps=2 format=2]
 
-[ext_resource path="res://rooms/start_rooms/save_button.gd" type="Script" id=1]
+[ext_resource path="res://scripts/save_button.gd" type="Script" id=1]
+
 
 
 [node name="save_button" type="Button"]

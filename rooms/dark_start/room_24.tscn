@@ -28,7 +28,7 @@ tracks/0/keys = {
 } ]
 }
 
-[node name="room_24" index="0" instance=ExtResource( 1 )]
+[node name="room_24" instance=ExtResource( 1 )]
 
 auto_generate_camera_container = false
 
@@ -59,20 +59,20 @@ enabled = true
 
 enabled = true
 
-[node name="light" parent="player" index="5"]
+[node name="light" parent="player" index="6"]
 
 enabled = true
 
 [node name="warp_tile" parent="." index="6" instance=ExtResource( 3 )]
 
 position = Vector2( 32, 768 )
-destination_room = "res://rooms/start_rooms/room_25.tscn"
+destination_room = "res://rooms/dark_start/room_25.tscn"
 arrival_pos_id = "room_24_arrival"
 
 [node name="warp_tile2" parent="." index="7" instance=ExtResource( 3 )]
 
 position = Vector2( 6624, 768 )
-destination_room = "res://rooms/start_rooms/room_23.tscn"
+destination_room = "res://rooms/dark_start/room_23.tscn"
 arrival_pos_id = "room_24_arrival"
 flippedH = true
 
@@ -80,31 +80,24 @@ flippedH = true
 
 position = Vector2( 5440, 768 )
 flippedH = true
-eyes_enabled = false
 
 [node name="shadow_monster2" parent="." index="9" instance=ExtResource( 4 )]
 
 visible = false
 position = Vector2( 1184, 768 )
 flippedH = true
-shadow = false
 
 [node name="on_enter_cutscene_player" parent="." index="10" instance=ExtResource( 5 )]
 
 position = Vector2( 992, 768 )
 
-[node name="enter_trigger" parent="on_enter_cutscene_player" index="0"]
-
-enabled = true
-
 [node name="cutscene_player" parent="on_enter_cutscene_player" index="1" instance=ExtResource( 6 )]
 
 anims/shadow_monster_eyes_short = SubResource( 1 )
-paused = false
-
-[connection signal="player_entered" from="." to="shadow_monster2" method="set_player"]
 
 [connection signal="player_entered" from="." to="shadow_monster" method="set_player"]
+
+[connection signal="player_entered" from="." to="shadow_monster2" method="set_player"]
 
 
 [editable path="player"]

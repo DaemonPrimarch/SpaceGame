@@ -37,7 +37,7 @@ arrival_pos_id = "room_20_arrival"
 [node name="warp_tile2" parent="." index="6" instance=ExtResource( 3 )]
 
 position = Vector2( 4960, 768 )
-destination_room = "res://rooms/start_rooms/room_21.tscn"
+destination_room = "res://rooms/dark_start/room_21.tscn"
 arrival_pos_id = "room_20_arrival"
 flippedH = true
 
@@ -61,7 +61,7 @@ position = Vector2( 4192, 576 )
 editor/display_folded = true
 position = Vector2( 128, 800 )
 
-[node name="light" parent="player" index="5"]
+[node name="light" parent="player" index="6"]
 
 enabled = true
 

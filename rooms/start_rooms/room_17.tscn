@@ -33,26 +33,9 @@ destination_room = "res://rooms/start_rooms/room_18.tscn"
 arrival_pos_id = "room_17_arrival"
 flippedH = true
 
-[node name="player" parent="." index="6" groups=[
-"can_climb_ladder",
-]]
+[node name="player" parent="." index="6"]
 
 position = Vector2( 224, 256 )
-input_pickable = false
-collision_layer = 2
-collision_mask = 3
-collision/safe_margin = 0.08
-max_slope_angle = 0.785398
-flippedH = false
-flippedV = false
-moveable_by_collision = true
-movement_speed = 327.68
-gravity_enabled = true
-gravity_vector = Vector2( 0, 1152 )
-can_be_pushed = false
-HP = 100
-max_HP = 100
-invulnerability_time = 1.0
 
 [node name="room_darkener_helper" parent="." index="7" instance=ExtResource( 3 )]
 

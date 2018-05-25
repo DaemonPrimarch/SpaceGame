@@ -14,7 +14,7 @@
 [ext_resource path="res://nodes/room_elements/moving_platforms/controllers/elevator_system.tscn" type="PackedScene" id=12]
 [ext_resource path="res://nodes/room_elements/moving_platforms/platforms/platform_2x1.tscn" type="PackedScene" id=13]
 
-[node name="room_14" index="0" instance=ExtResource( 1 )]
+[node name="room_14" instance=ExtResource( 1 )]
 
 auto_generate_camera_container = false
 
@@ -231,44 +231,31 @@ platform_background_mask = 6
 
 position = Vector2( 0, 1920 )
 
-[node name="player_stick_platform" parent="elevator_system" index="3" groups=[
-"platform",
-] instance=ExtResource( 13 )]
-
-input_pickable = false
-collision_layer = 1
-collision_mask = 0
-collision/safe_margin = 0.08
-_sections_unfolded = [ "Collision" ]
-max_slope_angle = 0.785398
-flippedH = false
-flippedV = false
-moveable_by_collision = false
-extending = false
-
-[connection signal="comfirmed" from="player_comfirm_area" to="elevator_system" method="start_elevator"]
-
-[connection signal="comfirmed" from="player_comfirm_area" to="door_2" method="set_active" binds= [ true ]]
+[node name="player_stick_platform" parent="elevator_system" index="3" instance=ExtResource( 13 )]
 
 [connection signal="comfirmed" from="player_comfirm_area" to="door_1" method="set_active" binds= [ true ]]
 
-[connection signal="comfirmed" from="player_comfirm_area2" to="elevator_system" method="start_elevator"]
+[connection signal="comfirmed" from="player_comfirm_area" to="door_2" method="set_active" binds= [ true ]]
+
+[connection signal="comfirmed" from="player_comfirm_area" to="elevator_system" method="start_elevator"]
+
+[connection signal="comfirmed" from="player_comfirm_area2" to="door_1" method="set_active" binds= [ true ]]
 
 [connection signal="comfirmed" from="player_comfirm_area2" to="door_2" method="set_active" binds= [ true ]]
 
-[connection signal="comfirmed" from="player_comfirm_area2" to="door_1" method="set_active" binds= [ true ]]
+[connection signal="comfirmed" from="player_comfirm_area2" to="elevator_system" method="start_elevator"]
 
 [connection signal="triggered" from="player_enter_trigger" to="door_1" method="set_active" binds= [ false ]]
 
 [connection signal="triggered" from="player_enter_trigger2" to="door_2" method="set_active" binds= [ false ]]
 
-[connection signal="arrived" from="elevator_system" to="player_comfirm_area" method="set_enabled" binds= [ true ]]
-
-[connection signal="arrived" from="elevator_system" to="player_comfirm_area2" method="set_enabled" binds= [ true ]]
+[connection signal="arrived" from="elevator_system" to="door_1" method="set_active" binds= [ false ]]
 
 [connection signal="arrived" from="elevator_system" to="door_2" method="set_active" binds= [ false ]]
 
-[connection signal="arrived" from="elevator_system" to="door_1" method="set_active" binds= [ false ]]
+[connection signal="arrived" from="elevator_system" to="player_comfirm_area2" method="set_enabled" binds= [ true ]]
+
+[connection signal="arrived" from="elevator_system" to="player_comfirm_area" method="set_enabled" binds= [ true ]]
 
 
 [editable path="warp_tile"]

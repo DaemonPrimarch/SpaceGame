@@ -26,13 +26,13 @@ polygon = PoolVector2Array( 0, 0, 0, 3904, 1664, 3904, 1664, 0 )
 [node name="warp_tile" parent="." index="5" instance=ExtResource( 3 )]
 
 position = Vector2( 32, 384 )
-destination_room = "res://rooms/start_rooms/room_22.tscn"
+destination_room = "res://rooms/dark_start/room_22.tscn"
 arrival_pos_id = "room_23_arrival"
 
 [node name="warp_tile2" parent="." index="6" instance=ExtResource( 3 )]
 
 position = Vector2( 32, 3712 )
-destination_room = "res://rooms/start_rooms/room_24.tscn"
+destination_room = "res://rooms/dark_start/room_24.tscn"
 arrival_pos_id = "room_23_arrival"
 
 [node name="room_darkener_helper" parent="." index="7" instance=ExtResource( 4 )]

@@ -160,7 +160,7 @@ script = ExtResource( 5 )
 editor/display_folded = true
 position = Vector2( 320, 768 )
 
-[node name="AnimationPlayer" parent="player" index="2"]
+[node name="AnimationPlayer" parent="player" index="5"]
 
 anims/duck = SubResource( 1 )
 anims/fall = SubResource( 2 )
@@ -169,7 +169,7 @@ anims/jump = SubResource( 4 )
 anims/run = SubResource( 5 )
 anims/run_gun = SubResource( 6 )
 
-[node name="weapon_manager" parent="player" index="6"]
+[node name="weapon_manager" parent="player" index="9"]
 
 enabled = false
 
