@@ -4,7 +4,8 @@
 [ext_resource path="res://sprites/guun.png" type="Texture" id=2]
 [ext_resource path="res://nodes/room_elements/regular_warp_tile.tscn" type="PackedScene" id=3]
 [ext_resource path="res://rooms/start_rooms/room_darkener_helper.tscn" type="PackedScene" id=4]
-[ext_resource path="res://nodes/emergency_light.tscn" type="PackedScene" id=5]
+[ext_resource path="res://nodes/room_elements/emergency_light.tscn" type="PackedScene" id=5]
+
 
 [node name="room_20" instance=ExtResource( 1 )]
 

@@ -1,12 +1,38 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=2 format=2]
 
-[ext_resource path="res://scripts/debug_player_spawner.gd" type="Script" id=1]
-[ext_resource path="res://nodes/entities/player/player.tscn" type="PackedScene" id=2]
+[sub_resource type="GDScript" id=1]
 
-[node name="debug_player_spawner" type="Position2D"]
+script/source = "extends Position2D
 
-script = ExtResource( 1 )
-player = ExtResource( 2 )
+export(PackedScene) var player
+export var enabled = true
+
+func _ready():
+	if(enabled):
+		call_deferred(\"load_player\")
+
+func load_player():
+	if(get_node(\"/root/ROOM_MANAGER\").is_room_loaded(get_parent())):
+		self.queue_free()
+	else:
+		print(\"Added debug Player!!!\")
+		
+		get_node(\"/root/ROOM_MANAGER\").add_room_as_loaded(get_parent())
+		
+		var new_player = player.instance()
+		
+		new_player.set_position(get_position())
+		
+		get_parent().add_child(new_player)
+		
+		new_player.emit_signal(\"room_entered\")
+		get_parent().emit_signal(\"player_entered\", new_player)
+		"
+
+[node name="debug_player_spawner" type="Position2D" index="0"]
+
+script = SubResource( 1 )
+player = null
 enabled = true
 
 

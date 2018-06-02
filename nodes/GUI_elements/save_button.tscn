@@ -1,10 +1,25 @@
 [gd_scene load_steps=2 format=2]
 
-[ext_resource path="res://scripts/save_button.gd" type="Script" id=1]
+[sub_resource type="GDScript" id=1]
 
+script/source = "extends Button
 
+func _on_FileDialog_file_selected(path):
+	for node in get_tree().get_nodes_in_group(\"player\"):
+		SAVE_MANAGER.set_property(\"player/room\", ROOM_MANAGER.get_path_of_room(ROOM_MANAGER.get_room_of_node(node)))
+		SAVE_MANAGER.set_property(\"player/position_x\", ROOM_MANAGER.get_room_of_node(node).to_local(node.global_position).x)
+		SAVE_MANAGER.set_property(\"player/position_y\", ROOM_MANAGER.get_room_of_node(node).to_local(node.global_position).y)
+		print(\"PATH\", ROOM_MANAGER.get_path_of_room(ROOM_MANAGER.get_room_of_node(node)))
+	
+	
+	SAVE_MANAGER.save_current_file(path)
 
-[node name="save_button" type="Button"]
+func _on_save_button_pressed():
+	#$FileDialog.popup()
+	pass
+"
+
+[node name="save_button" type="Button" index="0"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -26,10 +41,11 @@ group = null
 text = "Save"
 flat = false
 align = 1
-script = ExtResource( 1 )
+script = SubResource( 1 )
 
 [node name="FileDialog" type="FileDialog" parent="." index="0"]
 
+visible = false
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
