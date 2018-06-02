@@ -28,6 +28,9 @@ func remove_tracked_object():
 func hp_changed():
 	set_value(get_tracked_object().get_HP())
 	get_node("health").text = String(get_tracked_object().get_HP())
+	
+	$extended_animation_player.play("changed")
+	
 	update()
 
 func destroy():

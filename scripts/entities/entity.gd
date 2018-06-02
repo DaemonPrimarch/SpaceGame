@@ -71,7 +71,7 @@ func get_platform():
 	return platform
 
 func _ready():
-	add_to_group("entity")	
+	add_to_group("entity")
 	set_physics_process(not Engine.is_editor_hint())
 
 	call_deferred("set_state",get_state())

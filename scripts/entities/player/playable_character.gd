@@ -79,6 +79,8 @@ func has_in_inventory(key):
 	return (key in inventory)
 
 func remove_from_inventory(key):
+	## DEPRECATED
+	
 	inventory.erase(key)
 
 func get_AABB():

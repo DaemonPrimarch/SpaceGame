@@ -141,6 +141,10 @@ transition_time = 0
 
 polygon = PoolVector2Array( 160, -992, -1376, -992, -1376, 1376, 160, 1376 )
 
+[node name="player" parent="." index="15"]
+
+position = Vector2( 224, 2560 )
+
 
 [editable path="warp_tile"]
 [editable path="warp_tile7"]

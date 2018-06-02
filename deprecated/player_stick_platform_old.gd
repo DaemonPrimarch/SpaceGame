@@ -1,4 +1,4 @@
-extends "res://scripts/platform.gd"
+extends "res://scripts/room_elements/moving_platforms/platforms/platform.gd"
 
 signal stepped_on(node)
 signal stepped_off(node)

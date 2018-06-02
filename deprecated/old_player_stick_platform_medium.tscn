@@ -5,6 +5,7 @@
 [node name="platform" instance=ExtResource( 1 )]
 
 position = Vector2( 0, 0 )
+max_slope_angle = 0.785398
 moveable_by_collision = true
 
 [node name="CollisionPolygon2D" parent="." index="0"]
