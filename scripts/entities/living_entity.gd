@@ -17,9 +17,11 @@ func _ready():
 	set_physics_process(not Engine.is_editor_hint())
 		
 	if(not Engine.is_editor_hint()):
-		get_node("/root/GUI").add_HP_bar(self)
-		connect("room_entered", self, "_room_enter")
-	
+		connect("room_entered", get_node("/root/GUI"), "add_HP_bar", [self])
+		
+		init_invulnerability_timer()
+
+func init_invulnerability_timer():
 	invulnerability_timer = Timer.new()
 	
 	invulnerability_timer.name = "invulnerable_timer"
@@ -28,9 +30,6 @@ func _ready():
 	invulnerability_timer.connect("timeout",self,"_on_invulnerability_timer_timeout") 
 	add_child(invulnerability_timer)
 
-func _room_enter():
-	get_node("/root/GUI").add_HP_bar(self)
-	
 func get_HP():
 	return HP
 

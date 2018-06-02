@@ -13,6 +13,15 @@ export var auto_generate_camera_container = true
 func _ready():
 	if(Engine.editor_hint and auto_generate_camera_container):
 		generate_camera_container()
+	
+	_iterate_over_children(self)
+
+func _iterate_over_children(node):
+	if(node.is_in_group("entity")):
+		node.emit_signal("room_entered")
+	
+	for child in node.get_children():
+		_iterate_over_children(child)
 
 func set_dark(val):
 	dark = val

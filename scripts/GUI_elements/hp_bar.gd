@@ -2,6 +2,7 @@ extends ProgressBar
 
 var tracked_object = null
 
+
 func _ready():
 	set_min(0);
 
@@ -13,6 +14,7 @@ func set_tracked_object(object):
 	get_node("object_nametag").set_text(object.get_name())
 	object.connect("HP_changed", self, "hp_changed")
 	object.connect("tree_exited", self, "remove_tracked_object")
+
 	tracked_object = object
 	set_max(object.get_max_HP())
 	set_value(object.get_HP())
