@@ -64,7 +64,7 @@ func process_state(delta):
 	if(get_parent().get_velocity().y < get_max_wall_slide_speed()):
 		get_parent().set_velocity(get_parent().get_velocity() + Vector2(0,get_wall_slide_acceleration() * delta))
 	
-	var vertical_collision_info = get_parent().move_and_collide(get_parent().get_velocity() * Vector2(0,1) * delta)
+	var vertical_collision_info = get_parent().apply_velocity_y(delta)
 	
 	if(vertical_collision_info != null or get_parent().is_grounded()):
 		get_parent().set_state("STANDING")

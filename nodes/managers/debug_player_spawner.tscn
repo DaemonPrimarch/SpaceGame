@@ -29,7 +29,7 @@ func load_player():
 		get_parent().emit_signal(\"player_entered\", new_player)
 		"
 
-[node name="debug_player_spawner" type="Position2D" index="0"]
+[node name="debug_player_spawner" type="Position2D"]
 
 script = SubResource( 1 )
 player = null

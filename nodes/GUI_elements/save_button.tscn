@@ -19,7 +19,7 @@ func _on_save_button_pressed():
 	pass
 "
 
-[node name="save_button" type="Button" index="0"]
+[node name="save_button" type="Button"]
 
 anchor_left = 0.0
 anchor_top = 0.0

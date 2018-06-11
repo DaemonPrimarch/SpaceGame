@@ -1,8 +1,6 @@
 extends "res://scripts/state_handler.gd"
 
 export var jump_height = 64 * 4.2 setget set_jump_height, get_jump_height
-func _ready():
-	set_no_gravity(true)
 
 func get_jump_height():
 	return jump_height
@@ -28,10 +26,8 @@ func process_state(delta):
 		get_parent().set_state("FALLING")
 	elif(((Input.is_action_pressed("play_up") and get_parent().is_inside_ladder()) or get_parent().is_inside_walled_ladder()) and get_parent().can_enter_state("CLIMBING")):
 		get_parent().set_state("CLIMBING")
-	else:
-		get_parent().set_velocity(get_parent().get_velocity() + get_parent().get_gravity_vector() * delta)
-				
-		var vertical_collision_info  = get_parent().move_and_collide(get_parent().get_velocity() * delta)
+	else:		
+		var vertical_collision_info  = get_parent().apply_velocity_y(delta)
 		
 		if (vertical_collision_info != null):
 			get_parent().set_velocity(Vector2(get_parent().get_velocity().x,0))
@@ -42,12 +38,14 @@ func process_state(delta):
 					
 			if(Input.is_action_pressed("play_left")):
 				get_parent().set_flippedH(true)
-				pressed = 1
+				get_parent().set_velocity(Vector2(get_parent().get_movement_speed(), get_parent().get_velocity().y))
+			
 			elif(Input.is_action_pressed("play_right")):
 				get_parent().set_flippedH(false)
-				pressed = 1
-						
-			var horizontal_collision_info = get_parent().move_and_collide(Vector2(1,0) * get_parent().get_direction() * pressed * delta * get_parent().get_movement_speed())
+				get_parent().set_velocity(Vector2(get_parent().get_movement_speed(), get_parent().get_velocity().y))
+			else:
+				get_parent().set_velocity(Vector2(0,get_parent().get_velocity().y))			
+			var horizontal_collision_info = get_parent().apply_velocity_x(delta)
 					
 			if(horizontal_collision_info != null and get_parent().can_enter_state("WALL_SLIDING")):
 				get_parent().set_state("WALL_SLIDING")

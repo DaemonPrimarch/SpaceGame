@@ -13,7 +13,6 @@
 [ext_resource path="res://deprecated/deprecated_in_ladder_label.tscn" type="PackedScene" id=11]
 [ext_resource path="res://nodes/debug_labels/boolean_state_label.tscn" type="PackedScene" id=12]
 
-
 [sub_resource type="Animation" id=1]
 
 resource_name = "duck"

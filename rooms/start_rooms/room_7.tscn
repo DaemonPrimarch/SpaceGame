@@ -16,7 +16,7 @@ func _on_player_comfirm_area_comfirmed_by(player):
 	get_node(\"/root/DIALOG_SYSTEM\").queue_message(\"gun unlocked\")
 "
 
-[node name="room_7" index="0" instance=ExtResource( 1 )]
+[node name="room_7" instance=ExtResource( 1 )]
 
 [node name="terrain" parent="." index="0"]
 
@@ -80,6 +80,7 @@ position = Vector2( 1408, 416 )
 editor/display_folded = true
 position = Vector2( 736, 800 )
 script = SubResource( 1 )
+_sections_unfolded = [ "Pause" ]
 
 [connection signal="switched_off" from="bullet_switch" to="activatable_block" method="set_active" binds= [ false ]]
 

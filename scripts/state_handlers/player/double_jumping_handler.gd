@@ -16,9 +16,6 @@ func set_double_jump_height(val):
 func get_handled_state():
 	return "DOUBLE_JUMPING"
 	
-func _ready():
-	set_no_gravity(true)
-	
 func can_enter():
 	return .can_enter() and not get_parent().is_inside_helper_area("no_double_jump") and not has_double_jumped()
 
@@ -43,26 +40,25 @@ func process_state(delta):
 	elif(((Input.is_action_pressed("play_up") and get_parent().is_inside_ladder()) or get_parent().is_inside_walled_ladder()) and get_parent().can_enter_state("CLIMBING")):
 		get_parent().set_state("CLIMBING")
 	else:
-		get_parent().set_velocity(get_parent().get_velocity() + get_parent().get_gravity_vector() * delta)
-				
-		var vertical_collision_info  = get_parent().move_and_collide(get_parent().get_velocity() * delta)
+		var vertical_collision_info  = get_parent().apply_velocity_y(delta)
 		
 		if (vertical_collision_info != null):
 			get_parent().set_velocity(Vector2(get_parent().get_velocity().x,0))
 			get_parent().set_state("FALLING")
 		
 		else:
-					
 			var pressed = 0
 					
 			if(Input.is_action_pressed("play_left")):
 				get_parent().set_flippedH(true)
-				pressed = 1
+				get_parent().set_velocity(Vector2(get_parent().get_movement_speed(), get_parent().get_velocity().y))
+			
 			elif(Input.is_action_pressed("play_right")):
 				get_parent().set_flippedH(false)
-				pressed = 1
-						
-			var horizontal_collision_info = get_parent().move_and_collide(Vector2(1,0) * get_parent().get_direction() * delta * pressed * get_parent().get_movement_speed())
+				get_parent().set_velocity(Vector2(get_parent().get_movement_speed(), get_parent().get_velocity().y))
+			else:
+				get_parent().set_velocity(Vector2(0,get_parent().get_velocity().y))
+			var horizontal_collision_info = get_parent().apply_velocity_x(delta)
 					
 			if(horizontal_collision_info != null and get_parent().can_enter_state("WALL_SLIDING")):
 				get_parent().set_state("WALL_SLIDING")

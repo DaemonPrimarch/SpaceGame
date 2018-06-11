@@ -8,10 +8,6 @@ var inventory = {}
 
 var inside_ladder = null
 
-
-var velocity = Vector2()
-var acceleration = Vector2()
-
 var ladder_top = null
 
 onready var animation_player = get_node("AnimationPlayer")

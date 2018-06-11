@@ -14,12 +14,32 @@ export var movement_speed = 64 * 5.12 setget set_movement_speed, get_movement_sp
 
 export var gravity_enabled = false setget set_gravity_enabled, is_gravity_enabled
 export var gravity_vector = Vector2(0, 64 * 18)
+export var velocity = Vector2()
+
+func get_velocity():
+	return velocity
+
+func set_velocity(v):
+	velocity = v
+	
+export var acceleration = Vector2()
+
+func get_acceleration():
+	return acceleration
+
+func set_acceleration(v):
+	acceleration = v
 
 export var can_be_pushed = false
+
+var velocity_x_applied = false
+var velocity_y_applied = false
+
 var is_pushed = false
 var push_direction
 
 var grounded = false
+
 
 var gravity_velocity = Vector2()
 var gravity_timer = 0
@@ -70,9 +90,14 @@ func is_on_platform():
 func get_platform():
 	return platform
 
+func get_gravity_vector():
+	return gravity_vector
+
 func _ready():
 	add_to_group("entity")
 	set_physics_process(not Engine.is_editor_hint())
+
+	connect("collided", self, "check_if_ground_hit_on_collision")
 
 	call_deferred("set_state",get_state())
 
@@ -83,21 +108,61 @@ func set_movement_speed(speed):
 	movement_speed = speed
 	
 func _physics_process(delta):
-	if(is_gravity_enabled()):
-		if(is_grounded()):
-			if(not is_on_platform()):
-				if(test_move(get_global_transform(), gravity_vector.normalized() * 0.1)):
-					pass
-				elif(test_move(get_global_transform(), gravity_vector.normalized() * delta * (Vector2(get_movement_speed(), 0)).rotated(max_slope_angle))):
-					move_and_collide(gravity_vector.normalized() * delta * (Vector2(get_movement_speed(), 0)).rotated(max_slope_angle))
-				else:
-					set_grounded(false)
-		else:
-			apply_gravity(delta)
-	
 	if(has_handler(get_state())):
 		get_handler(get_state()).process_state(delta)
 	
+	calculate_new_velocity(delta)
+	
+	if(not is_velocity_x_applied()):
+		apply_velocity_x(delta)
+	
+	if(not is_velocity_y_applied()):
+		apply_velocity_y(delta)
+	
+	reset_velocities_applied_check()
+	
+	if(is_gravity_enabled() and is_grounded()):
+		check_if_still_on_ground(delta)
+	
+func check_if_ground_hit_on_collision(collision_info, bla):
+	if(collision_info != null and collision_info.travel.y > 0):
+		set_grounded(true)
+
+func check_if_still_on_ground(delta):
+	if(is_gravity_enabled() and not is_on_platform()):
+		if(test_move(get_global_transform(), gravity_vector.normalized() * 0.1)):
+			pass
+		elif(test_move(get_global_transform(), gravity_vector.normalized() * delta * (Vector2(get_movement_speed(), 0)).rotated(max_slope_angle))):
+			move_and_collide(gravity_vector.normalized() * delta * (Vector2(get_movement_speed(), 0)).rotated(max_slope_angle))
+		else:
+			set_grounded(false)
+
+func is_velocity_x_applied():
+	return velocity_x_applied
+
+func is_velocity_y_applied():
+	return velocity_y_applied
+
+func reset_velocities_applied_check():
+	velocity_x_applied = false
+	velocity_y_applied = false
+
+func apply_velocity_x(delta):
+	velocity_x_applied = true
+	
+	return move_and_collide(Vector2(1,0) * get_direction() * delta * get_velocity())
+	
+func apply_velocity_y(delta):
+	velocity_y_applied = true
+	
+	return move_and_collide(Vector2(0,1) * get_direction() * delta * get_velocity())
+
+func calculate_new_velocity(delta):
+	set_velocity(get_velocity() +  get_acceleration() * delta)
+	
+	if(is_gravity_enabled() and not is_grounded()):	
+		set_velocity(get_velocity() +  gravity_vector * delta)
+
 func push(vector):
 	if(move_and_collide(vector) != null):
 		crush() 
@@ -142,22 +207,9 @@ func can_enter_state(state):
 		return get_handler(state).can_enter()
 	else:
 		return false
-	
-func get_gravity_vector():
-	return gravity_vector
-
-func apply_gravity(delta):
-	gravity_velocity += get_gravity_vector() * delta
-	
-	var collision_info = move_and_collide(gravity_velocity * delta)
-	
-	if(collision_info != null):
-		set_grounded(true)
 		
 func set_grounded(val):
 	grounded = val
-	
-	gravity_velocity = Vector2()
 
 func get_state():
 	return current_state

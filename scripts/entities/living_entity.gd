@@ -17,7 +17,7 @@ func _ready():
 	set_physics_process(not Engine.is_editor_hint())
 		
 	if(not Engine.is_editor_hint()):
-		connect("room_entered", get_node("/root/GUI"), "add_HP_bar", [self])
+		connect("room_entered", get_node("/root/GUI").HP_bar_handler, "add_HP_bar", [self])
 		
 		init_invulnerability_timer()
 

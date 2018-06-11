@@ -1,8 +1,9 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://scripts/starter.gd" type="Script" id=1]
 [ext_resource path="res://nodes/entities/player/player.tscn" type="PackedScene" id=2]
-[ext_resource path="res://nodes/GUI_elements/start_panel.tscn" type="PackedScene" id=3]
+[ext_resource path="res://nodes/debug_labels/boolean_state_label.tscn" type="PackedScene" id=3]
+[ext_resource path="res://nodes/GUI_elements/start_panel.tscn" type="PackedScene" id=4]
 
 [sub_resource type="Animation" id=1]
 
@@ -116,7 +117,7 @@ tracks/0/keys = {
 "values": [ 5, 6, 7, 8, 9 ]
 }
 
-[node name="world" type="Node2D"]
+[node name="world" type="Node2D" index="0"]
 
 script = ExtResource( 1 )
 starting_room = "res://rooms/start_rooms/room_1.tscn"
@@ -124,10 +125,11 @@ arrival_pos_id = "start"
 
 [node name="player" parent="." index="0" instance=ExtResource( 2 )]
 
-editor/display_folded = true
 position = Vector2( 831.14, 805.328 )
 collision_mask = 1
 current_state = "STANDING"
+velocity = Vector2( 0, 0 )
+acceleration = Vector2( 0, 0 )
 
 [node name="AnimationPlayer" parent="player" index="5"]
 
@@ -138,11 +140,26 @@ anims/jump = SubResource( 4 )
 anims/run = SubResource( 5 )
 anims/run_gun = SubResource( 6 )
 
+[node name="double_jumping_handler" parent="player" index="15"]
+
+enabled = true
+
+[node name="wall_sliding_handler" parent="player" index="19"]
+
+enabled = true
+
 [node name="camera2" parent="player" index="26"]
 
 active = false
 
-[node name="start_panel" parent="." index="1" instance=ExtResource( 3 )]
+[node name="boolean_state_label" parent="player" index="33" instance=ExtResource( 3 )]
+
+node_path = NodePath("..")
+tracked_value = "gravity_enabled"
+true_value = "ENABLED"
+false_value = "NOT"
+
+[node name="start_panel" parent="." index="1" instance=ExtResource( 4 )]
 
 [node name="AcceptDialog" type="AcceptDialog" parent="start_panel" index="3"]
 
