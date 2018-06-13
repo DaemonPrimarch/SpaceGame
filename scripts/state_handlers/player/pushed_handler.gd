@@ -24,11 +24,11 @@ func process_state(delta):
 	.process_state(delta)
 	
 	if(get_timer() < damage_push_time):
-		if(Input.is_action_just_pressed("jump") and get_timer() > time_to_control):
+		if(get_parent().is_action_just_pressed("jump") and get_timer() > time_to_control):
 			get_parent().set_velocity(Vector2(0,0))
 			get_parent().set_state("JUMPING")
 		
-		elif((not Input.is_action_pressed("play_right") and not Input.is_action_pressed("play_left")) or get_timer() <= time_to_control):
+		elif((not get_parent().is_action_pressed("play_right") and not get_parent().is_action_pressed("play_left")) or get_timer() <= time_to_control):
 			var vertical_collision_info  = get_parent().move_and_collide(get_parent().get_velocity() * Vector2(0,1) * delta)
 			var horizontal_collision_info  = get_parent().move_and_collide(get_parent().get_velocity() * Vector2(1,0) * delta)
 			

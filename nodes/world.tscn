@@ -130,6 +130,7 @@ collision_mask = 1
 current_state = "STANDING"
 velocity = Vector2( 0, 0 )
 acceleration = Vector2( 0, 0 )
+action_override = false
 
 [node name="AnimationPlayer" parent="player" index="5"]
 

@@ -26,10 +26,10 @@ func leave_state(new_state):
 func process_state(delta):
 	.process_state(delta)
 	
-	if(not Input.is_action_pressed("play_down") and not get_node("crouch_leave_detector_left").is_colliding() and not get_node("crouch_leave_detector_right").is_colliding()):
+	if(not get_parent().is_action_pressed("play_down") and not get_node("crouch_leave_detector_left").is_colliding() and not get_node("crouch_leave_detector_right").is_colliding()):
 		get_parent().set_state("STANDING")
 	else:
-		if(Input.is_action_pressed("play_left")):
+		if(get_parent().is_action_pressed("play_left")):
 			get_parent().set_flippedH(true)
-		elif(Input.is_action_pressed("play_right")):
+		elif(get_parent().is_action_pressed("play_right")):
 			get_parent().set_flippedH(false)

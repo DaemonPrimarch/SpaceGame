@@ -72,6 +72,8 @@ margin_bottom = 96.0
 [node name="player" parent="." index="8"]
 
 position = Vector2( 1408, 416 )
+velocity = Vector2( 0, 0 )
+acceleration = false
 
 [node name="room_darkener_helper" parent="." index="9" instance=ExtResource( 5 )]
 

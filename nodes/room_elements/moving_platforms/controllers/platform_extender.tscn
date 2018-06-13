@@ -2,8 +2,7 @@
 
 [ext_resource path="res://scripts/room_elements/moving_platforms/controllers/platform_extender.gd" type="Script" id=1]
 
-
-[node name="platform_extender" type="Node2D"]
+[node name="platform_extender" type="Node2D" index="0"]
 
 script = ExtResource( 1 )
 active = true

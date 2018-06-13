@@ -34,10 +34,10 @@ func leave_state(new_state):
 func process_state(delta):
 	.process_state(delta)
 	
-	if(not Input.is_action_pressed("jump") or get_timer() > PHYSICS_HELPER.calculate_jump_max_airtime(get_double_jump_height(), get_parent().get_gravity_vector().y)):
+	if(not get_parent().is_action_pressed("jump") or get_timer() > PHYSICS_HELPER.calculate_jump_max_airtime(get_double_jump_height(), get_parent().get_gravity_vector().y)):
 		get_parent().set_velocity(Vector2(get_parent().get_velocity().x,0))
 		get_parent().set_state("FALLING")
-	elif(((Input.is_action_pressed("play_up") and get_parent().is_inside_ladder()) or get_parent().is_inside_walled_ladder()) and get_parent().can_enter_state("CLIMBING")):
+	elif(((get_parent().is_action_pressed("play_up") and get_parent().is_inside_ladder()) or get_parent().is_inside_walled_ladder()) and get_parent().can_enter_state("CLIMBING")):
 		get_parent().set_state("CLIMBING")
 	else:
 		var vertical_collision_info  = get_parent().apply_velocity_y(delta)
@@ -49,11 +49,11 @@ func process_state(delta):
 		else:
 			var pressed = 0
 					
-			if(Input.is_action_pressed("play_left")):
+			if(get_parent().is_action_pressed("play_left")):
 				get_parent().set_flippedH(true)
 				get_parent().set_velocity(Vector2(get_parent().get_movement_speed(), get_parent().get_velocity().y))
 			
-			elif(Input.is_action_pressed("play_right")):
+			elif(get_parent().is_action_pressed("play_right")):
 				get_parent().set_flippedH(false)
 				get_parent().set_velocity(Vector2(get_parent().get_movement_speed(), get_parent().get_velocity().y))
 			else:

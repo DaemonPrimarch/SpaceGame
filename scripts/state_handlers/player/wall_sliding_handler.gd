@@ -56,7 +56,7 @@ func process_state(delta):
 	
 	if(not can_continue()):
 		get_parent().set_state("FALLING")
-	elif(Input.is_action_just_pressed("jump") and get_parent().can_enter_state("WALL_JUMPING")):
+	elif(get_parent().is_action_just_pressed("jump") and get_parent().can_enter_state("WALL_JUMPING")):
 		get_parent().set_state("WALL_JUMPING")
 	else:
 		pass

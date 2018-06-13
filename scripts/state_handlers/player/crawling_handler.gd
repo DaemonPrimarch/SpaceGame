@@ -49,10 +49,10 @@ func process_state(delta):
 	else:
 		var pressed = 0
 
-		if(Input.is_action_pressed("play_left")):
+		if(get_parent().is_action_pressed("play_left")):
 			get_parent().set_flippedH(true)
 			pressed = 1
-		elif(Input.is_action_pressed("play_right")):
+		elif(get_parent().is_action_pressed("play_right")):
 			get_parent().set_flippedH(false)
 			pressed = 1
 

@@ -43,17 +43,17 @@ func leave_state(new_state):
 func process_state(delta):
 	.process_state(delta)
 	
-	if(Input.is_action_just_pressed("jump")):
+	if(get_parent().is_action_just_pressed("jump")):
 		get_parent().set_state("WALL_JUMPING")
 	elif(not get_parent().is_inside_ladder()):
 		get_parent().set_state("FALLING")
 	else:
 		var dir = 0
 				
-		if(Input.is_action_pressed("play_up")):
+		if(get_parent().is_action_pressed("play_up")):
 			if(not top_reached() or get_parent().get_ladder().is_in_group("top")):
 				dir = -1
-		elif(Input.is_action_pressed("play_down")):
+		elif(get_parent().is_action_pressed("play_down")):
 			dir = 1
 			
 		if(get_parent().move_and_collide(Vector2(0, dir) * get_climbing_speed() * delta) != null):

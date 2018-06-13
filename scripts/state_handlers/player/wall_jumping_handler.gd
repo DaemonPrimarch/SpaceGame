@@ -42,9 +42,9 @@ func leave_state(new_state):
 func process_state(delta):
 	.process_state(delta)
 	
-	if((not Input.is_action_pressed("jump") and get_timer() > 0.5) or get_timer() > wall_jump_time):
+	if((not get_parent().is_action_pressed("jump") and get_timer() > 0.5) or get_timer() > wall_jump_time):
 		get_parent().set_state("FALLING")
-	elif(((Input.is_action_pressed("play_up") and get_parent().is_inside_ladder()) or get_parent().is_inside_walled_ladder()) and get_parent().can_enter_state("CLIMBING")):
+	elif(((get_parent().is_action_pressed("play_up") and get_parent().is_inside_ladder()) or get_parent().is_inside_walled_ladder()) and get_parent().can_enter_state("CLIMBING")):
 		get_parent().set_state("CLIMBING")
 	else:		
 		var vertical_collision_info  = get_parent().apply_velocity_y(delta)
@@ -53,9 +53,9 @@ func process_state(delta):
 			get_parent().set_state("FALLING")
 		else:
 			if(get_timer() > 0.5):
-				if(Input.is_action_pressed("play_left")):
+				if(get_parent().is_action_pressed("play_left")):
 					get_parent().set_flippedH(true)
-				elif(Input.is_action_pressed("play_right")):
+				elif(get_parent().is_action_pressed("play_right")):
 					get_parent().set_flippedH(false)
 						
 			var horizontal_collision_info = get_parent().apply_velocity_x(delta)
