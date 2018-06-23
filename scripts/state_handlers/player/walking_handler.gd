@@ -3,11 +3,9 @@ extends "res://scripts/state_handler.gd"
 func _ready():
 	pass
 	
-func get_handled_state():
-	return "WALKING"
-	
 func enter_state(previous_state):
-	.enter_state(previous_state)	
+	.enter_state(previous_state)
+
 	get_parent().animation_player.play("run")
 	
 func process_state(delta):

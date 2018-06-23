@@ -128,9 +128,6 @@ arrival_pos_id = "start"
 position = Vector2( 831.14, 805.328 )
 collision_mask = 1
 current_state = "STANDING"
-velocity = Vector2( 0, 0 )
-acceleration = Vector2( 0, 0 )
-action_override = false
 
 [node name="AnimationPlayer" parent="player" index="5"]
 

@@ -9,10 +9,6 @@ export var time_to_control = 0.0675
 func _ready():
 	set_no_gravity(true)
 
-func get_handled_state():
-	return "PUSHED"
-
-
 func enter_state(previous_state):
 	.enter_state(previous_state)
 			

@@ -25,16 +25,24 @@ func set_max_wall_slide_speed(val):
 func get_max_wall_slide_speed():
 	return max_wall_slide_speed
 
-func get_handled_state():
-	return "WALL_SLIDING"
+var prev_max_velocity
 
 func enter_state(previous_state):
 	.enter_state(previous_state)
 	
+	prev_max_velocity = get_parent().get_max_velocity()
+	get_parent().set_acceleration(Vector2(0, get_wall_slide_acceleration()))
+	get_parent().set_max_velocity(Vector2(-1, get_max_wall_slide_speed()))
+	
 	get_parent().set_velocity(Vector2(0,get_starting_wall_slide_speed()))
+	
+	
 	
 func leave_state(new_state):
 	.leave_state(new_state)
+	
+	get_parent().set_acceleration(Vector2())
+	get_parent().set_max_velocity(prev_max_velocity)
 	
 func can_wall_slide_on_node(node):
 	if(node is TileMap):
@@ -60,9 +68,6 @@ func process_state(delta):
 		get_parent().set_state("WALL_JUMPING")
 	else:
 		pass
-	
-	if(get_parent().get_velocity().y < get_max_wall_slide_speed()):
-		get_parent().set_velocity(get_parent().get_velocity() + Vector2(0,get_wall_slide_acceleration() * delta))
 	
 	var vertical_collision_info = get_parent().apply_velocity_y(delta)
 	

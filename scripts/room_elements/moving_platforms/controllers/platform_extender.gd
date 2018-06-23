@@ -15,6 +15,15 @@ func _ready():
 			platform = node
 			
 	get_platform().position = Vector2()
+	
+	set_physics_process(not Engine.editor_hint)
+
+func has_platform():
+	return platform != null
+
+func _draw():
+	if(has_platform() and Engine.editor_hint):
+		draw_line(get_platform().position, get_platform().position  + get_platform().get_direction() * extending_direction * (extending_distance + 32)  * Vector2(1,-1) ,ProjectSettings.get_setting("debug/shapes/collision/shape_color"), 4.0)
 
 export var active = true
 export var one_way = false

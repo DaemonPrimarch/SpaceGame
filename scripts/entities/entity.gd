@@ -79,14 +79,33 @@ func set_gravity_enabled(value, starting_velocity = Vector2()):
 	
 	#gravity_velocity = starting_velocity
 
-export var velocity = Vector2()
+export var velocity = Vector2() setget set_velocity
 
 func get_velocity():
 	return velocity
 
 func set_velocity(v):
-	velocity = v
+	var temp_velocity = v
 	
+	if(get_max_velocity().x >= 0 and v.x > get_max_velocity().x):
+		temp_velocity.x = get_max_velocity().x
+		print("Larger than max_velocity.x")
+	if(get_max_velocity().y >= 0 and v.y > get_max_velocity().y):
+		temp_velocity.y = get_max_velocity().y
+		print("Larger than max_velocity.y")
+
+	velocity = temp_velocity
+
+export var max_velocity = Vector2(-1,-1) setget set_max_velocity
+
+func set_max_velocity(v):
+	max_velocity = v
+
+	set_velocity(get_velocity())
+
+func get_max_velocity():
+	return max_velocity
+
 export var acceleration = Vector2()
 
 func get_acceleration():

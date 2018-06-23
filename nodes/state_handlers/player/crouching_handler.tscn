@@ -125,10 +125,10 @@ tracks/3/keys = {
 "values": [ Vector2( 28.153, -29.2195 ) ]
 }
 
-[node name="crouching_handler" instance=ExtResource( 1 )]
+[node name="crouching_handler" index="0" instance=ExtResource( 1 )]
 
 script = ExtResource( 2 )
-no_gravity = false
+handled_state = "CROUCHING"
 
 [node name="crouch_leave_detector_left" type="RayCast2D" parent="." index="0"]
 

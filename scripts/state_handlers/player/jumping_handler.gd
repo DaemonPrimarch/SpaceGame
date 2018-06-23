@@ -7,9 +7,6 @@ func get_jump_height():
 
 func set_jump_height(val):
 	jump_height = val
-
-func get_handled_state():
-	return "REGULAR_JUMPING"
 	
 func enter_state(previous_state):
 	.enter_state(previous_state)

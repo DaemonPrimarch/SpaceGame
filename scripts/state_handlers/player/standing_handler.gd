@@ -1,12 +1,10 @@
 extends "res://scripts/state_handler.gd"
 
-func get_handled_state():
-	return "STANDING"
-
 func enter_state(previous_state):
 	.enter_state(previous_state)
 	
 	get_parent().set_velocity(Vector2())
+	
 	get_parent().get_handler("DOUBLE_JUMPING").double_jumped = false
 	
 	get_parent().animation_player.play("idle")
@@ -22,7 +20,6 @@ func process_state(delta):
 		get_parent().position += Vector2(0, 10)
 		
 		get_parent().set_state("CLIMBING")
-		
 	elif(((get_parent().is_action_pressed("play_up") and get_parent().is_inside_ladder()) or get_parent().is_inside_walled_ladder()) and get_parent().can_enter_state("CLIMBING")):
 		get_parent().set_state("CLIMBING")
 	elif(get_parent().is_action_just_pressed("jump") and get_parent().can_enter_state("REGULAR_JUMPING")):

@@ -60,6 +60,8 @@ func push_back():
 func get_max_movement_speed():
 	return max_movement_speed
 
+#LADDER HANDLERS:
+
 func is_inside_ladder():
 	return inside_ladder != null
 
@@ -81,22 +83,12 @@ func get_ladder_top():
 func get_ladder():
 	return inside_ladder
 
-func set_velocity(v):
-	velocity = v
-
-func get_velocity():
-	return velocity
-
-func set_acceleration(v):
-	acceleration = v
-
-func get_acceleration():
-	return acceleration
-
 func add_to_inventory(key):
+	#DEPRECATED
 	inventory[key] = 1
 
 func has_in_inventory(key):
+	#DEPRECATED
 	return (key in inventory)
 
 func remove_from_inventory(key):

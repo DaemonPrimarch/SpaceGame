@@ -13,9 +13,6 @@ func set_climbing_speed(speed):
 func _ready():
 	set_no_gravity(true)
 
-func get_handled_state():
-	return "CLIMBING"
-
 func enter_state(previous_state):
 	.enter_state(previous_state)
 	

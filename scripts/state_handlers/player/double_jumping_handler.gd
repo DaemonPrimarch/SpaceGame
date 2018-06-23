@@ -12,9 +12,6 @@ func get_double_jump_height():
 
 func set_double_jump_height(val):
 	double_jump_height = val
-
-func get_handled_state():
-	return "DOUBLE_JUMPING"
 	
 func can_enter():
 	return .can_enter() and not get_parent().is_inside_helper_area("no_double_jump") and not has_double_jumped()
@@ -46,9 +43,7 @@ func process_state(delta):
 			get_parent().set_velocity(Vector2(get_parent().get_velocity().x,0))
 			get_parent().set_state("FALLING")
 		
-		else:
-			var pressed = 0
-					
+		else:				
 			if(get_parent().is_action_pressed("play_left")):
 				get_parent().set_flippedH(true)
 				get_parent().set_velocity(Vector2(get_parent().get_movement_speed(), get_parent().get_velocity().y))

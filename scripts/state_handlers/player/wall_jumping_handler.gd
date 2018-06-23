@@ -18,9 +18,6 @@ func set_angle(value):
 
 func get_angle():
 	return angle
-
-func get_handled_state():
-	return "WALL_JUMPING"
 	
 func _ready():
 	starting_speed_y = PHYSICS_HELPER.calculate_jump_starting_velocity_y(get_wall_jump_height(), get_parent().get_gravity_vector().y)
