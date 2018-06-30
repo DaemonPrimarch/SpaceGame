@@ -1,6 +1,6 @@
 tool
 
-extends Area2D
+extends "res://addons/player_enter_trigger/player_enter_trigger.gd"
 
 signal activated
 signal deactivated
