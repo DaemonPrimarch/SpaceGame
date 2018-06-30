@@ -1,3 +1,4 @@
+tool
 extends AnimationPlayer
 
 func play_or_continue(animation):

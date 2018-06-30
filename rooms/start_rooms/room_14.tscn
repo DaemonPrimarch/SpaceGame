@@ -10,9 +10,10 @@
 [ext_resource path="res://nodes/room_elements/camera_container.tscn" type="PackedScene" id=8]
 [ext_resource path="res://nodes/activatable_block.tscn" type="PackedScene" id=9]
 [ext_resource path="res://nodes/room_elements/player_comfirm_area.tscn" type="PackedScene" id=10]
-[ext_resource path="res://nodes/player_enter_trigger.tscn" type="PackedScene" id=11]
+[ext_resource path="res://addons/player_enter_trigger/player_enter_trigger.tscn" type="PackedScene" id=11]
 [ext_resource path="res://nodes/room_elements/moving_platforms/controllers/elevator_system.tscn" type="PackedScene" id=12]
 [ext_resource path="res://nodes/room_elements/moving_platforms/platforms/platform_2x1.tscn" type="PackedScene" id=13]
+
 
 
 [node name="room_14" instance=ExtResource( 1 )]

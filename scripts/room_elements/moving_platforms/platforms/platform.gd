@@ -1,6 +1,6 @@
 tool
 
-extends "res://scripts/extended_kinematic_body_2D.gd"
+extends "res://addons/extended_kinematic_body_2D/extended_kinematic_body_2D.gd"
 
 export var extending = false
 

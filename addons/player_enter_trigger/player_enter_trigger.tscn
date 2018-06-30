@@ -1,8 +1,9 @@
 [gd_scene load_steps=2 format=2]
 
-[ext_resource path="res://scripts/player_enter_trigger.gd" type="Script" id=1]
+[ext_resource path="res://addons/player_enter_trigger/player_enter_trigger.gd" type="Script" id=1]
 
-[node name="player_enter_trigger" type="Area2D"]
+
+[node name="player_enter_trigger" type="Area2D" index="0"]
 
 input_pickable = true
 gravity_vec = Vector2( 0, 1 )
