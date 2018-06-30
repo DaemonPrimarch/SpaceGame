@@ -4,6 +4,8 @@ signal collided(info, moved_object)
 signal light_entered(source)
 signal light_exited(source)
 signal bullet_hit(bullet)
+signal flippedH()
+signal flippedV()
 
 export var max_slope_angle = PI/4
 
@@ -38,6 +40,8 @@ func set_flippedH(val):
 				child.set_rotation(-child.get_rotation())
 	
 	flippedH = val
+	
+	emit_signal("flippedH")
 
 func set_flippedV(val):
 	if(val != is_flippedV()):
@@ -47,6 +51,8 @@ func set_flippedV(val):
 				child.set_position(child.get_position() * Vector2(1,-1))
 	
 	flippedV = val
+	
+	emit_signal("flippedV")
 
 func get_direction():
 	var dir = Vector2(1,1)

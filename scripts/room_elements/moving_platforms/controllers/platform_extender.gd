@@ -9,12 +9,20 @@ signal start_reached
 func get_platform():
 	return platform
 
-func _ready():
+func init_platform():
 	for node in get_children():
 		if(node.is_in_group("platform")):
 			platform = node
-			
-	get_platform().position = Vector2()
+	
+	if(has_platform()):
+		get_platform().position = Vector2()
+		
+		get_platform().set_meta("_edit_lock_", true)
+		
+		get_platform().connect("flippedH", self, "update")
+	
+func _ready():
+	init_platform()
 	
 	set_physics_process(not Engine.editor_hint)
 
@@ -54,7 +62,7 @@ func get_extending_direction():
 	return extending_direction
 
 func _physics_process(delta):
-	if(is_active()):
+	if(is_active() and has_platform()):
 		var flipped = 1
 			
 		if(get_platform().is_flippedH() or get_platform().is_flippedV()):
@@ -63,7 +71,6 @@ func _physics_process(delta):
 			get_platform().move_and_push(get_extending_direction() * forward_velocity * delta * flipped * Vector2(1,-1))
 			
 			forward_velocity += forward_acceleration * delta
-			
 			
 			if((extending_direction * extending_distance - get_platform().get_position() * flipped * Vector2(1,-1)).normalized().dot((extending_direction * extending_distance).normalized()) <= 0):
 				moving_forward = false
