@@ -1,4 +1,4 @@
-extends "res://scripts/debug_label.gd"
+extends "res://addons/state_labels/debug_label.gd"
 
 export (NodePath) var node_path
 export var tracked_value = ""

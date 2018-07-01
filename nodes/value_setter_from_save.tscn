@@ -1,6 +1,8 @@
 [gd_scene load_steps=2 format=2]
 
-[ext_resource path="res://scripts/value_setter_from_save.gd" type="Script" id=1]
+[ext_resource path="res://addons/save_handlers/from_save_value_setter.gd" type="Script" id=1]
+
+
 
 [node name="value_setter_from_save" type="Node"]
 

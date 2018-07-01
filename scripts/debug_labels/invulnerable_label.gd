@@ -1,4 +1,4 @@
-extends "res://scripts/debug_label.gd"
+extends "res://addons/state_labels/debug_label.gd"
 
 # class member variables go here, for example:
 # var a = 2

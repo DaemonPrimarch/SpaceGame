@@ -1,4 +1,4 @@
-extends "res://scripts/player_enter_trigger.gd"
+extends "res://addons/player_enter_trigger/player_enter_trigger.gd"
 
 func save_and_recharge(player):
 	player.set_HP(player.get_max_HP())
