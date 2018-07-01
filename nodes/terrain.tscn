@@ -2,9 +2,9 @@
 
 [ext_resource path="res://tilesets/metroid_tileset.tres" type="TileSet" id=1]
 
-[node name="terrain" type="TileMap" groups=[
-"terrain",
+[node name="terrain" type="TileMap" index="0" groups=[
 "crawlable",
+"terrain",
 ]]
 
 mode = 0
