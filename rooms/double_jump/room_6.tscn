@@ -5,7 +5,8 @@
 [ext_resource path="res://nodes/room_elements/regular_damage_area.tscn" type="PackedScene" id=3]
 [ext_resource path="res://nodes/room_elements/walled_ladder.tscn" type="PackedScene" id=4]
 [ext_resource path="res://deprecated/old_moveable_platform_small.tscn" type="PackedScene" id=5]
-[ext_resource path="res://nodes/room_elements/camera_change_area.tscn" type="PackedScene" id=6]
+[ext_resource path="res://deprecated/camera_change_area.tscn" type="PackedScene" id=6]
+
 
 [node name="room_6" instance=ExtResource( 1 )]
 

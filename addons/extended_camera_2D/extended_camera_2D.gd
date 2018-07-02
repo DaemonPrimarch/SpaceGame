@@ -10,7 +10,7 @@ func _ready():
 	add_to_group("extended_camera")
 	
 	if(not Engine.editor_hint):
-		for name in ["tween_top", "tween_bottom", "tween_left", "tween_right", "tween_zoom"]:
+		for name in ["tween_top", "tween_bottom", "tween_left", "tween_right", "tween_zoom", "tween_offset"]:
 			var tween = Tween.new()
 			tween.set_name(name)
 			add_child(tween)
@@ -19,6 +19,14 @@ func _ready():
 		get_parent().add_to_group("carries_camera")
 func zoom_to(new_zoom, time):
 	pass
+
+func move_offset_to(pos, time):
+	if(time > 0):
+		get_node("tween_offset").interpolate_property(self, "offset", offset, pos, time, Tween.TRANS_LINEAR, Tween.EASE_OUT_IN)
+		get_node("tween_offset").start()
+	else:
+		offset = pos
+
 func set_limit_area(area):
 	if(area != limit_area):
 		if(not area == null):

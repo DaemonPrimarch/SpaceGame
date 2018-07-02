@@ -7,8 +7,9 @@
 [ext_resource path="res://nodes/room_elements/bullet_switch.tscn" type="PackedScene" id=5]
 [ext_resource path="res://nodes/warp_tile.tscn" type="PackedScene" id=6]
 [ext_resource path="res://nodes/warp_arrival.tscn" type="PackedScene" id=7]
-[ext_resource path="res://nodes/room_elements/camera_change_area.tscn" type="PackedScene" id=8]
+[ext_resource path="res://deprecated/camera_change_area.tscn" type="PackedScene" id=8]
 [ext_resource path="res://rooms/start_rooms/room_darkener_helper.tscn" type="PackedScene" id=9]
+
 
 [node name="room_12" instance=ExtResource( 1 )]
 
