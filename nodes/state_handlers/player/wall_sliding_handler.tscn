@@ -1,7 +1,8 @@
 [gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://nodes/state_handlers/state_handler.tscn" type="PackedScene" id=1]
+[ext_resource path="res://deprecated/state_handler.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scripts/state_handlers/player/wall_sliding_handler.gd" type="Script" id=2]
+
 
 [node name="wall_sliding_handler" index="0" instance=ExtResource( 1 )]
 

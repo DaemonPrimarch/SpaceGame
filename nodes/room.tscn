@@ -1,10 +1,9 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://scripts/room.gd" type="Script" id=1]
 [ext_resource path="res://nodes/terrain.tscn" type="PackedScene" id=2]
 [ext_resource path="res://nodes/managers/debug_player_spawner.tscn" type="PackedScene" id=3]
-[ext_resource path="res://scripts/camera_container.gd" type="Script" id=4]
-[ext_resource path="res://nodes/entities/player/puppet_player.tscn" type="PackedScene" id=5]
+[ext_resource path="res://nodes/entities/player/puppet_player.tscn" type="PackedScene" id=4]
 
 [node name="room" type="Node2D" index="0" groups=[
 "room",
@@ -18,6 +17,7 @@ __meta__ = {
 dark = false
 dark_color = Color( 0, 0, 0, 1 )
 auto_generate_camera_container = true
+auto_generate_camera_limiter = true
 
 [node name="terrain" parent="." index="0" instance=ExtResource( 2 )]
 
@@ -32,34 +32,7 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="camera_container" type="Polygon2D" parent="." index="3" groups=[
-"camera_container",
-]]
-
-visible = false
-polygon = PoolVector2Array( 0, 0, 0, 0, 0, 0, 0, 0 )
-uv = PoolVector2Array(  )
-color = Color( 0, 0.0625, 1, 0.309412 )
-vertex_colors = PoolColorArray(  )
-offset = Vector2( 0, 0 )
-antialiased = false
-texture = null
-texture_offset = Vector2( 0, 0 )
-texture_scale = Vector2( 1, 1 )
-texture_rotation_degrees = 0.0
-invert_enable = false
-invert_border = 100.0
-script = ExtResource( 4 )
-__meta__ = {
-"_edit_lock_": true
-}
-has_default_offset = false
-default_offset = Vector2( 0, 0 )
-offset_move_time = 0
-default_zoom = 1
-can_zoom_out = false
-
-[node name="player" parent="." index="4" instance=ExtResource( 5 )]
+[node name="player" parent="." index="3" instance=ExtResource( 4 )]
 
 [connection signal="player_entered" from="." to="." method="_on_room_player_entered"]
 

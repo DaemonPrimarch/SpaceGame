@@ -30,5 +30,5 @@ func get_global_polygon():
 
 func _physics_process(delta):
 	for camera in get_tree().get_nodes_in_group("camera"):
-		if(not (camera.is_in_container() and camera.get_container() == self) and MATHS.is_point_in_polygon(camera.get_follow_point(), get_global_polygon())):
+		if(not camera.is_in_group("extended_camera") and not (camera.is_in_container() and camera.get_container() == self) and MATHS.is_point_in_polygon(camera.get_follow_point(), get_global_polygon())):
 			camera.set_container(self)

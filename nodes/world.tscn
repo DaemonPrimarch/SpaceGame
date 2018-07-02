@@ -146,11 +146,11 @@ enabled = true
 
 enabled = true
 
-[node name="camera2" parent="player" index="26"]
+[node name="ExtendedCamera2D" parent="player" index="31"]
 
-active = false
+current = false
 
-[node name="boolean_state_label" parent="player" index="33" instance=ExtResource( 3 )]
+[node name="boolean_state_label" parent="player" index="32" instance=ExtResource( 3 )]
 
 node_path = NodePath("..")
 tracked_value = "gravity_enabled"
