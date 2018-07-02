@@ -2,6 +2,7 @@ tool
 extends Area2D.
 
 export var simple = true
+export var can_zoom_out = false
 
 func _ready():
 	connect("body_entered", self, "entered")

@@ -17,8 +17,13 @@ func _ready():
 	
 	if(get_parent() is KinematicBody2D):
 		get_parent().add_to_group("carries_camera")
+		
 func zoom_to(new_zoom, time):
-	pass
+	if(time > 0):
+		get_node("tween_zoom").interpolate_property(self, "zoom", zoom, new_zoom, time, Tween.TRANS_LINEAR, Tween.EASE_OUT_IN)
+		get_node("tween_zoom").start()
+	else:
+		zoom = new_zoom
 
 func move_offset_to(pos, time):
 	if(time > 0):
@@ -26,6 +31,9 @@ func move_offset_to(pos, time):
 		get_node("tween_offset").start()
 	else:
 		offset = pos
+
+func _draw():
+	pass
 
 func set_limit_area(area):
 	if(area != limit_area):
@@ -48,3 +56,6 @@ func set_limit_area(area):
 		
 func get_limit_area():
 	return limit_area
+
+func has_limit_area():
+	return limit_area != null
