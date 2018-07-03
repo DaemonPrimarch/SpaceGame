@@ -2,12 +2,12 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/kinematic_body_2D.svg-34a68e64ad186cb403fdaaac0f504338.stex"
+path="res://.import/node.svg-9227b9a50463a13fd5bf01a697ecfce5.stex"
 
 [deps]
 
-source_file="res://addons/extended_kinematic_body_2D/kinematic_body_2D.svg"
-dest_files=[ "res://.import/kinematic_body_2D.svg-34a68e64ad186cb403fdaaac0f504338.stex" ]
+source_file="res://addons/save_handlers/node.svg"
+dest_files=[ "res://.import/node.svg-9227b9a50463a13fd5bf01a697ecfce5.stex" ]
 
 [params]
 

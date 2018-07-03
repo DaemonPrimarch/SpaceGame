@@ -2,8 +2,7 @@
 
 [ext_resource path="res://deprecated/camera_zoom_out_manager.gd" type="Script" id=1]
 
-
-[node name="camera_zoom_out_manager" type="Node2D" index="0"]
+[node name="camera_zoom_out_manager" type="Node" index="0"]
 
 script = ExtResource( 1 )
 zoom_in_time = 0.5

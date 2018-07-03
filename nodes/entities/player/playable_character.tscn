@@ -1,19 +1,14 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://scripts/entities/player/playable_character.gd" type="Script" id=1]
 [ext_resource path="res://deprecated/layer_changer.tscn" type="PackedScene" id=2]
 [ext_resource path="res://sprites/robot_demo.png" type="Texture" id=3]
 [ext_resource path="res://nodes/player_light.tscn" type="PackedScene" id=4]
-[ext_resource path="res://deprecated/deprecated_grounded_label.tscn" type="PackedScene" id=5]
-[ext_resource path="res://deprecated/deprecated_state_label.tscn" type="PackedScene" id=6]
-[ext_resource path="res://nodes/managers/weapon_manager.tscn" type="PackedScene" id=7]
-[ext_resource path="res://nodes/managers/respawner.tscn" type="PackedScene" id=8]
-[ext_resource path="res://deprecated/deprecated_on_platform.tscn" type="PackedScene" id=9]
-[ext_resource path="res://deprecated/deprecated_invulnerable_label.tscn" type="PackedScene" id=10]
-[ext_resource path="res://deprecated/deprecated_in_ladder_label.tscn" type="PackedScene" id=11]
-[ext_resource path="res://deprecated/boolean_state_label.tscn" type="PackedScene" id=12]
-
-
+[ext_resource path="res://nodes/managers/weapon_manager.tscn" type="PackedScene" id=5]
+[ext_resource path="res://nodes/managers/respawner.tscn" type="PackedScene" id=6]
+[ext_resource path="res://addons/state_labels/state_label.gd" type="Script" id=7]
+[ext_resource path="res://addons/state_labels/label.svg" type="Texture" id=8]
+[ext_resource path="res://addons/state_labels/boolean_state_label.gd" type="Script" id=9]
 
 [sub_resource type="Animation" id=1]
 
@@ -127,7 +122,7 @@ tracks/0/keys = {
 "values": [ 5, 6, 7, 8, 9 ]
 }
 
-[node name="playable_character" type="KinematicBody2D" groups=[
+[node name="playable_character" type="KinematicBody2D" index="0" groups=[
 "can_climb_ladder",
 ]]
 
@@ -145,11 +140,15 @@ current_state = "UNDEFINED"
 movement_speed = 327.68
 gravity_enabled = true
 gravity_vector = Vector2( 0, 1152 )
+velocity = Vector2( 0, 0 )
+max_velocity = Vector2( -1, -1 )
+acceleration = Vector2( 0, 0 )
 can_be_pushed = false
 HP = 100
 max_HP = 100
 invulnerability_time = 1.0
 max_movement_speed = 360
+action_override = false
 
 [node name="layer_changer" parent="." index="0" instance=ExtResource( 2 )]
 
@@ -193,55 +192,66 @@ _sections_unfolded = [ "Playback Options" ]
 
 [node name="light" parent="." index="4" instance=ExtResource( 4 )]
 
-[node name="grounded_label" parent="." index="5" instance=ExtResource( 5 )]
+[node name="weapon_manager" parent="." index="5" instance=ExtResource( 5 )]
 
-margin_left = 30.0
-margin_top = -80.0
-margin_right = 70.0
-margin_bottom = -66.0
+enabled = false
 
-[node name="state_label" parent="." index="6" instance=ExtResource( 6 )]
+[node name="respawner" parent="." index="6" instance=ExtResource( 6 )]
 
+[node name="StringStateLabel" type="Label" parent="." index="7"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
 margin_left = -30.0
 margin_top = -112.0
 margin_right = 10.0
 margin_bottom = -98.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+script = ExtResource( 7 )
+__meta__ = {
+"_editor_icon": ExtResource( 8 )
+}
+node_path = NodePath("..")
+tracked_value = ""
+tracked_function = "get_state"
 
-[node name="weapon_manager" parent="." index="7" instance=ExtResource( 7 )]
+[node name="BooleanStateLabel" type="Label" parent="." index="8"]
 
-enabled = false
-
-[node name="respawner" parent="." index="8" instance=ExtResource( 8 )]
-
-[node name="on_platform_label" parent="." index="9" instance=ExtResource( 9 )]
-
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
 margin_left = 30.0
-margin_top = -48.0
+margin_top = -72.0
 margin_right = 70.0
-margin_bottom = -34.0
-
-[node name="invulnerable_label" parent="." index="10" instance=ExtResource( 10 )]
-
-margin_left = 30.0
-margin_top = -24.0
-margin_right = 70.0
-margin_bottom = -10.0
-
-[node name="in_ladder_label" parent="." index="11" instance=ExtResource( 11 )]
-
-margin_left = 30.0
-margin_top = 16.0
-margin_right = 70.0
-margin_bottom = 30.0
-
-[node name="in_background_label" parent="." index="12" instance=ExtResource( 12 )]
-
-margin_left = 30.0
-margin_top = -8.0
-margin_right = 70.0
-margin_bottom = 6.0
-node_path = NodePath("../layer_changer")
-tracked_value = "in_background"
-true_value = "IN BACKGROUND"
+margin_bottom = -58.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+script = ExtResource( 9 )
+__meta__ = {
+"_editor_icon": ExtResource( 8 )
+}
+node_path = NodePath("..")
+tracked_value = ""
+tracked_function = "is_on_platform"
+true_value = "ON PLATFORM"
+false_value = ""
 
 

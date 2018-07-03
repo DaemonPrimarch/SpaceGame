@@ -1,4 +1,4 @@
-extends Node2D
+extends Node
 
 export var zoom_in_time = 0.5
 export var zoom_out_time = 4

@@ -2,12 +2,12 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/extended_animation_player.svg-803f55b878549c6e60d958036210708d.stex"
+path="res://.import/node.svg-f1619f15f134b9d4d89479881973d277.stex"
 
 [deps]
 
-source_file="res://addons/helper_area/extended_animation_player.svg"
-dest_files=[ "res://.import/extended_animation_player.svg-803f55b878549c6e60d958036210708d.stex" ]
+source_file="res://addons/layer_changer/node.svg"
+dest_files=[ "res://.import/node.svg-f1619f15f134b9d4d89479881973d277.stex" ]
 
 [params]
 

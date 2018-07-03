@@ -2,12 +2,12 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/kinematic_bode.svg-69e4ecd9c6b7fe25c2dc108a22b4f0f4.stex"
+path="res://.import/polygon.svg-477689c9aa425aba8baaa6f5c08c9060.stex"
 
 [deps]
 
-source_file="res://addons/save_handlers/kinematic_bode.svg"
-dest_files=[ "res://.import/kinematic_bode.svg-69e4ecd9c6b7fe25c2dc108a22b4f0f4.stex" ]
+source_file="res://addons/extended_collision_polygon_2D/polygon.svg"
+dest_files=[ "res://.import/polygon.svg-477689c9aa425aba8baaa6f5c08c9060.stex" ]
 
 [params]
 
