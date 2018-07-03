@@ -2,8 +2,9 @@
 
 [ext_resource path="res://scripts/room.gd" type="Script" id=1]
 [ext_resource path="res://nodes/terrain.tscn" type="PackedScene" id=2]
-[ext_resource path="res://nodes/managers/debug_player_spawner.tscn" type="PackedScene" id=3]
+[ext_resource path="res://deprecated/debug_player_spawner.tscn" type="PackedScene" id=3]
 [ext_resource path="res://nodes/entities/player/puppet_player.tscn" type="PackedScene" id=4]
+
 
 [node name="room" type="Node2D" index="0" groups=[
 "room",

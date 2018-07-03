@@ -1,7 +1,7 @@
 [gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://scripts/entities/player/playable_character.gd" type="Script" id=1]
-[ext_resource path="res://nodes/helpers/layer_changer.tscn" type="PackedScene" id=2]
+[ext_resource path="res://deprecated/layer_changer.tscn" type="PackedScene" id=2]
 [ext_resource path="res://sprites/robot_demo.png" type="Texture" id=3]
 [ext_resource path="res://nodes/player_light.tscn" type="PackedScene" id=4]
 [ext_resource path="res://deprecated/deprecated_grounded_label.tscn" type="PackedScene" id=5]
@@ -11,7 +11,9 @@
 [ext_resource path="res://deprecated/deprecated_on_platform.tscn" type="PackedScene" id=9]
 [ext_resource path="res://deprecated/deprecated_invulnerable_label.tscn" type="PackedScene" id=10]
 [ext_resource path="res://deprecated/deprecated_in_ladder_label.tscn" type="PackedScene" id=11]
-[ext_resource path="res://nodes/debug_labels/boolean_state_label.tscn" type="PackedScene" id=12]
+[ext_resource path="res://deprecated/boolean_state_label.tscn" type="PackedScene" id=12]
+
+
 
 [sub_resource type="Animation" id=1]
 
