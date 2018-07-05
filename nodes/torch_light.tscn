@@ -21,7 +21,7 @@ tracks/0/keys = {
 "values": [ 1.0, 0.75 ]
 }
 
-[node name="torch_light" type="Light2D"]
+[node name="torch_light" type="Light2D" index="0"]
 
 enabled = true
 editor_only = false
