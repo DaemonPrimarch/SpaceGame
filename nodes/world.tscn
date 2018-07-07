@@ -128,7 +128,7 @@ position = Vector2( 831.14, 805.328 )
 collision_mask = 1
 current_state = "STANDING"
 
-[node name="AnimationPlayer" parent="player" index="5"]
+[node name="AnimationPlayer" parent="player" index="8"]
 
 anims/duck = SubResource( 1 )
 anims/fall = SubResource( 2 )
@@ -137,15 +137,15 @@ anims/jump = SubResource( 4 )
 anims/run = SubResource( 5 )
 anims/run_gun = SubResource( 6 )
 
-[node name="double_jumping_handler" parent="player" index="15"]
+[node name="double_jumping_handler" parent="player" index="14"]
 
 enabled = true
 
-[node name="wall_sliding_handler" parent="player" index="19"]
+[node name="wall_sliding_handler" parent="player" index="18"]
 
 enabled = true
 
-[node name="ExtendedCamera2D" parent="player" index="26"]
+[node name="ExtendedCamera2D" parent="player" index="24"]
 
 current = false
 _sections_unfolded = [ "Drag Margin", "Smoothing" ]

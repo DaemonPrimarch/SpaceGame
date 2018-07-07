@@ -1,6 +1,7 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://nodes/entities/player/player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scripts/state_handlers/player/wall_jumping_handler.gd" type="Script" id=2]
 
 [sub_resource type="Animation" id=1]
 
@@ -127,6 +128,15 @@ anims/idle = SubResource( 3 )
 anims/jump = SubResource( 4 )
 anims/run = SubResource( 5 )
 anims/run_gun = SubResource( 6 )
+
+[node name="wall_jumping_handler" parent="." index="15"]
+
+script = ExtResource( 2 )
+handled_state = "WALL_JUMPING"
+enabled = true
+no_gravity = false
+wall_jump_height = 128
+angle = -2.35619
 
 
 [editable path="crouching_handler"]

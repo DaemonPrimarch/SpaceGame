@@ -18,10 +18,12 @@
 [ext_resource path="res://nodes/state_handlers/player/pushed_handler.tscn" type="PackedScene" id=16]
 [ext_resource path="res://addons/state_handler/kinematic_body_2D.svg" type="Texture" id=17]
 [ext_resource path="res://addons/extended_camera_2D/extended_camera_2D.gd" type="Script" id=18]
-[ext_resource path="res://nodes/managers/camera_zoom_out_manager.tscn" type="PackedScene" id=19]
+[ext_resource path="res://nodes/helpers/camera_zoom_helper.tscn" type="PackedScene" id=19]
 [ext_resource path="res://nodes/weapons/gun.tscn" type="PackedScene" id=20]
 [ext_resource path="res://addons/state_labels/boolean_state_label.gd" type="Script" id=21]
 [ext_resource path="res://addons/state_labels/label.svg" type="Texture" id=22]
+
+
 
 [sub_resource type="Animation" id=1]
 
