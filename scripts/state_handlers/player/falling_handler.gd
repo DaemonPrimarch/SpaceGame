@@ -1,4 +1,4 @@
-extends "res://scripts/state_handler.gd"
+extends "res://addons/state_handler/state_handler.gd"
 
 var wall_jump_direction = Vector2()
 var wall_jumped = false

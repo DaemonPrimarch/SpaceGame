@@ -418,7 +418,7 @@ script = ExtResource( 19 )
 
 [node name="camera_zoom_out_manager" parent="ExtendedCamera2D" index="0" instance=ExtResource( 20 )]
 
-[node name="BooleanStateLabel3" type="Label" parent="." index="30"]
+[node name="BooleanStateLabel3" type="Label" parent="." index="29"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -447,7 +447,7 @@ tracked_function = "is_on_platform"
 true_value = "ON PLATFORM"
 false_value = "NOT"
 
-[node name="BooleanStateLabel4" type="Label" parent="." index="31"]
+[node name="BooleanStateLabel4" type="Label" parent="." index="30"]
 
 anchor_left = 0.0
 anchor_top = 0.0

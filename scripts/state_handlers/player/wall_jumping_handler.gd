@@ -1,4 +1,4 @@
-extends "res://scripts/state_handler.gd"
+extends "res://addons/state_handler/state_handler.gd"
 
 export var wall_jump_height = 64 * 2 setget set_wall_jump_height, get_wall_jump_height
 export var angle = -(PI/4)*3 setget set_angle, get_angle

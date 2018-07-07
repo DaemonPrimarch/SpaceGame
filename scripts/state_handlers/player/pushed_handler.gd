@@ -1,4 +1,4 @@
-extends "res://scripts/state_handler.gd"
+extends "res://addons/state_handler/state_handler.gd"
 
 export var damage_push_height = 60
 export var damage_push_distance = 64

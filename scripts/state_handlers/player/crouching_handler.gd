@@ -1,4 +1,4 @@
-extends "res://scripts/state_handler.gd"
+extends "res://addons/state_handler/state_handler.gd"
 
 func _ready():
 	get_node("crouch_leave_detector_left").add_exception(get_parent())

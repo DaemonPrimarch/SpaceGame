@@ -1,6 +1,7 @@
 [gd_scene load_steps=2 format=2]
 
-[ext_resource path="res://scripts/state_handler.gd" type="Script" id=1]
+[ext_resource path="res://deprecated/state_handler.gd" type="Script" id=1]
+
 
 
 

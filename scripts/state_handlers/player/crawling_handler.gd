@@ -1,4 +1,4 @@
-extends "res://scripts/state_handler.gd"
+extends "res://addons/state_handler/state_handler.gd"
 
 export var crawling_speed = 2*64 setget set_crawling_speed, get_crawling_speed
 
