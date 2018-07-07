@@ -1,6 +1,6 @@
 extends "entity.gd"
 
-signal HP_changed
+signal HP_changed()
 
 signal invulnerable_started()
 signal invulnerable_stopped()
@@ -82,14 +82,3 @@ func set_invulnerable(value):
 		collision_mask = mask_save
 		
 		emit_signal("invulnerable_stopped")
-	
-func damage_push(object):
-	#DEPRECATED
-	if(can_be_pushed and not invulnerable):
-		var direction
-		if(object.position.x > position.x):
-			direction = -1
-		else:
-			direction = 1
-		push_direction = direction
-		is_pushed = true

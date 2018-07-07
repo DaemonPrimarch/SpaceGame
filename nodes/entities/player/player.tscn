@@ -17,9 +17,9 @@
 [ext_resource path="res://nodes/state_handlers/player/crawling_handler.tscn" type="PackedScene" id=15]
 [ext_resource path="res://nodes/state_handlers/player/pushed_handler.tscn" type="PackedScene" id=16]
 [ext_resource path="res://addons/state_handler/kinematic_body_2D.svg" type="Texture" id=17]
-[ext_resource path="res://nodes/weapons/gun.tscn" type="PackedScene" id=18]
-[ext_resource path="res://addons/extended_camera_2D/extended_camera_2D.gd" type="Script" id=19]
-[ext_resource path="res://nodes/managers/camera_zoom_out_manager.tscn" type="PackedScene" id=20]
+[ext_resource path="res://addons/extended_camera_2D/extended_camera_2D.gd" type="Script" id=18]
+[ext_resource path="res://nodes/managers/camera_zoom_out_manager.tscn" type="PackedScene" id=19]
+[ext_resource path="res://nodes/weapons/gun.tscn" type="PackedScene" id=20]
 [ext_resource path="res://addons/state_labels/boolean_state_label.gd" type="Script" id=21]
 [ext_resource path="res://addons/state_labels/label.svg" type="Texture" id=22]
 
@@ -190,7 +190,7 @@ func process_state(delta):
 script = ExtResource( 2 )
 _sections_unfolded = [ "Collision", "Pause", "Pickable", "Transform", "collision" ]
 
-[node name="light_2" type="Light2D" parent="." index="3"]
+[node name="light_2" type="Light2D" parent="." index="4"]
 
 enabled = false
 editor_only = false
@@ -215,7 +215,7 @@ shadow_filter_smooth = 0.0
 shadow_item_cull_mask = 1
 script = ExtResource( 4 )
 
-[node name="light_3" type="Light2D" parent="." index="4"]
+[node name="light_3" type="Light2D" parent="." index="5"]
 
 enabled = false
 editor_only = false
@@ -350,37 +350,7 @@ enabled = true
 no_gravity = false
 jump_height = 256
 
-[node name="weapon_manager" parent="." index="23"]
-
-editor/display_folded = true
-weapon_path = NodePath("gun")
-enabled = true
-
-[node name="weapon_bottom_front" parent="weapon_manager" index="0"]
-
-position = Vector2( 26.6167, -3.8147e-006 )
-
-[node name="weapon_top" parent="weapon_manager" index="2"]
-
-position = Vector2( 0, -80.5085 )
-
-[node name="weapon_front" parent="weapon_manager" index="3"]
-
-position = Vector2( 27.7558, -32 )
-_sections_unfolded = [ "Transform" ]
-
-[node name="gun" parent="weapon_manager" index="5" instance=ExtResource( 18 )]
-
-visible = false
-position = Vector2( 56, -40 )
-
-[node name="value_setter_from_save" parent="weapon_manager" index="6" instance=ExtResource( 10 )]
-
-node_path = NodePath("..")
-value = "enabled"
-save_value = "player/weapon_enabled"
-
-[node name="damage_timer" type="Timer" parent="." index="24"]
+[node name="damage_timer" type="Timer" parent="." index="23"]
 
 pause_mode = 2
 process_mode = 1
@@ -389,7 +359,7 @@ one_shot = false
 autostart = false
 _sections_unfolded = [ "Pause" ]
 
-[node name="ExtendedCamera2D" type="Camera2D" parent="." index="25"]
+[node name="ExtendedCamera2D" type="Camera2D" parent="." index="24"]
 
 editor/display_folded = true
 anchor_mode = 1
@@ -414,9 +384,39 @@ drag_margin_bottom = 0.2
 editor_draw_screen = true
 editor_draw_limits = false
 editor_draw_drag_margin = false
-script = ExtResource( 19 )
+script = ExtResource( 18 )
 
-[node name="camera_zoom_out_manager" parent="ExtendedCamera2D" index="0" instance=ExtResource( 20 )]
+[node name="camera_zoom_out_manager" parent="ExtendedCamera2D" index="0" instance=ExtResource( 19 )]
+
+[node name="weapon_manager" parent="." index="26"]
+
+editor/display_folded = true
+weapon_path = NodePath("gun")
+enabled = true
+
+[node name="weapon_bottom_front" parent="weapon_manager" index="0"]
+
+position = Vector2( 26.6167, -3.8147e-006 )
+
+[node name="weapon_top" parent="weapon_manager" index="2"]
+
+position = Vector2( 0, -80.5085 )
+
+[node name="weapon_front" parent="weapon_manager" index="3"]
+
+position = Vector2( 27.7558, -32 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="gun" parent="weapon_manager" index="5" instance=ExtResource( 20 )]
+
+visible = false
+position = Vector2( 56, -40 )
+
+[node name="value_setter_from_save" parent="weapon_manager" index="6" instance=ExtResource( 10 )]
+
+node_path = NodePath("..")
+value = "enabled"
+save_value = "player/weapon_enabled"
 
 [node name="BooleanStateLabel3" type="Label" parent="." index="29"]
 

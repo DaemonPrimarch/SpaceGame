@@ -3,7 +3,7 @@ tool
 
 extends "res://addons/extended_kinematic_body_2D/extended_kinematic_body_2D.gd"
 
-signal room_entered
+signal room_entered()
 
 signal state_entered(state, previous_state)
 signal state_left(state, new_state)
@@ -161,7 +161,7 @@ func set_grounded(val):
 		emit_signal("ground_exited")
 
 func is_grounded():
-	return (grounded and is_gravity_enabled()) or is_on_platform()
+	return (grounded and is_gravity_enabled())
 
 
 var inside_helper_areas = {}
@@ -177,39 +177,20 @@ func is_inside_helper_area(type):
 
 var first_state = true
 
-var camera = null
-
-func has_camera():
-	return camera != null
-	
-func set_camera(cam):
-	camera = cam
-
-func get_camera():
-	return camera
-
-var platform = null
-
-func set_platform(plat):
-	platform = plat
-	
-	if(plat):
-		set_grounded(true)
-		plat.snap_to(plat)
-		
-func is_on_platform():
-	return platform != null
-
-func get_platform():
-	return platform
-
 var platform_manager = null
 
 #
 func _ready():
-	platform_manager = preload("res://nodes/managers/platform_manager.tscn").instance()
+	if(Engine.is_editor_hint() and not has_node("platform_manager")):
+		platform_manager = preload("res://nodes/managers/platform_manager.tscn").instance()
+		
+		add_child(platform_manager)
+		
+		platform_manager.set_owner(get_tree().get_edited_scene_root())
+	else:
+		platform_manager = get_node("platform_manager")
 	
-	add_child(platform_manager)
+
 	
 	add_to_group("entity")
 	set_physics_process(not Engine.is_editor_hint())
@@ -241,15 +222,13 @@ func check_if_ground_hit_on_collision(collision_info, bla):
 		set_grounded(true)
 
 func check_if_still_on_ground(delta):
-	if(is_gravity_enabled() and not is_on_platform()):
+	if(is_gravity_enabled()):
 		if(test_move(transform, gravity_vector.normalized())):
 			pass
 		elif(test_move(get_global_transform(), gravity_vector.normalized() * delta * (Vector2(get_movement_speed(), 0)).rotated(max_slope_angle))):
 			move_and_collide(gravity_vector.normalized() * delta * (Vector2(get_movement_speed(), 0)).rotated(max_slope_angle))
 		else:
 			set_grounded(false)
-			
-
 
 func push(vector):
 	if(move_and_collide(vector) != null):
@@ -295,4 +274,6 @@ func damage_push(object):
 		is_pushed = true
 
 func get_AABB():
+	print("WHO USED get_AABB?")
+	
 	return AABB()
