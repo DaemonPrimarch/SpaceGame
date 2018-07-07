@@ -13,6 +13,7 @@ constant_angular_velocity = 0.0
 friction = 1.0
 bounce = 0.0
 script = ExtResource( 1 )
+moving_forward = true
 speed = 128
 length = 192
 
@@ -34,7 +35,7 @@ audio_bus_name = "Master"
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D" index="0"]
 
 build_mode = 0
-polygon = PoolVector2Array( -32, -32, -32, -64, 160, -64, 160, -32 )
+polygon = PoolVector2Array( -32, -32, -32, -40, 160, -40, 160, -32 )
 
 [node name="sprites" type="Node2D" parent="." index="2"]
 
@@ -58,5 +59,9 @@ texture = ExtResource( 2 )
 region_enabled = true
 region_rect = Rect2( 0, 0, 64, 64 )
 _sections_unfolded = [ "Region" ]
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
+
+[connection signal="body_exited" from="Area2D" to="." method="_on_Area2D_body_exited"]
 
 

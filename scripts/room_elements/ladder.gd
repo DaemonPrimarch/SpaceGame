@@ -24,12 +24,20 @@ func is_flippedV():
 	return flippedV
 
 func set_flippedH(val):
-	for child in get_children():
-		if(child is Node2D):
-			child.set_scale(child.get_scale() * Vector2(-1,1))
-			child.set_position(child.get_position() * Vector2(-1,1))
-			child.set_rotation(-child.get_rotation())
-	
+	if(is_inside_tree()):
+		var dir = 1
+		
+		if(val):
+			dir = -1
+		
+		for child in get_children():
+			if(child is Node2D):
+				child.set_scale(child.get_scale().abs() * Vector2(dir,1))
+				child.set_position(child.get_position().abs() * Vector2(dir,1))
+				child.set_rotation(-child.get_rotation())
+			if(child is Control):
+				child.rect_position = child.rect_position.abs()  * Vector2(dir,1)
+		
 	flippedH = val
 
 func set_flippedV(val):
@@ -43,6 +51,8 @@ func set_flippedV(val):
 
 func _ready():
 	loaded = true
+	
+	set_flippedH(is_flippedH())
 	
 	emit_signal("on_ready")
 	
@@ -59,12 +69,12 @@ func get_length():
 	return length
 
 func _on_Area2D_body_entered( body ):
-	if(body.is_in_group("can_climb_ladder")):
-		body.set_ladder(self)
+	if(body.is_in_group("handles_ladder")):
+		body.get_node("ladder_manager").set_ladder(self)
 
 func _on_Area2D_body_exited( body ):
-	if(body.is_in_group("can_climb_ladder")):
-		body.set_ladder(null)
+	if(body.is_in_group("handles_ladder")):
+		body.get_node("ladder_manager").set_ladder(null)
 
 func _on_ladder_length_changed():
 	var polygon = get_node("Area2D/CollisionPolygon2D").get_polygon()
@@ -72,6 +82,7 @@ func _on_ladder_length_changed():
 	for i in range(0, polygon.size()):
 		if(polygon[i].y >= 0):
 			polygon[i] = Vector2(polygon[i].x, get_length() - 32)
+			
 	get_node("Area2D/CollisionPolygon2D").set_polygon(polygon)
 	
 	get_node("Sprite").set_region_rect(Rect2(0,0,64, get_length()))

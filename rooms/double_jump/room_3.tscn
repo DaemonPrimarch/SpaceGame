@@ -8,7 +8,8 @@
 [ext_resource path="res://nodes/room_elements/bullet_hit_block.tscn" type="PackedScene" id=6]
 [ext_resource path="res://deprecated/camera_change_area.tscn" type="PackedScene" id=7]
 [ext_resource path="res://nodes/room_elements/moving_platforms/controllers/platform_mover.tscn" type="PackedScene" id=8]
-[ext_resource path="res://nodes/room_elements/moving_platforms/platforms/platform_2x05.tscn" type="PackedScene" id=9]
+[ext_resource path="res://deprecated/platform_2x05.tscn" type="PackedScene" id=9]
+
 
 
 

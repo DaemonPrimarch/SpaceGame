@@ -1,13 +1,15 @@
 tool
 
+
 extends "res://addons/extended_kinematic_body_2D/extended_kinematic_body_2D.gd"
 
 signal room_entered
 
 signal state_entered(state, previous_state)
 signal state_left(state, new_state)
-signal crushed
-
+signal crushed()
+signal ground_entered()
+signal ground_exited()
 
 var valid_states = ["UNDEFINED"]
 
@@ -152,6 +154,11 @@ var grounded = false
 
 func set_grounded(val):
 	grounded = val
+	
+	if(val):
+		emit_signal("ground_entered")
+	else:
+		emit_signal("ground_exited")
 
 func is_grounded():
 	return (grounded and is_gravity_enabled()) or is_on_platform()
@@ -196,10 +203,14 @@ func is_on_platform():
 func get_platform():
 	return platform
 
-
+var platform_manager = null
 
 #
 func _ready():
+	platform_manager = preload("res://nodes/managers/platform_manager.tscn").instance()
+	
+	add_child(platform_manager)
+	
 	add_to_group("entity")
 	set_physics_process(not Engine.is_editor_hint())
 
@@ -231,12 +242,13 @@ func check_if_ground_hit_on_collision(collision_info, bla):
 
 func check_if_still_on_ground(delta):
 	if(is_gravity_enabled() and not is_on_platform()):
-		if(test_move(get_global_transform(), gravity_vector.normalized() * 0.1)):
+		if(test_move(transform, gravity_vector.normalized())):
 			pass
 		elif(test_move(get_global_transform(), gravity_vector.normalized() * delta * (Vector2(get_movement_speed(), 0)).rotated(max_slope_angle))):
 			move_and_collide(gravity_vector.normalized() * delta * (Vector2(get_movement_speed(), 0)).rotated(max_slope_angle))
 		else:
 			set_grounded(false)
+			
 
 
 func push(vector):

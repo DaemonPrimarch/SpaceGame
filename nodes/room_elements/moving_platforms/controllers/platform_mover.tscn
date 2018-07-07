@@ -2,36 +2,13 @@
 
 [ext_resource path="res://scripts/room_elements/moving_platforms/controllers/platform_mover.gd" type="Script" id=1]
 
+[node name="platform_mover" type="Path2D" index="0"]
 
-
-
-[node name="platform_mover" type="Node2D"]
-
+self_modulate = Color( 0.5, 0.6, 1, 0.7 )
+curve = null
 script = ExtResource( 1 )
 active = true
-looping = false
 one_way = false
 moving_speed = 192
-snap = false
-step = false
-timed = false
-start_at = 0
-
-[node name="point_0" type="Position2D" parent="." index="0"]
-
-[node name="point_1" type="Position2D" parent="." index="1"]
-
-position = Vector2( 192, 0 )
-
-[node name="Timer" type="Timer" parent="." index="2"]
-
-process_mode = 1
-wait_time = 4.0
-one_shot = false
-autostart = false
-
-[connection signal="timeout" from="Timer" to="." method="go_to" binds= [ 0 ]]
-
-[connection signal="timeout" from="Timer" to="Timer" method="stop"]
 
 

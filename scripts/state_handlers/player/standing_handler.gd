@@ -1,4 +1,4 @@
-extends "res://scripts/state_handler.gd"
+extends "res://addons/state_handler/state_handler.gd"
 
 func enter_state(previous_state):
 	.enter_state(previous_state)
@@ -14,14 +14,16 @@ func process_state(delta):
 	
 	if(not get_parent().is_grounded()):
 		get_parent().set_state("FALLING")
-	elif(get_parent().is_action_pressed("play_down") and get_parent().is_in_top_ladder_area()):
+	elif(get_parent().is_action_pressed("play_down") and get_parent().get_node("ladder_manager").is_inside_ladder_top_area()):
 		get_parent().set_ladder(get_parent().get_ladder_top())
 		
 		get_parent().position += Vector2(0, 10)
 		
 		get_parent().set_state("CLIMBING")
-	elif(((get_parent().is_action_pressed("play_up") and get_parent().is_inside_ladder()) or get_parent().is_inside_walled_ladder()) and get_parent().can_enter_state("CLIMBING")):
+	elif(((get_parent().is_action_pressed("play_up") and get_parent().get_node("ladder_manager").is_inside_ladder()) or get_parent().get_node("ladder_manager").is_inside_walled_ladder()) and get_parent().can_enter_state("CLIMBING")):
 		get_parent().set_state("CLIMBING")
+	elif(get_parent().track_manager.is_on_track() and get_parent().can_enter_state("ON_TRACK")):
+		get_parent().set_state("ON_TRACK")
 	elif(get_parent().is_action_just_pressed("jump") and get_parent().can_enter_state("REGULAR_JUMPING")):
 		get_parent().set_state("REGULAR_JUMPING")
 	elif(get_parent().is_action_pressed("play_left") or get_parent().is_action_pressed("play_right")):

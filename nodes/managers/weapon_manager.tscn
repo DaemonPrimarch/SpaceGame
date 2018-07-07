@@ -2,14 +2,15 @@
 
 [ext_resource path="res://scripts/weapon_manager.gd" type="Script" id=1]
 
-[node name="weapon_manager" type="Node2D"]
+[node name="weapon_manager" type="Node2D" index="0"]
 
 script = ExtResource( 1 )
 weapon_path = null
+enabled = false
 
 [node name="weapon_bottom_front" type="Position2D" parent="." index="0"]
 
-position = Vector2( 29, -1.69873e-06 )
+position = Vector2( 29, -1.69873e-006 )
 rotation = 0.755711
 
 [node name="weapon_top_front" type="Position2D" parent="." index="1"]
@@ -30,6 +31,12 @@ position = Vector2( 50, -32 )
 [node name="weapon_bottom" type="Position2D" parent="." index="4"]
 
 position = Vector2( 0, 48 )
+rotation = 1.5708
+_sections_unfolded = [ "Transform" ]
+
+[node name="weapon_back" type="Position2D" parent="." index="5"]
+
+position = Vector2( -57.0546, -32.0001 )
 rotation = 1.5708
 _sections_unfolded = [ "Transform" ]
 

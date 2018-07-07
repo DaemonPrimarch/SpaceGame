@@ -28,7 +28,7 @@ func process_state(delta):
 		get_parent().set_state("STANDING")
 	elif(get_parent().is_action_just_pressed("jump") and get_parent().can_enter_state("DOUBLE_JUMPING")):
 		get_parent().set_state("DOUBLE_JUMPING")
-	elif(((get_parent().is_action_pressed("play_up") and get_parent().is_inside_ladder()) or get_parent().is_inside_walled_ladder()) and get_parent().can_enter_state("CLIMBING")):
+	elif(get_parent().is_action_pressed("play_up") and get_parent().get_node("ladder_manager").is_inside_ladder() and get_parent().can_enter_state("CLIMBING")):
 		get_parent().set_state("CLIMBING")
 	elif((get_parent().is_action_pressed("play_left") and wall_jump_direction.x == -1) or (get_parent().is_action_pressed("play_right") and wall_jump_direction.x == 1)):
 		var collision_info = get_parent().apply_velocity_x(delta)

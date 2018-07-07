@@ -1,16 +1,16 @@
 tool
 
-extends "res://scripts/entities/living_entity.gd"
+extends "res://addons/entities/living_entity.gd"
 
 export var max_movement_speed = 360
 
 var inventory = {}
 
-var inside_ladder = null
-
-var ladder_top = null
-
 onready var animation_player = get_node("AnimationPlayer")
+
+onready var track_manager = get_node("track_manager")
+onready var ladder_manager = get_node("ladder_manager")
+
 onready var col_pol = get_node("CollisionPolygon2D")
 
 func _init():
@@ -25,6 +25,8 @@ func _init():
 	add_state("PUSHED")
 	add_state("STANDING")
 	add_state("WALKING")
+	add_state("ON_TRACK")
+	add_state("TRACK_JUMPING")
 
 export var action_override = false
 
@@ -61,27 +63,6 @@ func get_max_movement_speed():
 	return max_movement_speed
 
 #LADDER HANDLERS:
-
-func is_inside_ladder():
-	return inside_ladder != null
-
-func is_inside_walled_ladder():
-	return is_inside_ladder() and get_ladder().is_in_group("walled_ladder")
-	
-func set_ladder(ladder):
-	inside_ladder = ladder
-	
-func set_top_ladder_area(ladder):
-	ladder_top = ladder
-	
-func is_in_top_ladder_area():
-	return ladder_top != null
-
-func get_ladder_top():
-	return ladder_top
-
-func get_ladder():
-	return inside_ladder
 
 func add_to_inventory(key):
 	#DEPRECATED

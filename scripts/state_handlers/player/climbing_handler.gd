@@ -4,6 +4,8 @@ export var climbing_speed = 64 * 4
 
 var is_inside_same_ladder = false
 
+var ladder = null
+
 func get_climbing_speed():
 	return climbing_speed
 	
@@ -16,12 +18,15 @@ func _ready():
 func enter_state(previous_state):
 	.enter_state(previous_state)
 	
-	get_parent().get_ladder().snap_to(get_parent())
+	ladder = get_parent().get_node("ladder_manager").get_ladder()
+	
+	ladder.snap_to(get_parent())
 	
 	is_inside_same_ladder = true
-	get_parent().get_ladder().get_node("Area2D").connect("body_exited", self, "ladder_left", [get_parent().get_ladder()])
 	
-	if(get_parent().get_ladder().is_flippedH()):
+	ladder.get_node("Area2D").connect("body_exited", self, "ladder_left", [ladder])
+	
+	if(ladder.is_flippedH()):
 		if(not get_parent().is_flippedH()):
 			get_parent().set_flippedH(true)
 	else:
@@ -42,13 +47,13 @@ func process_state(delta):
 	
 	if(get_parent().is_action_just_pressed("jump")):
 		get_parent().set_state("WALL_JUMPING")
-	elif(not get_parent().is_inside_ladder()):
+	elif(not get_parent().get_node("ladder_manager").is_inside_ladder()):
 		get_parent().set_state("FALLING")
 	else:
 		var dir = 0
 				
 		if(get_parent().is_action_pressed("play_up")):
-			if(not top_reached() or get_parent().get_ladder().is_in_group("top")):
+			if(not top_reached() or ladder.is_in_group("top")):
 				dir = -1
 		elif(get_parent().is_action_pressed("play_down")):
 			dir = 1
@@ -57,14 +62,15 @@ func process_state(delta):
 			get_parent().set_state("STANDING")
 
 func top_reached():
-	if( get_parent().global_position.y - get_parent().get_AABB().size.y + get_parent().get_AABB().position.y < get_parent().get_ladder().global_position.y - 32):
+	if(get_parent().global_position.y - get_parent().get_AABB().size.y + get_parent().get_AABB().position.y < ladder.global_position.y - 32):
 		return true
 	else:
 		return false
 
 func can_enter():
-	return .can_enter() and not (is_inside_same_ladder and get_parent().get_ladder().is_in_group("walled_ladder"))
+	return .can_enter() and get_parent().get_node("ladder_manager").is_inside_ladder() and not (is_inside_same_ladder and ladder.is_in_group("walled_ladder"))
 
 func ladder_left(body,ladder):
 	is_inside_same_ladder = false
+	
 	ladder.get_node("Area2D").disconnect("body_exited", self, "ladder_left")
