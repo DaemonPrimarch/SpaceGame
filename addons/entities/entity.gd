@@ -181,12 +181,13 @@ var platform_manager = null
 
 #
 func _ready():
-	if(Engine.is_editor_hint() and not has_node("platform_manager")):
+	if(not has_node("platform_manager")):
 		platform_manager = preload("res://nodes/managers/platform_manager.tscn").instance()
 		
 		add_child(platform_manager)
 		
-		platform_manager.set_owner(get_tree().get_edited_scene_root())
+		if(Engine.is_editor_hint()):
+			platform_manager.set_owner(get_tree().get_edited_scene_root())
 	else:
 		platform_manager = get_node("platform_manager")
 	

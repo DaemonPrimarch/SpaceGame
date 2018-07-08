@@ -1,3 +1,5 @@
+tool
+
 extends "entity.gd"
 
 signal HP_changed()

@@ -1,0 +1,270 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://scripts/entities/enemies/enemy_2.gd" type="Script" id=1]
+[ext_resource path="res://sprites/white.png" type="Texture" id=2]
+[ext_resource path="res://addons/state_handler/kinematic_body_2D.svg" type="Texture" id=3]
+
+[sub_resource type="GDScript" id=1]
+
+script/source = "extends \"res://addons/state_handler/state_handler.gd\"
+	
+func enter_state(previous_state):
+	.enter_state(previous_state)
+	
+func leave_state(new_state):
+	.leave_state(new_state)
+	
+func process_state(delta):
+	.process_state(delta)
+	
+	if(get_parent().get_player_detector().is_colliding()):
+		var collider = get_parent().get_player_detector().get_collider()
+		if(collider.is_in_group(\"player\")):
+			get_parent().set_charging_distance(abs(get_parent().position.x - collider.position.x) + get_parent().get_overrun_distance())
+			get_parent().set_state(\"CHARGING\")
+"
+
+[sub_resource type="GDScript" id=2]
+
+script/source = "extends \"res://addons/state_handler/state_handler.gd\"
+
+var speed
+
+func enter_state(previous_state):
+	.enter_state(previous_state)
+	
+	speed = get_parent().get_starting_speed()
+	
+func leave_state(new_state):
+	.leave_state(new_state)
+	
+func process_state(delta):
+	.process_state(delta)
+	
+	if(get_parent().get_charging_distance() > 0):
+		if(speed < get_parent().get_max_speed()):
+			speed = speed + get_parent().get_charging_acceleration()*delta
+			
+		var collider = get_parent().move_and_collide_slope(get_parent().get_direction() * Vector2(1,0) * delta * speed)
+		get_parent().set_charging_distance(get_parent().get_charging_distance() - speed*delta)
+		if(collider != null):
+			get_parent().set_state(\"STUNNED_BY_CRASH\")
+		elif(not get_parent().get_ground_detector().is_colliding()):
+			get_parent().set_state(\"STUNNED_BY_EXHAUSTION\")
+	else:
+		get_parent().set_state(\"STUNNED_BY_EXHAUSTION\")
+"
+
+[sub_resource type="GDScript" id=3]
+
+script/source = "extends \"res://addons/state_handler/state_handler.gd\"
+	
+func enter_state(previous_state):
+	.enter_state(previous_state)
+	
+func leave_state(new_state):
+	.leave_state(new_state)
+	
+func process_state(delta):
+	.process_state(delta)
+	
+	if(get_timer() > get_parent().get_stunned_time_crashed()):
+		get_parent().set_flippedH(not get_parent().is_flippedH())
+		get_parent().set_state(\"IDLE\")
+"
+
+[sub_resource type="GDScript" id=4]
+
+script/source = "extends \"res://addons/state_handler/state_handler.gd\"
+	
+func enter_state(previous_state):
+	.enter_state(previous_state)
+	
+func leave_state(new_state):
+	.leave_state(new_state)
+	
+func process_state(delta):
+	.process_state(delta)
+	
+	if(get_timer() > get_parent().get_stunned_time_exhausted()):
+		get_parent().set_flippedH(not get_parent().is_flippedH())
+		get_parent().set_state(\"IDLE\")"
+
+[node name="charging_enemy" type="KinematicBody2D" index="0"]
+
+input_pickable = false
+collision_layer = 1024
+collision_mask = 5
+collision/safe_margin = 0.08
+script = ExtResource( 1 )
+_sections_unfolded = [ "Collision", "collision" ]
+max_slope_angle = 1.5708
+flippedH = false
+flippedV = false
+moveable_by_collision = true
+current_state = "IDLE"
+movement_speed = 327.68
+gravity_enabled = false
+gravity_vector = Vector2( 0, 1152 )
+velocity = Vector2( 0, 0 )
+max_velocity = Vector2( -1, -1 )
+acceleration = Vector2( 0, 0 )
+can_be_pushed = false
+HP = 4
+max_HP = 4
+invulnerability_time = 0.1
+damage = 1
+hp_drop_chance = 0.5
+charging_acceleration = 1920
+starting_speed = 256
+max_speed = 1152
+stunned_time_crashed = 4
+stunned_time_exhausted = 3
+overrun_distance = 384
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." index="0"]
+
+build_mode = 0
+polygon = PoolVector2Array( 30, 32, 30, -30, -30, -30, -30, 32 )
+
+[node name="Area2D" type="Area2D" parent="." index="1"]
+
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+collision_layer = 0
+collision_mask = 2
+audio_bus_override = false
+audio_bus_name = "Master"
+_sections_unfolded = [ "Collision" ]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D" index="0"]
+
+build_mode = 0
+polygon = PoolVector2Array( -30, -30, 30, -30, 30, 32, -30, 32 )
+
+[node name="Panel" type="Panel" parent="." index="2"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = -32.0
+margin_top = -32.0
+margin_right = 32.0
+margin_bottom = 32.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+
+[node name="Sprite" type="Sprite" parent="." index="3"]
+
+modulate = Color( 0.558588, 0.538223, 0.0370941, 1 )
+position = Vector2( 3.05176e-005, 1.52588e-005 )
+scale = Vector2( 0.0555556, 0.0987654 )
+texture = ExtResource( 2 )
+_sections_unfolded = [ "Visibility" ]
+
+[node name="eye_white" type="Sprite" parent="." index="4"]
+
+modulate = Color( 0.87502, 0.868863, 0.717765, 1 )
+position = Vector2( 16, -16 )
+scale = Vector2( 0.0138889, 0.0246914 )
+texture = ExtResource( 2 )
+_sections_unfolded = [ "Visibility" ]
+
+[node name="eye_black" type="Sprite" parent="." index="5"]
+
+modulate = Color( 0.875, 0.868858, 0.717773, 1 )
+self_modulate = Color( 0, 0, 0, 1 )
+position = Vector2( 20, -16 )
+scale = Vector2( 0.00607639, 0.0108025 )
+texture = ExtResource( 2 )
+_sections_unfolded = [ "Visibility" ]
+
+[node name="Label" type="Label" parent="." index="6"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = -32.0
+margin_top = -32.0
+margin_right = 32.0
+margin_bottom = 32.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+text = "enemy_2"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="idle_handler" type="Node2D" parent="." index="7"]
+
+script = SubResource( 1 )
+__meta__ = {
+"_editor_icon": ExtResource( 3 )
+}
+handled_state = "IDLE"
+enabled = true
+no_gravity = false
+
+[node name="charging_handler" type="Node2D" parent="." index="8"]
+
+script = SubResource( 2 )
+__meta__ = {
+"_editor_icon": ExtResource( 3 )
+}
+handled_state = "CHARGING"
+enabled = true
+no_gravity = false
+
+[node name="stunned_by_crash_handler" type="Node2D" parent="." index="9"]
+
+script = SubResource( 3 )
+__meta__ = {
+"_editor_icon": ExtResource( 3 )
+}
+handled_state = "STUNNED_BY_CRASH"
+enabled = true
+no_gravity = false
+
+[node name="player_detector" type="RayCast2D" parent="." index="10"]
+
+enabled = true
+exclude_parent = true
+cast_to = Vector2( 512, 0 )
+collision_mask = 2
+
+[node name="ground_detector" type="RayCast2D" parent="." index="11"]
+
+position = Vector2( 32, 0 )
+enabled = true
+exclude_parent = true
+cast_to = Vector2( 0, 60 )
+collision_mask = 1
+
+[node name="stunned_by_exhaustion_handler" type="Node2D" parent="." index="12"]
+
+script = SubResource( 4 )
+__meta__ = {
+"_editor_icon": ExtResource( 3 )
+}
+handled_state = "STUNNED_BY_EXHAUSTION"
+enabled = true
+no_gravity = false
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_object_hit"]
+
+

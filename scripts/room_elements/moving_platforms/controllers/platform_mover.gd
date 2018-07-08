@@ -1,3 +1,4 @@
+tool
 extends Path2D
 
 export var active = true
@@ -37,18 +38,33 @@ func get_movement_direction():
 
 func has_arrived_at_next_point():
 	return ((get_next_point() - get_previous_point()).dot(get_movement_direction()) <= 0)
+	
+func has_platform():
+	return platform != null
 
 func init_platform():
 	for child in get_children():
 		if(child.is_in_group("platform")):
 			platform = child
 	
+	if(has_platform()):
+		get_platform().set_meta("_edit_lock_", true)
+			
+		emit_signal("platform_loaded")
+		
+		get_platform().position = get_previous_point()
+
+func add_child(node):
+	.add_child(node)
+	
+	if(not has_platform()):
+		init_platform()
+
+	
 func _ready():
 	init_platform()
 	
-	emit_signal("platform_loaded")
-
-	get_platform().position = get_previous_point()
+	set_physics_process(not Engine.editor_hint)
 	
 func get_velocity():
 	return (get_next_point() - get_previous_point()) / (get_next_point() - get_previous_point()).length() * get_movement_speed()

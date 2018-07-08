@@ -1,7 +1,9 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://scripts/entities/enemies/enemy_1.gd" type="Script" id=1]
-[ext_resource path="res://sprites/white.png" type="Texture" id=2]
+[ext_resource path="res://nodes/managers/platform_manager.tscn" type="PackedScene" id=2]
+[ext_resource path="res://sprites/white.png" type="Texture" id=3]
+[ext_resource path="res://addons/state_handler/kinematic_body_2D.svg" type="Texture" id=4]
 
 [sub_resource type="Animation" id=1]
 
@@ -22,7 +24,17 @@ tracks/0/keys = {
 "values": [ 7, 6, 5, 4, 2, 1 ]
 }
 
-[node name="enemy_1" type="KinematicBody2D"]
+[sub_resource type="GDScript" id=2]
+
+script/source = "extends \"res://addons/state_handler/state_handler.gd\"
+
+func process_state(delta):
+	get_parent().move_and_collide_slope(get_parent().get_direction() * Vector2(1,0) * -1 * delta * get_parent().get_movement_speed())
+	
+	if(not $ground_detector.is_colliding() or $wall_detector.is_colliding()):
+		get_parent().set_flippedH(not get_parent().is_flippedH())"
+
+[node name="enemy_1" type="KinematicBody2D" index="0"]
 
 input_pickable = false
 collision_layer = 1024
@@ -30,20 +42,27 @@ collision_mask = 5
 collision/safe_margin = 0.08
 script = ExtResource( 1 )
 _sections_unfolded = [ "Collision", "Transform", "collision" ]
-max_slope_angle = 1.5708
+max_slope_angle = 0.785398
 flippedH = false
 flippedV = false
 moveable_by_collision = true
-movement_speed = 128.0
-gravity_enabled = true
-gravity_vector = Vector2( 0, 256 )
+current_state = "BACK_FORTH"
+movement_speed = 327.68
+gravity_enabled = false
+gravity_vector = Vector2( 0, 1152 )
+velocity = Vector2( 0, 0 )
+max_velocity = Vector2( -1, -1 )
+acceleration = Vector2( 0, 0 )
 can_be_pushed = false
-HP = 2
-max_HP = 2
-invulnerability_time = 0.1
+HP = 100
+max_HP = 100
+invulnerability_time = 1.0
 damage = 1
+hp_drop_chance = 0.5
 
-[node name="Area2D" type="Area2D" parent="." index="0"]
+[node name="platform_manager" parent="." index="0" instance=ExtResource( 2 )]
+
+[node name="Area2D" type="Area2D" parent="." index="1"]
 
 input_pickable = true
 gravity_vec = Vector2( 0, 1 )
@@ -61,12 +80,12 @@ _sections_unfolded = [ "Collision" ]
 build_mode = 0
 polygon = PoolVector2Array( 30, -30, 30, 32, -30, 32, -30, -30 )
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." index="1"]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." index="2"]
 
 build_mode = 0
 polygon = PoolVector2Array( -30, -30, 30, -30, 30, 32, -30, 32 )
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="2"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="3"]
 
 root_node = NodePath("..")
 autoplay = "walking"
@@ -76,30 +95,7 @@ playback_speed = 1.0
 anims/walking = SubResource( 1 )
 blend_times = [  ]
 
-[node name="ground_detector" type="RayCast2D" parent="." index="3"]
-
-position = Vector2( -32.1745, 31.7773 )
-enabled = true
-exclude_parent = true
-cast_to = Vector2( 0, 50 )
-collision_mask = 1
-
-[node name="wall_detector" type="RayCast2D" parent="." index="4"]
-
-position = Vector2( 13.5053, 0.794434 )
-enabled = true
-exclude_parent = true
-cast_to = Vector2( -50, 0 )
-collision_mask = 1
-
-[node name="debug_vector" type="RayCast2D" parent="." index="5"]
-
-enabled = false
-exclude_parent = true
-cast_to = Vector2( 0, 50 )
-collision_mask = 1
-
-[node name="Panel" type="Panel" parent="." index="6"]
+[node name="Panel" type="Panel" parent="." index="4"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -116,17 +112,17 @@ mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
 
-[node name="Sprite" type="Sprite" parent="." index="7"]
+[node name="Sprite" type="Sprite" parent="." index="5"]
 
 modulate = Color( 0.374426, 0.0258179, 0.550781, 1 )
-position = Vector2( 3.8147e-06, -3.35317e-05 )
+position = Vector2( 3.8147e-006, -3.35317e-005 )
 scale = Vector2( 0.444444, 0.0987653 )
-texture = ExtResource( 2 )
+texture = ExtResource( 3 )
 hframes = 8
 frame = 5
 _sections_unfolded = [ "Animation", "Region", "Visibility" ]
 
-[node name="Label" type="Label" parent="." index="8"]
+[node name="Label" type="Label" parent="." index="6"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -149,7 +145,7 @@ percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
 
-[node name="debug_invulnerable_label" type="Label" parent="." index="9"]
+[node name="debug_invulnerable_label" type="Label" parent="." index="7"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -168,6 +164,32 @@ size_flags_vertical = 4
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
+
+[node name="back_forth_handler" type="Node2D" parent="." index="8"]
+
+script = SubResource( 2 )
+__meta__ = {
+"_editor_icon": ExtResource( 4 )
+}
+handled_state = "BACK_FORTH"
+enabled = true
+no_gravity = false
+
+[node name="ground_detector" type="RayCast2D" parent="back_forth_handler" index="0"]
+
+position = Vector2( -32.1745, 31.7773 )
+enabled = true
+exclude_parent = true
+cast_to = Vector2( 0, 50 )
+collision_mask = 1
+
+[node name="wall_detector" type="RayCast2D" parent="back_forth_handler" index="1"]
+
+position = Vector2( 13.5053, 0.794434 )
+enabled = true
+exclude_parent = true
+cast_to = Vector2( -50, 0 )
+collision_mask = 1
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_object_hit"]
 
