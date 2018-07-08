@@ -1,6 +1,6 @@
 [gd_scene format=2]
 
-[node name="temporary_sprite" type="Panel"]
+[node name="temporary_sprite" type="Panel" index="0"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -37,5 +37,6 @@ text = "Temp_Sprite"
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
+_sections_unfolded = [ "Rect" ]
 
 

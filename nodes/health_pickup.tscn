@@ -3,7 +3,7 @@
 [ext_resource path="res://scripts/health_pickup.gd" type="Script" id=1]
 [ext_resource path="res://sprites/white.png" type="Texture" id=2]
 
-[node name="Area2D" type="Area2D"]
+[node name="Area2D" type="Area2D" index="0"]
 
 input_pickable = true
 gravity_vec = Vector2( 0, 1 )
@@ -21,7 +21,7 @@ polygon = PoolVector2Array( -16, -16, 16, -16, 16, 16, -16, 16 )
 
 [node name="Sprite" type="Sprite" parent="." index="1"]
 
-position = Vector2( 0, -1.52588e-05 )
+position = Vector2( 0, -1.52588e-005 )
 scale = Vector2( 0.0277778, 0.0493827 )
 texture = ExtResource( 2 )
 
