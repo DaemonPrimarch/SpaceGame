@@ -4,8 +4,8 @@
 [ext_resource path="res://addons/entities/entity.svg" type="Texture" id=2]
 [ext_resource path="res://nodes/managers/bullet_hit_manager.tscn" type="PackedScene" id=3]
 [ext_resource path="res://scripts/managers/bullet_hit_manager.gd" type="Script" id=4]
-[ext_resource path="res://nodes/helpers/ladder_manager.tscn" type="PackedScene" id=5]
-[ext_resource path="res://nodes/helpers/track_manager.tscn" type="PackedScene" id=6]
+[ext_resource path="res://nodes/managers/ladder_manager.tscn" type="PackedScene" id=5]
+[ext_resource path="res://nodes/managers/track_manager.tscn" type="PackedScene" id=6]
 [ext_resource path="res://nodes/managers/platform_manager.tscn" type="PackedScene" id=7]
 [ext_resource path="res://addons/state_labels/boolean_state_label.gd" type="Script" id=8]
 [ext_resource path="res://addons/state_labels/label.svg" type="Texture" id=9]
@@ -13,8 +13,12 @@
 [ext_resource path="res://sprites/robot_demo.png" type="Texture" id=11]
 [ext_resource path="res://nodes/player_light.tscn" type="PackedScene" id=12]
 [ext_resource path="res://nodes/managers/weapon_manager.tscn" type="PackedScene" id=13]
-[ext_resource path="res://nodes/managers/respawner.tscn" type="PackedScene" id=14]
+[ext_resource path="res://nodes/helpers/respawn_helper.tscn" type="PackedScene" id=14]
 [ext_resource path="res://addons/state_labels/state_label.gd" type="Script" id=15]
+
+
+
+
 
 [sub_resource type="Animation" id=1]
 
