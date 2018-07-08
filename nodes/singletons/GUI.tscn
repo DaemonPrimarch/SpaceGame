@@ -1,14 +1,11 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://scripts/singletons/GUI.gd" type="Script" id=1]
 [ext_resource path="res://nodes/GUI_elements/HP_bar_handler.tscn" type="PackedScene" id=2]
 [ext_resource path="res://nodes/GUI_elements/dialog_box.tscn" type="PackedScene" id=3]
-[ext_resource path="res://deprecated/state_label.tscn" type="PackedScene" id=4]
-[ext_resource path="res://nodes/GUI_elements/menu.tscn" type="PackedScene" id=5]
+[ext_resource path="res://nodes/GUI_elements/menu.tscn" type="PackedScene" id=4]
 
-
-
-[node name="GUI_layer" type="CanvasLayer"]
+[node name="GUI_layer" type="CanvasLayer" index="0"]
 
 layer = 1
 offset = Vector2( 0, 0 )
@@ -50,14 +47,7 @@ percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
 
-[node name="state_label" parent="." index="3" instance=ExtResource( 4 )]
-
-margin_top = 936.0
-margin_bottom = 950.0
-node_path = NodePath("/root/ROOM_MANAGER")
-tracked_value = "loaded_rooms"
-
-[node name="menu" parent="." index="4" instance=ExtResource( 5 )]
+[node name="menu" parent="." index="3" instance=ExtResource( 4 )]
 
 visible = false
 
