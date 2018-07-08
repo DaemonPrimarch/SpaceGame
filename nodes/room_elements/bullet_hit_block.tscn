@@ -1,9 +1,10 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://scripts/room_elements/bullet_hit_block.gd" type="Script" id=1]
 [ext_resource path="res://sprites/white.png" type="Texture" id=2]
+[ext_resource path="res://nodes/managers/bullet_hit_manager.tscn" type="PackedScene" id=3]
 
-[node name="StaticBody2D" type="StaticBody2D"]
+[node name="StaticBody2D" type="StaticBody2D" index="0"]
 
 input_pickable = false
 collision_layer = 2048
@@ -41,7 +42,7 @@ size_flags_vertical = 1
 [node name="Sprite" type="Sprite" parent="." index="2"]
 
 modulate = Color( 0.621094, 0.3404, 0.0121307, 1 )
-position = Vector2( 2.38419e-07, -3.57628e-06 )
+position = Vector2( 2.38419e-007, -3.57628e-006 )
 scale = Vector2( 0.0555556, 0.0987654 )
 texture = ExtResource( 2 )
 _sections_unfolded = [ "Visibility" ]
@@ -69,5 +70,9 @@ valign = 1
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
+
+[node name="bullet_hit_manager" parent="." index="4" instance=ExtResource( 3 )]
+
+[connection signal="bullet_hit" from="bullet_hit_manager" to="." method="_on_bullet_hit"]
 
 

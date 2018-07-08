@@ -24,7 +24,7 @@ func decay_timer_timeout():
 
 func on_body_entered( body ):
 	if(body.is_in_group("handles_bullet_hit")):
-		body.bullet_hit_manager.emit_signal("bullet_hit", self)
+		body.get_node("bullet_hit_manager").emit_signal("bullet_hit", self)
 	
 	destroy()
 	

@@ -8,8 +8,6 @@ var toggled = false
 func is_toggleable():
 	return toggleable
 
-onready var bullet_hit_manager = get_node("bullet_hit_manager")
-
 func _on_bullet_hit(bullet):
 	if(is_toggleable()):
 		toggle()
