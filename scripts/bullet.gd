@@ -23,12 +23,8 @@ func decay_timer_timeout():
 	destroy()
 
 func on_body_entered( body ):
-	if(body.has_method("_on_bullet_hit")):
-		#DEPRECATED
-		body._on_bullet_hit(self)
-	
-	if(body.is_in_group("bullet_detecting")):
-		body.emit_signal("bullet_hit", self)
+	if(body.is_in_group("handles_bullet_hit")):
+		body.bullet_hit_manager.emit_signal("bullet_hit", self)
 	
 	destroy()
 	

@@ -1,9 +1,11 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://scripts/entities/enemies/enemy_1.gd" type="Script" id=1]
 [ext_resource path="res://nodes/managers/platform_manager.tscn" type="PackedScene" id=2]
-[ext_resource path="res://sprites/white.png" type="Texture" id=3]
-[ext_resource path="res://addons/state_handler/kinematic_body_2D.svg" type="Texture" id=4]
+[ext_resource path="res://nodes/managers/bullet_hit_manager.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scripts/managers/bullet_hit_manager.gd" type="Script" id=4]
+[ext_resource path="res://sprites/white.png" type="Texture" id=5]
+[ext_resource path="res://addons/state_handler/kinematic_body_2D.svg" type="Texture" id=6]
 
 [sub_resource type="Animation" id=1]
 
@@ -34,7 +36,7 @@ func process_state(delta):
 	if(not $ground_detector.is_colliding() or $wall_detector.is_colliding()):
 		get_parent().set_flippedH(not get_parent().is_flippedH())"
 
-[node name="enemy_1" type="KinematicBody2D" index="0"]
+[node name="back_forth_enemy" type="KinematicBody2D" index="0"]
 
 input_pickable = false
 collision_layer = 1024
@@ -62,7 +64,11 @@ hp_drop_chance = 0.5
 
 [node name="platform_manager" parent="." index="0" instance=ExtResource( 2 )]
 
-[node name="Area2D" type="Area2D" parent="." index="1"]
+[node name="bullet_hit_manager" type="Node2D" parent="." index="1" instance=ExtResource( 3 )]
+
+script = ExtResource( 4 )
+
+[node name="Area2D" type="Area2D" parent="." index="2"]
 
 input_pickable = true
 gravity_vec = Vector2( 0, 1 )
@@ -80,12 +86,12 @@ _sections_unfolded = [ "Collision" ]
 build_mode = 0
 polygon = PoolVector2Array( 30, -30, 30, 32, -30, 32, -30, -30 )
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." index="2"]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." index="3"]
 
 build_mode = 0
 polygon = PoolVector2Array( -30, -30, 30, -30, 30, 32, -30, 32 )
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="3"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="4"]
 
 root_node = NodePath("..")
 autoplay = "walking"
@@ -95,7 +101,7 @@ playback_speed = 1.0
 anims/walking = SubResource( 1 )
 blend_times = [  ]
 
-[node name="Panel" type="Panel" parent="." index="4"]
+[node name="Panel" type="Panel" parent="." index="5"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -112,17 +118,17 @@ mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
 
-[node name="Sprite" type="Sprite" parent="." index="5"]
+[node name="Sprite" type="Sprite" parent="." index="6"]
 
 modulate = Color( 0.374426, 0.0258179, 0.550781, 1 )
 position = Vector2( 3.8147e-006, -3.35317e-005 )
 scale = Vector2( 0.444444, 0.0987653 )
-texture = ExtResource( 3 )
+texture = ExtResource( 5 )
 hframes = 8
 frame = 5
 _sections_unfolded = [ "Animation", "Region", "Visibility" ]
 
-[node name="Label" type="Label" parent="." index="6"]
+[node name="Label" type="Label" parent="." index="7"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -145,7 +151,7 @@ percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
 
-[node name="debug_invulnerable_label" type="Label" parent="." index="7"]
+[node name="debug_invulnerable_label" type="Label" parent="." index="8"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -165,11 +171,11 @@ percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
 
-[node name="back_forth_handler" type="Node2D" parent="." index="8"]
+[node name="back_forth_handler" type="Node2D" parent="." index="9"]
 
 script = SubResource( 2 )
 __meta__ = {
-"_editor_icon": ExtResource( 4 )
+"_editor_icon": ExtResource( 6 )
 }
 handled_state = "BACK_FORTH"
 enabled = true

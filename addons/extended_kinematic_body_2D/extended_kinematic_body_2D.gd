@@ -4,7 +4,6 @@ extends KinematicBody2D
 signal collided(info, moved_object)
 signal light_entered(source)
 signal light_exited(source)
-signal bullet_hit(bullet)
 signal flippedH()
 signal flippedV()
 
@@ -18,7 +17,6 @@ export var moveable_by_collision = true setget set_moveable_by_collision, is_mov
 func _ready():
 	add_to_group("extended_kinematic_body_2D")
 	add_to_group("light_detecting")
-	add_to_group("bullet_detecting")
 
 func set_moveable_by_collision(val):
 	moveable_by_collision = val

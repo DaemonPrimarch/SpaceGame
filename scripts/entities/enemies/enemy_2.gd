@@ -1,3 +1,4 @@
+tool
 extends "res://scripts/entities/enemies/enemy.gd"
 
 export var charging_acceleration = 64*30 setget set_charging_acceleration, get_charging_acceleration

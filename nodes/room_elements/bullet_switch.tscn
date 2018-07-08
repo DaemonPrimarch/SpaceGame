@@ -1,9 +1,10 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://scripts/room_elements/bullet_switch.gd" type="Script" id=1]
-[ext_resource path="res://sprites/metroid_tilesheet.png" type="Texture" id=2]
+[ext_resource path="res://nodes/managers/bullet_hit_manager.tscn" type="PackedScene" id=2]
+[ext_resource path="res://sprites/metroid_tilesheet.png" type="Texture" id=3]
 
-[node name="bullet_switch" type="StaticBody2D"]
+[node name="bullet_switch" type="StaticBody2D" index="0"]
 
 input_pickable = false
 collision_layer = 1
@@ -17,15 +18,17 @@ _sections_unfolded = [ "Collision" ]
 state = false
 toggleable = false
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." index="0"]
+[node name="bullet_hit_manager" parent="." index="0" instance=ExtResource( 2 )]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." index="1"]
 
 build_mode = 0
 polygon = PoolVector2Array( -32, -32, -32, 32, 32, 32, 32, -32 )
 
-[node name="Sprite" type="Sprite" parent="." index="1"]
+[node name="Sprite" type="Sprite" parent="." index="2"]
 
 modulate = Color( 1, 0, 0, 0.745843 )
-texture = ExtResource( 2 )
+texture = ExtResource( 3 )
 vframes = 50
 hframes = 48
 frame = 198
@@ -34,5 +37,7 @@ _sections_unfolded = [ "Animation", "Offset", "Transform", "Visibility" ]
 [connection signal="switched_off" from="." to="Sprite" method="set_modulate" binds= [ Color( 1, 0, 0, 0.745843 ) ]]
 
 [connection signal="switched_on" from="." to="Sprite" method="set_modulate" binds= [ Color( 0.0078125, 1, 0, 0.475137 ) ]]
+
+[connection signal="bullet_hit" from="bullet_hit_manager" to="." method="_on_bullet_hit"]
 
 

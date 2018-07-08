@@ -1,6 +1,5 @@
 tool
 
-
 extends "res://addons/extended_kinematic_body_2D/extended_kinematic_body_2D.gd"
 
 signal room_entered()
@@ -178,8 +177,8 @@ func is_inside_helper_area(type):
 var first_state = true
 
 var platform_manager = null
+var bullet_hit_manager = null
 
-#
 func _ready():
 	if(not has_node("platform_manager")):
 		platform_manager = preload("res://nodes/managers/platform_manager.tscn").instance()
@@ -190,6 +189,16 @@ func _ready():
 			platform_manager.set_owner(get_tree().get_edited_scene_root())
 	else:
 		platform_manager = get_node("platform_manager")
+	
+	if(not has_node("bullet_hit_manager")):
+		bullet_hit_manager = preload("res://nodes/managers/bullet_hit_manager.tscn").instance()
+		
+		add_child(bullet_hit_manager)
+		
+		if(Engine.is_editor_hint()):
+			bullet_hit_manager.set_owner(get_tree().get_edited_scene_root())
+	else:
+		bullet_hit_manager = get_node("bullet_hit_manager")
 	
 
 	

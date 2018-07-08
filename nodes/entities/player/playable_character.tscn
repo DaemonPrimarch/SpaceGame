@@ -1,19 +1,20 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://scripts/entities/player/playable_character.gd" type="Script" id=1]
 [ext_resource path="res://addons/entities/entity.svg" type="Texture" id=2]
-[ext_resource path="res://nodes/helpers/ladder_manager.tscn" type="PackedScene" id=3]
-[ext_resource path="res://nodes/helpers/track_manager.tscn" type="PackedScene" id=4]
-[ext_resource path="res://addons/state_labels/boolean_state_label.gd" type="Script" id=5]
-[ext_resource path="res://addons/state_labels/label.svg" type="Texture" id=6]
-[ext_resource path="res://deprecated/layer_changer.tscn" type="PackedScene" id=7]
-[ext_resource path="res://sprites/robot_demo.png" type="Texture" id=8]
-[ext_resource path="res://nodes/player_light.tscn" type="PackedScene" id=9]
-[ext_resource path="res://nodes/managers/weapon_manager.tscn" type="PackedScene" id=10]
-[ext_resource path="res://nodes/managers/respawner.tscn" type="PackedScene" id=11]
-[ext_resource path="res://addons/state_labels/state_label.gd" type="Script" id=12]
-[ext_resource path="res://nodes/managers/platform_manager.tscn" type="PackedScene" id=13]
-[ext_resource path="res://scripts/managers/platform_manager.gd" type="Script" id=14]
+[ext_resource path="res://nodes/managers/bullet_hit_manager.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scripts/managers/bullet_hit_manager.gd" type="Script" id=4]
+[ext_resource path="res://nodes/helpers/ladder_manager.tscn" type="PackedScene" id=5]
+[ext_resource path="res://nodes/helpers/track_manager.tscn" type="PackedScene" id=6]
+[ext_resource path="res://nodes/managers/platform_manager.tscn" type="PackedScene" id=7]
+[ext_resource path="res://addons/state_labels/boolean_state_label.gd" type="Script" id=8]
+[ext_resource path="res://addons/state_labels/label.svg" type="Texture" id=9]
+[ext_resource path="res://deprecated/layer_changer.tscn" type="PackedScene" id=10]
+[ext_resource path="res://sprites/robot_demo.png" type="Texture" id=11]
+[ext_resource path="res://nodes/player_light.tscn" type="PackedScene" id=12]
+[ext_resource path="res://nodes/managers/weapon_manager.tscn" type="PackedScene" id=13]
+[ext_resource path="res://nodes/managers/respawner.tscn" type="PackedScene" id=14]
+[ext_resource path="res://addons/state_labels/state_label.gd" type="Script" id=15]
 
 [sub_resource type="Animation" id=1]
 
@@ -127,9 +128,7 @@ tracks/0/keys = {
 "values": [ 5, 6, 7, 8, 9 ]
 }
 
-[node name="playable_character" type="KinematicBody2D" index="0" groups=[
-"can_climb_ladder",
-]]
+[node name="playable_character" type="KinematicBody2D" index="0"]
 
 input_pickable = false
 collision_layer = 2
@@ -158,11 +157,17 @@ invulnerability_time = 1.0
 max_movement_speed = 360
 action_override = false
 
-[node name="ladder_manager" parent="." index="0" instance=ExtResource( 3 )]
+[node name="bullet_hit_manager" type="Node2D" parent="." index="0" instance=ExtResource( 3 )]
 
-[node name="track_manager" parent="." index="1" instance=ExtResource( 4 )]
+script = ExtResource( 4 )
 
-[node name="BooleanStateLabel2" type="Label" parent="." index="2"]
+[node name="ladder_manager" parent="." index="1" instance=ExtResource( 5 )]
+
+[node name="track_manager" parent="." index="2" instance=ExtResource( 6 )]
+
+[node name="platform_manager" parent="." index="3" instance=ExtResource( 7 )]
+
+[node name="BooleanStateLabel2" type="Label" parent="." index="4"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -181,9 +186,9 @@ size_flags_vertical = 4
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
-script = ExtResource( 5 )
+script = ExtResource( 8 )
 __meta__ = {
-"_editor_icon": ExtResource( 6 )
+"_editor_icon": ExtResource( 9 )
 }
 node_path = NodePath("../track_manager")
 tracked_value = ""
@@ -191,13 +196,13 @@ tracked_function = "is_on_track"
 true_value = "ON_TRACK"
 false_value = ""
 
-[node name="layer_changer" parent="." index="3" instance=ExtResource( 7 )]
+[node name="layer_changer" parent="." index="5" instance=ExtResource( 10 )]
 
-[node name="Sprite" type="Sprite" parent="." index="4"]
+[node name="Sprite" type="Sprite" parent="." index="6"]
 
 position = Vector2( 12, -24 )
 scale = Vector2( 1.5, 2 )
-texture = ExtResource( 8 )
+texture = ExtResource( 11 )
 vframes = 2
 hframes = 16
 frame = 18
@@ -206,7 +211,7 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." index="5"]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." index="7"]
 
 position = Vector2( -32, 0 )
 build_mode = 0
@@ -215,7 +220,7 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="6"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="8"]
 
 root_node = NodePath("..")
 autoplay = "idle"
@@ -231,13 +236,13 @@ anims/run_gun = SubResource( 6 )
 blend_times = [  ]
 _sections_unfolded = [ "Playback Options" ]
 
-[node name="light" parent="." index="7" instance=ExtResource( 9 )]
+[node name="light" parent="." index="9" instance=ExtResource( 12 )]
 
-[node name="weapon_manager" parent="." index="8" instance=ExtResource( 10 )]
+[node name="weapon_manager" parent="." index="10" instance=ExtResource( 13 )]
 
-[node name="respawner" parent="." index="9" instance=ExtResource( 11 )]
+[node name="respawner" parent="." index="11" instance=ExtResource( 14 )]
 
-[node name="StringStateLabel" type="Label" parent="." index="10"]
+[node name="StringStateLabel" type="Label" parent="." index="12"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -256,16 +261,12 @@ size_flags_vertical = 4
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
-script = ExtResource( 12 )
+script = ExtResource( 15 )
 __meta__ = {
-"_editor_icon": ExtResource( 6 )
+"_editor_icon": ExtResource( 9 )
 }
 node_path = NodePath("..")
 tracked_value = ""
 tracked_function = "get_state"
-
-[node name="platform_manager" type="Node2D" parent="." index="11" instance=ExtResource( 13 )]
-
-script = ExtResource( 14 )
 
 

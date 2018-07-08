@@ -15,7 +15,7 @@ func get_damage():
 	return damage
 
 func _ready():
-	pass
+	bullet_hit_manager.connect("bullet_hit", self, "_on_bullet_hit")
 
 func get_HP_drop_chance():
 	return hp_drop_chance
