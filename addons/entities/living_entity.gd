@@ -30,6 +30,7 @@ func init_invulnerability_timer():
 	invulnerability_timer.wait_time = get_invulnerability_time()
 	
 	invulnerability_timer.connect("timeout",self,"_on_invulnerability_timer_timeout") 
+	
 	add_child(invulnerability_timer)
 
 func get_HP():
@@ -54,7 +55,7 @@ func set_max_HP(max_hp):
 	max_HP = max_hp
 
 func damage(d):
-	if(not invulnerable):
+	if(not is_invulnerable()):
 		set_HP(get_HP() - d)
 		invulnerability_timer.start()
 		set_invulnerable(true)
