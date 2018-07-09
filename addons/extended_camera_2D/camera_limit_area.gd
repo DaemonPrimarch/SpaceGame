@@ -33,6 +33,4 @@ func get_AABB():
 			else:
 				box = child.get_AABB()
 	
-	box.position += global_position
-	
 	return box

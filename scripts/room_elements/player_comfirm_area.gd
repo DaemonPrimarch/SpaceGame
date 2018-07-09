@@ -15,14 +15,15 @@ func set_enabled(val):
 	enabled = val
 
 func _physics_process(delta):
-	if(not get_overlapping_bodies().empty() and is_enabled() and get_overlapping_bodies().has(get_node("/root/ROOM_MANAGER").get_room_of_node(self).get_node("player"))):
-			get_node('Label').visible = true
-			if(Input.is_action_just_pressed("ui_accept")):
-				emit_signal("comfirmed_by", get_overlapping_bodies().has(get_node("/root/ROOM_MANAGER").get_room_of_node(self).get_node("player")))
-				emit_signal("comfirmed")
-				get_node('Label').visible = false
-				
-				if(one_time):
-					queue_free()
-	else:
-		get_node('Label').visible = false
+	get_node('Label').visible = false
+	
+	if(is_enabled()):
+		for node in get_overlapping_bodies():
+			if(node.is_in_group("player")):	
+				get_node('Label').visible = true
+				if(Input.is_action_just_pressed("ui_accept")):
+					emit_signal("comfirmed_by", node)
+					emit_signal("comfirmed")
+					
+					if(one_time):
+						queue_free()

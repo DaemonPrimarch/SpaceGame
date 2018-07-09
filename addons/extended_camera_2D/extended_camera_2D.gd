@@ -43,8 +43,8 @@ func set_limit_area(area):
 				
 				limit_left = aabb.position.x
 				limit_right = aabb.end.x
-				limit_top = aabb.position.y - aabb.size.y
-				limit_bottom = aabb.position.y
+				limit_top = aabb.position.y
+				limit_bottom = aabb.end.y
 				
 				print(aabb)
 		else:

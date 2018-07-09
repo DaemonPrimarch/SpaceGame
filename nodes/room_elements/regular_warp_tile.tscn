@@ -7,7 +7,7 @@
 [node name="warp_tile" index="0" instance=ExtResource( 1 )]
 
 script = ExtResource( 2 )
-arrival_pos_id = "@@6327_arrival"
+arrival_pos_id = "@@6328_arrival"
 flippedH = false
 flippedV = false
 
@@ -20,14 +20,15 @@ polygon = PoolVector2Array( 32, -32, 32, 96, -32, 96, -32, -32 )
 
 position = Vector2( 96, 0 )
 
-[node name="Panel" parent="." index="2"]
+[node name="TemporarySprite" parent="." index="2"]
 
 margin_top = -64.0
 margin_bottom = 64.0
 
-[node name="Label" parent="." index="3"]
+[node name="NameLabel" parent="TemporarySprite" index="0"]
 
-text = "Door"
+margin_top = 56.0
+margin_bottom = 70.0
 
 [connection signal="destination_room_changed" from="." to="." method="on_change_name"]
 

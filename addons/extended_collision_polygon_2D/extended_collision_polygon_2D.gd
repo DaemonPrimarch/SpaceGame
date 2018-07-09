@@ -1,6 +1,9 @@
 tool
 extends CollisionPolygon2D
 
+func _ready():
+	add_to_group("extended_collision_polygon_2D")
+
 func get_AABB():
 	var pol = polygon
 	var new_pos = pol[0]
@@ -20,4 +23,4 @@ func get_AABB():
 		if(element.x < min_x):
 			min_x = element.x
 			
-	return Rect2(Vector2(min_x, min_y) + position, Vector2(abs(max_x - min_x), abs(max_y - min_y)))
+	return Rect2(Vector2(min_x, max_y) + global_position, Vector2(abs(max_x - min_x), abs(max_y - min_y)))

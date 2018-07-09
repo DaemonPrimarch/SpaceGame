@@ -6,6 +6,6 @@ onready var pol_col = get_node("Area2D/CollisionPolygon2D")
 
 func snap_to(player):
 	if(is_flippedH()):
-		player.position.x = position.x + player.get_AABB().position.x + player.get_AABB().size.x - 32
+		player.position.x += (global_position.x + 32 - player.get_AABB().position.x)
 	else:
-		player.position.x = position.x - player.get_AABB().position.x - player.get_AABB().size.x + 32
+		player.position.x += (global_position.x + 32 - player.get_AABB().end.x)

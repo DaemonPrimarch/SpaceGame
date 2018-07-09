@@ -23,12 +23,6 @@
 [ext_resource path="res://addons/state_labels/boolean_state_label.gd" type="Script" id=21]
 [ext_resource path="res://addons/state_labels/label.svg" type="Texture" id=22]
 
-
-
-
-
-
-
 [sub_resource type="Animation" id=1]
 
 resource_name = "crawl_leave"
@@ -246,21 +240,14 @@ shadow_filter_smooth = 0.0
 shadow_item_cull_mask = 1
 script = ExtResource( 4 )
 
-[node name="Sprite" parent="." index="6"]
+[node name="Sprite" parent="." index="8"]
 
 frame = 20
 _sections_unfolded = [ "Animation", "Offset", "Region", "Transform" ]
 
-[node name="CollisionPolygon2D" parent="." index="7"]
+[node name="CollisionPolygon2D" parent="." index="9"]
 
 polygon = PoolVector2Array( 60, 32, 4, 32, 4, -80, 60, -80 )
-_sections_unfolded = [ "Transform" ]
-
-[node name="light" parent="." index="9"]
-
-texture = ExtResource( 3 )
-texture_scale = 2.0
-energy = 0.8
 _sections_unfolded = [ "Transform" ]
 
 [node name="jumping_handler" parent="." index="10" instance=ExtResource( 5 )]
@@ -394,7 +381,14 @@ script = ExtResource( 18 )
 
 [node name="camera_zoom_out_manager" parent="ExtendedCamera2D" index="0" instance=ExtResource( 19 )]
 
-[node name="weapon_manager" parent="." index="26"]
+[node name="light" parent="." index="26"]
+
+texture = ExtResource( 3 )
+texture_scale = 2.0
+energy = 0.8
+_sections_unfolded = [ "Transform" ]
+
+[node name="weapon_manager" parent="." index="27"]
 
 editor/display_folded = true
 weapon_path = NodePath("gun")
@@ -451,7 +445,7 @@ node_path = NodePath("../platform_manager")
 tracked_value = ""
 tracked_function = "is_on_platform"
 true_value = "ON PLATFORM"
-false_value = "NOT"
+false_value = ""
 
 [node name="BooleanStateLabel4" type="Label" parent="." index="30"]
 

@@ -60,7 +60,7 @@ func get_direction():
 		dir.x = -1
 	if(is_flippedV()):
 		dir.y = -1
-	
+
 	return dir
 
 func get_max_slope_angle():
@@ -104,4 +104,22 @@ func move_and_push(v):
 			collision_info.collider.push(collision_info.remainder)
 		else:
 			print("ERROR: Attempting to push object that can't be pushed")
+
+func get_AABB():
+	var box = Rect2()
+	for child in get_children():
+		if(child.is_in_group("extended_collision_polygon_2D")):
+			if(not box.has_no_area()):
+				box = box.merge(child.get_AABB())
+			else:
+				box = child.get_AABB()
 	
+	return box
+
+func _draw():
+	if(ProjectSettings.get_setting("debug/settings/AABB_visible")):
+		var box = get_AABB()
+		
+		box.position = to_local(box.position)
+		
+		draw_rect(box, Color(1,0,0), false)

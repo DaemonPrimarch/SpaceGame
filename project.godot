@@ -21,7 +21,6 @@ GUI="*res://nodes/singletons/GUI.tscn"
 DIALOG_SYSTEM="*res://scripts/singletons/dialog_system.gd"
 ROOM_MANAGER="*res://scripts/singletons/room_manager.gd"
 PHYSICS_HELPER="*res://scripts/singletons/physics_helper.gd"
-CAMERA_MANAGER="*res://scripts/singletons/camera_manager.gd"
 SAVE_MANAGER="*res://scripts/singletons/save_manager.gd"
 
 [debug]
@@ -29,6 +28,7 @@ SAVE_MANAGER="*res://scripts/singletons/save_manager.gd"
 settings/fps/force_fps=60
 settings/output/verbose=true
 settings/debug_labels_enabled=true
+settings/AABB_visible=false
 
 [display]
 
