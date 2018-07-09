@@ -4,8 +4,9 @@
 [ext_resource path="res://nodes/room_elements/regular_warp_tile.tscn" type="PackedScene" id=2]
 [ext_resource path="res://nodes/room_elements/bullet_switch.tscn" type="PackedScene" id=3]
 [ext_resource path="res://deprecated/link_block.tscn" type="PackedScene" id=4]
-[ext_resource path="res://nodes/room_elements/vertical_ladder.tscn" type="PackedScene" id=5]
+[ext_resource path="res://nodes/room_elements/ladders/vertical_ladder.tscn" type="PackedScene" id=5]
 [ext_resource path="res://nodes/room_elements/regular_damage_area.tscn" type="PackedScene" id=6]
+
 
 [node name="room_5" index="0" instance=ExtResource( 1 )]
 

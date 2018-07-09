@@ -4,9 +4,11 @@
 [ext_resource path="res://sprites/guun.png" type="Texture" id=2]
 [ext_resource path="res://nodes/room_elements/regular_warp_tile.tscn" type="PackedScene" id=3]
 [ext_resource path="res://rooms/start_rooms/room_darkener_helper.tscn" type="PackedScene" id=4]
-[ext_resource path="res://nodes/room_elements/vertical_ladder.tscn" type="PackedScene" id=5]
-[ext_resource path="res://nodes/room_elements/walled_ladder.tscn" type="PackedScene" id=6]
+[ext_resource path="res://nodes/room_elements/ladders/vertical_ladder.tscn" type="PackedScene" id=5]
+[ext_resource path="res://nodes/room_elements/ladders/walled_ladder.tscn" type="PackedScene" id=6]
 [ext_resource path="res://nodes/room_elements/emergency_light.tscn" type="PackedScene" id=7]
+
+
 
 
 [node name="room_21" instance=ExtResource( 1 )]

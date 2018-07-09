@@ -1,9 +1,11 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://scripts/damage_area.gd" type="Script" id=1]
-[ext_resource path="res://sprites/white.png" type="Texture" id=2]
+[ext_resource path="res://addons/temporary_sprite/temporary_sprite.gd" type="Script" id=2]
+[ext_resource path="res://addons/temporary_sprite/panel.svg" type="Texture" id=3]
+[ext_resource path="res://sprites/white.png" type="Texture" id=4]
 
-[node name="damage_area" type="Node2D"]
+[node name="damage_area" type="Node2D" index="0"]
 
 script = ExtResource( 1 )
 active = true
@@ -27,7 +29,7 @@ _sections_unfolded = [ "Collision" ]
 build_mode = 0
 polygon = PoolVector2Array( 32, -32, -32, -32, -32, 32, 32, 32 )
 
-[node name="Panel" type="Panel" parent="." index="1"]
+[node name="TemporarySprite" type="Panel" parent="." index="1"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -43,45 +45,50 @@ mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
+script = ExtResource( 2 )
+__meta__ = {
+"_editor_icon": ExtResource( 3 )
+}
 
-[node name="Sprite" type="Sprite" parent="." index="2"]
+[node name="Sprite" type="Sprite" parent="TemporarySprite" index="0"]
 
 modulate = Color( 0.832031, 0, 0.234009, 1 )
+position = Vector2( 32, 32 )
 scale = Vector2( 1, 0.25 )
-texture = ExtResource( 2 )
+texture = ExtResource( 4 )
 region_enabled = true
 region_rect = Rect2( 1920, 640, 64, 256 )
 _sections_unfolded = [ "Visibility" ]
 
-[node name="Label" type="Label" parent="." index="3"]
+[node name="NameLabel" type="Label" parent="TemporarySprite" index="1"]
 
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = -32.0
-margin_top = -32.0
-margin_right = 32.0
-margin_bottom = 32.0
+margin_left = 1.0
+margin_top = 8.0
+margin_right = 63.0
+margin_bottom = 56.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
-text = "Electric
-Hazard"
+text = "Electric Hazard"
 align = 1
 valign = 1
+autowrap = true
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
 
-[connection signal="activated" from="." to="Sprite" method="set_visible" binds= [ true ]]
+[connection signal="activated" from="." to="TemporarySprite/Sprite" method="set_visible" binds= [ true ]]
 
 [connection signal="activated" from="." to="." method="_on_damage_area_activated"]
 
-[connection signal="deactivated" from="." to="Sprite" method="set_visible" binds= [ false ]]
+[connection signal="deactivated" from="." to="TemporarySprite/Sprite" method="set_visible" binds= [ false ]]
 
 [connection signal="deactivated" from="." to="." method="_on_damage_area_deactivated"]
 

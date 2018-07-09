@@ -6,7 +6,7 @@
 [ext_resource path="res://deprecated/platform_1x3.tscn" type="PackedScene" id=4]
 [ext_resource path="res://deprecated/platform_3x1.tscn" type="PackedScene" id=5]
 [ext_resource path="res://nodes/room_elements/regular_warp_tile.tscn" type="PackedScene" id=6]
-[ext_resource path="res://nodes/room_elements/vertical_ladder.tscn" type="PackedScene" id=7]
+[ext_resource path="res://nodes/room_elements/ladders/vertical_ladder.tscn" type="PackedScene" id=7]
 [ext_resource path="res://deprecated/timed_damage_area.tscn" type="PackedScene" id=8]
 [ext_resource path="res://nodes/entities/enemies/back_forth_enemy.tscn" type="PackedScene" id=9]
 [ext_resource path="res://deprecated/trigger_area.gd" type="Script" id=10]
@@ -15,6 +15,7 @@
 [ext_resource path="res://deprecated/camera_change_area.tscn" type="PackedScene" id=13]
 [ext_resource path="res://nodes/room_elements/helper_areas/no_respawn_area.tscn" type="PackedScene" id=14]
 [ext_resource path="res://nodes/room_elements/bullet_hit_block.tscn" type="PackedScene" id=15]
+
 
 
 

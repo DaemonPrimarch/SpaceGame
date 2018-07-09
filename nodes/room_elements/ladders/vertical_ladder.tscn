@@ -1,7 +1,8 @@
 [gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://nodes/room_elements/ladder.tscn" type="PackedScene" id=1]
+[ext_resource path="res://nodes/room_elements/ladders/ladder.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scripts/room_elements/vertical_ladder.gd" type="Script" id=2]
+
 
 [sub_resource type="SegmentShape2D" id=1]
 

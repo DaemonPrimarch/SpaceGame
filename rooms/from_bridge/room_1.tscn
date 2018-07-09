@@ -5,8 +5,9 @@
 [ext_resource path="res://nodes/room_elements/regular_warp_tile.tscn" type="PackedScene" id=3]
 [ext_resource path="res://nodes/room_elements/bullet_switch.tscn" type="PackedScene" id=4]
 [ext_resource path="res://deprecated/camera_container.tscn" type="PackedScene" id=5]
-[ext_resource path="res://nodes/room_elements/blocking_warp_tile.tscn" type="PackedScene" id=6]
+[ext_resource path="res://deprecated/blocking_warp_tile.tscn" type="PackedScene" id=6]
 [ext_resource path="res://nodes/activatable_block.tscn" type="PackedScene" id=7]
+
 
 
 [node name="room_1" instance=ExtResource( 1 )]

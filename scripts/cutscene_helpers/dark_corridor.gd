@@ -1,4 +1,4 @@
-extends "res://scripts/cutscene_helper.gd"
+extends "res://scripts/helpers/cutscene_helper.gd"
 
 func _physics_process(delta):
 	var player = ROOM_MANAGER.get_room_of_node(self).get_node("player")
