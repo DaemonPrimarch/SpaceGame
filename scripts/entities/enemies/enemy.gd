@@ -30,7 +30,7 @@ func _on_object_hit(object):
 func generate_drops():
 	#instantiate HP pickups
 	randomize()
-	print("BLOOP: ",get_HP_drop_chance())
+
 	if(rand_range(0,1) < get_HP_drop_chance()):
 		var drop = health_pickup.instance()
 		drop.set_name("drop_from_" + name)
@@ -38,6 +38,6 @@ func generate_drops():
 		drop.global_position = global_position
 		drop.health = randi()%11+1
 
-func destroy():	
+func destroy():
 	generate_drops()
 	queue_free()

@@ -1,0 +1,160 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://scripts/entities/enemies/flying_enemy.gd" type="Script" id=1]
+[ext_resource path="res://addons/temporary_sprite/temporary_sprite.gd" type="Script" id=2]
+[ext_resource path="res://addons/temporary_sprite/extended_animation_player.svg" type="Texture" id=3]
+[ext_resource path="res://sprites/white.png" type="Texture" id=4]
+[ext_resource path="res://addons/state_handler/kinematic_body_2D.svg" type="Texture" id=5]
+
+
+[sub_resource type="Curve2D" id=1]
+
+bake_interval = 5.0
+_data = {
+"points": PoolVector2Array( 0, 0, 0, 0, -32, -32, 0, 0, 0, 0, 70, -64, 0, 0, 0, 0, 180, 32, 0, 0, 0, 0, -35, 64, 0, 0, 0, 0, -32, -32 )
+}
+
+[sub_resource type="GDScript" id=2]
+
+script/source = "extends \"res://addons/state_handler/state_handler.gd\"
+
+func process_state(delta):
+	get_parent().path_follower.set_offset(get_parent().path_follower.get_offset() + (get_parent().get_movement_speed()*delta))"
+
+[node name="flying_enemy_system" type="Node2D" index="0"]
+
+[node name="path" type="Path2D" parent="." index="0"]
+
+self_modulate = Color( 0.5, 0.6, 1, 0.7 )
+curve = SubResource( 1 )
+
+[node name="path_follower" type="PathFollow2D" parent="path" index="0"]
+
+position = Vector2( -32, -32 )
+offset = 0.0
+h_offset = 0.0
+v_offset = 0.0
+rotate = false
+cubic_interp = true
+loop = true
+lookahead = 4.0
+_sections_unfolded = [ "Transform" ]
+
+[node name="flying_enemy" type="KinematicBody2D" parent="path/path_follower" index="0"]
+
+input_pickable = false
+collision_layer = 1024
+collision_mask = 5
+collision/safe_margin = 0.08
+script = ExtResource( 1 )
+_sections_unfolded = [ "Collision", "Transform", "collision" ]
+__meta__ = {
+"_edit_group_": true
+}
+max_slope_angle = 1.5708
+flippedH = false
+flippedV = false
+moveable_by_collision = true
+current_state = "FLY_PATTERN"
+movement_speed = 327.68
+gravity_enabled = false
+gravity_vector = Vector2( 0, 1152 )
+velocity = Vector2( 0, 0 )
+max_velocity = Vector2( -1, -1 )
+acceleration = Vector2( 0, 0 )
+can_be_pushed = false
+HP = 1
+max_HP = 1
+invulnerability_time = 0.1
+damage = 1
+hp_drop_chance = 0.5
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="path/path_follower/flying_enemy" index="0"]
+
+build_mode = 0
+polygon = PoolVector2Array( -28, -28, 27, -28, 27, 32, -28, 32 )
+
+[node name="Area2D" type="Area2D" parent="path/path_follower/flying_enemy" index="1"]
+
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+collision_layer = 0
+collision_mask = 2
+audio_bus_override = false
+audio_bus_name = "Master"
+_sections_unfolded = [ "Collision" ]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="path/path_follower/flying_enemy/Area2D" index="0"]
+
+build_mode = 0
+polygon = PoolVector2Array( -28, -28, 27, -28, 27, 32, -28, 32 )
+
+[node name="TemporarySprite" type="Panel" parent="path/path_follower/flying_enemy" index="2"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = -32.0
+margin_top = -32.0
+margin_right = 32.0
+margin_bottom = 32.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+script = ExtResource( 2 )
+__meta__ = {
+"_editor_icon": ExtResource( 3 )
+}
+
+[node name="Sprite" type="Sprite" parent="path/path_follower/flying_enemy/TemporarySprite" index="0"]
+
+modulate = Color( 0.84375, 0.336182, 0.812027, 1 )
+position = Vector2( 32, 32 )
+scale = Vector2( 0.0555556, 0.0987654 )
+texture = ExtResource( 4 )
+_sections_unfolded = [ "Visibility" ]
+
+[node name="NameLabel" type="Label" parent="path/path_follower/flying_enemy/TemporarySprite" index="1"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 2.0
+margin_top = 10.0
+margin_right = 64.0
+margin_bottom = 58.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+text = "Flying Enemy"
+align = 1
+valign = 1
+autowrap = true
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="fly_pattern_handler" type="Node2D" parent="path/path_follower/flying_enemy" index="3"]
+
+script = SubResource( 2 )
+__meta__ = {
+"_editor_icon": ExtResource( 5 )
+}
+handled_state = "FLY_PATTERN"
+enabled = true
+no_gravity = false
+
+[connection signal="body_entered" from="path/path_follower/flying_enemy/Area2D" to="path/path_follower/flying_enemy" method="_on_object_hit"]
+
+

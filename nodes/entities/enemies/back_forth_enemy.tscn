@@ -1,12 +1,13 @@
 [gd_scene load_steps=10 format=2]
 
-[ext_resource path="res://scripts/entities/enemies/enemy_1.gd" type="Script" id=1]
+[ext_resource path="res://scripts/entities/enemies/back_forth_enemy.gd" type="Script" id=1]
 [ext_resource path="res://nodes/managers/platform_manager.tscn" type="PackedScene" id=2]
 [ext_resource path="res://nodes/managers/bullet_hit_manager.tscn" type="PackedScene" id=3]
 [ext_resource path="res://addons/temporary_sprite/temporary_sprite.gd" type="Script" id=4]
 [ext_resource path="res://addons/temporary_sprite/extended_animation_player.svg" type="Texture" id=5]
 [ext_resource path="res://sprites/white.png" type="Texture" id=6]
 [ext_resource path="res://addons/state_handler/kinematic_body_2D.svg" type="Texture" id=7]
+
 
 [sub_resource type="Animation" id=1]
 
@@ -57,8 +58,8 @@ velocity = Vector2( 0, 0 )
 max_velocity = Vector2( -1, -1 )
 acceleration = Vector2( 0, 0 )
 can_be_pushed = false
-HP = 100
-max_HP = 100
+HP = 2
+max_HP = 2
 invulnerability_time = 1.0
 damage = 1
 hp_drop_chance = 0.5

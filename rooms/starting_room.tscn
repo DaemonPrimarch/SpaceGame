@@ -7,11 +7,12 @@
 [ext_resource path="res://nodes/entities/enemies/back_forth_enemy.tscn" type="PackedScene" id=5]
 [ext_resource path="res://nodes/room_elements/destroyable_block.tscn" type="PackedScene" id=6]
 [ext_resource path="res://nodes/room_elements/blocking_warp_tile.tscn" type="PackedScene" id=7]
-[ext_resource path="res://nodes/entities/enemies/enemy_3.tscn" type="PackedScene" id=8]
+[ext_resource path="res://nodes/entities/enemies/flying_enemy.tscn" type="PackedScene" id=8]
 [ext_resource path="res://deprecated/dialog_tester.tscn" type="PackedScene" id=9]
 [ext_resource path="res://nodes/room_elements/vertical_ladder.tscn" type="PackedScene" id=10]
 [ext_resource path="res://nodes/room_elements/walled_ladder.tscn" type="PackedScene" id=11]
 [ext_resource path="res://nodes/room_elements/walled_ladder_no_top.tscn" type="PackedScene" id=12]
+
 
 
 [node name="starting_room" instance=ExtResource( 1 )]

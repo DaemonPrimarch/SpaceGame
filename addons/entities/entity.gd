@@ -90,10 +90,10 @@ func set_velocity(v):
 	
 	if(get_max_velocity().x >= 0 and v.x > get_max_velocity().x):
 		temp_velocity.x = get_max_velocity().x
-		print("Larger than max_velocity.x")
+		#print("Larger than max_velocity.x")
 	if(get_max_velocity().y >= 0 and v.y > get_max_velocity().y):
 		temp_velocity.y = get_max_velocity().y
-		print("Larger than max_velocity.y")
+		#print("Larger than max_velocity.y")
 
 	velocity = temp_velocity
 
