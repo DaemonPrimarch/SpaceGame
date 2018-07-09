@@ -1,6 +1,9 @@
 [gd_scene load_steps=2 format=2]
 
-[ext_resource path="res://scripts/respawner.gd" type="Script" id=1]
+[ext_resource path="res://scripts/helpers/respawn_helper.gd" type="Script" id=1]
+
+
+
 
 [node name="respawner" type="Node2D" index="0"]
 

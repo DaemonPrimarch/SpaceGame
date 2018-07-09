@@ -4,20 +4,10 @@ extends "res://scripts/entities/enemies/enemy.gd"
 var charging_distance
 
 func _on_bullet_hit(bullet):
-	if(get_direction().x > 0):
-		if(get_position().x - bullet.get_position().x > 0):
-			#hit
-			damage(bullet.get_damage())
-		else:
-			#miss
-			pass
+	if(not $bullet_protection_area.overlaps_area(bullet)):
+		damage(bullet.get_damage())
 	else:
-		if(get_position().x - bullet.get_position().x < 0):
-			#hit
-			damage(bullet.get_damage())
-		else:
-			#miss
-			pass
+		print("PROTEC")
 
 func _init():
 	add_state("IDLE")
@@ -26,4 +16,3 @@ func _init():
 	add_state("STUNNED_BY_EXHAUSTION")
 	
 	set_state("IDLE")
-

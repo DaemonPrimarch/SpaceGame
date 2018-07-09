@@ -8,7 +8,6 @@
 [ext_resource path="res://addons/temporary_sprite/extended_animation_player.svg" type="Texture" id=6]
 [ext_resource path="res://sprites/white.png" type="Texture" id=7]
 
-
 [sub_resource type="GDScript" id=1]
 
 script/source = "extends \"res://addons/state_handler/state_handler.gd\"
@@ -156,9 +155,9 @@ hp_drop_chance = 0.5
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." index="0"]
 
 build_mode = 0
-polygon = PoolVector2Array( 30, 32, 30, -30, -30, -30, -30, 32 )
+polygon = PoolVector2Array( 32, 32, 32, -32, -32, -32, -32, 32 )
 
-[node name="Area2D" type="Area2D" parent="." index="1"]
+[node name="player_collision_area" type="Area2D" parent="." index="1"]
 
 input_pickable = true
 gravity_vec = Vector2( 0, 1 )
@@ -171,7 +170,7 @@ audio_bus_override = false
 audio_bus_name = "Master"
 _sections_unfolded = [ "Collision" ]
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D" index="0"]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="player_collision_area" index="0"]
 
 build_mode = 0
 polygon = PoolVector2Array( -30, -30, 30, -30, 30, 32, -30, 32 )
@@ -315,6 +314,23 @@ scale = Vector2( 0.00607639, 0.0108025 )
 texture = ExtResource( 7 )
 _sections_unfolded = [ "Visibility" ]
 
-[connection signal="body_entered" from="Area2D" to="." method="_on_object_hit"]
+[node name="bullet_protection_area" type="Area2D" parent="." index="11"]
+
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="bullet_protection_area" index="0"]
+
+build_mode = 0
+polygon = PoolVector2Array( 32, -32, 24, -32, 24, 32, 32, 32 )
+
+[node name="bullet_hit_manager" parent="bullet_protection_area" index="1" instance=ExtResource( 4 )]
+
+[connection signal="body_entered" from="player_collision_area" to="." method="_on_object_hit"]
 
 

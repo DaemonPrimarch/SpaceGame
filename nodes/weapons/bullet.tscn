@@ -8,7 +8,7 @@
 [sub_resource type="RectangleShape2D" id=1]
 
 custom_solver_bias = 0.0
-extents = Vector2( 10, 2 )
+extents = Vector2( 0.8125, 2 )
 
 [node name="bullet" type="Area2D" index="0"]
 
@@ -22,7 +22,7 @@ collision_mask = 3105
 audio_bus_override = false
 audio_bus_name = "Master"
 script = ExtResource( 1 )
-_sections_unfolded = [ "Collision", "Transform" ]
+_sections_unfolded = [ "Collision", "Pickable", "Transform" ]
 velocity = Vector2( 2048, 0 )
 damage = 1
 
@@ -36,7 +36,7 @@ texture = ExtResource( 3 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="2"]
 
-position = Vector2( 8, 0 )
+position = Vector2( 30, 0 )
 scale = Vector2( 2.46154, 1 )
 shape = SubResource( 1 )
 
@@ -74,6 +74,7 @@ shadow_item_cull_mask = 1
 
 [node name="Sprite2" type="Sprite" parent="." index="5"]
 
+visible = false
 position = Vector2( 8.00001, 0 )
 scale = Vector2( 0.05, 0.00740741 )
 texture = ExtResource( 4 )
