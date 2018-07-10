@@ -21,8 +21,9 @@ func get_player():
 	return get_parent().get_node("player")
 
 func attack_player(player):
-	get_handler("SILLOUETTE_ATTACK").set_player_attacking(player)
-	set_state("SILLOUETTE_ATTACK")
+	if(get_state() == "SILLOUETTE_VISIBLE"):
+		get_handler("SILLOUETTE_ATTACK").set_player_attacking(player)
+		set_state("SILLOUETTE_ATTACK")
 	
 func _on_shadow_monster_light_entered(source):
 #	if(not attacking):

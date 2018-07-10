@@ -25,18 +25,31 @@ func _ready():
 	init_platform()
 	
 	set_physics_process(not Engine.editor_hint)
+	
+	forward_velocity = forward_starting_velocity
+	backward_velocity = backward_starting_velocity
 
 func has_platform():
 	return platform != null
 
 func _draw():
-	if(has_platform() and Engine.editor_hint):
-		draw_line(get_platform().position, get_platform().position  + get_platform().get_direction() * extending_direction * (extending_distance + 32)  * Vector2(1,-1) ,ProjectSettings.get_setting("debug/shapes/collision/shape_color"), 4.0)
+	if(has_platform() and is_inside_tree()):
+		draw_line(Vector2(32,32) * get_platform().get_direction() * get_extending_direction(), get_extending_direction() * get_platform().get_direction() * (Vector2(side_extending_distance + 32, up_extending_distance + 32))  * Vector2(1,-1) ,ProjectSettings.get_setting("debug/shapes/collision/shape_color"), 4.0)
 
 export var active = true
-export var one_way = false
-export var extending_direction = Vector2(1,0)
-export var extending_distance = 64
+
+export var side_extending_distance = 64 setget set_side_extending_distance
+export var up_extending_distance = 0 setget set_up_extending_distance
+
+func set_side_extending_distance(val):
+	side_extending_distance = val
+	
+	update()
+
+func set_up_extending_distance(val):
+	up_extending_distance = val
+	
+	update()
 
 export var forward_starting_velocity = 64*5
 export var forward_acceleration = 64*3
@@ -55,37 +68,37 @@ func set_active(value):
 func is_active():
 	return active
 
-func is_one_way():
-	return one_way
+func get_extending_distance():
+	return get_extending_direction() * Vector2(side_extending_distance, up_extending_distance)
 
 func get_extending_direction():
-	return extending_direction
+	return Vector2(side_extending_distance, up_extending_distance)/Vector2(side_extending_distance, up_extending_distance).length()
+
+var pos = Vector2()
 
 func _physics_process(delta):
 	if(is_active() and has_platform()):
-		var flipped = 1
-			
-		if(get_platform().is_flippedH() or get_platform().is_flippedV()):
-			flipped = -1
 		if(moving_forward):
-			get_platform().move_and_push(get_extending_direction() * forward_velocity * delta * flipped * Vector2(1,-1))
-			
+			get_platform().extend(get_extending_direction() * forward_velocity * delta)
+			pos += (get_extending_direction() * forward_velocity * delta)
+
 			forward_velocity += forward_acceleration * delta
-			
-			if((extending_direction * extending_distance - get_platform().get_position() * flipped * Vector2(1,-1)).normalized().dot((extending_direction * extending_distance).normalized()) <= 0):
+	
+			if((get_extending_distance() - pos).normalized().dot(get_extending_direction()) <= 0):
 				moving_forward = false
 				
 				forward_velocity = forward_starting_velocity
+				
 				emit_signal("end_reached")
 		else:
-			get_platform().move_and_push(get_extending_direction() * backward_velocity * delta * -1 * flipped * Vector2(1,-1))
-
+			get_platform().extend(-get_extending_direction() * backward_velocity * delta)
+			pos -= (get_extending_direction() * backward_velocity * delta)
+			
 			backward_velocity += backward_acceleration * delta
 
-			if((get_platform().get_position() * flipped * Vector2(1,-1)).normalized().dot((extending_direction * extending_distance).normalized()) <= 0):
+			if((get_extending_direction() - pos).normalized().dot(get_extending_direction()) >= 0):
 				moving_forward = true
 
 				backward_velocity = backward_starting_velocity
+
 				emit_signal("start_reached")
-				if(is_one_way()):
-					set_active(false)

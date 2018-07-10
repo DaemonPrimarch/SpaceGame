@@ -53,6 +53,9 @@ func get_room_of_node(node):
 	return current_room
 
 func unload_room(room):
+	#for child in room.get_children():
+	#	room.get_node("CanvasModulate").visible = false
+	
 	remove_room_as_loaded(room)
 	
 	room.queue_free()
@@ -66,9 +69,6 @@ func warp_node_to_room(node, room, arrival_pos_id):
 		var old_pos = old_room.position
 		
 		old_room.position += Vector2(5000, 5000)
-		
-		if(old_room.has_node("CanvasModulate")):
-			old_room.get_node("CanvasModulate").visible = false
 		
 		unload_room(old_room)
 		
@@ -85,7 +85,7 @@ func warp_node_to_room(node, room, arrival_pos_id):
 			loaded_room = load_packed_room(room, new_pos)
 			
 		yield(self, "PHYS")
-		print("Starting")
+
 		var arrivals = get_tree().get_nodes_in_group("warp_arrival")
 		var arrival_pos = Vector2(0,0)
 		if(arrival_pos_id != null and arrival_pos_id != ""):

@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://scripts/entities/enemies/shadow_monster.gd" type="Script" id=1]
 [ext_resource path="res://sprites/white_light.png" type="Texture" id=2]
@@ -13,6 +13,7 @@
 script/source = "extends \"res://addons/state_handler/state_handler.gd\"
 
 export var attack_duration = 0.3
+export var attack_damage = 5
 
 var player
 
@@ -27,6 +28,8 @@ func enter_state(prev_state):
 	$attack.start()
 
 func _on_attack_tween_completed(object, key):
+	get_player_attacking().damage(attack_damage)
+	
 	get_parent().set_state(\"BODY_INVISIBLE\")
 "
 
@@ -35,7 +38,26 @@ func _on_attack_tween_completed(object, key):
 script/source = "extends \"res://addons/state_handler/state_handler.gd\"
 
 func enter_state(prev_state):
-	get_parent().get_node(\"TemporarySprite\").visible = false
+	get_parent().visible = false
+"
+
+[sub_resource type="GDScript" id=3]
+
+script/source = "extends \"res://addons/state_handler/state_handler.gd\"
+
+# class member variables go here, for example:
+# var a = 2
+# var b = \"textvar\"
+
+func _ready():
+	# Called when the node is added to the scene for the first time.
+	# Initialization here
+	pass
+
+#func _process(delta):
+#	# Called every frame. Delta is time since last frame.
+#	# Update game logic here.
+#	pass
 "
 
 [node name="shadow_monster" type="KinematicBody2D" index="0"]
@@ -50,7 +72,7 @@ max_slope_angle = 0.785398
 flippedH = false
 flippedV = false
 moveable_by_collision = true
-current_state = "FULL_VISIBLE"
+current_state = "SILLOUETTE_VISIBLE"
 movement_speed = 327.68
 gravity_enabled = false
 gravity_vector = Vector2( 0, 1152 )
@@ -126,7 +148,7 @@ shadow_item_cull_mask = 1
 
 [node name="bullet_hit_manager" parent="." index="4" instance=ExtResource( 4 )]
 
-[node name="TemporarySprite" type="Panel" parent="." index="5"]
+[node name="body" type="Panel" parent="." index="5"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -147,7 +169,7 @@ __meta__ = {
 "_editor_icon": ExtResource( 6 )
 }
 
-[node name="NameLabel" type="Label" parent="TemporarySprite" index="0"]
+[node name="NameLabel" type="Label" parent="body" index="0"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -181,6 +203,7 @@ handled_state = "SILLOUETTE_ATTACK"
 enabled = true
 no_gravity = false
 attack_duration = 0.3
+attack_damage = 5
 
 [node name="attack" type="Tween" parent="sillouette_attack_handler" index="0"]
 
@@ -198,6 +221,16 @@ __meta__ = {
 "_editor_icon": ExtResource( 7 )
 }
 handled_state = "BODY_INVISIBLE"
+enabled = true
+no_gravity = false
+
+[node name="sillouette_visible" type="Node2D" parent="." index="8"]
+
+script = SubResource( 3 )
+__meta__ = {
+"_editor_icon": ExtResource( 7 )
+}
+handled_state = "UNDEFINED"
 enabled = true
 no_gravity = false
 

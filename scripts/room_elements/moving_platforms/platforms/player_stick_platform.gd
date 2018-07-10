@@ -1,3 +1,4 @@
+tool
 extends "res://scripts/room_elements/moving_platforms/platforms/platform.gd"
 
 var connected_nodes = []
@@ -29,4 +30,15 @@ func move_and_push(v):
 		node.position += v
 	
 	.move_and_push(v * Vector2(0,1))
+
+func extend(v):
+	.extend(v)
 	
+	if(v.x != 0):
+		$Area2D/CollisionPolygon2D.polygon[2] += v
+		$Area2D/CollisionPolygon2D.polygon[3] += v
+	if(v.y != 0):
+		$Area2D/CollisionPolygon2D.position -= v
+
+	for node in connected_nodes:
+		node.move_and_push(v * get_direction())
