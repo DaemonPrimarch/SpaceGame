@@ -1,9 +1,10 @@
 [gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://scripts/damage_area.gd" type="Script" id=1]
+[ext_resource path="res://scripts/room_elements/damage_area.gd" type="Script" id=1]
 [ext_resource path="res://addons/temporary_sprite/temporary_sprite.gd" type="Script" id=2]
 [ext_resource path="res://addons/temporary_sprite/panel.svg" type="Texture" id=3]
 [ext_resource path="res://sprites/white.png" type="Texture" id=4]
+
 
 [node name="damage_area" type="Node2D" index="0"]
 

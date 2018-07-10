@@ -4,11 +4,12 @@
 [ext_resource path="res://nodes/room_elements/regular_warp_tile.tscn" type="PackedScene" id=2]
 [ext_resource path="res://nodes/room_elements/bullet_switch.tscn" type="PackedScene" id=3]
 [ext_resource path="res://nodes/warp_arrival.tscn" type="PackedScene" id=4]
-[ext_resource path="res://nodes/warp_tile.tscn" type="PackedScene" id=5]
+[ext_resource path="res://nodes/room_elements/warp_tile.tscn" type="PackedScene" id=5]
 [ext_resource path="res://nodes/room_elements/ladders/walled_ladder.tscn" type="PackedScene" id=6]
 [ext_resource path="res://nodes/room_elements/ladders/walled_ladder_no_top.tscn" type="PackedScene" id=7]
 [ext_resource path="res://nodes/room_elements/activatable_block.tscn" type="PackedScene" id=8]
 [ext_resource path="res://addons/player_enter_trigger/player_enter_trigger.tscn" type="PackedScene" id=9]
+
 
 
 

@@ -4,7 +4,7 @@
 [ext_resource path="res://tilesets/metroid_tileset.tres" type="TileSet" id=2]
 [ext_resource path="res://deprecated/layer_changer.tscn" type="PackedScene" id=3]
 [ext_resource path="res://nodes/room_elements/regular_warp_tile.tscn" type="PackedScene" id=4]
-[ext_resource path="res://nodes/warp_tile.tscn" type="PackedScene" id=5]
+[ext_resource path="res://nodes/room_elements/warp_tile.tscn" type="PackedScene" id=5]
 [ext_resource path="res://nodes/warp_arrival.tscn" type="PackedScene" id=6]
 [ext_resource path="res://nodes/room_elements/activatable_block.tscn" type="PackedScene" id=7]
 [ext_resource path="res://nodes/room_elements/player_comfirm_area.tscn" type="PackedScene" id=8]
@@ -15,6 +15,7 @@
 [ext_resource path="res://addons/layer_changer/node.svg" type="Texture" id=13]
 [ext_resource path="res://addons/extended_camera_2D/camera_limit_area.gd" type="Script" id=14]
 [ext_resource path="res://addons/extended_collision_polygon_2D/extended_collision_polygon_2D.gd" type="Script" id=15]
+
 
 [sub_resource type="Curve2D" id=1]
 

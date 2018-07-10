@@ -5,11 +5,12 @@
 [ext_resource path="res://deprecated/platform_1x2.tscn" type="PackedScene" id=3]
 [ext_resource path="res://nodes/room_elements/bullet_hit_block.tscn" type="PackedScene" id=4]
 [ext_resource path="res://nodes/room_elements/bullet_switch.tscn" type="PackedScene" id=5]
-[ext_resource path="res://nodes/warp_tile.tscn" type="PackedScene" id=6]
+[ext_resource path="res://nodes/room_elements/warp_tile.tscn" type="PackedScene" id=6]
 [ext_resource path="res://nodes/warp_arrival.tscn" type="PackedScene" id=7]
 [ext_resource path="res://rooms/start_rooms/room_darkener_helper.tscn" type="PackedScene" id=8]
 [ext_resource path="res://addons/extended_camera_2D/camera_limit_area.gd" type="Script" id=9]
 [ext_resource path="res://addons/extended_collision_polygon_2D/extended_collision_polygon_2D.gd" type="Script" id=10]
+
 
 [node name="room_12" index="0" instance=ExtResource( 1 )]
 

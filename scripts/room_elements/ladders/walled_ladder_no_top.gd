@@ -1,6 +1,6 @@
 tool
 
-extends "res://scripts/room_elements/ladder.gd"
+extends "ladder.gd"
 
 onready var pol_col = get_node("Area2D/CollisionPolygon2D")
 

@@ -1,4 +1,4 @@
-extends "res://scripts/weapon.gd"
+extends "weapon.gd"
 
 export var flashlight_enabled = false
 

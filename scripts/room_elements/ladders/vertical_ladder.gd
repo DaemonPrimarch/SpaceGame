@@ -1,6 +1,6 @@
 tool
 
-extends "res://scripts/room_elements/ladder.gd"
+extends "ladder.gd"
 
 
 
