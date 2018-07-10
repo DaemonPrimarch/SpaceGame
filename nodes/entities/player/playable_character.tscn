@@ -12,10 +12,11 @@
 [ext_resource path="res://sprites/robot_demo.png" type="Texture" id=10]
 [ext_resource path="res://addons/extended_collision_polygon_2D/extended_collision_polygon_2D.gd" type="Script" id=11]
 [ext_resource path="res://addons/extended_collision_polygon_2D/polygon.svg" type="Texture" id=12]
-[ext_resource path="res://nodes/player_light.tscn" type="PackedScene" id=13]
+[ext_resource path="res://deprecated/player_light.tscn" type="PackedScene" id=13]
 [ext_resource path="res://nodes/managers/weapon_manager.tscn" type="PackedScene" id=14]
 [ext_resource path="res://nodes/helpers/respawn_helper.tscn" type="PackedScene" id=15]
 [ext_resource path="res://addons/state_labels/state_label.gd" type="Script" id=16]
+
 
 [sub_resource type="Animation" id=1]
 

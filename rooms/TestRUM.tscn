@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://nodes/room.tscn" type="PackedScene" id=1]
 [ext_resource path="res://nodes/room_elements/ladders/walled_ladder.tscn" type="PackedScene" id=2]
@@ -17,7 +17,10 @@
 [ext_resource path="res://nodes/entities/enemies/flying_enemy.tscn" type="PackedScene" id=15]
 [ext_resource path="res://nodes/room_elements/destroyable_block.tscn" type="PackedScene" id=16]
 [ext_resource path="res://nodes/room_elements/regular_damage_area.tscn" type="PackedScene" id=17]
-
+[ext_resource path="res://nodes/entities/enemies/shadow_monster.tscn" type="PackedScene" id=18]
+[ext_resource path="res://addons/player_enter_trigger/player_enter_trigger.gd" type="Script" id=19]
+[ext_resource path="res://addons/player_enter_trigger/area.svg" type="Texture" id=20]
+[ext_resource path="res://addons/extended_collision_polygon_2D/polygon.svg" type="Texture" id=21]
 
 [sub_resource type="Curve2D" id=1]
 
@@ -141,9 +144,44 @@ position = Vector2( 1120, 672 )
 
 position = Vector2( 2112, 800 )
 
+[node name="shadow_monster" parent="." index="14" instance=ExtResource( 18 )]
+
+position = Vector2( 1760, 736 )
+
+[node name="PlayerEnterTrigger" type="Area2D" parent="." index="15"]
+
+position = Vector2( 1504, 800 )
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+script = ExtResource( 19 )
+__meta__ = {
+"_editor_icon": ExtResource( 20 )
+}
+enabled = true
+oneshot = false
+free_on_disabled = false
+save_path = null
+trigger_on_freed = false
+
+[node name="ExtendedCollisionPolygon2D" type="CollisionPolygon2D" parent="PlayerEnterTrigger" index="0"]
+
+build_mode = 0
+polygon = PoolVector2Array( -32, -32, 32, -32, 32, 32, -32, 32 )
+script = ExtResource( 4 )
+__meta__ = {
+"_editor_icon": ExtResource( 21 )
+}
+
 [connection signal="switched_off" from="bullet_switch" to="moving_track" method="set_moving_forward" binds= [ false ]]
 
 [connection signal="switched_on" from="bullet_switch" to="moving_track" method="set_moving_forward" binds= [ true ]]
+
+[connection signal="player_entered" from="PlayerEnterTrigger" to="shadow_monster" method="attack_player"]
 
 
 [editable path="platform_mover"]

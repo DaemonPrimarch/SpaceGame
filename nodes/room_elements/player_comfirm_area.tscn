@@ -2,7 +2,7 @@
 
 [ext_resource path="res://scripts/room_elements/player_comfirm_area.gd" type="Script" id=1]
 
-[node name="player_comfirm_area" type="Area2D"]
+[node name="player_comfirm_area" type="Area2D" index="0"]
 
 input_pickable = true
 gravity_vec = Vector2( 0, 1 )

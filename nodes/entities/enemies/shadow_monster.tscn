@@ -1,41 +1,42 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://scripts/entities/enemies/shadow_monster.gd" type="Script" id=1]
-[ext_resource path="res://nodes/temporary_sprite.tscn" type="PackedScene" id=2]
-[ext_resource path="res://sprites/white_light.png" type="Texture" id=3]
-[ext_resource path="res://deprecated/state_handler.tscn" type="PackedScene" id=4]
-
+[ext_resource path="res://sprites/white_light.png" type="Texture" id=2]
+[ext_resource path="res://nodes/managers/platform_manager.tscn" type="PackedScene" id=3]
+[ext_resource path="res://nodes/managers/bullet_hit_manager.tscn" type="PackedScene" id=4]
+[ext_resource path="res://addons/temporary_sprite/temporary_sprite.gd" type="Script" id=5]
+[ext_resource path="res://addons/temporary_sprite/panel.svg" type="Texture" id=6]
+[ext_resource path="res://addons/state_handler/kinematic_body_2D.svg" type="Texture" id=7]
 
 [sub_resource type="GDScript" id=1]
 
-script/source = "tool
+script/source = "extends \"res://addons/state_handler/state_handler.gd\"
 
-extends \"res://scripts/state_handler.gd\"
+export var attack_duration = 0.3
 
-func enter_state(old_state):
-	.enter_state(old_state)
-	
-	get_parent().get_node(\"body\").visible = false
-	
-func leave_state(new_state):
-	.leave_state(new_state)
-	get_parent().get_node(\"body\").visible = true"
+var player
+
+func set_player_attacking(p_player):
+	player = p_player
+
+func get_player_attacking():
+	return player
+
+func enter_state(prev_state):
+	$attack.interpolate_property(get_parent(), \"position\", get_parent().position, get_player_attacking().position, attack_duration, Tween.TRANS_LINEAR,Tween.EASE_IN_OUT)
+	$attack.start()
+
+func _on_attack_tween_completed(object, key):
+	get_parent().set_state(\"BODY_INVISIBLE\")
+"
 
 [sub_resource type="GDScript" id=2]
 
-script/source = "tool
+script/source = "extends \"res://addons/state_handler/state_handler.gd\"
 
-extends \"res://scripts/state_handler.gd\"
-
-func enter_state(old_state):
-	.enter_state(old_state)
-	get_parent().get_node(\"body\").visible = false
-	get_parent().get_node(\"sillouette\").visible = true
-
-func leave_state(new_state):
-	.leave_state(new_state)
-	get_parent().get_node(\"body\").visible = true
-	get_parent().get_node(\"sillouette\").visible = false"
+func enter_state(prev_state):
+	get_parent().get_node(\"TemporarySprite\").visible = false
+"
 
 [node name="shadow_monster" type="KinematicBody2D" index="0"]
 
@@ -53,43 +54,135 @@ current_state = "FULL_VISIBLE"
 movement_speed = 327.68
 gravity_enabled = false
 gravity_vector = Vector2( 0, 1152 )
+velocity = Vector2( 0, 0 )
+max_velocity = Vector2( -1, -1 )
+acceleration = Vector2( 0, 0 )
 can_be_pushed = false
 HP = 100
 max_HP = 100
 invulnerability_time = 1.0
 damage = 1
 hp_drop_chance = 0.5
-attack_duration = 0.2
 eyes_visible = true
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." index="0"]
 
 build_mode = 0
-polygon = PoolVector2Array( -30, -16, -30, 16, 30, 16, 30, -16 )
+polygon = PoolVector2Array( -32, -32, -32, 32, 32, 32, 32, -32 )
 
-[node name="sillouette" parent="." index="1" instance=ExtResource( 2 )]
+[node name="eye1" type="Light2D" parent="." index="1"]
 
-visible = false
+position = Vector2( -11.9707, -21.647 )
+scale = Vector2( 0.0201902, 0.02 )
+enabled = true
+editor_only = false
+texture = ExtResource( 2 )
+offset = Vector2( 0, 0 )
+texture_scale = 1.0
+color = Color( 0.382824, 0.296078, 0, 1 )
+energy = 6.0
+mode = 0
+range_height = 0.0
+range_z_min = -1024
+range_z_max = 1024
+range_layer_min = 0
+range_layer_max = 0
+range_item_cull_mask = 1
+shadow_enabled = false
+shadow_color = Color( 0, 0, 0, 0 )
+shadow_buffer_size = 2048
+shadow_gradient_length = 0.0
+shadow_filter = 0
+shadow_filter_smooth = 0.0
+shadow_item_cull_mask = 1
 
-[node name="Label" parent="sillouette" index="0"]
+[node name="eye2" type="Light2D" parent="." index="2"]
 
-margin_left = -26.0
-margin_top = 23.0
-margin_right = 113.0
-margin_bottom = 37.0
-text = "Shadow Sillouette"
+position = Vector2( -24.4009, -21.8213 )
+scale = Vector2( 0.0201902, 0.02 )
+enabled = true
+editor_only = false
+texture = ExtResource( 2 )
+offset = Vector2( 0, 0 )
+texture_scale = 1.0
+color = Color( 0.382824, 0.296078, 0, 1 )
+energy = 6.0
+mode = 0
+range_height = 0.0
+range_z_min = -1024
+range_z_max = 1024
+range_layer_min = 0
+range_layer_max = 0
+range_item_cull_mask = 1
+shadow_enabled = false
+shadow_color = Color( 0, 0, 0, 0 )
+shadow_buffer_size = 2048
+shadow_gradient_length = 0.0
+shadow_filter = 0
+shadow_filter_smooth = 0.0
+shadow_item_cull_mask = 1
 
-[node name="body" parent="." index="2" instance=ExtResource( 2 )]
+[node name="platform_manager" parent="." index="3" instance=ExtResource( 3 )]
 
-[node name="Label" parent="body" index="0"]
+[node name="bullet_hit_manager" parent="." index="4" instance=ExtResource( 4 )]
 
-margin_left = -20.0
-margin_top = 24.0
-margin_right = 85.0
-margin_bottom = 38.0
+[node name="TemporarySprite" type="Panel" parent="." index="5"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = -32.0
+margin_top = -32.0
+margin_right = 32.0
+margin_bottom = 32.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+script = ExtResource( 5 )
+__meta__ = {
+"_editor_icon": ExtResource( 6 )
+}
+
+[node name="NameLabel" type="Label" parent="TemporarySprite" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = -2.0
+margin_top = 12.0
+margin_right = 67.0
+margin_bottom = 60.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
 text = "Shadow Monster"
+align = 1
+valign = 1
+autowrap = true
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
 
-[node name="attack" type="Tween" parent="." index="3"]
+[node name="sillouette_attack_handler" type="Node2D" parent="." index="6"]
+
+script = SubResource( 1 )
+__meta__ = {
+"_editor_icon": ExtResource( 7 )
+}
+handled_state = "SILLOUETTE_ATTACK"
+enabled = true
+no_gravity = false
+attack_duration = 0.3
+
+[node name="attack" type="Tween" parent="sillouette_attack_handler" index="0"]
 
 repeat = false
 playback_process_mode = 1
@@ -98,74 +191,16 @@ playback/active = false
 playback/repeat = false
 playback/speed = 1.0
 
-[node name="eye1" type="Light2D" parent="." index="4"]
-
-position = Vector2( -11.9707, -21.647 )
-scale = Vector2( 0.0201902, 0.02 )
-enabled = true
-editor_only = false
-texture = ExtResource( 3 )
-offset = Vector2( 0, 0 )
-texture_scale = 1.0
-color = Color( 0.382824, 0.296078, 0, 1 )
-energy = 6.0
-mode = 0
-range_height = 0.0
-range_z_min = -1024
-range_z_max = 1024
-range_layer_min = 0
-range_layer_max = 0
-range_item_cull_mask = 1
-shadow_enabled = false
-shadow_color = Color( 0, 0, 0, 0 )
-shadow_buffer_size = 2048
-shadow_gradient_length = 0.0
-shadow_filter = 0
-shadow_filter_smooth = 0.0
-shadow_item_cull_mask = 1
-
-[node name="eye2" type="Light2D" parent="." index="5"]
-
-position = Vector2( -24.4009, -21.8213 )
-scale = Vector2( 0.0201902, 0.02 )
-enabled = true
-editor_only = false
-texture = ExtResource( 3 )
-offset = Vector2( 0, 0 )
-texture_scale = 1.0
-color = Color( 0.382824, 0.296078, 0, 1 )
-energy = 6.0
-mode = 0
-range_height = 0.0
-range_z_min = -1024
-range_z_max = 1024
-range_layer_min = 0
-range_layer_max = 0
-range_item_cull_mask = 1
-shadow_enabled = false
-shadow_color = Color( 0, 0, 0, 0 )
-shadow_buffer_size = 2048
-shadow_gradient_length = 0.0
-shadow_filter = 0
-shadow_filter_smooth = 0.0
-shadow_item_cull_mask = 1
-
-[node name="body_invisible_handler" parent="." index="6" instance=ExtResource( 4 )]
-
-script = SubResource( 1 )
-handled_state = "BODY_INVISIBLE"
-
-[node name="sillouette_visible_handler" parent="." index="7" instance=ExtResource( 4 )]
+[node name="body_invisible_handler" type="Node2D" parent="." index="7"]
 
 script = SubResource( 2 )
-handled_state = "SILLOUETTE_VISIBLE"
+__meta__ = {
+"_editor_icon": ExtResource( 7 )
+}
+handled_state = "BODY_INVISIBLE"
+enabled = true
+no_gravity = false
 
-[node name="full_visible_handler" parent="." index="8" instance=ExtResource( 4 )]
-
-handled_state = "FULL_VISIBLE"
-
-[connection signal="tween_completed" from="attack" to="." method="_on_attack_tween_completed"]
+[connection signal="tween_completed" from="sillouette_attack_handler/attack" to="sillouette_attack_handler" method="_on_attack_tween_completed"]
 
 
-[editable path="sillouette"]
-[editable path="body"]

@@ -3,7 +3,7 @@
 [ext_resource path="res://scripts/activatable_block.gd" type="Script" id=1]
 [ext_resource path="res://sprites/white.png" type="Texture" id=2]
 
-[node name="activatable_block" type="StaticBody2D"]
+[node name="activatable_block" type="StaticBody2D" index="0"]
 
 input_pickable = false
 collision_layer = 1
@@ -40,7 +40,7 @@ size_flags_vertical = 1
 [node name="Sprite" type="Sprite" parent="." index="2"]
 
 modulate = Color( 0.0299072, 0, 0.382813, 1 )
-position = Vector2( 0, 1.52588e-05 )
+position = Vector2( 0, 1.52588e-005 )
 scale = Vector2( 0.0555556, 0.0987654 )
 texture = ExtResource( 2 )
 _sections_unfolded = [ "Visibility" ]

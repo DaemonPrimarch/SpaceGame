@@ -126,16 +126,6 @@ arrival_pos_id = "start"
 
 position = Vector2( 831.14, 805.328 )
 collision_mask = 1
-current_state = "STANDING"
-
-[node name="AnimationPlayer" parent="player" index="8"]
-
-anims/duck = SubResource( 1 )
-anims/fall = SubResource( 2 )
-anims/idle = SubResource( 3 )
-anims/jump = SubResource( 4 )
-anims/run = SubResource( 5 )
-anims/run_gun = SubResource( 6 )
 
 [node name="double_jumping_handler" parent="player" index="14"]
 
@@ -149,6 +139,15 @@ enabled = true
 
 current = false
 _sections_unfolded = [ "Drag Margin", "Smoothing" ]
+
+[node name="AnimationPlayer" parent="player" index="25"]
+
+anims/duck = SubResource( 1 )
+anims/fall = SubResource( 2 )
+anims/idle = SubResource( 3 )
+anims/jump = SubResource( 4 )
+anims/run = SubResource( 5 )
+anims/run_gun = SubResource( 6 )
 
 [node name="start_panel" parent="." index="1" instance=ExtResource( 3 )]
 

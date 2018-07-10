@@ -67,7 +67,6 @@ resource_name = "changed"
 length = 1.0
 loop = false
 step = 0.1
-
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:self_modulate")
 tracks/0/interp = 1

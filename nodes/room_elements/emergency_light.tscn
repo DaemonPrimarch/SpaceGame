@@ -4,7 +4,7 @@
 [ext_resource path="res://scripts/room_elements/emergency_light.gd" type="Script" id=2]
 [ext_resource path="res://sprites/fading_light_5.png" type="Texture" id=3]
 
-[node name="emergency_light" type="Sprite"]
+[node name="emergency_light" type="Sprite" index="0"]
 
 scale = Vector2( 0.0533333, 0.0533333 )
 texture = ExtResource( 1 )
