@@ -53,8 +53,9 @@ func get_room_of_node(node):
 	return current_room
 
 func unload_room(room):
-	#for child in room.get_children():
-	#	room.get_node("CanvasModulate").visible = false
+	for child in room.get_children():
+		if(child is CanvasModulate):
+			child.visible = false
 	
 	remove_room_as_loaded(room)
 	

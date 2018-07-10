@@ -9,36 +9,23 @@ signal cutscene_paused
 export(String, FILE, "*.json") var dialog_tree
 export var paused = false setget set_paused
 
-var dialog_system
-var camera
-var player
-
 var paused_position
 
 
 func _ready():
-	dialog_system = get_node("/root/DIALOG_SYSTEM")
-	camera = get_node("/root/CAMERA_MANAGER").get_active_camera()
+	pass
 	
 func _physics_process(delta):
 	clear_caches()
 
-func play_dialog_tree():
-	#DEPRECATED
-	get_node("/root/DIALOG_SYSTEM").queue_tree_from_json(dialog_tree)
-	
 func start_dialog_tree():
-	play_dialog_tree()
+	get_node("/root/DIALOG_SYSTEM").queue_tree_from_json(dialog_tree)
 	
 func advance_dialog_tree():
 	get_node("/root/DIALOG_SYSTEM").advance_current_tree()
 	
-func play_cutscene():
-	#DEPRECATED
-	play("cutscene")
-	
 func start_cutscene():
-	play_cutscene()
+	play("cutscene")
 	
 #	if(not Engine.editor_hint):
 #		get_node("/root/DIALOG_SYSTEM").connect("options_shown", self, "on_dialog_options_shown")

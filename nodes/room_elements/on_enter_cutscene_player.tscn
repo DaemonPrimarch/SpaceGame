@@ -28,7 +28,7 @@ trigger_on_freed = false
 build_mode = 0
 polygon = PoolVector2Array( 32, -32, -32, -32, -32, 32, 32, 32 )
 
-[connection signal="body_entered" from="enter_trigger" to="enter_trigger" method="_on_Area2D_body_entered"]
+[connection signal="player_entered" from="enter_trigger" to="." method="_on_enter_trigger_player_entered"]
 
 [connection signal="tree_exited" from="enter_trigger" to="." method="_on_enter_trigger_tree_exited"]
 

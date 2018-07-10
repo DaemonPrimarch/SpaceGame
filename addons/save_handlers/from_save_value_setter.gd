@@ -18,7 +18,7 @@ func on_save_changed(property):
 		update_value()
 
 func _ready():
-	update_value()
+	call_deferred("update_value")
 	
 	if(auto_update):
 		SAVE_MANAGER.connect("save_changed", self, "on_save_changed")

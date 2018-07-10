@@ -37,7 +37,6 @@ func is_dark():
 
 func _on_room_room_darkened():
 	get_node("CanvasModulate").color = dark_color
-	
 
 func _on_room_room_lit():
 	get_node("CanvasModulate").color = Color(1,1,1)

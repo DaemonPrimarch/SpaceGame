@@ -1,9 +1,11 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://scripts/singletons/GUI.gd" type="Script" id=1]
 [ext_resource path="res://nodes/GUI_elements/HP_bar_handler.tscn" type="PackedScene" id=2]
 [ext_resource path="res://nodes/GUI_elements/dialog_box.tscn" type="PackedScene" id=3]
 [ext_resource path="res://nodes/GUI_elements/menu.tscn" type="PackedScene" id=4]
+[ext_resource path="res://addons/state_labels/state_label.gd" type="Script" id=5]
+[ext_resource path="res://addons/state_labels/label.svg" type="Texture" id=6]
 
 [node name="GUI_layer" type="CanvasLayer" index="0"]
 
@@ -50,5 +52,32 @@ max_lines_visible = -1
 [node name="menu" parent="." index="3" instance=ExtResource( 4 )]
 
 visible = false
+
+[node name="save_file_label" type="Label" parent="." index="4"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 1312.0
+margin_top = 896.0
+margin_right = 1352.0
+margin_bottom = 910.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+script = ExtResource( 5 )
+__meta__ = {
+"_editor_icon": ExtResource( 6 )
+}
+node_path = NodePath("/root/SAVE_MANAGER")
+tracked_value = "save_file"
+tracked_function = ""
 
 
