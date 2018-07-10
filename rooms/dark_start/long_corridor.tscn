@@ -1,15 +1,16 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://nodes/room.tscn" type="PackedScene" id=1]
 [ext_resource path="res://nodes/room_elements/on_enter_cutscene_player.tscn" type="PackedScene" id=2]
-[ext_resource path="res://nodes/helpers/cutscene_helper.tscn" type="PackedScene" id=3]
-[ext_resource path="res://scripts/cutscene_helpers/dark_corridor.gd" type="Script" id=4]
-[ext_resource path="res://deprecated/cutscene_player.tscn" type="PackedScene" id=5]
-[ext_resource path="res://nodes/entities/human_puppet.tscn" type="PackedScene" id=6]
-[ext_resource path="res://nodes/torch_light.tscn" type="PackedScene" id=7]
-[ext_resource path="res://nodes/room_elements/regular_warp_tile.tscn" type="PackedScene" id=8]
-[ext_resource path="res://addons/extended_camera_2D/camera_limit_area.gd" type="Script" id=9]
-[ext_resource path="res://addons/extended_collision_polygon_2D/extended_collision_polygon_2D.gd" type="Script" id=10]
+[ext_resource path="res://addons/cutscene_player/cutscene_player.gd" type="Script" id=3]
+[ext_resource path="res://addons/cutscene_player/animation_player.svg" type="Texture" id=4]
+[ext_resource path="res://nodes/helpers/cutscene_helper.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scripts/cutscene_helpers/dark_corridor.gd" type="Script" id=6]
+[ext_resource path="res://nodes/entities/human_puppet.tscn" type="PackedScene" id=7]
+[ext_resource path="res://nodes/torch_light.tscn" type="PackedScene" id=8]
+[ext_resource path="res://nodes/room_elements/regular_warp_tile.tscn" type="PackedScene" id=9]
+[ext_resource path="res://addons/extended_camera_2D/camera_limit_area.gd" type="Script" id=10]
+[ext_resource path="res://addons/extended_collision_polygon_2D/extended_collision_polygon_2D.gd" type="Script" id=11]
 
 [sub_resource type="Animation" id=1]
 
@@ -94,7 +95,7 @@ tracks/5/keys = {
 } ]
 }
 tracks/6/type = "method"
-tracks/6/path = NodePath("cutscene_player")
+tracks/6/path = NodePath("CutscenePlayer")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/imported = false
@@ -152,23 +153,34 @@ position = Vector2( 4704, 672 )
 position = Vector2( 4960, 673.274 )
 _sections_unfolded = [ "Transform", "Z Index" ]
 
-[node name="cutscene_helper" parent="on_enter_cutscene_player" index="0" instance=ExtResource( 3 )]
+[node name="CutscenePlayer" type="AnimationPlayer" parent="on_enter_cutscene_player" index="0"]
 
-script = ExtResource( 4 )
+root_node = NodePath("..")
+autoplay = ""
+playback_process_mode = 1
+playback_default_blend_time = 0.0
+playback_speed = 1.0
+anims/cutscene = SubResource( 1 )
+blend_times = [  ]
+script = ExtResource( 3 )
+__meta__ = {
+"_editor_icon": ExtResource( 4 )
+}
+dialog_tree = null
+paused = false
 
-[node name="enter_trigger" parent="on_enter_cutscene_player" index="1"]
+[node name="cutscene_helper" parent="on_enter_cutscene_player" index="1" instance=ExtResource( 5 )]
 
-editor/display_folded = true
+script = ExtResource( 6 )
+
+[node name="enter_trigger" parent="on_enter_cutscene_player" index="2"]
+
 oneshot = true
 save_path = "cutscenes/long_corridor"
 
-[node name="cutscene_player" parent="on_enter_cutscene_player" index="2" instance=ExtResource( 5 )]
+[node name="puppet_1" parent="on_enter_cutscene_player" index="3" instance=ExtResource( 7 )]
 
-anims/cutscene = SubResource( 1 )
-dialog_tree = "res://dialog_trees/exposition_dump.json"
-
-[node name="puppet_1" parent="on_enter_cutscene_player" index="3" instance=ExtResource( 6 )]
-
+editor/display_folded = true
 position = Vector2( -68.644, -24.7024 )
 _sections_unfolded = [ "Transform", "Visibility" ]
 
@@ -177,8 +189,9 @@ _sections_unfolded = [ "Transform", "Visibility" ]
 flip_h = true
 _sections_unfolded = [ "Animation", "Offset", "Transform", "Visibility" ]
 
-[node name="puppet_2" parent="on_enter_cutscene_player" index="4" instance=ExtResource( 6 )]
+[node name="puppet_2" parent="on_enter_cutscene_player" index="4" instance=ExtResource( 7 )]
 
+editor/display_folded = true
 position = Vector2( -133.971, -24.0389 )
 _sections_unfolded = [ "Transform" ]
 
@@ -187,7 +200,7 @@ _sections_unfolded = [ "Transform" ]
 flip_h = true
 _sections_unfolded = [ "Animation", "Offset", "Transform", "Visibility" ]
 
-[node name="torch_light" parent="on_enter_cutscene_player/puppet_2" index="2" instance=ExtResource( 7 )]
+[node name="torch_light" parent="on_enter_cutscene_player/puppet_2" index="2" instance=ExtResource( 8 )]
 
 scale = Vector2( 3, 3 )
 _sections_unfolded = [ "Transform" ]
@@ -207,7 +220,7 @@ bounce = 0.0
 build_mode = 0
 polygon = PoolVector2Array( 0, -97.274, 64, -97.274, 64, 30.726, 0, 30.726 )
 
-[node name="warp_tile" parent="." index="4" instance=ExtResource( 8 )]
+[node name="warp_tile" parent="." index="4" instance=ExtResource( 9 )]
 
 position = Vector2( 5024, 640 )
 destination_room = "res://rooms/dark_start/call_to_adventure.tscn"
@@ -234,7 +247,7 @@ linear_damp = 0.1
 angular_damp = 1.0
 audio_bus_override = false
 audio_bus_name = "Master"
-script = ExtResource( 9 )
+script = ExtResource( 10 )
 simple = true
 can_zoom_out = false
 
@@ -242,7 +255,9 @@ can_zoom_out = false
 
 build_mode = 0
 polygon = PoolVector2Array( 0, 0, 0, 960, 5056, 960, 5056, 0 )
-script = ExtResource( 10 )
+script = ExtResource( 11 )
+
+[connection signal="animation_finished" from="on_enter_cutscene_player/CutscenePlayer" to="on_enter_cutscene_player/CutscenePlayer" method="_on_cutscene_player_animation_finished"]
 
 [connection signal="triggered" from="on_enter_cutscene_player/enter_trigger" to="on_enter_cutscene_player/cutscene_helper" method="set_active" binds= [ true ]]
 

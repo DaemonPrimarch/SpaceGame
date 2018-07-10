@@ -4,8 +4,8 @@
 [ext_resource path="res://sprites/guun.png" type="Texture" id=2]
 [ext_resource path="res://nodes/room_elements/regular_warp_tile.tscn" type="PackedScene" id=3]
 [ext_resource path="res://nodes/room_elements/on_enter_cutscene_player.tscn" type="PackedScene" id=4]
-[ext_resource path="res://deprecated/cutscene_player.tscn" type="PackedScene" id=5]
-[ext_resource path="res://addons/cutscene_player/cutscene_player.gd" type="Script" id=6]
+[ext_resource path="res://addons/cutscene_player/cutscene_player.gd" type="Script" id=5]
+[ext_resource path="res://addons/cutscene_player/animation_player.svg" type="Texture" id=6]
 [ext_resource path="res://rooms/start_rooms/room_darkener_helper.tscn" type="PackedScene" id=7]
 [ext_resource path="res://addons/extended_camera_2D/camera_limit_area.gd" type="Script" id=8]
 [ext_resource path="res://addons/extended_collision_polygon_2D/extended_collision_polygon_2D.gd" type="Script" id=9]
@@ -320,11 +320,21 @@ save_path = "start_rooms/darkened"
 
 polygon = PoolVector2Array( 32, -704, -32, -704, -32, 64, 32, 64 )
 
-[node name="CutscenePlayer" parent="on_enter_cutscene_player" index="1" instance=ExtResource( 5 )]
+[node name="CutscenePlayer" type="AnimationPlayer" parent="on_enter_cutscene_player" index="1"]
 
+root_node = NodePath("..")
+autoplay = ""
+playback_process_mode = 1
+playback_default_blend_time = 0.0
+playback_speed = 1.0
 anims/cutscene = SubResource( 7 )
-script = ExtResource( 6 )
+blend_times = [  ]
+script = ExtResource( 5 )
+__meta__ = {
+"_editor_icon": ExtResource( 6 )
+}
 dialog_tree = "res://dialog_trees/power_blackout_1.json"
+paused = false
 
 [node name="room_darkener_helper" parent="." index="7" instance=ExtResource( 7 )]
 
@@ -347,6 +357,8 @@ can_zoom_out = false
 build_mode = 0
 polygon = PoolVector2Array( 0, 0, 0, 960, 1664, 960, 1664, 0 )
 script = ExtResource( 9 )
+
+[connection signal="animation_finished" from="on_enter_cutscene_player/CutscenePlayer" to="on_enter_cutscene_player/CutscenePlayer" method="_on_cutscene_player_animation_finished"]
 
 
 [editable path="player"]

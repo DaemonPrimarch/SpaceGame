@@ -1,15 +1,16 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://nodes/room.tscn" type="PackedScene" id=1]
 [ext_resource path="res://nodes/room_elements/regular_warp_tile.tscn" type="PackedScene" id=2]
 [ext_resource path="res://nodes/room_elements/on_enter_cutscene_player.tscn" type="PackedScene" id=3]
-[ext_resource path="res://addons/player_enter_trigger/player_enter_trigger.tscn" type="PackedScene" id=4]
-[ext_resource path="res://deprecated/cutscene_player.tscn" type="PackedScene" id=5]
-[ext_resource path="res://nodes/entities/human_puppet.tscn" type="PackedScene" id=6]
-[ext_resource path="res://sprites/white_light.png" type="Texture" id=7]
-[ext_resource path="res://rooms/start_rooms/room_darkener_helper.tscn" type="PackedScene" id=8]
-
-
+[ext_resource path="res://addons/cutscene_player/cutscene_player.gd" type="Script" id=4]
+[ext_resource path="res://addons/cutscene_player/animation_player.svg" type="Texture" id=5]
+[ext_resource path="res://addons/player_enter_trigger/player_enter_trigger.tscn" type="PackedScene" id=6]
+[ext_resource path="res://nodes/entities/human_puppet.tscn" type="PackedScene" id=7]
+[ext_resource path="res://sprites/white_light.png" type="Texture" id=8]
+[ext_resource path="res://rooms/start_rooms/room_darkener_helper.tscn" type="PackedScene" id=9]
+[ext_resource path="res://addons/extended_camera_2D/camera_limit_area.gd" type="Script" id=10]
+[ext_resource path="res://addons/extended_collision_polygon_2D/extended_collision_polygon_2D.gd" type="Script" id=11]
 
 [sub_resource type="Animation" id=1]
 
@@ -42,7 +43,7 @@ tracks/1/keys = {
 "values": [ false, true ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("cutscene_player:paused")
+tracks/2/path = NodePath("CutscenePlayer:paused")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -54,7 +55,7 @@ tracks/2/keys = {
 "values": [ false, true ]
 }
 tracks/3/type = "method"
-tracks/3/path = NodePath("cutscene_player")
+tracks/3/path = NodePath("CutscenePlayer")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -400,32 +401,46 @@ tracks/4/keys = {
 
 tile_data = PoolIntArray( 0, 0, 0, 1, 0, 0, 2, 0, 0, 3, 0, 0, 4, 0, 0, 5, 0, 0, 6, 0, 0, 7, 0, 0, 8, 0, 0, 9, 0, 0, 10, 0, 0, 11, 0, 0, 12, 0, 0, 13, 0, 0, 14, 0, 0, 15, 0, 0, 16, 0, 0, 17, 0, 0, 18, 0, 0, 19, 0, 0, 20, 0, 0, 21, 0, 0, 22, 0, 0, 23, 0, 0, 24, 0, 0, 25, 0, 0, 65536, 0, 0, 65537, 0, 0, 65561, 0, 0, 131072, 0, 0, 131073, 0, 0, 131097, 0, 0, 196608, 0, 0, 196609, 0, 0, 196633, 0, 0, 262144, 0, 0, 262145, 0, 0, 262169, 0, 0, 327680, 0, 0, 327681, 0, 0, 327705, 0, 0, 393241, 0, 0, 458777, 0, 0, 524288, 0, 0, 524289, 0, 0, 524290, 0, 0, 524291, 0, 0, 524292, 0, 0, 524313, 0, 0, 589824, 0, 0, 589825, 0, 0, 589826, 0, 0, 589827, 0, 0, 589828, 0, 0, 589849, 0, 0, 655360, 0, 0, 655361, 0, 0, 655362, 0, 0, 655363, 0, 0, 655364, 0, 0, 655385, 0, 0, 720896, 0, 0, 720897, 0, 0, 720898, 0, 0, 720899, 0, 0, 720900, 0, 0, 786432, 0, 0, 786433, 0, 0, 786434, 0, 0, 786435, 0, 0, 786436, 0, 0, 851968, 0, 0, 851969, 0, 0, 851970, 0, 0, 851971, 0, 0, 851972, 0, 0, 851973, 0, 0, 851974, 0, 0, 851975, 0, 0, 851976, 0, 0, 851977, 0, 0, 851978, 0, 0, 851979, 0, 0, 851980, 0, 0, 851981, 0, 0, 851982, 0, 0, 851983, 0, 0, 851984, 0, 0, 851985, 0, 0, 851986, 0, 0, 851987, 0, 0, 851988, 0, 0, 851989, 0, 0, 851990, 0, 0, 851991, 0, 0, 851992, 0, 0, 851993, 0, 0, 917504, 0, 0, 917505, 0, 0, 917506, 0, 0, 917507, 0, 0, 917508, 0, 0, 917509, 0, 0, 917510, 0, 0, 917511, 0, 0, 917512, 0, 0, 917513, 0, 0, 917514, 0, 0, 917515, 0, 0, 917516, 0, 0, 917517, 0, 0, 917518, 0, 0, 917519, 0, 0, 917520, 0, 0, 917521, 0, 0, 917522, 0, 0, 917523, 0, 0, 917524, 0, 0, 917525, 0, 0, 917526, 0, 0, 917527, 0, 0, 917528, 0, 0, 917529, 0, 0 )
 
-[node name="camera_container" parent="." index="3"]
-
-polygon = PoolVector2Array( 0, 0, 0, 960, 1664, 960, 1664, 0 )
-
-[node name="player" parent="." index="4"]
+[node name="player" parent="." index="2"]
 
 position = Vector2( 288, 480 )
 
-[node name="warp_tile" parent="." index="5" instance=ExtResource( 2 )]
+[node name="warp_tile" parent="." index="3" instance=ExtResource( 2 )]
 
 position = Vector2( 32, 448 )
 destination_room = "res://rooms/dark_start/long_corridor.tscn"
 arrival_pos_id = "call_to_adventure_arrival"
 
-[node name="on_enter_cutscene_player" parent="." index="6" instance=ExtResource( 3 )]
+[node name="on_enter_cutscene_player" parent="." index="4" instance=ExtResource( 3 )]
 
 _sections_unfolded = [ "Transform" ]
 
-[node name="enter_trigger" parent="on_enter_cutscene_player" index="0"]
+[node name="CutscenePlayer" type="AnimationPlayer" parent="on_enter_cutscene_player" index="0"]
+
+root_node = NodePath("..")
+autoplay = ""
+playback_process_mode = 0
+playback_default_blend_time = 0.0
+playback_speed = 1.0
+anims/cutscene = SubResource( 1 )
+"anims/cutscene (copy)" = SubResource( 2 )
+blend_times = [  ]
+script = ExtResource( 4 )
+_sections_unfolded = [ "Playback Options" ]
+__meta__ = {
+"_editor_icon": ExtResource( 5 )
+}
+dialog_tree = null
+paused = false
+
+[node name="enter_trigger" parent="on_enter_cutscene_player" index="1"]
 
 position = Vector2( 544, 806 )
 oneshot = true
 free_on_disabled = true
 save_path = "cutscenes/call_to_adventure_1"
 
-[node name="StaticBody2D" type="StaticBody2D" parent="on_enter_cutscene_player" index="1"]
+[node name="StaticBody2D" type="StaticBody2D" parent="on_enter_cutscene_player" index="2"]
 
 position = Vector2( 0, 2 )
 input_pickable = false
@@ -442,28 +457,30 @@ _sections_unfolded = [ "Collision" ]
 build_mode = 0
 polygon = PoolVector2Array( 64, 382, 112, 382, 112, 512, 64, 512 )
 
-[node name="player_enter_trigger" parent="on_enter_cutscene_player" index="2" instance=ExtResource( 4 )]
+[node name="player_enter_trigger" parent="on_enter_cutscene_player" index="3" instance=ExtResource( 6 )]
 
 position = Vector2( 352, 548 )
 save_path = "cutscenes/call_to_adventure_2"
 
-[node name="cutscene_player" parent="on_enter_cutscene_player" index="3" instance=ExtResource( 5 )]
+[node name="player_move_cutscene" type="AnimationPlayer" parent="on_enter_cutscene_player" index="4"]
 
+root_node = NodePath("..")
+autoplay = ""
 playback_process_mode = 0
-anims/cutscene = SubResource( 1 )
-"anims/cutscene (copy)" = SubResource( 2 )
-_sections_unfolded = [ "Playback Options" ]
-dialog_tree = "res://dialog_trees/meeting.json"
-paused = true
-
-[node name="player_move_cutscene" parent="on_enter_cutscene_player" index="4" instance=ExtResource( 5 )]
-
-playback_process_mode = 0
+playback_default_blend_time = 0.0
+playback_speed = 1.0
 anims/cutscene = SubResource( 3 )
 "anims/cutscene (copy)" = SubResource( 4 )
+blend_times = [  ]
+script = ExtResource( 4 )
 _sections_unfolded = [ "Playback Options" ]
+__meta__ = {
+"_editor_icon": ExtResource( 5 )
+}
+dialog_tree = null
+paused = false
 
-[node name="human_puppet2" parent="on_enter_cutscene_player" index="5" instance=ExtResource( 6 )]
+[node name="human_puppet2" parent="on_enter_cutscene_player" index="5" instance=ExtResource( 7 )]
 
 visible = false
 position = Vector2( 32, 456 )
@@ -475,7 +492,7 @@ position = Vector2( 128, -32 )
 scale = Vector2( 3.66625, 3.33125 )
 enabled = true
 editor_only = false
-texture = ExtResource( 7 )
+texture = ExtResource( 8 )
 offset = Vector2( 0, 0 )
 texture_scale = 1.0
 color = Color( 1, 1, 1, 1 )
@@ -495,15 +512,39 @@ shadow_filter = 0
 shadow_filter_smooth = 0.0
 shadow_item_cull_mask = 1
 
-[node name="human_puppet" parent="on_enter_cutscene_player" index="6" instance=ExtResource( 6 )]
+[node name="human_puppet" parent="on_enter_cutscene_player" index="6" instance=ExtResource( 7 )]
 
 visible = false
 position = Vector2( 32, 452 )
 _sections_unfolded = [ "Transform", "Visibility" ]
 
-[node name="room_darkener_helper" parent="." index="7" instance=ExtResource( 8 )]
+[node name="room_darkener_helper" parent="." index="5" instance=ExtResource( 9 )]
 
-[connection signal="triggered" from="on_enter_cutscene_player/player_enter_trigger" to="on_enter_cutscene_player/cutscene_player" method="set_paused" binds= [ false ]]
+[node name="AutoGeneratedCameraLimitArea" type="Area2D" parent="." index="6"]
+
+visible = false
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+script = ExtResource( 10 )
+simple = true
+can_zoom_out = false
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="AutoGeneratedCameraLimitArea" index="0"]
+
+build_mode = 0
+polygon = PoolVector2Array( 0, 0, 0, 960, 1664, 960, 1664, 0 )
+script = ExtResource( 11 )
+
+[connection signal="animation_finished" from="on_enter_cutscene_player/CutscenePlayer" to="on_enter_cutscene_player/CutscenePlayer" method="_on_cutscene_player_animation_finished"]
+
+[connection signal="triggered" from="on_enter_cutscene_player/player_enter_trigger" to="on_enter_cutscene_player/CutscenePlayer" method="set_paused" binds= [ false ]]
+
+[connection signal="animation_finished" from="on_enter_cutscene_player/player_move_cutscene" to="on_enter_cutscene_player/player_move_cutscene" method="_on_cutscene_player_animation_finished"]
 
 
 [editable path="on_enter_cutscene_player"]
