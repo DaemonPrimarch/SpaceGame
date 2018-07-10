@@ -11,7 +11,7 @@ func press_trigger():
 	
 	var room = ROOM_MANAGER.get_room_of_node(self)
 	
-	bullet.get_node("layer_changer").set_in_background(get_parent().get_parent().get_node("layer_changer").is_in_background())
+ 	#bullet.get_node("LayerChange").set_in_background(get_parent().get_parent().get_node("layer_changer").is_in_background())
 	
 	bullet.set_position(room.to_local(to_global(Vector2(20, 0))))
 	

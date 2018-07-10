@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://scripts/entities/player/playable_character.gd" type="Script" id=1]
 [ext_resource path="res://addons/entities/entity.svg" type="Texture" id=2]
@@ -8,15 +8,15 @@
 [ext_resource path="res://nodes/managers/platform_manager.tscn" type="PackedScene" id=6]
 [ext_resource path="res://addons/state_labels/boolean_state_label.gd" type="Script" id=7]
 [ext_resource path="res://addons/state_labels/label.svg" type="Texture" id=8]
-[ext_resource path="res://deprecated/layer_changer.tscn" type="PackedScene" id=9]
-[ext_resource path="res://sprites/robot_demo.png" type="Texture" id=10]
-[ext_resource path="res://addons/extended_collision_polygon_2D/extended_collision_polygon_2D.gd" type="Script" id=11]
-[ext_resource path="res://addons/extended_collision_polygon_2D/polygon.svg" type="Texture" id=12]
-[ext_resource path="res://deprecated/player_light.tscn" type="PackedScene" id=13]
-[ext_resource path="res://nodes/managers/weapon_manager.tscn" type="PackedScene" id=14]
-[ext_resource path="res://nodes/helpers/respawn_helper.tscn" type="PackedScene" id=15]
-[ext_resource path="res://addons/state_labels/state_label.gd" type="Script" id=16]
-
+[ext_resource path="res://sprites/robot_demo.png" type="Texture" id=9]
+[ext_resource path="res://addons/extended_collision_polygon_2D/extended_collision_polygon_2D.gd" type="Script" id=10]
+[ext_resource path="res://addons/extended_collision_polygon_2D/polygon.svg" type="Texture" id=11]
+[ext_resource path="res://deprecated/player_light.tscn" type="PackedScene" id=12]
+[ext_resource path="res://nodes/managers/weapon_manager.tscn" type="PackedScene" id=13]
+[ext_resource path="res://nodes/helpers/respawn_helper.tscn" type="PackedScene" id=14]
+[ext_resource path="res://addons/state_labels/state_label.gd" type="Script" id=15]
+[ext_resource path="res://addons/layer_changer/layer_changer.gd" type="Script" id=16]
+[ext_resource path="res://addons/layer_changer/node.svg" type="Texture" id=17]
 
 [sub_resource type="Animation" id=1]
 
@@ -195,13 +195,11 @@ tracked_function = "is_on_track"
 true_value = "ON_TRACK"
 false_value = ""
 
-[node name="layer_changer" parent="." index="5" instance=ExtResource( 9 )]
-
-[node name="Sprite" type="Sprite" parent="." index="6"]
+[node name="Sprite" type="Sprite" parent="." index="5"]
 
 position = Vector2( 12, -24 )
 scale = Vector2( 1.5, 2 )
-texture = ExtResource( 10 )
+texture = ExtResource( 9 )
 vframes = 2
 hframes = 16
 frame = 18
@@ -210,17 +208,17 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." index="7"]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." index="6"]
 
 position = Vector2( -32, 0 )
 build_mode = 0
 polygon = PoolVector2Array( 62, 32, 2, 32, 2, -80, 62, -80 )
-script = ExtResource( 11 )
+script = ExtResource( 10 )
 __meta__ = {
-"_editor_icon": ExtResource( 12 )
+"_editor_icon": ExtResource( 11 )
 }
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="8"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="7"]
 
 root_node = NodePath("..")
 autoplay = "idle"
@@ -236,13 +234,13 @@ anims/run_gun = SubResource( 6 )
 blend_times = [  ]
 _sections_unfolded = [ "Playback Options" ]
 
-[node name="light" parent="." index="9" instance=ExtResource( 13 )]
+[node name="light" parent="." index="8" instance=ExtResource( 12 )]
 
-[node name="weapon_manager" parent="." index="10" instance=ExtResource( 14 )]
+[node name="weapon_manager" parent="." index="9" instance=ExtResource( 13 )]
 
-[node name="respawner" parent="." index="11" instance=ExtResource( 15 )]
+[node name="respawner" parent="." index="10" instance=ExtResource( 14 )]
 
-[node name="StringStateLabel" type="Label" parent="." index="12"]
+[node name="StringStateLabel" type="Label" parent="." index="11"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -261,7 +259,7 @@ size_flags_vertical = 4
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
-script = ExtResource( 16 )
+script = ExtResource( 15 )
 __meta__ = {
 "_editor_icon": ExtResource( 8 )
 }
@@ -269,7 +267,7 @@ node_path = NodePath("..")
 tracked_value = ""
 tracked_function = "get_state"
 
-[node name="BooleanStateLabel" type="Label" parent="." index="13"]
+[node name="BooleanStateLabel" type="Label" parent="." index="12"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -297,5 +295,14 @@ tracked_value = ""
 tracked_function = "is_invulnerable"
 true_value = "INVULNERABLE"
 false_value = ""
+
+[node name="LayerChanger" type="Node" parent="." index="13"]
+
+script = ExtResource( 16 )
+__meta__ = {
+"_editor_icon": ExtResource( 17 )
+}
+in_background = false
+linked_to_parent = false
 
 

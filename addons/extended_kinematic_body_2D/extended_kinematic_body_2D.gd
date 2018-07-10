@@ -96,6 +96,9 @@ func move_and_collide_slope(v):
 		
 	return collision_info
 
+func push(v):
+	pass
+
 func move_and_push(v):	
 	var collision_info = move_and_collide(v)
 		

@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=2]
+[gd_scene load_steps=26 format=2]
 
 [ext_resource path="res://nodes/room.tscn" type="PackedScene" id=1]
 [ext_resource path="res://nodes/room_elements/ladders/walled_ladder.tscn" type="PackedScene" id=2]
@@ -22,12 +22,13 @@
 [ext_resource path="res://addons/player_enter_trigger/area.svg" type="Texture" id=20]
 [ext_resource path="res://addons/extended_collision_polygon_2D/polygon.svg" type="Texture" id=21]
 [ext_resource path="res://nodes/room_elements/moving_platforms/controllers/platform_extender.tscn" type="PackedScene" id=22]
+[ext_resource path="res://nodes/room_elements/ladders/vertical_ladder.tscn" type="PackedScene" id=23]
 
 [sub_resource type="Curve2D" id=1]
 
 bake_interval = 5.0
 _data = {
-"points": PoolVector2Array( 0, 0, 0, 0, -352, 128, 0, 0, 0, 0, -288, 128 )
+"points": PoolVector2Array( 0, 0, 0, 0, -352, 192, 0, 0, 0, 0, -352, -160 )
 }
 
 [sub_resource type="Curve2D" id=2]
@@ -81,27 +82,23 @@ position = Vector2( 8288, 768 )
 state = true
 toggleable = true
 
-[node name="player" parent="." index="6"]
+[node name="platform_mover" parent="." index="6" instance=ExtResource( 7 )]
 
-position = Vector2( 832, 800 )
-
-[node name="platform_mover" parent="." index="7" instance=ExtResource( 7 )]
-
-position = Vector2( 640, 736 )
+position = Vector2( 3232, 672 )
 curve = SubResource( 1 )
 moving_speed = 128
 
 [node name="platform" parent="platform_mover" index="0" instance=ExtResource( 8 )]
 
-position = Vector2( -352, 128 )
+position = Vector2( -352, 192 )
 _sections_unfolded = [ "Collision", "collision" ]
 moveable_by_collision = false
 
-[node name="enemy_1" parent="." index="8" instance=ExtResource( 9 )]
+[node name="enemy_1" parent="." index="7" instance=ExtResource( 9 )]
 
 position = Vector2( 448, 800 )
 
-[node name="enemy_2" parent="." index="9" instance=ExtResource( 10 )]
+[node name="enemy_2" parent="." index="8" instance=ExtResource( 10 )]
 
 position = Vector2( 2272, 800 )
 
@@ -136,11 +133,11 @@ node_path = NodePath("..")
 tracked_value = ""
 tracked_function = "get_state"
 
-[node name="bullet_switch2" parent="." index="10" instance=ExtResource( 6 )]
+[node name="bullet_switch2" parent="." index="9" instance=ExtResource( 6 )]
 
 position = Vector2( 1760, 800 )
 
-[node name="flying_enemy_system" parent="." index="11" instance=ExtResource( 15 )]
+[node name="flying_enemy_system" parent="." index="10" instance=ExtResource( 15 )]
 
 position = Vector2( 704, 576 )
 
@@ -153,19 +150,19 @@ curve = SubResource( 2 )
 
 position = Vector2( -32, -64 )
 
-[node name="destroyable_block" parent="." index="12" instance=ExtResource( 16 )]
+[node name="destroyable_block" parent="." index="11" instance=ExtResource( 16 )]
 
 position = Vector2( 1120, 672 )
 
-[node name="damage_area" parent="." index="13" instance=ExtResource( 17 )]
+[node name="damage_area" parent="." index="12" instance=ExtResource( 17 )]
 
 position = Vector2( 2112, 800 )
 
-[node name="shadow_monster" parent="." index="14" instance=ExtResource( 18 )]
+[node name="shadow_monster" parent="." index="13" instance=ExtResource( 18 )]
 
 position = Vector2( 1760, 736 )
 
-[node name="PlayerEnterTrigger" type="Area2D" parent="." index="15"]
+[node name="PlayerEnterTrigger" type="Area2D" parent="." index="14"]
 
 position = Vector2( 1504, 800 )
 input_pickable = true
@@ -194,11 +191,11 @@ __meta__ = {
 "_editor_icon": ExtResource( 21 )
 }
 
-[node name="flying_enemy_system2" parent="." index="16" instance=ExtResource( 15 )]
+[node name="flying_enemy_system2" parent="." index="15" instance=ExtResource( 15 )]
 
 position = Vector2( 318.851, 592.152 )
 
-[node name="platform_extender" parent="." index="17" instance=ExtResource( 22 )]
+[node name="platform_extender" parent="." index="16" instance=ExtResource( 22 )]
 
 position = Vector2( 1418.73, 603.416 )
 side_extending_distance = 0
@@ -210,6 +207,19 @@ backward_acceleration = 0
 [node name="player_stick_platform" parent="platform_extender" index="0" instance=ExtResource( 8 )]
 
 flippedV = true
+
+[node name="platform_mover2" parent="." index="17" instance=ExtResource( 7 )]
+
+position = Vector2( 4000, 1472 )
+
+[node name="vertical_ladder" parent="." index="18" instance=ExtResource( 23 )]
+
+position = Vector2( 3680, 480 )
+length = 384
+
+[node name="player" parent="." index="19"]
+
+position = Vector2( 832, 800 )
 
 [connection signal="switched_off" from="bullet_switch" to="moving_track" method="set_moving_forward" binds= [ false ]]
 

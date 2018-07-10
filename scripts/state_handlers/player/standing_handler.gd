@@ -15,7 +15,7 @@ func process_state(delta):
 	if(not get_parent().is_grounded()):
 		get_parent().set_state("FALLING")
 	elif(get_parent().is_action_pressed("play_down") and get_parent().get_node("ladder_manager").is_inside_ladder_top_area()):
-		get_parent().set_ladder(get_parent().get_ladder_top())
+		get_parent().get_node("ladder_manager").set_ladder(get_parent().get_node("ladder_manager").get_ladder_top_area())
 		
 		get_parent().position += Vector2(0, 10)
 		

@@ -240,12 +240,12 @@ shadow_filter_smooth = 0.0
 shadow_item_cull_mask = 1
 script = ExtResource( 4 )
 
-[node name="Sprite" parent="." index="8"]
+[node name="Sprite" parent="." index="7"]
 
 frame = 20
 _sections_unfolded = [ "Animation", "Offset", "Region", "Transform" ]
 
-[node name="CollisionPolygon2D" parent="." index="9"]
+[node name="CollisionPolygon2D" parent="." index="8"]
 
 polygon = PoolVector2Array( 60, 32, 4, 32, 4, -80, 60, -80 )
 _sections_unfolded = [ "Transform" ]
@@ -381,14 +381,14 @@ script = ExtResource( 18 )
 
 [node name="camera_zoom_out_manager" parent="ExtendedCamera2D" index="0" instance=ExtResource( 19 )]
 
-[node name="light" parent="." index="26"]
+[node name="light" parent="." index="25"]
 
 texture = ExtResource( 3 )
 texture_scale = 2.0
 energy = 0.8
 _sections_unfolded = [ "Transform" ]
 
-[node name="weapon_manager" parent="." index="27"]
+[node name="weapon_manager" parent="." index="26"]
 
 editor/display_folded = true
 weapon_path = NodePath("gun")

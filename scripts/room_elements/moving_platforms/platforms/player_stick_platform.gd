@@ -32,6 +32,13 @@ func move_and_push(v):
 	.move_and_push(v * Vector2(0,1))
 
 func extend(v):
+	for node in connected_nodes:
+		if(v.y < 0):
+			node.position += (v * get_direction() * Vector2(1,-1))
+		else:
+			node.move_and_push(v * get_direction() * Vector2(1,-1))
+		
+	
 	.extend(v)
 	
 	if(v.x != 0):
@@ -39,6 +46,3 @@ func extend(v):
 		$Area2D/CollisionPolygon2D.polygon[3] += v
 	if(v.y != 0):
 		$Area2D/CollisionPolygon2D.position -= v
-
-	for node in connected_nodes:
-		node.move_and_push(v * get_direction())

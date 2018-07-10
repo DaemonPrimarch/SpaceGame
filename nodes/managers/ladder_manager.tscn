@@ -24,7 +24,7 @@ func is_inside_walled_ladder():
 	
 func set_ladder_top_area(ladder):
 	ladder_top = ladder
-	
+
 func is_inside_ladder_top_area():
 	return ladder_top != null
 

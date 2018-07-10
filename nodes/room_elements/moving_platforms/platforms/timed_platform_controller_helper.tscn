@@ -1,0 +1,44 @@
+[gd_scene load_steps=2 format=2]
+
+[sub_resource type="GDScript" id=1]
+
+script/source = "extends Node
+
+export var has_start_timer = true
+export var has_stop_timer = true
+
+func _ready():
+	if(has_start_timer):
+		$start_timer.connect(\"timeout\", get_parent(), \"set_waiting\", [false])
+		get_parent().connect(\"start_reached\", $start_timer, \"start\")
+		get_parent().connect(\"start_reached\", get_parent(), \"set_waiting\", [true])
+		get_parent().connect(\"activated\", get_parent(), \"set_waiting\", [true])
+		get_parent().connect(\"activated\", $start_timer, \"start\")
+	if(has_stop_timer):
+		get_parent().connect(\"end_reached\", get_parent(), \"set_waiting\", [true])
+		
+		get_parent().connect(\"end_reached\", $stop_timer, \"start\")
+	
+		$stop_timer.connect(\"timeout\", get_parent(), \"set_waiting\", [false])"
+
+[node name="timed_platform_controller_helper" type="Node" index="0"]
+
+script = SubResource( 1 )
+has_start_timer = true
+has_stop_timer = true
+
+[node name="start_timer" type="Timer" parent="." index="0"]
+
+process_mode = 1
+wait_time = 1.0
+one_shot = false
+autostart = false
+
+[node name="stop_timer" type="Timer" parent="." index="1"]
+
+process_mode = 1
+wait_time = 1.0
+one_shot = false
+autostart = false
+
+

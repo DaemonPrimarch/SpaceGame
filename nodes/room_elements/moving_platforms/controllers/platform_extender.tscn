@@ -6,9 +6,9 @@
 
 script = ExtResource( 1 )
 active = true
-one_way = false
-extending_direction = Vector2( 1, 0 )
-extending_distance = 64
+one_shot = false
+side_extending_distance = 64
+up_extending_distance = 0
 forward_starting_velocity = 320
 forward_acceleration = 192
 backward_starting_velocity = 64

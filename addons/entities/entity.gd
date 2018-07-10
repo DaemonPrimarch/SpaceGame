@@ -233,7 +233,7 @@ func check_if_ground_hit_on_collision(collision_info, bla):
 
 func check_if_still_on_ground(delta):
 	if(is_gravity_enabled()):
-		if(test_move(transform, gravity_vector.normalized())):
+		if(test_move(transform, gravity_vector.normalized() / 2)):
 			pass
 		elif(test_move(get_global_transform(), gravity_vector.normalized() * delta * (Vector2(get_movement_speed(), 0)).rotated(max_slope_angle))):
 			move_and_collide(gravity_vector.normalized() * delta * (Vector2(get_movement_speed(), 0)).rotated(max_slope_angle))

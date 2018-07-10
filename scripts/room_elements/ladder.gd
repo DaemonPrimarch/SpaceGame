@@ -82,11 +82,12 @@ func _on_ladder_length_changed():
 	for i in range(0, polygon.size()):
 		if(polygon[i].y >= 0):
 			polygon[i] = Vector2(polygon[i].x, get_length() - 32)
-			
+
 	get_node("Area2D/CollisionPolygon2D").set_polygon(polygon)
-	
+
 	get_node("Sprite").set_region_rect(Rect2(0,0,64, get_length()))
-	
+
 	get_node("Sprite").set_position(Vector2(get_node("Sprite").get_position().x, get_length()/2 - 32))
-	
+
 	get_node("Control/Panel").rect_scale = Vector2(get_node("Control/Panel").rect_scale.x, get_length()/2)
+

@@ -21,8 +21,8 @@ func set_in_background(val):
 			get_parent().collision_mask *= 256
 		
 		for child in get_parent().get_children():
-			if(child.is_in_group("layer_changeable") and child.get_node("layer_changer").is_linked_to_parent()):
-				child.get_node("layer_changer").set_in_background(val)
+			if(child.is_in_group("layer_changeable") and child.get_node("LayerChanger").is_linked_to_parent()):
+				child.get_node("LayerChanger").set_in_background(val)
 
 	in_background = val
 func is_in_background():
