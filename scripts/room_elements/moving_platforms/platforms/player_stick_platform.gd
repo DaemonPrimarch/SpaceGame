@@ -24,12 +24,10 @@ func _physics_process(delta):
 			disconnect_node(node)
 
 func move_and_push(v):
-	.move_and_push(v * Vector2(1,0))
-	
 	for node in connected_nodes:
 		node.position += v
-	
-	.move_and_push(v * Vector2(0,1))
+
+	.move_and_push(v * Vector2(1,1))
 
 func extend(v):
 	for node in connected_nodes:

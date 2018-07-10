@@ -84,8 +84,6 @@ func _physics_process(delta):
 		get_platform().move_and_push(get_velocity() * delta)
 		
 		if(has_arrived_at_next_point()):
-			#get_platform().position = get_next_point()
-			
 			emit_signal("arrived_at_point", get_next_point())
 			advance_next_point()
 

@@ -14,7 +14,7 @@ func add_room_as_loaded(room, path):
 	loaded_rooms[path] = room
 	path_rooms[room] = path
 	
-	print("Added room as loaded")
+	print("Loaded room: ", path)
 	
 func remove_room_as_loaded(room):
 	loaded_rooms.erase(get_path_of_room(room))

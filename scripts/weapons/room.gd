@@ -3,12 +3,11 @@ tool
 extends Node2D
 
 signal player_entered(player)
-signal room_lit
-signal room_darkened
+signal room_lit()
+signal room_darkened()
 
 export var dark = true setget set_dark, is_dark 
 export var dark_color = Color(0,0,0)
-export var auto_generate_camera_container = true
 export var auto_generate_camera_limiter = true
 
 func _ready():
