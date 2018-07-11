@@ -2,6 +2,9 @@ extends Area2D
 
 var health = 1
 
+func _ready():
+	connect("body_entered", self, "_on_body_entered")
+
 func set_health(val):
 	health = val
 

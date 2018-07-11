@@ -22,8 +22,10 @@ func remove_room_as_loaded(room):
 	
 func is_room_loaded(path):
 	return loaded_rooms.has(path)
+	
 func is_room_managed(room):
 	return path_rooms.has(room)
+	
 func get_path_of_room(room):
 	return path_rooms[room]
 
@@ -65,11 +67,9 @@ func warp_node_to_room(node, room, arrival_pos_id):
 	if(done <= 10000):
 		var old_room = get_room_of_node(node)
 		
-		node.get_parent().remove_child(node)
+		old_room.remove_child(node)
 		
 		var old_pos = old_room.position
-		
-		old_room.position += Vector2(5000, 5000)
 		
 		unload_room(old_room)
 		
@@ -80,27 +80,32 @@ func warp_node_to_room(node, room, arrival_pos_id):
 		if(old_pos.length() <= 30000):
 			new_pos = old_pos + Vector2(10000, 10000)
 		
-		if(typeof(room) == TYPE_STRING):
-			loaded_room = load_room(room, new_pos)
-		else:
-			loaded_room = load_packed_room(room, new_pos)
+		loaded_room = load_room(room, new_pos)
 			
 		yield(self, "PHYS")
 
-		var arrivals = get_tree().get_nodes_in_group("warp_arrival")
-		var arrival_pos = Vector2(0,0)
-		if(arrival_pos_id != null and arrival_pos_id != ""):
-			for arrival in arrivals:
-				if(arrival.get_arrival_ID() == arrival_pos_id and get_room_of_node(arrival) == loaded_room):
-					arrival_pos = (arrival.get_global_position())
-					arrival_pos = loaded_room.to_local(arrival_pos)
-		else:
-			print("NEVER!")
 
+		var arrival_pos = Vector2(0,0)
 		
-		if(arrival_pos == Vector2(0,0)):
-			print("ARRIVAL ID: ", arrival_pos_id)
-			print("ARRIVAL POSITION NOT FOUND!")
+
+		if(typeof(arrival_pos_id) == TYPE_STRING):
+			var arrivals = get_tree().get_nodes_in_group("warp_arrival")
+			
+			if(arrival_pos_id != null and arrival_pos_id != ""):
+				for arrival in arrivals:
+					if(arrival.get_arrival_ID() == arrival_pos_id and get_room_of_node(arrival) == loaded_room):
+						arrival_pos = (arrival.get_global_position())
+						arrival_pos = loaded_room.to_local(arrival_pos)
+			else:
+				print("NEVER!")
+	
+			
+			if(arrival_pos == Vector2(0,0)):
+				print("ARRIVAL ID: ", arrival_pos_id)
+				print("ARRIVAL POSITION NOT FOUND!")
+		else:
+			arrival_pos = arrival_pos_id
+
 		
 		if(loaded_room.has_node("player")):
 			print("OLD PLAYER STILL PRESENT")

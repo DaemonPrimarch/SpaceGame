@@ -1,9 +1,11 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://scripts/health_pickup.gd" type="Script" id=1]
-[ext_resource path="res://sprites/white.png" type="Texture" id=2]
+[ext_resource path="res://addons/temporary_sprite/temporary_sprite.gd" type="Script" id=2]
+[ext_resource path="res://addons/temporary_sprite/panel.svg" type="Texture" id=3]
+[ext_resource path="res://sprites/white.png" type="Texture" id=4]
 
-[node name="Area2D" type="Area2D" index="0"]
+[node name="health_pickup" type="Area2D" index="0"]
 
 input_pickable = true
 gravity_vec = Vector2( 0, 1 )
@@ -19,22 +21,44 @@ script = ExtResource( 1 )
 build_mode = 0
 polygon = PoolVector2Array( -16, -16, 16, -16, 16, 16, -16, 16 )
 
-[node name="Sprite" type="Sprite" parent="." index="1"]
+[node name="TemporarySprite" type="Panel" parent="." index="1"]
 
-position = Vector2( 0, -1.52588e-005 )
+editor/display_folded = true
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = -16.0
+margin_top = -16.0
+margin_right = 16.0
+margin_bottom = 16.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+script = ExtResource( 2 )
+__meta__ = {
+"_editor_icon": ExtResource( 3 )
+}
+
+[node name="Sprite" type="Sprite" parent="TemporarySprite" index="0"]
+
+position = Vector2( 16, 16 )
 scale = Vector2( 0.0277778, 0.0493827 )
-texture = ExtResource( 2 )
+texture = ExtResource( 4 )
 
-[node name="Label" type="Label" parent="." index="2"]
+[node name="NameLabel" type="Label" parent="TemporarySprite" index="1"]
 
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = -9.0
-margin_top = -6.0
-margin_right = 9.0
-margin_bottom = 8.0
+margin_left = -3.0
+margin_top = 10.0
+margin_right = 35.0
+margin_bottom = 24.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 2
@@ -43,11 +67,11 @@ size_flags_horizontal = 1
 size_flags_vertical = 4
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "HP"
+align = 1
+valign = 1
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
-_sections_unfolded = [ "Mouse", "custom_colors" ]
-
-[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+_sections_unfolded = [ "custom_colors" ]
 
 

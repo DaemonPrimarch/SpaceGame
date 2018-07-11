@@ -99,8 +99,4 @@ current_dir = "res://saves"
 current_file = "test_save.json"
 current_path = "res://saves/test_save.json"
 
-[connection signal="pressed" from="load_game" to="." method="_on_load_game_pressed"]
-
-[connection signal="file_selected" from="FileDialog" to="." method="_on_FileDialog_file_selected"]
-
 

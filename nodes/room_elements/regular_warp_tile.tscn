@@ -16,7 +16,7 @@ flippedV = false
 position = Vector2( 0, -32 )
 polygon = PoolVector2Array( 32, -32, 32, 96, -32, 96, -32, -32 )
 
-[node name="tileset_arrival" parent="." index="1" instance=ExtResource( 3 )]
+[node name="warp_arrival" parent="." index="1" instance=ExtResource( 3 )]
 
 position = Vector2( 96, 0 )
 

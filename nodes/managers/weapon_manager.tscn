@@ -2,7 +2,6 @@
 
 [ext_resource path="res://scripts/managers/weapon_manager.gd" type="Script" id=1]
 
-
 [node name="weapon_manager" type="Node2D" index="0"]
 
 script = ExtResource( 1 )

@@ -10,8 +10,7 @@ func _ready():
 	
 	set_arrival_pos_id(get_parent().get_name() + "_arrival")
 	
-	if(not Engine.editor_hint):
-		connect("destination_room_changed", self, "on_change_name")
+	connect("destination_room_changed", self, "on_change_name")
 	
 	on_change_name()
 
@@ -20,9 +19,7 @@ func on_change_name():
 		var name = get_destination_room().right(get_destination_room().find_last("/") + 1)
 		name = name.left(name.find_last(".tscn"))
 		
-		for node in get_children():
-			if(node is Position2D):
-				node.set_arrival_ID(name + "_arrival")
+		$warp_arrival.set_arrival_ID(name + "_arrival")
 		
 func is_flippedH():
 	return flippedH

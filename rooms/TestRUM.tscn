@@ -31,14 +31,14 @@ _data = {
 "points": PoolVector2Array( 0, 0, 0, 0, -352, 192, 0, 0, 0, 0, -352, -160 )
 }
 
-[sub_resource type="Curve2D" id=3]
+[sub_resource type="Curve2D" id=2]
 
 bake_interval = 5.0
 _data = {
 "points": PoolVector2Array( 0, 0, 0, 0, -352, 192, 0, 0, 0, 0, 32, 192, 0, 0, 0, 0, 32, 16 )
 }
 
-[sub_resource type="Curve2D" id=2]
+[sub_resource type="Curve2D" id=3]
 
 bake_interval = 5.0
 _data = {
@@ -105,7 +105,7 @@ moveable_by_collision = false
 
 position = Vector2( 3456, 593.455 )
 scale = Vector2( 1, 0.909091 )
-curve = SubResource( 3 )
+curve = SubResource( 2 )
 moving_speed = 128
 
 [node name="platform" parent="platform_mover3" index="0" instance=ExtResource( 8 )]
@@ -164,7 +164,7 @@ position = Vector2( 704, 576 )
 [node name="path" parent="flying_enemy_system" index="0"]
 
 position = Vector2( -2.32135, 96.9984 )
-curve = SubResource( 2 )
+curve = SubResource( 3 )
 
 [node name="path_follower" parent="flying_enemy_system/path" index="0"]
 

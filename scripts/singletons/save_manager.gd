@@ -13,11 +13,9 @@ func load_file(path = "res://saves/test_save.json"):
 	save_file = parse_json(text)
 
 func save_current_file(path = "res://saves/test_save.json"):
-	print(path)
 	var file = File.new()
 	file.open(path, file.WRITE)
 	var json = to_json(save_file)
-	print(json)
 	var text = file.store_string(json)
 	file.close()
 

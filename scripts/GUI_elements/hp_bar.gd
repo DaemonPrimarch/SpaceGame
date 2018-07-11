@@ -23,7 +23,7 @@ func set_tracked_object(object):
 	update()
 
 func remove_tracked_object():
-	GUI.remove_HP_bar(get_tracked_object())
+	GUI.HP_bar_helper.remove_HP_bar(get_tracked_object())
 
 func hp_changed():
 	set_value(get_tracked_object().get_HP())
