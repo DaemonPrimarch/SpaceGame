@@ -16,7 +16,7 @@ export var moveable_by_collision = true setget set_moveable_by_collision, is_mov
 
 func _ready():
 	add_to_group("extended_kinematic_body_2D")
-	add_to_group("light_detecting")
+	add_to_group("pushable")
 
 func set_moveable_by_collision(val):
 	moveable_by_collision = val
@@ -66,7 +66,6 @@ func get_direction():
 func get_max_slope_angle():
 	return max_slope_angle
 
-
 func move_no_collision(v):
 	position += v
 
@@ -80,7 +79,7 @@ func move_and_collide(v):
 			position = prev_pos + v
 		
 		emit_signal("collided", collision_info, self)
-		if(collision_info.collider is load("res://addons/extended_kinematic_body_2D/extended_kinematic_body_2D.gd")):
+		if(collision_info.collider.is_in_group("extended_kinematic_body_2D")):
 			collision_info.collider.emit_signal("collided", collision_info, self)
 		
 	return collision_info
@@ -88,11 +87,8 @@ func move_and_collide(v):
 func move_and_collide_slope(v):
 	var collision_info = move_and_collide(v)
 	
-
 	if(collision_info != null and abs(collision_info.normal.rotated(PI/2).angle()) < max_slope_angle and abs(collision_info.normal.rotated(PI/2).angle()) > 0):
-		
 		collision_info = move_and_collide(collision_info.remainder.dot(collision_info.normal.rotated(PI/2)) * collision_info.normal.rotated(PI/2)) 
-		
 		
 	return collision_info
 
@@ -103,10 +99,10 @@ func move_and_push(v):
 	var collision_info = move_and_collide(v)
 		
 	if(collision_info):
-		if(collision_info.collider.has_method('push')):
+		if(collision_info.collider.is_in_group("pushable")):
 			collision_info.collider.push(collision_info.remainder)
 		else:
-			print("ERROR: Attempting to push object that can't be pushed")
+			print("ERROR: Attempting to push: ", collision_info.collider.name, " that can't be pushed")
 
 func get_AABB():
 	var box = Rect2()

@@ -4,7 +4,6 @@
 [ext_resource path="res://nodes/terrain.tscn" type="PackedScene" id=2]
 [ext_resource path="res://nodes/entities/player/puppet_player.tscn" type="PackedScene" id=3]
 
-
 [node name="room" type="Node2D" index="0" groups=[
 "room",
 ]]
@@ -16,7 +15,6 @@ __meta__ = {
 }
 dark = false
 dark_color = Color( 0, 0, 0, 1 )
-auto_generate_camera_container = true
 auto_generate_camera_limiter = true
 
 [node name="terrain" parent="." index="0" instance=ExtResource( 2 )]
@@ -29,11 +27,5 @@ __meta__ = {
 }
 
 [node name="player" parent="." index="2" instance=ExtResource( 3 )]
-
-[connection signal="player_entered" from="." to="." method="_on_room_player_entered"]
-
-[connection signal="room_darkened" from="." to="." method="_on_room_room_darkened"]
-
-[connection signal="room_lit" from="." to="." method="_on_room_room_lit"]
 
 

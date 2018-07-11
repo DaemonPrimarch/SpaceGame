@@ -77,6 +77,4 @@ lines_skipped = 0
 max_lines_visible = -1
 _sections_unfolded = [ "Rect" ]
 
-[connection signal="player_entered" from="." to="." method="on_body_enter" flags=3]
-
 

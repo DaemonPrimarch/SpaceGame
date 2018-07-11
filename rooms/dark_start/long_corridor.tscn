@@ -235,7 +235,7 @@ scale = Vector2( -1, 1 )
 
 [node name="tileset_arrival" parent="warp_tile" index="1"]
 
-position = Vector2( -127.284, -3.41278 )
+position = Vector2( 127.284, -3.41278 )
 scale = Vector2( -1, 1 )
 arrival_ID = "call_to_adventure_arrival"
 

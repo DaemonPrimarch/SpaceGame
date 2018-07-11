@@ -4,7 +4,6 @@
 [ext_resource path="res://scripts/room_elements/regular_warp_tile.gd" type="Script" id=2]
 [ext_resource path="res://nodes/warp_arrival.tscn" type="PackedScene" id=3]
 
-
 [node name="warp_tile" index="0" instance=ExtResource( 1 )]
 
 script = ExtResource( 2 )
@@ -30,7 +29,5 @@ margin_bottom = 64.0
 
 margin_top = 56.0
 margin_bottom = 70.0
-
-[connection signal="destination_room_changed" from="." to="." method="on_change_name"]
 
 

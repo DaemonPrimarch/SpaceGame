@@ -31,7 +31,7 @@ func move_and_push(v):
 
 func extend(v):
 	for node in connected_nodes:
-		if(v.y < 0):
+		if(not v.y > 0):
 			node.position += (v * get_direction() * Vector2(1,-1))
 		else:
 			node.move_and_push(v * get_direction() * Vector2(1,-1))

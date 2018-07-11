@@ -12,7 +12,8 @@ export(String, FILE, "*.tscn")var destination_room setget set_destination_room, 
 export var arrival_pos_id = "" setget set_arrival_pos_id, get_arrival_pos_id
 
 func _ready():
-	pass
+	if(not Engine.editor_hint):
+		connect("player_entered", self, "on_body_enter", [], CONNECT_DEFERRED)
 
 func is_active():
 	return active

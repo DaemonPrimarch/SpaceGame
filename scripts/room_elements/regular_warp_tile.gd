@@ -10,6 +10,9 @@ func _ready():
 	
 	set_arrival_pos_id(get_parent().get_name() + "_arrival")
 	
+	if(not Engine.editor_hint):
+		connect("destination_room_changed", self, "on_change_name")
+	
 	on_change_name()
 
 func on_change_name():

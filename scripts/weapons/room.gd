@@ -14,6 +14,10 @@ func _ready():
 	if(Engine.editor_hint and auto_generate_camera_limiter):
 		generate_camera_limiter()
 	
+	connect("player_entered", self, "_on_room_player_entered")
+	connect("room_darkened", self, "_on_room_room_darkened")
+	connect("room_lit", self, "_on_room_room_lit")
+	
 	_iterate_over_children(self)
 
 func _iterate_over_children(node):
