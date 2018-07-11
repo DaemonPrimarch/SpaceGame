@@ -103,7 +103,7 @@ tracks/4/keys = {
 "transitions": PoolRealArray( 1 ),
 "values": [ {
 "args": [  ],
-"method": "play_cutscene"
+"method": "start_cutscene"
 } ]
 }
 tracks/5/type = "value"
@@ -430,7 +430,7 @@ _sections_unfolded = [ "Playback Options" ]
 __meta__ = {
 "_editor_icon": ExtResource( 5 )
 }
-dialog_tree = null
+dialog_tree = "res://dialog_trees/meeting.json"
 paused = false
 
 [node name="enter_trigger" parent="on_enter_cutscene_player" index="1"]
@@ -460,6 +460,7 @@ polygon = PoolVector2Array( 64, 382, 112, 382, 112, 512, 64, 512 )
 [node name="player_enter_trigger" parent="on_enter_cutscene_player" index="3" instance=ExtResource( 6 )]
 
 position = Vector2( 352, 548 )
+enabled = false
 save_path = "cutscenes/call_to_adventure_2"
 
 [node name="player_move_cutscene" type="AnimationPlayer" parent="on_enter_cutscene_player" index="4"]
@@ -477,7 +478,7 @@ _sections_unfolded = [ "Playback Options" ]
 __meta__ = {
 "_editor_icon": ExtResource( 5 )
 }
-dialog_tree = null
+dialog_tree = "res://dialog_trees/meet_BLA_1.json"
 paused = false
 
 [node name="human_puppet2" parent="on_enter_cutscene_player" index="5" instance=ExtResource( 7 )]

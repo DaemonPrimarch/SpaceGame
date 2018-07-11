@@ -48,7 +48,6 @@ func on_dialog_option_selected(option):
 func set_paused(val):
 	if(val != paused):
 		if(val):
-			print("PAUSED")
 			paused_position = current_animation_position
 			stop(false)
 		else:

@@ -105,7 +105,7 @@ tracks/6/keys = {
 "transitions": PoolRealArray( 1 ),
 "values": [ {
 "args": [  ],
-"method": "play_dialog_tree"
+"method": "start_dialog_tree"
 } ]
 }
 tracks/7/type = "method"
@@ -166,7 +166,7 @@ script = ExtResource( 3 )
 __meta__ = {
 "_editor_icon": ExtResource( 4 )
 }
-dialog_tree = null
+dialog_tree = "res://dialog_trees/exposition_dump.json"
 paused = false
 
 [node name="cutscene_helper" parent="on_enter_cutscene_player" index="1" instance=ExtResource( 5 )]
@@ -181,22 +181,24 @@ save_path = "cutscenes/long_corridor"
 [node name="puppet_1" parent="on_enter_cutscene_player" index="3" instance=ExtResource( 7 )]
 
 editor/display_folded = true
-position = Vector2( -68.644, -24.7024 )
+position = Vector2( -4929.22, -23.4746 )
 _sections_unfolded = [ "Transform", "Visibility" ]
 
 [node name="Sprite" parent="on_enter_cutscene_player/puppet_1" index="1"]
 
+visible = false
 flip_h = true
 _sections_unfolded = [ "Animation", "Offset", "Transform", "Visibility" ]
 
 [node name="puppet_2" parent="on_enter_cutscene_player" index="4" instance=ExtResource( 7 )]
 
 editor/display_folded = true
-position = Vector2( -133.971, -24.0389 )
+position = Vector2( -4929.79, -23.02 )
 _sections_unfolded = [ "Transform" ]
 
 [node name="Sprite" parent="on_enter_cutscene_player/puppet_2" index="1"]
 
+visible = false
 flip_h = true
 _sections_unfolded = [ "Animation", "Offset", "Transform", "Visibility" ]
 

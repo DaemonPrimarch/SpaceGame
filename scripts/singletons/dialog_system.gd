@@ -65,9 +65,7 @@ func set_current_dialog_tree(tree):
 	
 	set_current_dialog_element(tree.start)
 
-func load_next_tree():
-	print("Loaded")
-	
+func load_next_tree():	
 	if(not dialog_queue.empty()):
 		displaying = true
 		get_box().set_displaying(true)
@@ -82,7 +80,6 @@ func load_next_tree():
 		displaying = false
 
 func advance_current_tree():
-	print("ADVANCED")
 	if(get_current_dialog_element().has("options")):
 		pass
 	elif(get_current_dialog_element().has("next")):

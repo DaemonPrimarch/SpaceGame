@@ -29,6 +29,9 @@ func saves_oneshot():
 	
 func _ready():
 	if(not Engine.editor_hint):
+		if(is_connected("body_entered", self, "_on_Area2D_body_entered")):
+			print("CONNECTED: ", name)
+		
 		connect("body_entered", self, "_on_Area2D_body_entered")
 	
 	if(not Engine.editor_hint and is_oneshot() and saves_oneshot() and get_node("/root/SAVE_MANAGER").has_property(save_path) and get_node("/root/SAVE_MANAGER").get_property(save_path) and free_on_disabled):
