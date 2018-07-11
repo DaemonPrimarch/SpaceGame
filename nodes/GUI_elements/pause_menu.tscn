@@ -1,8 +1,7 @@
 [gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://scripts/GUI_elements/menu.gd" type="Script" id=1]
-[ext_resource path="res://nodes/GUI_elements/quit_button.tscn" type="PackedScene" id=2]
-[ext_resource path="res://nodes/GUI_elements/save_button.tscn" type="PackedScene" id=3]
+[ext_resource path="res://nodes/GUI_elements/quit_button.tscn" type="PackedScene" id=1]
+[ext_resource path="res://nodes/GUI_elements/save_button.tscn" type="PackedScene" id=2]
 
 [sub_resource type="StyleBoxFlat" id=1]
 
@@ -32,7 +31,35 @@ shadow_size = 0
 anti_aliasing = true
 anti_aliasing_size = 1
 
-[node name="menu" type="PopupPanel" index="0"]
+[sub_resource type="GDScript" id=2]
+
+script/source = "extends PopupPanel
+
+var popped_up = false
+
+func _process(delta):
+	if(Input.is_action_just_pressed(\"ui_escape\")):
+		if(not popped_up):
+			popped_up = true
+			popup()
+			get_tree().set_pause(true)
+			#$ItemList/exit_button.grab_focus()
+		else:
+			popped_up = false
+			hide()
+			
+			get_tree().set_pause(false)
+
+func _on_menu_about_to_show():
+	pass
+
+func _on_exit_button_pressed():
+	popped_up = false
+	hide()
+	get_tree().set_pause(false)
+"
+
+[node name="pause_menu" type="PopupPanel" index="0"]
 
 pause_mode = 2
 anchor_left = 0.0
@@ -49,7 +76,7 @@ size_flags_horizontal = 1
 size_flags_vertical = 1
 custom_styles/panel = SubResource( 1 )
 popup_exclusive = false
-script = ExtResource( 1 )
+script = SubResource( 2 )
 _sections_unfolded = [ "Pause", "Popup", "Theme", "custom_styles" ]
 
 [node name="ItemList" type="ItemList" parent="." index="0"]
@@ -102,7 +129,7 @@ flat = false
 align = 1
 _sections_unfolded = [ "Anchor", "Focus", "Grow Direction", "Hint", "Margin", "Mouse", "Rect", "Size Flags", "Theme", "Visibility", "custom_styles" ]
 
-[node name="quit_button" parent="ItemList" index="2" instance=ExtResource( 2 )]
+[node name="quit_button" parent="ItemList" index="2" instance=ExtResource( 1 )]
 
 [node name="Button3" type="Button" parent="ItemList" index="3"]
 
@@ -128,7 +155,7 @@ group = null
 flat = false
 align = 1
 
-[node name="save_button" parent="ItemList" index="4" instance=ExtResource( 3 )]
+[node name="save_button" parent="ItemList" index="4" instance=ExtResource( 2 )]
 
 margin_left = 104.0
 margin_top = 120.0

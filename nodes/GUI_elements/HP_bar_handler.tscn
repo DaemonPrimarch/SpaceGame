@@ -1,8 +1,42 @@
 [gd_scene load_steps=2 format=2]
 
-[ext_resource path="res://scripts/GUI_elements/HP_bar_handler.gd" type="Script" id=1]
+[sub_resource type="GDScript" id=1]
 
-[node name="HP_bar_handler" type="Control"]
+script/source = "extends Control
+
+var bars = {}
+
+var bar_node = preload(\"res://nodes/GUI_elements/hp_bar.tscn\")
+
+func add_HP_bar(tracked_object):
+	if(not has_HP_bar(tracked_object)):
+		var new_bar = bar_node.instance();
+		new_bar.set_tracked_object(tracked_object)
+		bars[tracked_object] = new_bar
+		
+		get_parent().add_child(new_bar)
+		
+		call_deferred(\"reflow_HP_bars\")
+		
+	reflow_HP_bars()
+
+func remove_HP_bar(tracked_object):
+	if(has_HP_bar(tracked_object)):
+		var bar = bars[tracked_object]
+		bars.erase(tracked_object)
+		bar.destroy()
+		reflow_HP_bars()
+	
+func has_HP_bar(object):
+	return bars.has(object)
+
+func reflow_HP_bars():
+	var i = 0
+	for bar in bars:
+		bars[bar].set_position(Vector2(bars[bar].get_position().x, bars[bar].get_size().y * i))
+		i += 1"
+
+[node name="HP_bar_handler" type="Control" index="0"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -16,6 +50,6 @@ mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-script = ExtResource( 1 )
+script = SubResource( 1 )
 
 

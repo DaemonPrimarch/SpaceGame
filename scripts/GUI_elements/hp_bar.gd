@@ -2,7 +2,6 @@ extends ProgressBar
 
 var tracked_object = null
 
-
 func _ready():
 	set_min(0);
 

@@ -1,12 +1,7 @@
 extends Node
 
-onready var weapon_top_position = get_node("weapon_top")
-onready var weapon_top_front_position = get_node("weapon_top_front")
-onready var weapon_front_position = get_node("weapon_front")
-onready var weapon_bottom_front_position = get_node("weapon_bottom_front")
-onready var weapon_bottom_position = get_node("weapon_bottom")
-
 export(NodePath) var weapon_path
+
 export var enabled = false setget set_enabled
 
 func has_weapon():
@@ -26,6 +21,10 @@ func _ready():
 	if(enabled):
 		get_weapon().visible = true
 
+func set_current_position(point):
+	get_weapon().position = point.position
+	get_weapon().rotation = point.rotation
+	
 func _physics_process(delta):
 	if(has_weapon() and enabled):
 		if(Input.is_action_just_pressed("fire")):
@@ -36,17 +35,12 @@ func _physics_process(delta):
 			get_weapon().release_trigger()
 			
 		if(Input.is_action_pressed("aim_up")):
-			get_weapon().position = weapon_top_position.position
-			get_weapon().rotation = weapon_top_position.rotation
+			set_current_position($weapon_top)
 		elif(Input.is_action_pressed("aim_down") and not get_parent().is_grounded()):
-			get_weapon().position = weapon_bottom_position.position
-			get_weapon().rotation = weapon_bottom_position.rotation
+			set_current_position($weapon_bottom)
 		elif(Input.is_action_pressed("aim_up_front")):
-			get_weapon().position = weapon_top_front_position.position
-			get_weapon().rotation = weapon_top_front_position.rotation
+			set_current_position($weapon_top_front)
 		elif(Input.is_action_pressed("aim_down_front")):
-			get_weapon().position = weapon_bottom_front_position.position
-			get_weapon().rotation = weapon_bottom_front_position.rotation
+			set_current_position($weapon_bottom_front)
 		else:
-			get_weapon().position = weapon_front_position.position
-			get_weapon().rotation = weapon_front_position.rotation
+			set_current_position($weapon_front)

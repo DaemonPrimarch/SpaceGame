@@ -6,11 +6,12 @@
 [ext_resource path="res://addons/cutscene_player/cutscene_player.gd" type="Script" id=4]
 [ext_resource path="res://addons/cutscene_player/animation_player.svg" type="Texture" id=5]
 [ext_resource path="res://addons/player_enter_trigger/player_enter_trigger.tscn" type="PackedScene" id=6]
-[ext_resource path="res://nodes/entities/human_puppet.tscn" type="PackedScene" id=7]
+[ext_resource path="res://nodes/entities/player/human_puppet.tscn" type="PackedScene" id=7]
 [ext_resource path="res://sprites/white_light.png" type="Texture" id=8]
 [ext_resource path="res://rooms/start_rooms/room_darkener_helper.tscn" type="PackedScene" id=9]
 [ext_resource path="res://addons/extended_camera_2D/camera_limit_area.gd" type="Script" id=10]
 [ext_resource path="res://addons/extended_collision_polygon_2D/extended_collision_polygon_2D.gd" type="Script" id=11]
+
 
 [sub_resource type="Animation" id=1]
 
