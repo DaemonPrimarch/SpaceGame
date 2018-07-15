@@ -1,8 +1,9 @@
 tool
 extends Area2D.
 
-export var simple = true
+export var simple = true setget set_simple
 export var can_zoom_out = false
+export(NodePath) var custom_container
 
 func _ready():
 	connect("body_entered", self, "entered")
@@ -12,14 +13,16 @@ func entered(thing):
 	if(thing.is_in_group("carries_camera")):
 		for child in thing.get_children():
 			if(child.is_in_group("extended_camera")):
-				child.set_limit_area(self)
+				child.add_limit_area(self)
 
 func exited(thing):
 	if(thing.is_in_group("carries_camera")):
 		for child in thing.get_children():
 			if(child.is_in_group("extended_camera")):
-				if(child.get_limit_area() == self):
-					child.set_limit_area(null)
+				child.remove_limit_area(self)
+					
+func set_simple(val):
+	simple = val
 
 func is_simple():
 	return simple
@@ -34,3 +37,13 @@ func get_AABB():
 				box = child.get_AABB()
 	
 	return box
+	
+func get_limit_rect():
+	if(is_simple()):
+		return get_AABB()
+	else:
+		var box = get_node("/root/MATHS").get_AABB_of_polygon(get_node(custom_container).polygon)
+		
+		box.position += get_node(custom_container).global_position
+		
+		return box

@@ -1,6 +1,6 @@
 extends Node
 
-const epsilon = 10
+const epsilon = 0.00001
 
 func min_arr(array):
 	var min_val = array[0]
@@ -17,9 +17,6 @@ func max_arr(array):
 		max_val = min(max_val, val)
 
 	return max_val
-
-func cross(v1, v2):
-	return v1.x * v2.y - v1.y * v2.x
 #
 func is_zero(a):
 	return abs(a) < epsilon
@@ -133,7 +130,8 @@ func offset_rect_polygon(rect, polygon):
 		if(abs(offset.y) < abs(new_offset.y)):
 			offset.y = new_offset.y	
 	return offset
-func get_aabb_of_polygon(polygon):
+	
+func get_AABB_of_polygon(polygon):
 	var pol = polygon
 	var new_pos = pol[0]
 	var max_y = new_pos.y
@@ -151,17 +149,21 @@ func get_aabb_of_polygon(polygon):
 			max_x = element.x
 		if(element.x < min_x):
 			min_x = element.x
-	return Rect2(Vector2(min_x, min_y), Vector2(abs(max_x - min_x), abs(max_y - min_y)))
+			
+	return Rect2(Vector2(min_x, max_y), Vector2(abs(max_x - min_x), abs(max_y - min_y)))
 
 ##https://www.codeproject.com/Tips/862988/Find-the-Intersection-Point-of-Two-Line-Segments
+
+func cross(v1, v2):
+	return v1.x * v2.y - v2.x * v1.y
 
 func line_segements_intersect(p, p2, q, q2):
 	var intersection = Vector2()
 
 	var r = p2 - p
 	var s = q2 - q
-	var rxs = r * s #cross
-	var qpxr = cross(q - p, r);
+	var rxs = cross(r,s) #cross
+	var qpxr = cross(q - p, r)
 
 	#If r x s = 0 and (q - p) x r = 0, then the two lines are collinear.
 	if (is_zero(rxs) and is_zero(qpxr)):
@@ -182,10 +184,27 @@ func line_segements_intersect(p, p2, q, q2):
 	#the two line segments meet at the point p + t r = q + u s.
 	if (!is_zero(rxs) and (0 <= t && t <= 1) and (0 <= u && u <= 1)):
 		#We can calculate the intersection point using either t or u.
-		intersection = p + t*r;
+		intersection = p + t *(r)
 
 		#An intersection was found.
 		return intersection
 
 	#5. Otherwise, the two line segments are not parallel but do not intersect.
 	return null
+
+func line_segment_intersect_polygon(p1, p2, polygon):
+	var intersections = []
+	
+	for i in range(len(polygon) - 1):
+		var intersect = line_segements_intersect(p1, p2, polygon[i], polygon[i + 1])
+		
+		if(intersect):
+			intersections.push_back(intersect)
+	
+	var intersect = line_segements_intersect(p1, p2, polygon[len(polygon) - 1], polygon[0])
+	
+	if(intersect):
+		intersections.push_back(intersect)
+	
+	return intersections
+	

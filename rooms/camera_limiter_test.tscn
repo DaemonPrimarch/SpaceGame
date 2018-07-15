@@ -1,0 +1,184 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://nodes/room.tscn" type="PackedScene" id=1]
+[ext_resource path="res://icon.png" type="Texture" id=2]
+[ext_resource path="res://addons/state_labels/state_label.gd" type="Script" id=3]
+[ext_resource path="res://addons/state_labels/label.svg" type="Texture" id=4]
+[ext_resource path="res://addons/extended_camera_2D/camera_limit_area.gd" type="Script" id=5]
+[ext_resource path="res://addons/extended_collision_polygon_2D/extended_collision_polygon_2D.gd" type="Script" id=6]
+
+[node name="room" index="0" instance=ExtResource( 1 )]
+
+auto_generate_camera_limiter = false
+
+[node name="terrain" parent="." index="0"]
+
+tile_data = PoolIntArray( 0, 9, 0, 1, 9, 0, 2, 9, 0, 3, 9, 0, 4, 9, 0, 5, 9, 0, 6, 9, 0, 7, 9, 0, 8, 9, 0, 9, 9, 0, 10, 9, 0, 11, 9, 0, 12, 9, 0, 13, 9, 0, 14, 9, 0, 15, 9, 0, 16, 9, 0, 17, 9, 0, 18, 9, 0, 19, 9, 0, 20, 9, 0, 21, 9, 0, 22, 9, 0, 23, 9, 0, 24, 9, 0, 25, 9, 0, 26, 9, 0, 27, 9, 0, 28, 9, 0, 29, 9, 0, 30, 9, 0, 31, 9, 0, 32, 9, 0, 33, 9, 0, 34, 9, 0, 35, 9, 0, 36, 9, 0, 37, 9, 0, 38, 9, 0, 39, 9, 0, 40, 9, 0, 41, 9, 0, 42, 9, 0, 43, 9, 0, 44, 9, 0, 45, 9, 0, 46, 9, 0, 47, 9, 0, 48, 9, 0, 49, 9, 0, 50, 9, 0, 51, 9, 0, 52, 9, 0, 53, 9, 0, 54, 9, 0, 55, 9, 0, 56, 9, 0, 57, 9, 0, 58, 9, 0, 65536, 9, 0, 65561, 9, 0, 65594, 9, 0, 131072, 9, 0, 131097, 9, 0, 131130, 9, 0, 196608, 9, 0, 196633, 9, 0, 196666, 9, 0, 262144, 9, 0, 262169, 9, 0, 262202, 9, 0, 327680, 9, 0, 327738, 9, 0, 393216, 9, 0, 393274, 9, 0, 458752, 9, 0, 458810, 9, 0, 524288, 9, 0, 524346, 9, 0, 589824, 9, 0, 589882, 9, 0, 655360, 9, 0, 655418, 9, 0, 720896, 9, 0, 720954, 9, 0, 786432, 9, 0, 786450, 9, 0, 786451, 9, 0, 786452, 9, 0, 786453, 9, 0, 786454, 9, 0, 786455, 9, 0, 786457, 9, 0, 786458, 9, 0, 786490, 9, 0, 851968, 9, 0, 851969, 9, 0, 851970, 9, 0, 851971, 9, 0, 851972, 9, 0, 851973, 9, 0, 851974, 9, 0, 851975, 9, 0, 851976, 9, 0, 851977, 9, 0, 851978, 9, 0, 851983, 9, 0, 851984, 9, 0, 851985, 9, 0, 851986, 9, 0, 851987, 9, 0, 851988, 9, 0, 851989, 9, 0, 851990, 9, 0, 851991, 9, 0, 851992, 9, 0, 851993, 9, 0, 851994, 9, 0, 852026, 9, 0, 917504, 9, 0, 917505, 9, 0, 917506, 9, 0, 917507, 9, 0, 917508, 9, 0, 917509, 9, 0, 917510, 9, 0, 917511, 9, 0, 917512, 9, 0, 917513, 9, 0, 917514, 9, 0, 917519, 9, 0, 917528, 9, 0, 917529, 9, 0, 917530, 9, 0, 917531, 9, 0, 917532, 9, 0, 917533, 9, 0, 917534, 9, 0, 917535, 9, 0, 917536, 9, 0, 917537, 9, 0, 917538, 9, 0, 917539, 9, 0, 917540, 9, 0, 917541, 9, 0, 917542, 9, 0, 917543, 9, 0, 917544, 9, 0, 917545, 9, 0, 917546, 9, 0, 917547, 9, 0, 917548, 9, 0, 917549, 9, 0, 917550, 9, 0, 917551, 9, 0, 917562, 9, 0, 983066, 9, 0, 983098, 9, 0, 1048602, 9, 0, 1048634, 9, 0, 1114138, 9, 0, 1114170, 9, 0, 1179674, 9, 0, 1179706, 9, 0, 1245210, 9, 0, 1245242, 9, 0, 1310746, 9, 0, 1310778, 9, 0, 1376282, 9, 0, 1376314, 9, 0, 1441818, 9, 0, 1441850, 9, 0, 1507354, 9, 0, 1507386, 9, 0, 1572890, 9, 0, 1572922, 9, 0, 1638426, 9, 0, 1638458, 9, 0, 1703962, 9, 0, 1703994, 9, 0, 1769498, 9, 0, 1769530, 9, 0, 1835034, 9, 0, 1835066, 9, 0, 1900570, 9, 0, 1900602, 9, 0, 1966106, 9, 0, 1966138, 9, 0, 2031642, 9, 0, 2031674, 9, 0, 2097178, 9, 0, 2097210, 9, 0, 2162714, 9, 0, 2162746, 9, 0, 2228250, 9, 0, 2228282, 9, 0, 2293786, 9, 0, 2293818, 9, 0, 2359322, 9, 0, 2359323, 9, 0, 2359324, 9, 0, 2359325, 9, 0, 2359326, 9, 0, 2359327, 9, 0, 2359328, 9, 0, 2359329, 9, 0, 2359330, 9, 0, 2359331, 9, 0, 2359332, 9, 0, 2359333, 9, 0, 2359334, 9, 0, 2359335, 9, 0, 2359336, 9, 0, 2359337, 9, 0, 2359338, 9, 0, 2359339, 9, 0, 2359340, 9, 0, 2359341, 9, 0, 2359342, 9, 0, 2359343, 9, 0, 2359344, 9, 0, 2359345, 9, 0, 2359346, 9, 0, 2359347, 9, 0, 2359348, 9, 0, 2359349, 9, 0, 2359350, 9, 0, 2359351, 9, 0, 2359352, 9, 0, 2359353, 9, 0, 2359354, 9, 0 )
+
+[node name="player" parent="." index="2"]
+
+position = Vector2( 480, 800 )
+current_state = "DIRECT_CONTROL"
+gravity_enabled = false
+
+[node name="ExtendedCamera2D" parent="player" index="23"]
+
+editor/display_folded = false
+editor_draw_limits = true
+_sections_unfolded = [ "Drag Margin", "Editor", "Limit", "Offset", "Smoothing", "Transform", "Visibility" ]
+
+[node name="l1" type="Sprite" parent="player/ExtendedCamera2D" index="1"]
+
+texture = ExtResource( 2 )
+
+[node name="l2" type="Sprite" parent="player/ExtendedCamera2D" index="2"]
+
+texture = ExtResource( 2 )
+
+[node name="StringStateLabel2" type="Label" parent="player" index="31"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = -96.0
+margin_right = -56.0
+margin_bottom = 14.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+script = ExtResource( 3 )
+__meta__ = {
+"_editor_icon": ExtResource( 4 )
+}
+node_path = NodePath("../ExtendedCamera2D")
+tracked_value = "limit_left"
+tracked_function = ""
+
+[node name="StringStateLabel3" type="Label" parent="player" index="32"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = -96.0
+margin_top = -64.0
+margin_right = -56.0
+margin_bottom = -50.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+script = ExtResource( 3 )
+__meta__ = {
+"_editor_icon": ExtResource( 4 )
+}
+node_path = NodePath("../ExtendedCamera2D")
+tracked_value = "limit_right"
+tracked_function = ""
+
+[node name="direct_control_handler" parent="player" index="33"]
+
+speed = 512
+
+[node name="AutoGeneratedCameraLimitArea" type="Area2D" parent="." index="3"]
+
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+script = ExtResource( 5 )
+_sections_unfolded = [ "Transform" ]
+simple = false
+can_zoom_out = false
+custom_container = NodePath("Polygon2D")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="AutoGeneratedCameraLimitArea" index="0"]
+
+build_mode = 0
+polygon = PoolVector2Array( 0, 0, 0, 960, 2368, 960, 2368, 832, 3168, 832, 3168, 960, 3776, 960, 3776, 0 )
+script = ExtResource( 6 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="Polygon2D" type="Polygon2D" parent="AutoGeneratedCameraLimitArea" index="1"]
+
+polygon = PoolVector2Array( 3776, 0, 3776, 960, 0, 960, 0, 0 )
+uv = PoolVector2Array(  )
+color = Color( 0.4375, 0, 0, 0.580118 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 0, 0 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation_degrees = 0.0
+invert_enable = false
+invert_border = 100.0
+_sections_unfolded = [ "Invert", "Transform" ]
+
+[node name="AutoGeneratedCameraLimitArea2" type="Area2D" parent="." index="4"]
+
+position = Vector2( 1664, 0 )
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+script = ExtResource( 5 )
+_sections_unfolded = [ "Transform" ]
+simple = false
+can_zoom_out = false
+custom_container = NodePath("Polygon2D")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="AutoGeneratedCameraLimitArea2" index="0"]
+
+build_mode = 0
+polygon = PoolVector2Array( 704, 960, 0, 960, 0, 2368, 2112, 2368, 2112, 960, 1504, 960, 1504, 832, 704, 832 )
+script = ExtResource( 6 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="Polygon2D" type="Polygon2D" parent="AutoGeneratedCameraLimitArea2" index="1"]
+
+visible = false
+polygon = PoolVector2Array( 2112, 0, 2112, 2368, 0, 2368, 0, 0 )
+uv = PoolVector2Array(  )
+color = Color( 0.4375, 0, 0, 0.580118 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 0, 0 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation_degrees = 0.0
+invert_enable = false
+invert_border = 100.0
+_sections_unfolded = [ "Invert", "Transform" ]
+
+[node name="limit" type="Sprite" parent="." index="5"]
+
+position = Vector2( 480, 704 )
+texture = ExtResource( 2 )
+
+[node name="camera_pos" type="Sprite" parent="." index="6"]
+
+position = Vector2( 480, 800 )
+texture = ExtResource( 2 )
+
+
+[editable path="player"]

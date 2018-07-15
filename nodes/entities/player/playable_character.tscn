@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=25 format=2]
 
 [ext_resource path="res://scripts/entities/player/playable_character.gd" type="Script" id=1]
 [ext_resource path="res://addons/entities/entity.svg" type="Texture" id=2]
@@ -16,6 +16,7 @@
 [ext_resource path="res://addons/state_labels/state_label.gd" type="Script" id=14]
 [ext_resource path="res://addons/layer_changer/layer_changer.gd" type="Script" id=15]
 [ext_resource path="res://addons/layer_changer/node.svg" type="Texture" id=16]
+[ext_resource path="res://addons/state_handler/kinematic_body_2D.svg" type="Texture" id=17]
 
 [sub_resource type="Animation" id=1]
 
@@ -128,6 +129,25 @@ tracks/0/keys = {
 "update": 1,
 "values": [ 5, 6, 7, 8, 9 ]
 }
+
+[sub_resource type="GDScript" id=7]
+
+script/source = "extends \"res://addons/state_handler/state_handler.gd\"
+
+export var speed = 64 * 2
+
+func process_state(delta):
+	
+	if(Input.is_action_pressed(\"play_up\")):
+		get_parent().position.y -= speed * delta
+	if(Input.is_action_pressed(\"play_down\")):
+		get_parent().position.y += speed * delta
+	
+	if(Input.is_action_pressed(\"play_right\")):
+		get_parent().position.x += speed * delta
+	
+	if(Input.is_action_pressed(\"play_left\")):
+		get_parent().position.x -= speed * delta"
 
 [node name="playable_character" type="KinematicBody2D" index="0"]
 
@@ -301,5 +321,16 @@ __meta__ = {
 }
 in_background = false
 linked_to_parent = false
+
+[node name="direct_control_handler" type="Node2D" parent="." index="13"]
+
+script = SubResource( 7 )
+__meta__ = {
+"_editor_icon": ExtResource( 17 )
+}
+handled_state = "DIRECT_CONTROL"
+enabled = true
+no_gravity = true
+speed = 128
 
 
