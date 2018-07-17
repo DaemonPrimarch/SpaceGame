@@ -10,7 +10,7 @@ var prev_point_index = 0
 var direction = 1
 
 signal platform_loaded()
-signal arrived_at_point(point)
+signal arrived_at_point(point_index)
 signal arrived_at_end()
 
 var platform = null
@@ -84,7 +84,7 @@ func _physics_process(delta):
 		get_platform().move_and_push(get_velocity() * delta)
 		
 		if(has_arrived_at_next_point()):
-			emit_signal("arrived_at_point", get_next_point())
+			emit_signal("arrived_at_point", next_point_index)
 			advance_next_point()
 
 func set_active(value):
