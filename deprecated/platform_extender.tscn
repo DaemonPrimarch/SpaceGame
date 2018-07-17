@@ -1,14 +1,14 @@
 [gd_scene load_steps=2 format=2]
 
-[ext_resource path="res://scripts/room_elements/moving_platforms/controllers/platform_extender_2.gd" type="Script" id=1]
+[ext_resource path="res://scripts/room_elements/moving_platforms/controllers/platform_extender.gd" type="Script" id=1]
 
 [node name="platform_extender" type="Node2D" index="0"]
 
 script = ExtResource( 1 )
 active = true
 one_shot = false
-extending_up = true
-extending_distances = [ 0, 64 ]
+side_extending_distance = 64
+up_extending_distance = 0
 forward_starting_velocity = 320
 forward_acceleration = 192
 backward_starting_velocity = 64

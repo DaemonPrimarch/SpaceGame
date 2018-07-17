@@ -45,6 +45,9 @@ func _ready():
 	forward_velocity = forward_starting_velocity
 	backward_velocity = backward_starting_velocity
 	
+	if(extending_distances == null):
+		extending_distances = [0, 64]
+	
 	next_distance_index = 0
 	set_next_extending_distance(1)
 	
@@ -85,10 +88,10 @@ func set_extending_vertical(val):
 func turn_around():
 	set_next_extending_distance(prev_distance_index)
 
-func is_extending_veertical():
+func is_extending_vertical():
 	return extending_vertical
 
-export var extending_distances = [0, 64] setget set_extending_distances
+export(Array, int) var extending_distances setget set_extending_distances
 
 export var forward_starting_velocity = 64*5
 export var forward_acceleration = 64*3
@@ -145,8 +148,8 @@ func get_next_extending_direction():
 var pos = 0
 
 func reset_velocities():
-	forward_velocity = 0
-	backward_velocity = 0
+	forward_velocity = forward_starting_velocity
+	backward_velocity = backward_starting_velocity
 
 var prev_distance_index = 0
 var next_distance_index = 0
@@ -160,6 +163,7 @@ func has_arrived_at_next_extending_distance():
 func advance_next_extending_distance():
 	if(next_distance_index == extending_distances.size() - 1):
 		advancing = false
+		
 		emit_signal("arrived_at_end")
 	elif(next_distance_index == 0):
 		advancing = true

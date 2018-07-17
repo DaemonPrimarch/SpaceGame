@@ -10,14 +10,15 @@ export var has_stop_timer = true
 func _ready():
 	if(has_start_timer):
 		$start_timer.connect(\"timeout\", get_parent(), \"set_waiting\", [false])
-		get_parent().connect(\"start_reached\", $start_timer, \"start\")
-		get_parent().connect(\"start_reached\", get_parent(), \"set_waiting\", [true])
+		get_parent().connect(\"arrived_at_start\", $start_timer, \"start\")
+		get_parent().connect(\"arrived_at_start\", get_parent(), \"set_waiting\", [true])
 		get_parent().connect(\"activated\", get_parent(), \"set_waiting\", [true])
 		get_parent().connect(\"activated\", $start_timer, \"start\")
 	if(has_stop_timer):
-		get_parent().connect(\"end_reached\", get_parent(), \"set_waiting\", [true])
+		print(\"?\")
 		
-		get_parent().connect(\"end_reached\", $stop_timer, \"start\")
+		get_parent().connect(\"arrived_at_end\", get_parent(), \"set_waiting\", [true])
+		get_parent().connect(\"arrived_at_end\", $stop_timer, \"start\")
 	
 		$stop_timer.connect(\"timeout\", get_parent(), \"set_waiting\", [false])"
 
@@ -31,14 +32,14 @@ has_stop_timer = true
 
 process_mode = 1
 wait_time = 1.0
-one_shot = false
+one_shot = true
 autostart = false
 
 [node name="stop_timer" type="Timer" parent="." index="1"]
 
 process_mode = 1
 wait_time = 1.0
-one_shot = false
+one_shot = true
 autostart = false
 
 

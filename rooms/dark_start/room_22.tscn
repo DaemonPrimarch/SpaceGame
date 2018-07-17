@@ -9,8 +9,9 @@
 [ext_resource path="res://nodes/room_elements/emergency_light.tscn" type="PackedScene" id=7]
 [ext_resource path="res://addons/extended_camera_2D/camera_limit_area.gd" type="Script" id=8]
 [ext_resource path="res://addons/extended_collision_polygon_2D/extended_collision_polygon_2D.gd" type="Script" id=9]
-[ext_resource path="res://nodes/room_elements/moving_platforms/controllers/platform_extender.tscn" type="PackedScene" id=10]
+[ext_resource path="res://deprecated/platform_extender.tscn" type="PackedScene" id=10]
 [ext_resource path="res://nodes/room_elements/moving_platforms/platforms/2x1_stick_platform.tscn" type="PackedScene" id=11]
+
 
 [node name="room_22" index="0" instance=ExtResource( 1 )]
 
