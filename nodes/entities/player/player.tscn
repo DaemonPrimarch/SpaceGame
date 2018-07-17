@@ -1,9 +1,9 @@
-[gd_scene load_steps=28 format=2]
+[gd_scene load_steps=29 format=2]
 
 [ext_resource path="res://nodes/entities/player/playable_character.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scripts/entities/player/player.gd" type="Script" id=2]
-[ext_resource path="res://sprites/fading_light_5.png" type="Texture" id=3]
-[ext_resource path="res://scripts/player_light.gd" type="Script" id=4]
+[ext_resource path="res://sprites/white_light.png" type="Texture" id=3]
+[ext_resource path="res://sprites/fading_light_5.png" type="Texture" id=4]
 [ext_resource path="res://nodes/state_handlers/player/jumping_handler.tscn" type="PackedScene" id=5]
 [ext_resource path="res://nodes/state_handlers/player/walking_handler.tscn" type="PackedScene" id=6]
 [ext_resource path="res://nodes/state_handlers/player/standing_handler.tscn" type="PackedScene" id=7]
@@ -24,9 +24,35 @@
 [ext_resource path="res://addons/state_labels/boolean_state_label.gd" type="Script" id=22]
 [ext_resource path="res://addons/state_labels/label.svg" type="Texture" id=23]
 
-[sub_resource type="Animation" id=1]
+[sub_resource type="GDScript" id=1]
 
-resource_name = "crawl_leave"
+script/source = "tool
+
+extends Node2D
+
+export var enabled = true setget set_enabled
+
+func set_enabled(val):
+	enabled = val
+	
+	if(is_inside_tree()):
+		$light_1.enabled = val
+		$light_2.enabled = val
+
+func _ready():
+	set_enabled(enabled)
+	
+	if(not Engine.editor_hint):
+		get_parent().connect(\"room_entered\", self, \"_on_player_room_entered\")
+
+func _on_player_room_entered():
+	if(get_node(\"/root/ROOM_MANAGER\").get_room_of_node(self).is_dark()):
+		enabled = true
+	else:
+		enabled = false"
+
+[sub_resource type="Animation" id=2]
+
 length = 1.0
 loop = false
 step = 0.1
@@ -79,7 +105,7 @@ tracks/3/keys = {
 "values": [ PoolVector2Array( 60, 32, 4, 32, 4, -80, 60, -80 ) ]
 }
 
-[sub_resource type="Animation" id=2]
+[sub_resource type="Animation" id=3]
 
 length = 1.0
 loop = false
@@ -133,7 +159,7 @@ tracks/3/keys = {
 "values": [ Vector2( 28, -20 ), Vector2( 28, -20 ) ]
 }
 
-[sub_resource type="GDScript" id=3]
+[sub_resource type="GDScript" id=4]
 
 script/source = "extends \"res://addons/state_handler/state_handler.gd\"
 
@@ -165,7 +191,7 @@ func process_state(delta):
 	elif(get_parent().is_action_just_pressed(\"jump\")):
 		get_parent().set_state(\"TRACK_JUMPING\")"
 
-[sub_resource type="GDScript" id=4]
+[sub_resource type="GDScript" id=5]
 
 script/source = "extends \"res://addons/state_handler/state_handler.gd\"
 
@@ -191,11 +217,42 @@ func process_state(delta):
 script = ExtResource( 2 )
 _sections_unfolded = [ "Collision", "Pause", "Pickable", "Transform", "collision" ]
 
-[node name="light_2" type="Light2D" parent="." index="4"]
+[node name="player_light" type="Node2D" parent="." index="0"]
 
-enabled = false
+script = SubResource( 1 )
+enabled = true
+
+[node name="light_1" type="Light2D" parent="player_light" index="0"]
+
+position = Vector2( 0, -24 )
+scale = Vector2( 0.625, 0.6 )
+enabled = true
 editor_only = false
 texture = ExtResource( 3 )
+offset = Vector2( 0, 0 )
+texture_scale = 1.0
+color = Color( 1, 1, 1, 1 )
+energy = 1.0
+mode = 0
+range_height = 0.0
+range_z_min = -1024
+range_z_max = 1024
+range_layer_min = 0
+range_layer_max = 0
+range_item_cull_mask = 1
+shadow_enabled = false
+shadow_color = Color( 0, 0, 0, 0 )
+shadow_buffer_size = 2048
+shadow_gradient_length = 0.0
+shadow_filter = 0
+shadow_filter_smooth = 0.0
+shadow_item_cull_mask = 1
+
+[node name="light_2" type="Light2D" parent="player_light" index="1"]
+
+enabled = true
+editor_only = false
+texture = ExtResource( 4 )
 offset = Vector2( 0, 0 )
 texture_scale = 0.67
 color = Color( 1, 1, 1, 1 )
@@ -214,50 +271,24 @@ shadow_gradient_length = 0.0
 shadow_filter = 0
 shadow_filter_smooth = 0.0
 shadow_item_cull_mask = 1
-script = ExtResource( 4 )
 
-[node name="light_3" type="Light2D" parent="." index="5"]
-
-enabled = false
-editor_only = false
-texture = ExtResource( 3 )
-offset = Vector2( 0, 0 )
-texture_scale = 0.35
-color = Color( 1, 1, 1, 1 )
-energy = 0.47
-mode = 0
-range_height = 0.0
-range_z_min = -1024
-range_z_max = 1024
-range_layer_min = 0
-range_layer_max = 0
-range_item_cull_mask = 1
-shadow_enabled = false
-shadow_color = Color( 0, 0, 0, 0 )
-shadow_buffer_size = 2048
-shadow_gradient_length = 0.0
-shadow_filter = 0
-shadow_filter_smooth = 0.0
-shadow_item_cull_mask = 1
-script = ExtResource( 4 )
-
-[node name="Sprite" parent="." index="7"]
+[node name="Sprite" parent="." index="6"]
 
 frame = 20
 _sections_unfolded = [ "Animation", "Offset", "Region", "Transform" ]
 
-[node name="CollisionPolygon2D" parent="." index="8"]
+[node name="CollisionPolygon2D" parent="." index="7"]
 
 polygon = PoolVector2Array( 60, 32, 4, 32, 4, -80, 60, -80 )
 _sections_unfolded = [ "Transform" ]
 
-[node name="jumping_handler" parent="." index="10" instance=ExtResource( 5 )]
+[node name="jumping_handler" parent="." index="9" instance=ExtResource( 5 )]
 
-[node name="walking_handler" parent="." index="11" instance=ExtResource( 6 )]
+[node name="walking_handler" parent="." index="10" instance=ExtResource( 6 )]
 
-[node name="standing_handler" parent="." index="12" instance=ExtResource( 7 )]
+[node name="standing_handler" parent="." index="11" instance=ExtResource( 7 )]
 
-[node name="crouching_handler" parent="." index="13" instance=ExtResource( 8 )]
+[node name="crouching_handler" parent="." index="12" instance=ExtResource( 8 )]
 
 editor/display_folded = true
 
@@ -274,7 +305,7 @@ cast_to = Vector2( 0, -32 )
 playback_process_mode = 0
 _sections_unfolded = [ "Pause", "Playback Options" ]
 
-[node name="double_jumping_handler" parent="." index="14" instance=ExtResource( 9 )]
+[node name="double_jumping_handler" parent="." index="13" instance=ExtResource( 9 )]
 
 enabled = false
 
@@ -289,13 +320,13 @@ value = "enabled"
 save_value = "player/double_jump_enabled"
 auto_update = true
 
-[node name="wall_jumping_handler" parent="." index="15" instance=ExtResource( 12 )]
+[node name="wall_jumping_handler" parent="." index="14" instance=ExtResource( 12 )]
 
-[node name="falling_handler" parent="." index="16" instance=ExtResource( 13 )]
+[node name="falling_handler" parent="." index="15" instance=ExtResource( 13 )]
 
-[node name="climbing_handler" parent="." index="17" instance=ExtResource( 14 )]
+[node name="climbing_handler" parent="." index="16" instance=ExtResource( 14 )]
 
-[node name="wall_sliding_handler" parent="." index="18" instance=ExtResource( 15 )]
+[node name="wall_sliding_handler" parent="." index="17" instance=ExtResource( 15 )]
 
 enabled = false
 
@@ -310,7 +341,7 @@ value = "enabled"
 save_value = "player/wall_jump_enabled"
 auto_update = true
 
-[node name="crawling_handler" parent="." index="19" instance=ExtResource( 16 )]
+[node name="crawling_handler" parent="." index="18" instance=ExtResource( 16 )]
 
 editor/display_folded = true
 
@@ -326,14 +357,14 @@ _sections_unfolded = [ "Transform" ]
 
 [node name="AnimationPlayer" parent="crawling_handler" index="5"]
 
-anims/crawl_leave = SubResource( 1 )
-anims/crawl_start = SubResource( 2 )
+anims/crawl_leave = SubResource( 2 )
+anims/crawl_start = SubResource( 3 )
 
-[node name="pushed_handler" parent="." index="20" instance=ExtResource( 17 )]
+[node name="pushed_handler" parent="." index="19" instance=ExtResource( 17 )]
 
-[node name="on_track_handler" type="Node2D" parent="." index="21"]
+[node name="on_track_handler" type="Node2D" parent="." index="20"]
 
-script = SubResource( 3 )
+script = SubResource( 4 )
 __meta__ = {
 "_editor_icon": ExtResource( 18 )
 }
@@ -341,9 +372,9 @@ handled_state = "ON_TRACK"
 enabled = true
 no_gravity = false
 
-[node name="track_jumping" type="Node2D" parent="." index="22"]
+[node name="track_jumping" type="Node2D" parent="." index="21"]
 
-script = SubResource( 4 )
+script = SubResource( 5 )
 __meta__ = {
 "_editor_icon": ExtResource( 18 )
 }
@@ -352,7 +383,7 @@ enabled = true
 no_gravity = false
 jump_height = 256
 
-[node name="damage_timer" type="Timer" parent="." index="23"]
+[node name="damage_timer" type="Timer" parent="." index="22"]
 
 pause_mode = 2
 process_mode = 1
@@ -361,7 +392,7 @@ one_shot = false
 autostart = false
 _sections_unfolded = [ "Pause" ]
 
-[node name="ExtendedCamera2D" type="Camera2D" parent="." index="24"]
+[node name="ExtendedCamera2D" type="Camera2D" parent="." index="23"]
 
 editor/display_folded = true
 anchor_mode = 1
@@ -390,15 +421,9 @@ script = ExtResource( 19 )
 
 [node name="camera_zoom_out_manager" parent="ExtendedCamera2D" index="0" instance=ExtResource( 20 )]
 
-[node name="light" parent="." index="25"]
+[node name="weapon_manager" parent="." index="24"]
 
-texture = ExtResource( 3 )
-texture_scale = 2.0
-energy = 0.8
-_sections_unfolded = [ "Transform" ]
-
-[node name="weapon_manager" parent="." index="26"]
-
+editor/display_folded = true
 weapon_path = NodePath("gun")
 enabled = true
 
@@ -431,7 +456,7 @@ value = "enabled"
 save_value = "player/weapon_enabled"
 auto_update = true
 
-[node name="BooleanStateLabel3" type="Label" parent="." index="29"]
+[node name="BooleanStateLabel3" type="Label" parent="." index="28"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -460,7 +485,7 @@ tracked_function = "is_on_platform"
 true_value = "ON PLATFORM"
 false_value = ""
 
-[node name="BooleanStateLabel4" type="Label" parent="." index="30"]
+[node name="BooleanStateLabel4" type="Label" parent="." index="29"]
 
 anchor_left = 0.0
 anchor_top = 0.0

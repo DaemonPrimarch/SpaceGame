@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=2]
+[gd_scene load_steps=25 format=2]
 
 [ext_resource path="res://scripts/entities/player/playable_character.gd" type="Script" id=1]
 [ext_resource path="res://addons/entities/entity.svg" type="Texture" id=2]
@@ -11,13 +11,12 @@
 [ext_resource path="res://sprites/robot_demo.png" type="Texture" id=9]
 [ext_resource path="res://addons/extended_collision_polygon_2D/extended_collision_polygon_2D.gd" type="Script" id=10]
 [ext_resource path="res://addons/extended_collision_polygon_2D/polygon.svg" type="Texture" id=11]
-[ext_resource path="res://nodes/player_light.tscn" type="PackedScene" id=12]
-[ext_resource path="res://nodes/managers/weapon_manager.tscn" type="PackedScene" id=13]
-[ext_resource path="res://nodes/helpers/respawn_helper.tscn" type="PackedScene" id=14]
-[ext_resource path="res://addons/state_labels/state_label.gd" type="Script" id=15]
-[ext_resource path="res://addons/layer_changer/layer_changer.gd" type="Script" id=16]
-[ext_resource path="res://addons/layer_changer/node.svg" type="Texture" id=17]
-
+[ext_resource path="res://nodes/managers/weapon_manager.tscn" type="PackedScene" id=12]
+[ext_resource path="res://nodes/helpers/respawn_helper.tscn" type="PackedScene" id=13]
+[ext_resource path="res://addons/state_labels/state_label.gd" type="Script" id=14]
+[ext_resource path="res://addons/layer_changer/layer_changer.gd" type="Script" id=15]
+[ext_resource path="res://addons/layer_changer/node.svg" type="Texture" id=16]
+[ext_resource path="res://addons/state_handler/kinematic_body_2D.svg" type="Texture" id=17]
 
 [sub_resource type="Animation" id=1]
 
@@ -131,6 +130,25 @@ tracks/0/keys = {
 "values": [ 5, 6, 7, 8, 9 ]
 }
 
+[sub_resource type="GDScript" id=7]
+
+script/source = "extends \"res://addons/state_handler/state_handler.gd\"
+
+export var speed = 64 * 2
+
+func process_state(delta):
+	
+	if(Input.is_action_pressed(\"play_up\")):
+		get_parent().position.y -= speed * delta
+	if(Input.is_action_pressed(\"play_down\")):
+		get_parent().position.y += speed * delta
+	
+	if(Input.is_action_pressed(\"play_right\")):
+		get_parent().position.x += speed * delta
+	
+	if(Input.is_action_pressed(\"play_left\")):
+		get_parent().position.x -= speed * delta"
+
 [node name="playable_character" type="KinematicBody2D" index="0"]
 
 input_pickable = false
@@ -235,13 +253,11 @@ anims/run_gun = SubResource( 6 )
 blend_times = [  ]
 _sections_unfolded = [ "Playback Options" ]
 
-[node name="light" parent="." index="8" instance=ExtResource( 12 )]
+[node name="weapon_manager" parent="." index="8" instance=ExtResource( 12 )]
 
-[node name="weapon_manager" parent="." index="9" instance=ExtResource( 13 )]
+[node name="respawner" parent="." index="9" instance=ExtResource( 13 )]
 
-[node name="respawner" parent="." index="10" instance=ExtResource( 14 )]
-
-[node name="StringStateLabel" type="Label" parent="." index="11"]
+[node name="StringStateLabel" type="Label" parent="." index="10"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -260,7 +276,7 @@ size_flags_vertical = 4
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
-script = ExtResource( 15 )
+script = ExtResource( 14 )
 __meta__ = {
 "_editor_icon": ExtResource( 8 )
 }
@@ -268,7 +284,7 @@ node_path = NodePath("..")
 tracked_value = ""
 tracked_function = "get_state"
 
-[node name="BooleanStateLabel" type="Label" parent="." index="12"]
+[node name="BooleanStateLabel" type="Label" parent="." index="11"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -297,13 +313,24 @@ tracked_function = "is_invulnerable"
 true_value = "INVULNERABLE"
 false_value = ""
 
-[node name="LayerChanger" type="Node" parent="." index="13"]
+[node name="LayerChanger" type="Node" parent="." index="12"]
 
-script = ExtResource( 16 )
+script = ExtResource( 15 )
 __meta__ = {
-"_editor_icon": ExtResource( 17 )
+"_editor_icon": ExtResource( 16 )
 }
 in_background = false
 linked_to_parent = false
+
+[node name="direct_control_handler" type="Node2D" parent="." index="13"]
+
+script = SubResource( 7 )
+__meta__ = {
+"_editor_icon": ExtResource( 17 )
+}
+handled_state = "DIRECT_CONTROL"
+enabled = true
+no_gravity = true
+speed = 128
 
 

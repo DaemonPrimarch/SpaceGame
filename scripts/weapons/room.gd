@@ -26,6 +26,9 @@ func _iterate_over_children(node):
 	
 	for child in node.get_children():
 		_iterate_over_children(child)
+		
+func _physics_process(delta):
+	pass
 
 func set_dark(val):
 	dark = val
@@ -37,6 +40,9 @@ func set_dark(val):
 
 func is_dark():
 	return dark
+
+func _draw():
+	pass
 
 func _on_room_room_darkened():
 	get_node("CanvasModulate").color = dark_color

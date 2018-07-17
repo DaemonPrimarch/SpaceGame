@@ -118,7 +118,7 @@ tracks/0/keys = {
 
 pause_mode = 1
 
-[node name="AnimationPlayer" parent="." index="9"]
+[node name="AnimationPlayer" parent="." index="8"]
 
 anims/duck = SubResource( 1 )
 anims/fall = SubResource( 2 )
@@ -126,6 +126,10 @@ anims/idle = SubResource( 3 )
 anims/jump = SubResource( 4 )
 anims/run = SubResource( 5 )
 anims/run_gun = SubResource( 6 )
+
+[node name="ExtendedCamera2D" parent="." index="23"]
+
+_sections_unfolded = [ "Limit" ]
 
 
 [editable path="crouching_handler"]
