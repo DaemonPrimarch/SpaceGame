@@ -7,10 +7,7 @@ path="res://.import/fading_light_1.png-a4abab3516ab17b484ee5c2d89430592.stex"
 [deps]
 
 source_file="res://sprites/fading_light_1.png"
-source_md5="5c63c935e3869c04bfff3e196cbed0f2"
-
 dest_files=[ "res://.import/fading_light_1.png-a4abab3516ab17b484ee5c2d89430592.stex" ]
-dest_md5="f2655dddd065a7706fd34dac81bcde62"
 
 [params]
 

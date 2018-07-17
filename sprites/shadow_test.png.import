@@ -7,10 +7,7 @@ path="res://.import/shadow_test.png-29acd26ad573f3bacd21a624dc701474.stex"
 [deps]
 
 source_file="res://sprites/shadow_test.png"
-source_md5="a9a02ded314a8fb54c7b9cd280d25b41"
-
 dest_files=[ "res://.import/shadow_test.png-29acd26ad573f3bacd21a624dc701474.stex" ]
-dest_md5="1ff70253f64122f41595d88fa9948f88"
 
 [params]
 

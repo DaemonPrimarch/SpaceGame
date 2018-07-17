@@ -116,7 +116,7 @@ tracks/0/keys = {
 "values": [ 5, 6, 7, 8, 9 ]
 }
 
-[node name="world" type="Node2D" index="0"]
+[node name="world" type="Node2D"]
 
 script = ExtResource( 1 )
 starting_room = "res://rooms/start_rooms/room_1.tscn"
@@ -124,7 +124,6 @@ arrival_pos_id = "start"
 
 [node name="player" parent="." index="0" instance=ExtResource( 2 )]
 
-editor/display_folded = true
 position = Vector2( 831.14, 805.328 )
 collision_mask = 1
 
@@ -137,9 +136,9 @@ anims/jump = SubResource( 4 )
 anims/run = SubResource( 5 )
 anims/run_gun = SubResource( 6 )
 
-[node name="double_jumping_handler" parent="player" index="14"]
+[node name="wall_jumping_handler" parent="player" index="15"]
 
-enabled = true
+enabled = false
 
 [node name="wall_sliding_handler" parent="player" index="18"]
 
@@ -149,6 +148,11 @@ enabled = true
 
 current = false
 _sections_unfolded = [ "Drag Margin", "Smoothing" ]
+
+[node name="weapon_manager" parent="player" index="26"]
+
+editor/display_folded = true
+enabled = false
 
 [node name="start_panel" parent="." index="1" instance=ExtResource( 3 )]
 
