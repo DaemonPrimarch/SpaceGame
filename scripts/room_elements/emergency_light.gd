@@ -37,4 +37,3 @@ func _process(delta):
 
 func enable():
 	enabled = true
-

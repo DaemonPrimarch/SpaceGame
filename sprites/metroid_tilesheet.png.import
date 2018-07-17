@@ -7,10 +7,7 @@ path="res://.import/metroid_tilesheet.png-5b8c1d6cb2c2f4c105b77d04947236d3.stex"
 [deps]
 
 source_file="res://sprites/metroid_tilesheet.png"
-source_md5="e5aec55c6e46dbdd8486a1c3513a714b"
-
 dest_files=[ "res://.import/metroid_tilesheet.png-5b8c1d6cb2c2f4c105b77d04947236d3.stex" ]
-dest_md5="e6765f04bf2745b91723ffa93b49aa2a"
 
 [params]
 
