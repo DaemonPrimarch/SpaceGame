@@ -1,6 +1,7 @@
 [gd_scene load_steps=2 format=2]
 
-[ext_resource path="res://scripts/room_elements/moving_platforms/controllers/platform_extender.gd" type="Script" id=1]
+[ext_resource path="res://deprecated/platform_extender.gd" type="Script" id=1]
+
 
 [node name="platform_extender" type="Node2D" index="0"]
 

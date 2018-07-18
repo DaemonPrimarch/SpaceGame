@@ -23,8 +23,9 @@
 [ext_resource path="res://addons/extended_collision_polygon_2D/polygon.svg" type="Texture" id=21]
 [ext_resource path="res://deprecated/platform_extender.tscn" type="PackedScene" id=22]
 [ext_resource path="res://nodes/room_elements/ladders/vertical_ladder.tscn" type="PackedScene" id=23]
-[ext_resource path="res://scripts/room_elements/moving_platforms/controllers/platform_extender_2.gd" type="Script" id=24]
+[ext_resource path="res://scripts/room_elements/moving_platforms/controllers/platform_extender.gd" type="Script" id=24]
 [ext_resource path="res://nodes/room_elements/moving_platforms/platforms/2x1_stick_platform.tscn" type="PackedScene" id=25]
+
 
 [sub_resource type="Curve2D" id=1]
 

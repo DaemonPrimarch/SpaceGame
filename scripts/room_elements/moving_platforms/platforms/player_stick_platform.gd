@@ -1,5 +1,5 @@
 tool
-extends "res://scripts/room_elements/moving_platforms/platforms/platform.gd"
+extends "platform.gd"
 
 var connected_nodes = []
 
