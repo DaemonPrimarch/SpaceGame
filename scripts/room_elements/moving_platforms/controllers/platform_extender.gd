@@ -28,6 +28,8 @@ func init_platform():
 		get_platform().connect("extending_direction_changed", self, "update")
 		
 		emit_signal("platform_loaded")
+	
+	update()
 
 
 func add_child(node):
