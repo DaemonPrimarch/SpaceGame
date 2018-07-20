@@ -31,16 +31,15 @@ func move_and_push(v):
 
 func extend(v):
 	for node in connected_nodes:
-		if(not v.y > 0):
-			node.position += (v * get_direction() * Vector2(1,-1))
+		if(not (is_extending_vertical() and v > 0)):
+			node.position += (v * get_extending_direction())
 		else:
-			node.move_and_push(v * get_direction() * Vector2(1,-1))
+			node.move_and_push(v * get_extending_direction())
 		
-	
 	.extend(v)
 	
-	if(v.x != 0):
-		$Area2D/CollisionPolygon2D.polygon[2] += v
-		$Area2D/CollisionPolygon2D.polygon[3] += v
-	if(v.y != 0):
-		$Area2D/CollisionPolygon2D.position -= v
+	if(not is_extending_vertical()):
+		$Area2D/CollisionPolygon2D.polygon[2].x += v
+		$Area2D/CollisionPolygon2D.polygon[3].x += v
+	else:
+		$Area2D/CollisionPolygon2D.position.y -= v

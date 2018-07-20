@@ -26,7 +26,6 @@
 [ext_resource path="res://scripts/room_elements/moving_platforms/controllers/platform_extender.gd" type="Script" id=24]
 [ext_resource path="res://nodes/room_elements/moving_platforms/platforms/2x1_stick_platform.tscn" type="PackedScene" id=25]
 
-
 [sub_resource type="Curve2D" id=1]
 
 bake_interval = 5.0
@@ -103,7 +102,7 @@ moving_speed = 128
 
 position = Vector2( -352, 192 )
 _sections_unfolded = [ "Collision", "collision" ]
-moveable_by_collision = false
+extended_distance = 0
 
 [node name="platform_mover3" parent="." index="7" instance=ExtResource( 7 )]
 
@@ -116,7 +115,7 @@ moving_speed = 128
 
 position = Vector2( -352, 192 )
 _sections_unfolded = [ "Collision", "collision" ]
-moveable_by_collision = false
+extended_distance = 0
 
 [node name="enemy_1" parent="." index="8" instance=ExtResource( 9 )]
 
@@ -230,7 +229,7 @@ backward_acceleration = 0
 
 [node name="player_stick_platform" parent="platform_extender" index="0" instance=ExtResource( 8 )]
 
-flippedV = true
+extended_distance = 0
 
 [node name="platform_mover2" parent="." index="18" instance=ExtResource( 7 )]
 
@@ -266,6 +265,7 @@ backward_acceleration = 64
 [node name="2x1_stick_platform" parent="platform_extender2" index="0" instance=ExtResource( 25 )]
 
 _sections_unfolded = [ "Collision", "Transform" ]
+extended_distance = 0
 
 [node name="platform_extender3" type="Node2D" parent="." index="22"]
 
@@ -283,6 +283,7 @@ backward_acceleration = 64
 [node name="2x1_stick_platform" parent="platform_extender3" index="0" instance=ExtResource( 25 )]
 
 _sections_unfolded = [ "Collision", "Transform" ]
+extended_distance = 0
 
 [connection signal="switched_off" from="bullet_switch" to="moving_track" method="set_moving_forward" binds= [ false ]]
 

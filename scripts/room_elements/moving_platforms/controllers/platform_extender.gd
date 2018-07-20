@@ -25,11 +25,10 @@ func init_platform():
 		
 		get_platform().set_meta("_edit_lock_", true)
 		
-		get_platform().connect("flippedH", self, "update")
+		get_platform().connect("extending_direction_changed", self, "update")
 		
 		emit_signal("platform_loaded")
-		
-		get_platform().position = Vector2()
+
 
 func add_child(node):
 	.add_child(node)
@@ -42,13 +41,13 @@ func _ready():
 	
 	set_physics_process(not Engine.editor_hint)
 	
-	forward_velocity = forward_starting_velocity
-	backward_velocity = backward_starting_velocity
+	reset_velocities()
 	
 	if(extending_distances == null):
 		extending_distances = [0, 64]
 	
 	next_distance_index = 0
+	
 	set_next_extending_distance(1)
 	
 	set_active(is_active())
@@ -67,9 +66,9 @@ func _draw():
 		for i in extending_distances:
 			large_dist = max(large_dist, i)
 			small_dist = min(small_dist, i)
-			draw_circle(get_platform().get_direction() * get_extending_orientation() * i *  Vector2(1,-1) + get_platform().get_direction() * get_extending_orientation() * Vector2(32,32) *  Vector2(1,-1) , 4, Color(1,0, 0))
+			draw_circle(get_platform().get_extending_direction() * i + get_platform().get_extending_direction() * Vector2(32,32), 4, Color(1,0, 0))
 		
-		draw_line(get_platform().get_direction() * get_extending_orientation() * (small_dist + 32), get_extending_orientation() * get_platform().get_direction() * (large_dist + 32) * Vector2(1,-1) ,ProjectSettings.get_setting("debug/shapes/collision/shape_color"), 4.0)
+		draw_line(get_platform().get_extending_direction() * (small_dist + 32), get_platform().get_extending_direction() * (large_dist + 32) ,ProjectSettings.get_setting("debug/shapes/collision/shape_color"), 4.0)
 export var active = true
 
 export var one_shot = false
@@ -158,7 +157,7 @@ func get_previous_extending_distance():
 	return extending_distances[prev_distance_index] 
 
 func has_arrived_at_next_extending_distance():
-	return ((pos) * get_next_extending_direction() > get_next_extending_direction() * get_next_extending_distance())
+	return get_platform().get_extended_distance() * get_next_extending_direction() > get_next_extending_direction() * get_next_extending_distance()
 
 func advance_next_extending_distance():
 	if(next_distance_index == extending_distances.size() - 1):
@@ -185,22 +184,14 @@ func advance_next_extending_distance():
 func _physics_process(delta):
 	if(is_active() and has_platform() and not is_waiting()):
 		if(get_next_extending_direction() > 0):
-			get_platform().extend(get_extending_orientation() * get_next_extending_direction() * forward_velocity * delta)
-			
-			pos += get_next_extending_direction() * forward_velocity * delta
+			get_platform().extend(get_next_extending_direction() * forward_velocity * delta)
 
 			forward_velocity += forward_acceleration * delta
-	
 		else:
-			get_platform().extend(get_extending_orientation() * get_next_extending_direction() * backward_velocity * delta)
-			
-			pos += get_next_extending_direction() * backward_velocity * delta
+			get_platform().extend(get_next_extending_direction() * backward_velocity * delta)
 			
 			backward_velocity += backward_acceleration * delta
 	
 		if(has_arrived_at_next_extending_distance()):
-			#pos = get_next_extending_distance()
-			
 			advance_next_extending_distance()
-			
 			reset_velocities()

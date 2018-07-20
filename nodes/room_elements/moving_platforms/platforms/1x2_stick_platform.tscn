@@ -5,6 +5,7 @@
 [node name="player_stick_platform" index="0" instance=ExtResource( 1 )]
 
 _sections_unfolded = [ "Collision", "Transform" ]
+moveable_by_collision = false
 
 [node name="CollisionPolygon2D" parent="." index="0"]
 

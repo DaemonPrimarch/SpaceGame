@@ -169,10 +169,6 @@ extending_distances = [ 0, 448 ]
 [node name="player_stick_platform" parent="p_1" index="0" instance=ExtResource( 11 )]
 
 _sections_unfolded = [ "Collision", "Transform", "collision" ]
-max_slope_angle = 0.785398
-flippedH = true
-flippedV = false
-moveable_by_collision = true
 
 [node name="p_2" parent="." index="14" instance=ExtResource( 10 )]
 
@@ -182,11 +178,6 @@ one_shot = true
 extending_distances = [ 0, 448 ]
 
 [node name="2x1_stick_platform" parent="p_2" index="0" instance=ExtResource( 12 )]
-
-max_slope_angle = 0.785398
-flippedH = false
-flippedV = false
-moveable_by_collision = true
 
 [node name="timed_platform_controller_helper" parent="p_2" index="1" instance=ExtResource( 13 )]
 
@@ -206,11 +197,6 @@ extending_distances = [ 0, 832 ]
 has_start_timer = false
 
 [node name="player_stick_platform" parent="p_3" index="1" instance=ExtResource( 11 )]
-
-max_slope_angle = 0.785398
-flippedH = false
-flippedV = false
-moveable_by_collision = true
 
 [connection signal="triggered" from="StaticBody2D" to="p_2" method="set_active" binds= [ true ]]
 
