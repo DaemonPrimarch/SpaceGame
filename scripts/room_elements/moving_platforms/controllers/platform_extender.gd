@@ -75,22 +75,13 @@ export var active = true
 
 export var one_shot = false
 
-export var extending_vertical = true setget set_extending_vertical
 func set_extending_distances(val):
 	extending_distances = val
 
 	update()
-	
-func set_extending_vertical(val):
-	extending_vertical = val
-	
-	update()
 
 func turn_around():
 	set_next_extending_distance(prev_distance_index)
-
-func is_extending_vertical():
-	return extending_vertical
 
 export(Array, int) var extending_distances setget set_extending_distances
 
