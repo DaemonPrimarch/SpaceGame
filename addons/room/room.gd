@@ -6,11 +6,19 @@ signal player_entered(player)
 signal room_lit()
 signal room_darkened()
 
-export var dark = true setget set_dark, is_dark 
+export var dark = false setget set_dark, is_dark 
 export var dark_color = Color(0,0,0)
 export var auto_generate_camera_limiter = true
 
+var default_screen_size = Vector2(1664, 960)
+
+func _draw():
+	for i in range(-15, 15):
+		draw_line(Vector2(i * default_screen_size.x, -15 * default_screen_size.y), Vector2(i * default_screen_size.x, 15 * default_screen_size.y), Color(0,1,0,0.5), 1)
+		draw_line(Vector2(-15 * default_screen_size.x, i * default_screen_size.y), Vector2(15 * default_screen_size.x, i * default_screen_size.y), Color(0,1,0,0.5), 1)
 func _ready():
+	print(get_viewport_rect())
+	
 	if(Engine.editor_hint and not has_node("terrain")):
 		var ter = preload("res://nodes/terrain.tscn").instance()
 		
@@ -37,6 +45,8 @@ func _ready():
 	
 	if(Engine.editor_hint and auto_generate_camera_limiter):
 		generate_camera_limiter()
+		
+	add_to_group("room")
 	
 	connect("player_entered", self, "_on_room_player_entered")
 	connect("room_darkened", self, "_on_room_room_darkened")
@@ -64,9 +74,6 @@ func set_dark(val):
 
 func is_dark():
 	return dark
-
-func _draw():
-	pass
 
 func _on_room_room_darkened():
 	get_node("CanvasModulate").color = dark_color
