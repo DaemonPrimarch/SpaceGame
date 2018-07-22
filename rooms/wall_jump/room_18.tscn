@@ -1,8 +1,9 @@
 [gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://nodes/room.tscn" type="PackedScene" id=1]
+[ext_resource path="res://deprecated/room.tscn" type="PackedScene" id=1]
 [ext_resource path="res://nodes/room_elements/regular_warp_tile.tscn" type="PackedScene" id=2]
 [ext_resource path="res://deprecated/old_moveable_platform_small.tscn" type="PackedScene" id=3]
+
 
 
 

@@ -11,6 +11,30 @@ export var dark_color = Color(0,0,0)
 export var auto_generate_camera_limiter = true
 
 func _ready():
+	if(Engine.editor_hint and not has_node("terrain")):
+		var ter = preload("res://nodes/terrain.tscn").instance()
+		
+		add_child(ter)
+		
+		ter.set_owner(get_tree().get_edited_scene_root())
+		
+	if(Engine.editor_hint and not has_node("player")):
+		var play = preload("res://nodes/entities/player/puppet_player.tscn").instance()
+		
+		add_child(play)
+		
+		play.set_owner(get_tree().get_edited_scene_root())
+	
+	if(Engine.editor_hint and not has_node("CanvasModulate")):
+		var mod = CanvasModulate.new()
+		add_child(mod)
+		
+		mod.set_owner(get_tree().get_edited_scene_root())
+		
+		mod.color = Color(1,1,1,1)
+		
+		mod.set_meta("_edit_lock_", true)
+	
 	if(Engine.editor_hint and auto_generate_camera_limiter):
 		generate_camera_limiter()
 	
