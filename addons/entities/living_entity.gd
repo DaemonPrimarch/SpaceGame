@@ -16,6 +16,8 @@ var mask_save
 var invulnerable = false
 
 func _ready():
+	add_to_group("living_entity")
+	
 	set_physics_process(not Engine.is_editor_hint())
 		
 	if(not Engine.is_editor_hint()):

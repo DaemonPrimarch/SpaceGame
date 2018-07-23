@@ -12,7 +12,7 @@
 [ext_resource path="res://addons/extended_collision_polygon_2D/extended_collision_polygon_2D.gd" type="Script" id=10]
 [ext_resource path="res://addons/extended_collision_polygon_2D/polygon.svg" type="Texture" id=11]
 [ext_resource path="res://nodes/managers/weapon_manager.tscn" type="PackedScene" id=12]
-[ext_resource path="res://nodes/helpers/respawn_helper.tscn" type="PackedScene" id=13]
+[ext_resource path="res://nodes/helpers/respawn_manager.tscn" type="PackedScene" id=13]
 [ext_resource path="res://addons/state_labels/state_label.gd" type="Script" id=14]
 [ext_resource path="res://addons/layer_changer/layer_changer.gd" type="Script" id=15]
 [ext_resource path="res://addons/layer_changer/node.svg" type="Texture" id=16]
@@ -255,7 +255,7 @@ _sections_unfolded = [ "Playback Options" ]
 
 [node name="weapon_manager" parent="." index="8" instance=ExtResource( 12 )]
 
-[node name="respawner" parent="." index="9" instance=ExtResource( 13 )]
+[node name="respawn_manager" parent="." index="9" instance=ExtResource( 13 )]
 
 [node name="StringStateLabel" type="Label" parent="." index="10"]
 

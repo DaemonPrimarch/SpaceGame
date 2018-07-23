@@ -7,7 +7,15 @@ func _ready():
 	get_parent().connect("crushed", self, "respawn")
 	
 func respawn():
-	get_parent().position = last_safe_position
+	get_parent().set_state("STANDING")
+	
+	get_parent().global_position = get_respawn_position()
+	get_parent().get_node("ExtendedCamera2D").align()
+func set_respawn_position(point):
+	last_safe_position = point
+
+func get_respawn_position():
+	return last_safe_position
 
 func _physics_process(delta):
 	get_node("ground_detector").force_raycast_update()

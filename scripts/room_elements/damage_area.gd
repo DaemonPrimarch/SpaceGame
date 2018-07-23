@@ -6,12 +6,11 @@ signal activated
 signal deactivated
 
 export var active = true setget set_active, is_active
-
 export var damage = 10 setget set_damage, get_damage
+export var respawn_entity = false
 
-onready var area = get_node("Area2D")
-
-var prev_layer = -1
+func _ready():
+	$Area2D.connect("body_entered", self, "_on_Area2D_body_entered")
 
 func set_active(val):
 		active = val
@@ -37,17 +36,7 @@ func get_damage():
 
 func _on_Area2D_body_entered( body ):
 	if(is_active()):
-		if(body.has_method("damage")):
-			body.damage_push(self)
+		if(body.is_in_group("living_entity")):
 			body.damage(get_damage())
-		if(not true):
-			#body.push_back()
-			pass
-
-
-func _on_damage_area_activated():
-	pass # replace with function body
-
-
-func _on_damage_area_deactivated():
-	pass
+			if(respawn_entity and body.has_node("respawn_manager")):
+				body.get_node("respawn_manager").respawn()

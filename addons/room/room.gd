@@ -13,9 +13,10 @@ export var auto_generate_camera_limiter = true
 var default_screen_size = Vector2(1664, 960)
 
 func _draw():
-	for i in range(-15, 15):
-		draw_line(Vector2(i * default_screen_size.x, -15 * default_screen_size.y), Vector2(i * default_screen_size.x, 15 * default_screen_size.y), Color(0,1,0,0.5), 1)
-		draw_line(Vector2(-15 * default_screen_size.x, i * default_screen_size.y), Vector2(15 * default_screen_size.x, i * default_screen_size.y), Color(0,1,0,0.5), 1)
+	if(Engine.editor_hint):
+		for i in range(-15, 15):
+			draw_line(Vector2(i * default_screen_size.x, -15 * default_screen_size.y), Vector2(i * default_screen_size.x, 15 * default_screen_size.y), Color(0,1,0,0.5), 1)
+			draw_line(Vector2(-15 * default_screen_size.x, i * default_screen_size.y), Vector2(15 * default_screen_size.x, i * default_screen_size.y), Color(0,1,0,0.5), 1)
 func _ready():
 	print(get_viewport_rect())
 	
@@ -82,8 +83,6 @@ func _on_room_room_lit():
 	get_node("CanvasModulate").color = Color(1,1,1)
 
 func generate_camera_limiter():
-	print("GENERATED CAMERA LIMITER")
-	
 	var min_point = Vector2(10000, 10000)
 	
 	for tile in get_node("terrain").get_used_cells():

@@ -207,7 +207,13 @@ func process_state(delta):
 	if(get_parent().track_manager.is_on_track()):
 		get_parent().set_state(\"ON_TRACK\")
 	if(get_parent().is_grounded()):
-		get_parent().set_state(\"STANDING\")"
+		get_parent().set_state(\"STANDING\")
+	if(not get_parent().is_action_pressed(\"jump\") and get_parent().get_velocity().y < 0):
+		get_parent().set_velocity(Vector2(get_parent().get_velocity().x, 0))
+	elif(get_parent().is_action_pressed(\"play_left\")):
+		get_parent().set_velocity(get_parent().get_velocity() - Vector2(delta * 64 * 3, 0))
+	elif(get_parent().is_action_pressed(\"play_right\")):
+		get_parent().set_velocity(get_parent().get_velocity() + Vector2(delta * 64 * 3, 0))"
 
 [node name="player" index="0" groups=[
 "player",

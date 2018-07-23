@@ -1,0 +1,26 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://scripts/room_elements/respawn_position_setter.gd" type="Script" id=1]
+[ext_resource path="res://addons/player_enter_trigger/area.svg" type="Texture" id=2]
+
+[node name="respawn_position_setter" type="Area2D" index="0"]
+
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+script = ExtResource( 1 )
+__meta__ = {
+"_editor_icon": ExtResource( 2 )
+}
+enabled = true
+oneshot = false
+free_on_disabled = false
+save_path = null
+trigger_on_freed = false
+position_path = null
+
+
