@@ -4,13 +4,22 @@
 
 script/source = "extends Node
 
+signal track_changed()
+
 var track = null
 
 func _ready():
 	get_parent().add_to_group(\"handles_track\")
 	
 func set_track(p_track):
+	#print(\"Track Changed: \", p_track.name)
+	
+	var prev = track
+	
 	track = p_track
+	
+	if(p_track != null):
+		emit_signal(\"track_changed\")
 	
 func is_on_track():
 	return track != null

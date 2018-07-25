@@ -16,6 +16,8 @@ script = ExtResource( 1 )
 moving_forward = true
 speed = 128
 length = 192
+fast = false
+fast_camera_offset = Vector2( 0, 0 )
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." index="0"]
 
@@ -59,9 +61,5 @@ texture = ExtResource( 2 )
 region_enabled = true
 region_rect = Rect2( 0, 0, 64, 64 )
 _sections_unfolded = [ "Region" ]
-
-[connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
-
-[connection signal="body_exited" from="Area2D" to="." method="_on_Area2D_body_exited"]
 
 

@@ -166,19 +166,26 @@ script/source = "extends \"res://addons/state_handler/state_handler.gd\"
 var track_manager = null
 var track = null
 
-func enter_state(previous_state):
+func _ready():
+	get_parent().get_node(\"track_manager\").connect(\"track_changed\", self, \"init_track\")
+
+func init_track():
+	if(track != null):
+		track.disconnect(\"direction_changed\", self, \"track_direction_changed\")
+	
 	track_manager = get_parent().track_manager
 	track = track_manager.get_track()
-	
-	get_parent().animation_player.stop()
-	
-	get_parent().set_velocity(Vector2(track.get_speed(), 0)) 
 	
 	track_direction_changed()
 	
 	track.connect(\"direction_changed\", self, \"track_direction_changed\")
+	
+	get_parent().set_velocity(Vector2(track.get_speed(), 0)) 
+	
+func enter_state(previous_state):	
+	get_parent().animation_player.stop()
 
-func leave_state(new_state):
+func leave_state(new_state):	
 	track.disconnect(\"direction_changed\", self, \"track_direction_changed\")
 
 func track_direction_changed():	
@@ -206,7 +213,7 @@ func enter_state(previous_state):
 func process_state(delta):
 	if(get_parent().track_manager.is_on_track()):
 		get_parent().set_state(\"ON_TRACK\")
-	if(get_parent().is_grounded()):
+	elif(get_parent().is_grounded()):
 		get_parent().set_state(\"STANDING\")
 	if(not get_parent().is_action_pressed(\"jump\") and get_parent().get_velocity().y < 0):
 		get_parent().set_velocity(Vector2(get_parent().get_velocity().x, 0))
