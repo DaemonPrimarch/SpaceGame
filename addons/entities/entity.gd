@@ -7,6 +7,7 @@ signal room_entered()
 signal state_entered(state, previous_state)
 signal state_left(state, new_state)
 signal crushed()
+signal collided_with_ground(ground)
 signal ground_entered()
 signal ground_exited()
 
@@ -230,6 +231,8 @@ func _physics_process(delta):
 func check_if_ground_hit_on_collision(collision_info, bla):
 	if(collision_info != null and collision_info.travel.y > 0):
 		set_grounded(true)
+		
+		emit_signal("collided_with_ground", collision_info.collider)
 
 func check_if_still_on_ground(delta):
 	if(is_gravity_enabled()):

@@ -24,7 +24,9 @@ func process_state(delta):
 	.process_state(delta)
 
 	
-	if(get_parent().is_grounded()):
+	if(get_parent().is_grounded() and get_parent().get_node("track_manager").is_on_track()):
+		get_parent().set_state("ON_TRACK")
+	elif(get_parent().is_grounded()):
 		get_parent().set_state("STANDING")
 	elif(get_parent().is_action_just_pressed("jump") and get_parent().can_enter_state("DOUBLE_JUMPING")):
 		get_parent().set_state("DOUBLE_JUMPING")

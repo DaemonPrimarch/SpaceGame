@@ -17,6 +17,8 @@ func get_fast_camera_offset():
 
 func _ready():
 	set_length(length)
+	add_to_group("track")
+	
 
 func set_speed(p_speed):
 	speed = p_speed
@@ -50,18 +52,22 @@ func set_length(p_length):
 		$CollisionPolygon2D.polygon[2].x = length - 32
 		$CollisionPolygon2D.polygon[3].x = length - 32
 
+var first_frame = false
+
 func _physics_process(delta):
 	for node in $Area2D.get_overlapping_bodies():
 		if(not is_node_connected(node) and node.is_in_group("handles_track") and node.is_grounded() and not node.get_node("track_manager").is_on_track()):
 			connect_node(node)
 		
 	for node in connected_nodes:
-		if(not $Area2D.overlaps_body(node) or not node.is_grounded()):
+		if(not first_frame and not $Area2D.overlaps_body(node) or not node.is_grounded()):
 			disconnect_node(node)
 	
 	if(not is_fast()):
 		for node in $Area2D.get_overlapping_bodies():
 			pass
+		
+	first_frame = false
 
 var connected_nodes = []
 
@@ -69,6 +75,8 @@ func is_node_connected(node):
 	return connected_nodes.find(node) != -1
 
 func connect_node(node):
+	first_frame = true
+	
 	connected_nodes.push_back(node)
 	
 	print("Connected node to: ", name)
