@@ -4,23 +4,23 @@
 [ext_resource path="res://scripts/entities/player/player.gd" type="Script" id=2]
 [ext_resource path="res://sprites/white_light.png" type="Texture" id=3]
 [ext_resource path="res://sprites/fading_light_5.png" type="Texture" id=4]
-[ext_resource path="res://nodes/state_handlers/player/jumping_handler.tscn" type="PackedScene" id=5]
-[ext_resource path="res://nodes/state_handlers/player/walking_handler.tscn" type="PackedScene" id=6]
-[ext_resource path="res://nodes/state_handlers/player/standing_handler.tscn" type="PackedScene" id=7]
-[ext_resource path="res://nodes/state_handlers/player/crouching_handler.tscn" type="PackedScene" id=8]
-[ext_resource path="res://nodes/state_handlers/player/double_jumping_handler.tscn" type="PackedScene" id=9]
-[ext_resource path="res://addons/save_handlers/from_save_value_setter.gd" type="Script" id=10]
-[ext_resource path="res://addons/save_handlers/node.svg" type="Texture" id=11]
-[ext_resource path="res://nodes/state_handlers/player/wall_jumping_handler.tscn" type="PackedScene" id=12]
-[ext_resource path="res://nodes/state_handlers/player/falling_handler.tscn" type="PackedScene" id=13]
-[ext_resource path="res://nodes/state_handlers/player/climbing_handler.tscn" type="PackedScene" id=14]
-[ext_resource path="res://nodes/state_handlers/player/wall_sliding_handler.tscn" type="PackedScene" id=15]
-[ext_resource path="res://nodes/state_handlers/player/crawling_handler.tscn" type="PackedScene" id=16]
-[ext_resource path="res://nodes/state_handlers/player/pushed_handler.tscn" type="PackedScene" id=17]
-[ext_resource path="res://addons/state_handler/kinematic_body_2D.svg" type="Texture" id=18]
-[ext_resource path="res://addons/extended_camera_2D/extended_camera_2D.gd" type="Script" id=19]
-[ext_resource path="res://nodes/helpers/camera_zoom_helper.tscn" type="PackedScene" id=20]
-[ext_resource path="res://nodes/weapons/gun.tscn" type="PackedScene" id=21]
+[ext_resource path="res://nodes/weapons/gun.tscn" type="PackedScene" id=5]
+[ext_resource path="res://addons/save_handlers/from_save_value_setter.gd" type="Script" id=6]
+[ext_resource path="res://addons/save_handlers/node.svg" type="Texture" id=7]
+[ext_resource path="res://nodes/state_handlers/player/jumping_handler.tscn" type="PackedScene" id=8]
+[ext_resource path="res://nodes/state_handlers/player/walking_handler.tscn" type="PackedScene" id=9]
+[ext_resource path="res://nodes/state_handlers/player/standing_handler.tscn" type="PackedScene" id=10]
+[ext_resource path="res://nodes/state_handlers/player/crouching_handler.tscn" type="PackedScene" id=11]
+[ext_resource path="res://nodes/state_handlers/player/double_jumping_handler.tscn" type="PackedScene" id=12]
+[ext_resource path="res://nodes/state_handlers/player/wall_jumping_handler.tscn" type="PackedScene" id=13]
+[ext_resource path="res://nodes/state_handlers/player/falling_handler.tscn" type="PackedScene" id=14]
+[ext_resource path="res://nodes/state_handlers/player/climbing_handler.tscn" type="PackedScene" id=15]
+[ext_resource path="res://nodes/state_handlers/player/wall_sliding_handler.tscn" type="PackedScene" id=16]
+[ext_resource path="res://nodes/state_handlers/player/crawling_handler.tscn" type="PackedScene" id=17]
+[ext_resource path="res://nodes/state_handlers/player/pushed_handler.tscn" type="PackedScene" id=18]
+[ext_resource path="res://addons/state_handler/kinematic_body_2D.svg" type="Texture" id=19]
+[ext_resource path="res://addons/extended_camera_2D/extended_camera_2D.gd" type="Script" id=20]
+[ext_resource path="res://nodes/helpers/camera_zoom_helper.tscn" type="PackedScene" id=21]
 [ext_resource path="res://addons/state_labels/boolean_state_label.gd" type="Script" id=22]
 [ext_resource path="res://addons/state_labels/label.svg" type="Texture" id=23]
 
@@ -166,6 +166,8 @@ script/source = "extends \"res://addons/state_handler/state_handler.gd\"
 var track_manager = null
 var track = null
 
+export var camera_offset_time = 1
+
 func _ready():
 	pass
 
@@ -181,8 +183,10 @@ func init_track():
 	track.connect(\"direction_changed\", self, \"track_direction_changed\")
 	
 	get_parent().set_velocity(Vector2(track.get_speed(), 0)) 
-	
-	get_parent().get_node(\"ExtendedCamera2D\").move_offset_to(track.get_fast_camera_offset(), 1)
+#
+#	if(track.applies_fast_camera_offset):
+#		#get_parent().get_node(\"ExtendedCamera2D\").anchor_mode = Camera2D.ANCHOR_MODE_FIXED_TOP_LEFT
+#		get_parent().get_node(\"ExtendedCamera2D\").move_at_speed_to(track.get_fast_camera_offset(), camera_offset_time, true)
 	
 func enter_state(previous_state):	
 	get_parent().animation_player.stop()
@@ -295,23 +299,58 @@ shadow_filter = 0
 shadow_filter_smooth = 0.0
 shadow_item_cull_mask = 1
 
-[node name="Sprite" parent="." index="6"]
+[node name="Sprite" parent="." index="5"]
 
 frame = 20
 _sections_unfolded = [ "Animation", "Offset", "Region", "Transform" ]
 
-[node name="CollisionPolygon2D" parent="." index="7"]
+[node name="CollisionPolygon2D" parent="." index="6"]
 
 polygon = PoolVector2Array( 60, 32, 4, 32, 4, -80, 60, -80 )
 _sections_unfolded = [ "Transform" ]
 
-[node name="jumping_handler" parent="." index="9" instance=ExtResource( 5 )]
+[node name="weapon_manager" parent="." index="8"]
 
-[node name="walking_handler" parent="." index="10" instance=ExtResource( 6 )]
+editor/display_folded = true
+weapon_path = NodePath("gun")
+enabled = true
 
-[node name="standing_handler" parent="." index="11" instance=ExtResource( 7 )]
+[node name="weapon_bottom_front" parent="weapon_manager" index="0"]
 
-[node name="crouching_handler" parent="." index="12" instance=ExtResource( 8 )]
+position = Vector2( 26.6167, -3.8147e-006 )
+
+[node name="weapon_top" parent="weapon_manager" index="2"]
+
+position = Vector2( 0, -80.5085 )
+
+[node name="weapon_front" parent="weapon_manager" index="3"]
+
+position = Vector2( 27.7558, -32 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="gun" parent="weapon_manager" index="5" instance=ExtResource( 5 )]
+
+visible = false
+position = Vector2( 56, -40 )
+
+[node name="FromSaveValueSetter" type="Node" parent="weapon_manager" index="7"]
+
+script = ExtResource( 6 )
+__meta__ = {
+"_editor_icon": ExtResource( 7 )
+}
+node_path = NodePath("..")
+value = "enabled"
+save_value = "player/weapon_enabled"
+auto_update = true
+
+[node name="jumping_handler" parent="." index="9" instance=ExtResource( 8 )]
+
+[node name="walking_handler" parent="." index="10" instance=ExtResource( 9 )]
+
+[node name="standing_handler" parent="." index="11" instance=ExtResource( 10 )]
+
+[node name="crouching_handler" parent="." index="12" instance=ExtResource( 11 )]
 
 editor/display_folded = true
 
@@ -328,43 +367,43 @@ cast_to = Vector2( 0, -32 )
 playback_process_mode = 0
 _sections_unfolded = [ "Pause", "Playback Options" ]
 
-[node name="double_jumping_handler" parent="." index="13" instance=ExtResource( 9 )]
+[node name="double_jumping_handler" parent="." index="13" instance=ExtResource( 12 )]
 
 enabled = false
 
 [node name="FromSaveValueSetter" type="Node" parent="double_jumping_handler" index="0"]
 
-script = ExtResource( 10 )
+script = ExtResource( 6 )
 __meta__ = {
-"_editor_icon": ExtResource( 11 )
+"_editor_icon": ExtResource( 7 )
 }
 node_path = NodePath("..")
 value = "enabled"
 save_value = "player/double_jump_enabled"
 auto_update = true
 
-[node name="wall_jumping_handler" parent="." index="14" instance=ExtResource( 12 )]
+[node name="wall_jumping_handler" parent="." index="14" instance=ExtResource( 13 )]
 
-[node name="falling_handler" parent="." index="15" instance=ExtResource( 13 )]
+[node name="falling_handler" parent="." index="15" instance=ExtResource( 14 )]
 
-[node name="climbing_handler" parent="." index="16" instance=ExtResource( 14 )]
+[node name="climbing_handler" parent="." index="16" instance=ExtResource( 15 )]
 
-[node name="wall_sliding_handler" parent="." index="17" instance=ExtResource( 15 )]
+[node name="wall_sliding_handler" parent="." index="17" instance=ExtResource( 16 )]
 
 enabled = false
 
 [node name="FromSaveValueSetter" type="Node" parent="wall_sliding_handler" index="2"]
 
-script = ExtResource( 10 )
+script = ExtResource( 6 )
 __meta__ = {
-"_editor_icon": ExtResource( 11 )
+"_editor_icon": ExtResource( 7 )
 }
 node_path = NodePath("..")
 value = "enabled"
 save_value = "player/wall_jump_enabled"
 auto_update = true
 
-[node name="crawling_handler" parent="." index="18" instance=ExtResource( 16 )]
+[node name="crawling_handler" parent="." index="18" instance=ExtResource( 17 )]
 
 editor/display_folded = true
 
@@ -383,23 +422,24 @@ _sections_unfolded = [ "Transform" ]
 anims/crawl_leave = SubResource( 2 )
 anims/crawl_start = SubResource( 3 )
 
-[node name="pushed_handler" parent="." index="19" instance=ExtResource( 17 )]
+[node name="pushed_handler" parent="." index="19" instance=ExtResource( 18 )]
 
 [node name="on_track_handler" type="Node2D" parent="." index="20"]
 
 script = SubResource( 4 )
 __meta__ = {
-"_editor_icon": ExtResource( 18 )
+"_editor_icon": ExtResource( 19 )
 }
 handled_state = "ON_TRACK"
 enabled = true
-no_gravity = false
+no_gravity = true
+camera_offset_time = 704
 
 [node name="track_jumping" type="Node2D" parent="." index="21"]
 
 script = SubResource( 5 )
 __meta__ = {
-"_editor_icon": ExtResource( 18 )
+"_editor_icon": ExtResource( 19 )
 }
 handled_state = "TRACK_JUMPING"
 enabled = true
@@ -440,44 +480,9 @@ drag_margin_bottom = 0.2
 editor_draw_screen = true
 editor_draw_limits = false
 editor_draw_drag_margin = false
-script = ExtResource( 19 )
+script = ExtResource( 20 )
 
-[node name="camera_zoom_out_manager" parent="ExtendedCamera2D" index="0" instance=ExtResource( 20 )]
-
-[node name="weapon_manager" parent="." index="24"]
-
-editor/display_folded = true
-weapon_path = NodePath("gun")
-enabled = true
-
-[node name="weapon_bottom_front" parent="weapon_manager" index="0"]
-
-position = Vector2( 26.6167, -3.8147e-006 )
-
-[node name="weapon_top" parent="weapon_manager" index="2"]
-
-position = Vector2( 0, -80.5085 )
-
-[node name="weapon_front" parent="weapon_manager" index="3"]
-
-position = Vector2( 27.7558, -32 )
-_sections_unfolded = [ "Transform" ]
-
-[node name="gun" parent="weapon_manager" index="5" instance=ExtResource( 21 )]
-
-visible = false
-position = Vector2( 56, -40 )
-
-[node name="FromSaveValueSetter" type="Node" parent="weapon_manager" index="7"]
-
-script = ExtResource( 10 )
-__meta__ = {
-"_editor_icon": ExtResource( 11 )
-}
-node_path = NodePath("..")
-value = "enabled"
-save_value = "player/weapon_enabled"
-auto_update = true
+[node name="camera_zoom_out_manager" parent="ExtendedCamera2D" index="0" instance=ExtResource( 21 )]
 
 [node name="BooleanStateLabel3" type="Label" parent="." index="28"]
 
@@ -538,8 +543,8 @@ false_value = ""
 [connection signal="timeout" from="damage_timer" to="." method="_on_damage_timer_timeout"]
 
 
-[editable path="crouching_handler"]
-[editable path="crawling_handler"]
 [editable path="weapon_manager"]
 [editable path="weapon_manager/gun"]
 [editable path="weapon_manager/gun/flashlight"]
+[editable path="crouching_handler"]
+[editable path="crawling_handler"]

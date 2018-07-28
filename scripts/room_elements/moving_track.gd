@@ -2,12 +2,15 @@ tool
 extends StaticBody2D
 
 signal direction_changed()
+signal node_connected(node)
+signal node_disconnected(node)
 
 export var moving_forward = true setget set_moving_forward
 export var speed = 64 setget set_speed
 export(int, 64, 640000, 64)  var length = 64 setget set_length
 export var fast = false
 export var fast_camera_offset = Vector2()
+export var applies_fast_camera_offset = false
 
 func is_fast():
 	return fast
@@ -19,6 +22,7 @@ func _ready():
 	set_length(length)
 	add_to_group("track")
 	
+	set_physics_process(not Engine.editor_hint)
 
 func set_speed(p_speed):
 	speed = p_speed
@@ -52,7 +56,8 @@ func set_length(p_length):
 		$CollisionPolygon2D.polygon[2].x = length - 32
 		$CollisionPolygon2D.polygon[3].x = length - 32
 
-var first_frame = false
+
+var time_track = 0
 
 func _physics_process(delta):
 	for node in $Area2D.get_overlapping_bodies():
@@ -60,26 +65,28 @@ func _physics_process(delta):
 			connect_node(node)
 		
 	for node in connected_nodes:
-		if(not first_frame and not $Area2D.overlaps_body(node) or not node.is_grounded()):
+		if(not time_track >= 1 and (not $Area2D.overlaps_body(node) or not node.is_grounded())):
 			disconnect_node(node)
 	
 	if(not is_fast()):
 		for node in $Area2D.get_overlapping_bodies():
 			pass
-		
-	first_frame = false
+	
+	if(time_track >= 2):
+		time_track = 0
+	if(time_track >= 1):
+		time_track += 1
+	
 
 var connected_nodes = []
 
 func is_node_connected(node):
 	return connected_nodes.find(node) != -1
 
-func connect_node(node):
-	first_frame = true
+func connect_node(node):	
+	time_track = 1
 	
 	connected_nodes.push_back(node)
-	
-	print("Connected node to: ", name)
 	
 	node.get_node("track_manager").set_track(self)
 

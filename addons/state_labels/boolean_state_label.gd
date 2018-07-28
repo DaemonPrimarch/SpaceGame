@@ -9,14 +9,17 @@ export var true_value = ""
 export var false_value = ""
 
 func _physics_process(delta):
-	var val = false
-	
-	if(tracked_value != ""):
-		val = get_node(node_path)[tracked_value]
-	elif(tracked_function != ""):
-		val = (get_node(node_path).call(tracked_function))
+	if(has_node(node_path)):
+		var val = false
 		
-	if(val):
-		text = true_value
+		if(tracked_value != ""):
+			val = get_node(node_path)[tracked_value]
+		elif(tracked_function != ""):
+			val = (get_node(node_path).call(tracked_function))
+			
+		if(val):
+			text = true_value
+		else:
+			text = false_value
 	else:
-		text = false_value
+		print("HAS NO NODE WITH PATH: ", node_path)

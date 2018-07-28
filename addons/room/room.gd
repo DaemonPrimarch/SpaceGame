@@ -17,9 +17,7 @@ func _draw():
 		for i in range(-15, 15):
 			draw_line(Vector2(i * default_screen_size.x, -15 * default_screen_size.y), Vector2(i * default_screen_size.x, 15 * default_screen_size.y), Color(0,1,0,0.5), 1)
 			draw_line(Vector2(-15 * default_screen_size.x, i * default_screen_size.y), Vector2(15 * default_screen_size.x, i * default_screen_size.y), Color(0,1,0,0.5), 1)
-func _ready():
-	print(get_viewport_rect())
-	
+func _ready():	
 	if(Engine.editor_hint and not has_node("terrain")):
 		var ter = preload("res://nodes/terrain.tscn").instance()
 		

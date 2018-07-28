@@ -47,6 +47,7 @@ func set_state(state):
 				get_handler(state).enter_state(old_state)
 			
 			emit_signal("state_entered", state, old_state)
+			
 			current_state = state
 	else:
 		current_state = state
@@ -226,9 +227,12 @@ func _physics_process(delta):
 	
 	if(is_gravity_enabled() and is_grounded()):
 		check_if_still_on_ground(delta)
-		
+
 #GRAVITY FUNCTIONS
 func check_if_ground_hit_on_collision(collision_info, bla):
+	if(not (Engine.is_in_physics_frame())):
+		print("THIS SHOULD NEVER HAPPEN! HELP!")
+	
 	if(collision_info != null and collision_info.travel.y > 0):
 		set_grounded(true)
 		
