@@ -1,0 +1,42 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://addons/state_handler/kinematic_body_2D.svg" type="Texture" id=1]
+
+[sub_resource type="GDScript" id=5]
+
+script/source = "extends \"res://addons/state_handler/state_handler.gd\"
+
+export var jump_height = 64 * 4
+
+func get_jump_height():
+	return jump_height
+
+func enter_state(previous_state):
+	get_parent().set_velocity(Vector2(get_parent().get_velocity().x, PHYSICS_HELPER.calculate_jump_starting_velocity_y(get_jump_height(), get_parent().get_gravity_vector().y)))
+		
+func process_state(delta):
+	if(get_parent().track_manager.is_on_track()):
+		get_parent().set_state(\"ON_TRACK\")
+	elif(get_parent().is_grounded()):
+		get_parent().set_state(\"STANDING\")
+		print(\"STAND WHY\")
+		print(get_parent().track_manager.is_on_track())
+	if(not get_parent().is_action_pressed(\"jump\") and get_parent().get_velocity().y < 0):
+		get_parent().set_velocity(Vector2(get_parent().get_velocity().x, 0))
+	elif(get_parent().is_action_pressed(\"play_left\")):
+		get_parent().set_velocity(get_parent().get_velocity() - Vector2(delta * 64 * 3, 0))
+	elif(get_parent().is_action_pressed(\"play_right\")):
+		get_parent().set_velocity(get_parent().get_velocity() + Vector2(delta * 64 * 3, 0))"
+
+[node name="track_jumping" type="Node2D"]
+
+script = SubResource( 5 )
+__meta__ = {
+"_editor_icon": ExtResource( 1 )
+}
+handled_state = "TRACK_JUMPING"
+enabled = true
+no_gravity = false
+jump_height = 256
+
+

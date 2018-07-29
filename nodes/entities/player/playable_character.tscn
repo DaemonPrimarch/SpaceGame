@@ -16,7 +16,7 @@
 [ext_resource path="res://addons/layer_changer/layer_changer.gd" type="Script" id=14]
 [ext_resource path="res://addons/layer_changer/node.svg" type="Texture" id=15]
 [ext_resource path="res://addons/state_handler/kinematic_body_2D.svg" type="Texture" id=16]
-[ext_resource path="res://nodes/managers/player_track_manager.tscn" type="PackedScene" id=17]
+[ext_resource path="res://nodes/managers/track_manager.tscn" type="PackedScene" id=17]
 
 [sub_resource type="Animation" id=1]
 
@@ -149,7 +149,7 @@ func process_state(delta):
 	if(Input.is_action_pressed(\"play_left\")):
 		get_parent().position.x -= speed * delta"
 
-[node name="track_manager" type="KinematicBody2D" index="0"]
+[node name="playable_character" type="KinematicBody2D" index="0"]
 
 input_pickable = false
 collision_layer = 2

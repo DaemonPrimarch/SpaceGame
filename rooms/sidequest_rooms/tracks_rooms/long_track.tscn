@@ -1,22 +1,57 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=32 format=2]
 
 [ext_resource path="res://addons/room/room.gd" type="Script" id=1]
 [ext_resource path="res://addons/extended_camera_2D/camera_limit_area.gd" type="Script" id=2]
 [ext_resource path="res://addons/extended_collision_polygon_2D/extended_collision_polygon_2D.gd" type="Script" id=3]
 [ext_resource path="res://nodes/terrain.tscn" type="PackedScene" id=4]
 [ext_resource path="res://nodes/entities/player/puppet_player.tscn" type="PackedScene" id=5]
-[ext_resource path="res://addons/state_labels/boolean_state_label.gd" type="Script" id=6]
-[ext_resource path="res://addons/state_labels/label.svg" type="Texture" id=7]
-[ext_resource path="res://nodes/room_elements/helper_areas/no_respawn_area.tscn" type="PackedScene" id=8]
-[ext_resource path="res://nodes/room_elements/regular_damage_area.tscn" type="PackedScene" id=9]
-[ext_resource path="res://nodes/room_elements/respawn_position_setter.tscn" type="PackedScene" id=10]
-[ext_resource path="res://addons/player_enter_trigger/player_enter_trigger.gd" type="Script" id=11]
-[ext_resource path="res://addons/player_enter_trigger/area.svg" type="Texture" id=12]
-[ext_resource path="res://addons/extended_camera_2D/camera_offset_changer.gd" type="Script" id=13]
-[ext_resource path="res://addons/extended_camera_2D/area.svg" type="Texture" id=14]
-[ext_resource path="res://nodes/room_elements/moving_track.tscn" type="PackedScene" id=15]
+[ext_resource path="res://nodes/state_handlers/general/on_track_handler.gd" type="Script" id=6]
+[ext_resource path="res://addons/state_labels/boolean_state_label.gd" type="Script" id=7]
+[ext_resource path="res://addons/state_labels/label.svg" type="Texture" id=8]
+[ext_resource path="res://nodes/room_elements/helper_areas/no_respawn_area.tscn" type="PackedScene" id=9]
+[ext_resource path="res://nodes/room_elements/regular_damage_area.tscn" type="PackedScene" id=10]
+[ext_resource path="res://nodes/room_elements/respawn_position_setter.tscn" type="PackedScene" id=11]
+[ext_resource path="res://addons/player_enter_trigger/player_enter_trigger.gd" type="Script" id=12]
+[ext_resource path="res://addons/player_enter_trigger/area.svg" type="Texture" id=13]
+[ext_resource path="res://addons/extended_camera_2D/camera_offset_changer.gd" type="Script" id=14]
+[ext_resource path="res://addons/extended_camera_2D/area.svg" type="Texture" id=15]
+[ext_resource path="res://nodes/room_elements/moving_track.tscn" type="PackedScene" id=16]
+[ext_resource path="res://nodes/room_elements/on_enter_cutscene_player.tscn" type="PackedScene" id=17]
+[ext_resource path="res://addons/cutscene_player/cutscene_player.gd" type="Script" id=18]
+[ext_resource path="res://addons/cutscene_player/animation_player.svg" type="Texture" id=19]
+[ext_resource path="res://nodes/entities/player/playable_character.tscn" type="PackedScene" id=20]
+[ext_resource path="res://nodes/state_handlers/general/on_track_handler.tscn" type="PackedScene" id=21]
+[ext_resource path="res://nodes/state_handlers/general/track_jumping.tscn" type="PackedScene" id=22]
+[ext_resource path="res://addons/state_handler/state_handler.gd" type="Script" id=23]
+[ext_resource path="res://addons/state_handler/kinematic_body_2D.svg" type="Texture" id=24]
 
 [sub_resource type="GDScript" id=1]
+
+script/source = "extends \"res://addons/state_handler/state_handler.gd\"
+
+export var jump_height = 64 * 4
+
+func get_jump_height():
+	return jump_height
+
+func enter_state(previous_state):
+	get_parent().set_velocity(Vector2(get_parent().get_velocity().x, PHYSICS_HELPER.calculate_jump_starting_velocity_y(get_jump_height(), get_parent().get_gravity_vector().y)))
+		
+func process_state(delta):
+	if(get_parent().track_manager.is_on_track()):
+		get_parent().set_state(\"ON_TRACK\")
+	elif(get_parent().is_grounded()):
+		get_parent().set_state(\"STANDING\")
+		print(\"STAND WHY\")
+		print(get_parent().track_manager.is_on_track())
+	if(not get_parent().is_action_pressed(\"jump\") and get_parent().get_velocity().y < 0):
+		get_parent().set_velocity(Vector2(get_parent().get_velocity().x, 0))
+	elif(get_parent().is_action_pressed(\"play_left\")):
+		get_parent().set_velocity(get_parent().get_velocity() - Vector2(delta * 64 * 3, 0))
+	elif(get_parent().is_action_pressed(\"play_right\")):
+		get_parent().set_velocity(get_parent().get_velocity() + Vector2(delta * 64 * 3, 0))"
+
+[sub_resource type="GDScript" id=2]
 
 script/source = "extends \"res://addons/state_handler/state_handler.gd\"
 
@@ -35,7 +70,7 @@ func process_state(delta):
 	if(Input.is_action_pressed(\"play_left\")):
 		get_parent().position.x -= speed * delta"
 
-[sub_resource type="GDScript" id=2]
+[sub_resource type="GDScript" id=3]
 
 script/source = "extends Camera2D
 
@@ -45,20 +80,38 @@ func _physics_process(delta):
 	if(current):
 		position += velocity * delta"
 
-[sub_resource type="RectangleShape2D" id=3]
+[sub_resource type="RectangleShape2D" id=4]
 
 custom_solver_bias = 0.0
 extents = Vector2( 64, 416 )
 
-[sub_resource type="RectangleShape2D" id=4]
+[sub_resource type="RectangleShape2D" id=5]
 
 custom_solver_bias = 0.0
 extents = Vector2( 32, 32 )
 
-[sub_resource type="RectangleShape2D" id=5]
+[sub_resource type="RectangleShape2D" id=6]
 
 custom_solver_bias = 0.0
 extents = Vector2( 320, 32 )
+
+[sub_resource type="Animation" id=7]
+
+length = 10.0
+loop = false
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("player/ExtendedCamera2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.05, 2 ),
+"transitions": PoolRealArray( 0, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 640, 0 ), Vector2( 768, 0 ) ]
+}
 
 [node name="Room" type="Node2D" index="0"]
 
@@ -95,7 +148,8 @@ tile_data = PoolIntArray( 0, 0, 0, 1, 0, 0, 2, 0, 0, 3, 0, 0, 4, 0, 0, 5, 0, 0, 
 
 [node name="player" parent="." index="2" instance=ExtResource( 5 )]
 
-position = Vector2( 8015.04, 783.525 )
+position = Vector2( 7936, 672 )
+current_state = "STANDING"
 
 [node name="player_light" parent="player" index="0"]
 
@@ -111,8 +165,13 @@ editor/display_folded = true
 
 [node name="on_track_handler" parent="player" index="20"]
 
+script = ExtResource( 6 )
 no_gravity = false
-camera_offset_time = 256
+camera_offset_time = 1
+
+[node name="track_jumping" parent="player" index="21"]
+
+script = SubResource( 1 )
 
 [node name="ExtendedCamera2D" parent="player" index="23"]
 
@@ -141,9 +200,9 @@ size_flags_vertical = 4
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
-script = ExtResource( 6 )
+script = ExtResource( 7 )
 __meta__ = {
-"_editor_icon": ExtResource( 7 )
+"_editor_icon": ExtResource( 8 )
 }
 node_path = NodePath("../tween_offset")
 tracked_value = ""
@@ -153,7 +212,7 @@ false_value = "NOT ACTIVE"
 
 [node name="direct_control_handler" parent="player" index="30"]
 
-script = SubResource( 1 )
+script = SubResource( 2 )
 
 [node name="CanvasModulate" type="CanvasModulate" parent="." index="3"]
 
@@ -187,10 +246,10 @@ drag_margin_bottom = 0.2
 editor_draw_screen = true
 editor_draw_limits = false
 editor_draw_drag_margin = false
-script = SubResource( 2 )
+script = SubResource( 3 )
 velocity = Vector2( 512, 0 )
 
-[node name="no_respawn_area" parent="." index="5" instance=ExtResource( 8 )]
+[node name="no_respawn_area" parent="." index="5" instance=ExtResource( 9 )]
 
 editor/display_folded = true
 visible = false
@@ -202,7 +261,7 @@ polygon = PoolVector2Array( -32, -32, -32, 928, 12064, 928, 12064, -32 )
 
 [node name="section_1" type="Node2D" parent="." index="6"]
 
-[node name="damage_area9" parent="section_1" index="0" instance=ExtResource( 9 )]
+[node name="damage_area9" parent="section_1" index="0" instance=ExtResource( 10 )]
 
 editor/display_folded = true
 position = Vector2( 8480, 416 )
@@ -222,8 +281,9 @@ margin_bottom = 160.0
 position = Vector2( 32, 256 )
 scale = Vector2( 1, 2 )
 
-[node name="damage_area8" parent="section_1" index="1" instance=ExtResource( 9 )]
+[node name="damage_area8" parent="section_1" index="1" instance=ExtResource( 10 )]
 
+editor/display_folded = true
 position = Vector2( 7840, 416 )
 respawn_entity = true
 
@@ -241,7 +301,7 @@ margin_bottom = 96.0
 position = Vector2( 32, 224 )
 scale = Vector2( 1, 1.75 )
 
-[node name="damage_area6" parent="section_1" index="2" instance=ExtResource( 9 )]
+[node name="damage_area6" parent="section_1" index="2" instance=ExtResource( 10 )]
 
 editor/display_folded = true
 position = Vector2( 7200, 416 )
@@ -260,13 +320,13 @@ margin_top = -352.0
 position = Vector2( 32, 192 )
 scale = Vector2( 1, 1.5 )
 
-[node name="damage_area7" parent="section_1" index="3" instance=ExtResource( 9 )]
+[node name="damage_area7" parent="section_1" index="3" instance=ExtResource( 10 )]
 
 editor/display_folded = true
 position = Vector2( 8476.75, 936.651 )
 respawn_entity = true
 
-[node name="damage_area5" parent="section_1" index="4" instance=ExtResource( 9 )]
+[node name="damage_area5" parent="section_1" index="4" instance=ExtResource( 10 )]
 
 editor/display_folded = true
 position = Vector2( 7840, 800 )
@@ -285,7 +345,7 @@ margin_top = -96.0
 position = Vector2( 32, 64 )
 scale = Vector2( 1, 0.5 )
 
-[node name="damage_area4" parent="section_1" index="5" instance=ExtResource( 9 )]
+[node name="damage_area4" parent="section_1" index="5" instance=ExtResource( 10 )]
 
 editor/display_folded = true
 position = Vector2( 7200, 800 )
@@ -304,7 +364,7 @@ margin_top = -160.0
 position = Vector2( 32, 96 )
 scale = Vector2( 1, 0.75 )
 
-[node name="damage_area3" parent="section_1" index="6" instance=ExtResource( 9 )]
+[node name="damage_area3" parent="section_1" index="6" instance=ExtResource( 10 )]
 
 editor/display_folded = true
 position = Vector2( 6272, 800 )
@@ -323,7 +383,7 @@ margin_top = -160.0
 position = Vector2( 32, 96 )
 scale = Vector2( 1, 0.75 )
 
-[node name="damage_area2" parent="section_1" index="7" instance=ExtResource( 9 )]
+[node name="damage_area2" parent="section_1" index="7" instance=ExtResource( 10 )]
 
 editor/display_folded = true
 position = Vector2( 5600, 800 )
@@ -342,7 +402,7 @@ margin_top = -160.0
 position = Vector2( 32, 96 )
 scale = Vector2( 1, 0.75 )
 
-[node name="damage_area" parent="section_1" index="8" instance=ExtResource( 9 )]
+[node name="damage_area" parent="section_1" index="8" instance=ExtResource( 10 )]
 
 editor/display_folded = true
 position = Vector2( 4128, 800 )
@@ -361,7 +421,7 @@ margin_top = -160.0
 position = Vector2( 32, 96 )
 scale = Vector2( 1, 0.75 )
 
-[node name="respawn_position_setter3" parent="section_1" index="9" instance=ExtResource( 10 )]
+[node name="respawn_position_setter3" parent="section_1" index="9" instance=ExtResource( 11 )]
 
 editor/display_folded = true
 position = Vector2( 6656, 608 )
@@ -370,7 +430,7 @@ position_path = NodePath("respawn_position_1")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="section_1/respawn_position_setter3" index="0"]
 
 position = Vector2( 0, -128 )
-shape = SubResource( 3 )
+shape = SubResource( 4 )
 __meta__ = {
 "_edit_lock_": true
 }
@@ -379,7 +439,7 @@ __meta__ = {
 
 position = Vector2( 0, -64 )
 
-[node name="respawn_position_setter2" parent="section_1" index="10" instance=ExtResource( 10 )]
+[node name="respawn_position_setter2" parent="section_1" index="10" instance=ExtResource( 11 )]
 
 editor/display_folded = true
 position = Vector2( 4992, 608 )
@@ -388,7 +448,7 @@ position_path = NodePath("respawn_position_1")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="section_1/respawn_position_setter2" index="0"]
 
 position = Vector2( 0, -128 )
-shape = SubResource( 3 )
+shape = SubResource( 4 )
 __meta__ = {
 "_edit_lock_": true
 }
@@ -397,7 +457,7 @@ __meta__ = {
 
 position = Vector2( 0, -64 )
 
-[node name="respawn_position_setter" parent="section_1" index="11" instance=ExtResource( 10 )]
+[node name="respawn_position_setter" parent="section_1" index="11" instance=ExtResource( 11 )]
 
 editor/display_folded = true
 position = Vector2( 3328, 608 )
@@ -406,7 +466,7 @@ position_path = NodePath("respawn_position_1")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="section_1/respawn_position_setter" index="0"]
 
 position = Vector2( 0, -128 )
-shape = SubResource( 3 )
+shape = SubResource( 4 )
 __meta__ = {
 "_edit_lock_": true
 }
@@ -426,9 +486,9 @@ linear_damp = 0.1
 angular_damp = 1.0
 audio_bus_override = false
 audio_bus_name = "Master"
-script = ExtResource( 11 )
+script = ExtResource( 12 )
 __meta__ = {
-"_editor_icon": ExtResource( 12 )
+"_editor_icon": ExtResource( 13 )
 }
 enabled = true
 oneshot = false
@@ -438,7 +498,7 @@ trigger_on_freed = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="section_1/PlayerEnterTrigger" index="0"]
 
-shape = SubResource( 4 )
+shape = SubResource( 5 )
 
 [node name="CameraOffsetChanger" type="Area2D" parent="section_1" index="13"]
 
@@ -451,9 +511,9 @@ linear_damp = 0.1
 angular_damp = 1.0
 audio_bus_override = false
 audio_bus_name = "Master"
-script = ExtResource( 13 )
+script = ExtResource( 14 )
 __meta__ = {
-"_editor_icon": ExtResource( 14 )
+"_editor_icon": ExtResource( 15 )
 }
 offset = Vector2( 640, 0 )
 time = 4
@@ -461,27 +521,101 @@ time = 4
 [node name="CollisionShape2D" type="CollisionShape2D" parent="section_1/CameraOffsetChanger" index="0"]
 
 position = Vector2( -512, -672 )
-shape = SubResource( 5 )
+shape = SubResource( 6 )
 
-[node name="moving_track" parent="section_1" index="14" instance=ExtResource( 15 )]
+[node name="moving_track" parent="section_1" index="14" instance=ExtResource( 16 )]
 
 position = Vector2( 544, 864 )
-speed = 768
+speed = 640
 length = 8704
-fast_camera_offset = Vector2( 704, 0 )
+fast_camera_offset = Vector2( 640, 0 )
 applies_fast_camera_offset = true
+removes_fast_camera_offset = true
 
 [node name="section_2" type="Node2D" parent="." index="7"]
 
-[node name="moving_track2" parent="section_2" index="0" instance=ExtResource( 15 )]
+[node name="moving_track2" parent="section_2" index="0" instance=ExtResource( 16 )]
 
-position = Vector2( 9693.74, 857.493 )
+position = Vector2( 9248, 864 )
 speed = 192
 length = 5696
 fast_camera_offset = Vector2( 384, 0 )
-applies_fast_camera_offset = true
+applies_fast_camera_offset = false
+removes_fast_camera_offset = true
+
+[node name="on_enter_cutscene_player" parent="section_2" index="1" instance=ExtResource( 17 )]
+
+position = Vector2( 9248, 800 )
+
+[node name="CollisionPolygon2D" parent="section_2/on_enter_cutscene_player/enter_trigger" index="0"]
+
+polygon = PoolVector2Array( 32, -736, -32, -736, -32, 32, 32, 32 )
+
+[node name="CutscenePlayer" type="AnimationPlayer" parent="section_2/on_enter_cutscene_player" index="1"]
+
+root_node = NodePath("../../..")
+autoplay = ""
+playback_process_mode = 1
+playback_default_blend_time = 0.0
+playback_speed = 1.0
+anims/cutscene = SubResource( 7 )
+blend_times = [  ]
+script = ExtResource( 18 )
+__meta__ = {
+"_editor_icon": ExtResource( 19 )
+}
+dialog_tree = null
+paused = false
+
+[node name="humans" type="Node2D" parent="section_2/on_enter_cutscene_player" index="2"]
+
+position = Vector2( 1344, 0 )
+
+[node name="human_1" parent="section_2/on_enter_cutscene_player/humans" index="0" instance=ExtResource( 20 )]
+
+editor/display_folded = true
+position = Vector2( 128, 0 )
+action_override = true
+
+[node name="on_track_handler" parent="section_2/on_enter_cutscene_player/humans/human_1" index="14" instance=ExtResource( 21 )]
+
+[node name="track_jumping" parent="section_2/on_enter_cutscene_player/humans/human_1" index="15" instance=ExtResource( 22 )]
+
+[node name="standing_handler" type="Node2D" parent="section_2/on_enter_cutscene_player/humans/human_1" index="16"]
+
+script = ExtResource( 23 )
+__meta__ = {
+"_editor_icon": ExtResource( 24 )
+}
+handled_state = "UNDEFINED"
+enabled = true
+no_gravity = false
+
+[node name="human_2" parent="section_2/on_enter_cutscene_player/humans" index="1" instance=ExtResource( 20 )]
+
+editor/display_folded = true
+position = Vector2( 224, 0 )
+action_override = true
+
+[node name="on_track_handler" parent="section_2/on_enter_cutscene_player/humans/human_2" index="14" instance=ExtResource( 21 )]
+
+[node name="track_jumping" parent="section_2/on_enter_cutscene_player/humans/human_2" index="15" instance=ExtResource( 22 )]
+
+[node name="standing_handler" type="Node2D" parent="section_2/on_enter_cutscene_player/humans/human_2" index="16"]
+
+script = ExtResource( 23 )
+__meta__ = {
+"_editor_icon": ExtResource( 24 )
+}
+handled_state = "UNDEFINED"
+enabled = true
+no_gravity = false
 
 [connection signal="triggered" from="section_1/PlayerEnterTrigger" to="camera_2" method="make_current"]
+
+[connection signal="triggered" from="section_2/on_enter_cutscene_player/enter_trigger" to="section_2/on_enter_cutscene_player/humans/human_2" method="set_state" binds= [ "ON_TRACK" ]]
+
+[connection signal="triggered" from="section_2/on_enter_cutscene_player/enter_trigger" to="section_2/on_enter_cutscene_player/humans/human_1" method="set_state" binds= [ "ON_TRACK" ]]
 
 
 [editable path="player"]
@@ -495,3 +629,4 @@ applies_fast_camera_offset = true
 [editable path="section_1/damage_area3"]
 [editable path="section_1/damage_area2"]
 [editable path="section_1/damage_area"]
+[editable path="section_2/on_enter_cutscene_player"]

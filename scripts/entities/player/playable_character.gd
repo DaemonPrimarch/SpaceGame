@@ -46,7 +46,10 @@ func is_action_pressed(action):
 		return Input.is_action_pressed(action)
 
 func is_action_just_pressed(action):
-	return Input.is_action_just_pressed(action)
+	if(is_action_override()):
+		return false
+	else:
+		return Input.is_action_just_pressed(action)
 
 func push_back():
 	call_deferred("set_state", "PUSHED")

@@ -118,7 +118,7 @@ tracks/0/keys = {
 
 pause_mode = 1
 
-[node name="AnimationPlayer" parent="." index="8"]
+[node name="AnimationPlayer" parent="." index="7"]
 
 anims/duck = SubResource( 1 )
 anims/fall = SubResource( 2 )
@@ -132,8 +132,8 @@ anims/run_gun = SubResource( 6 )
 _sections_unfolded = [ "Limit" ]
 
 
-[editable path="crouching_handler"]
-[editable path="crawling_handler"]
 [editable path="weapon_manager"]
 [editable path="weapon_manager/gun"]
 [editable path="weapon_manager/gun/flashlight"]
+[editable path="crouching_handler"]
+[editable path="crawling_handler"]

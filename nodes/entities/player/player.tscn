@@ -18,11 +18,13 @@
 [ext_resource path="res://nodes/state_handlers/player/wall_sliding_handler.tscn" type="PackedScene" id=16]
 [ext_resource path="res://nodes/state_handlers/player/crawling_handler.tscn" type="PackedScene" id=17]
 [ext_resource path="res://nodes/state_handlers/player/pushed_handler.tscn" type="PackedScene" id=18]
-[ext_resource path="res://addons/state_handler/kinematic_body_2D.svg" type="Texture" id=19]
-[ext_resource path="res://addons/extended_camera_2D/extended_camera_2D.gd" type="Script" id=20]
-[ext_resource path="res://nodes/helpers/camera_zoom_helper.tscn" type="PackedScene" id=21]
-[ext_resource path="res://addons/state_labels/boolean_state_label.gd" type="Script" id=22]
-[ext_resource path="res://addons/state_labels/label.svg" type="Texture" id=23]
+[ext_resource path="res://nodes/state_handlers/general/on_track_handler.tscn" type="PackedScene" id=19]
+[ext_resource path="res://nodes/state_handlers/general/track_jumping.tscn" type="PackedScene" id=20]
+[ext_resource path="res://addons/extended_camera_2D/extended_camera_2D.gd" type="Script" id=21]
+[ext_resource path="res://nodes/helpers/camera_zoom_helper.tscn" type="PackedScene" id=22]
+[ext_resource path="res://addons/state_labels/boolean_state_label.gd" type="Script" id=23]
+[ext_resource path="res://addons/state_labels/label.svg" type="Texture" id=24]
+[ext_resource path="res://scripts/managers/player_track_manager.gd" type="Script" id=25]
 
 [sub_resource type="GDScript" id=1]
 
@@ -159,90 +161,14 @@ tracks/3/keys = {
 "values": [ Vector2( 28, -20 ), Vector2( 28, -20 ) ]
 }
 
-[sub_resource type="GDScript" id=4]
-
-script/source = "extends \"res://addons/state_handler/state_handler.gd\"
-
-var track_manager = null
-var track = null
-
-export var camera_offset_time = 1
-
-func _ready():
-	pass
-
-func init_track():
-	if(track != null and track.is_connected(\"direction_changed\", self, \"track_direction_changed\")):
-		track.disconnect(\"direction_changed\", self, \"track_direction_changed\")
-	
-	track_manager = get_parent().track_manager
-	track = track_manager.get_track()
-	
-	track_direction_changed()
-	
-	track.connect(\"direction_changed\", self, \"track_direction_changed\")
-	
-	get_parent().set_velocity(Vector2(track.get_speed(), 0)) 
-#
-#	if(track.applies_fast_camera_offset):
-#		#get_parent().get_node(\"ExtendedCamera2D\").anchor_mode = Camera2D.ANCHOR_MODE_FIXED_TOP_LEFT
-#		get_parent().get_node(\"ExtendedCamera2D\").move_at_speed_to(track.get_fast_camera_offset(), camera_offset_time, true)
-	
-func enter_state(previous_state):	
-	get_parent().animation_player.stop()
-	
-	init_track()
-	
-	get_parent().get_node(\"track_manager\").connect(\"track_changed\", self, \"init_track\")
-
-func leave_state(new_state):	
-	track.disconnect(\"direction_changed\", self, \"track_direction_changed\")
-	
-	get_parent().get_node(\"track_manager\").disconnect(\"track_changed\", self, \"init_track\")
-
-func track_direction_changed():	
-	get_parent().set_flippedH(not track.is_moving_forward())
-
-func process_state(delta):
-	get_parent().animation_player.play(\"duck\")
-	if(not track_manager.is_on_track()):
-		get_parent().set_state(\"STANDING\")
-	elif(get_parent().is_action_just_pressed(\"jump\")):
-		get_parent().set_state(\"TRACK_JUMPING\")"
-
-[sub_resource type="GDScript" id=5]
-
-script/source = "extends \"res://addons/state_handler/state_handler.gd\"
-
-export var jump_height = 64 * 4
-
-func get_jump_height():
-	return jump_height
-
-func enter_state(previous_state):
-	get_parent().set_velocity(Vector2(get_parent().get_velocity().x, PHYSICS_HELPER.calculate_jump_starting_velocity_y(get_jump_height(), get_parent().get_gravity_vector().y)))
-		
-func process_state(delta):
-	if(get_parent().track_manager.is_on_track()):
-		get_parent().set_state(\"ON_TRACK\")
-	elif(get_parent().is_grounded()):
-		get_parent().set_state(\"STANDING\")
-		print(\"STAND WHY\")
-		print(get_parent().track_manager.is_on_track())
-	if(not get_parent().is_action_pressed(\"jump\") and get_parent().get_velocity().y < 0):
-		get_parent().set_velocity(Vector2(get_parent().get_velocity().x, 0))
-	elif(get_parent().is_action_pressed(\"play_left\")):
-		get_parent().set_velocity(get_parent().get_velocity() - Vector2(delta * 64 * 3, 0))
-	elif(get_parent().is_action_pressed(\"play_right\")):
-		get_parent().set_velocity(get_parent().get_velocity() + Vector2(delta * 64 * 3, 0))"
-
 [node name="player" index="0" groups=[
-"player",
 "warpable",
+"player",
 ] instance=ExtResource( 1 )]
 
 script = ExtResource( 2 )
 _sections_unfolded = [ "Collision", "Pause", "Pickable", "Transform", "collision" ]
+current_state = "UNDEFINED"
 
 [node name="player_light" type="Node2D" parent="." index="0"]
 
@@ -424,27 +350,9 @@ anims/crawl_start = SubResource( 3 )
 
 [node name="pushed_handler" parent="." index="19" instance=ExtResource( 18 )]
 
-[node name="on_track_handler" type="Node2D" parent="." index="20"]
+[node name="on_track_handler" parent="." index="20" instance=ExtResource( 19 )]
 
-script = SubResource( 4 )
-__meta__ = {
-"_editor_icon": ExtResource( 19 )
-}
-handled_state = "ON_TRACK"
-enabled = true
-no_gravity = true
-camera_offset_time = 704
-
-[node name="track_jumping" type="Node2D" parent="." index="21"]
-
-script = SubResource( 5 )
-__meta__ = {
-"_editor_icon": ExtResource( 19 )
-}
-handled_state = "TRACK_JUMPING"
-enabled = true
-no_gravity = false
-jump_height = 256
+[node name="track_jumping" parent="." index="21" instance=ExtResource( 20 )]
 
 [node name="damage_timer" type="Timer" parent="." index="22"]
 
@@ -480,9 +388,10 @@ drag_margin_bottom = 0.2
 editor_draw_screen = true
 editor_draw_limits = false
 editor_draw_drag_margin = false
-script = ExtResource( 20 )
+script = ExtResource( 21 )
+debug_drawing = false
 
-[node name="camera_zoom_out_manager" parent="ExtendedCamera2D" index="0" instance=ExtResource( 21 )]
+[node name="camera_zoom_out_manager" parent="ExtendedCamera2D" index="0" instance=ExtResource( 22 )]
 
 [node name="BooleanStateLabel3" type="Label" parent="." index="28"]
 
@@ -503,9 +412,9 @@ size_flags_vertical = 4
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
-script = ExtResource( 22 )
+script = ExtResource( 23 )
 __meta__ = {
-"_editor_icon": ExtResource( 23 )
+"_editor_icon": ExtResource( 24 )
 }
 node_path = NodePath("../platform_manager")
 tracked_value = ""
@@ -530,15 +439,19 @@ size_flags_vertical = 4
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
-script = ExtResource( 22 )
+script = ExtResource( 23 )
 __meta__ = {
-"_editor_icon": ExtResource( 23 )
+"_editor_icon": ExtResource( 24 )
 }
 node_path = NodePath("..")
 tracked_value = ""
 tracked_function = "is_grounded"
 true_value = "GROUNDED"
 false_value = ""
+
+[node name="track_manager" parent="." index="31"]
+
+script = ExtResource( 25 )
 
 [connection signal="timeout" from="damage_timer" to="." method="_on_damage_timer_timeout"]
 
