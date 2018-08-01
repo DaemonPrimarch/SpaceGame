@@ -40,3 +40,11 @@ func _on_Area2D_body_entered( body ):
 			body.damage(get_damage())
 			if(respawn_entity and body.has_node("respawn_manager")):
 				body.get_node("respawn_manager").respawn()
+
+func _on_Area2D_AABB_changed():
+	$TemporarySprite.rect_position = to_local($Area2D.get_AABB().position)
+	$TemporarySprite.rect_size = $Area2D.get_AABB().size
+	
+	$TemporarySprite/Sprite.scale = $Area2D.get_AABB().size / Vector2(64, 64 * 4)
+	
+	print("EDITED")

@@ -1,8 +1,15 @@
 tool
 extends CollisionPolygon2D
 
+signal AABB_changed()
+
 func _ready():
 	add_to_group("extended_collision_polygon_2D")
+
+func set_polygon(pol):
+	.set_polygon(pol)
+	
+	emit_signal("AABB_changed")
 
 func get_AABB():
 	var pol = polygon
