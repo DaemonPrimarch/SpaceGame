@@ -1,0 +1,39 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://scripts/room_elements/bullet_switch.gd" type="Script" id=1]
+[ext_resource path="res://nodes/managers/bullet_hit_manager.tscn" type="PackedScene" id=2]
+[ext_resource path="res://sprites/metroid_tilesheet.png" type="Texture" id=3]
+
+[node name="bullet_switch_element" type="StaticBody2D" index="0"]
+
+input_pickable = false
+collision_layer = 1
+collision_mask = 0
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+script = ExtResource( 1 )
+_sections_unfolded = [ "Collision" ]
+on_color = Color( 0, 1, 0, 1 )
+off_color = Color( 1, 0, 0, 1 )
+
+[node name="bullet_hit_manager" parent="." index="0" instance=ExtResource( 2 )]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." index="1"]
+
+build_mode = 0
+polygon = PoolVector2Array( -32, -32, -32, 32, 32, 32, 32, -32 )
+
+[node name="Sprite" type="Sprite" parent="." index="2"]
+
+modulate = Color( 1, 0, 0, 0.745843 )
+texture = ExtResource( 3 )
+vframes = 50
+hframes = 48
+frame = 198
+_sections_unfolded = [ "Animation", "Offset", "Transform", "Visibility" ]
+
+[connection signal="bullet_hit" from="bullet_hit_manager" to="." method="_on_bullet_hit"]
+
+
