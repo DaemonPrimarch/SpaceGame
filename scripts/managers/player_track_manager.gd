@@ -28,10 +28,7 @@ func apply_track_position():
 		get_parent().get_node("ExtendedCamera2D").move_at_speed_to(get_track().fast_camera_offset, get_track().get_speed())
 	
 func remove_track_position():
-	print("REMOVED!")
-	
 	if(position_set):
-		print("VERY REMOVED")
 		get_parent().get_node("ExtendedCamera2D").move_to(prev_position, 1)
 
 	

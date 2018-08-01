@@ -89,7 +89,6 @@ func generate_camera_limiter():
 		
 	var rect = Rect2();
 	for node in get_tree().get_nodes_in_group("terrain"):
-		print(node.name);
 		if(rect.has_no_area()):
 			rect = node.get_AABB();
 		else:
