@@ -2,7 +2,7 @@ extends Node2D
 
 func _ready():
 	$enter_trigger.connect("player_entered", self, "_on_enter_trigger_player_entered")
-	$enter_trigger.connect("tree_exited", self, "_on_enter_trigger_player_exited")
+	#$enter_trigger.connect("tree_exited", self, "_on_enter_trigger_player_exited")
 
 func _on_enter_trigger_player_entered(player):
 	if(has_node("CutscenePlayer")):
