@@ -14,9 +14,9 @@ var default_screen_size = Vector2(1664, 960)
 
 func _draw():
 	if(Engine.editor_hint):
-		for i in range(-15, 15):
-			draw_line(Vector2(i * default_screen_size.x, -15 * default_screen_size.y), Vector2(i * default_screen_size.x, 15 * default_screen_size.y), Color(0,1,0,0.5), 1)
-			draw_line(Vector2(-15 * default_screen_size.x, i * default_screen_size.y), Vector2(15 * default_screen_size.x, i * default_screen_size.y), Color(0,1,0,0.5), 1)
+		for i in range(-30, 30):
+			draw_line(Vector2(i * default_screen_size.x, -30 * default_screen_size.y), Vector2(i * default_screen_size.x, 15 * default_screen_size.y), Color(0,1,0,0.5), 1)
+			draw_line(Vector2(-30 * default_screen_size.x, i * default_screen_size.y), Vector2(30 * default_screen_size.x, i * default_screen_size.y), Color(0,1,0,0.5), 1)
 func _ready():	
 	if(Engine.editor_hint and not has_node("terrain")):
 		var ter = preload("res://nodes/terrain.tscn").instance()
@@ -86,17 +86,23 @@ func generate_camera_limiter():
 	for tile in get_node("terrain").get_used_cells():
 		if(tile.x < min_point.x):
 			min_point = tile
+		
+	var rect = Rect2();
+	for node in get_tree().get_nodes_in_group("terrain"):
+		print(node.name);
+		if(rect.has_no_area()):
+			rect = node.get_AABB();
+		else:
+			rect = rect.merge(node.get_AABB());
 	
 	var scrolling_point = min_point
 	var polygon = []
-	var terrain = get_node("terrain")
-	var rect = terrain.get_used_rect()
 	
 	if(not rect.has_no_area()):
-		polygon.push_back(rect.position * terrain.cell_size)
-		polygon.push_back((rect.position + rect.size * Vector2(0, 1)) * terrain.cell_size)
-		polygon.push_back((rect.position + rect.size) * terrain.cell_size)
-		polygon.push_back((rect.position + rect.size * Vector2(1, 0)) * terrain.cell_size)
+		polygon.push_back(to_local(rect.position))
+		polygon.push_back((to_local(rect.position) + rect.size * Vector2(0, 1)))
+		polygon.push_back((to_local(rect.position) + rect.size))
+		polygon.push_back((to_local(rect.position) + rect.size * Vector2(1, 0)))
 		
 		var collision_polygon
 		
