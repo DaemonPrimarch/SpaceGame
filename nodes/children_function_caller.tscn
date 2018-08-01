@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=2]
+
+[sub_resource type="GDScript" id=1]
+
+script/source = "tool
+extends Node2D
+
+func call_on_children(function, parameters):
+	for node in get_children():
+		node.call(function, parameters)"
+
+[node name="children_function_caller" type="Node2D" index="0"]
+
+script = SubResource( 1 )
+
+
