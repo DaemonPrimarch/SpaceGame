@@ -2,7 +2,7 @@
 
 [ext_resource path="res://addons/state_handler/kinematic_body_2D.svg" type="Texture" id=1]
 
-[sub_resource type="GDScript" id=4]
+[sub_resource type="GDScript" id=1]
 
 script/source = "extends \"res://addons/state_handler/state_handler.gd\"
 
@@ -49,13 +49,16 @@ func track_direction_changed():
 func process_state(delta):
 	get_parent().animation_player.play(\"duck\")
 	if(not track_manager.is_on_track()):
-		get_parent().set_state(\"STANDING\")
+		if(not get_parent().is_grounded() and track.get_track().is_fast()):
+			get_parent().set_state(\"TRACK_FALLING\")
+		else:
+			get_parent().set_state(\"STANDING\")
 	elif(get_parent().is_action_just_pressed(\"jump\")):
 		get_parent().set_state(\"TRACK_JUMPING\")"
 
-[node name="on_track_handler" type="Node2D"]
+[node name="on_track_handler" type="Node2D" index="0"]
 
-script = SubResource( 4 )
+script = SubResource( 1 )
 __meta__ = {
 "_editor_icon": ExtResource( 1 )
 }

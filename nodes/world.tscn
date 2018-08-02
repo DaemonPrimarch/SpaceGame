@@ -144,7 +144,7 @@ enabled = false
 
 enabled = true
 
-[node name="ExtendedCamera2D" parent="player" index="23"]
+[node name="ExtendedCamera2D" parent="player" index="24"]
 
 current = false
 _sections_unfolded = [ "Drag Margin", "Smoothing" ]

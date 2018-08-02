@@ -21,6 +21,7 @@ func _init():
 	add_state("WALKING")
 	add_state("ON_TRACK")
 	add_state("TRACK_JUMPING")
+	add_state("TRACK_FALLING")
 	add_state("DIRECT_CONTROL")
 
 export var action_override = false

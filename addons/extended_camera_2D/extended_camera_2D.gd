@@ -22,6 +22,7 @@ func _ready():
 		
 func zoom_to(new_zoom, time):
 	if(time > 0):
+		get_node("tween_zoom").stop_all()
 		get_node("tween_zoom").interpolate_property(self, "zoom", zoom, new_zoom, time, Tween.TRANS_LINEAR, null)
 		get_node("tween_zoom").start()
 	else:
@@ -32,6 +33,7 @@ func move_to(pos, time = 0, emmidiate = false):
 		global_position = get_camera_screen_center()
 
 	if(time > 0):
+		get_node("tween_position").stop_all()
 		get_node("tween_position").interpolate_property(self, "position", position, pos, time, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
 		get_node("tween_position").start()
 	else:

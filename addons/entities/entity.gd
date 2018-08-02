@@ -16,7 +16,7 @@ var valid_states = ["UNDEFINED"]
 func is_valid_state(state):
 	return valid_states.has(state)
 	
-func add_state(state):
+func add_state(state):	
 	if(is_valid_state(state)):
 		print("ERROR, entity already has state: ", state)
 	else:

@@ -43,6 +43,9 @@ func track_direction_changed():
 func process_state(delta):
 	get_parent().animation_player.play("duck")
 	if(not track_manager.is_on_track()):
-		get_parent().set_state("STANDING")
+		if(not get_parent().is_grounded() and track.is_fast()):
+			get_parent().set_state("TRACK_FALLING")
+		else:
+			get_parent().set_state("STANDING")
 	elif(get_parent().is_action_just_pressed("jump")):
 		get_parent().set_state("TRACK_JUMPING")

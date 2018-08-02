@@ -11,6 +11,8 @@ var prev_position
 var position_set = false
 
 func set_track(track):
+	var prev_track = get_track()
+	
 	.set_track(track)
 	
 	if(not track == null):
@@ -20,12 +22,16 @@ func set_track(track):
 			position_set = true
 		else:
 			position_set = false
+			
+		track.connect("direction_changed", self, "apply_track_position")
+	else:
+		prev_track.disconnect("direction_changed", self, "apply_track_position")
 
 func apply_track_position():
 	if(get_track().applies_fast_camera_offset):
 		prev_position = get_parent().get_node("ExtendedCamera2D").position
 		
-		get_parent().get_node("ExtendedCamera2D").move_at_speed_to(get_track().fast_camera_offset, get_track().get_speed())
+		get_parent().get_node("ExtendedCamera2D").move_at_speed_to(get_track().get_fast_camera_offset(), get_track().get_speed())
 	
 func remove_track_position():
 	if(position_set):

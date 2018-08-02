@@ -16,7 +16,12 @@ func is_fast():
 	return fast
 
 func get_fast_camera_offset():
-	return fast_camera_offset
+	var dir = Vector2(1, 0)
+	
+	if(not is_moving_forward()):
+		dir = Vector2(-1, 0)
+	
+	return fast_camera_offset * dir
 
 func _ready():
 	set_length(length)
