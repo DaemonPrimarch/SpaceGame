@@ -24,7 +24,7 @@ func set_track(track):
 			position_set = false
 			
 		track.connect("direction_changed", self, "apply_track_position")
-	else:
+	elif(prev_track):
 		prev_track.disconnect("direction_changed", self, "apply_track_position")
 
 func apply_track_position():

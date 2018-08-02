@@ -7,10 +7,9 @@ func _ready():
 	get_parent().connect("crushed", self, "respawn")
 	
 func respawn():
-	get_parent().set_state("STANDING")
+	get_parent().warp_to(get_respawn_position())
 	
-	get_parent().global_position = get_respawn_position()
-	get_parent().get_node("ExtendedCamera2D").align()
+	get_parent().call_deferred("set_state", "STANDING")
 func set_respawn_position(point):
 	last_safe_position = point
 

@@ -8,12 +8,13 @@ func _ready():
 	get_parent().add_to_group("handles_track")
 	
 	get_parent().connect("collided_with_ground", self, "node_collided_with_ground")
+	get_parent().connect("warped", self, "set_track", [null])
 	
 func node_collided_with_ground(ground):
 	if(not is_on_track() and ground.is_in_group("track")):
 		ground.connect_node(get_parent())
 	
-func set_track(p_track):	
+func set_track(p_track):
 	var prev = track
 	
 	track = p_track

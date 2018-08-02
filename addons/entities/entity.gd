@@ -10,6 +10,7 @@ signal crushed()
 signal collided_with_ground(ground)
 signal ground_entered()
 signal ground_exited()
+signal warped()
 
 var valid_states = ["UNDEFINED"]
 
@@ -25,6 +26,11 @@ func add_state(state):
 var state_handlers = {}
 
 export var current_state = "UNDEFINED" setget set_state
+
+func warp_to(pos):
+	global_position = pos
+	
+	emit_signal("warped")
 
 func get_state():
 	return current_state
