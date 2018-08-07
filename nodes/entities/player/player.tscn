@@ -23,9 +23,9 @@
 [ext_resource path="res://nodes/state_handlers/player/track_falling_handler.tscn" type="PackedScene" id=21]
 [ext_resource path="res://addons/extended_camera_2D/extended_camera_2D.gd" type="Script" id=22]
 [ext_resource path="res://nodes/helpers/camera_zoom_helper.tscn" type="PackedScene" id=23]
-[ext_resource path="res://addons/state_labels/boolean_state_label.gd" type="Script" id=24]
-[ext_resource path="res://addons/state_labels/label.svg" type="Texture" id=25]
-[ext_resource path="res://scripts/managers/player_track_manager.gd" type="Script" id=26]
+[ext_resource path="res://scripts/managers/player_track_manager.gd" type="Script" id=24]
+[ext_resource path="res://addons/state_labels/boolean_state_label.gd" type="Script" id=25]
+[ext_resource path="res://addons/state_labels/label.svg" type="Texture" id=26]
 
 [sub_resource type="GDScript" id=1]
 
@@ -169,7 +169,6 @@ tracks/3/keys = {
 
 script = ExtResource( 2 )
 _sections_unfolded = [ "Collision", "Pause", "Pickable", "Transform", "collision" ]
-current_state = "UNDEFINED"
 
 [node name="player_light" type="Node2D" parent="." index="0"]
 
@@ -271,13 +270,13 @@ value = "enabled"
 save_value = "player/weapon_enabled"
 auto_update = true
 
-[node name="jumping_handler" parent="." index="9" instance=ExtResource( 8 )]
+[node name="jumping_handler" parent="." index="11" instance=ExtResource( 8 )]
 
-[node name="walking_handler" parent="." index="10" instance=ExtResource( 9 )]
+[node name="walking_handler" parent="." index="12" instance=ExtResource( 9 )]
 
-[node name="standing_handler" parent="." index="11" instance=ExtResource( 10 )]
+[node name="standing_handler" parent="." index="13" instance=ExtResource( 10 )]
 
-[node name="crouching_handler" parent="." index="12" instance=ExtResource( 11 )]
+[node name="crouching_handler" parent="." index="14" instance=ExtResource( 11 )]
 
 editor/display_folded = true
 
@@ -294,8 +293,9 @@ cast_to = Vector2( 0, -32 )
 playback_process_mode = 0
 _sections_unfolded = [ "Pause", "Playback Options" ]
 
-[node name="double_jumping_handler" parent="." index="13" instance=ExtResource( 12 )]
+[node name="double_jumping_handler" parent="." index="15" instance=ExtResource( 12 )]
 
+editor/display_folded = true
 enabled = false
 
 [node name="FromSaveValueSetter" type="Node" parent="double_jumping_handler" index="0"]
@@ -309,14 +309,15 @@ value = "enabled"
 save_value = "player/double_jump_enabled"
 auto_update = true
 
-[node name="wall_jumping_handler" parent="." index="14" instance=ExtResource( 13 )]
+[node name="wall_jumping_handler" parent="." index="16" instance=ExtResource( 13 )]
 
-[node name="falling_handler" parent="." index="15" instance=ExtResource( 14 )]
+[node name="falling_handler" parent="." index="17" instance=ExtResource( 14 )]
 
-[node name="climbing_handler" parent="." index="16" instance=ExtResource( 15 )]
+[node name="climbing_handler" parent="." index="18" instance=ExtResource( 15 )]
 
-[node name="wall_sliding_handler" parent="." index="17" instance=ExtResource( 16 )]
+[node name="wall_sliding_handler" parent="." index="19" instance=ExtResource( 16 )]
 
+editor/display_folded = true
 enabled = false
 
 [node name="FromSaveValueSetter" type="Node" parent="wall_sliding_handler" index="2"]
@@ -330,7 +331,7 @@ value = "enabled"
 save_value = "player/wall_jump_enabled"
 auto_update = true
 
-[node name="crawling_handler" parent="." index="18" instance=ExtResource( 17 )]
+[node name="crawling_handler" parent="." index="20" instance=ExtResource( 17 )]
 
 editor/display_folded = true
 
@@ -349,15 +350,15 @@ _sections_unfolded = [ "Transform" ]
 anims/crawl_leave = SubResource( 2 )
 anims/crawl_start = SubResource( 3 )
 
-[node name="pushed_handler" parent="." index="19" instance=ExtResource( 18 )]
+[node name="pushed_handler" parent="." index="21" instance=ExtResource( 18 )]
 
-[node name="on_track_handler" parent="." index="20" instance=ExtResource( 19 )]
+[node name="on_track_handler" parent="." index="22" instance=ExtResource( 19 )]
 
-[node name="track_jumping" parent="." index="21" instance=ExtResource( 20 )]
+[node name="track_jumping" parent="." index="23" instance=ExtResource( 20 )]
 
-[node name="track_falling_handler" parent="." index="22" instance=ExtResource( 21 )]
+[node name="track_falling_handler" parent="." index="24" instance=ExtResource( 21 )]
 
-[node name="damage_timer" type="Timer" parent="." index="23"]
+[node name="damage_timer" type="Timer" parent="." index="26"]
 
 pause_mode = 2
 process_mode = 1
@@ -366,7 +367,7 @@ one_shot = false
 autostart = false
 _sections_unfolded = [ "Pause" ]
 
-[node name="ExtendedCamera2D" type="Camera2D" parent="." index="24"]
+[node name="ExtendedCamera2D" type="Camera2D" parent="." index="27"]
 
 editor/display_folded = true
 anchor_mode = 1
@@ -396,7 +397,15 @@ debug_drawing = false
 
 [node name="camera_zoom_out_manager" parent="ExtendedCamera2D" index="0" instance=ExtResource( 23 )]
 
-[node name="BooleanStateLabel3" type="Label" parent="." index="29"]
+[node name="direct_control_handler" parent="." index="29"]
+
+speed = 384
+
+[node name="track_manager" parent="." index="30"]
+
+script = ExtResource( 24 )
+
+[node name="BooleanStateLabel3" type="Label" parent="." index="31"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -415,9 +424,9 @@ size_flags_vertical = 4
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
-script = ExtResource( 24 )
+script = ExtResource( 25 )
 __meta__ = {
-"_editor_icon": ExtResource( 25 )
+"_editor_icon": ExtResource( 26 )
 }
 node_path = NodePath("../platform_manager")
 tracked_value = ""
@@ -425,7 +434,7 @@ tracked_function = "is_on_platform"
 true_value = "ON PLATFORM"
 false_value = ""
 
-[node name="BooleanStateLabel4" type="Label" parent="." index="30"]
+[node name="BooleanStateLabel4" type="Label" parent="." index="32"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -442,19 +451,15 @@ size_flags_vertical = 4
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
-script = ExtResource( 24 )
+script = ExtResource( 25 )
 __meta__ = {
-"_editor_icon": ExtResource( 25 )
+"_editor_icon": ExtResource( 26 )
 }
 node_path = NodePath("..")
 tracked_value = ""
 tracked_function = "is_grounded"
 true_value = "GROUNDED"
 false_value = ""
-
-[node name="track_manager" parent="." index="32"]
-
-script = ExtResource( 26 )
 
 [connection signal="timeout" from="damage_timer" to="." method="_on_damage_timer_timeout"]
 
