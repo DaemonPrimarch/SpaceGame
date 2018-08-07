@@ -47,7 +47,7 @@ func _physics_process(delta):
 				remove_camera_limit_rect(body, camera_bodies_inside[body])
 				add_camera_limit_rect(body, get_area())"
 
-[node name="Area2D" type="Area2D" index="0"]
+[node name="camera_limit_set_area" type="Area2D" index="0"]
 
 input_pickable = true
 gravity_vec = Vector2( 0, 1 )

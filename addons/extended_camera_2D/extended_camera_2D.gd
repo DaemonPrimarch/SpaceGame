@@ -2,6 +2,7 @@ tool
 extends Camera2D
 
 export var debug_drawing = false
+export var scroll_speed = 64 * 10
 
 #https://github.com/markopolojorgensen/godot_2d_camera_limiter/blob/master/addons/camera_limiter/focus_limiter.gd
 
@@ -85,35 +86,37 @@ func get_limit_area():
 	else:
 		return null
 
-func update_limit_area():
+func update_limit_area(emmediate = false):
 	if(has_limit_area()):
 		var aabb = get_limit_area().get_limit_rect()
 		
-		var camera_rect = get_viewport_rect()
-		camera_rect.position = get_camera_screen_center() - get_viewport_rect().size/2
-		
-		var speed = 64 * 16
-		
-		if(camera_rect.position.y - aabb.position.y != 0):
-			get_node("tween_top").stop_all()
-			get_node("tween_top").interpolate_property(self, "limit_top", camera_rect.position.y, aabb.position.y, abs(camera_rect.position.y - aabb.position.y) / speed, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
-			get_node("tween_top").start()
-		if(camera_rect.end.y - aabb.end.y != 0):
-			get_node("tween_bottom").stop_all()
-			get_node("tween_bottom").interpolate_property(self, "limit_bottom", camera_rect.end.y, aabb.end.y, abs(camera_rect.end.y - aabb.end.y) / speed, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
-			get_node("tween_bottom").start()
-		if(camera_rect.position.x - aabb.position.x != 0):
-			get_node("tween_left").stop_all()
-			get_node("tween_left").interpolate_property(self, "limit_left", camera_rect.position.x, aabb.position.x, abs(camera_rect.position.x - aabb.position.x) / speed, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
-			get_node("tween_left").start()
-		if(camera_rect.end.x - aabb.end.x != 0):
-			get_node("tween_right").stop_all()
-			get_node("tween_right").interpolate_property(self, "limit_right", camera_rect.end.x, aabb.end.x, abs(camera_rect.end.x - aabb.end.x) / speed, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
-			get_node("tween_right").start()
-#		limit_left = aabb.position.x
-#		limit_right = aabb.end.x
-#		limit_top = aabb.position.y
-#		limit_bottom = aabb.end.y
+		if(emmediate):
+			limit_left = aabb.position.x
+			limit_right = aabb.end.x
+			limit_top = aabb.position.y
+			limit_bottom = aabb.end.y
+		else:
+			var camera_rect = get_viewport_rect()
+			camera_rect.position = get_camera_screen_center() - get_viewport_rect().size/2
+			
+			var speed = scroll_speed
+			
+			if(camera_rect.position.y - aabb.position.y != 0):
+				get_node("tween_top").stop_all()
+				get_node("tween_top").interpolate_property(self, "limit_top", camera_rect.position.y, aabb.position.y, abs(camera_rect.position.y - aabb.position.y) / speed, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
+				get_node("tween_top").start()
+			if(camera_rect.end.y - aabb.end.y != 0):
+				get_node("tween_bottom").stop_all()
+				get_node("tween_bottom").interpolate_property(self, "limit_bottom", camera_rect.end.y, aabb.end.y, abs(camera_rect.end.y - aabb.end.y) / speed, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
+				get_node("tween_bottom").start()
+			if(camera_rect.position.x - aabb.position.x != 0):
+				get_node("tween_left").stop_all()
+				get_node("tween_left").interpolate_property(self, "limit_left", camera_rect.position.x, aabb.position.x, abs(camera_rect.position.x - aabb.position.x) / speed, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
+				get_node("tween_left").start()
+			if(camera_rect.end.x - aabb.end.x != 0):
+				get_node("tween_right").stop_all()
+				get_node("tween_right").interpolate_property(self, "limit_right", camera_rect.end.x, aabb.end.x, abs(camera_rect.end.x - aabb.end.x) / speed, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
+				get_node("tween_right").start()
 	else:
 		limit_left = -10000000
 		limit_right = 10000000
@@ -138,4 +141,4 @@ func add_limit_area(area):
 	limit_areas.push_front(area)
 	
 	if(old != get_limit_area()):
-		update_limit_area()
+		update_limit_area(old == null)
