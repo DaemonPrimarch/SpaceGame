@@ -113,6 +113,32 @@ tracks/4/keys = {
 "update": 1,
 "values": [ true, false ]
 }
+tracks/5/type = "method"
+tracks/5/path = NodePath("section_2/on_enter_cutscene_player/CutscenePlayer")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 2.1, 4, 6, 8, 10 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"values": [ {
+"args": [  ],
+"method": "start_dialog_tree"
+}, {
+"args": [  ],
+"method": "advance_dialog_tree"
+}, {
+"args": [  ],
+"method": "advance_dialog_tree"
+}, {
+"args": [  ],
+"method": "advance_dialog_tree"
+}, {
+"args": [  ],
+"method": "advance_dialog_tree"
+} ]
+}
 
 [sub_resource type="RectangleShape2D" id=5]
 
@@ -508,7 +534,7 @@ script = ExtResource( 14 )
 __meta__ = {
 "_editor_icon": ExtResource( 15 )
 }
-dialog_tree = null
+dialog_tree = "res://dialog_trees/long_track_1.json"
 paused = false
 
 [node name="humans" type="Node2D" parent="section_2/on_enter_cutscene_player" index="2"]
@@ -561,6 +587,7 @@ no_gravity = false
 
 [node name="section_3" type="Node2D" parent="." index="3"]
 
+editor/display_folded = true
 position = Vector2( 14976, 0 )
 
 [node name="terrain" parent="section_3" index="0" instance=ExtResource( 9 )]
@@ -1189,7 +1216,8 @@ position = Vector2( -1408, -64 )
 
 [node name="player" parent="." index="7" instance=ExtResource( 27 )]
 
-position = Vector2( 288, 672 )
+editor/display_folded = true
+position = Vector2( 7968, 768 )
 
 [node name="player_light" parent="player" index="0"]
 

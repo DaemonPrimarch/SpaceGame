@@ -66,7 +66,7 @@ var time_track = 0
 
 func _physics_process(delta):
 	for node in $Area2D.get_overlapping_bodies():
-		if(not is_node_connected(node) and node.is_in_group("handles_track") and node.is_grounded() and not node.get_node("track_manager").is_on_track()):
+		if(not is_node_connected(node) and node.is_in_group("handles_track") and node.is_grounded()):
 			connect_node(node)
 		
 	for node in connected_nodes:

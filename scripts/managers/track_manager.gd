@@ -19,7 +19,6 @@ func clear_tracks():
 	
 func set_track(p_track):
 	tracks.push_front(p_track)
-	
 	if(tracks.size() >= 2):
 		emit_signal("track_changed")
 
@@ -29,7 +28,7 @@ func remove_track(p_track):
 	if(i >= 0):
 		tracks.remove(i)
 	
-		if(get_track()):
+		if(get_track() and i == 0):
 			emit_signal("track_changed")
 
 func is_on_track():
