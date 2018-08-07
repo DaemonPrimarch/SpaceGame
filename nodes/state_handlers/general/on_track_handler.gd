@@ -6,12 +6,9 @@ var track = null
 export var camera_offset_time = 1
 
 func _ready():
-	pass
+	get_parent().get_node("track_manager").connect("track_changed", self, "init_track")
 
 func init_track():
-	if(track != null and track.is_connected("direction_changed", self, "track_direction_changed")):
-		track.disconnect("direction_changed", self, "track_direction_changed")
-	
 	track_manager = get_parent().track_manager
 	track = track_manager.get_track()
 	
@@ -28,14 +25,10 @@ func init_track():
 func enter_state(previous_state):	
 	get_parent().animation_player.stop()
 	
-	init_track()
-	
-	get_parent().get_node("track_manager").connect("track_changed", self, "init_track")
+	init_track()	
 
 func leave_state(new_state):	
 	track.disconnect("direction_changed", self, "track_direction_changed")
-	
-	get_parent().get_node("track_manager").disconnect("track_changed", self, "init_track")
 
 func track_direction_changed():	
 	get_parent().set_flippedH(not track.is_moving_forward())

@@ -98,8 +98,7 @@ func connect_node(node):
 func disconnect_node(node):
 	connected_nodes.remove(connected_nodes.find(node))
 	
-	if(node.get_node("track_manager").get_track() == self):
-		node.get_node("track_manager").set_track(null)
+	node.get_node("track_manager").remove_track(self)
 #
 #func body_ground_entered(body):
 #	body.track_manager.set_track(self)
