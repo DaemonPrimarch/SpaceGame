@@ -126,7 +126,6 @@ arrival_pos_id = "start"
 
 position = Vector2( 831.14, 805.328 )
 collision_mask = 1
-current_state = "STANDING"
 
 [node name="player_light" parent="player" index="0"]
 
@@ -145,14 +144,15 @@ anims/run_gun = SubResource( 6 )
 
 enabled = false
 
-[node name="wall_sliding_handler" parent="player" index="17"]
+[node name="wall_sliding_handler" parent="player" index="19"]
 
 enabled = true
 
-[node name="ExtendedCamera2D" parent="player" index="24"]
+[node name="ExtendedCamera2D" parent="player" index="27"]
 
 current = false
 _sections_unfolded = [ "Drag Margin", "Smoothing" ]
+scroll_speed = 640
 
 [node name="start_panel" parent="." index="1" instance=ExtResource( 3 )]
 
