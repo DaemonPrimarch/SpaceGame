@@ -1,8 +1,10 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://scripts/room_elements/warp_tile.gd" type="Script" id=1]
-[ext_resource path="res://addons/temporary_sprite/temporary_sprite.gd" type="Script" id=2]
-[ext_resource path="res://addons/temporary_sprite/panel.svg" type="Texture" id=3]
+[ext_resource path="res://addons/extended_collision_polygon_2D/extended_collision_polygon_2D.gd" type="Script" id=2]
+[ext_resource path="res://addons/extended_collision_polygon_2D/polygon.svg" type="Texture" id=3]
+[ext_resource path="res://addons/temporary_sprite/temporary_sprite.gd" type="Script" id=4]
+[ext_resource path="res://addons/temporary_sprite/panel.svg" type="Texture" id=5]
 
 [node name="warp_tile" type="Area2D" index="0" groups=[
 "warp_tile",
@@ -30,6 +32,10 @@ arrival_pos_id = ""
 
 build_mode = 0
 polygon = PoolVector2Array( 32, -32, 32, 32, -32, 32, -32, -32 )
+script = ExtResource( 2 )
+__meta__ = {
+"_editor_icon": ExtResource( 3 )
+}
 
 [node name="TemporarySprite" type="Panel" parent="." index="1"]
 
@@ -47,10 +53,10 @@ mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-script = ExtResource( 2 )
+script = ExtResource( 4 )
 _sections_unfolded = [ "Rect" ]
 __meta__ = {
-"_editor_icon": ExtResource( 3 )
+"_editor_icon": ExtResource( 5 )
 }
 
 [node name="NameLabel" type="Label" parent="TemporarySprite" index="0"]

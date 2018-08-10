@@ -1,8 +1,11 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://scripts/room_elements/activatable_block.gd" type="Script" id=1]
-[ext_resource path="res://sprites/white.png" type="Texture" id=2]
-
+[ext_resource path="res://addons/extended_collision_polygon_2D/extended_collision_polygon_2D.gd" type="Script" id=2]
+[ext_resource path="res://addons/extended_collision_polygon_2D/polygon.svg" type="Texture" id=3]
+[ext_resource path="res://addons/temporary_sprite/temporary_sprite.gd" type="Script" id=4]
+[ext_resource path="res://addons/temporary_sprite/panel.svg" type="Texture" id=5]
+[ext_resource path="res://sprites/white.png" type="Texture" id=6]
 
 [node name="activatable_block" type="StaticBody2D" index="0"]
 
@@ -14,14 +17,19 @@ constant_angular_velocity = 0.0
 friction = 1.0
 bounce = 0.0
 script = ExtResource( 1 )
+_sections_unfolded = [ "Transform" ]
 active = true
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." index="0"]
+[node name="ExtendedCollisionPolygon2D" type="CollisionPolygon2D" parent="." index="0"]
 
 build_mode = 0
-polygon = PoolVector2Array( -32, -32, 32, -32, 32, 32, -32, 32 )
+polygon = PoolVector2Array( -32, 32, 32, 32, 32, -32, -32, -32 )
+script = ExtResource( 2 )
+__meta__ = {
+"_editor_icon": ExtResource( 3 )
+}
 
-[node name="Panel" type="Panel" parent="." index="1"]
+[node name="TemporarySprite" type="Panel" parent="." index="1"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -37,25 +45,28 @@ mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
+script = ExtResource( 4 )
+__meta__ = {
+"_editor_icon": ExtResource( 5 )
+}
 
-[node name="Sprite" type="Sprite" parent="." index="2"]
+[node name="Sprite" type="Sprite" parent="TemporarySprite" index="0"]
 
-modulate = Color( 0.0299072, 0, 0.382813, 1 )
-position = Vector2( 0, 1.52588e-005 )
-scale = Vector2( 0.0555556, 0.0987654 )
-texture = ExtResource( 2 )
-_sections_unfolded = [ "Visibility" ]
+modulate = Color( 0, 0.132813, 1, 1 )
+texture = ExtResource( 6 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 0, 0, 64, 64 )
+_sections_unfolded = [ "Material", "Offset", "Region", "Visibility" ]
 
-[node name="Label" type="Label" parent="." index="3"]
+[node name="NameLabel" type="Label" parent="TemporarySprite" index="1"]
 
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = -32.0
-margin_top = -32.0
-margin_right = 32.0
-margin_bottom = 32.0
+margin_right = 64.0
+margin_bottom = 64.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 2

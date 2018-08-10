@@ -1,5 +1,5 @@
 tool
-extends Area2D
+extends "res://addons/extended_area_2D/extended_area_2D.gd"
 
 signal player_entered(player)
 signal triggered
