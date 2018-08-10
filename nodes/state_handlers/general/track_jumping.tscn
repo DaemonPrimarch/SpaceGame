@@ -2,7 +2,7 @@
 
 [ext_resource path="res://addons/state_handler/kinematic_body_2D.svg" type="Texture" id=1]
 
-[sub_resource type="GDScript" id=5]
+[sub_resource type="GDScript" id=1]
 
 script/source = "extends \"res://addons/state_handler/state_handler.gd\"
 
@@ -28,9 +28,9 @@ func process_state(delta):
 	elif(get_parent().is_action_pressed(\"play_right\")):
 		get_parent().set_velocity(get_parent().get_velocity() + Vector2(delta * 64 * 3, 0))"
 
-[node name="track_jumping" type="Node2D"]
+[node name="track_jumping" type="Node2D" index="0"]
 
-script = SubResource( 5 )
+script = SubResource( 1 )
 __meta__ = {
 "_editor_icon": ExtResource( 1 )
 }

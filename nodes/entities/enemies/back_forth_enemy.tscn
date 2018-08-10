@@ -8,8 +8,6 @@
 [ext_resource path="res://sprites/white.png" type="Texture" id=6]
 [ext_resource path="res://addons/state_handler/kinematic_body_2D.svg" type="Texture" id=7]
 
-
-
 [sub_resource type="Animation" id=1]
 
 resource_name = "walking"
@@ -59,9 +57,9 @@ velocity = Vector2( 0, 0 )
 max_velocity = Vector2( -1, -1 )
 acceleration = Vector2( 0, 0 )
 can_be_pushed = false
-HP = 2
-max_HP = 2
-invulnerability_time = 1.0
+HP = 10
+max_HP = 10
+invulnerability_time = 0.1
 damage = 1
 hp_drop_chance = 0.5
 

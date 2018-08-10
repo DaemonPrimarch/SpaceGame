@@ -42,6 +42,9 @@ func leave_state(new_state):
 	track.disconnect(\"direction_changed\", self, \"track_direction_changed\")
 	
 	get_parent().get_node(\"track_manager\").disconnect(\"track_changed\", self, \"init_track\")
+	
+	if(new_state != \"TRACK_JUMPING\"):
+		get_parent().set_velocity(Vector2())
 
 func track_direction_changed():	
 	get_parent().set_flippedH(not track.is_moving_forward())

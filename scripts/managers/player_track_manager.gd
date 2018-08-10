@@ -11,21 +11,21 @@ var prev_position
 var position_set = false
 
 func set_track(track):
-	var prev_track = get_track()
-	
 	.set_track(track)
 	
-	if(not track == null):
-		apply_track_position()
+	apply_track_position()
 		
-		if(get_track().applies_fast_camera_offset):
-			position_set = true
-		else:
-			position_set = false
+	if(get_track().applies_fast_camera_offset):
+		position_set = true
+	else:
+		position_set = false
 			
-		track.connect("direction_changed", self, "apply_track_position")
-	elif(prev_track):
-		prev_track.disconnect("direction_changed", self, "apply_track_position")
+	track.connect("direction_changed", self, "apply_track_position")
+
+func remove_track(track):
+	track.disconnect("direction_changed", self, "apply_track_position")
+	
+	.remove_track(track)
 
 func apply_track_position():
 	if(get_track().applies_fast_camera_offset):

@@ -127,6 +127,10 @@ arrival_pos_id = "start"
 position = Vector2( 831.14, 805.328 )
 collision_mask = 1
 
+[node name="player_light" parent="player" index="0"]
+
+visible = false
+
 [node name="AnimationPlayer" parent="player" index="7"]
 
 anims/duck = SubResource( 1 )
@@ -148,6 +152,7 @@ enabled = true
 
 current = false
 _sections_unfolded = [ "Drag Margin", "Smoothing" ]
+scroll_speed = 640
 
 [node name="start_panel" parent="." index="1" instance=ExtResource( 3 )]
 
