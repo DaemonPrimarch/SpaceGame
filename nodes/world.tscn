@@ -116,7 +116,7 @@ tracks/0/keys = {
 "values": [ 5, 6, 7, 8, 9 ]
 }
 
-[node name="world" type="Node2D" index="0"]
+[node name="world" type="Node2D"]
 
 script = ExtResource( 1 )
 starting_room = "res://rooms/start_rooms/room_1.tscn"
@@ -140,11 +140,11 @@ anims/run_gun = SubResource( 6 )
 
 enabled = false
 
-[node name="wall_sliding_handler" parent="player" index="17"]
+[node name="wall_sliding_handler" parent="player" index="19"]
 
 enabled = true
 
-[node name="ExtendedCamera2D" parent="player" index="24"]
+[node name="ExtendedCamera2D" parent="player" index="27"]
 
 current = false
 _sections_unfolded = [ "Drag Margin", "Smoothing" ]

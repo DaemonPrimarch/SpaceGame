@@ -4,7 +4,7 @@
 [ext_resource path="res://nodes/terrain.tscn" type="PackedScene" id=2]
 [ext_resource path="res://nodes/entities/player/puppet_player.tscn" type="PackedScene" id=3]
 
-[node name="room" type="Node2D" index="0" groups=[
+[node name="room" type="Node2D" groups=[
 "room",
 ]]
 
@@ -27,5 +27,26 @@ __meta__ = {
 }
 
 [node name="player" parent="." index="2" instance=ExtResource( 3 )]
+
+input_pickable = false
+collision_layer = 2
+collision_mask = 3
+collision/safe_margin = 0.08
+max_slope_angle = 0.785398
+flippedH = false
+flippedV = false
+moveable_by_collision = true
+current_state = "STANDING"
+movement_speed = 360.0
+gravity_enabled = true
+gravity_vector = Vector2( 0, 1152 )
+velocity = Vector2( 0, 0 )
+max_velocity = Vector2( -1, -1 )
+acceleration = Vector2( 0, 0 )
+can_be_pushed = false
+HP = 100
+max_HP = 100
+invulnerability_time = 1.0
+action_override = false
 
 
