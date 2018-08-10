@@ -105,10 +105,14 @@ func update_limit_area(emmediate = false):
 				get_node("tween_top").stop_all()
 				get_node("tween_top").interpolate_property(self, "limit_top", camera_rect.position.y, aabb.position.y, abs(camera_rect.position.y - aabb.position.y) / speed, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
 				get_node("tween_top").start()
+			else:
+				limit_top = aabb.position.y
 			if(camera_rect.end.y - aabb.end.y != 0):
 				get_node("tween_bottom").stop_all()
 				get_node("tween_bottom").interpolate_property(self, "limit_bottom", camera_rect.end.y, aabb.end.y, abs(camera_rect.end.y - aabb.end.y) / speed, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
 				get_node("tween_bottom").start()
+			else:
+				limit_bottom = aabb.end.y	
 			if(camera_rect.position.x - aabb.position.x != 0):
 				get_node("tween_left").stop_all()
 				get_node("tween_left").interpolate_property(self, "limit_left", camera_rect.position.x, aabb.position.x, abs(camera_rect.position.x - aabb.position.x) / speed, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
@@ -117,6 +121,8 @@ func update_limit_area(emmediate = false):
 				get_node("tween_right").stop_all()
 				get_node("tween_right").interpolate_property(self, "limit_right", camera_rect.end.x, aabb.end.x, abs(camera_rect.end.x - aabb.end.x) / speed, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
 				get_node("tween_right").start()
+			else:
+				limit_right = aabb.end.x
 	else:
 		limit_left = -10000000
 		limit_right = 10000000
