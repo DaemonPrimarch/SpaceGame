@@ -1,10 +1,11 @@
 tool
 
 extends "res://scripts/entities/player/playable_character.gd"
-onready var damage_timer = get_node("damage_timer")
+onready var damage_timer = get_node("stunned_timer")
 
 func _ready():
-	pass
+	connect("invulnerable_started", self, "_on_player_invulnerable_started")
+	
 
 func _physics_process(delta):
 	pass

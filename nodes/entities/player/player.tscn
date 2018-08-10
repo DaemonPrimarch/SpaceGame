@@ -163,8 +163,8 @@ tracks/3/keys = {
 }
 
 [node name="player" index="0" groups=[
-"player",
 "warpable",
+"player",
 ] instance=ExtResource( 1 )]
 
 script = ExtResource( 2 )
@@ -358,7 +358,7 @@ anims/crawl_start = SubResource( 3 )
 
 [node name="track_falling_handler" parent="." index="24" instance=ExtResource( 21 )]
 
-[node name="damage_timer" type="Timer" parent="." index="26"]
+[node name="stunned_timer" type="Timer" parent="." index="26"]
 
 pause_mode = 2
 process_mode = 1
@@ -394,6 +394,7 @@ editor_draw_limits = false
 editor_draw_drag_margin = false
 script = ExtResource( 22 )
 debug_drawing = false
+scroll_speed = 640
 
 [node name="camera_zoom_out_manager" parent="ExtendedCamera2D" index="0" instance=ExtResource( 23 )]
 
@@ -461,7 +462,7 @@ tracked_function = "is_grounded"
 true_value = "GROUNDED"
 false_value = ""
 
-[connection signal="timeout" from="damage_timer" to="." method="_on_damage_timer_timeout"]
+[connection signal="timeout" from="stunned_timer" to="." method="_on_damage_timer_timeout"]
 
 
 [editable path="weapon_manager"]

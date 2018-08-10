@@ -196,6 +196,12 @@ func process_state(delta):
 
 position = Vector2( -21632, 0 )
 script = ExtResource( 1 )
+__meta__ = {
+"_edit_horizontal_guides_": [ -3040.0 ]
+}
+dark = false
+dark_color = Color( 0, 0, 0, 1 )
+auto_generate_camera_limiter = false
 
 [node name="CanvasModulate" type="CanvasModulate" parent="." index="0"]
 
@@ -1247,12 +1253,137 @@ __meta__ = {
 
 position = Vector2( -1408, -64 )
 
+[node name="CameraLimitRect" type="Polygon2D" parent="section_5" index="8"]
+
+editor/display_folded = true
+polygon = PoolVector2Array( -128, -960, 1536, -960, 1536, 1920, -128, 1920 )
+uv = PoolVector2Array(  )
+color = Color( 1, 0, 0, 0 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 0, 0 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation_degrees = 0.0
+invert_enable = false
+invert_border = 100.0
+script = ExtResource( 13 )
+simple = true
+can_zoom_out = false
+
+[node name="simple_limit_set_area" type="Area2D" parent="section_5/CameraLimitRect" index="0"]
+
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+script = ExtResource( 14 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="section_5/CameraLimitRect/simple_limit_set_area" index="0"]
+
+build_mode = 0
+polygon = PoolVector2Array( -128, -960, 1536, -960, 1536, 1920, -128, 1920 )
+script = ExtResource( 12 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="CameraLimitRect2" type="Polygon2D" parent="section_5" index="9"]
+
+editor/display_folded = true
+polygon = PoolVector2Array( 1408, -960, 1408, 1920, 4864, 1920, 4864, -960 )
+uv = PoolVector2Array(  )
+color = Color( 1, 0, 0, 0 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 0, 0 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation_degrees = 0.0
+invert_enable = false
+invert_border = 100.0
+script = ExtResource( 13 )
+simple = true
+can_zoom_out = false
+
+[node name="simple_limit_set_area" type="Area2D" parent="section_5/CameraLimitRect2" index="0"]
+
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+script = ExtResource( 14 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="section_5/CameraLimitRect2/simple_limit_set_area" index="0"]
+
+build_mode = 0
+polygon = PoolVector2Array( 1408, -960, 1408, 1920, 4864, 1920, 4864, -960 )
+script = ExtResource( 12 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="CameraLimitRect3" type="Polygon2D" parent="section_5" index="10"]
+
+editor/display_folded = true
+polygon = PoolVector2Array( 6528, -960, 6528, 32, 3168, 32, 3168, -960, 3168, -960 )
+uv = PoolVector2Array(  )
+color = Color( 1, 0, 0, 0 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 0, 0 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation_degrees = 0.0
+invert_enable = false
+invert_border = 100.0
+script = ExtResource( 13 )
+simple = true
+can_zoom_out = false
+
+[node name="simple_limit_set_area" type="Area2D" parent="section_5/CameraLimitRect3" index="0"]
+
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+script = ExtResource( 14 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="section_5/CameraLimitRect3/simple_limit_set_area" index="0"]
+
+build_mode = 0
+polygon = PoolVector2Array( 6528, -960, 6528, 32, 3168, 32, 3168, -960, 3168, -960 )
+script = ExtResource( 12 )
+__meta__ = {
+"_edit_lock_": true
+}
+
 [node name="terrain" parent="." index="6" instance=ExtResource( 9 )]
 
 [node name="player" parent="." index="7" instance=ExtResource( 29 )]
 
-editor/display_folded = true
-position = Vector2( -224, 672 )
+position = Vector2( 320, 608 )
 
 [node name="player_light" parent="player" index="0"]
 
@@ -1271,6 +1402,7 @@ script = SubResource( 6 )
 [node name="ExtendedCamera2D" parent="player" index="27"]
 
 editor/display_folded = false
+position = Vector2( 0, -224 )
 drag_margin_h_enabled = false
 drag_margin_v_enabled = false
 drag_margin_left = 0.0
