@@ -82,7 +82,7 @@ func set_extending_distances(val):
 
 func turn_around():
 	set_next_extending_distance(prev_distance_index)
-
+ 
 export(Array, int) var extending_distances setget set_extending_distances
 
 export var forward_starting_velocity = 64*5

@@ -14,7 +14,6 @@
 [ext_resource path="res://nodes/room_elements/moving_platforms/platforms/2x1_stick_platform.tscn" type="PackedScene" id=12]
 [ext_resource path="res://nodes/room_elements/moving_platforms/platforms/timed_platform_controller_helper.tscn" type="PackedScene" id=13]
 
-
 [node name="room_10" index="0" instance=ExtResource( 1 )]
 
 auto_generate_camera_limiter = false
@@ -71,14 +70,12 @@ custom_container = NodePath("CameraLimitCustomRect")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="CameraLimiter1" index="0"]
 
-visible = false
 build_mode = 0
 polygon = PoolVector2Array( -1664, 960, -1664, 1920, 640, 1920, 1216, 1920, 1216, 1472, 640, 1472, 640, 1664, 0, 1664, 0, 960 )
 script = ExtResource( 6 )
 
 [node name="CameraLimitCustomRect" type="Polygon2D" parent="CameraLimiter1" index="1"]
 
-visible = false
 polygon = PoolVector2Array( -1664, 1920, 1664, 1920, 1664, 960, -1664, 960 )
 uv = PoolVector2Array(  )
 color = Color( 1, 0, 0, 0.7 )
@@ -136,21 +133,21 @@ script = ExtResource( 7 )
 
 position = Vector2( -288, 1696 )
 
-[node name="CollisionPolygon2D" parent="activatable_block" index="0"]
+[node name="ExtendedCollisionPolygon2D" parent="activatable_block" index="0"]
 
-polygon = PoolVector2Array( -32, -32, 32, -32, 32, 96, -32, 96 )
+polygon = PoolVector2Array( -32, 96, 32, 96, 32, -32, -32, -32 )
 
-[node name="Panel" parent="activatable_block" index="1"]
+[node name="TemporarySprite" parent="activatable_block" index="1"]
 
 margin_bottom = 96.0
 
-[node name="Sprite" parent="activatable_block" index="2"]
+[node name="Sprite" parent="activatable_block/TemporarySprite" index="0"]
 
-position = Vector2( 0, 32 )
-scale = Vector2( 0.0555556, 0.197531 )
+scale = Vector2( 1, 2 )
 
-[node name="Label" parent="activatable_block" index="3"]
+[node name="NameLabel" parent="activatable_block/TemporarySprite" index="1"]
 
+margin_top = 32.0
 margin_bottom = 96.0
 
 [node name="bullet_switch" parent="." index="12" instance=ExtResource( 9 )]
@@ -164,12 +161,13 @@ toggleable = true
 position = Vector2( 1248, 1728 )
 active = false
 one_shot = true
-extending_vertical = false
 extending_distances = [ 0, 448 ]
 
 [node name="player_stick_platform" parent="p_1" index="0" instance=ExtResource( 11 )]
 
 _sections_unfolded = [ "Collision", "Transform", "collision" ]
+flippedH = true
+extending_vertical = false
 
 [node name="p_2" parent="." index="14" instance=ExtResource( 10 )]
 
@@ -190,7 +188,6 @@ has_start_timer = false
 position = Vector2( 352, 1024 )
 active = false
 one_shot = true
-extending_vertical = false
 extending_distances = [ 0, 832 ]
 
 [node name="timed_platform_controller_helper" parent="p_3" index="0" instance=ExtResource( 13 )]
@@ -198,6 +195,8 @@ extending_distances = [ 0, 832 ]
 has_start_timer = false
 
 [node name="player_stick_platform" parent="p_3" index="1" instance=ExtResource( 11 )]
+
+extending_vertical = false
 
 [connection signal="triggered" from="StaticBody2D" to="p_2" method="set_active" binds= [ true ]]
 
@@ -213,4 +212,5 @@ has_start_timer = false
 
 
 [editable path="activatable_block"]
+[editable path="p_1"]
 [editable path="p_2/timed_platform_controller_helper"]

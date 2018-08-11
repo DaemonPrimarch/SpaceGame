@@ -127,7 +127,7 @@ anims/jump = SubResource( 4 )
 anims/run = SubResource( 5 )
 anims/run_gun = SubResource( 6 )
 
-[node name="ExtendedCamera2D" parent="." index="23"]
+[node name="ExtendedCamera2D" parent="." index="28"]
 
 _sections_unfolded = [ "Limit" ]
 

@@ -23,7 +23,6 @@ polygon = PoolVector2Array( -16, -16, 16, -16, 16, 16, -16, 16 )
 
 [node name="TemporarySprite" type="Panel" parent="." index="1"]
 
-editor/display_folded = true
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -45,8 +44,8 @@ __meta__ = {
 
 [node name="Sprite" type="Sprite" parent="TemporarySprite" index="0"]
 
-position = Vector2( 16, 16 )
-scale = Vector2( 0.0277778, 0.0493827 )
+position = Vector2( 16.0202, 15.5462 )
+scale = Vector2( 0.0277357, 0.0510635 )
 texture = ExtResource( 4 )
 
 [node name="NameLabel" type="Label" parent="TemporarySprite" index="1"]
