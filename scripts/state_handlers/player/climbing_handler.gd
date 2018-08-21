@@ -2,10 +2,27 @@ extends "res://addons/state_handler/state_handler.gd"
 
 export var climbing_speed = 64 * 4
 
+enum direction {FACING_LEFT, FACING_RIGHT, FACING_FORWARD}
+
 var is_inside_same_ladder = false
+
+var facing_direction = direction.FACING_FORWARD
 
 var ladder = null
 
+func get_facing_direction():
+	return facing_direction
+
+func set_facing_direction(dir):
+	facing_direction = dir
+	
+	if(dir == direction.FACING_LEFT):
+		$Label.text = "FACING_LEFT"
+	elif(dir == direction.FACING_RIGHT):
+		$Label.text = "FACING_RIGHT"
+	else:
+		$Label.text = ""
+		
 func get_climbing_speed():
 	return climbing_speed
 	
@@ -17,6 +34,8 @@ func _ready():
 
 func enter_state(previous_state):
 	.enter_state(previous_state)
+
+	set_facing_direction(direction.FACING_FORWARD)
 	
 	ladder = get_parent().get_node("ladder_manager").get_ladder()
 	
@@ -40,26 +59,39 @@ func enter_state(previous_state):
 func leave_state(new_state):
 	.leave_state(new_state)
 	
-	get_parent().get_node("weapon_manager").scale *= Vector2(-1,1)
+	ladder.get_node("Area2D").disconnect("body_exited", self, "ladder_left")
 	
+	get_parent().get_node("weapon_manager").scale *= Vector2(-1,1)
+
+func calculate_facing_direction():
+	if(get_parent().is_action_pressed("play_left")):
+		set_facing_direction(direction.FACING_LEFT)
+	elif(get_parent().is_action_pressed("play_right")):
+		set_facing_direction(direction.FACING_RIGHT)
+	else:
+		set_facing_direction(direction.FACING_FORWARD)
+
 func process_state(delta):
 	.process_state(delta)
 	
-	if(get_parent().is_action_just_pressed("jump")):
-		get_parent().set_state("WALL_JUMPING")
-	elif(not get_parent().get_node("ladder_manager").is_inside_ladder()):
+	calculate_facing_direction()
+	if(not get_parent().get_node("ladder_manager").is_inside_ladder()):
 		get_parent().set_state("FALLING")
-	else:
-		var dir = 0
+	elif(get_facing_direction() == direction.FACING_FORWARD):
+		if(get_parent().is_action_just_pressed("jump")):
+			get_parent().set_state("FALLING")
+		else:
+			var dir = 0
+			if(get_parent().is_action_pressed("play_up")):
+				if(not top_reached() or ladder.is_in_group("top")):
+					dir = -1
+			elif(get_parent().is_action_pressed("play_down")):
+				dir = 1
 				
-		if(get_parent().is_action_pressed("play_up")):
-			if(not top_reached() or ladder.is_in_group("top")):
-				dir = -1
-		elif(get_parent().is_action_pressed("play_down")):
-			dir = 1
-			
-		if(get_parent().move_and_collide(Vector2(0, dir) * get_climbing_speed() * delta) != null):
-			get_parent().set_state("STANDING")
+			if(get_parent().move_and_collide(Vector2(0, dir) * get_climbing_speed() * delta) != null):
+				get_parent().set_state("STANDING")
+	elif(get_parent().is_action_just_pressed("jump")):
+		get_parent().set_state("WALL_JUMPING")
 
 func top_reached():
 	if(get_parent().global_position.y - get_parent().get_AABB().size.y + get_parent().get_AABB().position.y < ladder.global_position.y - 32):
