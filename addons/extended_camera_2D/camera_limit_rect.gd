@@ -44,3 +44,6 @@ func get_limit_rect():
 	box.position += global_position
 	
 	return box
+
+func get_transition_speed():
+	return 10 * 64

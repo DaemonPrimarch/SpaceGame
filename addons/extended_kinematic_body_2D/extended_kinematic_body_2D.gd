@@ -6,6 +6,7 @@ signal light_entered(source)
 signal light_exited(source)
 signal flippedH()
 signal flippedV()
+signal AABB_changed()
 
 export var max_slope_angle = PI/4
 

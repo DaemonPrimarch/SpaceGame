@@ -20,8 +20,10 @@ func process_state(delta):
 		get_parent().position += Vector2(0, 10)
 		
 		get_parent().set_state("CLIMBING")
-	elif(((get_parent().is_action_pressed("play_up") and get_parent().get_node("ladder_manager").is_inside_ladder()) or get_parent().get_node("ladder_manager").is_inside_walled_ladder()) and get_parent().can_enter_state("CLIMBING")):
+	elif(get_parent().is_action_pressed("play_up") and get_parent().can_enter_state("CLIMBING")):
 		get_parent().set_state("CLIMBING")
+	elif(get_parent().is_action_pressed("play_up") and get_parent().can_enter_state("SIDEWAYS_CLIMBING")):
+		get_parent().set_state("SIDEWAYS_CLIMBING")
 	elif(get_parent().track_manager.is_on_track() and get_parent().can_enter_state("ON_TRACK")):
 		get_parent().set_state("ON_TRACK")
 	elif(get_parent().is_action_just_pressed("jump") and get_parent().can_enter_state("REGULAR_JUMPING")):

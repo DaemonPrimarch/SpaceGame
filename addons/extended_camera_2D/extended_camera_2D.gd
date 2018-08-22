@@ -99,7 +99,7 @@ func update_limit_area(emmediate = false):
 			var camera_rect = get_viewport_rect()
 			camera_rect.position = get_camera_screen_center() - get_viewport_rect().size/2
 			
-			var speed = scroll_speed
+			var speed = get_limit_area().get_transition_speed()
 			
 			if(camera_rect.position.y - aabb.position.y != 0):
 				get_node("tween_top").stop_all()

@@ -14,6 +14,7 @@ func _init():
 	add_state("WALL_SLIDING")
 	add_state("FALLING")
 	add_state("CLIMBING")
+	add_state("SIDEWAYS_CLIMBING")
 	add_state("CROUCHING")
 	add_state("CRAWLING")
 	add_state("PUSHED")

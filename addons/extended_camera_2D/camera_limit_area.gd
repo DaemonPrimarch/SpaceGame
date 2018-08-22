@@ -4,6 +4,7 @@ extends Area2D.
 export var simple = true setget set_simple
 export var can_zoom_out = false
 export(NodePath) var custom_container
+export var transition_speed = 64 * 10
 
 func _ready():
 	connect("body_entered", self, "entered")
@@ -20,7 +21,10 @@ func exited(thing):
 		for child in thing.get_children():
 			if(child.is_in_group("extended_camera")):
 				child.remove_limit_area(self)
-					
+
+func get_transition_speed():
+	return transition_speed
+
 func set_simple(val):
 	simple = val
 

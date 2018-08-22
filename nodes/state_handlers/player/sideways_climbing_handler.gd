@@ -1,12 +1,12 @@
 extends "res://addons/state_handler/state_handler.gd"
 
 export var climbing_speed = 64 * 4
-export var cooldown_time = 0.3
 
-enum direction {FACING_LEFT, FACING_RIGHT, FACING_FORWARD}
+enum direction {FACING_SIDEWAYS, FACING_FORWARD}
 
 var facing_direction = direction.FACING_FORWARD
 
+export var cooldown_time = 0.3
 var cooldown_timer
 
 func _ready():
@@ -15,17 +15,13 @@ func _ready():
 	cooldown_timer.one_shot = true
 	
 	add_child(cooldown_timer)
-
 func get_facing_direction():
 	return facing_direction
 
 func set_facing_direction(dir):
 	facing_direction = dir
 	
-	if(dir == direction.FACING_LEFT):
-		$Label.text = "FACING_LEFT"
-		#get_parent().get_node("weapon_manager").scale *= Vector2(-1,1)
-	elif(dir == direction.FACING_RIGHT):
+	if(dir == direction.FACING_SIDEWAYS):
 		$Label.text = "FACING_RIGHT"
 	else:
 		$Label.text = ""
@@ -41,6 +37,8 @@ var ladder = null
 func enter_state(previous_state):
 	.enter_state(previous_state)
 
+	get_parent().get_node("weapon_manager").scale *= Vector2(-1,1)
+
 	set_facing_direction(direction.FACING_FORWARD)
 	
 	ladder = get_parent().get_node("ladder_manager").get_ladder()
@@ -52,17 +50,14 @@ func enter_state(previous_state):
 func leave_state(new_state):
 	.leave_state(new_state)
 	
-	get_parent().set_flippedH(not get_parent().is_flippedH())
-	
+	get_parent().get_node("weapon_manager").scale *= Vector2(-1,1)
 	cooldown_timer.start()
 
 func calculate_facing_direction():
 	if(get_parent().is_action_pressed("play_left")):
-		set_facing_direction(direction.FACING_LEFT)
-		get_parent().set_flippedH(true)
+		set_facing_direction(direction.FACING_SIDEWAYS)
 	elif(get_parent().is_action_pressed("play_right")):
-		set_facing_direction(direction.FACING_RIGHT)
-		get_parent().set_flippedH(false)
+		set_facing_direction(direction.FACING_SIDEWAYS)
 	else:
 		set_facing_direction(direction.FACING_FORWARD)
 
@@ -95,4 +90,4 @@ func top_reached():
 		return false
 
 func can_enter():
-	return .can_enter() and cooldown_timer.is_stopped() and get_parent().get_node("ladder_manager").is_inside_ladder() and not get_parent().get_node("ladder_manager").get_ladder().is_in_group("walled_ladder")
+	return .can_enter() and cooldown_timer.is_stopped() and get_parent().get_node("ladder_manager").is_inside_ladder() and get_parent().get_node("ladder_manager").get_ladder().is_in_group("walled_ladder")
