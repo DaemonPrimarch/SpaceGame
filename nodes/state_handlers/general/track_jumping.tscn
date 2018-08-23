@@ -23,10 +23,11 @@ func process_state(delta):
 		print(get_parent().track_manager.is_on_track())
 	if(not get_parent().is_action_pressed(\"jump\") and get_parent().get_velocity().y < 0):
 		get_parent().set_velocity(Vector2(get_parent().get_velocity().x, 0))
-	elif(get_parent().is_action_pressed(\"play_left\")):
-		get_parent().set_velocity(get_parent().get_velocity() - Vector2(delta * 64 * 3, 0))
-	elif(get_parent().is_action_pressed(\"play_right\")):
-		get_parent().set_velocity(get_parent().get_velocity() + Vector2(delta * 64 * 3, 0))"
+#	elif(get_parent().is_action_pressed(\"play_left\")):
+#		get_parent().set_velocity(get_parent().get_velocity() - Vector2(delta * 64 * 3, 0))
+#	elif(get_parent().is_action_pressed(\"play_right\")):
+#		get_parent().set_velocity(get_parent().get_velocity() + Vector2(delta * 64 * 3, 0))
+	print(\"STAND WHY\")"
 
 [node name="track_jumping" type="Node2D" index="0"]
 

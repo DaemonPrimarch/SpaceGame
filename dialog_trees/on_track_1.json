@@ -1,1 +1,1 @@
-{"2":{"name":"","scroll_speed":10,"text":"Ow... I'm sorry, inappropriate."},"start":{"name":"","next":"2","scroll_speed":10,"text":"WOOO!"}}
+{"2":{"name":"","next":"3","scroll_speed":10,"text":"Well you were right, this is definately a fast way to\ntravel."},"3":{"name":"","next":"4","scroll_speed":10,"text":"I still can't believe tht after all these years you've sp\nent on this ship you've never here."},"4":{"name":"","scroll_speed":10,"text":"Maybe thats why I lasted so long..."},"start":{"name":"","next":"2","scroll_speed":10,"text":"WOOO!"}}

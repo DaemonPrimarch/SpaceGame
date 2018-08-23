@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=2]
+[gd_scene load_steps=41 format=2]
 
 [ext_resource path="res://addons/room/room.gd" type="Script" id=1]
 [ext_resource path="res://nodes/room_elements/regular_damage_area.tscn" type="PackedScene" id=2]
@@ -10,30 +10,29 @@
 [ext_resource path="res://nodes/room_elements/moving_track.tscn" type="PackedScene" id=8]
 [ext_resource path="res://nodes/terrain.tscn" type="PackedScene" id=9]
 [ext_resource path="res://nodes/room_elements/helper_areas/no_respawn_area.tscn" type="PackedScene" id=10]
-[ext_resource path="res://addons/extended_camera_2D/camera_limit_area.gd" type="Script" id=11]
-[ext_resource path="res://addons/extended_collision_polygon_2D/extended_collision_polygon_2D.gd" type="Script" id=12]
-[ext_resource path="res://addons/extended_camera_2D/camera_limit_rect.gd" type="Script" id=13]
-[ext_resource path="res://addons/extended_camera_2D/limit_rect_setter.gd" type="Script" id=14]
-[ext_resource path="res://nodes/room_elements/on_enter_cutscene_player.tscn" type="PackedScene" id=15]
-[ext_resource path="res://addons/cutscene_player/cutscene_player.gd" type="Script" id=16]
-[ext_resource path="res://addons/cutscene_player/animation_player.svg" type="Texture" id=17]
-[ext_resource path="res://nodes/entities/player/playable_character.tscn" type="PackedScene" id=18]
-[ext_resource path="res://nodes/state_handlers/general/on_track_handler.tscn" type="PackedScene" id=19]
-[ext_resource path="res://nodes/state_handlers/general/track_jumping.tscn" type="PackedScene" id=20]
-[ext_resource path="res://addons/state_handler/state_handler.gd" type="Script" id=21]
-[ext_resource path="res://addons/state_handler/kinematic_body_2D.svg" type="Texture" id=22]
-[ext_resource path="res://nodes/children_function_caller.tscn" type="PackedScene" id=23]
-[ext_resource path="res://nodes/room_elements/switch_system.tscn" type="PackedScene" id=24]
-[ext_resource path="res://nodes/room_elements/bullet_switch_element.tscn" type="PackedScene" id=25]
+[ext_resource path="res://addons/extended_camera_2D/camera_limit_rect.gd" type="Script" id=11]
+[ext_resource path="res://addons/extended_camera_2D/limit_rect_setter.gd" type="Script" id=12]
+[ext_resource path="res://addons/extended_collision_polygon_2D/extended_collision_polygon_2D.gd" type="Script" id=13]
+[ext_resource path="res://nodes/room_elements/on_enter_cutscene_player.tscn" type="PackedScene" id=14]
+[ext_resource path="res://addons/cutscene_player/cutscene_player.gd" type="Script" id=15]
+[ext_resource path="res://addons/cutscene_player/animation_player.svg" type="Texture" id=16]
+[ext_resource path="res://nodes/entities/player/playable_character.tscn" type="PackedScene" id=17]
+[ext_resource path="res://nodes/state_handlers/general/on_track_handler.tscn" type="PackedScene" id=18]
+[ext_resource path="res://nodes/state_handlers/general/track_jumping.tscn" type="PackedScene" id=19]
+[ext_resource path="res://addons/state_handler/state_handler.gd" type="Script" id=20]
+[ext_resource path="res://addons/state_handler/kinematic_body_2D.svg" type="Texture" id=21]
+[ext_resource path="res://nodes/children_function_caller.tscn" type="PackedScene" id=22]
+[ext_resource path="res://nodes/room_elements/switch_system.tscn" type="PackedScene" id=23]
+[ext_resource path="res://nodes/room_elements/bullet_switch_element.tscn" type="PackedScene" id=24]
+[ext_resource path="res://addons/extended_camera_2D/camera_limit_area.gd" type="Script" id=25]
 [ext_resource path="res://addons/extended_camera_2D/camera_limit_custom_rect.gd" type="Script" id=26]
-[ext_resource path="res://nodes/camera_limit_set_area.tscn" type="PackedScene" id=27]
-[ext_resource path="res://addons/extended_collision_polygon_2D/polygon.svg" type="Texture" id=28]
-[ext_resource path="res://nodes/entities/player/puppet_player.tscn" type="PackedScene" id=29]
-[ext_resource path="res://nodes/state_handlers/general/on_track_handler.gd" type="Script" id=30]
-[ext_resource path="res://addons/state_labels/boolean_state_label.gd" type="Script" id=31]
-[ext_resource path="res://addons/state_labels/label.svg" type="Texture" id=32]
-[ext_resource path="res://icon.png" type="Texture" id=33]
-[ext_resource path="res://addons/state_labels/state_label.gd" type="Script" id=34]
+[ext_resource path="res://nodes/room_elements/regular_warp_tile.tscn" type="PackedScene" id=27]
+[ext_resource path="res://nodes/entities/player/puppet_player.tscn" type="PackedScene" id=28]
+[ext_resource path="res://nodes/state_handlers/general/on_track_handler.gd" type="Script" id=29]
+[ext_resource path="res://addons/state_labels/boolean_state_label.gd" type="Script" id=30]
+[ext_resource path="res://addons/state_labels/label.svg" type="Texture" id=31]
+[ext_resource path="res://icon.png" type="Texture" id=32]
+[ext_resource path="res://addons/state_labels/state_label.gd" type="Script" id=33]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -56,7 +55,7 @@ length = 15.0
 loop = false
 step = 0.05
 tracks/0/type = "value"
-tracks/0/path = NodePath("player/ExtendedCamera2D:position")
+tracks/0/path = NodePath("player/ExtendedCamera2D:position:x")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -65,7 +64,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.05, 2 ),
 "transitions": PoolRealArray( 0, 1, 1 ),
 "update": 0,
-"values": [ Vector2( 0, 0 ), Vector2( 640, 0 ), Vector2( 768, 0 ) ]
+"values": [ 0.0, 640.0, 768.0 ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("section_2/on_enter_cutscene_player/humans/human_1:current_state")
@@ -168,10 +167,10 @@ func process_state(delta):
 		print(get_parent().track_manager.is_on_track())
 	if(not get_parent().is_action_pressed(\"jump\") and get_parent().get_velocity().y < 0):
 		get_parent().set_velocity(Vector2(get_parent().get_velocity().x, 0))
-	elif(get_parent().is_action_pressed(\"play_left\")):
-		get_parent().set_velocity(get_parent().get_velocity() - Vector2(delta * 64 * 3, 0))
-	elif(get_parent().is_action_pressed(\"play_right\")):
-		get_parent().set_velocity(get_parent().get_velocity() + Vector2(delta * 64 * 3, 0))"
+#	elif(get_parent().is_action_pressed(\"play_left\")):
+#		get_parent().set_velocity(get_parent().get_velocity() - Vector2(delta * 64 * 3, 0))
+#	elif(get_parent().is_action_pressed(\"play_right\")):
+#		get_parent().set_velocity(get_parent().get_velocity() + Vector2(delta * 64 * 3, 0))"
 
 [sub_resource type="GDScript" id=7]
 
@@ -226,6 +225,7 @@ polygon = PoolVector2Array( 32, -352, -32, -352, -32, 160, 32, 160 )
 
 margin_top = -352.0
 margin_bottom = 160.0
+auto_resize = true
 
 [node name="Sprite" parent="section_1/damage_area9/TemporarySprite" index="0"]
 
@@ -245,6 +245,7 @@ polygon = PoolVector2Array( 32, -352, -32, -352, -32, 96, 32, 96 )
 
 margin_top = -352.0
 margin_bottom = 96.0
+auto_resize = true
 
 [node name="Sprite" parent="section_1/damage_area8/TemporarySprite" index="0"]
 
@@ -263,6 +264,7 @@ polygon = PoolVector2Array( 32, -352, -32, -352, -32, 32, 32, 32 )
 [node name="TemporarySprite" parent="section_1/damage_area6" index="1"]
 
 margin_top = -352.0
+auto_resize = true
 
 [node name="Sprite" parent="section_1/damage_area6/TemporarySprite" index="0"]
 
@@ -273,6 +275,10 @@ scale = Vector2( 1, 1.5 )
 editor/display_folded = true
 position = Vector2( 8476.75, 936.651 )
 respawn_entity = true
+
+[node name="TemporarySprite" parent="section_1/damage_area7" index="1"]
+
+auto_resize = true
 
 [node name="damage_area5" parent="section_1" index="4" instance=ExtResource( 2 )]
 
@@ -287,6 +293,7 @@ polygon = PoolVector2Array( 32, -96, -32, -96, -32, 32, 32, 32 )
 [node name="TemporarySprite" parent="section_1/damage_area5" index="1"]
 
 margin_top = -96.0
+auto_resize = true
 
 [node name="Sprite" parent="section_1/damage_area5/TemporarySprite" index="0"]
 
@@ -305,6 +312,7 @@ polygon = PoolVector2Array( 32, -160, -32, -160, -32, 32, 32, 32 )
 [node name="TemporarySprite" parent="section_1/damage_area4" index="1"]
 
 margin_top = -160.0
+auto_resize = true
 
 [node name="Sprite" parent="section_1/damage_area4/TemporarySprite" index="0"]
 
@@ -323,6 +331,7 @@ polygon = PoolVector2Array( 32, -160, -32, -160, -32, 32, 32, 32 )
 [node name="TemporarySprite" parent="section_1/damage_area3" index="1"]
 
 margin_top = -160.0
+auto_resize = true
 
 [node name="Sprite" parent="section_1/damage_area3/TemporarySprite" index="0"]
 
@@ -341,6 +350,7 @@ polygon = PoolVector2Array( 32, -160, -32, -160, -32, 32, 32, 32 )
 [node name="TemporarySprite" parent="section_1/damage_area2" index="1"]
 
 margin_top = -160.0
+auto_resize = true
 
 [node name="Sprite" parent="section_1/damage_area2/TemporarySprite" index="0"]
 
@@ -359,6 +369,7 @@ polygon = PoolVector2Array( 32, -160, -32, -160, -32, 32, 32, 32 )
 [node name="TemporarySprite" parent="section_1/damage_area" index="1"]
 
 margin_top = -160.0
+auto_resize = true
 
 [node name="Sprite" parent="section_1/damage_area/TemporarySprite" index="0"]
 
@@ -484,31 +495,7 @@ editor/display_folded = true
 visible = false
 position = Vector2( 32, 32 )
 
-[node name="camera_container" type="Area2D" parent="section_1" index="17"]
-
-position = Vector2( 128, 1536 )
-input_pickable = true
-gravity_vec = Vector2( 0, 1 )
-gravity = 98.0
-linear_damp = 0.1
-angular_damp = 1.0
-audio_bus_override = false
-audio_bus_name = "Master"
-script = ExtResource( 11 )
-simple = true
-can_zoom_out = false
-custom_container = null
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="section_1/camera_container" index="0"]
-
-build_mode = 0
-polygon = PoolVector2Array( -32, -32, -32, 928, 16608, 928, 16608, -32 )
-script = ExtResource( 12 )
-__meta__ = {
-"_edit_lock_": true
-}
-
-[node name="CameraLimitRect" type="Polygon2D" parent="section_1" index="18"]
+[node name="CameraLimitRect" type="Polygon2D" parent="section_1" index="17"]
 
 polygon = PoolVector2Array( 0, 0, 0, 960, 16640, 960, 16640, 0 )
 uv = PoolVector2Array(  )
@@ -522,7 +509,7 @@ texture_scale = Vector2( 1, 1 )
 texture_rotation_degrees = 0.0
 invert_enable = false
 invert_border = 100.0
-script = ExtResource( 13 )
+script = ExtResource( 11 )
 simple = true
 can_zoom_out = false
 
@@ -535,7 +522,7 @@ linear_damp = 0.1
 angular_damp = 1.0
 audio_bus_override = false
 audio_bus_name = "Master"
-script = ExtResource( 14 )
+script = ExtResource( 12 )
 __meta__ = {
 "_edit_lock_": true
 }
@@ -544,7 +531,7 @@ __meta__ = {
 
 build_mode = 0
 polygon = PoolVector2Array( 0, 0, 0, 960, 16640, 960, 16640, 0 )
-script = ExtResource( 12 )
+script = ExtResource( 13 )
 
 [node name="section_2" type="Node2D" parent="." index="2"]
 
@@ -556,7 +543,7 @@ speed = 512
 length = 5760
 fast_camera_offset = Vector2( 384, 0 )
 
-[node name="on_enter_cutscene_player" parent="section_2" index="1" instance=ExtResource( 15 )]
+[node name="on_enter_cutscene_player" parent="section_2" index="1" instance=ExtResource( 14 )]
 
 position = Vector2( 9248, 800 )
 
@@ -573,9 +560,9 @@ playback_default_blend_time = 0.0
 playback_speed = 1.0
 anims/cutscene = SubResource( 4 )
 blend_times = [  ]
-script = ExtResource( 16 )
+script = ExtResource( 15 )
 __meta__ = {
-"_editor_icon": ExtResource( 17 )
+"_editor_icon": ExtResource( 16 )
 }
 dialog_tree = "res://dialog_trees/long_track_1.json"
 paused = false
@@ -584,7 +571,7 @@ paused = false
 
 position = Vector2( 1344, 0 )
 
-[node name="human_1" parent="section_2/on_enter_cutscene_player/humans" index="0" instance=ExtResource( 18 )]
+[node name="human_1" parent="section_2/on_enter_cutscene_player/humans" index="0" instance=ExtResource( 17 )]
 
 position = Vector2( 96, 0 )
 collision_layer = 0
@@ -592,21 +579,21 @@ collision_mask = 1
 _sections_unfolded = [ "Collision", "Pause", "Pickable", "Visibility", "collision" ]
 action_override = true
 
-[node name="on_track_handler" parent="section_2/on_enter_cutscene_player/humans/human_1" index="14" instance=ExtResource( 19 )]
+[node name="on_track_handler" parent="section_2/on_enter_cutscene_player/humans/human_1" index="14" instance=ExtResource( 18 )]
 
-[node name="track_jumping" parent="section_2/on_enter_cutscene_player/humans/human_1" index="15" instance=ExtResource( 20 )]
+[node name="track_jumping" parent="section_2/on_enter_cutscene_player/humans/human_1" index="15" instance=ExtResource( 19 )]
 
 [node name="standing_handler" type="Node2D" parent="section_2/on_enter_cutscene_player/humans/human_1" index="16"]
 
-script = ExtResource( 21 )
+script = ExtResource( 20 )
 __meta__ = {
-"_editor_icon": ExtResource( 22 )
+"_editor_icon": ExtResource( 21 )
 }
 handled_state = "STANDING"
 enabled = true
 no_gravity = false
 
-[node name="human_2" parent="section_2/on_enter_cutscene_player/humans" index="1" instance=ExtResource( 18 )]
+[node name="human_2" parent="section_2/on_enter_cutscene_player/humans" index="1" instance=ExtResource( 17 )]
 
 position = Vector2( 192, 0 )
 collision_layer = 0
@@ -614,15 +601,15 @@ collision_mask = 1
 _sections_unfolded = [ "Collision", "Pause", "Pickable", "Visibility", "collision" ]
 action_override = true
 
-[node name="on_track_handler" parent="section_2/on_enter_cutscene_player/humans/human_2" index="14" instance=ExtResource( 19 )]
+[node name="on_track_handler" parent="section_2/on_enter_cutscene_player/humans/human_2" index="14" instance=ExtResource( 18 )]
 
-[node name="track_jumping" parent="section_2/on_enter_cutscene_player/humans/human_2" index="15" instance=ExtResource( 20 )]
+[node name="track_jumping" parent="section_2/on_enter_cutscene_player/humans/human_2" index="15" instance=ExtResource( 19 )]
 
 [node name="standing_handler" type="Node2D" parent="section_2/on_enter_cutscene_player/humans/human_2" index="16"]
 
-script = ExtResource( 21 )
+script = ExtResource( 20 )
 __meta__ = {
-"_editor_icon": ExtResource( 22 )
+"_editor_icon": ExtResource( 21 )
 }
 handled_state = "STANDING"
 enabled = true
@@ -630,14 +617,13 @@ no_gravity = false
 
 [node name="section_3" type="Node2D" parent="." index="3"]
 
-editor/display_folded = true
 position = Vector2( 14976, 0 )
 
 [node name="terrain" parent="section_3" index="0" instance=ExtResource( 9 )]
 
 tile_data = PoolIntArray( -982962, 0, 0, -982961, 0, 0, -982960, 0, 0, -982959, 0, 0, -982958, 0, 0, -982957, 0, 0, -982956, 0, 0, -982955, 0, 0, -982954, 0, 0, -982953, 0, 0, -982952, 0, 0, -982951, 0, 0, -982950, 0, 0, -982949, 0, 0, -982948, 0, 0, -982947, 0, 0, -982946, 0, 0, -982945, 0, 0, -982944, 0, 0, -982943, 0, 0, -982942, 0, 0, -982941, 0, 0, -982940, 0, 0, -982939, 0, 0, -982938, 0, 0, -982937, 0, 0, -982936, 0, 0, -982935, 0, 0, -982934, 0, 0, -982933, 0, 0, -982932, 0, 0, -982931, 0, 0, -982930, 0, 0, -982929, 0, 0, -982928, 0, 0, -982927, 0, 0, -982926, 0, 0, -982925, 0, 0, -982924, 0, 0, -982923, 0, 0, -982922, 0, 0, -982921, 0, 0, -982920, 0, 0, -982919, 0, 0, -982918, 0, 0, -982917, 0, 0, -982916, 0, 0, -982915, 0, 0, -982914, 0, 0, -982913, 0, 0, -982912, 0, 0, -982911, 0, 0, -917426, 0, 0, -851890, 0, 0, -786354, 0, 0, -720818, 0, 0, -655282, 0, 0, -589746, 0, 0, -524210, 0, 0, -458674, 0, 0, -393138, 0, 0, -327602, 0, 0, -262066, 0, 0, -196530, 0, 0, -130994, 0, 0, -65458, 0, 0, 0, 0, 0, 1, 0, 0, 2, 0, 0, 3, 0, 0, 4, 0, 0, 5, 0, 0, 6, 0, 0, 7, 0, 0, 8, 0, 0, 9, 0, 0, 10, 0, 0, 11, 0, 0, 12, 0, 0, 13, 0, 0, 14, 0, 0, 15, 0, 0, 16, 0, 0, 17, 0, 0, 18, 0, 0, 19, 0, 0, 20, 0, 0, 21, 0, 0, 22, 0, 0, 23, 0, 0, 24, 0, 0, 25, 0, 0, 26, 0, 0, 27, 0, 0, 28, 0, 0, 29, 0, 0, 30, 0, 0, 31, 0, 0, 32, 0, 0, 33, 0, 0, 34, 0, 0, 35, 0, 0, 36, 0, 0, 37, 0, 0, 38, 0, 0, 39, 0, 0, 40, 0, 0, 41, 0, 0, 42, 0, 0, 43, 0, 0, 44, 0, 0, 45, 0, 0, 46, 0, 0, 47, 0, 0, 48, 0, 0, 49, 0, 0, 50, 0, 0, 51, 0, 0, 52, 0, 0, 53, 0, 0, 54, 0, 0, 55, 0, 0, 56, 0, 0, 57, 0, 0, 58, 0, 0, 59, 0, 0, 60, 0, 0, 61, 0, 0, 62, 0, 0, 63, 0, 0, 64, 0, 0, 65, 0, 0, 66, 0, 0, 67, 0, 0, 68, 0, 0, 69, 0, 0, 70, 0, 0, 71, 0, 0, 72, 0, 0, 73, 0, 0, 74, 0, 0, 75, 0, 0, 76, 0, 0, 77, 0, 0, 78, 0, 0, 100, 0, 0, 101, 0, 0, 102, 0, 0, 103, 0, 0, 104, 0, 0, 105, 0, 0, 106, 0, 0, 107, 0, 0, 108, 0, 0, 109, 0, 0, 110, 0, 0, 111, 0, 0, 112, 0, 0, 113, 0, 0, 114, 0, 0, 115, 0, 0, 116, 0, 0, 117, 0, 0, 118, 0, 0, 119, 0, 0, 120, 0, 0, 121, 0, 0, 122, 0, 0, 123, 0, 0, 124, 0, 0, 125, 0, 0, 126, 0, 0, 127, 0, 0, 128, 0, 0, 129, 0, 0, 655411, 93, 0, 655412, 93, 0, 851968, 0, 0, 851969, 0, 0, 851970, 0, 0, 851971, 0, 0, 851972, 0, 0, 917504, 0, 0, 917505, 0, 0, 917506, 0, 0, 917507, 0, 0, 917508, 0, 0, 917509, 0, 0, 917510, 0, 0, 917511, 0, 0, 917512, 0, 0, 917513, 0, 0, 917514, 0, 0, 917515, 0, 0, 917516, 0, 0, 917517, 0, 0, 917518, 0, 0, 917519, 0, 0, 917520, 0, 0, 917521, 0, 0, 917522, 0, 0, 917523, 0, 0, 917524, 0, 0, 917525, 0, 0, 917526, 0, 0, 917527, 0, 0, 917528, 0, 0, 917529, 0, 0, 917530, 0, 0, 917531, 0, 0, 917532, 0, 0, 917533, 0, 0, 917534, 0, 0, 917535, 0, 0, 917536, 0, 0, 917537, 0, 0, 917538, 0, 0, 917539, 0, 0, 917540, 0, 0, 917541, 0, 0, 917542, 0, 0, 917543, 0, 0, 917544, 0, 0, 917545, 0, 0, 917546, 0, 0, 917547, 0, 0, 917548, 0, 0, 917549, 0, 0, 917550, 0, 0, 917551, 0, 0, 917552, 0, 0, 917553, 0, 0, 917554, 0, 0, 917555, 0, 0, 917556, 0, 0, 917557, 0, 0, 917558, 0, 0, 917559, 0, 0, 917560, 0, 0, 917561, 0, 0, 917562, 0, 0, 917563, 0, 0, 917564, 0, 0, 917565, 0, 0, 917566, 0, 0, 917567, 0, 0, 917568, 0, 0, 917569, 0, 0, 917570, 0, 0, 917571, 0, 0, 917572, 0, 0, 917573, 0, 0, 917574, 0, 0, 917575, 0, 0, 917576, 0, 0, 917577, 0, 0, 917578, 0, 0, 917579, 0, 0, 917580, 0, 0, 917581, 0, 0, 917582, 0, 0, 917583, 0, 0, 917584, 0, 0, 917585, 0, 0, 917586, 0, 0, 917587, 0, 0, 917588, 0, 0, 917589, 0, 0, 917590, 0, 0, 917591, 0, 0, 917592, 0, 0, 917593, 0, 0, 917594, 0, 0, 917595, 0, 0, 917596, 0, 0, 917597, 0, 0, 917598, 0, 0, 917599, 0, 0, 917600, 0, 0, 917601, 0, 0, 917602, 0, 0, 917603, 0, 0, 917604, 0, 0, 917605, 0, 0, 917606, 0, 0, 917607, 0, 0, 917608, 0, 0, 917609, 0, 0, 917610, 0, 0, 917611, 0, 0, 917612, 0, 0, 917613, 0, 0, 917614, 0, 0, 917615, 0, 0, 917616, 0, 0, 917617, 0, 0, 917618, 0, 0, 917619, 0, 0, 917620, 0, 0, 917621, 0, 0, 917622, 0, 0, 917623, 0, 0, 917624, 0, 0, 917625, 0, 0, 917626, 0, 0, 917627, 0, 0, 917628, 0, 0, 917629, 0, 0, 917630, 0, 0, 917631, 0, 0, 917632, 0, 0, 917633, 0, 0 )
 
-[node name="tracks" parent="section_3" index="1" instance=ExtResource( 23 )]
+[node name="tracks" parent="section_3" index="1" instance=ExtResource( 22 )]
 
 [node name="moving_track2" parent="section_3/tracks" index="0" instance=ExtResource( 8 )]
 
@@ -719,22 +705,22 @@ fast = true
 fast_camera_offset = Vector2( 384, 0 )
 applies_fast_camera_offset = true
 
-[node name="switch_system" parent="section_3" index="2" instance=ExtResource( 24 )]
+[node name="switch_system" parent="section_3" index="2" instance=ExtResource( 23 )]
 
 _sections_unfolded = [ "Transform" ]
 state = true
 toggleable = true
 
-[node name="bullet_switch_element" parent="section_3/switch_system" index="0" instance=ExtResource( 25 )]
+[node name="bullet_switch_element" parent="section_3/switch_system" index="0" instance=ExtResource( 24 )]
 
 position = Vector2( 8320, 768 )
 _sections_unfolded = [ "Collision", "Visibility" ]
 
-[node name="bullet_switch_element3" parent="section_3/switch_system" index="1" instance=ExtResource( 25 )]
+[node name="bullet_switch_element3" parent="section_3/switch_system" index="1" instance=ExtResource( 24 )]
 
 position = Vector2( 4992, 768 )
 
-[node name="bullet_switch_element4" parent="section_3/switch_system" index="2" instance=ExtResource( 25 )]
+[node name="bullet_switch_element4" parent="section_3/switch_system" index="2" instance=ExtResource( 24 )]
 
 position = Vector2( 5056, -64 )
 
@@ -753,6 +739,7 @@ polygon = PoolVector2Array( 32, -384, -32, -384, -32, 32, 32, 32 )
 [node name="TemporarySprite" parent="section_3/damage_area" index="1"]
 
 margin_top = -384.0
+auto_resize = true
 
 [node name="Sprite" parent="section_3/damage_area/TemporarySprite" index="0"]
 
@@ -773,6 +760,7 @@ polygon = PoolVector2Array( 32, -800, -32, -800, -32, 32, 32, 32 )
 [node name="TemporarySprite" parent="section_3/damage_area2" index="1"]
 
 margin_top = -800.0
+auto_resize = true
 
 [node name="Sprite" parent="section_3/damage_area2/TemporarySprite" index="0"]
 
@@ -793,6 +781,7 @@ polygon = PoolVector2Array( 32, -160, -32, -160, -32, 32, 32, 32 )
 [node name="TemporarySprite" parent="section_3/damage_area3" index="1"]
 
 margin_top = -160.0
+auto_resize = true
 
 [node name="Sprite" parent="section_3/damage_area3/TemporarySprite" index="0"]
 
@@ -813,6 +802,7 @@ polygon = PoolVector2Array( 160, 32, 160, -32, -32, -32, -32, 32 )
 [node name="TemporarySprite" parent="section_3/damage_area4" index="1"]
 
 margin_right = 160.0
+auto_resize = true
 
 [node name="Sprite" parent="section_3/damage_area4/TemporarySprite" index="0"]
 
@@ -856,16 +846,17 @@ linear_damp = 0.1
 angular_damp = 1.0
 audio_bus_override = false
 audio_bus_name = "Master"
-script = ExtResource( 11 )
+script = ExtResource( 25 )
 simple = false
 can_zoom_out = false
 custom_container = NodePath("CameraLimitCustomRect")
+transition_speed = 640
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="section_3/camera_container2" index="0"]
 
 build_mode = 0
 polygon = PoolVector2Array( -32, -32, -32, 928, 5920, 928, 5920, 160, 5728, 160, 5728, -32 )
-script = ExtResource( 12 )
+script = ExtResource( 13 )
 __meta__ = {
 "_edit_lock_": true
 }
@@ -887,37 +878,12 @@ invert_enable = false
 invert_border = 100.0
 script = ExtResource( 26 )
 
-[node name="camera_container3" type="Area2D" parent="section_3" index="10"]
+[node name="CameraLimitRect" type="Polygon2D" parent="section_3" index="10"]
 
-position = Vector2( 6048, 3232 )
-input_pickable = true
-gravity_vec = Vector2( 0, 1 )
-gravity = 98.0
-linear_damp = 0.1
-angular_damp = 1.0
-audio_bus_override = false
-audio_bus_name = "Master"
-script = ExtResource( 11 )
-simple = false
-can_zoom_out = false
-custom_container = NodePath("CameraLimitCustomRect2")
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="section_3/camera_container3" index="0"]
-
-build_mode = 0
-polygon = PoolVector2Array( 1184, 448, 1184, 928, 3296, 928, 3264, 640, 1248, 672, 1248, 448 )
-script = ExtResource( 12 )
-__meta__ = {
-"_edit_lock_": true
-}
-
-[node name="CameraLimitCustomRect2" type="Polygon2D" parent="section_3/camera_container3" index="1"]
-
-visible = false
-position = Vector2( -4992, 0 )
-polygon = PoolVector2Array( 8288, -32, 4960, -32, 4960, 928, 8288, 928 )
+position = Vector2( 4992, 0 )
+polygon = PoolVector2Array( 0, 0, 0, 960, 3328, 960, 3328, 0 )
 uv = PoolVector2Array(  )
-color = Color( 1, 0, 0, 0.7 )
+color = Color( 1, 0, 0, 0 )
 vertex_colors = PoolColorArray(  )
 offset = Vector2( 0, 0 )
 antialiased = false
@@ -927,11 +893,12 @@ texture_scale = Vector2( 1, 1 )
 texture_rotation_degrees = 0.0
 invert_enable = false
 invert_border = 100.0
-script = ExtResource( 26 )
+script = ExtResource( 11 )
+simple = false
+can_zoom_out = false
 
-[node name="camera_container4" type="Area2D" parent="section_3" index="11"]
+[node name="simple_limit_set_area" type="Area2D" parent="section_3/CameraLimitRect" index="0"]
 
-position = Vector2( 5024, 32 )
 input_pickable = true
 gravity_vec = Vector2( 0, 1 )
 gravity = 98.0
@@ -939,51 +906,23 @@ linear_damp = 0.1
 angular_damp = 1.0
 audio_bus_override = false
 audio_bus_name = "Master"
-script = ExtResource( 11 )
-simple = false
-can_zoom_out = false
-custom_container = NodePath("CameraLimitCustomRect2")
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="section_3/camera_container4" index="0"]
-
-build_mode = 0
-polygon = PoolVector2Array( 736, 160, 736, -32, 800, -32, 1248, -96, 1248, -32, 1376, -32, 1376, 32, 3232, 32, 3232, 224, 928, 224, 928, 160 )
 script = ExtResource( 12 )
 __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="CameraLimitCustomRect2" type="Polygon2D" parent="section_3/camera_container4" index="1"]
-
-visible = false
-position = Vector2( -4992, 0 )
-polygon = PoolVector2Array( 8288, -992, 4960, -992, 4960, 928, 8288, 928 )
-uv = PoolVector2Array(  )
-color = Color( 1, 0, 0, 0.7 )
-vertex_colors = PoolColorArray(  )
-offset = Vector2( 0, 0 )
-antialiased = false
-texture = null
-texture_offset = Vector2( 0, 0 )
-texture_scale = Vector2( 1, 1 )
-texture_rotation_degrees = 0.0
-invert_enable = false
-invert_border = 100.0
-script = ExtResource( 26 )
-
-[node name="Area2D" parent="section_3/camera_container4" index="2" instance=ExtResource( 27 )]
-
-[node name="ExtendedCollisionPolygon2D" type="CollisionPolygon2D" parent="section_3/camera_container4/Area2D" index="0"]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="section_3/CameraLimitRect/simple_limit_set_area" index="0"]
 
 build_mode = 0
-polygon = PoolVector2Array( 928, 224, 928, 800, 3232, 800, 3232, 224 )
-script = ExtResource( 12 )
+polygon = PoolVector2Array( 3328, 960, 3328, 0, 768, 0, 768, 192, 960, 192, 960, 960 )
+script = ExtResource( 13 )
 __meta__ = {
-"_editor_icon": ExtResource( 28 )
+"_edit_lock_": true
 }
 
 [node name="section_4" type="Node2D" parent="." index="4"]
 
+editor/display_folded = true
 position = Vector2( 23296, 0 )
 
 [node name="terrain" parent="section_4" index="0" instance=ExtResource( 9 )]
@@ -1009,16 +948,17 @@ linear_damp = 0.1
 angular_damp = 1.0
 audio_bus_override = false
 audio_bus_name = "Master"
-script = ExtResource( 11 )
+script = ExtResource( 25 )
 simple = false
 can_zoom_out = false
 custom_container = NodePath("CameraLimitCustomRect3")
+transition_speed = 640
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="section_4/camera_container3" index="0"]
 
 build_mode = 0
 polygon = PoolVector2Array( 1248, -32, -32, -32, -32, 928, 736, 928, 736, 928, 800, 928, 1248, 864, 1248, 928, 12192, 928, 12192, -32 )
-script = ExtResource( 12 )
+script = ExtResource( 13 )
 __meta__ = {
 "_edit_lock_": true
 }
@@ -1043,12 +983,15 @@ script = ExtResource( 26 )
 [node name="section_5" type="Node2D" parent="." index="5"]
 
 position = Vector2( 28416, 0 )
+_sections_unfolded = [ "Transform" ]
 
 [node name="terrain" parent="section_5" index="0" instance=ExtResource( 9 )]
 
 tile_data = PoolIntArray( -983040, 0, 0, -983039, 0, 0, -983038, 0, 0, -983037, 0, 0, -983036, 0, 0, -983035, 0, 0, -983034, 0, 0, -983033, 0, 0, -983032, 0, 0, -983031, 0, 0, -983030, 0, 0, -983029, 0, 0, -983028, 0, 0, -983027, 0, 0, -983026, 0, 0, -983025, 0, 0, -983024, 0, 0, -983023, 0, 0, -983022, 0, 0, -983021, 0, 0, -983020, 0, 0, -983019, 0, 0, -983018, 0, 0, -983017, 0, 0, -983016, 0, 0, -983015, 0, 0, -983014, 0, 0, -983013, 0, 0, -983012, 0, 0, -983011, 0, 0, -983010, 0, 0, -983009, 0, 0, -983008, 0, 0, -983007, 0, 0, -983006, 0, 0, -983005, 0, 0, -983004, 0, 0, -983003, 0, 0, -983002, 0, 0, -983001, 0, 0, -983000, 0, 0, -982999, 0, 0, -982998, 0, 0, -982997, 0, 0, -982996, 0, 0, -982995, 0, 0, -982994, 0, 0, -982993, 0, 0, -982992, 0, 0, -982991, 0, 0, -982990, 0, 0, -982989, 0, 0, -982988, 0, 0, -982987, 0, 0, -982986, 0, 0, -982985, 0, 0, -982984, 0, 0, -982983, 0, 0, -982982, 0, 0, -982981, 0, 0, -982980, 0, 0, -982979, 0, 0, -982978, 0, 0, -982977, 0, 0, -982976, 0, 0, -982975, 0, 0, -982974, 0, 0, -982973, 0, 0, -982972, 0, 0, -982971, 0, 0, -982970, 0, 0, -982969, 0, 0, -982968, 0, 0, -982967, 0, 0, -982966, 0, 0, -982965, 0, 0, -982964, 0, 0, -982963, 0, 0, -982962, 0, 0, -982961, 0, 0, -982960, 0, 0, -982959, 0, 0, -982958, 0, 0, -982957, 0, 0, -982956, 0, 0, -982955, 0, 0, -982954, 0, 0, -982953, 0, 0, -982952, 0, 0, -982951, 0, 0, -982950, 0, 0, -982949, 0, 0, -982948, 0, 0, -982947, 0, 0, -982946, 0, 0, -982945, 0, 0, -982944, 0, 0, -982943, 0, 0, -982942, 0, 0, -982941, 0, 0, -982940, 0, 0, -982939, 0, 0, -917403, 0, 0, -851867, 0, 0, -786331, 0, 0, -720795, 0, 0, -655259, 0, 0, -589723, 0, 0, -524187, 0, 0, -458651, 0, 0, -393115, 0, 0, -327579, 0, 0, -196586, 0, 0, -196585, 0, 0, -196584, 0, 0, -196583, 0, 0, -196582, 0, 0, -196581, 0, 0, -196580, 0, 0, -196579, 0, 0, -196578, 0, 0, -196577, 0, 0, -196576, 0, 0, -196575, 0, 0, -196574, 0, 0, -196573, 0, 0, -196572, 0, 0, -196571, 0, 0, -196570, 0, 0, -196569, 0, 0, -196568, 0, 0, -196567, 0, 0, -196566, 0, 0, -196565, 0, 0, -196564, 0, 0, -196563, 0, 0, -196562, 0, 0, -196561, 0, 0, -196560, 0, 0, -196559, 0, 0, -196558, 0, 0, -196557, 0, 0, -196556, 0, 0, -196555, 0, 0, -196554, 0, 0, -196553, 0, 0, -196552, 0, 0, -196551, 0, 0, -196550, 0, 0, -196533, 0, 0, -196520, 0, 0, -196519, 0, 0, -196518, 90, 0, -196517, 91, 0, -131050, 0, 0, -131049, 0, 0, -131048, 0, 0, -131047, 0, 0, -131046, 0, 0, -131045, 0, 0, -131044, 0, 0, -131043, 0, 0, -131042, 0, 0, -131041, 0, 0, -131040, 0, 0, -131039, 0, 0, -131038, 0, 0, -131037, 0, 0, -131036, 0, 0, -131035, 0, 0, -131034, 0, 0, -131033, 0, 0, -131032, 0, 0, -131031, 0, 0, -131030, 0, 0, -131029, 0, 0, -131028, 0, 0, -131027, 0, 0, -131026, 0, 0, -131025, 0, 0, -131024, 0, 0, -131023, 0, 0, -131022, 0, 0, -131021, 0, 0, -131020, 0, 0, -131019, 0, 0, -131018, 0, 0, -131017, 0, 0, -131016, 0, 0, -131015, 0, 0, -131014, 0, 0, -130996, 0, 0, -130995, 0, 0, -130994, 0, 0, -130993, 0, 0, -130992, 0, 0, -130991, 0, 0, -130990, 0, 0, -130989, 0, 0, -130988, 0, 0, -130987, 0, 0, -130986, 0, 0, -130985, 0, 0, -130984, 0, 0, -130983, 0, 0, -130982, 0, 0, -130981, 0, 0, -130980, 0, 0, -130979, 0, 0, -130978, 0, 0, -130977, 0, 0, -130976, 0, 0, -130975, 0, 0, -130974, 0, 0, -130973, 0, 0, -130972, 0, 0, -130971, 0, 0, -65514, 0, 0, -65513, 0, 0, -65512, 0, 0, -65511, 0, 0, -65510, 0, 0, -65509, 0, 0, -65508, 0, 0, -65507, 0, 0, -65506, 0, 0, -65505, 0, 0, -65504, 0, 0, -65503, 0, 0, -65502, 0, 0, -65501, 0, 0, -65500, 0, 0, -65499, 0, 0, -65498, 0, 0, -65497, 0, 0, -65496, 0, 0, -65495, 0, 0, -65494, 0, 0, -65493, 0, 0, -65492, 0, 0, -65491, 0, 0, -65490, 0, 0, -65489, 0, 0, -65488, 0, 0, -65487, 0, 0, -65486, 0, 0, -65485, 0, 0, -65484, 0, 0, -65483, 0, 0, -65482, 0, 0, -65481, 0, 0, -65480, 0, 0, -65479, 0, 0, -65478, 0, 0, -65460, 0, 0, -65459, 0, 0, -65458, 0, 0, -65457, 0, 0, -65456, 0, 0, -65455, 0, 0, -65454, 0, 0, -65453, 0, 0, -65452, 0, 0, -65451, 0, 0, -65450, 0, 0, -65449, 0, 0, -65448, 0, 0, -65447, 0, 0, -65446, 0, 0, -65445, 0, 0, -65444, 0, 0, -65443, 0, 0, -65442, 0, 0, -65441, 0, 0, -65440, 0, 0, -65439, 0, 0, -65438, 0, 0, -65437, 0, 0, -65436, 0, 0, -65435, 0, 0, 65534, 0, 0, 65535, 0, 0, 22, 0, 0, 131070, 0, 0, 131071, 0, 0, 65558, 0, 0, 196606, 0, 0, 196607, 0, 0, 131094, 0, 0, 262142, 0, 0, 262143, 0, 0, 196630, 0, 0, 327678, 0, 0, 327679, 0, 0, 262166, 0, 0, 393214, 0, 0, 393215, 0, 0, 327702, 0, 0, 458750, 0, 0, 458751, 0, 0, 393238, 0, 0, 524286, 0, 0, 524287, 0, 0, 458774, 0, 0, 589822, 0, 0, 589823, 0, 0, 524310, 0, 0, 655358, 0, 0, 655359, 0, 0, 589846, 0, 0, 720894, 0, 0, 720895, 0, 0, 655382, 0, 0, 786430, 0, 0, 786431, 0, 0, 720918, 0, 0, 851966, 0, 0, 851967, 0, 0, 786454, 0, 0, 917502, 0, 0, 917503, 0, 0, 851990, 0, 0, 983038, 0, 0, 983039, 0, 0, 917526, 0, 0, 1048574, 0, 0, 1048575, 0, 0, 983062, 0, 0, 1114110, 0, 0, 1114111, 0, 0, 1048598, 0, 0, 1179646, 0, 0, 1179647, 0, 0, 1114134, 0, 0, 1114135, 0, 0, 1245182, 0, 0, 1245183, 0, 0, 1310718, 0, 0, 1310719, 0, 0, 1376254, 0, 0, 1376255, 0, 0, 1441790, 0, 0, 1441791, 0, 0, 1507326, 0, 0, 1507327, 0, 0, 1572862, 0, 0, 1572863, 0, 0, 1638398, 0, 0, 1638399, 0, 0, 1703934, 0, 0, 1703935, 0, 0, 1638400, 93, 0, 1638401, 93, 0, 1769470, 0, 0, 1835006, 0, 0, 1900542, 0, 0, 1900543, 0, 0, 1835083, 0, 0, 1966078, 0, 0, 1966079, 0, 0, 1900544, 0, 0, 1900545, 0, 0, 1900546, 0, 0, 1900547, 0, 0, 1900548, 0, 0, 1900549, 0, 0, 1900550, 0, 0, 1900551, 0, 0, 1900552, 0, 0, 1900553, 0, 0, 1900554, 0, 0, 1900555, 0, 0, 1900556, 0, 0, 1900557, 0, 0, 1900558, 0, 0, 1900559, 0, 0, 1900560, 0, 0, 1900561, 0, 0, 1900562, 0, 0, 1900563, 0, 0, 1900564, 0, 0, 1900565, 0, 0, 1900566, 0, 0, 1900567, 0, 0, 1900568, 0, 0, 1900569, 0, 0, 1900570, 0, 0, 1900571, 0, 0, 1900572, 0, 0, 1900573, 0, 0, 1900574, 0, 0, 1900575, 0, 0, 1900576, 0, 0, 1900577, 0, 0, 1900578, 0, 0, 1900579, 0, 0, 1900580, 0, 0, 1900581, 0, 0, 1900582, 0, 0, 1900583, 0, 0, 1900584, 0, 0, 1900585, 0, 0, 1900586, 0, 0, 1900587, 0, 0, 1900588, 0, 0, 1900589, 0, 0, 1900590, 0, 0, 1900591, 0, 0, 1900592, 0, 0, 1900593, 0, 0, 1900594, 0, 0, 1900595, 0, 0, 1900596, 0, 0, 1900597, 0, 0, 1900598, 0, 0, 1900599, 0, 0, 1900600, 0, 0, 1900601, 0, 0, 1900602, 0, 0, 1900603, 0, 0, 1900604, 0, 0, 1900605, 0, 0, 1900606, 0, 0, 1900607, 0, 0, 1900608, 0, 0, 1900609, 0, 0, 1900610, 0, 0, 1900611, 0, 0, 1900612, 0, 0, 1900613, 0, 0, 1900614, 0, 0, 1900615, 0, 0, 1900616, 0, 0, 1900617, 0, 0, 1900618, 0, 0, 1900619, 0, 0 )
 
-[node name="tracks" parent="section_5" index="1" instance=ExtResource( 23 )]
+[node name="tracks" parent="section_5" index="1" instance=ExtResource( 22 )]
+
+editor/display_folded = true
 
 [node name="moving_track10" parent="section_5/tracks" index="0" instance=ExtResource( 8 )]
 
@@ -1140,21 +1083,22 @@ fast = true
 fast_camera_offset = Vector2( 384, 0 )
 applies_fast_camera_offset = true
 
-[node name="switch_system" parent="section_5" index="2" instance=ExtResource( 24 )]
+[node name="switch_system" parent="section_5" index="2" instance=ExtResource( 23 )]
 
+editor/display_folded = true
 state = true
 toggleable = true
 
-[node name="bullet_switch_element" parent="section_5/switch_system" index="0" instance=ExtResource( 25 )]
+[node name="bullet_switch_element" parent="section_5/switch_system" index="0" instance=ExtResource( 24 )]
 
 position = Vector2( 4864, 1696 )
 
-[node name="bullet_switch_element4" parent="section_5/switch_system" index="1" instance=ExtResource( 25 )]
+[node name="bullet_switch_element4" parent="section_5/switch_system" index="1" instance=ExtResource( 24 )]
 
 position = Vector2( -64, 1728 )
 _sections_unfolded = [ "Collision", "Visibility" ]
 
-[node name="bullet_switch_element2" parent="section_5/switch_system" index="2" instance=ExtResource( 25 )]
+[node name="bullet_switch_element2" parent="section_5/switch_system" index="2" instance=ExtResource( 24 )]
 
 position = Vector2( 1472, 1024 )
 
@@ -1171,6 +1115,7 @@ polygon = PoolVector2Array( 32, -160, -32, -160, -32, 32, 32, 32 )
 [node name="TemporarySprite" parent="section_5/damage_area" index="1"]
 
 margin_top = -160.0
+auto_resize = true
 
 [node name="Sprite" parent="section_5/damage_area/TemporarySprite" index="0"]
 
@@ -1191,6 +1136,7 @@ polygon = PoolVector2Array( 32, -96, -32, -96, -32, 32, 32, 32 )
 [node name="TemporarySprite" parent="section_5/damage_area2" index="1"]
 
 margin_top = -96.0
+auto_resize = true
 
 [node name="Sprite" parent="section_5/damage_area2/TemporarySprite" index="0"]
 
@@ -1211,6 +1157,7 @@ polygon = PoolVector2Array( 32, -1056, -32, -1056, -32, 32, 32, 32 )
 [node name="TemporarySprite" parent="section_5/damage_area3" index="1"]
 
 margin_top = -1056.0
+auto_resize = true
 
 [node name="Sprite" parent="section_5/damage_area3/TemporarySprite" index="0"]
 
@@ -1231,6 +1178,7 @@ polygon = PoolVector2Array( 32, -1888, -32, -1888, -32, 32, 32, 32 )
 [node name="TemporarySprite" parent="section_5/damage_area4" index="1"]
 
 margin_top = -1888.0
+auto_resize = true
 
 [node name="Sprite" parent="section_5/damage_area4/TemporarySprite" index="0"]
 
@@ -1238,6 +1186,7 @@ scale = Vector2( 1, 7.5 )
 
 [node name="respawn_position_setter5" parent="section_5" index="7" instance=ExtResource( 3 )]
 
+editor/display_folded = true
 position = Vector2( 1472, 1600 )
 position_path = NodePath("respawn_position_1")
 
@@ -1268,7 +1217,7 @@ texture_scale = Vector2( 1, 1 )
 texture_rotation_degrees = 0.0
 invert_enable = false
 invert_border = 100.0
-script = ExtResource( 13 )
+script = ExtResource( 11 )
 simple = true
 can_zoom_out = false
 
@@ -1281,7 +1230,7 @@ linear_damp = 0.1
 angular_damp = 1.0
 audio_bus_override = false
 audio_bus_name = "Master"
-script = ExtResource( 14 )
+script = ExtResource( 12 )
 __meta__ = {
 "_edit_lock_": true
 }
@@ -1290,7 +1239,7 @@ __meta__ = {
 
 build_mode = 0
 polygon = PoolVector2Array( -128, -960, 1536, -960, 1536, 1920, -128, 1920 )
-script = ExtResource( 12 )
+script = ExtResource( 13 )
 __meta__ = {
 "_edit_lock_": true
 }
@@ -1310,7 +1259,7 @@ texture_scale = Vector2( 1, 1 )
 texture_rotation_degrees = 0.0
 invert_enable = false
 invert_border = 100.0
-script = ExtResource( 13 )
+script = ExtResource( 11 )
 simple = true
 can_zoom_out = false
 
@@ -1323,7 +1272,7 @@ linear_damp = 0.1
 angular_damp = 1.0
 audio_bus_override = false
 audio_bus_name = "Master"
-script = ExtResource( 14 )
+script = ExtResource( 12 )
 __meta__ = {
 "_edit_lock_": true
 }
@@ -1332,7 +1281,7 @@ __meta__ = {
 
 build_mode = 0
 polygon = PoolVector2Array( 1408, -960, 1408, 1920, 4864, 1920, 4864, -960 )
-script = ExtResource( 12 )
+script = ExtResource( 13 )
 __meta__ = {
 "_edit_lock_": true
 }
@@ -1340,7 +1289,7 @@ __meta__ = {
 [node name="CameraLimitRect3" type="Polygon2D" parent="section_5" index="10"]
 
 editor/display_folded = true
-polygon = PoolVector2Array( 6528, -960, 6528, 32, 3168, 32, 3168, -960, 3168, -960 )
+polygon = PoolVector2Array( 6528, -960, 6528, 0, 3168, 0, 3168, -960, 3168, -960 )
 uv = PoolVector2Array(  )
 color = Color( 1, 0, 0, 0 )
 vertex_colors = PoolColorArray(  )
@@ -1352,7 +1301,7 @@ texture_scale = Vector2( 1, 1 )
 texture_rotation_degrees = 0.0
 invert_enable = false
 invert_border = 100.0
-script = ExtResource( 13 )
+script = ExtResource( 11 )
 simple = true
 can_zoom_out = false
 
@@ -1365,7 +1314,7 @@ linear_damp = 0.1
 angular_damp = 1.0
 audio_bus_override = false
 audio_bus_name = "Master"
-script = ExtResource( 14 )
+script = ExtResource( 12 )
 __meta__ = {
 "_edit_lock_": true
 }
@@ -1373,15 +1322,21 @@ __meta__ = {
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="section_5/CameraLimitRect3/simple_limit_set_area" index="0"]
 
 build_mode = 0
-polygon = PoolVector2Array( 6528, -960, 6528, 32, 3168, 32, 3168, -960, 3168, -960 )
-script = ExtResource( 12 )
+polygon = PoolVector2Array( 6528, -960, 6528, 0, 3168, 0, 3168, -960, 3168, -960 )
+script = ExtResource( 13 )
 __meta__ = {
 "_edit_lock_": true
 }
 
+[node name="warp_tile" parent="section_5" index="11" instance=ExtResource( 27 )]
+
+position = Vector2( 6496, -192 )
+arrival_pos_id = "section_5_arrival"
+flippedH = true
+
 [node name="terrain" parent="." index="6" instance=ExtResource( 9 )]
 
-[node name="player" parent="." index="7" instance=ExtResource( 29 )]
+[node name="player" parent="." index="7" instance=ExtResource( 28 )]
 
 position = Vector2( 320, 608 )
 
@@ -1391,7 +1346,7 @@ editor/display_folded = true
 
 [node name="on_track_handler" parent="player" index="22"]
 
-script = ExtResource( 30 )
+script = ExtResource( 29 )
 no_gravity = false
 camera_offset_time = 1
 
@@ -1399,9 +1354,8 @@ camera_offset_time = 1
 
 script = SubResource( 6 )
 
-[node name="ExtendedCamera2D" parent="player" index="27"]
+[node name="ExtendedCamera2D" parent="player" index="28"]
 
-editor/display_folded = false
 position = Vector2( 0, -224 )
 drag_margin_h_enabled = false
 drag_margin_v_enabled = false
@@ -1409,7 +1363,6 @@ drag_margin_left = 0.0
 drag_margin_right = 0.0
 editor_draw_drag_margin = true
 _sections_unfolded = [ "Drag Margin", "Limit", "Offset", "Smoothing", "Transform" ]
-scroll_speed = 640
 
 [node name="BooleanStateLabel" type="Label" parent="player/ExtendedCamera2D" index="1"]
 
@@ -1430,9 +1383,9 @@ size_flags_vertical = 4
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
-script = ExtResource( 31 )
+script = ExtResource( 30 )
 __meta__ = {
-"_editor_icon": ExtResource( 32 )
+"_editor_icon": ExtResource( 31 )
 }
 node_path = NodePath("../tween_offset")
 tracked_value = ""
@@ -1442,16 +1395,16 @@ false_value = "NOT ACTIVE"
 
 [node name="Sprite" type="Sprite" parent="player/ExtendedCamera2D" index="2"]
 
-texture = ExtResource( 33 )
+texture = ExtResource( 32 )
 
 [node name="Sprite2" type="Sprite" parent="player/ExtendedCamera2D" index="3"]
 
 position = Vector2( -832, -480 )
 scale = Vector2( 5, 5 )
-texture = ExtResource( 33 )
+texture = ExtResource( 32 )
 _sections_unfolded = [ "Offset", "Transform" ]
 
-[node name="direct_control_handler" parent="player" index="29"]
+[node name="direct_control_handler" parent="player" index="30"]
 
 script = SubResource( 7 )
 speed = 1536
@@ -1475,9 +1428,9 @@ size_flags_vertical = 4
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
-script = ExtResource( 34 )
+script = ExtResource( 33 )
 __meta__ = {
-"_editor_icon": ExtResource( 32 )
+"_editor_icon": ExtResource( 31 )
 }
 node_path = NodePath("../ExtendedCamera2D")
 tracked_value = "limit_left"
@@ -1502,9 +1455,9 @@ size_flags_vertical = 4
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
-script = ExtResource( 34 )
+script = ExtResource( 33 )
 __meta__ = {
-"_editor_icon": ExtResource( 32 )
+"_editor_icon": ExtResource( 31 )
 }
 node_path = NodePath("../ExtendedCamera2D")
 tracked_value = "limit_areas"
@@ -1528,9 +1481,9 @@ size_flags_vertical = 4
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
-script = ExtResource( 34 )
+script = ExtResource( 33 )
 __meta__ = {
-"_editor_icon": ExtResource( 32 )
+"_editor_icon": ExtResource( 31 )
 }
 node_path = NodePath("../track_manager")
 tracked_value = "tracks"

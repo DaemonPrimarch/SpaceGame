@@ -9,6 +9,7 @@ func player_state_left(state, new_state):
 		
 var prev_position
 var position_set = false
+var exited = true
 
 func set_track(track):
 	.set_track(track)
@@ -29,13 +30,14 @@ func remove_track(track):
 
 func apply_track_position():
 	if(get_track().applies_fast_camera_offset):
-		prev_position = get_parent().get_node("ExtendedCamera2D").position
-		
+		if(exited):
+			prev_position = get_parent().get_node("ExtendedCamera2D").position
+			exited = false
 		get_parent().get_node("ExtendedCamera2D").move_at_speed_to(Vector2(get_track().get_fast_camera_offset().x, prev_position.y), get_track().get_speed())
 	
 func remove_track_position():
 	if(position_set):
 		get_parent().get_node("ExtendedCamera2D").move_to(prev_position, 1)
-
+		
 	
 	
