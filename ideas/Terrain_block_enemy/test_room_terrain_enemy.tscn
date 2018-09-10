@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://addons/room/room.gd" type="Script" id=1]
 [ext_resource path="res://nodes/terrain.tscn" type="PackedScene" id=2]
@@ -6,8 +6,7 @@
 [ext_resource path="res://addons/extended_camera_2D/camera_limit_rect.gd" type="Script" id=4]
 [ext_resource path="res://addons/extended_camera_2D/limit_rect_setter.gd" type="Script" id=5]
 [ext_resource path="res://addons/extended_collision_polygon_2D/extended_collision_polygon_2D.gd" type="Script" id=6]
-[ext_resource path="res://nodes/entities/enemies/charging_enemy.tscn" type="PackedScene" id=7]
-[ext_resource path="res://ideas/Terrain_block_enemy/charging_terrain_enemy.tscn" type="PackedScene" id=8]
+[ext_resource path="res://ideas/Terrain_block_enemy/charging_terrain_enemy.tscn" type="PackedScene" id=7]
 
 [node name="test_room_terrain_enemy" type="Node2D" index="0"]
 
@@ -73,12 +72,7 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="charging_enemy" parent="." index="4" instance=ExtResource( 7 )]
-
-position = Vector2( 832, 256 )
-flippedH = true
-
-[node name="charging_terrain_enemy" parent="." index="5" instance=ExtResource( 8 )]
+[node name="charging_terrain_enemy" parent="." index="4" instance=ExtResource( 7 )]
 
 position = Vector2( 832, 800 )
 flippedH = true
