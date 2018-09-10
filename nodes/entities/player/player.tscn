@@ -278,9 +278,9 @@ tracks/3/keys = {
 "values": [ Vector2( 28, -20 ), Vector2( 28, -20 ) ]
 }
 
-[node name="player" index="0" groups=[
-"player",
+[node name="player" groups=[
 "warpable",
+"player",
 ] instance=ExtResource( 1 )]
 
 script = ExtResource( 2 )

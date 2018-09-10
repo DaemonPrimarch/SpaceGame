@@ -11,9 +11,16 @@
 [sub_resource type="GDScript" id=1]
 
 script/source = "extends \"res://addons/state_handler/state_handler.gd\"
+export var charge_wait_time = 1
+var player_spotted = false
+var wait_for_charge_timer = 0
 
 func enter_state(previous_state):
 	.enter_state(previous_state)
+	wait_for_charge_timer = charge_wait_time
+	player_spotted = false
+	get_parent().get_node(\"eye_black\").modulate = Color(0,0,0)
+	
 	
 func leave_state(new_state):
 	.leave_state(new_state)
@@ -21,11 +28,20 @@ func leave_state(new_state):
 func process_state(delta):
 	.process_state(delta)
 	
-	if($player_detector.is_colliding()):
+	if(player_spotted):
+		wait_for_charge_timer -= delta
+		
+		if (wait_for_charge_timer<0):
+			get_parent().set_state(\"CHARGING\")
+		
+	elif($player_detector.is_colliding()):
 		var collider = $player_detector.get_collider()
+		
 		if(collider.is_in_group(\"player\")):
 			get_parent().get_handler(\"CHARGING\").set_charging_distance(abs(get_parent().position.x - collider.position.x))
-			get_parent().set_state(\"CHARGING\")
+			player_spotted = true
+			get_parent().get_node(\"eye_black\").modulate = Color(255,0,0)
+
 "
 
 [sub_resource type="GDScript" id=2]
@@ -34,10 +50,10 @@ script/source = "extends \"res://addons/state_handler/state_handler.gd\"
 
 var charging_distance = 0
 
-export var starting_speed = 64*4 
+export var starting_speed = 64*4
 export var max_speed = 64*18 
 export var charging_acceleration = 64*30
-export var overrun_distance = 64 * 2
+export var overrun_distance = 64 * 5
 
 func set_charging_distance(distance):
 	charging_distance = distance
@@ -65,6 +81,7 @@ func enter_state(previous_state):
 func leave_state(new_state):
 	.leave_state(new_state)
 	
+	
 	get_parent().set_velocity(Vector2())
 	
 	get_parent().set_acceleration(Vector2())
@@ -91,13 +108,16 @@ func process_state(delta):
 
 script/source = "extends \"res://addons/state_handler/state_handler.gd\"
 
-export var stunned_time = 2
+export var stunned_time = 5
 
 func enter_state(previous_state):
 	.enter_state(previous_state)
+	get_parent().get_node(\"eye_black\").modulate = Color(0,0,0)
+	get_parent().get_node(\"TemporarySprite\").get_node(\"Sprite\").modulate = Color(0,255,0)
 	
 func leave_state(new_state):
 	.leave_state(new_state)
+	get_parent().get_node(\"TemporarySprite\").get_node(\"Sprite\").modulate = Color(255,255,0)
 	
 func process_state(delta):
 	.process_state(delta)
@@ -111,7 +131,7 @@ func process_state(delta):
 
 script/source = "extends \"res://addons/state_handler/state_handler.gd\"
 
-export var stunned_time = 1
+export var stunned_time = 2
 
 func enter_state(previous_state):
 	.enter_state(previous_state)
@@ -126,7 +146,7 @@ func process_state(delta):
 		get_parent().set_flippedH(not get_parent().is_flippedH())
 		get_parent().set_state(\"IDLE\")"
 
-[node name="charging_enemy" type="KinematicBody2D" index="0"]
+[node name="charging_enemy" type="KinematicBody2D"]
 
 input_pickable = false
 collision_layer = 1024
@@ -146,8 +166,8 @@ velocity = Vector2( 0, 0 )
 max_velocity = Vector2( -1, -1 )
 acceleration = Vector2( 0, 0 )
 can_be_pushed = false
-HP = 2
-max_HP = 2
+HP = 100
+max_HP = 100
 invulnerability_time = 1.0
 damage = 1
 hp_drop_chance = 0.5
@@ -177,7 +197,6 @@ polygon = PoolVector2Array( -30, -30, 30, -30, 30, 32, -30, 32 )
 
 [node name="idle_handler" type="Node2D" parent="." index="2"]
 
-editor/display_folded = true
 script = SubResource( 1 )
 __meta__ = {
 "_editor_icon": ExtResource( 2 )
@@ -185,6 +204,7 @@ __meta__ = {
 handled_state = "IDLE"
 enabled = true
 no_gravity = false
+charge_wait_time = 1
 
 [node name="player_detector" type="RayCast2D" parent="idle_handler" index="0"]
 
@@ -195,7 +215,6 @@ collision_mask = 2
 
 [node name="charging_handler" type="Node2D" parent="." index="3"]
 
-editor/display_folded = true
 script = SubResource( 2 )
 __meta__ = {
 "_editor_icon": ExtResource( 2 )
@@ -206,7 +225,7 @@ no_gravity = false
 starting_speed = 256
 max_speed = 1152
 charging_acceleration = 1920
-overrun_distance = 128
+overrun_distance = 320
 
 [node name="ground_detector" type="RayCast2D" parent="charging_handler" index="0"]
 
@@ -225,7 +244,7 @@ __meta__ = {
 handled_state = "STUNNED_BY_CRASH"
 enabled = true
 no_gravity = false
-stunned_time = 2
+stunned_time = 5
 
 [node name="stunned_by_exhaustion_handler" type="Node2D" parent="." index="5"]
 
@@ -236,7 +255,7 @@ __meta__ = {
 handled_state = "STUNNED_BY_EXHAUSTION"
 enabled = true
 no_gravity = false
-stunned_time = 1
+stunned_time = 2
 
 [node name="platform_manager" parent="." index="6" instance=ExtResource( 3 )]
 
@@ -263,10 +282,11 @@ _sections_unfolded = [ "Visibility" ]
 __meta__ = {
 "_editor_icon": ExtResource( 6 )
 }
+auto_resize = true
 
 [node name="Sprite" type="Sprite" parent="TemporarySprite" index="0"]
 
-modulate = Color( 0.558588, 0.538223, 0.0370941, 1 )
+modulate = Color( 1, 1, 0, 1 )
 position = Vector2( 32, 32 )
 scale = Vector2( 0.0555556, 0.0987654 )
 texture = ExtResource( 7 )
@@ -307,8 +327,7 @@ _sections_unfolded = [ "Visibility" ]
 
 [node name="eye_black" type="Sprite" parent="." index="10"]
 
-modulate = Color( 0.875, 0.868858, 0.717773, 1 )
-self_modulate = Color( 0, 0, 0, 1 )
+modulate = Color( 0, 0, 0, 1 )
 position = Vector2( 20, -16 )
 scale = Vector2( 0.00607639, 0.0108025 )
 texture = ExtResource( 7 )
