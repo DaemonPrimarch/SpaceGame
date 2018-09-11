@@ -11,11 +11,8 @@ func crush():
 	destroy()
 
 func explode():
-	var tilemap = get_node("/root/ROOM_MANAGER").get_room_of_node(self).get_node("terrain")
-	var nearest_grid_id = find_nearest_grid_id(position)
-	for i in range(nearest_grid_id.x - explosion_diameter/2, nearest_grid_id.x + explosion_diameter/2 + 1):
-		for j in range(nearest_grid_id.y - explosion_diameter/2 - 1, nearest_grid_id.y + explosion_diameter/2):
-			tilemap.set_cell(i,j,-1)
+	for terrain in get_tree().get_nodes_in_group("terrain"):
+		terrain.explode_around(global_position)
 
 func destroy():
 	explode()

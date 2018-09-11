@@ -19,7 +19,7 @@ func process_state(delta):
 		get_parent().set_flippedV(not get_parent().is_flippedV())
 "
 
-[node name="explosive_wall_crawler" type="KinematicBody2D"]
+[node name="explosive_wall_crawler" type="KinematicBody2D" index="0"]
 
 input_pickable = false
 collision_layer = 1024
