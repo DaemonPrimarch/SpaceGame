@@ -13,6 +13,9 @@ func get_velocity():
 	return velocity
 
 func _physics_process(delta):
+	process_move(delta)
+
+func process_move(delta):
 	position += get_velocity().rotated(get_rotation()) * delta
 	
 func get_damage():
@@ -38,4 +41,4 @@ func on_area_entered( area ):
 		destroy()
 
 func _ready():
-	get_node("Light2D").enabled = (get_node("/root/ROOM_MANAGER").get_room_of_node(self).is_dark())
+	#get_node("Light2D").enabled = (get_node("/root/ROOM_MANAGER").get_room_of_node(self).is_dark())
