@@ -44,6 +44,9 @@ max_HP = 1
 invulnerability_time = 1.0
 damage = 1
 hp_drop_chance = 0.5
+explosion_radius = 320
+fuse_lit = false
+fuse_time = 5
 
 [node name="Area2D" type="Area2D" parent="." index="0"]
 
@@ -151,6 +154,17 @@ exclude_parent = true
 cast_to = Vector2( -50, 0 )
 collision_mask = 1
 
+[node name="fuse_tween" type="Tween" parent="." index="6"]
+
+repeat = false
+playback_process_mode = 1
+playback_speed = 1.0
+playback/active = false
+playback/repeat = false
+playback/speed = 1.0
+
 [connection signal="body_entered" from="Area2D" to="." method="_on_object_hit"]
+
+[connection signal="tween_completed" from="fuse_tween" to="." method="_on_fuse_tween_tween_completed"]
 
 
