@@ -8,7 +8,7 @@
 [ext_resource path="res://addons/extended_collision_polygon_2D/extended_collision_polygon_2D.gd" type="Script" id=6]
 [ext_resource path="res://ideas/explosive_wall_crawler/explosive_wall_crawler.tscn" type="PackedScene" id=7]
 
-[node name="test_room_explosive_wall_crawler" type="Node2D" index="0"]
+[node name="test_room_explosive_wall_crawler" type="Node2D"]
 
 script = ExtResource( 1 )
 dark = false
