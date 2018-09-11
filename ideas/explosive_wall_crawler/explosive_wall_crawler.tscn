@@ -1,0 +1,156 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://ideas/explosive_wall_crawler/explosive_wall_crawler.gd" type="Script" id=1]
+[ext_resource path="res://addons/temporary_sprite/temporary_sprite.gd" type="Script" id=2]
+[ext_resource path="res://addons/temporary_sprite/panel.svg" type="Texture" id=3]
+[ext_resource path="res://sprites/white.png" type="Texture" id=4]
+[ext_resource path="res://nodes/managers/platform_manager.tscn" type="PackedScene" id=5]
+[ext_resource path="res://nodes/managers/bullet_hit_manager.tscn" type="PackedScene" id=6]
+[ext_resource path="res://addons/state_handler/kinematic_body_2D.svg" type="Texture" id=7]
+
+[sub_resource type="GDScript" id=1]
+
+script/source = "extends \"res://addons/state_handler/state_handler.gd\"
+
+func process_state(delta):
+	get_parent().move_and_collide_slope(get_parent().get_direction() * Vector2(0,1) * -1 * delta * get_parent().get_movement_speed())
+	
+	if(not $ground_detector.is_colliding() or $wall_detector.is_colliding()):
+		get_parent().set_flippedV(not get_parent().is_flippedV())
+"
+
+[node name="explosive_wall_crawler" type="KinematicBody2D"]
+
+input_pickable = false
+collision_layer = 1024
+collision_mask = 5
+collision/safe_margin = 0.08
+script = ExtResource( 1 )
+_sections_unfolded = [ "Collision", "Transform", "collision" ]
+max_slope_angle = 0.785398
+flippedH = false
+flippedV = false
+moveable_by_collision = true
+current_state = "BACK_FORTH"
+movement_speed = 327.68
+gravity_enabled = false
+gravity_vector = Vector2( 0, 1152 )
+velocity = Vector2( 0, 0 )
+max_velocity = Vector2( -1, -1 )
+acceleration = Vector2( 0, 0 )
+can_be_pushed = false
+HP = 1
+max_HP = 1
+invulnerability_time = 1.0
+damage = 1
+hp_drop_chance = 0.5
+
+[node name="Area2D" type="Area2D" parent="." index="0"]
+
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+collision_layer = 1024
+collision_mask = 5
+audio_bus_override = false
+audio_bus_name = "Master"
+_sections_unfolded = [ "Collision" ]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D" index="0"]
+
+build_mode = 0
+polygon = PoolVector2Array( -30, -30, 30, -30, 30, 30, -30, 30 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." index="1"]
+
+build_mode = 0
+polygon = PoolVector2Array( -30, -30, 30, -30, 30, 30, -30, 30 )
+
+[node name="TemporarySprite" type="Panel" parent="." index="2"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = -32.0
+margin_top = -32.0
+margin_right = 32.0
+margin_bottom = 32.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+script = ExtResource( 2 )
+__meta__ = {
+"_editor_icon": ExtResource( 3 )
+}
+auto_resize = true
+
+[node name="Sprite" type="Sprite" parent="TemporarySprite" index="0"]
+
+modulate = Color( 1, 0, 0, 1 )
+position = Vector2( 32, 32 )
+scale = Vector2( 0.0555556, 0.0987654 )
+texture = ExtResource( 4 )
+_sections_unfolded = [ "Visibility" ]
+
+[node name="NameLabel" type="Label" parent="TemporarySprite" index="1"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 64.0
+margin_bottom = 64.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+text = "explosive
+wall 
+crawler"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="platform_manager" parent="." index="3" instance=ExtResource( 5 )]
+
+[node name="bullet_hit_manager" parent="." index="4" instance=ExtResource( 6 )]
+
+[node name="back_forth_handler" type="Node2D" parent="." index="5"]
+
+script = SubResource( 1 )
+__meta__ = {
+"_editor_icon": ExtResource( 7 )
+}
+handled_state = "BACK_FORTH"
+enabled = true
+no_gravity = false
+
+[node name="wall_detector" type="RayCast2D" parent="back_forth_handler" index="0"]
+
+position = Vector2( 0, 7 )
+enabled = true
+exclude_parent = true
+cast_to = Vector2( 0, -50 )
+collision_mask = 1
+
+[node name="ground_detector" type="RayCast2D" parent="back_forth_handler" index="1"]
+
+position = Vector2( -31, -33 )
+enabled = true
+exclude_parent = true
+cast_to = Vector2( -50, 0 )
+collision_mask = 1
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_object_hit"]
+
+

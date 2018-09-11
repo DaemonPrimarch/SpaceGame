@@ -37,7 +37,7 @@ func process_state(delta):
 	if(not $ground_detector.is_colliding() or $wall_detector.is_colliding()):
 		get_parent().set_flippedH(not get_parent().is_flippedH())"
 
-[node name="back_forth_enemy" type="KinematicBody2D" index="0"]
+[node name="back_forth_enemy" type="KinematicBody2D"]
 
 input_pickable = false
 collision_layer = 1024
@@ -140,6 +140,7 @@ script = ExtResource( 4 )
 __meta__ = {
 "_editor_icon": ExtResource( 5 )
 }
+auto_resize = true
 
 [node name="Sprite" type="Sprite" parent="TemporarySprite" index="0"]
 
