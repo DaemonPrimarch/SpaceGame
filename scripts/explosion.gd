@@ -7,6 +7,8 @@ export var radius = 32 * 10
 export var explosion_duration = 0.3
 
 func explode():
+	$Particles2D.process_material.emission_sphere_radius = radius
+	$Particles2D.restart()
 	$Tween.start()
 	
 
@@ -20,4 +22,5 @@ func _on_Area2D_body_entered(body):
 		body.damage(damage)
 
 func _on_Tween_tween_completed(object, key):
-	queue_free()
+	$Area2D.queue_free()
+	
