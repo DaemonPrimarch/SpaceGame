@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=2]
 
-[ext_resource path="res://ideas/explosive_wall_crawler/explosive_wall_crawler.gd" type="Script" id=1]
+[ext_resource path="res://ideas/explosive_wall_crawler/explosive_crawler.gd" type="Script" id=1]
 [ext_resource path="res://addons/temporary_sprite/temporary_sprite.gd" type="Script" id=2]
 [ext_resource path="res://addons/temporary_sprite/panel.svg" type="Texture" id=3]
 [ext_resource path="res://sprites/white.png" type="Texture" id=4]
@@ -19,7 +19,7 @@ func process_state(delta):
 		get_parent().set_flippedH(not get_parent().is_flippedH())
 "
 
-[node name="explosive_wall_crawler" type="KinematicBody2D" index="0"]
+[node name="explosive_crawler" type="KinematicBody2D" index="0"]
 
 input_pickable = false
 collision_layer = 1024
@@ -99,7 +99,7 @@ modulate = Color( 1, 0, 0, 1 )
 position = Vector2( 32, 32 )
 scale = Vector2( 0.0555556, 0.0987654 )
 texture = ExtResource( 4 )
-_sections_unfolded = [ "Visibility" ]
+_sections_unfolded = [ "Transform", "Visibility" ]
 
 [node name="NameLabel" type="Label" parent="TemporarySprite" index="1"]
 
