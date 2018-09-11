@@ -11,6 +11,7 @@
 [node name="test_room_explosive_wall_crawler" type="Node2D" index="0"]
 
 script = ExtResource( 1 )
+_sections_unfolded = [ "Transform" ]
 dark = false
 dark_color = Color( 0, 0, 0, 1 )
 auto_generate_camera_limiter = true
@@ -82,12 +83,18 @@ __meta__ = {
 
 [node name="explosive_wall_crawler3" parent="." index="4" instance=ExtResource( 7 )]
 
-position = Vector2( 1191.59, 1548.09 )
+position = Vector2( 144, 1056 )
+
+[node name="explosive_wall_crawler5" parent="." index="5" instance=ExtResource( 7 )]
+
+position = Vector2( 1184, 1320 )
+rotation = -1.57079
+
+[node name="explosive_wall_crawler4" parent="." index="6" instance=ExtResource( 7 )]
+
+position = Vector2( 670, 1630 )
+rotation = 1.57079
 flippedH = true
-
-[node name="explosive_wall_crawler2" parent="." index="5" instance=ExtResource( 7 )]
-
-position = Vector2( 672, 1376 )
 
 
 [editable path="player"]

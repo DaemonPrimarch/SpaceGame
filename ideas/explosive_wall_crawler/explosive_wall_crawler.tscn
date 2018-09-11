@@ -13,10 +13,10 @@
 script/source = "extends \"res://addons/state_handler/state_handler.gd\"
 
 func process_state(delta):
-	get_parent().move_and_collide_slope(get_parent().get_direction() * Vector2(0,1) * -1 * delta * get_parent().get_movement_speed())
+	get_parent().move_and_collide_slope((get_parent().get_direction() * Vector2(1,0)).rotated(get_parent().rotation) * delta * get_parent().get_movement_speed())
 	
 	if(not $ground_detector.is_colliding() or $wall_detector.is_colliding()):
-		get_parent().set_flippedV(not get_parent().is_flippedV())
+		get_parent().set_flippedH(not get_parent().is_flippedH())
 "
 
 [node name="explosive_wall_crawler" type="KinematicBody2D" index="0"]
@@ -136,23 +136,23 @@ __meta__ = {
 }
 handled_state = "BACK_FORTH"
 enabled = true
-no_gravity = false
+no_gravity = true
 
 [node name="wall_detector" type="RayCast2D" parent="back_forth_handler" index="0"]
 
-position = Vector2( 0, 7 )
 enabled = true
 exclude_parent = true
-cast_to = Vector2( 0, -50 )
+cast_to = Vector2( 50, 0 )
 collision_mask = 1
 
 [node name="ground_detector" type="RayCast2D" parent="back_forth_handler" index="1"]
 
-position = Vector2( -31, -33 )
+position = Vector2( 32, 16 )
 enabled = true
 exclude_parent = true
-cast_to = Vector2( -50, 0 )
+cast_to = Vector2( 0, 50 )
 collision_mask = 1
+_sections_unfolded = [ "Transform" ]
 
 [node name="fuse_tween" type="Tween" parent="." index="6"]
 
