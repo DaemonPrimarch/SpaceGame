@@ -14,7 +14,6 @@ func is_tile_explodable(id):
 	return [7].has(id)
 
 func explode_around(position, radius = 3):
-	print(world_to_map(position))
 	var nearest_grid_id = world_to_map(position)
 	for i in range(nearest_grid_id.x - radius, nearest_grid_id.x + radius + 1):
 		for j in range(nearest_grid_id.y - radius - 1, nearest_grid_id.y + radius):
