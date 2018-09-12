@@ -18,4 +18,4 @@ func _on_node_added(node):
 			node.enabled = get_parent().is_dark()
 
 func _exit_tree():
-	get_tree().connect("node_added", self, "_on_node_added")
+	get_tree().disconnect("node_added", self, "_on_node_added")
