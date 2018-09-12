@@ -43,10 +43,14 @@ func set_enabled(val):
 	enabled = val
 	
 	if(is_inside_tree()):
-		if(enabled):
-			$ExtendedAnimationPlayer.play(\"lit\")
+		if(not Engine.editor_hint):
+			if(enabled):
+				$ExtendedAnimationPlayer.play(\"lit\")
+			else:
+				$ExtendedAnimationPlayer.play(\"darkened\")
 		else:
-			$ExtendedAnimationPlayer.play(\"darkened\")
+			$light_1.enabled = enabled
+			$light_2.enabled = enabled
 
 func _ready():
 	set_enabled(enabled)
@@ -54,11 +58,11 @@ func _ready():
 	if(not Engine.editor_hint):
 		get_parent().connect(\"room_entered\", self, \"_on_player_room_entered\")
 
-func _on_player_room_entered():
-	if(get_node(\"/root/ROOM_MANAGER\").get_room_of_node(self).is_dark()):
-		enabled = true
-	else:
-		enabled = false"
+#func _on_player_room_entered():
+#	if(get_node(\"/root/ROOM_MANAGER\").get_room_of_node(self).is_dark()):
+#		enabled = true
+#	else:
+#		enabled = false"
 
 [sub_resource type="Animation" id=2]
 
