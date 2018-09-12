@@ -6,7 +6,7 @@
 [ext_resource path="res://addons/extended_collision_polygon_2D/extended_collision_polygon_2D.gd" type="Script" id=4]
 [ext_resource path="res://addons/extended_collision_polygon_2D/polygon.svg" type="Texture" id=5]
 
-[node name="bullet" type="Area2D"]
+[node name="bullet" type="Area2D" index="0"]
 
 input_pickable = false
 gravity_vec = Vector2( 0, 1 )
