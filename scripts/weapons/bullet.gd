@@ -42,4 +42,3 @@ func on_area_entered( area ):
 
 func _ready():
 	pass
-	#get_node("Light2D").enabled = (get_node("/root/ROOM_MANAGER").get_room_of_node(self).is_dark())

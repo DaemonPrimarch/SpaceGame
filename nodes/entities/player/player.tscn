@@ -54,9 +54,6 @@ func set_enabled(val):
 
 func _ready():
 	set_enabled(enabled)
-	
-	if(not Engine.editor_hint):
-		get_parent().connect(\"room_entered\", self, \"_on_player_room_entered\")
 
 #func _on_player_room_entered():
 #	if(get_node(\"/root/ROOM_MANAGER\").get_room_of_node(self).is_dark()):
@@ -291,7 +288,7 @@ script = ExtResource( 2 )
 _sections_unfolded = [ "Collision", "Pause", "Pickable", "Transform", "collision" ]
 
 [node name="player_light" type="Node2D" parent="." index="0" groups=[
-"darkness_detecting_light",
+"auto_light",
 ]]
 
 script = SubResource( 1 )
