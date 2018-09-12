@@ -192,7 +192,7 @@ tracks/2/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=9]
+[sub_resource type="Animation" id=6]
 
 resource_name = "eyes_to_red"
 length = 1.0
@@ -211,9 +211,8 @@ tracks/0/keys = {
 "values": [ Color( 0, 0, 0, 1 ), Color( 1, 0, 0, 1 ) ]
 }
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=7]
 
-resource_name = "stunned_by_terrain"
 length = 1.0
 loop = false
 step = 0.1
@@ -263,11 +262,15 @@ tracks/0/keys = {
 "values": [ Color( 1, 0, 0, 1 ), Color( 0, 0, 0, 1 ) ]
 }
 
-[node name="charging_terrain_enemy" instance=ExtResource( 1 )]
+[node name="charging_terrain_enemy" index="0" instance=ExtResource( 1 )]
 
 [node name="idle_handler" parent="." index="2"]
 
 script = SubResource( 1 )
+
+[node name="player_detector" parent="idle_handler" index="0"]
+
+position = Vector2( 28, 0 )
 
 [node name="charging_handler" parent="." index="3"]
 
@@ -290,8 +293,8 @@ playback_process_mode = 1
 playback_default_blend_time = 0.0
 playback_speed = 1.0
 anims/exit_stunned = SubResource( 5 )
-anims/eyes_to_red = SubResource( 9 )
-anims/stunned_by_terrain = SubResource( 6 )
+anims/eyes_to_red = SubResource( 6 )
+anims/stunned_by_terrain = SubResource( 7 )
 blend_times = [  ]
 script = ExtResource( 2 )
 __meta__ = {

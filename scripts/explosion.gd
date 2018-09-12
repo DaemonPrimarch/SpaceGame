@@ -11,7 +11,6 @@ func explode():
 	$Particles2D.restart()
 	$Tween.start()
 	
-
 func _ready():
 	$Tween.interpolate_property($Area2D, "scale", Vector2(0.05,0.05), Vector2(1,1)/32*radius, explosion_duration, Tween.TRANS_LINEAR, Tween.EASE_OUT_IN)
 

@@ -1,2 +1,0 @@
-extends Light2D
-
