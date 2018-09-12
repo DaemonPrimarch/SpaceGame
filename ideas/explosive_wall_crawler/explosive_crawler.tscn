@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=2]
 
-[ext_resource path="res://ideas/explosive_wall_crawler/explosive_wall_crawler.gd" type="Script" id=1]
+[ext_resource path="res://ideas/explosive_wall_crawler/explosive_crawler.gd" type="Script" id=1]
 [ext_resource path="res://addons/temporary_sprite/temporary_sprite.gd" type="Script" id=2]
 [ext_resource path="res://addons/temporary_sprite/panel.svg" type="Texture" id=3]
 [ext_resource path="res://sprites/white.png" type="Texture" id=4]
@@ -13,13 +13,13 @@
 script/source = "extends \"res://addons/state_handler/state_handler.gd\"
 
 func process_state(delta):
-	get_parent().move_and_collide_slope(get_parent().get_direction() * Vector2(0,1) * -1 * delta * get_parent().get_movement_speed())
+	get_parent().move_and_collide_slope((get_parent().get_direction() * Vector2(1,0)).rotated(get_parent().rotation) * delta * get_parent().get_movement_speed())
 	
 	if(not $ground_detector.is_colliding() or $wall_detector.is_colliding()):
-		get_parent().set_flippedV(not get_parent().is_flippedV())
+		get_parent().set_flippedH(not get_parent().is_flippedH())
 "
 
-[node name="explosive_wall_crawler" type="KinematicBody2D" index="0"]
+[node name="explosive_crawler" type="KinematicBody2D" index="0"]
 
 input_pickable = false
 collision_layer = 1024
@@ -44,6 +44,9 @@ max_HP = 1
 invulnerability_time = 1.0
 damage = 1
 hp_drop_chance = 0.5
+explosion_radius = 320
+fuse_lit = false
+fuse_time = 5
 
 [node name="Area2D" type="Area2D" parent="." index="0"]
 
@@ -96,7 +99,7 @@ modulate = Color( 1, 0, 0, 1 )
 position = Vector2( 32, 32 )
 scale = Vector2( 0.0555556, 0.0987654 )
 texture = ExtResource( 4 )
-_sections_unfolded = [ "Visibility" ]
+_sections_unfolded = [ "Transform", "Visibility" ]
 
 [node name="NameLabel" type="Label" parent="TemporarySprite" index="1"]
 
@@ -133,24 +136,35 @@ __meta__ = {
 }
 handled_state = "BACK_FORTH"
 enabled = true
-no_gravity = false
+no_gravity = true
 
 [node name="wall_detector" type="RayCast2D" parent="back_forth_handler" index="0"]
 
-position = Vector2( 0, 7 )
 enabled = true
 exclude_parent = true
-cast_to = Vector2( 0, -50 )
+cast_to = Vector2( 50, 0 )
 collision_mask = 1
 
 [node name="ground_detector" type="RayCast2D" parent="back_forth_handler" index="1"]
 
-position = Vector2( -31, -33 )
+position = Vector2( 32, 16 )
 enabled = true
 exclude_parent = true
-cast_to = Vector2( -50, 0 )
+cast_to = Vector2( 0, 50 )
 collision_mask = 1
+_sections_unfolded = [ "Transform" ]
+
+[node name="fuse_tween" type="Tween" parent="." index="6"]
+
+repeat = false
+playback_process_mode = 1
+playback_speed = 1.0
+playback/active = false
+playback/repeat = false
+playback/speed = 1.0
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_object_hit"]
+
+[connection signal="tween_completed" from="fuse_tween" to="." method="_on_fuse_tween_tween_completed"]
 
 
