@@ -1,6 +1,7 @@
 extends Area2D
 
 export var velocity = Vector2(64 * 4,0) setget set_velocity, get_velocity
+export var decay_time = 10
 
 export var damage = 10
 
@@ -41,4 +42,4 @@ func on_area_entered( area ):
 		destroy()
 
 func _ready():
-	pass
+	$decay_timer.wait_time = decay_time

@@ -20,6 +20,7 @@ audio_bus_name = "Master"
 script = ExtResource( 1 )
 _sections_unfolded = [ "Collision", "Pickable", "Transform" ]
 velocity = Vector2( 2048, 0 )
+decay_time = 10
 damage = 1
 
 [node name="Sprite" type="Sprite" parent="." index="0"]

@@ -54,6 +54,9 @@ func get_room_of_node(node):
 		
 	return current_room
 
+func is_node_in_room(node, room):
+	return get_room_of_node(node) == room
+
 func unload_room(room):
 	for child in room.get_children():
 		if(child is CanvasModulate):
@@ -84,10 +87,8 @@ func warp_node_to_room(node, room, arrival_pos_id):
 			
 		yield(self, "PHYS")
 
-
 		var arrival_pos = Vector2(0,0)
 		
-
 		if(typeof(arrival_pos_id) == TYPE_STRING):
 			var arrivals = get_tree().get_nodes_in_group("warp_arrival")
 			
