@@ -76,9 +76,17 @@ func is_dark():
 
 func _on_room_room_darkened():
 	get_node("CanvasModulate").color = dark_color
+	if(is_inside_tree()):
+		for light in get_tree().get_nodes_in_group("darkness_detecting_light"):
+			if(not light.enabled):
+				light.enabled = true
 
 func _on_room_room_lit():
 	get_node("CanvasModulate").color = Color(1,1,1)
+	if(is_inside_tree()):
+		for light in get_tree().get_nodes_in_group("darkness_detecting_light"):
+			if(light.enabled):
+				light.enabled = false
 
 func generate_camera_limiter():
 	var min_point = Vector2(10000, 10000)

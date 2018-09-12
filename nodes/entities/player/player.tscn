@@ -278,15 +278,17 @@ tracks/3/keys = {
 "values": [ Vector2( 28, -20 ), Vector2( 28, -20 ) ]
 }
 
-[node name="player" groups=[
-"warpable",
+[node name="player" index="0" groups=[
 "player",
+"warpable",
 ] instance=ExtResource( 1 )]
 
 script = ExtResource( 2 )
 _sections_unfolded = [ "Collision", "Pause", "Pickable", "Transform", "collision" ]
 
-[node name="player_light" type="Node2D" parent="." index="0"]
+[node name="player_light" type="Node2D" parent="." index="0" groups=[
+"darkness_detecting_light",
+]]
 
 script = SubResource( 1 )
 enabled = true
